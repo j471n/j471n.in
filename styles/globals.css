@@ -33,6 +33,17 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 
+/* SKill bar animation */
+.skill__bar {
+  animation: bar 2s linear;
+}
+
+@keyframes bar {
+  from {
+    width: 0;
+  }
+}
+
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
@@ -45,12 +56,12 @@ body::-webkit-scrollbar-thumb {
     @apply text-lg w-full p-[0.8rem] m-[0.3rem] rounded-md border-none outline-none shadow-inner ring-1 ring-gray-300 focus:ring-2 focus:ring-purple-500;
   }
   .title_of_page {
-    @apply text-center text-xl font-bold;
+    @apply text-center text-xl font-bold mt-3;
   }
   .icon {
     @apply text-2xl sm:text-4xl m-1 transform duration-200 lg:hover:scale-150;
   }
   .page_container {
-    @apply p-5 my-0 mx-auto grid;
+    @apply p-5 my-0 mx-auto grid justify-center w-[90%] gap-8 pb-28;
   }
 }
