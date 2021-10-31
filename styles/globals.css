@@ -36,7 +36,7 @@ body::-webkit-scrollbar-thumb {
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
-    @apply m-1 text-3xl active:-translate-y-2;
+    @apply m-1 text-3xl active:-translate-y-2 cursor-pointer;
   }
   .top-nav-link {
     @apply list-none mx-1 px-4 py-1 transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold;
