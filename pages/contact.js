@@ -1,24 +1,20 @@
 import Image from "next/image";
 import React, { useState } from "react";
-// import { useFetch } from "../../../hooks/useFetch";
-// import Loading from "../../../loading/Loading";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import {
   AiOutlineInstagram,
   AiOutlineTwitter,
-  AiFillCodepenCircle,
 } from "react-icons/ai";
-
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
-// import { HiMail, FaDev } from "react-icons";
 import { FaDev } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
+import {SiCodepen} from "react-icons/si";
 import SocialIcon from "../components/SocialIcon";
 import socialMedia from "../content/socialMedia";
 
+// initial State of the form
 const initialFormState = {
   to_name: "Jatin Sharma",
   from_name: "",
@@ -27,11 +23,7 @@ const initialFormState = {
   message: "",
 };
 
-
 export default function Contact({ response }) {
-  console.log(response);
-  // const { response, loading, setLoading } = useFetch("/contact-info");
-
   const [emailInfo, setEmailInfo] = useState(initialFormState);
 
   function sendEmail(e) {
@@ -65,13 +57,12 @@ export default function Contact({ response }) {
         <Loading />
       ) : ( */}
       <React.Fragment>
-        <div className="p-1">
-          <Image
-            className="w-24 rounded-full m-4 shadow "
+        <div className="p-2 m-4 shadow rounded-full cursor-pointer lg:hover:animate-bounce">
+          <img
+            className="w-24 rounded-full"
             src="/img/profile.jpg"
             alt="Jatin Sharma"
-            width="100"
-            height="100"
+            loading="lazy"
           />
         </div>
 
@@ -151,7 +142,7 @@ export default function Contact({ response }) {
             <SocialIcon Icon={BsGithub} title="Github" url={socialMedia.github} />
             <SocialIcon Icon={BsLinkedin} title="LinkedIn" url={socialMedia.linkedIn} />
             <SocialIcon Icon={HiMail} title="Instagram" url={socialMedia.mailto} />
-            <SocialIcon Icon={AiFillCodepenCircle} title="Codepen" url={socialMedia.codepen} />
+            <SocialIcon Icon={SiCodepen} title="Codepen" url={socialMedia.codepen} />
             <SocialIcon Icon={FaDev} title="Instagram" url={socialMedia.devTo} />
           </div>
         </div>

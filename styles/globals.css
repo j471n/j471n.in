@@ -48,9 +48,9 @@ body::-webkit-scrollbar-thumb {
     @apply text-center text-xl font-bold;
   }
   .icon {
-    @apply text-2xl sm:text-4xl m-1;
+    @apply text-2xl sm:text-4xl m-1 transform duration-200 lg:hover:scale-150;
   }
   .page_container {
-    @apply p-5 my-0 mx-auto grid; 
+    @apply p-5 my-0 mx-auto grid;
   }
 }
