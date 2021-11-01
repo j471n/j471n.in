@@ -70,4 +70,7 @@ body::-webkit-scrollbar-thumb {
   .user_reaction {
     @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] ;
   }
+  .project_link {
+    @apply w-full text-center flex bg-gray-100 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
+  }
 }
