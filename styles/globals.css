@@ -62,6 +62,12 @@ body::-webkit-scrollbar-thumb {
     @apply text-2xl sm:text-4xl m-1 transform duration-200 lg:hover:scale-150;
   }
   .page_container {
-    @apply p-5 my-0 mx-auto grid justify-center w-[90%] gap-8 pb-28;
+    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  3xl:grid-cols-4;
+  }
+  .blog_bottom_icon {
+    @apply text-3xl p-1 bg-gray-100 lg:hover:bg-gray-200 rounded-md cursor-pointer ml-1;
+  }
+  .user_reaction {
+    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] ;
   }
 }
