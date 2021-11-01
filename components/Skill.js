@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Skill({ data }) {
   return (
-    <div className="max-w-sm flex items-center justify-center px-4 py-3 shadow rounded-lg">
+    <div className="max-w-sm w-full flex items-center justify-center px-4 py-3 shadow rounded-lg">
       <div className="image">
         <Image src={`/${data.icon}`} alt={data.name} width={60} height={60} />
       </div>
