@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 
 export default function TopNavbar() {
   const routes = ["/", "/skills", "/blogs", "/projects", "/contact"];
@@ -15,32 +16,32 @@ export default function TopNavbar() {
       navLinks[routes.indexOf(currentRoute)].style.borderBottom =
         "4px solid black";
     }
-  }, []);
+  }, [routes]);
 
   return (
     <div className="md:fixed w-full bg-white z-50 top-0 flex items-center justify-between shadow p-4">
       {/* Name*/}
       <div className="w-full text-center sm:text-left text-2xl font-bold">
-        <a href="/">Jatin Sharma</a>
+        <Link href="/">Jatin Sharma</Link>
       </div>
 
       {/* Top Nav list */}
       <nav className="hidden sm:flex">
         <ul className="flex items-center flex-1">
           <li className="top-nav-link">
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li className="top-nav-link">
-            <a href="/skills">Skills</a>
+            <Link href="/skills">Skills</Link>
           </li>
           <li className="top-nav-link">
-            <a href="/blogs">Blogs</a>
+            <Link href="/blogs">Blogs</Link>
           </li>
           <li className="top-nav-link">
-            <a href="/projects">Projects</a>
+            <Link href="/projects">Projects</Link>
           </li>
           <li className="top-nav-link">
-            <a href="/contact">Contact</a>
+            <Link href="/contact">Contact</Link>
           </li>
         </ul>
       </nav>

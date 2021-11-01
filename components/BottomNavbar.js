@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Link from "next/link";
 import {
   AiOutlineHome,
   AiOutlineProject,
@@ -30,45 +30,45 @@ function BottomNavbar() {
       obj[currentRoute] = true;
       setRoutes({ ...routes, ...obj });
     }
-  }, []);
+  }, [routes]);
   return (
     <div className="fixed bg-white sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-50">
       <div className="flex items-center p-4 justify-between transition-all duration-150">
-        <a href="/">
+        <Link href="/">
           {routes["/"] ? (
             <AiFillHome className="bottom_nav_icon" />
           ) : (
             <AiOutlineHome className="bottom_nav_icon" />
           )}
-        </a>
-        <a href="/skills">
+        </Link>
+        <Link href="/skills">
           {routes["/skills"] ? (
             <BsBarChartFill className="bottom_nav_icon" />
           ) : (
             <BsBarChart className="bottom_nav_icon " />
           )}
-        </a>
-        <a href="/blogs">
+        </Link>
+        <Link href="/blogs">
           {routes["/blogs"] ? (
             <RiArticleFill className="bottom_nav_icon" />
           ) : (
             <RiArticleLine className="bottom_nav_icon" />
           )}
-        </a>
-        <a href="/projects">
+        </Link>
+        <Link href="/projects">
           {routes["/projects"] ? (
             <AiFillProject className="bottom_nav_icon" />
           ) : (
             <AiOutlineProject className="bottom_nav_icon" />
           )}
-        </a>
-        <a href="/contact">
+        </Link>
+        <Link href="/contact">
           {routes["/contact"] ? (
             <AiFillPhone className="bottom_nav_icon" />
           ) : (
             <AiOutlinePhone className="bottom_nav_icon" />
           )}
-        </a>
+        </Link>
       </div>
     </div>
   );

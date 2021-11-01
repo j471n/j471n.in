@@ -57,11 +57,13 @@ export default function Contact() {
       ) : (
         <React.Fragment>
           <div className="p-2 m-4 shadow rounded-full cursor-pointer lg:hover:animate-bounce">
-            <img
+            <Image
               className="w-24 rounded-full"
               src="/img/profile.jpg"
               alt="Jatin Sharma"
               loading="lazy"
+              width={96}
+              height={96}
             />
           </div>
 

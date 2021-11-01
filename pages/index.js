@@ -1,6 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-import BottomNavbar from "../components/BottomNavbar";
 
 export default function Home() {
   return (
