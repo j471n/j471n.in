@@ -82,7 +82,7 @@ export default function Blog({ blog }) {
           </a>
 
           {blog.public_reactions_count >= 100 && (
-            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transition-all duration-100 lg:hover:scale-x-110">
+            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
               <Image
                 className="rounded-full"
                 src="/img/fire-icon.jpg"
@@ -145,18 +145,33 @@ export default function Blog({ blog }) {
                 {shareSupport && (
                   <FaShare className="blog_bottom_icon" onClick={handleShare} />
                 )}
-                {/* <FcLink
-                className="blog_bottom_icon"
-                onClick={() => window.open(blog.url)}
-              /> */}
+                {shareSupport && (
+                  <FcLink
+                    className="blog_bottom_icon hidden sm:block"
+                    onClick={() => window.open(blog.url)}
+                  />
+                )}
               </div>
             </div>
             {/* Mobile Share Option */}
-            {shareSupport && (
-              <div className="block sm:hidden text-center font-semibold bg-purple-400 py-1 m-1 mt-2 rounded-md">
-                <p onClick={handleShare}>Share</p>
-              </div>
-            )}
+            <div className="flex justify-center sm:hidden text-center font-medium mt-2">
+              {shareSupport && (
+                <p
+                  className="w-full py-1 mr-1 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none"
+                  onClick={handleShare}
+                >
+                  Share
+                </p>
+              )}
+              <a
+                className="w-full py-1 ml-1 bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none"
+                href={blog.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit
+              </a>
+            </div>
           </div>
         </div>
       </div>
