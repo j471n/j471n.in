@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaShare } from "react-icons/fa";
+import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
@@ -143,7 +144,7 @@ export default function Blog({ blog }) {
               {/* Share and Link */}
               <div className="hidden sm:flex justify-center">
                 {shareSupport && (
-                  <FaShare className="blog_bottom_icon" onClick={handleShare} />
+                  <BiShareAlt className="blog_bottom_icon" onClick={handleShare} />
                 )}
                 {shareSupport && (
                   <FcLink
