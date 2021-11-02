@@ -19,7 +19,7 @@ export default function TopNavbar() {
   }, []);
 
   return (
-    <div className="md:fixed w-full bg-white z-50 top-0 flex items-center justify-between shadow p-4">
+    <div className="md:fixed w-full bg-white top-0 flex items-center justify-between shadow p-4 z-40">
       {/* Name*/}
       <div className="w-full text-center sm:text-left text-2xl font-bold">
         <Link href="/">Jatin Sharma</Link>
