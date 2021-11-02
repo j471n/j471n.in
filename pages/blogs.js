@@ -8,7 +8,6 @@ export default function Blogs({ data }) {
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
 
-  console.log(process.env.NEXT_PUBLIC_BLOGS_API);
   function sortBy(e) {
     const sort_by = e.target.value;
     setSortBlogBy(sort_by);
@@ -32,7 +31,6 @@ export default function Blogs({ data }) {
     }
   }
 
-  console.log(blogs);
   return (
     <>
       <div className="w-full mt-3 md:mt-24 px-4  flex items-center sm:flex-col justify-between">
