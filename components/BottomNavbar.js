@@ -30,7 +30,7 @@ function BottomNavbar() {
       obj[currentRoute] = true;
       setRoutes({ ...routes, ...obj });
     }
-  }, [routes]);
+  }, []);
   return (
     <div className="fixed bg-white sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-50">
       <div className="flex items-center p-4 justify-between transition-all duration-150">

@@ -16,7 +16,7 @@ export default function TopNavbar() {
       navLinks[routes.indexOf(currentRoute)].style.borderBottom =
         "4px solid black";
     }
-  }, [routes]);
+  }, []);
 
   return (
     <div className="md:fixed w-full bg-white z-50 top-0 flex items-center justify-between shadow p-4">
