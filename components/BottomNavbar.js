@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import {
-  AiOutlineHome,
   AiOutlineProject,
   AiOutlinePhone,
   AiFillProject,
-  AiFillHome,
   AiFillPhone,
 } from "react-icons/ai";
 import { RiArticleLine, RiArticleFill } from "react-icons/ri";
 import { BsBarChart, BsBarChartFill } from "react-icons/bs";
 import { HiHome, HiOutlineHome } from "react-icons/hi";
 
-function BottomNavbar() {
+function BottomNavbar({ data }) {
+  const router = useRouter();
   const [routes, setRoutes] = useState({
     "/": false,
     "/skills": false,
@@ -21,17 +21,19 @@ function BottomNavbar() {
     "/contact": false,
   });
 
+  const currentRoute = router.pathname;
   useEffect(() => {
-    const currentRoute = location.pathname;
-    for (let route in routes) {
+    for (const route in routes) {
       routes[route] = false;
     }
     if (routes.hasOwnProperty(currentRoute)) {
       let obj = {};
       obj[currentRoute] = true;
       setRoutes({ ...routes, ...obj });
+    } else {
+      console.error("404 NOT FOUND");
     }
-  }, [routes]);
+  }, [currentRoute]);
   return (
     <div className="fixed bg-white sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-40">
       <div className="flex items-center p-4 justify-between transition-all duration-150">
@@ -75,3 +77,13 @@ function BottomNavbar() {
   );
 }
 export default BottomNavbar;
+
+export async function getStaticProps(context) {
+  const data = context.req;
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
