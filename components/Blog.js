@@ -43,6 +43,14 @@ export default function Blog({ blog }) {
     }
   }
 
+  function displayShareIcons() {
+    if (showShare) return setShowShare(false);
+    setShowShare(true);
+    setTimeout(() => {
+      setShowShare(false);
+    }, 5000);
+  }
+
   useEffect(() => {
     if (inView) {
       controls.start("visible");
@@ -182,13 +190,10 @@ export default function Blog({ blog }) {
               <div className="text-center mr-1 w-full">
                 <BiShareAlt
                   className="blog_bottom_icon hidden sm:inline-flex"
-                  onClick={() => setShowShare(!showShare)}
+                  onClick={displayShareIcons}
                 />
 
-                <p
-                  className="blog_bottom_button"
-                  onClick={() => setShowShare(!showShare)}
-                >
+                <p className="blog_bottom_button" onClick={displayShareIcons}>
                   Share
                 </p>
               </div>
