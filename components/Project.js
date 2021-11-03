@@ -3,15 +3,12 @@ import { BsGithub } from "react-icons/bs";
 import { FcLink } from "react-icons/fc";
 import { BiShareAlt } from "react-icons/bi";
 import Image from "next/image";
+import ShareOnSocialMedia from "./ShareOnSocialMedia";
 
 export default function Project({ project }) {
   // Sharing Project
 
-  const [shareSupported, setShareSupported] = useState(false);
-
-  useEffect(() => {
-    navigator.share ? setShareSupported(true) : setShareSupported(false);
-  }, []);
+  const [showShare, setShowShare] = useState(false);
 
   async function handleShare() {
     const image = await fetch(project.coverURL);
@@ -30,6 +27,14 @@ export default function Project({ project }) {
         })
         .catch(console.error);
     }
+  }
+
+  function displayShareIcons() {
+    // if (showShare) return setShowShare(false);
+    setShowShare(!showShare);
+    // setTimeout(() => {
+    //   setShowShare(false);
+    // }, 5000);
   }
 
   return (
@@ -53,22 +58,42 @@ export default function Project({ project }) {
           {project.description && (
             <p className="text-xs pb-1">{project.description}</p>
           )}
-          {project.tools && (
-            <p className="w-full mt-2 select-none flex gap-2 justify-center items-center">
-              {project.tools.map((tool) => {
-                return (
-                  <Image
-                    key={tool}
-                    title={tool}
-                    src={`/img/skills/${tool}.webp`}
-                    alt={tool}
-                    width={30}
-                    height={30}
-                  />
-                );
-              })}
-            </p>
-          )}
+          <div className="relative overflow-hidden mt-2">
+            {/* Tools used in project */}
+            {project.tools && (
+              <p
+                className={`${
+                  showShare ? "invisible  scale-0" : "visible scale-100"
+                } w-full select-none flex gap-2 justify-center items-center transition-all duration-150`}
+              >
+                {project.tools.map((tool) => {
+                  return (
+                    <Image
+                      key={tool}
+                      title={tool}
+                      src={`/img/skills/${tool}.webp`}
+                      alt={tool}
+                      width={30}
+                      height={30}
+                    />
+                  );
+                })}
+              </p>
+            )}
+
+            {/* ShareIcons */}
+            <ShareOnSocialMedia
+              className={`${
+                showShare ? "visible scale-100" : "invisible scale-0"
+              } absolute inset-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+              title={project.name}
+              url={project.previewURL || project.githubURL}
+              summary={project.description}
+              body={project.description}
+              subject={project.name}
+              handleShare={handleShare}
+            />
+          </div>
         </div>
       )}
 
@@ -93,11 +118,9 @@ export default function Project({ project }) {
             <FcLink className="text-lg" />
           </a>
         )}
-        {shareSupported && (
-          <div title="Share" className="project_link" onClick={handleShare}>
-            <BiShareAlt className="text-lg" />
-          </div>
-        )}
+        <div title="Share" className="project_link" onClick={displayShareIcons}>
+          <BiShareAlt className="text-lg" />
+        </div>
       </div>
     </div>
   );
