@@ -36,7 +36,7 @@ export default function Project({ project }) {
     <div className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl">
       {project.coverURL && (
         <Image
-          className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer"
+          className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
           src={project.coverURL}
           alt={project.name}
           width={360}

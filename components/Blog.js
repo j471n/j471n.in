@@ -4,24 +4,8 @@ import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
-import { BsThreeDots } from "react-icons/bs";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
 
-// import { ShareSocial } from "react-share-social";
-import {
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  EmailShareButton,
-
-  // icons for sharing
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  WhatsappIcon,
-  EmailIcon,
-} from "react-share";
 
 export default function Blog({ blog }) {
   const [shareSupport, setShareSupport] = useState(false);
@@ -74,7 +58,7 @@ export default function Blog({ blog }) {
   return (
     <div className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl ">
       <Image
-        className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer"
+        className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
         src={blog.cover_image}
         alt={blog.title}
         width={360}
