@@ -16,7 +16,18 @@ import {
   EmailIcon,
 } from "react-share";
 
-export default function ShareOnSocialMedia({ className, title, url, summary, body, subject, handleShare }) {
+import useShare from "../hooks/useShare";
+
+export default function ShareOnSocialMedia({
+  className,
+  title,
+  url,
+  summary,
+  body,
+  subject,
+  handleShare,
+}) {
+  const { isShareSupported } = useShare();
   return (
     <div className={className}>
       <FacebookShareButton quote={title} url={url}>
@@ -36,17 +47,15 @@ export default function ShareOnSocialMedia({ className, title, url, summary, bod
       <WhatsappShareButton title={title} url={url}>
         <WhatsappIcon size={30} round />
       </WhatsappShareButton>
-      <EmailShareButton
-        subject={subject}
-        body={body}
-        url={url}
-      >
+      <EmailShareButton subject={subject} body={body} url={url}>
         <EmailIcon size={30} round />
       </EmailShareButton>
-      <BsThreeDots
-        className="bg-gray-100 cursor-pointer text-3xl rounded-full p-1 clickable_button"
-        onClick={handleShare}
-      />
+      {isShareSupported && (
+        <BsThreeDots
+          className="bg-gray-100 cursor-pointer text-3xl rounded-full p-1 clickable_button"
+          onClick={handleShare}
+        />
+      )}
     </div>
   );
 }

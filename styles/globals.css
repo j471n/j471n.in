@@ -44,6 +44,41 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+/* Page Container Sliding animation */
+/* .page_container > *:nth-child(odd) {
+  animation: slide-in-left 1s ease-in-out both;
+}
+
+.page_container > *:nth-child(even) {
+  animation: slide-in-right 1s ease-in-out both;
+}
+
+@keyframes slide-in-right {
+  0% {
+    -webkit-transform: translateX(150px);
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+} */
+
+@keyframes slide-in-left {
+  0% {
+    -webkit-transform: translateX(-150px);
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
@@ -68,7 +103,7 @@ body::-webkit-scrollbar-thumb {
     @apply text-3xl p-1 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
   }
   .blog_bottom_button {
-@apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
+    @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
   }
   .user_reaction {
     @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c];

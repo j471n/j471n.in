@@ -1,30 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
-
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { popUp } from "../content/FramerMotionVariants";
 
 export default function Blog({ blog }) {
-  const [shareSupport, setShareSupport] = useState(false);
   const [showShare, setShowShare] = useState(false);
-
-  const style = {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
-    borderRadius: 3,
-    border: 0,
-    color: "white",
-    padding: "0 30px",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-  };
-
-  useEffect(() => {
-    window.navigator.share ? setShareSupport(true) : setShareSupport(false);
-  }, []);
-
-  const date = blog.published_timestamp;
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
 
   async function handleShare() {
     const image = await fetch(blog.cover_image);
@@ -55,8 +43,20 @@ export default function Blog({ blog }) {
     }
   }
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl ">
+    <motion.div
+      ref={ref}
+      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl "
+      initial="hidden"
+      animate={controls}
+      variants={popUp}
+    >
       <Image
         className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
         src={blog.cover_image}
@@ -138,7 +138,7 @@ export default function Blog({ blog }) {
                 {/* Likes/Up votes */}
                 <div className="user_reaction group">
                   <svg
-                    className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
+                    className="text-3xl p-1 rounded-lg  group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     width="1em"
@@ -151,13 +151,13 @@ export default function Blog({ blog }) {
 
                 {/* Comments */}
                 <div className="user_reaction group lg:hover:text-yellow-400">
-                  <MdInsertComment className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                  <MdInsertComment className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
                   <p>{numFormatter(parseInt(blog.comments_count))}</p>
                 </div>
 
                 {/* Views */}
                 <div className="user_reaction group lg:hover:text-blue-400">
-                  <AiFillEye className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                  <AiFillEye className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
                   <p>{numFormatter(parseInt(blog.page_views_count))}</p>
                 </div>
               </div>
@@ -180,21 +180,17 @@ export default function Blog({ blog }) {
             <div className="flex justify-evenly items-center mt-2 sm:mt-0">
               {/* Share Button Container */}
               <div className="text-center mr-1 w-full">
-                {shareSupport && (
-                  <>
-                    <BiShareAlt
-                      className="blog_bottom_icon hidden sm:inline-flex"
-                      onClick={() => setShowShare(!showShare)}
-                    />
+                <BiShareAlt
+                  className="blog_bottom_icon hidden sm:inline-flex"
+                  onClick={() => setShowShare(!showShare)}
+                />
 
-                    <p
-                      className="blog_bottom_button"
-                      onClick={() => setShowShare(!showShare)}
-                    >
-                      Share
-                    </p>
-                  </>
-                )}
+                <p
+                  className="blog_bottom_button"
+                  onClick={() => setShowShare(!showShare)}
+                >
+                  Share
+                </p>
               </div>
               {/* Visit Button Container */}
               <div className="text-center ml-1 w-full">
@@ -223,6 +219,6 @@ export default function Blog({ blog }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
