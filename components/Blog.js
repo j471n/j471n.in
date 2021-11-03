@@ -4,6 +4,7 @@ import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
+import { BsThreeDots } from "react-icons/bs";
 
 // import { ShareSocial } from "react-share-social";
 import {
@@ -82,7 +83,6 @@ export default function Blog({ blog }) {
       />
 
       <div className="w-full p-4 border-t-2  border-gray-400">
-
         <div className="flex items-center justify-between mb-3 lg:mb-1">
           <a
             className="flex items-center lg:hover:bg-gray-100 lg:p-2 rounded-lg"
@@ -139,121 +139,125 @@ export default function Blog({ blog }) {
             })}
           </div>
 
-          <div className="max-w-[360px] flex flex-col mx-auto">
-            {/* Reaction, Social Icons, Share Options */}
-            <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between">
-              {/* Reaction and Social Icons */}
-              <div className="relative mt-10 sm:mt-0 flex items-center sm:w-2/3 sm:mr-2">
-                {/* Reaction Icons */}
-                <div
-                  className={` ${
-                    showShare ? "scale-0 invisible" : "scale-100 visible"
-                  } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-between duration-150`}
+          {/* <div className="max-w-[360px] flex flex-col mx-auto"> */}
+          {/* Reaction, Social Icons, Share Options */}
+          <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between">
+            {/* Reaction and Social Icons */}
+            <div className="relative mt-10 sm:mt-0 flex items-center sm:w-2/3 sm:mr-2">
+              {/* Reaction Icons */}
+              <div
+                className={` ${
+                  showShare ? "scale-0 invisible" : "scale-100 visible"
+                } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-between duration-150`}
+              >
+                {/* Likes/Up votes */}
+                <div className="user_reaction group">
+                  <svg
+                    className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="1em"
+                    height="1em"
+                  >
+                    <path d="M13.162 3.813a2 2 0 01.465.465l6.674 9.343a1 1 0 01-1.102 1.539l-4.032-1.21a1 1 0 00-1.277.816l-.767 5.375a1 1 0 01-.99.859h-.266a1 1 0 01-.99-.859l-.767-5.375a1 1 0 00-1.278-.816l-4.031 1.21a1 1 0 01-1.102-1.54l6.674-9.342a2 2 0 012.79-.465z"></path>
+                  </svg>
+                  <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
+                </div>
+
+                {/* Comments */}
+                <div className="user_reaction group lg:hover:text-yellow-400">
+                  <MdInsertComment className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                  <p>{numFormatter(parseInt(blog.comments_count))}</p>
+                </div>
+
+                {/* Views */}
+                <div className="user_reaction group lg:hover:text-blue-400">
+                  <AiFillEye className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                  <p>{numFormatter(parseInt(blog.page_views_count))}</p>
+                </div>
+              </div>
+
+              {/* Social Media icons */}
+              <div
+                className={`${
+                  showShare ? "visible scale-100" : " invisible scale-0"
+                } absolute w-full h-full -top-5 sm:-top-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+              >
+                <FacebookShareButton quote={blog.title} url={blog.url}>
+                  <FacebookIcon size={30} round />
+                </FacebookShareButton>
+                <TwitterShareButton title={blog.title} url={blog.url}>
+                  <TwitterIcon size={30} round />
+                </TwitterShareButton>
+                <LinkedinShareButton
+                  title={blog.title}
+                  summary={blog.description}
+                  url={blog.url}
+                  source={blog.url}
                 >
-                  {/* Likes/Up votes */}
-                  <div className="user_reaction group">
-                    <svg
-                      className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="1em"
-                      height="1em"
+                  <LinkedinIcon size={30} round />
+                </LinkedinShareButton>
+                <WhatsappShareButton title={blog.title} url={blog.url}>
+                  <WhatsappIcon size={30} round />
+                </WhatsappShareButton>
+                <EmailShareButton
+                  subject={blog.title}
+                  body={blog.description}
+                  url={blog.url}
+                >
+                  <EmailIcon size={30} round />
+                </EmailShareButton>
+                <BsThreeDots
+                  className="bg-gray-100 cursor-pointer text-3xl rounded-full p-1 clickable_button"
+                  onClick={handleShare}
+                />
+              </div>
+            </div>
+
+            {/* Share and Link */}
+            <div className="flex justify-evenly items-center mt-2 sm:mt-0">
+              {/* Share Button Container */}
+              <div className="text-center mr-1 w-full">
+                {shareSupport && (
+                  <>
+                    <BiShareAlt
+                      className="blog_bottom_icon hidden sm:inline-flex"
+                      onClick={() => setShowShare(!showShare)}
+                    />
+
+                    <p
+                      className="blog_bottom_button"
+                      onClick={() => setShowShare(!showShare)}
                     >
-                      <path d="M13.162 3.813a2 2 0 01.465.465l6.674 9.343a1 1 0 01-1.102 1.539l-4.032-1.21a1 1 0 00-1.277.816l-.767 5.375a1 1 0 01-.99.859h-.266a1 1 0 01-.99-.859l-.767-5.375a1 1 0 00-1.278-.816l-4.031 1.21a1 1 0 01-1.102-1.54l6.674-9.342a2 2 0 012.79-.465z"></path>
-                    </svg>
-                    <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
-                  </div>
+                      Share
+                    </p>
+                  </>
+                )}
+              </div>
+              {/* Visit Button Container */}
+              <div className="text-center ml-1 w-full">
+                <FcLink
+                  className="blog_bottom_icon hidden sm:inline-flex"
+                  onClick={() => window.open(blog.url)}
+                />
 
-                  {/* Comments */}
-                  <div className="user_reaction group lg:hover:text-yellow-400">
-                    <MdInsertComment className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
-                    <p>{numFormatter(parseInt(blog.comments_count))}</p>
-                  </div>
-
-                  {/* Views */}
-                  <div className="user_reaction group lg:hover:text-blue-400">
-                    <AiFillEye className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
-                    <p>{numFormatter(parseInt(blog.page_views_count))}</p>
-                  </div>
-                </div>
-
-                {/* Social Media icons */}
-                <div
-                  className={`${
-                    showShare ? "visible scale-100" : " invisible scale-0"
-                  } absolute w-full h-full -top-5 sm:-top-0 bg-white flex items-center justify-evenly transition-all duration-150`}
+                <a
+                  className="blog_bottom_button"
+                  href={blog.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <FacebookShareButton quote={blog.title} url={blog.url}>
-                    <FacebookIcon size={"2rem"} round />
-                  </FacebookShareButton>
-                  <TwitterShareButton title={blog.title} url={blog.url}>
-                    <TwitterIcon size={"2rem"} round />
-                  </TwitterShareButton>
-                  <LinkedinShareButton
-                    title={blog.title}
-                    summary={blog.description}
-                    url={blog.url}
-                    source={blog.url}
-                  >
-                    <LinkedinIcon size={"2rem"} round />
-                  </LinkedinShareButton>
-                  <WhatsappShareButton title={blog.title} url={blog.url}>
-                    <WhatsappIcon size={"2rem"} round />
-                  </WhatsappShareButton>
-                  <EmailShareButton
-                    subject={blog.title}
-                    body={blog.description}
-                    url={blog.url}
-                  >
-                    <EmailIcon size={"2rem"} round />
-                  </EmailShareButton>
-                </div>
+                  Visit
+                </a>
               </div>
+            </div>
 
-              {/* Share and Link */}  
-              <div className="flex justify-evenly items-center mt-2 sm:mt-0">
-                {/* Share Button Container */}
-                <div className="text-center mr-1 w-full">
-                  {shareSupport && (
-                    <>
-                      <BiShareAlt
-                        className="blog_bottom_icon hidden sm:inline-flex"
-                        onClick={() => setShowShare(!showShare)}
-                      />
-
-                      <p
-                        className="blog_bottom_button"
-                        onClick={() => setShowShare(!showShare)}
-                      >
-                        Share
-                      </p>
-                    </>
-                  )}
-                </div>
-                {/* Visit Button Container */}
-                <div className="text-center ml-1 w-full">
-                  <FcLink
-                    className="blog_bottom_icon hidden sm:inline-flex"
-                    onClick={() => window.open(blog.url)}
-                  />
-
-                  <a
-                    className="blog_bottom_button"
-                    href={blog.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Visit
-                  </a>
-                </div>
-              </div>
-
-              {/* Mobile Share Option */}
-              {/* <div className="flex relative justify-center sm:hidden text-center font-medium mt-2">
+            {/* Mobile Share Option */}
+            {/* <div className="flex relative justify-center sm:hidden text-center font-medium mt-2">
               
               </div> */}
-              {/* shareable icons */}
-            </div>
+            {/* shareable icons */}
+            {/* </div> */}
           </div>
         </div>
       </div>
