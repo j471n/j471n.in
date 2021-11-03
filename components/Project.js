@@ -4,10 +4,13 @@ import { FcLink } from "react-icons/fc";
 import { BiShareAlt } from "react-icons/bi";
 import Image from "next/image";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
-
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { slideFromBottom } from "../content/FramerMotionVariants";
 export default function Project({ project }) {
   // Sharing Project
-
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
   const [showShare, setShowShare] = useState(false);
 
   async function handleShare() {
@@ -30,15 +33,26 @@ export default function Project({ project }) {
   }
 
   function displayShareIcons() {
-    // if (showShare) return setShowShare(false);
     setShowShare(!showShare);
-    // setTimeout(() => {
-    //   setShowShare(false);
-    // }, 5000);
+    setTimeout(() => {
+      setShowShare(false);
+    }, 5000);
   }
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <div className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl">
+    <motion.div
+      className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl"
+      initial="hidden"
+      ref={ref}
+      animate={controls}
+      variants={slideFromBottom}
+    >
       {project.coverURL && (
         <Image
           className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
@@ -122,6 +136,6 @@ export default function Project({ project }) {
           <BiShareAlt className="text-lg" />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
