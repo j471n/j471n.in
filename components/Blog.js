@@ -5,6 +5,7 @@ import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
+import ShareOnSocialMedia from "./ShareOnSocialMedia";
 
 // import { ShareSocial } from "react-share-social";
 import {
@@ -178,40 +179,17 @@ export default function Blog({ blog }) {
               </div>
 
               {/* Social Media icons */}
-              <div
+              <ShareOnSocialMedia
                 className={`${
                   showShare ? "visible scale-100" : " invisible scale-0"
                 } absolute w-full h-full -top-5 sm:-top-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
-              >
-                <FacebookShareButton quote={blog.title} url={blog.url}>
-                  <FacebookIcon size={30} round />
-                </FacebookShareButton>
-                <TwitterShareButton title={blog.title} url={blog.url}>
-                  <TwitterIcon size={30} round />
-                </TwitterShareButton>
-                <LinkedinShareButton
-                  title={blog.title}
-                  summary={blog.description}
-                  url={blog.url}
-                  source={blog.url}
-                >
-                  <LinkedinIcon size={30} round />
-                </LinkedinShareButton>
-                <WhatsappShareButton title={blog.title} url={blog.url}>
-                  <WhatsappIcon size={30} round />
-                </WhatsappShareButton>
-                <EmailShareButton
-                  subject={blog.title}
-                  body={blog.description}
-                  url={blog.url}
-                >
-                  <EmailIcon size={30} round />
-                </EmailShareButton>
-                <BsThreeDots
-                  className="bg-gray-100 cursor-pointer text-3xl rounded-full p-1 clickable_button"
-                  onClick={handleShare}
-                />
-              </div>
+                title={blog.title}
+                url={blog.url}
+                summary={blog.description}
+                body={blog.description}
+                subject={blog.title}
+                handleShare={handleShare}
+              />
             </div>
 
             {/* Share and Link */}
