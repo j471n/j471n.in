@@ -50,7 +50,7 @@ body::-webkit-scrollbar-thumb {
     @apply m-1 text-3xl active:-translate-y-2 cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold;
+    @apply list-none mx-1 px-4 py-1 transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold select-none;
   }
   .contact_field {
     @apply text-lg w-full p-[0.8rem] m-[0.3rem] rounded-md border-none outline-none shadow-inner ring-1 ring-gray-300 focus:ring-2 focus:ring-purple-500;
@@ -62,15 +62,18 @@ body::-webkit-scrollbar-thumb {
     @apply text-2xl sm:text-4xl m-1 transform duration-200 lg:hover:scale-150;
   }
   .page_container {
-    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 xl:grid-cols-3  3xl:grid-cols-4;
+    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  3xl:grid-cols-4;
   }
   .blog_bottom_icon {
     @apply text-3xl p-1 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
+  }
+  .blog_bottom_button {
+@apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
   }
   .user_reaction {
     @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c];
   }
   .project_link {
-    @apply w-full text-center flex bg-gray-100 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
+    @apply w-full text-center flex bg-gray-100 lg:hover:bg-gray-200 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
   }
 }

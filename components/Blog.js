@@ -1,13 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { FaShare } from "react-icons/fa";
 import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
 
+// import { ShareSocial } from "react-share-social";
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+
+  // icons for sharing
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  EmailIcon,
+} from "react-share";
+
 export default function Blog({ blog }) {
   const [shareSupport, setShareSupport] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+
+  const style = {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    padding: "0 30px",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+  };
 
   useEffect(() => {
     window.navigator.share ? setShareSupport(true) : setShareSupport(false);
@@ -57,6 +82,7 @@ export default function Blog({ blog }) {
       />
 
       <div className="w-full p-4 border-t-2  border-gray-400">
+
         <div className="flex items-center justify-between mb-3 lg:mb-1">
           <a
             className="flex items-center lg:hover:bg-gray-100 lg:p-2 rounded-lg"
@@ -96,7 +122,7 @@ export default function Blog({ blog }) {
           )}
         </div>
 
-        <div className="blog_info">
+        <div className="mb-2">
           <h3 className=" text-xl font-bold">{blog.title}</h3>
           <p className="text-xs sm:text-base">{blog.description}</p>
 
@@ -114,64 +140,119 @@ export default function Blog({ blog }) {
           </div>
 
           <div className="max-w-[360px] flex flex-col mx-auto">
-            <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-2 flex items-center justify-between mt-3">
-              {/* Likes/Up votes */}
-              <div className="user_reaction group">
-                <svg
-                  className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
+            {/* Reaction, Social Icons, Share Options */}
+            <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between">
+              {/* Reaction and Social Icons */}
+              <div className="relative mt-10 sm:mt-0 flex items-center sm:w-2/3 sm:mr-2">
+                {/* Reaction Icons */}
+                <div
+                  className={` ${
+                    showShare ? "scale-0 invisible" : "scale-100 visible"
+                  } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-between duration-150`}
                 >
-                  <path d="M13.162 3.813a2 2 0 01.465.465l6.674 9.343a1 1 0 01-1.102 1.539l-4.032-1.21a1 1 0 00-1.277.816l-.767 5.375a1 1 0 01-.99.859h-.266a1 1 0 01-.99-.859l-.767-5.375a1 1 0 00-1.278-.816l-4.031 1.21a1 1 0 01-1.102-1.54l6.674-9.342a2 2 0 012.79-.465z"></path>
-                </svg>
-                <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
+                  {/* Likes/Up votes */}
+                  <div className="user_reaction group">
+                    <svg
+                      className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                    >
+                      <path d="M13.162 3.813a2 2 0 01.465.465l6.674 9.343a1 1 0 01-1.102 1.539l-4.032-1.21a1 1 0 00-1.277.816l-.767 5.375a1 1 0 01-.99.859h-.266a1 1 0 01-.99-.859l-.767-5.375a1 1 0 00-1.278-.816l-4.031 1.21a1 1 0 01-1.102-1.54l6.674-9.342a2 2 0 012.79-.465z"></path>
+                    </svg>
+                    <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
+                  </div>
+
+                  {/* Comments */}
+                  <div className="user_reaction group lg:hover:text-yellow-400">
+                    <MdInsertComment className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                    <p>{numFormatter(parseInt(blog.comments_count))}</p>
+                  </div>
+
+                  {/* Views */}
+                  <div className="user_reaction group lg:hover:text-blue-400">
+                    <AiFillEye className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
+                    <p>{numFormatter(parseInt(blog.page_views_count))}</p>
+                  </div>
+                </div>
+
+                {/* Social Media icons */}
+                <div
+                  className={`${
+                    showShare ? "visible scale-100" : " invisible scale-0"
+                  } absolute w-full h-full -top-5 sm:-top-0 bg-white flex items-center justify-evenly transition-all duration-150`}
+                >
+                  <FacebookShareButton quote={blog.title} url={blog.url}>
+                    <FacebookIcon size={"2rem"} round />
+                  </FacebookShareButton>
+                  <TwitterShareButton title={blog.title} url={blog.url}>
+                    <TwitterIcon size={"2rem"} round />
+                  </TwitterShareButton>
+                  <LinkedinShareButton
+                    title={blog.title}
+                    summary={blog.description}
+                    url={blog.url}
+                    source={blog.url}
+                  >
+                    <LinkedinIcon size={"2rem"} round />
+                  </LinkedinShareButton>
+                  <WhatsappShareButton title={blog.title} url={blog.url}>
+                    <WhatsappIcon size={"2rem"} round />
+                  </WhatsappShareButton>
+                  <EmailShareButton
+                    subject={blog.title}
+                    body={blog.description}
+                    url={blog.url}
+                  >
+                    <EmailIcon size={"2rem"} round />
+                  </EmailShareButton>
+                </div>
               </div>
 
-              {/* Comments */}
-              <div className="user_reaction group lg:hover:text-yellow-400">
-                <MdInsertComment className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
-                <p>{numFormatter(parseInt(blog.comments_count))}</p>
-              </div>
+              {/* Share and Link */}  
+              <div className="flex justify-evenly items-center mt-2 sm:mt-0">
+                {/* Share Button Container */}
+                <div className="text-center mr-1 w-full">
+                  {shareSupport && (
+                    <>
+                      <BiShareAlt
+                        className="blog_bottom_icon hidden sm:inline-flex"
+                        onClick={() => setShowShare(!showShare)}
+                      />
 
-              {/* Views */}
-              <div className="user_reaction group lg:hover:text-blue-400">
-                <AiFillEye className="text-3xl p-1 rounded-lg mr-1 group-hover:bg-gray-100" />
-                <p>{numFormatter(parseInt(blog.page_views_count))}</p>
-              </div>
-
-              {/* Share and Link */}
-              <div className="hidden sm:flex justify-center">
-                {shareSupport && (
-                  <BiShareAlt className="blog_bottom_icon" onClick={handleShare} />
-                )}
-                {shareSupport && (
+                      <p
+                        className="blog_bottom_button"
+                        onClick={() => setShowShare(!showShare)}
+                      >
+                        Share
+                      </p>
+                    </>
+                  )}
+                </div>
+                {/* Visit Button Container */}
+                <div className="text-center ml-1 w-full">
                   <FcLink
-                    className="blog_bottom_icon hidden sm:block"
+                    className="blog_bottom_icon hidden sm:inline-flex"
                     onClick={() => window.open(blog.url)}
                   />
-                )}
+
+                  <a
+                    className="blog_bottom_button"
+                    href={blog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Visit
+                  </a>
+                </div>
               </div>
-            </div>
-            {/* Mobile Share Option */}
-            <div className="flex justify-center sm:hidden text-center font-medium mt-2">
-              {shareSupport && (
-                <p
-                  className="w-full py-1 mr-1 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none"
-                  onClick={handleShare}
-                >
-                  Share
-                </p>
-              )}
-              <a
-                className="w-full py-1 ml-1 bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none"
-                href={blog.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit
-              </a>
+
+              {/* Mobile Share Option */}
+              {/* <div className="flex relative justify-center sm:hidden text-center font-medium mt-2">
+              
+              </div> */}
+              {/* shareable icons */}
             </div>
           </div>
         </div>
