@@ -7,7 +7,7 @@ import { MdInsertComment } from "react-icons/md";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { popUp } from "../content/FramerMotionVariants";
+import { slideFromBottom } from "../content/FramerMotionVariants";
 
 export default function Blog({ blog }) {
   const [showShare, setShowShare] = useState(false);
@@ -63,7 +63,7 @@ export default function Blog({ blog }) {
       className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl "
       initial="hidden"
       animate={controls}
-      variants={popUp}
+      variants={slideFromBottom}
     >
       <Image
         className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
