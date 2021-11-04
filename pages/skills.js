@@ -1,5 +1,5 @@
 import Skill from "../components/Skill";
-
+import ScrollToTopButton from "../components/ScrollToTopButton";
 export default function Skills({ skills }) {
   return (
     <div className="mt-3 md:mt-24">
@@ -10,6 +10,7 @@ export default function Skills({ skills }) {
           return <Skill key={skill.id} data={skill} />;
         })}
       </section>
+      <ScrollToTopButton />
     </div>
   );
 }

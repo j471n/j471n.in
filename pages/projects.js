@@ -1,5 +1,6 @@
 import React from "react";
 import Project from "../components/Project";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function Projects({ projects }) {
   // const { response, loading } = useFetch("/project-list");
@@ -7,10 +8,7 @@ export default function Projects({ projects }) {
   return (
     <div className="mt-3 md:mt-24">
       <h3 className="title_of_page">Projects</h3>
-
-      {/* {loading ? (
-        <Loading />
-      ) : ( */}
+      
       <section className="page_container">
         {projects &&
           projects.map((project) => {
@@ -18,7 +16,8 @@ export default function Projects({ projects }) {
             return <Project key={project.id} project={project} />;
           })}
       </section>
-      {/* )} */}
+
+      <ScrollToTopButton />
     </div>
   );
 }

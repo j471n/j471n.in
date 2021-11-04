@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Loading from "../components/Loading";
 import Blog from "../components/Blog";
+import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function Blogs({ data }) {
   const [blogs, setBlogs] = useState(data);
@@ -34,7 +35,9 @@ export default function Blogs({ data }) {
   return (
     <>
       <div className="w-full mt-3 md:mt-24 px-4  flex items-center sm:flex-col justify-between">
-        <h3 className="title_of_page flex items-center">Blogs <span className="text-sm ml-2">({ blogs.length })</span></h3>
+        <h3 className="title_of_page flex items-center">
+          Blogs <span className="text-sm ml-2">({blogs.length})</span>
+        </h3>
         <select
           className="px-3 py-2  rounded-md outline-none bg-transparent mt-3 border-2 text-xs font-semibold cursor-pointer"
           ref={state}
@@ -50,13 +53,18 @@ export default function Blogs({ data }) {
       {loading ? (
         <Loading />
       ) : (
-        <section className="page_container ">
-          {blogs &&
-            blogs.map((blog) => {
-              return <Blog key={blog.id} blog={blog} />;
-            })}
-        </section>
+        <>
+          <section className="page_container ">
+            {blogs &&
+              blogs.map((blog) => {
+                return <Blog key={blog.id} blog={blog} />;
+              })}
+          </section>
+        </>
       )}
+
+      {/* Scroll to Bottom Container */}
+      <ScrollToTopButton />
     </>
   );
 }
