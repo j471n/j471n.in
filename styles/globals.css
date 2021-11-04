@@ -100,7 +100,7 @@ body::-webkit-scrollbar-thumb {
     @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  3xl:grid-cols-4;
   }
   .blog_bottom_icon {
-    @apply text-3xl p-1 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
+    @apply text-3xl p-1 bg-gray-100 sm:bg-transparent ring-1 ring-gray-300 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
   }
   .blog_bottom_button {
     @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;

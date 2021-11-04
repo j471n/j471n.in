@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { BiShareAlt } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
@@ -132,7 +132,6 @@ export default function Blog({ blog }) {
             })}
           </div>
 
-          {/* <div className="max-w-[360px] flex flex-col mx-auto"> */}
           {/* Reaction, Social Icons, Share Options */}
           <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between">
             {/* Reaction and Social Icons */}
@@ -185,42 +184,19 @@ export default function Blog({ blog }) {
             </div>
 
             {/* Share and Link */}
-            <div className="flex justify-evenly items-center mt-2 sm:mt-0">
+            <div className="flex justify-between items-center mt-2 sm:mt-0">
               {/* Share Button Container */}
-              <div className="text-center mr-1 w-full">
-                <BiShareAlt
-                  className="blog_bottom_icon hidden sm:inline-flex"
-                  onClick={displayShareIcons}
-                />
+              <BiShareAlt
+                className="blog_bottom_icon w-full  mr-1 clickable_button"
+                onClick={displayShareIcons}
+              />
 
-                <p className="blog_bottom_button" onClick={displayShareIcons}>
-                  Share
-                </p>
-              </div>
               {/* Visit Button Container */}
-              <div className="text-center ml-1 w-full">
-                <FcLink
-                  className="blog_bottom_icon hidden sm:inline-flex"
-                  onClick={() => window.open(blog.url)}
-                />
-
-                <a
-                  className="blog_bottom_button"
-                  href={blog.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit
-                </a>
-              </div>
+              <FcLink
+                className="blog_bottom_icon w-full ml-1 clickable_button"
+                onClick={() => window.open(blog.url)}
+              />
             </div>
-
-            {/* Mobile Share Option */}
-            {/* <div className="flex relative justify-center sm:hidden text-center font-medium mt-2">
-              
-              </div> */}
-            {/* shareable icons */}
-            {/* </div> */}
           </div>
         </div>
       </div>
