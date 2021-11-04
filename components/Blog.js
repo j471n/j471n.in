@@ -64,6 +64,7 @@ export default function Blog({ blog }) {
       initial="hidden"
       animate={controls}
       variants={slideFromBottom}
+      onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
     >
       <Image
         className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"

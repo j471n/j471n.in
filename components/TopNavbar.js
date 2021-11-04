@@ -13,7 +13,7 @@ export default function TopNavbar() {
 
     // iterating through object and removing the border if exist
     Object.entries(navLinks).forEach(
-      // link is an array of id and the item, changing the item 
+      // link is an array of id and the item, changing the item
       (link) => (link[1].style.borderBottom = "none")
     );
 
@@ -28,7 +28,7 @@ export default function TopNavbar() {
   }, [currentRoute]);
 
   return (
-    <div className="md:fixed w-full bg-white top-0 flex items-center justify-between shadow p-4 z-40">
+    <div className="md:sticky w-full bg-white top-0 flex items-center justify-between shadow p-4 z-40">
       {/* Name*/}
       <div className="w-full text-center sm:text-left text-2xl font-bold">
         <Link href="/">Jatin Sharma</Link>

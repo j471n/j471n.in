@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
-import Loading from "../components/Loading";
-import Blog from "../components/Blog";
-import CoverPage from "../components/CoverPage";
+import Loading from "../../components/Loading";
+import Blog from "../../components/Blog";
+import CoverPage from "../../components/CoverPage";
 
 export default function Blogs({ data }) {
   const [blogs, setBlogs] = useState(data);
@@ -34,7 +34,11 @@ export default function Blogs({ data }) {
 
   return (
     <>
-      <CoverPage title="Look at my " mainHeading="Blogs" className="grid place-items-center"/>
+      <CoverPage
+        title="Look at my "
+        mainHeading="Blogs"
+        className="grid place-items-center"
+      />
 
       <div className="w-full mt-3 px-4 flex items-center justify-center">
         {/* <h3 className="title_of_page flex items-center">
