@@ -16,7 +16,7 @@ export default function Skills({ skills }) {
       <section className="page_container">
         {skills.map((skill) => {
           return (
-            <LazyLoad key={skill.id}>
+            <LazyLoad key={skill.id} className="h-full w-full">
               <Skill key={skill.id} data={skill} />
             </LazyLoad>
           );

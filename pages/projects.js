@@ -22,7 +22,7 @@ export default function Projects({ projects }) {
             if (project.name === "" && project.githubURL === "") return null;
 
             return (
-              <LazyLoad key={project.id}>
+              <LazyLoad key={project.id} className="h-full w-full">
                 <Project key={project.id} project={project} />
               </LazyLoad>
             );

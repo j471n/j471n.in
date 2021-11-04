@@ -66,7 +66,7 @@ export default function Blogs({ data }) {
             {blogs &&
               blogs.map((blog) => {
                 return (
-                  <LazyLoad key={blog.id} >
+                  <LazyLoad key={blog.id} className="h-full w-full">
                     <Blog key={blog.id} blog={blog} />
                   </LazyLoad>
                 );
