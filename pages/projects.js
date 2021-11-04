@@ -1,14 +1,17 @@
 import React from "react";
 import Project from "../components/Project";
 import ScrollToTopButton from "../components/ScrollToTopButton";
+import CoverPage from "../components/CoverPage";
 
 export default function Projects({ projects }) {
   // const { response, loading } = useFetch("/project-list");
 
   return (
     <div className="mt-3 md:mt-24">
+      <CoverPage title="Here are my " mainHeading="Projects" className="grid place-items-center"/>
+
       <h3 className="title_of_page">Projects</h3>
-      
+
       <section className="page_container">
         {projects &&
           projects.map((project) => {
