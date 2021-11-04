@@ -1,5 +1,5 @@
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   images: {
     domains: [
       "cdn.buymeacoffee.com",
