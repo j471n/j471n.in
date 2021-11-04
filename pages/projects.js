@@ -1,6 +1,5 @@
 import React from "react";
 import Project from "../components/Project";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import CoverPage from "../components/CoverPage";
 
 export default function Projects({ projects }) {
@@ -20,7 +19,6 @@ export default function Projects({ projects }) {
           })}
       </section>
 
-      <ScrollToTopButton />
     </div>
   );
 }

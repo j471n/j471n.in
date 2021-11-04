@@ -1,6 +1,5 @@
 import Head from "next/head";
 import CoverPage from "../components/CoverPage";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 
 export default function Home() {
   return (
@@ -18,8 +17,6 @@ export default function Home() {
       >
         <p className="font-light text-xl text-white">{"<React Developer />"}</p>
       </CoverPage>
-      {/* <div className="pt-24">Home</div> */}
-      <ScrollToTopButton />
     </>
   );
 }

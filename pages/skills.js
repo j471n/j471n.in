@@ -1,5 +1,4 @@
 import Skill from "../components/Skill";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import CoverPage from "../components/CoverPage";
 
 export default function Skills({ skills }) {
@@ -14,7 +13,6 @@ export default function Skills({ skills }) {
           return <Skill key={skill.id} data={skill} />;
         })}
       </section>
-      <ScrollToTopButton />
     </div>
   );
 }

@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Loading from "../components/Loading";
 import Blog from "../components/Blog";
-import ScrollToTopButton from "../components/ScrollToTopButton";
 import CoverPage from "../components/CoverPage";
 
 export default function Blogs({ data }) {
@@ -66,9 +65,6 @@ export default function Blogs({ data }) {
           </section>
         </>
       )}
-
-      {/* Scroll to Bottom Container */}
-      <ScrollToTopButton />
     </>
   );
 }
