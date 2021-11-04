@@ -7,7 +7,7 @@ export default function Projects({ projects }) {
   // const { response, loading } = useFetch("/project-list");
 
   return (
-    <div className="mt-3 md:mt-24">
+    <div className="">
       <CoverPage
         title="Here are my "
         mainHeading="Projects"

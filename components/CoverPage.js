@@ -7,9 +7,9 @@ export default function CoverPage({
 }) {
   return (
     <div
-      className={`${className} min-h-screen md:min-h-[110vh] min-w-screen  bg-purple-600 relative border-none `}
+      className={`${className} min-h-[90vh] md:min-h-screen  min-w-screen  bg-purple-600 relative border-none `}
     >
-      <div className={`text-[50px] ml-10 -mt-5 font-black ${childrenClass}`}>
+      <div className={`text-[50px] ml-10 -mt-36 font-black ${childrenClass}`}>
         <p className="text-white">{title}</p>
         <p className=" via-green-700">{mainHeading}</p>
       </div>

@@ -60,7 +60,7 @@ export default function Blog({ blog }) {
   return (
     <motion.div
       ref={ref}
-      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl "
+      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 cursor-pointer rounded-xl "
       initial="hidden"
       animate={controls}
       variants={slideFromBottom}
@@ -73,10 +73,10 @@ export default function Blog({ blog }) {
         width={360}
         height={150}
         layout="responsive"
-        onClick={() => window.open(blog.url)}
+        // onClick={() => window.open(blog.url)}
       />
 
-      <div className="w-full p-4 border-t-2  border-gray-400">
+      <div className="w-full p-4 border-t-2  border-gray-400 ">
         <div className="flex items-center justify-between mb-3 lg:mb-1">
           <a
             className="flex items-center lg:hover:bg-gray-100 lg:p-2 rounded-lg"
