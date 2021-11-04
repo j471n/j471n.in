@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
+import LazyLoad from "react-lazyload";
 
 export default function Blogs({ data }) {
   const [blogs, setBlogs] = useState(data);
@@ -64,7 +65,11 @@ export default function Blogs({ data }) {
           <section className="page_container ">
             {blogs &&
               blogs.map((blog) => {
-                return <Blog key={blog.id} blog={blog} />;
+                return (
+                  <LazyLoad key={blog.id} >
+                    <Blog key={blog.id} blog={blog} />
+                  </LazyLoad>
+                );
               })}
           </section>
         </>
@@ -73,7 +78,7 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,

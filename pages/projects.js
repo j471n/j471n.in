@@ -1,13 +1,18 @@
 import React from "react";
 import Project from "../components/Project";
 import CoverPage from "../components/CoverPage";
+import LazyLoad from "react-lazyload";
 
 export default function Projects({ projects }) {
   // const { response, loading } = useFetch("/project-list");
 
   return (
     <div className="mt-3 md:mt-24">
-      <CoverPage title="Here are my " mainHeading="Projects" className="grid place-items-center"/>
+      <CoverPage
+        title="Here are my "
+        mainHeading="Projects"
+        className="grid place-items-center"
+      />
 
       <h3 className="title_of_page">Projects</h3>
 
@@ -15,10 +20,14 @@ export default function Projects({ projects }) {
         {projects &&
           projects.map((project) => {
             if (project.name === "" && project.githubURL === "") return null;
-            return <Project key={project.id} project={project} />;
+
+            return (
+              <LazyLoad key={project.id}>
+                <Project key={project.id} project={project} />
+              </LazyLoad>
+            );
           })}
       </section>
-
     </div>
   );
 }
