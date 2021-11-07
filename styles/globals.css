@@ -79,6 +79,15 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+/* Comment */
+
+.comment {
+  @apply ml-10  break-words;
+}
+.comment a {
+  @apply text-blue-400 underline;
+}
+
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
@@ -94,7 +103,7 @@ body::-webkit-scrollbar-thumb {
     @apply text-center text-xl font-bold mt-3;
   }
   .icon {
-    @apply text-2xl sm:text-4xl m-1 transform duration-200 lg:hover:scale-150;
+    @apply text-2xl sm:text-2xl m-1 transform duration-200 lg:hover:scale-150 cursor-pointer;
   }
   .page_container {
     @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  3xl:grid-cols-4;
