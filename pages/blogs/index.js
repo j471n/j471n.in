@@ -3,13 +3,31 @@ import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import useSWR from "swr";
 
-export default function Blogs({ data }) {
+const fetcher = (url) =>
+  fetch(url, {
+
+    headers: {
+
+      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+    },
+  }).then((res) => res.json());
+
+export default function Blogs() {
+  const { data, error } = useSWR("https://dev.to/api/articles/me", fetcher);
   const [blogs, setBlogs] = useState(data);
   const [loading, setLoading] = useState(false);
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
 
+  // useEffect(() => {
+  //   // const { data, error } = useSWR("/api/user/123", fetcher);
+  // }, []);
+
+  if (error) {
+    console.error(error);
+  }
   // async function api() {
   //   const res = await fetch("https://dev.to/api/articles/me", {
   //     method: "GET", // The method
@@ -42,7 +60,6 @@ export default function Blogs({ data }) {
   //     .then((data) => setBlogs(data))
   //     .catch((err) => console.error(err));
   // }, []);
-
 
   function sortBy(e) {
     const sort_by = e.target.value;
@@ -112,17 +129,17 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getServerSideProps() {
-  const blogs = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
-  return {
-    props: {
-      data: blogs,
-    },
-  };
-}
+// export async function getServerSideProps() {
+//   const blogs = await fetch("https://dev.to/api/articles/me?per_page=1000", {
+//     headers: {
+//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+//     },
+//   })
+//     .then((res) => res.json())
+//     .catch((err) => console.error(err));
+//   return {
+//     props: {
+//       data: blogs,
+//     },
+//   };
+// }
