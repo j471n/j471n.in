@@ -1,0 +1,19 @@
+.container {
+  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 scrollbar-hide;
+}
+
+.tag {
+  @apply flex items-center cursor-pointer;
+}
+
+.tag > input {
+  all: unset;
+}
+
+.tag > label {
+  @apply py-1 px-4 rounded-full border-2 border-gray-500 mx-1 text-sm font-medium  cursor-pointer uppercase; ;
+}
+
+.tag > input:checked ~ label {
+  @apply bg-[#222] text-white border-transparent;
+}

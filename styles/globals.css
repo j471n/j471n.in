@@ -108,7 +108,7 @@ body::-webkit-scrollbar-thumb {
     @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
   }
   .user_reaction {
-    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c];
+    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto;
   }
   .project_link {
     @apply w-full text-center flex bg-gray-100 lg:hover:bg-gray-200 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;

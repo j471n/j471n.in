@@ -3,47 +3,31 @@ import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import Tags from "../../components/Tags";
 
-export default function Blogs({ data }) {
-  const [blogs, setBlogs] = useState(data);
+export default function Blogs({ data, query, blogTags, temp }) {
+  const [blogs, setBlogs] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
-
-  // async function api() {
-  //   const res = await fetch("https://dev.to/api/articles/me", {
-  //     method: "GET", // The method
-  //     mode: "no-cors", // It can be no-cors, cors, same-origin
-  //     credentials: "same-origin",
-  //     headers: {
-  //       // "Access-Control-Allow-Origin": "*",
-  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-  //       // "Content-Type": "application/json", // Your headers
-  //     },
-  //   });
-
-  //   const data = await res.json();
-  //   setBlogs(data);
-  // }
+  // updating the data as soon as tag-change
+  useEffect(() => {
+    setBlogs(temp);
+  }, [query]);
 
   // useEffect(() => {
-  //   // api()
-  //   fetch("https://dev.to/api/articles/me", {
-  //     method: "GET", // The method
-  //     mode: "no-cors", // It can be no-cors, cors, same-origin
-  //     credentials: "same-origin",
-  //     headers: {
-  //       "Access-Control-Allow-Origin": "*",
-  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-  //       "Content-Type": "application/json", // Your headers
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setBlogs(data))
-  //     .catch((err) => console.error(err));
-  // }, []);
-
-  console.log(blogs);
+  //   var temp = [];
+  //   await blogs.map((blog) => {
+  //     if (blog.tags.includes(query)) {
+  //       console.log(query);
+  //       temp.push(blog);
+  //     } else {
+  //       router.push("/blogs");
+  //     }
+  //   });
+  //   setBlogs()
+  // },[query]);
 
   function sortBy(e) {
     const sort_by = e.target.value;
@@ -92,6 +76,7 @@ export default function Blogs({ data }) {
           <option value="popular">Popular</option>
         </select>
       </div>
+      <Tags blogTags={blogTags} query={query} />
 
       {loading ? (
         <Loading />
@@ -113,16 +98,34 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
+export async function getServerSideProps(ctx) {
+  const query = ctx.query.tag || "all";
+  const data = await fetch("https://dev.to/api/articles?username=j471n")
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
+
+  var blogTags = ["all"];
+  data.map((blog) => {
+    blog.tag_list.map((tag) => {
+      if (!blogTags.includes(tag)) {
+        blogTags.push(tag);
+      }
+    });
   });
-  const blogs = await res.json();
+
+  var temp = [];
+  data.map((blog) => {
+    if (blog.tags.includes(query)) {
+      temp.push(blog);
+    }
+  });
+  console.log(temp);
   return {
     props: {
-      data: blogs,
+      data,
+      query,
+      blogTags,
+      temp: !temp.length == 0 ? temp : data,
     },
   };
 }

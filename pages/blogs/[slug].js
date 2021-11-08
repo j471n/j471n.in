@@ -6,26 +6,10 @@ import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import Image from "next/image";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import router from "next/router";
 
-export default function Article({slug}) {
-  const router = useRouter();
-  const [article, setArticle] = useState(null);
-  // const [slug, setSlug] = useState(slug);
-
-  // useEffect(() => {
-  //   const temp = router.query.slug;
-  //   setSlug(temp);
-  // }, []);
-
-  useEffect(() => {
-    fetch(`https://dev.to/api/articles/j471n/${slug}`)
-      .then((res) => res.json())
-      .then((data) => setArticle(data))
-      .catch((err) => console.error(err));
-  }, [slug]);
-
+export default function Article({ article, slug }) {
+  // const router = useRouter();
   return (
     <>
       {article && (
@@ -55,7 +39,11 @@ export default function Article({slug}) {
               <div className="flex items-center my-2">
                 {article.tags?.map((tag) => {
                   return (
-                    <p key={tag} className={styles.tag}>
+                    <p
+                      key={tag}
+                      className={styles.tag}
+                      onClick={() => router.push(`/blogs?tag=${tag}`)}
+                    >
                       #{tag}
                     </p>
                   );
@@ -90,25 +78,25 @@ export default function Article({slug}) {
 }
 
 // Getting Params and returning it
-export async function getStaticPaths() {
-  const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  });
-  const blogs = await res.json();
+// export async function getStaticPaths() {
+//   const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
+//     headers: {
+//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+//     },
+//   });
+//   const blogs = await res.json();
 
-  const paths = blogs.map((blog) => {
-    return {
-      params: { slug: blog.slug.toString() },
-    };
-  });
+//   const paths = blogs.map((blog) => {
+//     return {
+//       params: { slug: blog.slug.toString() },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
 // Server Ssluge Rendering of data
 // export async function getServerSideProps(context) {
@@ -123,14 +111,14 @@ export async function getStaticPaths() {
 //   };
 // }
 
-export async function getStaticProps(context) {
-  const slug = context.params.slug.toString();
-  // const res = await fetch("https://dev.to/api/articles/j471n/" + slug);
-  // const article = await res.json();
+export async function getServerSideProps(context) {
+  const slug = context.query.slug;
+  const res = await fetch("https://dev.to/api/articles/j471n/" + slug);
+  const article = await res.json();
 
   return {
     props: {
-      // article: article || {},
+      article,
       slug,
     },
   };
