@@ -1,0 +1,64 @@
+/* Dev blog */
+.comment > span,
+.comment h1,
+.comment h2,
+.comment h3,
+.comment h4,
+.comment h5,
+.comment h6 {
+  @apply my-1;
+}
+
+.comment > p {
+  @apply text-xs sm:text-base;
+}
+
+
+/* Comment */
+
+.comment {
+  @apply ml-10  break-words;
+}
+.comment a {
+  @apply text-blue-400 underline;
+}
+.comment blockquote {
+  @apply border-l-4 border-gray-500 pl-3;
+}
+
+.comment > p > code {
+  @apply bg-gray-200 p-1 py-[2px] text-xs rounded-md;
+}
+
+.comment h1 {
+  font-size: 2em;
+  font-weight: bolder;
+}
+.comment h2 {
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+.comment h3 {
+  font-size: 1.17em;
+  font-weight: bolder;
+}
+.comment h4 {
+  font-size: 1em;
+  font-weight: bolder;
+}
+.comment h5 {
+  font-size: 0.83em;
+  font-weight: bolder;
+}
+.comment h6 {
+  font-size: 0.67em;
+  font-weight: bolder;
+}
+
+.comment > ul {
+  @apply list-disc ml-4;
+}
+.comment > ul > li > a,
+.comment a {
+  @apply no-underline space-x-3 text-blue-500 font-medium my-2 hover:underline;
+}

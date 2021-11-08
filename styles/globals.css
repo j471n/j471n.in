@@ -79,14 +79,7 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* Comment */
 
-.comment {
-  @apply ml-10  break-words;
-}
-.comment a {
-  @apply text-blue-400 underline;
-}
 
 /* Layers Components or the custom class extends with tailwind */
 @layer components {

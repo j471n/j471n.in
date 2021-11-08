@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { BsInstagram, BsTwitter, BsGithub } from "react-icons/bs";
+import { BsInstagram, BsTwitter, BsGithub, BsGlobe } from "react-icons/bs";
 import socialMedia from "../content/socialMedia";
 import SocialIcon from "./SocialIcon";
-
+import { TiLocation } from "react-icons/ti";
 export default function Author() {
   const [author, setAuthor] = useState(null);
 
@@ -15,13 +15,12 @@ export default function Author() {
   useEffect(() => {
     api();
   }, []);
-  console.log(author);
 
   return (
-    <div className="max-w-xl mx-2 md:mx-auto md:w-full  bg-blue-200 relative py-4 ">
+    <div className="max-w-xl mx-2 sm:mx-auto md:w-full  bg-blue-200 relative p-2 ">
       {author && (
         <>
-          <div className="flex flex-col space-y-3 items-center ">
+          <div className="flex flex-col space-y-2 items-center ">
             <Image
               src={author.profile_image}
               className="rounded-full"
@@ -29,18 +28,15 @@ export default function Author() {
               height={80}
             />
             <p className="font-medium text-2xl">{author.name}</p>
-            <div>{author.summary}</div>
-            {/* <div>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
-              ut obcaecati veniam nam facilis laborum, accusantium consequuntur
-              quidem alias possimus suscipit neque modi eos officia ea ipsum
-              nobis expedita impedit. Deserunt, blanditiis inventore vero veniam
-              enim dicta hic, quis rem earum laboriosam debitis praesentium at.
-              Cupiditate expedita atque consectetur facere praesentium,
-              molestiae dolor! Expedita natus fuga illo minus autem quod.
-            </div> */}
+
+            <div className="text-sm sm:text-base">{author.summary}</div>
           </div>
-          <div className=" h-full relative mt-2 mx-3 flex justify-center">
+          <div className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1">
+            <TiLocation className="text-gray-700 sm:text-lg" />
+            <p>{author.location}</p>
+          </div>
+          <div className=" h-full relative mt-2 mx-3 flex flex-col items-center">
+            <div className="flex items-center justify-center">
               <SocialIcon
                 title="Github"
                 Icon={BsGithub}
@@ -56,7 +52,16 @@ export default function Author() {
                 title="Twitter"
                 url={socialMedia.twitter}
               />
+
+              {author.website_url && (
+                <SocialIcon
+                  Icon={BsGlobe}
+                  title="Website"
+                  url={author.website_url}
+                />
+              )}
             </div>
+          </div>
         </>
       )}
     </div>
