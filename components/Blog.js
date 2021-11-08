@@ -60,11 +60,10 @@ export default function Blog({ blog }) {
   return (
     <motion.div
       ref={ref}
-      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 cursor-pointer rounded-xl "
+      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl "
       initial="hidden"
       animate={controls}
       variants={slideFromBottom}
-      onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
     >
       <Image
         className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
@@ -73,10 +72,10 @@ export default function Blog({ blog }) {
         width={360}
         height={150}
         layout="responsive"
-        // onClick={() => window.open(blog.url)}
+        onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
       />
 
-      <div className="w-full p-4 border-t-2  border-gray-400 ">
+      <div className="w-full p-4 border-t-2  border-gray-400">
         <div className="flex items-center justify-between mb-3 lg:mb-1">
           <a
             className="flex items-center lg:hover:bg-gray-100 lg:p-2 rounded-lg"
@@ -117,17 +116,22 @@ export default function Blog({ blog }) {
         </div>
 
         <div className="mb-2">
-          <h3 className=" text-xl font-bold">{blog.title}</h3>
+          <h3
+            className=" text-xl font-bold lg:hover:underline cursor-pointer"
+            onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
+          >
+            {blog.title}
+          </h3>
           <p className="text-xs sm:text-base">{blog.description}</p>
 
-          <div className="flex pt-2 items-center flex-wrap">
+          <div className="flex pt-2 items-center flex-wrap space-x-2">
             {blog.tag_list.map((tag) => {
               return (
                 <p
                   key={tag}
-                  className="bg-gray-100 text-xs p-1 mr-2 mt-2 rounded-md cursor-pointer"
+                  className="text-xs mt-2 rounded-md cursor-pointer uppercase font-bold text-[9px] lg:text-xs lg:hover:underline text-purple-600"
                 >
-                  #{tag}
+                  {tag}
                 </p>
               );
             })}
@@ -141,7 +145,7 @@ export default function Blog({ blog }) {
               <div
                 className={` ${
                   showShare ? "scale-0 invisible" : "scale-100 visible"
-                } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-between duration-150`}
+                } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-evenly sm:justify-start space-x-3 duration-150`}
               >
                 {/* Likes/Up votes */}
                 <div className="user_reaction group">
@@ -164,10 +168,12 @@ export default function Blog({ blog }) {
                 </div>
 
                 {/* Views */}
-                <div className="user_reaction group lg:hover:text-blue-400">
-                  <AiFillEye className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
-                  <p>{numFormatter(parseInt(blog.page_views_count))}</p>
-                </div>
+                {blog.page_views_count && (
+                  <div className="user_reaction group lg:hover:text-blue-400">
+                    <AiFillEye className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
+                    <p>{numFormatter(parseInt(blog.page_views_count))}</p>
+                  </div>
+                )}
               </div>
 
               {/* Social Media icons */}

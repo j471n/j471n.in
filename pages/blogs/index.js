@@ -3,63 +3,13 @@ import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
-import useSWR from "swr";
 
-const fetcher = (url) =>
-  fetch(url, {
-
-    headers: {
-
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  }).then((res) => res.json());
-
-export default function Blogs() {
-  const { data, error } = useSWR("https://dev.to/api/articles/me", fetcher);
+export default function Blogs({ data }) {
   const [blogs, setBlogs] = useState(data);
   const [loading, setLoading] = useState(false);
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
 
-  // useEffect(() => {
-  //   // const { data, error } = useSWR("/api/user/123", fetcher);
-  // }, []);
-
-  if (error) {
-    console.error(error);
-  }
-  // async function api() {
-  //   const res = await fetch("https://dev.to/api/articles/me", {
-  //     method: "GET", // The method
-  //     mode: "no-cors", // It can be no-cors, cors, same-origin
-  //     credentials: "same-origin",
-  //     headers: {
-  //       // "Access-Control-Allow-Origin": "*",
-  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-  //       // "Content-Type": "application/json", // Your headers
-  //     },
-  //   });
-
-  //   const data = await res.json();
-  //   setBlogs(data);
-  // }
-
-  // useEffect(() => {
-  //   // api()
-  //   fetch("https://dev.to/api/articles/me", {
-  //     method: "GET", // The method
-  //     mode: "no-cors", // It can be no-cors, cors, same-origin
-  //     credentials: "same-origin",
-  //     headers: {
-  //       "Access-Control-Allow-Origin": "*",
-  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-  //       "Content-Type": "application/json", // Your headers
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setBlogs(data))
-  //     .catch((err) => console.error(err));
-  // }, []);
 
   function sortBy(e) {
     const sort_by = e.target.value;
@@ -129,17 +79,13 @@ export default function Blogs() {
   );
 }
 
-// export async function getServerSideProps() {
-//   const blogs = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-//     headers: {
-//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-//     },
-//   })
-//     .then((res) => res.json())
-//     .catch((err) => console.error(err));
-//   return {
-//     props: {
-//       data: blogs,
-//     },
-//   };
-// }
+export async function getServerSideProps() {
+  const data = await fetch("https://dev.to/api/articles?username=j471n")
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
+  return {
+    props: {
+      data,
+    },
+  };
+}
