@@ -43,7 +43,6 @@ export default function Blogs({ data }) {
   //     .catch((err) => console.error(err));
   // }, []);
 
-  console.log(blogs);
 
   function sortBy(e) {
     const sort_by = e.target.value;
@@ -113,13 +112,14 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
+export async function getServerSideProps() {
+  const blogs = await fetch("https://dev.to/api/articles/me?per_page=1000", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
     },
-  });
-  const blogs = await res.json();
+  })
+    .then((res) => res.json())
+    .catch((err) => console.error(err));
   return {
     props: {
       data: blogs,
