@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
@@ -9,6 +9,41 @@ export default function Blogs({ data }) {
   const [loading, setLoading] = useState(false);
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
+
+  // async function api() {
+  //   const res = await fetch("https://dev.to/api/articles/me", {
+  //     method: "GET", // The method
+  //     mode: "no-cors", // It can be no-cors, cors, same-origin
+  //     credentials: "same-origin",
+  //     headers: {
+  //       // "Access-Control-Allow-Origin": "*",
+  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+  //       // "Content-Type": "application/json", // Your headers
+  //     },
+  //   });
+
+  //   const data = await res.json();
+  //   setBlogs(data);
+  // }
+
+  // useEffect(() => {
+  //   // api()
+  //   fetch("https://dev.to/api/articles/me", {
+  //     method: "GET", // The method
+  //     mode: "no-cors", // It can be no-cors, cors, same-origin
+  //     credentials: "same-origin",
+  //     headers: {
+  //       "Access-Control-Allow-Origin": "*",
+  //       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+  //       "Content-Type": "application/json", // Your headers
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setBlogs(data))
+  //     .catch((err) => console.error(err));
+  // }, []);
+
+  console.log(blogs);
 
   function sortBy(e) {
     const sort_by = e.target.value;
