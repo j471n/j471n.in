@@ -6,24 +6,10 @@ import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import Image from "next/image";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
-import { useEffect, useState } from "react";
+import router from "next/router";
 
 export default function Article({ article, slug }) {
-
-  // const [slug, setSlug] = useState(slug);
-
-  // useEffect(() => {
-  //   const temp = router.query.slug;
-  //   setSlug(temp);
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch(`https://dev.to/api/articles/j471n/${slug}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setArticle(data))
-  //     .catch((err) => console.error(err));
-  // }, [slug]);
-
+  // const router = useRouter();
   return (
     <>
       {article && (
@@ -53,7 +39,11 @@ export default function Article({ article, slug }) {
               <div className="flex items-center my-2">
                 {article.tags?.map((tag) => {
                   return (
-                    <p key={tag} className={styles.tag}>
+                    <p
+                      key={tag}
+                      className={styles.tag}
+                      onClick={() => router.push(`/blogs?tag=${tag}`)}
+                    >
                       #{tag}
                     </p>
                   );
