@@ -9,10 +9,15 @@ import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function Article() {
+export default function Article({slug}) {
   const router = useRouter();
   const [article, setArticle] = useState(null);
-  const slug = router.query.slug;
+  // const [slug, setSlug] = useState(slug);
+
+  // useEffect(() => {
+  //   const temp = router.query.slug;
+  //   setSlug(temp);
+  // }, []);
 
   useEffect(() => {
     fetch(`https://dev.to/api/articles/j471n/${slug}`)
@@ -85,25 +90,25 @@ export default function Article() {
 }
 
 // Getting Params and returning it
-// export async function getStaticPaths() {
-//   const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-//     headers: {
-//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-//     },
-//   });
-//   const blogs = await res.json();
+export async function getStaticPaths() {
+  const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
+    headers: {
+      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+    },
+  });
+  const blogs = await res.json();
 
-//   const paths = blogs.map((blog) => {
-//     return {
-//       params: { slug: blog.slug.toString() },
-//     };
-//   });
+  const paths = blogs.map((blog) => {
+    return {
+      params: { slug: blog.slug.toString() },
+    };
+  });
 
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
+  return {
+    paths,
+    fallback: false,
+  };
+}
 
 // Server Ssluge Rendering of data
 // export async function getServerSideProps(context) {
@@ -118,15 +123,15 @@ export default function Article() {
 //   };
 // }
 
-// export async function getStaticProps(context) {
-//   const slug = context.params.slug.toString();
-//   const res = await fetch("https://dev.to/api/articles/j471n/" + slug);
-//   const article = await res.json();
+export async function getStaticProps(context) {
+  const slug = context.params.slug.toString();
+  // const res = await fetch("https://dev.to/api/articles/j471n/" + slug);
+  // const article = await res.json();
 
-//   return {
-//     props: {
-//       article: article || {},
-//       slug,
-//     },
-//   };
-// }
+  return {
+    props: {
+      // article: article || {},
+      slug,
+    },
+  };
+}

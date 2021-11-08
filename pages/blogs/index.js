@@ -113,7 +113,7 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
