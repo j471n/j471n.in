@@ -3,13 +3,31 @@ import Loading from "../../components/Loading";
 import Blog from "../../components/Blog";
 import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import Tags from "../../components/Tags";
 
-export default function Blogs({ data }) {
-  const [blogs, setBlogs] = useState(data);
+export default function Blogs({ data, query, blogTags, temp }) {
+  const [blogs, setBlogs] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
+  // updating the data as soon as tag-change
+  useEffect(() => {
+    setBlogs(temp);
+  }, [query]);
 
+  // useEffect(() => {
+  //   var temp = [];
+  //   await blogs.map((blog) => {
+  //     if (blog.tags.includes(query)) {
+  //       console.log(query);
+  //       temp.push(blog);
+  //     } else {
+  //       router.push("/blogs");
+  //     }
+  //   });
+  //   setBlogs()
+  // },[query]);
 
   function sortBy(e) {
     const sort_by = e.target.value;
@@ -58,6 +76,7 @@ export default function Blogs({ data }) {
           <option value="popular">Popular</option>
         </select>
       </div>
+      <Tags blogTags={blogTags} query={query} />
 
       {loading ? (
         <Loading />
@@ -79,13 +98,34 @@ export default function Blogs({ data }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(ctx) {
+  const query = ctx.query.tag || "all";
   const data = await fetch("https://dev.to/api/articles?username=j471n")
     .then((res) => res.json())
     .catch((err) => console.error(err));
+
+  var blogTags = ["all"];
+  data.map((blog) => {
+    blog.tag_list.map((tag) => {
+      if (!blogTags.includes(tag)) {
+        blogTags.push(tag);
+      }
+    });
+  });
+
+  var temp = [];
+  data.map((blog) => {
+    if (blog.tags.includes(query)) {
+      temp.push(blog);
+    }
+  });
+  console.log(temp);
   return {
     props: {
       data,
+      query,
+      blogTags,
+      temp: !temp.length == 0 ? temp : data,
     },
   };
 }
