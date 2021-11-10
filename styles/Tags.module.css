@@ -1,5 +1,5 @@
 .container {
-  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 scrollbar-hide;
+  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 scrollbar-hide sm:px-24;
 }
 
 .tag {

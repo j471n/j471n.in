@@ -5,16 +5,10 @@ import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 
-export default function Blogs({ data, query, blogTags, temp }) {
-  const [blogs, setBlogs] = useState([]);
-
-  const [loading, setLoading] = useState(false);
+export default function Blogs({ data, query, blogTags, blogs }) {
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
-  // updating the data as soon as tag-change
-  useEffect(() => {
-    setBlogs(temp);
-  }, [query]);
+  console.log(blogs);
 
   // useEffect(() => {
   //   var temp = [];
@@ -78,29 +72,28 @@ export default function Blogs({ data, query, blogTags, temp }) {
       </div>
       <Tags blogTags={blogTags} query={query} />
 
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <section className="page_container ">
-            {blogs &&
-              blogs.map((blog) => {
-                return (
-                  <LazyLoad key={blog.id} className="h-full w-full">
-                    <Blog key={blog.id} blog={blog} />
-                  </LazyLoad>
-                );
-              })}
-          </section>
-        </>
-      )}
+      {/* Main Blogs Page Container */}
+      <section className="page_container ">
+        {blogs &&
+          blogs.map((blog) => {
+            return (
+              <LazyLoad key={blog.id} className="h-full w-full">
+                <Blog key={blog.id} blog={blog} />
+              </LazyLoad>
+            );
+          })}
+      </section>
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const query = ctx.query.tag || "all";
-  const data = await fetch("https://dev.to/api/articles?username=j471n")
+  const data = await fetch("https://dev.to/api/articles/me", {
+    headers: {
+      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+    },
+  })
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
@@ -115,17 +108,16 @@ export async function getServerSideProps(ctx) {
 
   var temp = [];
   data.map((blog) => {
-    if (blog.tags.includes(query)) {
+    if (blog.tag_list.includes(query)) {
       temp.push(blog);
     }
   });
-  console.log(temp);
   return {
     props: {
-      data,
+      // data,
       query,
       blogTags,
-      temp: !temp.length == 0 ? temp : data,
+      blogs: !temp.length == 0 ? temp : data,
     },
   };
 }
