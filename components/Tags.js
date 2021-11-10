@@ -1,21 +1,15 @@
 import styles from "../styles/Tags.module.css";
 import { useRouter } from "next/router";
 
-export default function Tags({
-  blogTags,
-  handleTagSelection,
-  query,
-}) {
+export default function Tags({ blogTags, handleTagSelection, query }) {
   const router = useRouter();
   async function handleTagSelection(e) {
-    e.preventDefault();
-    console.log(e.target.checked, e.target.value);
-    router.push(`/blogs/?tag=${e.target.value}`);
+    // Preventing the router to refresh
+    router.push(`/blogs/?tag=${e.target.value}`, null, { shallow: true });
   }
   return (
     <div className="relative mt-3">
       <div className={styles.container} onChange={handleTagSelection}>
-
         {blogTags.map((tag) => {
           return <Tag key={tag} tag={tag} checked={tag === query} />;
         })}

@@ -11,7 +11,7 @@
 }
 
 .tag > label {
-  @apply py-1 px-4 rounded-full border-2 border-gray-500 mx-1 text-sm font-medium  cursor-pointer uppercase; ;
+  @apply py-1 px-4 rounded-full border-[1px] border-gray-500 mx-1 text-sm font-medium  cursor-pointer uppercase; ;
 }
 
 .tag > input:checked ~ label {
