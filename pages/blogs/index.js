@@ -5,7 +5,7 @@ import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 
-export default function Blogs({ data, query, blogTags, blogs }) {
+export default function Blogs({ query, blogTags, blogs }) {
   const state = useRef();
   const [sortBlogBy, setSortBlogBy] = useState("recent");
   console.log(blogs);
@@ -97,7 +97,7 @@ export async function getServerSideProps(ctx) {
     .then((res) => res.json())
     .catch((err) => console.error(err));
 
-  var blogTags = ["all"];
+  var blogTags = ["all", "popular"];
   data.map((blog) => {
     blog.tag_list.map((tag) => {
       if (!blogTags.includes(tag)) {
@@ -108,13 +108,30 @@ export async function getServerSideProps(ctx) {
 
   var temp = [];
   data.map((blog) => {
+    // Sort By the query or tag
     if (blog.tag_list.includes(query)) {
       temp.push(blog);
+    } else {
+      // if the tag is missing then sort by on some special params
+      switch (query) {
+        case "all":
+          temp = data;
+          break;
+        case "popular":
+          temp = data
+            .sort(
+              (a, b) => a.positive_reactions_count - b.positive_reactions_count
+            )
+            .reverse();
+          break;
+        default:
+          break;
+      }
     }
   });
+
   return {
     props: {
-      // data,
       query,
       blogTags,
       blogs: !temp.length == 0 ? temp : data,
