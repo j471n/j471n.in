@@ -21,7 +21,8 @@
 }
 
 .tag {
-  @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100;
+  /* @apply uppercase text-xs sm:text-base text-purple-500 font-bold; */
+  /* @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100; */
 }
 
 /* Dev blog */
@@ -85,5 +86,5 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-[#262A33] scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
+  @apply flex overflow-x-scroll bg-[#262A33] sm:scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
 }

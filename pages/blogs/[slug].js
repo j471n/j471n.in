@@ -42,7 +42,7 @@ export default function Article({ article }) {
                   cover_image={article.cover_image}
                 />
               </div>
-              <div className="flex items-center my-2">
+              <div className="flex items-center my-2 uppercase text-xs sm:text-base text-purple-500 font-bold space-x-3 select-none">
                 {article.tags?.map((tag) => {
                   return (
                     <p
@@ -50,17 +50,17 @@ export default function Article({ article }) {
                       className={styles.tag}
                       onClick={() => router.push(`/blogs?tag=${tag}`)}
                     >
-                      #{tag}
+                      {tag}
                     </p>
                   );
                 })}
               </div>
 
-              <div>
+              <div className="mx-auto p-3 bg-gray-200 rounded-md">
                 {article.cover_image && (
                   <Image
                     src={article.cover_image}
-                    className="w-full"
+                    className="w-full rounded-md"
                     width={800}
                     height={336}
                     alt=""
