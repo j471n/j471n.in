@@ -117,7 +117,7 @@ export default function Blog({ blog }) {
 
         <div className="mb-2">
           <h3
-            className=" text-xl font-bold lg:hover:underline cursor-pointer"
+            className=" text-xl font-bold lg:hover:underline cursor-pointer select-none"
             onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
           >
             {blog.title}
@@ -129,7 +129,7 @@ export default function Blog({ blog }) {
               return (
                 <p
                   key={tag}
-                  className="text-xs mt-2 rounded-md cursor-pointer uppercase font-bold text-[9px] lg:text-xs lg:hover:underline text-purple-600"
+                  className="text-xs mt-2 rounded-md cursor-pointer uppercase font-bold text-[9px] lg:text-xs lg:hover:underline text-purple-600 select-none"
                 >
                   {tag}
                 </p>
@@ -138,7 +138,7 @@ export default function Blog({ blog }) {
           </div>
 
           {/* Reaction, Social Icons, Share Options */}
-          <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between">
+          <div className="relative sm:absolute bottom-0 left-0 right-0 sm:mb-4 w-full px-0 flex  mt-3 sm:px-3 flex-col sm:flex-row justify-between select-none">
             {/* Reaction and Social Icons */}
             <div className="relative mt-10 sm:mt-0 flex items-center sm:w-2/3 sm:mr-2">
               {/* Reaction Icons */}
