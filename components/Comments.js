@@ -15,7 +15,7 @@ export default function Comments({ articleId, articleAuthor }) {
   }, [articleId]);
 
   return (
-    <div className="pb-24 p-2 pt-3 max-w-xl mx-2 ">
+    <div className="pb-24 p-2 pt-3 max-w-3xl mx-2 sm:mx-auto ">
       <h1 className="font-bold text-xl">
         Comments <span className="text-lg">({comments.length})</span>
       </h1>

@@ -1,4 +1,3 @@
-/* Dev blog */
 .comment > span,
 .comment h1,
 .comment h2,
@@ -6,28 +5,27 @@
 .comment h4,
 .comment h5,
 .comment h6 {
-  @apply my-1;
+  @apply my-2;
 }
 
-.comment > p {
-  @apply text-xs sm:text-base;
+.comment > span > p {
+  @apply text-xs sm:text-base my-1 leading-5;
 }
-
 
 /* Comment */
 
 .comment {
-  @apply ml-10  break-words;
+  @apply pl-10 break-words overflow-x-hidden w-full;
 }
 .comment a {
-  @apply text-blue-400 underline;
+  @apply text-blue-400 underline my-2;
 }
 .comment blockquote {
-  @apply border-l-4 border-gray-500 pl-3;
+  @apply border-l-4 border-gray-500 pl-3 text-xs sm:text-base my-1;
 }
 
-.comment > p > code {
-  @apply bg-gray-200 p-1 py-[2px] text-xs rounded-md;
+.comment > span > p > code {
+  @apply bg-gray-200 p-1 py-[2px] text-xs sm:text-base rounded-md;
 }
 
 .comment h1 {
@@ -55,10 +53,23 @@
   font-weight: bolder;
 }
 
-.comment > ul {
-  @apply list-disc ml-4;
+.comment > span > ul,
+.comment > span > ol {
+  @apply list-disc ml-4 text-xs sm:text-base;
 }
-.comment > ul > li > a,
+.comment > span > ul > li > a,
 .comment a {
   @apply no-underline space-x-3 text-blue-500 font-medium my-2 hover:underline;
+}
+
+.comment > span > p img {
+  @apply mx-auto;
+}
+
+.comment > span > p > code {
+  @apply bg-gray-200 px-1 py-[2px] text-xs sm:text-base rounded-md;
+}
+
+.comment pre {
+  @apply flex overflow-x-scroll max-w-full bg-[#262A33] md:scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
 }
