@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import Image from "next/image";
-
 import Comment from "./Comment";
-import { comment } from "postcss";
 
 export default function Comments({ articleId, articleAuthor }) {
   const [comments, setComments] = useState([]);
