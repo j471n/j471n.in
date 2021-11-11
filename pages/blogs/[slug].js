@@ -6,8 +6,10 @@ import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import Image from "next/image";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
+import { useRouter } from "next/router";
 
 export default function Article({ article }) {
+  const router = useRouter();
   return (
     <>
       {article && (
@@ -77,7 +79,6 @@ export default function Article({ article }) {
           <Comments articleId={article.id} articleAuthor={article.user} />
         </>
       )}
-      
     </>
   );
 }
