@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -78,8 +79,6 @@ body::-webkit-scrollbar-thumb {
     opacity: 1;
   }
 }
-
-
 
 /* Layers Components or the custom class extends with tailwind */
 @layer components {

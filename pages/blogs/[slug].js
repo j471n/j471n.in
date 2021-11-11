@@ -1,22 +1,20 @@
 import Interweave from "interweave";
 import styles from "../../styles/Blog.module.css";
-import { AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineCalendar, AiFillCopy } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import Image from "next/image";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
-import router from "next/router";
 
-export default function Article({ article, slug }) {
-  // const router = useRouter();
+export default function Article({ article }) {
   return (
     <>
       {article && (
         <>
-          <div className="flex flex-col  md:flex row relative lg:max-w-[70%] mx-auto">
+          <div className="flex flex-col  md:flex row relative lg:max-w-[70%] mx-auto font-exo">
             <div className={styles.article_page}>
-              <h1 className="text-2xl font-bold mb-1">{article.title}</h1>
+              <h1 className=" text-4xl font-bold mb-1">{article.title}</h1>
               <div className={styles.article_header}>
                 <div className="flex space-x-2">
                   <div className="flex items-center">
@@ -76,40 +74,6 @@ export default function Article({ article, slug }) {
     </>
   );
 }
-
-// Getting Params and returning it
-// export async function getStaticPaths() {
-//   const res = await fetch("https://dev.to/api/articles/me?per_page=1000", {
-//     headers: {
-//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-//     },
-//   });
-//   const blogs = await res.json();
-
-//   const paths = blogs.map((blog) => {
-//     return {
-//       params: { slug: blog.slug.toString() },
-//     };
-//   });
-
-//   return {
-//     paths,
-//     fallback: false,
-//   };
-// }
-
-// Server Ssluge Rendering of data
-// export async function getServerSideProps(context) {
-//   const sl = context.params.sl;
-//   const res = await fetch("https://dev.to/api/articles/j471n/" + sl);
-//   const article = await res.json();
-
-//   return {
-//     props: {
-//       article: article || {},
-//     },
-//   };
-// }
 
 export async function getServerSideProps(context) {
   const slug = context.query.slug;
