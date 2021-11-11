@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import Comment from "./Comment";
+import { comment } from "postcss";
 
 export default function Comments({ articleId, articleAuthor }) {
   const [comments, setComments] = useState([]);
-  const [count, setCount] = useState(0);
 
   const url =
     articleId &&
@@ -15,15 +15,12 @@ export default function Comments({ articleId, articleAuthor }) {
       .then((res) => res.json())
       .then((data) => setComments(data))
       .catch((err) => console.error(err));
-
-    const com = document.querySelectorAll(".com");
-    setCount(com.length);
   }, [articleId]);
 
   return (
     <div className="pb-24 p-2 pt-3 max-w-xl mx-auto ">
       <h1 className="font-bold text-xl">
-        Comments <span className="text-lg">({count})</span>
+        Comments <span className="text-lg">({comments.length})</span>
       </h1>
       {articleId && comments && (
         <div className="flex flex-col">
