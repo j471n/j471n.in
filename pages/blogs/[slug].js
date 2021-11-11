@@ -56,11 +56,12 @@ export default function Article({ article }) {
                 })}
               </div>
 
-              <div className="mx-auto p-3 bg-gray-200 rounded-md">
+              <div className="mx-auto p-3 md:p-5 xl:p-8 bg-gray-200 rounded-md">
                 {article.cover_image && (
                   <Image
                     src={article.cover_image}
-                    className="w-full rounded-md"
+                    className="w-full mx-auto rounded-md"
+                    layout="responsive"
                     width={800}
                     height={336}
                     alt=""

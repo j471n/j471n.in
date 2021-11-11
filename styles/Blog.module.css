@@ -20,10 +20,9 @@
   @apply flex my-2 space-x-3;
 }
 
-.tag {
-  /* @apply uppercase text-xs sm:text-base text-purple-500 font-bold; */
-  /* @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100; */
-}
+/* .tag {
+  @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100;
+} */
 
 /* Dev blog */
 .dev_blog > p,
@@ -37,8 +36,8 @@
   @apply my-2;
 }
 
-.dev_blog > p > a > img {
-  @apply mx-auto md:mx-0;
+.dev_blog > p  img {
+  @apply mx-auto;
 }
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
@@ -86,5 +85,5 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-[#262A33] sm:scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
+  @apply flex overflow-x-scroll bg-[#262A33] scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
 }
