@@ -1,18 +1,33 @@
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
+
 export default function CoverPage({
   title,
   mainHeading,
   className,
   childrenClass,
 }) {
+  const typingSpan = useRef(null);
+  useEffect(() => {
+    var options = {
+      strings: [mainHeading],
+      typeSpeed: 50,
+      backSpeed: 50,
+
+      loop: true,
+    };
+    new Typed(typingSpan.current, options);
+  }, []);
+
   return (
     <div
       className={`${className} h-[90vh] md:h-screen lg:h-[110vh] 2xl:h-[120vh] min-w-screen bg-gradient-to-r to-[#5ae7e2] from-[#7c3aed] relative border-none `}
     >
       <div
-        className={`text-[50px] ml-10 sm:ml-0 -mt-30 md:-mt-60 font-black ${childrenClass}`}
+        className={`text-[50px] ml-4 sm:ml-0 -mt-30 md:-mt-60 font-black ${childrenClass}`}
       >
         <p className="text-white">{title}</p>
-        <p className=" via-green-700">{mainHeading}</p>
+        <span className="text-black font-[20px]" ref={typingSpan} />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
