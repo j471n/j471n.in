@@ -32,7 +32,13 @@ export default function Article({ article }) {
                     </p>
                   </div>
                 </div>
-                <ShareOnSocialMedia className={styles.socialMedia} />
+                <ShareOnSocialMedia
+                  className={styles.socialMedia}
+                  title={article.title}
+                  url={article.url}
+                  summary={article.description}
+                  cover_image={article.cover_image}
+                />
               </div>
               <div className="flex items-center my-2">
                 {article.tags?.map((tag) => {
@@ -71,6 +77,7 @@ export default function Article({ article }) {
           <Comments articleId={article.id} articleAuthor={article.user} />
         </>
       )}
+      
     </>
   );
 }

@@ -14,25 +14,6 @@ export default function Blog({ blog }) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  async function handleShare() {
-    const image = await fetch(blog.cover_image);
-    const blob = await image.blob();
-    const file = new File([blob], "image.jpg", { type: "image/jpeg" });
-    if (window.navigator.share) {
-      window.navigator
-        .share({
-          title: blog.title,
-          text: blog.description,
-          url: blog.url,
-          files: [file],
-        })
-        .then(() => {
-          console.log("Thanks for sharing!");
-        })
-        .catch(console.error);
-    }
-  }
-
   function numFormatter(num) {
     if (num > 999 && num < 1000000) {
       return (num / 1000).toFixed(1) + "K"; // convert to K for number from > 1000 < 1 million
@@ -184,9 +165,7 @@ export default function Blog({ blog }) {
                 title={blog.title}
                 url={blog.url}
                 summary={blog.description}
-                body={blog.description}
-                subject={blog.title}
-                handleShare={handleShare}
+                cover_image={blog.cover_image}
               />
             </div>
 
