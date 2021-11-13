@@ -17,7 +17,6 @@ export default function Home() {
         mainHeading="Jatin Sharma"
         childrenClass="text-[40px] ml-0"
       >
-        <p className="font-light text-xl text-white">{"<React Developer />"}</p>
       </CoverPage>
 
       <p>

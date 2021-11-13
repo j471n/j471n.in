@@ -4,7 +4,7 @@ import { GoVerified } from "react-icons/go";
 import styles from "../styles/Comment.module.css";
 export default function Comment({ comment, margin, articleAuthor }) {
   return (
-    <div className="flex flex-col com">
+    <div className="flex flex-col com w-full ">
       <div
         className={`ml-${margin} ${
           margin && "border-l-4"
@@ -32,7 +32,9 @@ export default function Comment({ comment, margin, articleAuthor }) {
             <GoVerified className="text-gray-500 -m-2 " />
           )}
         </div>
-        <Interweave className={styles.comment} content={comment.body_html} />
+        <div className={styles.comment}>
+          <Interweave content={comment.body_html} />
+        </div>
       </div>
       {comment.children &&
         comment.children.map((child) => {

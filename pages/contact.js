@@ -52,7 +52,11 @@ export default function Contact() {
 
   return (
     <>
-      <CoverPage title="Want to Contact me" className="grid place-items-center" />
+      <CoverPage
+        title="Want to"
+        mainHeading="Contact me"
+        className="grid place-items-center"
+      />
 
       <section className="w-full flex flex-col items-center p-4 pb-24">
         {/* <h3 className="title_of_page">Contact Me!</h3> */}

@@ -20,9 +20,9 @@
   @apply flex my-2 space-x-3;
 }
 
-.tag {
+/* .tag {
   @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100;
-}
+} */
 
 /* Dev blog */
 .dev_blog > p,
@@ -36,39 +36,43 @@
   @apply my-2;
 }
 
-.dev_blog > p > a > img {
-  @apply mx-auto md:mx-0;
+.dev_blog > p  img {
+  @apply mx-auto;
 }
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
 
 .dev_blog > p > code {
-  @apply bg-gray-200 p-1 py-[2px] text-xs rounded-md;
+  @apply bg-gray-200 px-1 py-[2px] text-xs rounded-md;
+}
+
+.dev_blog > p strong {
+  @apply text-xl;
 }
 
 .dev_blog h1 {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: bolder;
 }
 .dev_blog h2 {
-  font-size: 1.5em;
+  font-size: 1.75rem;
   font-weight: bolder;
 }
 .dev_blog h3 {
-  font-size: 1.17em;
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 .dev_blog h4 {
-  font-size: 1em;
+  font-size: 1.25rem;
   font-weight: bolder;
 }
 .dev_blog h5 {
-  font-size: 0.83em;
+  font-size: 1rem;
   font-weight: bolder;
 }
 .dev_blog h6 {
-  font-size: 0.67em;
+  font-size: 0.75rem;
   font-weight: bolder;
 }
 
@@ -81,5 +85,5 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-[#262A33] scrollbar-hide p-4 rounded-lg text-gray-300;
+  @apply flex overflow-x-scroll bg-[#262A33] scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
 }
