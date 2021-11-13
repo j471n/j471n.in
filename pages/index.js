@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
-import {BiTime} from "react-icons/bi"
-export default function Home({ blogs }) {
+import { BiTime } from "react-icons/bi";
+export default function Home({ blogs, skills }) {
   return (
     <>
       <Head>
@@ -16,7 +16,7 @@ export default function Home({ blogs }) {
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       </Head>
 
-      <div className="pb-24">
+      <div className="">
         <CoverPage
           title="Hi There! I am"
           className="flex flex-col justify-center items-center"
@@ -24,51 +24,73 @@ export default function Home({ blogs }) {
           childrenClass="text-[32px] ml-0"
         ></CoverPage>
 
-        {/* Education Section */}
-        <section>
-          <HomeHeading title="Recent Blogs" />
-          <div className="home-section-container ">
-            {blogs.map((blog) => {
-              return (
-                <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-                  <div className="home-content-section no-scrollbar">
-                    <Image
-                      className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
-                      src={blog.cover_image}
-                      alt={blog.title}
-                      width={500}
-                      height={207}
-                      layout="responsive"
-                    />
+        <div className="md:px-24 pb-24">
+          {/* Skills Section */}
+          <section>
+            <HomeHeading title="My Top Skills" />
 
-                    <div className="flex items-center justify-between my-3">
-                      <p className="flex items-center space-x-1">
-                        <AiOutlineCalendar />
-                        <span className="text-xs font-medium">
-                          {new Date(Date.parse(blog.published_at))
-                            .toDateString()
-                            .slice(4)}
-                        </span>
-                      </p>
-                      <p className="flex items-center space-x-1">
-                        <BiTime />
-                        <span className="text-xs ml-1 font-medium">
-                          {blog.reading_time_minutes} mins
-                        </span>
-                      </p>
-                    </div>
-                    <h3 className="text-xl mb-1 font-bold">{blog.title}</h3>
-                    <p className="text-xs sm:text-base">{blog.description}</p>
+            <div className="home-section-container">
+              {skills.map((skill) => {
+                if (!skill.pinned) return;
+
+                return (
+                  <div className="home-content-section  no-scrollbar bg-gray-200">
+                    <Image width={70} height={70} src={`/${skill.icon}`} />
+                    <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
+                      {skill.name}
+                    </p>
+                  
                   </div>
-                </Link>
-              );
-            })}
+                );
+              })}
+              <ExploreMoreButton link="/skills" />
+            </div>
+          </section>
+          {/* Education Section */}
+          <section>
+            <HomeHeading title="Recent Blogs" />
+            <div className="home-section-container ">
+              {blogs.map((blog) => {
+                return (
+                  <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
+                    <div className="home-content-section no-scrollbar">
+                      <Image
+                        className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
+                        src={blog.cover_image}
+                        alt={blog.title}
+                        width={500}
+                        height={207}
+                        layout="responsive"
+                      />
 
-            <ExploreMoreButton link="/blogs" />
-          </div>
-        </section>
+                      <div className="flex items-center justify-between my-3">
+                        <p className="flex items-center space-x-1">
+                          <AiOutlineCalendar />
+                          <span className="text-xs font-medium">
+                            {new Date(Date.parse(blog.published_at))
+                              .toDateString()
+                              .slice(4)}
+                          </span>
+                        </p>
+                        <p className="flex items-center space-x-1">
+                          <BiTime />
+                          <span className="text-xs ml-1 font-medium">
+                            {blog.reading_time_minutes} mins
+                          </span>
+                        </p>
+                      </div>
+                      <h3 className="text-xl mb-1 font-bold">{blog.title}</h3>
+                      <p className="text-xs sm:text-base">{blog.description}</p>
+                    </div>
+                  </Link>
+                );
+              })}
+
+              <ExploreMoreButton link="/blogs" />
+            </div>
+          </section>
+        </div>
         {/* Projects Section */}
-        {/* Skills Section */}
       </div>
       {/* <p>
         Hi, welcome! I'm Rui and I'm a self-taught front-end developer 👋 My
@@ -115,14 +137,21 @@ export function HomeHeading({ title }) {
 }
 
 export async function getServerSideProps() {
-  const blogs = await fetch("https://dev.to/api/articles/me?per_page=5", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  }).then((res) => res.json());
+  // fetching multiple requests by Promise.all
+  const [blogs, skills] = await Promise.all([
+    fetch("https://dev.to/api/articles/me?per_page=5", {
+      headers: {
+        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+      },
+    }).then((res) => res.json()),
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/skills").then((res) =>
+      res.json()
+    ),
+  ]);
   return {
     props: {
-      blogs: blogs,
+      blogs,
+      skills,
     },
   };
 }
