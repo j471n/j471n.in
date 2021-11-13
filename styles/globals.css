@@ -34,6 +34,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* SKill bar animation */
 .skill__bar {
   animation: bar 2s linear;
@@ -83,7 +87,7 @@ body::-webkit-scrollbar-thumb {
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
-    @apply m-1 text-3xl cursor-pointer ;
+    @apply m-1 text-3xl cursor-pointer;
   }
   .top-nav-link {
     @apply list-none mx-1 px-4 py-1 transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold select-none;
@@ -114,5 +118,12 @@ body::-webkit-scrollbar-thumb {
   }
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;
+  }
+  
+  .home-section-container {
+    @apply flex  overflow-x-scroll px-5 py-5  w-full min-h-[200px] last:mr-10 select-none;
+  }
+  .home-content-section {
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl p-4 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white ;
   }
 }
