@@ -23,9 +23,8 @@ export default function Tags({ blogTags, handleTagSelection, query }) {
 
 export function Tag({ tag, checked = false }) {
   return (
-    <div className={styles.tag}>
+    <div className={`${styles.tag} scrollbar-hide`}>
       <input
-        className=""
         type="radio"
         name="tag"
         id={tag ? tag : "all"}

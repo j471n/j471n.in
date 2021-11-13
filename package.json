@@ -25,7 +25,7 @@
     "react-share-social": "^0.1.48",
     "react-toastify": "^8.0.3",
     "swr": "^1.0.1",
-    "tailwind-scrollbar-hide": "^1.0.4",
+    "tailwind-scrollbar-hide": "^1.1.5",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
