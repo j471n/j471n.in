@@ -4,12 +4,10 @@ import { BsInstagram, BsTwitter, BsGithub, BsGlobe } from "react-icons/bs";
 import socialMedia from "../content/socialMedia";
 import SocialIcon from "./SocialIcon";
 import { TiLocation } from "react-icons/ti";
+import { RiUserFollowFill } from "react-icons/ri";
 
-const perPage = 1000;
-
-export default function Author() {
+export default function Author({ followers }) {
   const [author, setAuthor] = useState(null);
-  const [followers, setFollowers] = useState([]);
 
   async function api() {
     const response = await fetch("https://dev.to/api/users/495014");
@@ -17,46 +15,8 @@ export default function Author() {
     setAuthor(data);
   }
 
-  /**
-   * @param {number} page
-   */
-  // function getFollowersPage(page) {
-  //   // const params = { per_page: perPage, page };
-  //   // const headers = { "api-key": process.env.NEXT_PUBLIC_API_URL };
-  //   const data = fetch("https://dev.to/api/followers/users", {
-  //     // params,
-  //     per_page: perPage,
-  //     mode: "no-cors",
-  //     page,
-  //     // headers,
-  //     headers: { "api-key": process.env.NEXT_PUBLIC_BLOGS_API },
-  //   })
-  //     // .then((res) => res.json())
-  //     .then((res) => console.log(res));
-
-  //   // .then((data) => console.log(data));
-
-  //   return data;
-  // }
-
-  // async function getFollowers() {
-  //   let numReturned = perPage;
-  //   let page = 1;
-  //   const totalFollowers = [];
-  //   while (numReturned === perPage) {
-  //     const followers = await getFollowersPage(page);
-  //     totalFollowers.push(...followers);
-
-  //     console.log(followers);
-  //     numReturned = followers.length;
-  //     page++;
-  //   }
-  //   return totalFollowers;
-  // }
-
   useEffect(() => {
     api();
-    // setFollowers(() => getFollowers());
   }, []);
 
   return (
@@ -82,9 +42,21 @@ export default function Author() {
               </div>
               <p className="font-bold text-3xl ">{author.name}</p>
 
-              <div className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1">
-                <TiLocation className="text-gray-700 sm:text-lg" />
-                <p>{author.location}</p>
+              <div className="flex items-center justify-between space-x-3 absolute top-10 w-full px-10 py-3">
+                <div
+                  title="Location"
+                  className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1"
+                >
+                  <TiLocation className="text-gray-700 sm:text-lg" />
+                  <p>{author.location}</p>
+                </div>
+                <div
+                  title="Followers"
+                  className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1"
+                >
+                  <RiUserFollowFill className="text-gray-700 sm:text-lg" />
+                  <p>{followers}</p>
+                </div>
               </div>
               <div className="text-sm sm:text-base">{author.summary}</div>
               <div className=" h-full relative mt-2 mx-3 flex flex-col items-center">
@@ -115,16 +87,12 @@ export default function Author() {
                 </div>
               </div>
               <button
-                className="w-10/12 sm:w-1/2 mx-10 bg-yellow-400 text-black text-xl rounded-full py-1 clickable_button"
+                className="w-10/12 sm:w-1/2 mx-10 bg-yellow-400 text-black text-md  rounded-full py-1 clickable_button font-semibold"
                 onClick={() => window.open("https://dev.to/j471n")}
               >
                 Follow
               </button>
             </div>
-
-            {/* <div>
-            <p>Followers {followers.length}</p> 
-          </div> */}
           </div>
         </>
       )}

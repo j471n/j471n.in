@@ -71,5 +71,5 @@
 }
 
 .comment pre {
-  @apply flex overflow-x-scroll max-w-full bg-[#262A33] md:scrollbar-hide p-4 rounded-lg text-gray-300 text-xs sm:text-base;
+  @apply flex overflow-x-scroll max-w-full bg-[#262A33] p-4 rounded-lg text-gray-300 text-xs sm:text-base;
 }

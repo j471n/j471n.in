@@ -10,23 +10,29 @@ import {
 import { RiArticleLine, RiArticleFill } from "react-icons/ri";
 import { BsBarChart, BsBarChartFill } from "react-icons/bs";
 import { HiHome, HiOutlineHome } from "react-icons/hi";
+import BottomNavLink from "./BottomNavLink";
 
-function BottomNavbar({ data }) {
+const initialRouteState = {
+  home: false,
+  skills: false,
+  blogs: false,
+  projects: false,
+  contact: false,
+};
+
+function BottomNavbar() {
   const router = useRouter();
-  const [routes, setRoutes] = useState({
-    "/": false,
-    "/skills": false,
-    "/blogs": false,
-    "/projects": false,
-    "/contact": false,
-  });
+  const [routes, setRoutes] = useState(initialRouteState);
 
-  const currentRoute = router.pathname;
+  const currentRoute = router.pathname.slice(1);
   useEffect(() => {
-    for (const route in routes) {
+    // setRoutes(initialRouteState);
+    for (let route in routes) {
       routes[route] = false;
     }
-    if (routes.hasOwnProperty(currentRoute)) {
+    if (currentRoute === "") {
+      setRoutes({ ...routes, ...{ home: true } });
+    } else if (routes.hasOwnProperty(currentRoute)) {
       let obj = {};
       obj[currentRoute] = true;
       setRoutes({ ...routes, ...obj });
@@ -34,56 +40,44 @@ function BottomNavbar({ data }) {
       console.error("404 NOT FOUND");
     }
   }, [currentRoute]);
+
   return (
     <div className="fixed bg-white sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-40">
-      <div className="flex items-center p-4 justify-between transition-all duration-150">
-        <Link href="/">
-          {routes["/"] ? (
-            <HiHome className="bottom_nav_icon" />
-          ) : (
-            <HiOutlineHome className="bottom_nav_icon" />
-          )}
-        </Link>
-        <Link href="/skills">
-          {routes["/skills"] ? (
-            <BsBarChartFill className="bottom_nav_icon" />
-          ) : (
-            <BsBarChart className="bottom_nav_icon " />
-          )}
-        </Link>
-        <Link href="/blogs">
-          {routes["/blogs"] ? (
-            <RiArticleFill className="bottom_nav_icon" />
-          ) : (
-            <RiArticleLine className="bottom_nav_icon" />
-          )}
-        </Link>
-        <Link href="/projects">
-          {routes["/projects"] ? (
-            <AiFillProject className="bottom_nav_icon" />
-          ) : (
-            <AiOutlineProject className="bottom_nav_icon" />
-          )}
-        </Link>
-        <Link href="/contact">
-          {routes["/contact"] ? (
-            <AiFillPhone className="bottom_nav_icon" />
-          ) : (
-            <AiOutlinePhone className="bottom_nav_icon" />
-          )}
-        </Link>
+      {/* Bottom NavBar Links */}
+      <div className="flex items-center px-4 py-2 justify-between transition-all duration-150">
+        {/* Home Icon */}
+        <BottomNavLink
+          Icon={routes.home ? HiHome : HiOutlineHome}
+          info={routes.home && { title: "home", active: true }}
+          href="/"
+        />
+        {/* Skill Icon */}
+        <BottomNavLink
+          Icon={routes.skills ? BsBarChartFill : BsBarChart}
+          info={routes.skills && { title: "Skills", active: true }}
+          href="/skills"
+        />
+
+        {/* Blogs Icon */}
+        <BottomNavLink
+          Icon={routes.blogs ? RiArticleFill : RiArticleLine}
+          info={routes.blogs && { title: "Blogs", active: true }}
+          href="/blogs"
+        />
+        {/* Projects Icon */}
+        <BottomNavLink
+          Icon={routes.projects ? AiFillProject : AiOutlineProject}
+          info={routes.projects && { title: "projects", active: true }}
+          href="/projects"
+        />
+        {/* Contact Icon */}
+        <BottomNavLink
+          Icon={routes.contact ? AiFillPhone : AiOutlinePhone}
+          info={routes.contact && { title: "contact", active: true }}
+          href="/contact"
+        />
       </div>
     </div>
   );
 }
 export default BottomNavbar;
-
-export async function getStaticProps(context) {
-  const data = context.req;
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
