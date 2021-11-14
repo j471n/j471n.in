@@ -35,6 +35,25 @@ export default function Home({
         ></CoverPage>
 
         <div className="pb-24">
+          {/* About me */}
+
+          <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
+            <HomeHeading title="About Me" />
+            <p>
+              Hi, welcome! I'm Jatin Sharma and I'm a self-taught React
+              Developer 👋 as I am currently perusing my Bachelor Degree in
+              Computer Science. I wanted to learn the web development so
+              desperately in my High School, then as the time passed I've
+              managed to get all the resources i need to start this journey,
+              I've watched so many tutorial followed so many articles to learn
+              this. I've also some other programming languages such as Python,
+              C, C++, etc. In my future, I also want to dive in the Mobile
+              Development as well as Backend Development. I am currently
+              Learning many things and backend is one on them. In my spare time
+              I also write blogs on <Link className="text-blue-500" href="https://dev.to/j471n"> Dev.to</Link> about what I am learning or some tutorials as well. If you are interested in it the must visit. 👋
+            </p>
+          </section>
+
           {/* Skills Section */}
           <section>
             <HomeHeading title="My Top ⚡kills" />
@@ -170,41 +189,6 @@ export default function Home({
           </footer>
         </div>
       </div>
-
-      {/* <p>
-        Hi, welcome! I'm Rui and I'm a self-taught front-end developer 👋 My
-        story starts in Portugal (and so it remains so far) as I am on the verge
-        of finishing my Master's Degree in Psychology. I wasn't sure if I wanted
-        to practice Psychology but the difficulties associated with practicing
-        Psychology in Portugal (it's a very long story) made me think if I
-        actually wanted to devote my effort to get into it. During my mental
-        debate, in 2018, I found out that it was possible to get a programming
-        career without actually needing a Computer Sciences course and,
-        suddenly, everything was made clear: I was going to try to become a web
-        developer... And so began my adventure in September 2018! At that time I
-        wasn't really sure what I could or couldn't do or even what I wanted to
-        do but one thing was certain: I wanted to leave my mark in the internet.
-        Even if it was on an obscure website that no one would ever visit... I
-        would just be happy to know that some part of me, or my work, was out
-        there. So I studied and I studied and I followed a lot of tutorials and
-        applied to a lot of jobs, just wishing that someone would give me my
-        first opportunity within the field. That soon happened within 6 months
-        of starting my study, in April 2019, and my first job was as a Web
-        Developer/Web Designer for a digital marketing agency. I mostly worked
-        with WordPress but I WAS IN. After getting that first job I didn't stop
-        and kept studying (specially since I wanted to get into a software
-        company) and after a looooooooong time of trial-and-error (with a lot of
-        interviews), Coletiv gave me the opportunity, on February 2020, and now
-        here I stand! 😎 I can finally say that I am a Front-End Developer and I
-        am indeed leaving my mark on the internet! I'm sure that I'll write a
-        more in detail description in the blog part of this website (btw, you
-        should totally check it out) but, for now, this is pretty much
-        everything you may want to know about me. Feel free to keep following
-        this blog closely since it's not intended to solely talk about coding. I
-        imagine it as a place where I can share my hobbies and passions so
-        expect a lot of gaming and music as well! If you want to follow me on
-        social media, you can do so on Twitter, YouTube, GitHub and Dribbble 👋
-      </p> */}
     </>
   );
 }
