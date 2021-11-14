@@ -161,11 +161,16 @@ export default function Home({
             </div>
           </section>
 
-          <motion.div className="">
+          <div className="m-3">
             <Author followers={followers} />
-          </motion.div>
+          </div>
+
+          <footer className="w-full p-4 mt-5 font-medium text-xs sm:text-base text-center">
+            <p>Made with ❤️ by Jatin Sharma</p>
+          </footer>
         </div>
       </div>
+
       {/* <p>
         Hi, welcome! I'm Rui and I'm a self-taught front-end developer 👋 My
         story starts in Portugal (and so it remains so far) as I am on the verge
