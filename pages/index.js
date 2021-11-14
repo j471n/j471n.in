@@ -29,7 +29,7 @@ export default function Home({ blogs, skills, certificates, projects }) {
         <div className="pb-24">
           {/* Skills Section */}
           <section>
-            <HomeHeading title="My Top Skills" />
+            <HomeHeading title="My Top ⚡kills" />
 
             <div className="home-section-container">
               {skills.map((skill) => {
@@ -48,7 +48,7 @@ export default function Home({ blogs, skills, certificates, projects }) {
 
           {/* Blogs Section */}
           <section>
-            <HomeHeading title="Recent Blogs" />
+            <HomeHeading title="Recent Blogs 👩‍💻" />
             <div className="home-section-container ">
               {blogs.map((blog) => {
                 return (
@@ -92,7 +92,7 @@ export default function Home({ blogs, skills, certificates, projects }) {
 
           {/* Certification Section */}
           <section>
-            <HomeHeading title="Certification" />
+            <HomeHeading title="Certification 📜" />
             <div className="home-section-container ">
               {certificates.map((certificate) => {
                 return (
