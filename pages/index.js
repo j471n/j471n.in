@@ -3,11 +3,19 @@ import CoverPage from "../components/CoverPage";
 import Link from "next/link";
 import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
-import { AiOutlineCalendar, AiOutlineLink, AiFillGithub } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
+import { motion } from "framer-motion";
+import Author from "../components/Author";
 
-export default function Home({ blogs, skills, certificates, projects }) {
+export default function Home({
+  blogs,
+  skills,
+  certificates,
+  projects,
+  followers,
+}) {
   console.log(projects);
   return (
     <>
@@ -31,10 +39,10 @@ export default function Home({ blogs, skills, certificates, projects }) {
           <section>
             <HomeHeading title="My Top ⚡kills" />
 
-            <div className="home-section-container">
+            <div className="home-section-container no-scrollbar">
               {skills.map((skill) => {
                 return (
-                  <div className="home-content-section  no-scrollbar bg-gray-200">
+                  <div className="home-content-section bg-gray-200">
                     <Image width={70} height={70} src={`/${skill.icon}`} />
                     <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
                       {skill.name}
@@ -49,11 +57,11 @@ export default function Home({ blogs, skills, certificates, projects }) {
           {/* Blogs Section */}
           <section>
             <HomeHeading title="Recent Blogs 👩‍💻" />
-            <div className="home-section-container ">
+            <div className="home-section-container no-scrollbar">
               {blogs.map((blog) => {
                 return (
                   <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-                    <div className="home-content-section no-scrollbar">
+                    <div className="home-content-section">
                       <Image
                         className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
                         src={blog.cover_image}
@@ -93,7 +101,7 @@ export default function Home({ blogs, skills, certificates, projects }) {
           {/* Certification Section */}
           <section>
             <HomeHeading title="Certification 📜" />
-            <div className="home-section-container ">
+            <div className="home-section-container no-scrollbar">
               {certificates.map((certificate) => {
                 return (
                   <div className="home-content-section no-scrollbar flex flex-col justify-evenly cursor-auto">
@@ -125,7 +133,7 @@ export default function Home({ blogs, skills, certificates, projects }) {
           {/* Project Section */}
           <section>
             <HomeHeading title="Projects 📂" />
-            <div className="home-section-container ">
+            <div className="home-section-container no-scrollbar">
               {projects.map((project) => {
                 return (
                   <div
@@ -152,6 +160,10 @@ export default function Home({ blogs, skills, certificates, projects }) {
               <ExploreMoreButton link="/projects" />
             </div>
           </section>
+
+          <motion.div className="">
+            <Author followers={followers} />
+          </motion.div>
         </div>
       </div>
       {/* <p>
@@ -200,7 +212,7 @@ export function HomeHeading({ title }) {
 
 export async function getServerSideProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates, projects] = await Promise.all([
+  const [blogs, skills, certificates, projects, followers] = await Promise.all([
     fetch("https://dev.to/api/articles/me?per_page=5", {
       headers: {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
@@ -215,6 +227,9 @@ export async function getServerSideProps() {
     fetch(process.env.NEXT_PUBLIC_API_URL + "/project-list?pinned=true").then(
       (res) => res.json()
     ),
+    fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
+      (res) => res.json()
+    ),
   ]);
   return {
     props: {
@@ -222,6 +237,7 @@ export async function getServerSideProps() {
       skills,
       certificates,
       projects,
+      followers: followers.followers_count,
     },
   };
 }
