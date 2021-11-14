@@ -33,7 +33,6 @@ function BottomNavbar() {
     if (currentRoute === "") {
       setRoutes({ ...routes, ...{ home: true } });
     } else if (routes.hasOwnProperty(currentRoute)) {
-      console.log("true");
       let obj = {};
       obj[currentRoute] = true;
       setRoutes({ ...routes, ...obj });
@@ -41,7 +40,6 @@ function BottomNavbar() {
       console.error("404 NOT FOUND");
     }
   }, [currentRoute]);
-  console.log(routes);
 
   return (
     <div className="fixed bg-white sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-40">
