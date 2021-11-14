@@ -6,7 +6,10 @@ import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-export default function Home({ blogs, skills }) {
+import { GrCertificate } from "react-icons/gr";
+
+export default function Home({ blogs, skills, certificates }) {
+  console.log(certificates);
   return (
     <>
       <Head>
@@ -24,29 +27,27 @@ export default function Home({ blogs, skills }) {
           childrenClass="text-[32px] ml-0"
         ></CoverPage>
 
-        <div className="md:px-24 pb-24">
+        <div className="pb-24">
           {/* Skills Section */}
           <section>
             <HomeHeading title="My Top Skills" />
 
             <div className="home-section-container">
               {skills.map((skill) => {
-                if (!skill.pinned) return;
-
                 return (
                   <div className="home-content-section  no-scrollbar bg-gray-200">
                     <Image width={70} height={70} src={`/${skill.icon}`} />
                     <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
                       {skill.name}
                     </p>
-                  
                   </div>
                 );
               })}
               <ExploreMoreButton link="/skills" />
             </div>
           </section>
-          {/* Education Section */}
+
+          {/* Blogs Section */}
           <section>
             <HomeHeading title="Recent Blogs" />
             <div className="home-section-container ">
@@ -89,8 +90,39 @@ export default function Home({ blogs, skills }) {
               <ExploreMoreButton link="/blogs" />
             </div>
           </section>
+
+          {/* Certification Section */}
+          <section>
+            <HomeHeading title="Certification" />
+            <div className="home-section-container ">
+              {certificates.map((certificate) => {
+                return (
+                  <div className="home-content-section no-scrollbar flex flex-col justify-evenly cursor-auto">
+                    <Image
+                      width={100}
+                      height={20}
+                      src={certificate.issuedBy.orgLogo}
+                      alt={certificate.issuedBy.orgName}
+                      layout="responsive"
+                      objectFit="contain"
+                    />
+                    <p className="capitalize my-2 font-bold text-xs sm:text-base border-purple-600">
+                      {certificate.title}
+                    </p>
+                    <button
+                      className="px-3 py-2  bg-purple-400 text-center outline-none clickable_button w-full mx-auto flex items-center text-xs font-medium  justify-center space-x-3 rounded-md"
+                      onClick={() => window.open(certificate.urls.pdfURL)}
+                    >
+                      <GrCertificate className="text-xl" />
+                      <p>View Certification</p>
+                    </button>
+                  </div>
+                );
+              })}
+              <ExploreMoreButton link="/certificates" />
+            </div>
+          </section>
         </div>
-        {/* Projects Section */}
       </div>
       {/* <p>
         Hi, welcome! I'm Rui and I'm a self-taught front-end developer 👋 My
@@ -138,20 +170,24 @@ export function HomeHeading({ title }) {
 
 export async function getServerSideProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills] = await Promise.all([
+  const [blogs, skills, certificates] = await Promise.all([
     fetch("https://dev.to/api/articles/me?per_page=5", {
       headers: {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
       },
     }).then((res) => res.json()),
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/skills").then((res) =>
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/skills?pinned=true").then((res) =>
       res.json()
+    ),
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/certificates?pinned=true").then(
+      (res) => res.json()
     ),
   ]);
   return {
     props: {
       blogs,
       skills,
+      certificates,
     },
   };
 }
