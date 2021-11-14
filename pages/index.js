@@ -1,15 +1,14 @@
 import Head from "next/head";
 import CoverPage from "../components/CoverPage";
-import Blog from "../components/Blog";
 import Link from "next/link";
 import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
-import { AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineCalendar, AiOutlineLink, AiFillGithub } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
 
-export default function Home({ blogs, skills, certificates }) {
-  console.log(certificates);
+export default function Home({ blogs, skills, certificates, projects }) {
+  console.log(projects);
   return (
     <>
       <Head>
@@ -122,6 +121,37 @@ export default function Home({ blogs, skills, certificates }) {
               <ExploreMoreButton link="/certificates" />
             </div>
           </section>
+
+          {/* Project Section */}
+          <section>
+            <HomeHeading title="Projects 📂" />
+            <div className="home-section-container ">
+              {projects.map((project) => {
+                return (
+                  <div
+                    className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start"
+                    onClick={() => window.open(project.githubURL)}
+                  >
+                    <Image
+                      className="rounded-xl mb-2"
+                      width={360}
+                      height={200}
+                      src={project.coverURL}
+                      alt={project.name}
+                      layout="responsive"
+                      objectFit="contain"
+                    />
+                    <p className="capitalize my-2 font-bold text-lg md:text-xl border-purple-600">
+                      {project.name}
+                    </p>
+
+                    <p>{project.description}</p>
+                  </div>
+                );
+              })}
+              <ExploreMoreButton link="/projects" />
+            </div>
+          </section>
         </div>
       </div>
       {/* <p>
@@ -170,7 +200,7 @@ export function HomeHeading({ title }) {
 
 export async function getServerSideProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates] = await Promise.all([
+  const [blogs, skills, certificates, projects] = await Promise.all([
     fetch("https://dev.to/api/articles/me?per_page=5", {
       headers: {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
@@ -182,12 +212,16 @@ export async function getServerSideProps() {
     fetch(process.env.NEXT_PUBLIC_API_URL + "/certificates?pinned=true").then(
       (res) => res.json()
     ),
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/project-list?pinned=true").then(
+      (res) => res.json()
+    ),
   ]);
   return {
     props: {
       blogs,
       skills,
       certificates,
+      projects,
     },
   };
 }
