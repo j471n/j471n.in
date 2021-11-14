@@ -16,7 +16,6 @@ export default function Home({
   projects,
   followers,
 }) {
-  console.log(projects);
   return (
     <>
       <Head>
@@ -52,9 +51,8 @@ export default function Home({
               Learning many things and backend is one on them. In my spare time
               I also write blogs on{" "}
               <Link className="text-blue-500" href="https://dev.to/j471n">
-                {" "}
                 Dev.to
-              </Link>{" "}
+              </Link>
               about what I am learning or some tutorials as well. If you are
               interested in it the must visit. 👋
             </p>
