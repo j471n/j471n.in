@@ -50,7 +50,13 @@ export default function Home({
               C, C++, etc. In my future, I also want to dive in the Mobile
               Development as well as Backend Development. I am currently
               Learning many things and backend is one on them. In my spare time
-              I also write blogs on <Link className="text-blue-500" href="https://dev.to/j471n"> Dev.to</Link> about what I am learning or some tutorials as well. If you are interested in it the must visit. 👋
+              I also write blogs on{" "}
+              <Link className="text-blue-500" href="https://dev.to/j471n">
+                {" "}
+                Dev.to
+              </Link>{" "}
+              about what I am learning or some tutorials as well. If you are
+              interested in it the must visit. 👋
             </p>
           </section>
 
@@ -61,7 +67,10 @@ export default function Home({
             <div className="home-section-container no-scrollbar">
               {skills.map((skill) => {
                 return (
-                  <div className="home-content-section bg-gray-200">
+                  <div
+                    key={skill.id}
+                    className="home-content-section bg-gray-200"
+                  >
                     <Image width={70} height={70} src={`/${skill.icon}`} />
                     <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
                       {skill.name}
@@ -123,7 +132,10 @@ export default function Home({
             <div className="home-section-container no-scrollbar">
               {certificates.map((certificate) => {
                 return (
-                  <div className="home-content-section no-scrollbar flex flex-col justify-evenly cursor-auto">
+                  <div
+                    key={certificate.id}
+                    className="home-content-section no-scrollbar flex flex-col justify-evenly cursor-auto"
+                  >
                     <Image
                       width={100}
                       height={20}
@@ -156,6 +168,7 @@ export default function Home({
               {projects.map((project) => {
                 return (
                   <div
+                    key={project.id}
                     className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start"
                     onClick={() => window.open(project.githubURL)}
                   >
