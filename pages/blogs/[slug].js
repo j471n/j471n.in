@@ -8,7 +8,7 @@ import Author from "../../components/Author";
 import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
 
-export default function Article({ article }) {
+export default function Article({ article, followers }) {
   const router = useRouter();
   return (
     <>
@@ -74,7 +74,7 @@ export default function Article({ article }) {
               </div>
             </div>
             <div className={styles.article_sidebar}>
-              <Author />
+              <Author followers={followers} />
             </div>
           </div>
           <Comments articleId={article.id} articleAuthor={article.user} />
@@ -85,14 +85,23 @@ export default function Article({ article }) {
 }
 
 export async function getServerSideProps(context) {
+  // Getting slug from query
   const slug = context.query.slug;
-  const res = await fetch("https://dev.to/api/articles/j471n/" + slug);
-  const article = await res.json();
+
+  // Promises
+  const [article, followers] = await Promise.all([
+    fetch("https://dev.to/api/articles/j471n/" + slug).then((res) =>
+      res.json()
+    ),
+    fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
+      (res) => res.json()
+    ),
+  ]);
 
   return {
     props: {
       article,
-      slug,
+      followers: followers.followers_count,
     },
   };
 }
