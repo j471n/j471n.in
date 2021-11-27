@@ -194,9 +194,6 @@ export default function Home({
             <Author followers={followers} />
           </div>
 
-          <footer className="w-full p-4 mt-5 font-medium text-xs sm:text-base text-center">
-            <p>Made with ❤️ by Jatin Sharma</p>
-          </footer>
         </div>
       </div>
     </>
