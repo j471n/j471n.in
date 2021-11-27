@@ -30,7 +30,6 @@ export default function Home({
           title="Hi There! I am"
           className="flex flex-col justify-center items-center"
           mainHeading="Jatin Sharma"
-          childrenClass="text-[32px] ml-0"
         ></CoverPage>
 
         <div className="pb-24">
