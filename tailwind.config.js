@@ -8,6 +8,10 @@ module.exports = {
       merriweather: ["Merriweather", "sans-serif"],
     },
     extend: {
+      listStyleType: {
+        square: "square",
+        roman: "upper-roman",
+      },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
       },
@@ -24,6 +28,6 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [require('tailwind-scrollbar-hide')],
+    plugins: [require("tailwind-scrollbar-hide")],
   },
 };

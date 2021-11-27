@@ -43,6 +43,10 @@ body::-webkit-scrollbar-thumb {
   animation: bar 2s linear;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes bar {
   from {
     width: 0;
@@ -119,11 +123,11 @@ body::-webkit-scrollbar-thumb {
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;
   }
-  
+
   .home-section-container {
     @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] last:mr-10 select-none;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white ;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white;
   }
 }

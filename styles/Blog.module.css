@@ -1,5 +1,6 @@
 /*  main data Container */
 
+
 .article_page {
   @apply p-3;
 }
@@ -44,11 +45,15 @@
 }
 
 .dev_blog > p > code {
-  @apply bg-gray-200 px-1 py-[2px] text-xs rounded-md;
+  @apply bg-gray-200 px-1 py-[2px] text-xs rounded-md ;
 }
 
 .dev_blog > p strong {
   @apply text-xl;
+}
+
+.dev_blog > * {
+  @apply my-3;
 }
 
 .dev_blog h1 {
@@ -84,6 +89,26 @@
   @apply no-underline space-x-3 text-blue-500 font-medium my-2 hover:underline;
 }
 
+.dev_blog > ul ul {
+  @apply list-square ml-5;
+}
+
 .dev_blog pre {
   @apply flex overflow-x-scroll bg-[#262A33] p-4 rounded-lg text-gray-300 text-xs sm:text-base;
+}
+
+.dev_blog > div > table {
+  @apply border border-black;
+}
+
+.dev_blog > div > table thead {
+  @apply bg-gray-800 border border-black text-gray-300 font-normal;
+}
+
+.dev_blog > div > table tbody tr > td {
+  @apply border border-black p-1;
+}
+
+.dev_blog > div > table tbody tr:hover {
+  @apply bg-white transition duration-200;
 }
