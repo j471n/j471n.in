@@ -1,5 +1,5 @@
 .container {
-  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 sm:px-24;
+  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 sm:px-24 space-x-2;
 }
 
 .tag {
@@ -11,9 +11,11 @@
 }
 
 .tag > label {
-  @apply py-1 px-4 rounded-full border-[1px] border-gray-500 mx-1 text-sm font-medium  cursor-pointer uppercase;
+  @apply py-1 px-4 ring-1 ring-gray-300 cursor-pointer uppercase rounded-md hover:bg-gray-100 transition duration-200 text-sm sm:text-base select-none;
 }
 
+
+
 .tag > input:checked ~ label {
-  @apply bg-[#222] text-white border-transparent;
+  @apply bg-[#222] text-white border-transparent shadow-lg;
 }
