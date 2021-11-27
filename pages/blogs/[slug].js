@@ -8,7 +8,7 @@ import Author from "../../components/Author";
 import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
 
-export default function Article({ article, followers }) {
+export default function Article({ article, comments, followers }) {
   const router = useRouter();
   return (
     <>
@@ -77,7 +77,11 @@ export default function Article({ article, followers }) {
               <Author followers={followers} />
             </div>
           </div>
-          <Comments articleId={article.id} articleAuthor={article.user} />
+          <Comments
+            comments={comments}
+            articleId={article.id}
+            articleAuthor={article.user}
+          />
         </>
       )}
     </>
@@ -88,19 +92,26 @@ export async function getServerSideProps(context) {
   // Getting slug from query
   const slug = context.query.slug;
 
-  // Promises
+  // Promises for article and followers
   const [article, followers] = await Promise.all([
     fetch("https://dev.to/api/articles/j471n/" + slug).then((res) =>
       res.json()
     ),
+
     fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
       (res) => res.json()
     ),
   ]);
 
+  // Fetching the comments of current slug
+  const comments = await fetch(
+    `https://dev.to/api/comments?a_id=${article.id}?sort=-created_at`
+  ).then((res) => res.json());
+
   return {
     props: {
       article,
+      comments,
       followers: followers.followers_count,
     },
   };
