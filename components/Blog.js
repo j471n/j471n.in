@@ -14,6 +14,9 @@ export default function Blog({ blog }) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
+  // const time = ;
+  // console.log;
+
   function numFormatter(num) {
     if (num > 999 && num < 1000000) {
       return (num / 1000).toFixed(1) + "K"; // convert to K for number from > 1000 < 1 million
@@ -82,18 +85,25 @@ export default function Blog({ blog }) {
             </div>
           </a>
 
-          {blog.public_reactions_count >= 100 && (
-            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
-              <Image
-                className="rounded-full"
-                src="/img/fire-icon.jpg"
-                alt=""
-                height={20}
-                width={16}
-              />
-              <p className="text-xs font-bold text-white ml-3">Hot</p>
-            </div>
-          )}
+          {/* Checking if the post reaction is more than 100 and post is not more than 30 days old then show the hot sign */}
+          {blog.public_reactions_count >= 100 &&
+            Math.abs(
+              parseInt(
+                (new Date(blog.published_at).getTime() - new Date().getTime()) /
+                  (1000 * 3600 * 24)
+              )
+            ) <= 15 && (
+              <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
+                <Image
+                  className="rounded-full"
+                  src="/img/fire-icon.jpg"
+                  alt=""
+                  height={20}
+                  width={16}
+                />
+                <p className="text-xs font-bold text-white ml-3">Hot</p>
+              </div>
+            )}
         </div>
 
         <div className="mb-2">
