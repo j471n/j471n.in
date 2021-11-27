@@ -4,15 +4,18 @@ import { AiOutlineCalendar, AiFillCopy } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import Image from "next/image";
+import Link from "next/link";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
 
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
+
+  console.log(article);
   return (
     <>
-      {article && (
+      {!article.error ? (
         <>
           <div className="flex flex-col  md:flex row relative lg:max-w-[70%] mx-auto font-exo">
             <div className={styles.article_page}>
@@ -83,6 +86,18 @@ export default function Article({ article, comments, followers }) {
             articleAuthor={article.user}
           />
         </>
+      ) : (
+        <div className="absolute w-full h-[90%] grid place-items-center">
+          <div className="flex flex-col space-y-2 items-center">
+            <p className="font-bold text-2xl">404 NOT FOUND</p>
+
+            <Link href="/" class="">
+              <p className="bg-purple-500 px-5 py-2 font-medium rounded-xl cursor-pointer">
+                Home
+              </p>
+            </Link>
+          </div>
+        </div>
       )}
     </>
   );
