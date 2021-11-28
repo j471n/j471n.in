@@ -21,7 +21,8 @@ export default function Tags({ blogTags, handleTagSelection, query }) {
   );
 }
 
-export function Tag({ tag, checked = false }) {
+export function Tag({ tag, checked }) {
+  console.log(tag, checked);
   return (
     <div className={`${styles.tag} scrollbar-hide`}>
       <input

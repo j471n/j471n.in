@@ -7,19 +7,19 @@ import { useRouter } from "next/router";
 
 export default function Blogs({ blogTags, data }) {
   const [blogs, setBlogs] = useState([]);
-
   const router = useRouter();
-  const query = router.query.tag;
 
-  function sorting(query = "all") {
+  const query = router.query.tag || "all";
+
+  function sorting(q = "all") {
     var filteredData = [];
     data.map((blog) => {
       // Sort By the query or tag
-      if (blog.tag_list.includes(query)) {
+      if (blog.tag_list.includes(q)) {
         filteredData.push(blog);
       } else {
         // if the tag is missing then sort by on some special params
-        switch (query) {
+        switch (q) {
           case "all":
             filteredData = data;
             break;
@@ -92,30 +92,6 @@ export async function getServerSideProps(ctx) {
       }
     });
   });
-
-  var temp = [];
-  // data.map((blog) => {
-  //   // Sort By the query or tag
-  //   if (blog.tag_list.includes(query)) {
-  //     temp.push(blog);
-  //   } else {
-  //     // if the tag is missing then sort by on some special params
-  //     switch (query) {
-  //       case "all":
-  //         temp = data;
-  //         break;
-  //       case "popular":
-  //         temp = data
-  //           .sort(
-  //             (a, b) => a.positive_reactions_count - b.positive_reactions_count
-  //           )
-  //           .reverse();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   }
-  // });
 
   return {
     props: {
