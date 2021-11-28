@@ -118,6 +118,7 @@ export default function Blogs({ blogTags, data }) {
           {searchResult.map((res) => {
             return (
               <motion.div
+                key={res.id}
                 className="flex items-center w-full p-2 ring-1 ring-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
                 ref={ref}
                 onClick={() => router.push(`/blogs/${res.slug}`)}
