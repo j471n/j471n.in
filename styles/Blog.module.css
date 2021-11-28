@@ -1,6 +1,5 @@
 /*  main data Container */
 
-
 .article_page {
   @apply p-3;
 }
@@ -14,7 +13,7 @@
 }
 
 .article_header {
-  @apply flex  flex-col;
+  @apply flex  flex-col space-y-2;
 }
 
 .socialMedia {
@@ -38,14 +37,14 @@
 }
 
 .dev_blog > p img {
-  @apply mx-auto;
+  @apply mx-auto rounded-lg;
 }
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
 
 .dev_blog > p > code {
-  @apply bg-gray-200 px-1 py-[2px] text-xs rounded-md ;
+  @apply bg-gray-400 px-1 py-[2px] text-xs rounded-md;
 }
 
 .dev_blog > p strong {

@@ -12,14 +12,13 @@ import { useRouter } from "next/router";
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
 
-  console.log(article);
   return (
     <>
       {!article.error ? (
         <>
           <div className="flex flex-col  md:flex row relative lg:max-w-[70%] mx-auto font-exo">
             <div className={styles.article_page}>
-              <h1 className=" text-4xl font-bold mb-1">{article.title}</h1>
+              <h1 className=" text-4xl font-bold mb-4">{article.title}</h1>
               <div className={styles.article_header}>
                 <div className="flex space-x-2">
                   <div className="flex items-center">
