@@ -25,3 +25,18 @@ export const slideFromBottom = {
     },
   },
 };
+
+// Slide from the left animation
+
+export const slideFromLeft = {
+  hidden: { x: -200, opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeInOut",
+    },
+  },
+};
