@@ -5,7 +5,7 @@
 }
 
 .article_sidebar {
-  @apply block md:sticky right-0 top-0 bottom-0 w-full;
+  @apply block md:sticky  w-full;
 }
 
 .blog {
@@ -94,7 +94,7 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-[#262A33] p-4 rounded-lg text-gray-300 text-xs sm:text-base;
+  @apply flex overflow-x-scroll bg-[#262A33] p-4 rounded-lg text-gray-300 text-xs md:text-base;
 }
 
 .dev_blog > div > table {

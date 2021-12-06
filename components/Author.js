@@ -20,7 +20,7 @@ export default function Author({ followers }) {
   }, []);
 
   return (
-    <div className="max-w-lg mx-3 rounded-lg lg:rounded-3xl sm:mx-auto md:w-full overflow-hidden bg-blue-200 relative">
+    <div className="max-w-lg rounded-lg  mx-auto md:w-full overflow-hidden bg-blue-200 relative">
       {author && (
         <>
           <Image
@@ -42,23 +42,23 @@ export default function Author({ followers }) {
               </div>
               <p className="font-bold text-3xl ">{author.name}</p>
 
-              <div className="flex items-center justify-between space-x-3 absolute top-10 w-full px-10 py-3">
+              <div className="flex items-center justify-between space-x-3 absolute top-10 w-full px-3 lg:px-5 py-3">
                 <div
                   title="Location"
-                  className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1"
+                  className="flex items-center justify-center text-xs lg:text-base font-medium space-x-1"
                 >
-                  <TiLocation className="text-gray-700 sm:text-lg" />
+                  <TiLocation className="text-gray-700 text-sm" />
                   <p>{author.location}</p>
                 </div>
                 <div
                   title="Followers"
-                  className="flex items-center justify-center text-xs sm:text-base font-medium space-x-1"
+                  className="flex items-center justify-center text-xs lg:text-base font-medium space-x-1"
                 >
-                  <RiUserFollowFill className="text-gray-700 sm:text-lg" />
+                  <RiUserFollowFill className="text-gray-700 text-sm" />
                   <p>{followers}</p>
                 </div>
               </div>
-              <div className="text-sm sm:text-base">{author.summary}</div>
+              <div className="text-sm lg:text-base">{author.summary}</div>
               <div className=" h-full relative mt-2 mx-3 flex flex-col items-center">
                 <div className="flex items-center justify-center">
                   <SocialIcon

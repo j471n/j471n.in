@@ -30,7 +30,7 @@ export default function Comment({ comment, margin, articleAuthor }) {
             width={30}
             height={30}
           />
-          <p>{comment.user.name}</p>
+          <p className="text-xs">{comment.user.name}</p>
           {comment.user.username === articleAuthor.username && (
             <GoVerified className="text-gray-500 -m-2 " />
           )}
@@ -39,7 +39,7 @@ export default function Comment({ comment, margin, articleAuthor }) {
           <span>&#183;</span>
 
           {/* Date of Comment */}
-          <p>{new Date(comment.created_at).toDateString().slice(4)}</p>
+          <p className="text-xs">{new Date(comment.created_at).toDateString().slice(4)}</p>
         </div>
         <div className={styles.comment}>
           <Interweave content={comment.body_html} />
