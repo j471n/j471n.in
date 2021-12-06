@@ -193,7 +193,6 @@ export default function Home({
           <div className="m-3">
             <Author followers={followers} />
           </div>
-
         </div>
       </div>
     </>
