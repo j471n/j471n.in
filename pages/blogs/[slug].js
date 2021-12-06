@@ -1,8 +1,9 @@
 import Interweave from "interweave";
 import styles from "../../styles/Blog.module.css";
-import { AiOutlineCalendar, AiFillCopy } from "react-icons/ai";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Author from "../../components/Author";
@@ -11,11 +12,35 @@ import { useRouter } from "next/router";
 
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
+  const [progressWidth, setProgressWidth] = useState("0");
+  useEffect(() => {
+    function progressBar() {
+      var winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+      var height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+
+      setProgressWidth(parseInt(scrolled));
+      // document.getElementById("myBar").style.width = scrolled + "%";
+    }
+
+    window.addEventListener("scroll", progressBar);
+    return () => {
+      window.removeEventListener("scroll", progressBar);
+    };
+  }, []);
+
+  console.log(progressWidth);
 
   return (
     <>
       {!article.error ? (
         <>
+          <div
+            className={`fixed top-0 z-50 h-4 bg-red-500 w-[${progressWidth}px]`}
+          ></div>
           <div className="flex flex-col  md:flex row relative lg:max-w-[70%] mx-auto font-exo">
             <div className={styles.article_page}>
               <h1 className=" text-4xl font-bold mb-4">{article.title}</h1>

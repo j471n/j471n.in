@@ -43,12 +43,13 @@
   @apply border-l-4 border-gray-500 pl-3;
 }
 
-.dev_blog > p > code {
+.dev_blog > p code,
+.dev_blog > ul li code {
   @apply bg-gray-400 px-1 py-[2px] text-xs rounded-md;
 }
 
 .dev_blog > p strong {
-  @apply text-xl;
+  @apply font-bold;
 }
 
 .dev_blog > * {
@@ -110,4 +111,8 @@
 
 .dev_blog > div > table tbody tr:hover {
   @apply bg-white transition duration-200;
+}
+
+.dev_blog > blockquote > p {
+  @apply flex flex-col space-y-2;
 }
