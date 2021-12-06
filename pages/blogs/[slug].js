@@ -12,75 +12,35 @@ import { useRouter } from "next/router";
 
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
-  const [progressWidth, setProgressWidth] = useState("0");
+  const [progressWidth, setProgressWidth] = useState(0);
+
   useEffect(() => {
-    function progressBar() {
+    function getScrollPercentage() {
       var winScroll =
         document.body.scrollTop || document.documentElement.scrollTop;
       var height =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
       var scrolled = (winScroll / height) * 100;
-
       setProgressWidth(parseInt(scrolled));
-      // document.getElementById("myBar").style.width = scrolled + "%";
     }
 
-    window.addEventListener("scroll", progressBar);
+    window.addEventListener("scroll", getScrollPercentage);
     return () => {
-      window.removeEventListener("scroll", progressBar);
+      window.removeEventListener("scroll", getScrollPercentage);
     };
   }, []);
-
-  console.log(progressWidth);
 
   return (
     <>
       {!article.error ? (
         <>
+          <div
+            style={{ width: `${progressWidth}%` }}
+            className="h-2 bg-purple-600  transition-all duration-200 ease-linear fixed top-0 z-50"
+          ></div>
           <div className="flex flex-col-reverse md:flex-row-reverse p-3 mb:p-5 mb-10 lg:px-10 gap-5">
             <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo">
-              {/* <div className={styles.article_page}>
-                <h1 className=" text-4xl font-bold mb-4">{article.title}</h1>
-                <div className={styles.article_header}>
-                  <div className="flex space-x-2">
-                    <div className="flex items-center">
-                      <AiOutlineCalendar />
-                      <p className="text-xs ml-1 font-medium">
-                        {new Date(
-                          Date.parse(article.published_at)
-                        ).toDateString()}
-                      </p>
-                    </div>
-                    <div className="flex items-center">
-                      <BiTime />
-                      <p className="text-xs ml-1 font-medium">
-                        {article.reading_time_minutes} mins
-                      </p>
-                    </div>
-                  </div>
-                  <ShareOnSocialMedia
-                    className={styles.socialMedia}
-                    title={article.title}
-                    url={article.url}
-                    summary={article.description}
-                    cover_image={article.cover_image}
-                  />
-                </div>
-                <div className="flex items-center my-2 uppercase text-xs sm:text-base text-purple-500 font-bold space-x-3 select-none">
-                  {article.tags?.map((tag) => {
-                    return (
-                      <p
-                        key={tag}
-                        className={styles.tag}
-                        onClick={() => router.push(`/blogs?tag=${tag}`)}
-                      >
-                        {tag}
-                      </p>
-                    );
-                  })}
-                </div>
-              </div> */}
               <div className="p-0">
                 <Author followers={followers} />
               </div>
