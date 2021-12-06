@@ -95,8 +95,8 @@ export default function Blogs({ blogTags, data }) {
   return (
     <>
       <CoverPage
-        title="Look at my "
-        mainHeading="Blogs"
+        title="I write about"
+        mainHeading={["CSS", "Javascript", "React"]}
         className="grid place-items-center"
       />
 
