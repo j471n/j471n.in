@@ -68,7 +68,9 @@ export default function Blogs({ blogTags, data }) {
     setSearchResult(() =>
       searchInputRef.current.value
         ? blogs.filter((blog) =>
-            blog.title.toLowerCase().includes(searchInputRef.current.value)
+            blog.title
+              .toLowerCase()
+              .includes(searchInputRef.current.value.toLowerCase())
           )
         : []
     );
@@ -84,13 +86,6 @@ export default function Blogs({ blogTags, data }) {
     };
     new Typed(searchInputRef.current, options);
   }, []);
-
-  // useEffect(() => {
-  //   // if (inView) {
-  // controls.start("visible");
-
-  //   }
-  // }, [controls, inView]);
 
   return (
     <>
