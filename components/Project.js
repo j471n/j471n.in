@@ -65,7 +65,7 @@ export default function Project({ project }) {
       )}
 
       {project.name && (
-        <div className="w-full p-2 capitalize select-all">
+        <div className="w-full p-2 capitalize select-none">
           {project.name && (
             <h4 className="pb-1 font-bold text-lg">{project.name}</h4>
           )}
@@ -111,7 +111,7 @@ export default function Project({ project }) {
         </div>
       )}
 
-      <div className="sm:absolute right-0 left-0 bottom-0 p-2 w-full flex items-center ">
+      <div className="sm:absolute right-0 left-0 bottom-0 p-2 w-full flex items-center">
         {project.githubURL && (
           <a
             title="Github"

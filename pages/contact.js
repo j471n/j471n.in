@@ -28,26 +28,27 @@ export default function Contact() {
 
   function sendEmail(e) {
     e.preventDefault();
+    toast.success("Message Sent ✌");
 
-    setLoading(true);
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
-        process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
-        emailInfo,
-        process.env.NEXT_PUBLIC_YOUR_USER_ID
-      )
-      .then((res) => {
-        console.log("Email Sent Successfully");
-        setLoading(false);
-        setEmailInfo(initialFormState);
-        toast.success("Message Sent ✌");
-      })
-      .catch((err) => {
-        console.log(err.text);
-        setLoading(false);
-        toast.error("😢 " + err.text);
-      });
+    // setLoading(true);
+    // emailjs
+    //   .send(
+    //     process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
+    //     process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
+    //     emailInfo,
+    //     process.env.NEXT_PUBLIC_YOUR_USER_ID
+    //   )
+    //   .then((res) => {
+    //     console.log("Email Sent Successfully");
+    //     setLoading(false);
+    //     setEmailInfo(initialFormState);
+    //     toast.success("Message Sent ✌");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.text);
+    //     setLoading(false);
+    //     toast.error("😢 " + err.text);
+    //   });
   }
 
   return (
@@ -58,7 +59,7 @@ export default function Contact() {
         className="grid place-items-center"
       />
 
-      <section className="w-full flex flex-col items-center p-4 pb-24">
+      <section className="w-full flex flex-col items-center p-4 pb-24 dark:bg-darkPrimary">
         {/* <h3 className="title_of_page">Contact Me!</h3> */}
         {loading ? (
           <Loading />
@@ -76,11 +77,11 @@ export default function Contact() {
             </div>
 
             <form
-              className="w-full flex flex-col items-center max-w-sm"
+              className="w-full flex flex-col items-center max-w-sm dark:text-gray-300"
               onSubmit={sendEmail}
             >
               <input
-                className="contact_field"
+                className="contact_field "
                 value={emailInfo.from_name}
                 type="text"
                 name="from_name"
@@ -135,18 +136,18 @@ export default function Contact() {
                 }
               ></textarea>
               <input
-                className="w-full max-w-sm p-3 border-none rounded-md bg-purple-400 font-semibold mt-4 cursor-pointer  transform duration-150 active:scale-95"
+                className="w-full max-w-sm p-3 border-none rounded-md bg-purple-400 dark:text-darkPrimary font-semibold mt-4 cursor-pointer  transform duration-150 active:scale-95"
                 type="submit"
                 value="Send"
               />
             </form>
 
             <div className="p-0 mt-8 flex flex-col items-center">
-              <h3 className="text-xl text-center font-semibold">
+              <h3 className="text-xl text-center font-semibold dark:text-gray-100">
                 Social Media
               </h3>
 
-              <div className="flex flex-wrap gap-2 sm:gap-4 items-center justify-center pt-4">
+              <div className="flex flex-wrap gap-2 sm:gap-4 items-center justify-center pt-4 dark:text-gray-100">
                 <SocialIcon
                   Icon={AiOutlineInstagram}
                   title="Instagram"
@@ -206,7 +207,7 @@ export default function Contact() {
             </div>
           </React.Fragment>
         )}
-        <ToastContainer />
+        <ToastContainer theme="dark" />
       </section>
     </>
   );

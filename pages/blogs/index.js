@@ -95,42 +95,44 @@ export default function Blogs({ blogTags, data }) {
         className="grid place-items-center"
       />
 
-      <div className="flex flex-col items-center justify-center max-w-lg mx-auto px-5">
-        <form className="mx-auto mt-4 flex items-center w-full">
-          <input
-            className="px-5 text-gray-500 py-2 shadow ring-gray-400 w-full rounded-full outline-none focus:shadow-md transition duration-200"
-            type="search"
-            ref={searchInputRef}
-            onChange={handleSearch}
-          />
-        </form>
-        {/* {comment} */}
-        {/* {searchResult && ( */}
-        <div
-          className="mx-10 w-full flex flex-col space-y-3 mt-4 items-center transform duration-300"
-          ref={searchRef}
-        >
-          {searchResult.map((res) => {
-            return (
-              <motion.div
-                key={res.id}
-                className="flex items-center w-full p-2 ring-1 ring-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
-                ref={ref}
-                onClick={() => router.push(`/blogs/${res.slug}`)}
-                initial="hidden"
-                animate={controls}
-                variants={slideFromLeft}
-              >
-                <Image
-                  className="h-full rounded-lg"
-                  src={res.cover_image}
-                  width={200}
-                  height={85}
-                />
-                <p className="text-sm w-full font-medium">{res.title}</p>
-              </motion.div>
-            );
-          })}
+      <div className="px-5 mx-auto dark:bg-darkPrimary">
+        <div className="flex flex-col items-center max-w-lg justify-center w-full mx-auto">
+          <form className="mx-auto mt-4   flex items-center w-full">
+            <input
+              className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-gray-400 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
+              type="search"
+              ref={searchInputRef}
+              onChange={handleSearch}
+            />
+          </form>
+          {/* {comment} */}
+          {/* {searchResult && ( */}
+          <div
+            className="mx-10 w-full flex flex-col space-y-3 mt-4 items-center transform duration-300 pb-5"
+            ref={searchRef}
+          >
+            {searchResult.map((res) => {
+              return (
+                <motion.div
+                  key={res.id}
+                  className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
+                  ref={ref}
+                  onClick={() => router.push(`/blogs/${res.slug}`)}
+                  initial="hidden"
+                  animate={controls}
+                  variants={slideFromLeft}
+                >
+                  <Image
+                    className="h-full rounded-lg"
+                    src={res.cover_image}
+                    width={200}
+                    height={85}
+                  />
+                  <p className="text-sm w-full font-medium">{res.title}</p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
         {/* )} */}
       </div>

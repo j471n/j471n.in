@@ -25,16 +25,16 @@ export default function CoverPage({ title, mainHeading, className }) {
 
   return (
     <div
-      className={`${className} h-[90vh] md:h-screen lg:h-[110vh] 2xl:h-[120vh] min-w-screen bg-gradient-to-r to-[#5ae7e2] from-[#7c3aed] relative border-none `}
+      className={`${className} h-[90vh] md:h-screen lg:h-[110vh] 2xl:h-[120vh] min-w-screen bg-gradient-to-r to-[#5ae7e2] dark:to-[#42a8a5] from-[#7c3aed] dark:from-[#582aa8] relative border-none `}
     >
       <div className="text-[40px] ml-2 sm:ml-0 -mt-30 md:-mt-60 font-black">
         <p className="text-white">{title}</p>
-        <span className="text-black font-[20px]" ref={typingSpan} />
+        <span className="text-black dark:text-darkPrimary font-[20px]" ref={typingSpan} />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
-        className="absolute -bottom-1 text-white"
+        className="absolute -bottom-1 text-white dark:text-darkPrimary"
       >
         <path
           fill="currentColor"

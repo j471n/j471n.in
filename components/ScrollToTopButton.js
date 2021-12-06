@@ -5,7 +5,7 @@ export default function ScrollToTopButton() {
   return (
     <BackToTop
       showOnScrollUp
-      showAt={200}
+      showAt={100}
       speed={1500}
       easing="easeInOutQuint"
       style={{
@@ -15,7 +15,7 @@ export default function ScrollToTopButton() {
         margin: "20px",
       }}
     >
-      <IoIosArrowUp className="bg-black text-white rounded-md shadow-lg text-[50px] md:mr-10" />
+      <IoIosArrowUp className="bg-black dark:bg-gray-200 dark:text-darkPrimary text-white rounded-md shadow-lg text-[50px] md:mr-10" />
     </BackToTop>
   );
 }

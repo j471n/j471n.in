@@ -25,7 +25,7 @@ export default function Home({
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       </Head>
 
-      <div className="">
+      <div className="dark:bg-darkPrimary dark:text-gray-100">
         <CoverPage
           title="Hi There! I am"
           className="flex flex-col justify-center items-center"

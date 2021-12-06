@@ -20,7 +20,7 @@ export default function Author({ followers }) {
   }, []);
 
   return (
-    <div className="max-w-lg rounded-lg  mx-auto md:w-full overflow-hidden bg-blue-200 relative">
+    <div className="max-w-lg rounded-lg  mx-auto md:w-full overflow-hidden bg-blue-200 dark:bg-darkSecondary relative">
       {author && (
         <>
           <Image
@@ -47,14 +47,14 @@ export default function Author({ followers }) {
                   title="Location"
                   className="flex items-center justify-center text-xs lg:text-base font-medium space-x-1"
                 >
-                  <TiLocation className="text-gray-700 text-sm" />
+                  <TiLocation className="text-gray-700 dark:text-gray-100 text-sm" />
                   <p>{author.location}</p>
                 </div>
                 <div
                   title="Followers"
                   className="flex items-center justify-center text-xs lg:text-base font-medium space-x-1"
                 >
-                  <RiUserFollowFill className="text-gray-700 text-sm" />
+                  <RiUserFollowFill className="text-gray-700 dark:text-gray-100 text-sm" />
                   <p>{followers}</p>
                 </div>
               </div>

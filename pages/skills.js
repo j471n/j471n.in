@@ -4,7 +4,7 @@ import LazyLoad from "react-lazyload";
 
 export default function Skills({ skills }) {
   return (
-    <div className="">
+    <div className="dark:bg-darkPrimary">
       {/* <h3 className="title_of_page">Skills</h3> */}
 
       <CoverPage
