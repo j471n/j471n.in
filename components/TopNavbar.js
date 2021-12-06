@@ -1,11 +1,15 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import useDarkmode from "../hooks/useDarkmode";
+import { RiLightbulbFlashFill } from "react-icons/ri";
 
 export default function TopNavbar() {
   const routes = ["/", "/skills", "/blogs", "/projects", "/contact"];
   const router = useRouter();
   const currentRoute = router.pathname;
+
+  const { darkMode, changeDarkMode } = useDarkmode();
 
   useEffect(() => {
     // Gathering all the top-nav-links it returns an object
@@ -22,18 +26,32 @@ export default function TopNavbar() {
       // navLinks.map((link) => console.log(link));
       // this checks the currentRoute index the return it the navLinks
       // then we change the style according to the index e.g. navLinks[0].style.color ="black";
-      navLinks[routes.indexOf(currentRoute)].style.borderBottom =
-        "4px solid black";
+      navLinks[routes.indexOf(currentRoute)].style.borderBottom = "4px solid";
     }
   }, [currentRoute]);
 
   return (
-    <div className="md:sticky w-full bg-white top-0 flex items-center justify-between shadow p-4 z-40">
+    <div className="md:sticky w-full bg-white dark:bg-darkPrimary  dark:text-white top-0 flex items-center justify-between shadow p-4 z-40">
       {/* Name*/}
-      <div className="w-full text-center sm:text-left text-2xl font-bold">
+      <div className="text-center sm:text-left text-2xl font-bold" title="Jatin Sharma">
         <Link href="/">Jatin Sharma</Link>
       </div>
 
+      {/* Dark Mode Toggle button */}
+
+      <div
+        className="cursor-pointer rounded-full p-1 ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
+        title="Toggle Theme"
+        onClick={() => changeDarkMode(!darkMode)}
+      >
+        <RiLightbulbFlashFill
+          className={`text-3xl transition-all duration-1000 rotate-180 ${
+            darkMode
+              ? "text-gray-500 lg:hover:text-yellow-400"
+              : "text-yellow-400 lg:hover:text-gray-500"
+          }`}
+        />
+      </div>
       {/* Top Nav list */}
       <nav className="hidden sm:flex">
         <ul className="flex items-center flex-1">

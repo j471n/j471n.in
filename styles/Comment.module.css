@@ -9,7 +9,7 @@
 }
 
 .comment > span > p {
-  @apply text-xs sm:text-base my-1 leading-5;
+  @apply text-xs lg:text-base my-1 leading-5;
 }
 
 /* Comment */

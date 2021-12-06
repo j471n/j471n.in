@@ -25,12 +25,11 @@ export default function Home({
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       </Head>
 
-      <div className="">
+      <div className="dark:bg-darkPrimary dark:text-gray-100">
         <CoverPage
           title="Hi There! I am"
           className="flex flex-col justify-center items-center"
           mainHeading="Jatin Sharma"
-          childrenClass="text-[32px] ml-0"
         ></CoverPage>
 
         <div className="pb-24">
@@ -194,10 +193,6 @@ export default function Home({
           <div className="m-3">
             <Author followers={followers} />
           </div>
-
-          <footer className="w-full p-4 mt-5 font-medium text-xs sm:text-base text-center">
-            <p>Made with ❤️ by Jatin Sharma</p>
-          </footer>
         </div>
       </div>
     </>

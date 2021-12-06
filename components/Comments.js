@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
 import Comment from "./Comment";
 
-export default function Comments({ articleId, articleAuthor }) {
-  const [comments, setComments] = useState([]);
-
-  const url =
-    articleId &&
-    `https://dev.to/api/comments?a_id=${articleId}?sort=-created_at`;
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setComments(data))
-      .catch((err) => console.error(err));
-  }, [articleId]);
-
+export default function Comments({ articleId, comments, articleAuthor }) {
   return (
-    <div className="pb-24 p-2 pt-3 max-w-3xl mx-2 sm:mx-auto ">
-      <h1 className="font-bold text-xl">
+    <div className="pb-16 pt-3 max-w-3xl sm:mx-auto ">
+      <h1 className="font-bold text-xl my-2">
         Comments <span className="text-lg">({comments.length})</span>
       </h1>
       {articleId && comments && (
-        <div className="flex flex-col">
+        <div className="flex flex-col space-y-3">
           {comments.map((comment) => {
             return (
               <Comment
@@ -31,18 +18,6 @@ export default function Comments({ articleId, articleAuthor }) {
               />
             );
           })}
-          {/* {comments.map((comment) => {
-            return (
-              <>
-                <Comment
-                  key={comment.id_code}
-                  comment={comment}
-                  margin={0}
-                  articleAuthor={articleAuthor}
-                />
-              </>
-            );
-          })} */}
         </div>
       )}
     </div>

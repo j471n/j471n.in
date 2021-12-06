@@ -4,22 +4,34 @@ import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import Typed from "typed.js";
+
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { slideFromLeft } from "../../content/FramerMotionVariants";
 
 export default function Blogs({ blogTags, data }) {
   const [blogs, setBlogs] = useState([]);
-
+  const [searchResult, setSearchResult] = useState([]);
   const router = useRouter();
-  const query = router.query.tag;
+  const searchRef = useRef();
+  const searchInputRef = useRef();
 
-  function sorting(query = "all") {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  const query = router.query.tag || "all";
+
+  function sorting(q = "all") {
     var filteredData = [];
     data.map((blog) => {
       // Sort By the query or tag
-      if (blog.tag_list.includes(query)) {
+      if (blog.tag_list.includes(q)) {
         filteredData.push(blog);
       } else {
         // if the tag is missing then sort by on some special params
-        switch (query) {
+        switch (q) {
           case "all":
             filteredData = data;
             break;
@@ -48,28 +60,99 @@ export default function Blogs({ blogTags, data }) {
   useEffect(() => {
     router.prefetch("/blogs?tag=popular");
   }, []);
+
+  function handleSearch(e) {
+    e.preventDefault();
+    controls.start("visible");
+
+    setSearchResult(() =>
+      searchInputRef.current.value
+        ? blogs.filter((blog) =>
+            blog.title
+              .toLowerCase()
+              .includes(searchInputRef.current.value.toLowerCase())
+          )
+        : []
+    );
+  }
+
+  useEffect(() => {
+    var options = {
+      strings: ["Search Blogs...", "Search Articles...", "Search Content..."],
+      typeSpeed: 75,
+      backSpeed: 75,
+      attr: "placeholder",
+      loop: true,
+    };
+    new Typed(searchInputRef.current, options);
+  }, []);
+
   return (
     <>
       <CoverPage
-        title="Look at my "
-        mainHeading="Blogs"
+        title="I write about"
+        mainHeading={["CSS", "Javascript", "React"]}
         className="grid place-items-center"
       />
 
-      {/* Tags Section */}
-      <Tags blogTags={blogTags} query={query} />
-
-      {/* Main Blogs Page Container */}
-      <section className="page_container ">
-        {blogs &&
-          blogs.map((blog) => {
-            return (
-              <LazyLoad key={blog.id} className="h-full w-full">
-                <Blog key={blog.id} blog={blog} />
-              </LazyLoad>
-            );
-          })}
-      </section>
+      <div className="px-5 mx-auto dark:bg-darkPrimary">
+        <div className="flex flex-col items-center max-w-lg justify-center w-full mx-auto">
+          <form className="mx-auto mt-4   flex items-center w-full">
+            <input
+              className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-gray-400 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
+              type="search"
+              ref={searchInputRef}
+              onChange={handleSearch}
+            />
+          </form>
+          {/* {comment} */}
+          {/* {searchResult && ( */}
+          <div
+            className="mx-10 w-full flex flex-col space-y-3 mt-4 items-center transform duration-300 pb-5"
+            ref={searchRef}
+          >
+            {searchResult.map((res) => {
+              return (
+                <motion.div
+                  key={res.id}
+                  className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
+                  ref={ref}
+                  onClick={() => router.push(`/blogs/${res.slug}`)}
+                  initial="hidden"
+                  animate={controls}
+                  variants={slideFromLeft}
+                >
+                  <Image
+                    className="h-full rounded-lg"
+                    src={res.cover_image}
+                    width={200}
+                    height={85}
+                  />
+                  <p className="text-sm w-full font-medium">{res.title}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+        {/* )} */}
+      </div>
+      {
+        <>
+          {/* Tags Section */}
+          <Tags blogTags={blogTags} query={query} />
+          {/* Main Blogs Page Container */}
+          <section className="page_container ">
+            {blogs &&
+              blogs.map((blog) => {
+                return (
+                  <LazyLoad key={blog.id} className="h-full w-full">
+                    <Blog key={blog.id} blog={blog} />
+                  </LazyLoad>
+                );
+              })}
+          </section>
+        </>
+      }
     </>
   );
 }
@@ -92,30 +175,6 @@ export async function getServerSideProps(ctx) {
       }
     });
   });
-
-  var temp = [];
-  // data.map((blog) => {
-  //   // Sort By the query or tag
-  //   if (blog.tag_list.includes(query)) {
-  //     temp.push(blog);
-  //   } else {
-  //     // if the tag is missing then sort by on some special params
-  //     switch (query) {
-  //       case "all":
-  //         temp = data;
-  //         break;
-  //       case "popular":
-  //         temp = data
-  //           .sort(
-  //             (a, b) => a.positive_reactions_count - b.positive_reactions_count
-  //           )
-  //           .reverse();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   }
-  // });
 
   return {
     props: {

@@ -1,19 +1,23 @@
 import { useEffect, useRef } from "react";
 import Typed from "typed.js";
 
-export default function CoverPage({
-  title,
-  mainHeading,
-  className,
-  childrenClass,
-}) {
+export default function CoverPage({ title, mainHeading, className }) {
   const typingSpan = useRef(null);
+
+  function arrayOfString(heading) {
+    // If heading has only one string then return the array
+    // else if it already is an array then just return it.
+    if (typeof heading === "string") {
+      return [heading];
+    } else if (typeof heading === "object") {
+      return heading;
+    }
+  }
   useEffect(() => {
     var options = {
-      strings: [mainHeading],
+      strings: arrayOfString(mainHeading),
       typeSpeed: 50,
       backSpeed: 50,
-
       loop: true,
     };
     new Typed(typingSpan.current, options);
@@ -21,18 +25,16 @@ export default function CoverPage({
 
   return (
     <div
-      className={`${className} h-[90vh] md:h-screen lg:h-[110vh] 2xl:h-[120vh] min-w-screen bg-gradient-to-r to-[#5ae7e2] from-[#7c3aed] relative border-none `}
+      className={`${className} h-[90vh] md:h-screen lg:h-[110vh] 2xl:h-[120vh] min-w-screen bg-gradient-to-r to-[#5ae7e2] dark:to-[#42a8a5] from-[#7c3aed] dark:from-[#582aa8] relative border-none `}
     >
-      <div
-        className={`text-[50px] ml-4 sm:ml-0 -mt-30 md:-mt-60 font-black ${childrenClass}`}
-      >
+      <div className="text-[40px] ml-2 sm:ml-0 -mt-30 md:-mt-60 font-black">
         <p className="text-white">{title}</p>
-        <span className="text-black font-[20px]" ref={typingSpan} />
+        <span className="text-black dark:text-darkPrimary font-[20px]" ref={typingSpan} />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
-        className="absolute -bottom-1 text-white"
+        className="absolute -bottom-1 text-white dark:text-darkPrimary"
       >
         <path
           fill="currentColor"

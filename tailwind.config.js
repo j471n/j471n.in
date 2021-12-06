@@ -1,13 +1,21 @@
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
       exo: ['"Exo 2"', "sans-serif"],
       merriweather: ["Merriweather", "sans-serif"],
     },
     extend: {
+      colors: {
+        darkPrimary: "#181A1B",
+        darkSecondary: "#25282A",
+      },
+      listStyleType: {
+        square: "square",
+        roman: "upper-roman",
+      },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
       },
@@ -24,6 +32,6 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [require('tailwind-scrollbar-hide')],
+    plugins: [require("tailwind-scrollbar-hide")],
   },
 };

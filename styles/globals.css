@@ -43,6 +43,10 @@ body::-webkit-scrollbar-thumb {
   animation: bar 2s linear;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes bar {
   from {
     width: 0;
@@ -90,22 +94,22 @@ body::-webkit-scrollbar-thumb {
     @apply m-1 text-3xl cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold select-none;
+    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold select-none;
   }
   .contact_field {
-    @apply text-lg w-full p-[0.8rem] m-[0.3rem] rounded-md border-none outline-none shadow-inner ring-1 ring-gray-300 focus:ring-2 focus:ring-purple-500;
+    @apply text-lg w-full p-[0.8rem] m-[0.3rem] rounded-md border-none outline-none shadow-inner ring-1 ring-gray-300 focus:ring-2 focus:ring-purple-500 dark:bg-darkSecondary dark:placeholder-gray-500;
   }
   .title_of_page {
-    @apply text-center text-xl font-bold mt-3;
+    @apply text-center text-xl font-bold  dark:bg-darkPrimary dark:text-gray-100;
   }
   .icon {
     @apply text-2xl sm:text-2xl m-1 transform duration-200 lg:hover:scale-150 cursor-pointer;
   }
   .page_container {
-    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  3xl:grid-cols-4;
+    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  3xl:grid-cols-4 dark:bg-darkPrimary dark:text-gray-200;
   }
   .blog_bottom_icon {
-    @apply text-3xl p-1 bg-gray-100 sm:bg-transparent ring-1 ring-gray-300 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
+    @apply text-3xl p-1 bg-gray-100 dark:bg-darkSecondary sm:bg-transparent ring-1 dark:ring-gray-500 ring-gray-300 sm:hover:bg-gray-100 rounded-md cursor-pointer ml-1;
   }
   .blog_bottom_button {
     @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
@@ -114,16 +118,16 @@ body::-webkit-scrollbar-thumb {
     @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto;
   }
   .project_link {
-    @apply w-full text-center flex bg-gray-100 lg:hover:bg-gray-200 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
+    @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
   }
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;
   }
-  
+
   .home-section-container {
-    @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] last:mr-10 select-none;
+    @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px]  last:mr-10 select-none;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white ;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white;
   }
 }

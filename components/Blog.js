@@ -14,6 +14,9 @@ export default function Blog({ blog }) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
+  // const time = ;
+  // console.log;
+
   function numFormatter(num) {
     if (num > 999 && num < 1000000) {
       return (num / 1000).toFixed(1) + "K"; // convert to K for number from > 1000 < 1 million
@@ -82,18 +85,25 @@ export default function Blog({ blog }) {
             </div>
           </a>
 
-          {blog.public_reactions_count >= 100 && (
-            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
-              <Image
-                className="rounded-full"
-                src="/img/fire-icon.jpg"
-                alt=""
-                height={20}
-                width={16}
-              />
-              <p className="text-xs font-bold text-white ml-3">Hot</p>
-            </div>
-          )}
+          {/* Checking if the post reaction is more than 100 and post is not more than 30 days old then show the hot sign */}
+          {blog.public_reactions_count >= 100 &&
+            Math.abs(
+              parseInt(
+                (new Date(blog.published_at).getTime() - new Date().getTime()) /
+                  (1000 * 3600 * 24)
+              )
+            ) <= 15 && (
+              <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
+                <Image
+                  className="rounded-full"
+                  src="/img/fire-icon.jpg"
+                  alt=""
+                  height={20}
+                  width={16}
+                />
+                <p className="text-xs font-bold text-white ml-3">Hot</p>
+              </div>
+            )}
         </div>
 
         <div className="mb-2">
@@ -110,7 +120,7 @@ export default function Blog({ blog }) {
               return (
                 <p
                   key={tag}
-                  className="text-xs mt-2 rounded-md cursor-pointer uppercase font-bold text-[9px] lg:text-xs lg:hover:underline text-purple-600 select-none"
+                  className="text-xs mt-2 rounded-md cursor-pointer uppercase font-bold text-[9px] lg:text-xs lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
                   {tag}
                 </p>
@@ -131,7 +141,7 @@ export default function Blog({ blog }) {
                 {/* Likes/Up votes */}
                 <div className="user_reaction group">
                   <svg
-                    className="text-3xl p-1 rounded-lg  group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c]"
+                    className="text-3xl p-1 rounded-lg dark:text-gray-300 lg:group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c] dark:fill-[#E5E7EB]"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                     width="1em"
@@ -144,14 +154,14 @@ export default function Blog({ blog }) {
 
                 {/* Comments */}
                 <div className="user_reaction group lg:hover:text-yellow-400">
-                  <MdInsertComment className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
+                  <MdInsertComment className="text-3xl p-1 rounded-lg lg:group-hover:bg-gray-100" />
                   <p>{numFormatter(parseInt(blog.comments_count))}</p>
                 </div>
 
                 {/* Views */}
                 {blog.page_views_count && (
                   <div className="user_reaction group lg:hover:text-blue-400">
-                    <AiFillEye className="text-3xl p-1 rounded-lg group-hover:bg-gray-100" />
+                    <AiFillEye className="text-3xl p-1 rounded-lg lg:group-hover:bg-gray-100" />
                     <p>{numFormatter(parseInt(blog.page_views_count))}</p>
                   </div>
                 )}

@@ -8,20 +8,20 @@ export default function Tags({ blogTags, handleTagSelection, query }) {
     router.push(`/blogs/?tag=${e.target.value}`, null, { shallow: true });
   }
   return (
-    <div className="relative mt-3">
+    <div className="relative dark:bg-darkPrimary">
       <div className={styles.container} onChange={handleTagSelection}>
         {blogTags.map((tag) => {
           return <Tag key={tag} tag={tag} checked={tag === query} />;
         })}
       </div>
       {/* Gradient touch to the left and right */}
-      <div className="absolute top-0 right-0 bottom-0 bg-gradient-to-l flex from-white w-1/12" />
-      <div className="absolute top-0 left-0 bottom-0 bg-gradient-to-r flex from-white w-1/12" />
+      <div className="absolute top-0 right-0 bottom-0 bg-gradient-to-l flex from-white dark:from-darkPrimary w-1/12" />
+      <div className="absolute top-0 left-0 bottom-0 bg-gradient-to-r flex from-white dark:from-darkPrimary w-1/12" />
     </div>
   );
 }
 
-export function Tag({ tag, checked = false }) {
+export function Tag({ tag, checked }) {
   return (
     <div className={`${styles.tag} scrollbar-hide`}>
       <input
@@ -31,7 +31,10 @@ export function Tag({ tag, checked = false }) {
         value={tag ? tag : "all"}
         checked={checked}
       />
-      <label className="" htmlFor={tag ? tag : "all"}>
+      <label
+        className="dark:bg-darkPrimary dark:text-gray-300 dark:hover:bg-darkSecondary"
+        htmlFor={tag ? tag : "all"}
+      >
         {tag ? tag : "all"}
       </label>
     </div>
