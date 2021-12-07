@@ -44,7 +44,7 @@ export default function Blog({ blog }) {
   return (
     <motion.div
       ref={ref}
-      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl "
+      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-2 rounded-xl "
       initial="hidden"
       animate={controls}
       variants={slideFromBottom}
@@ -183,13 +183,13 @@ export default function Blog({ blog }) {
             <div className="flex justify-between items-center mt-2 sm:mt-0">
               {/* Share Button Container */}
               <BiShareAlt
-                className="blog_bottom_icon w-full  mr-1 clickable_button"
+                className="blog_bottom_icon w-full  mr-1 clickable_button dark:hover:bg-darkPrimary"
                 onClick={displayShareIcons}
               />
 
               {/* Visit Button Container */}
               <FcLink
-                className="blog_bottom_icon w-full ml-1 clickable_button"
+                className="blog_bottom_icon w-full ml-1 clickable_button dark:hover:bg-darkPrimary"
                 onClick={() => window.open(blog.url)}
               />
             </div>

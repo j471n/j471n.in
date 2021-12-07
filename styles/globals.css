@@ -94,7 +94,7 @@ body::-webkit-scrollbar-thumb {
     @apply m-1 text-3xl cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-300 cursor-pointer text-lg font-semibold select-none;
+    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-300 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
   }
   .contact_field {
     @apply text-lg w-full p-[0.8rem] m-[0.3rem] rounded-md border-none outline-none shadow-inner ring-1 ring-gray-300 focus:ring-2 focus:ring-purple-500 dark:bg-darkSecondary dark:placeholder-gray-500;
@@ -118,7 +118,7 @@ body::-webkit-scrollbar-thumb {
     @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto;
   }
   .project_link {
-    @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
+    @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 lg:dark:hover:bg-darkPrimary justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
   }
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;

@@ -47,7 +47,7 @@ export default function Project({ project }) {
 
   return (
     <motion.div
-      className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 lg:hover:ring-2 rounded-xl"
+      className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl"
       initial="hidden"
       ref={ref}
       animate={controls}
