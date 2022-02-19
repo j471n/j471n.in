@@ -113,7 +113,9 @@ export default function Home({
                         </p>
                       </div>
                       <h3 className="text-xl mb-1 font-bold">{blog.title}</h3>
-                      <p className="text-xs sm:text-base">{blog.description}</p>
+                      <p className="text-xs sm:text-base line-clamp-3">
+                        {blog.description}
+                      </p>
                     </div>
                   </Link>
                 );
@@ -182,7 +184,7 @@ export default function Home({
                       {project.name}
                     </p>
 
-                    <p>{project.description}</p>
+                    <p className="line-clamp-3">{project.description}</p>
                   </div>
                 );
               })}

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.3.1",
     "emailjs-com": "^3.2.0",
     "framer-motion": "^5.2.0",
     "html-react-parser": "^1.4.0",
