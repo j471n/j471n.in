@@ -13,7 +13,7 @@
 }
 
 .article_header {
-  @apply flex  flex-col space-y-2;
+  @apply flex  flex-col space-y-2 print:hidden;
 }
 
 .socialMedia {

@@ -98,7 +98,7 @@ export default function ShareOnSocialMedia({
         </div>
         {isShareSupported && (
           <BsThreeDots
-            className="bg-gray-100 cursor-pointer text-3xl rounded-full p-1 clickable_button"
+            className="bg-gray-400 dark:bg-zinc-500 text-white cursor-pointer text-3xl rounded-full p-1 clickable_button"
             onClick={handleShare}
           />
         )}
