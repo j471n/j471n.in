@@ -147,7 +147,7 @@ export default function Home({
                       {certificate.title}
                     </p>
                     <button
-                      className="px-3 py-2  bg-purple-400 text-center outline-none clickable_button w-full mx-auto flex items-center text-xs font-medium  justify-center space-x-3 rounded-md"
+                      className="px-3 py-2  bg-purple-400 text-black text-center font-semibold outline-none clickable_button w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
                       <GrCertificate className="text-xl" />
