@@ -30,25 +30,25 @@ export default function Contact() {
     e.preventDefault();
     toast.success("Message Sent ✌");
 
-    // setLoading(true);
-    // emailjs
-    //   .send(
-    //     process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
-    //     process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
-    //     emailInfo,
-    //     process.env.NEXT_PUBLIC_YOUR_USER_ID
-    //   )
-    //   .then((res) => {
-    //     console.log("Email Sent Successfully");
-    //     setLoading(false);
-    //     setEmailInfo(initialFormState);
-    //     toast.success("Message Sent ✌");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.text);
-    //     setLoading(false);
-    //     toast.error("😢 " + err.text);
-    //   });
+    setLoading(true);
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
+        process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID,
+        emailInfo,
+        process.env.NEXT_PUBLIC_YOUR_USER_ID
+      )
+      .then((res) => {
+        console.log("Email Sent Successfully");
+        setLoading(false);
+        setEmailInfo(initialFormState);
+        toast.success("Message Sent ✌");
+      })
+      .catch((err) => {
+        console.log(err.text);
+        setLoading(false);
+        toast.error("😢 " + err.text);
+      });
   }
 
   return (
