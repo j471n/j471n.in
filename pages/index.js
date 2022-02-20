@@ -207,7 +207,7 @@ export function HomeHeading({ title }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // fetching multiple requests by Promise.all
   const [blogs, skills, certificates, projects, followers] = await Promise.all([
     fetch("https://dev.to/api/articles/me?per_page=5", {
@@ -236,5 +236,7 @@ export async function getServerSideProps() {
       projects,
       followers: followers.followers_count,
     },
+    // updates the page automatically after 1/2 an hour
+    revalidate: 30 * 60,
   };
 }

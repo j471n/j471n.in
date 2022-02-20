@@ -157,8 +157,8 @@ export default function Blogs({ blogTags, data }) {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const query = ctx.query.tag || "all";
+export async function getStaticProps(ctx) {
+  const query = ctx.query?.tag || "all";
   const data = await fetch("https://dev.to/api/articles/me", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
@@ -183,5 +183,7 @@ export async function getServerSideProps(ctx) {
       // blogs: !temp.length == 0 ? temp : data,
       data: data,
     },
+    // updates the page automatically after 1/2 an hour
+    revalidate: 30 * 60,
   };
 }
