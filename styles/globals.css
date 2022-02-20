@@ -115,7 +115,7 @@ body::-webkit-scrollbar-thumb {
     @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
   }
   .user_reaction {
-    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto;
+    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto space-x-1 text-xs lg:text-base;
   }
   .project_link {
     @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 lg:dark:hover:bg-darkPrimary justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
@@ -125,9 +125,9 @@ body::-webkit-scrollbar-thumb {
   }
 
   .home-section-container {
-    @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px]  last:mr-10 select-none;
+    @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px]  last:mr-10 select-none snap-x;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white snap-center;
   }
 }

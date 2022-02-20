@@ -31,7 +31,7 @@ export default function TopNavbar() {
   }, [currentRoute]);
 
   return (
-    <div className="md:sticky w-full bg-white dark:bg-darkPrimary  dark:text-white top-0 flex items-center justify-between shadow p-4 z-40">
+    <div className="md:sticky w-full bg-white dark:bg-darkPrimary  dark:text-white top-0 flex items-center justify-between shadow p-4 z-40 print:hidden">
       {/* Name*/}
       <div className="text-center sm:text-left text-2xl font-bold" title="Jatin Sharma">
         <Link href="/">Jatin Sharma</Link>

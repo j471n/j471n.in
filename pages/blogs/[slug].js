@@ -37,10 +37,10 @@ export default function Article({ article, comments, followers }) {
         <>
           <div
             style={{ width: `${progressWidth}%` }}
-            className="h-2 bg-purple-600 dark:bg-purple-400  transition-all duration-200 ease-linear fixed top-0 z-50"
+            className="h-2 bg-purple-600 dark:bg-purple-400  transition-all duration-200 ease-linear fixed top-0 z-50 print:hidden"
           ></div>
           <div className="flex flex-col-reverse md:flex-row-reverse relative max-w-screen p-3 mb:p-5 mb-10 lg:px-10 gap-5 dark:bg-darkPrimary">
-            <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100">
+            <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100 print:hidden">
               <div className="p-0">
                 <Author followers={followers} />
               </div>
@@ -51,7 +51,7 @@ export default function Article({ article, comments, followers }) {
                 articleAuthor={article.user}
               />
             </div>
-            <div className="mx-auto p-3 md:p-5 w-full md:w-[60%] xl:w-[70%] 2xl:w-[80%] xl:p-8 bg-gray-200 rounded-md dark:bg-darkSecondary dark:text-gray-100">
+            <div className="mx-auto p-3 md:p-5 w-full md:w-[60%] xl:w-[70%] 2xl:w-[80%] xl:p-8 bg-gray-200 rounded-md dark:bg-darkSecondary dark:text-gray-100 h-fit">
               <div className={styles.article_page}>
                 <h1 className=" text-4xl font-bold mb-4">{article.title}</h1>
                 <div className={styles.article_header}>
@@ -79,16 +79,16 @@ export default function Article({ article, comments, followers }) {
                     cover_image={article.cover_image}
                   />
                 </div>
-                <div className="flex items-center my-2 uppercase text-xs sm:text-base text-purple-500 dark:text-purple-400 font-bold space-x-3 select-none">
+                <div className="flex items-center flex-wrap my-2 uppercase text-xs sm:text-base text-purple-500 dark:text-purple-400 font-bold space-x-1 md:space-x-3 select-none max-w-full print:hidden">
                   {article.tags?.map((tag) => {
                     return (
-                      <p
+                      <span
                         key={tag}
                         className={styles.tag}
                         onClick={() => router.push(`/blogs?tag=${tag}`)}
                       >
                         {tag}
-                      </p>
+                      </span>
                     );
                   })}
                 </div>

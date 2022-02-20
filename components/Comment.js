@@ -1,6 +1,7 @@
 import Interweave from "interweave";
 import Image from "next/image";
 import { GoVerified } from "react-icons/go";
+import { DEFAULT_IMAGE_URL } from "../utils/utils";
 import styles from "../styles/Comment.module.css";
 export default function Comment({ comment, margin, articleAuthor }) {
   return (
@@ -16,7 +17,7 @@ export default function Comment({ comment, margin, articleAuthor }) {
           onClick={() =>
             window.open(
               "https://dev.to/" +
-                comment.user.username +
+                comment.user?.username +
                 "/comment/" +
                 comment.id_code
             )
@@ -24,12 +25,12 @@ export default function Comment({ comment, margin, articleAuthor }) {
         >
           <Image
             className="rounded-full w-full"
-            src={comment.user.profile_image}
+            src={comment.user?.profile_image || DEFAULT_IMAGE_URL}
             width={30}
             height={30}
           />
-          <p className="text-xs">{comment.user.name}</p>
-          {comment.user.username === articleAuthor.username && (
+          <p className="text-xs">{comment.user?.name || "Anonymous"}</p>
+          {comment.user?.username === articleAuthor.username && (
             <GoVerified className="text-gray-500 -m-2 " />
           )}
 

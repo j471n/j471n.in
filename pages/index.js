@@ -113,7 +113,9 @@ export default function Home({
                         </p>
                       </div>
                       <h3 className="text-xl mb-1 font-bold">{blog.title}</h3>
-                      <p className="text-xs sm:text-base">{blog.description}</p>
+                      <p className="text-xs sm:text-base line-clamp-3">
+                        {blog.description}
+                      </p>
                     </div>
                   </Link>
                 );
@@ -145,7 +147,7 @@ export default function Home({
                       {certificate.title}
                     </p>
                     <button
-                      className="px-3 py-2  bg-purple-400 text-center outline-none clickable_button w-full mx-auto flex items-center text-xs font-medium  justify-center space-x-3 rounded-md"
+                      className="px-3 py-2  bg-purple-400 text-black text-center font-semibold outline-none clickable_button w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
                       <GrCertificate className="text-xl" />
@@ -182,7 +184,7 @@ export default function Home({
                       {project.name}
                     </p>
 
-                    <p>{project.description}</p>
+                    <p className="line-clamp-3">{project.description}</p>
                   </div>
                 );
               })}

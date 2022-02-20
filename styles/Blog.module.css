@@ -13,16 +13,16 @@
 }
 
 .article_header {
-  @apply flex  flex-col space-y-2;
+  @apply flex  flex-col space-y-2 print:hidden;
 }
 
 .socialMedia {
-  @apply flex my-2 space-x-3;
+  @apply flex flex-wrap items-center my-2 space-x-3;
 }
 
-/* .tag {
-  @apply border border-gray-400 text-xs p-1 mr-2 rounded-md cursor-pointer hover:bg-gray-100;
-} */
+.tag {
+  @apply text-xs p-1 mr-2 rounded-md cursor-pointer hover:underline;
+}
 
 /* Dev blog */
 .dev_blog > p,

@@ -1,6 +1,5 @@
 module.exports = {
-  mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
@@ -32,6 +31,9 @@ module.exports = {
     variants: {
       extend: {},
     },
-    plugins: [require("tailwind-scrollbar-hide")],
+    plugins: [
+      require("tailwind-scrollbar-hide"),
+      require("@tailwindcss/line-clamp"),
+    ],
   },
 };
