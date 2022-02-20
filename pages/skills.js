@@ -27,8 +27,9 @@ export default function Skills({ skills }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/skills");
-  const skills = await res.json();
+  const skills = await fetch(process.env.BASE_URL + "/api/skills").then((res) =>
+    res.json()
+  );
   return {
     props: {
       skills,
