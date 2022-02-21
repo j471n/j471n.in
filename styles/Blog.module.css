@@ -45,7 +45,7 @@
 
 .dev_blog > p code,
 .dev_blog > ul li code {
-  @apply bg-gray-400 px-1 py-[2px] text-xs rounded-md;
+  @apply  px-2 py-1 bg-slate-500 text-white text-sm rounded-sm;
 }
 
 .dev_blog > p strong {
@@ -94,9 +94,11 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-[#262A33] p-4 rounded-lg text-gray-300 text-xs md:text-base;
+  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs md:text-base;
+
 }
 
+  /* @apply flex overflow-x-scroll bg-[#222] p-4 rounded-lg text-gray-200 text-xs */md:text-base;  
 .dev_blog > div > table {
   @apply border border-black;
 }
@@ -115,4 +117,15 @@
 
 .dev_blog > blockquote > p {
   @apply flex flex-col space-y-2;
+}
+
+.dev_blog > figure {
+  @apply border border-gray-400 rounded-md mx-auto overflow-hidden;
+}
+
+.dev_blog > figure img {
+  @apply text-center mx-auto;
+}
+.dev_blog > figure figcaption {
+  @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2;
 }

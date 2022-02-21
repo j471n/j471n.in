@@ -1,34 +1,39 @@
 import Skill from "../components/Skill";
 import CoverPage from "../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import { getSkills } from "../lib/dataFetch";
+import Metadata from "../components/MetaData";
 
 export default function Skills({ skills }) {
   return (
-    <div className="dark:bg-darkPrimary">
-      {/* <h3 className="title_of_page">Skills</h3> */}
+    <>
+      <Metadata title="Skills 🤹" />
 
-      <CoverPage
-        title="Let me show you my"
-        mainHeading="Skills"
-        className="grid place-items-center"
-      />
+      <div className="dark:bg-darkPrimary">
+        {/* <h3 className="title_of_page">Skills</h3> */}
 
-      <section className="page_container">
-        {skills.map((skill) => {
-          return (
-            <LazyLoad key={skill.id} className="h-full w-full">
-              <Skill key={skill.id} data={skill} />
-            </LazyLoad>
-          );
-        })}
-      </section>
-    </div>
+        <CoverPage
+          title="Let me show you my"
+          mainHeading="Skills"
+          className="grid place-items-center"
+        />
+
+        <section className="page_container">
+          {skills.map((skill) => {
+            return (
+              <LazyLoad key={skill.id} className="h-full w-full">
+                <Skill key={skill.id} data={skill} />
+              </LazyLoad>
+            );
+          })}
+        </section>
+      </div>
+    </>
   );
 }
 
 export async function getStaticProps() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/skills");
-  const skills = await res.json();
+  const skills = getSkills();
   return {
     props: {
       skills,

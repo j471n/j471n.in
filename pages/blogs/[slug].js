@@ -9,6 +9,7 @@ import Link from "next/link";
 import Author from "../../components/Author";
 import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
+import Metadata from "../../components/MetaData";
 
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
@@ -35,6 +36,7 @@ export default function Article({ article, comments, followers }) {
     <>
       {!article.error ? (
         <>
+          <Metadata title={article.title} />
           <div
             style={{ width: `${progressWidth}%` }}
             className="h-2 bg-purple-600 dark:bg-purple-400  transition-all duration-200 ease-linear fixed top-0 z-50 print:hidden"

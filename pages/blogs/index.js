@@ -10,6 +10,7 @@ import Typed from "typed.js";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { slideFromLeft } from "../../content/FramerMotionVariants";
+import Metadata from "../../components/MetaData";
 
 export default function Blogs({ blogTags, data }) {
   const [blogs, setBlogs] = useState([]);
@@ -89,6 +90,8 @@ export default function Blogs({ blogTags, data }) {
 
   return (
     <>
+      <Metadata title="Blogs 📰" />
+
       <CoverPage
         title="I write about"
         mainHeading={["CSS", "Javascript", "React"]}
@@ -157,8 +160,8 @@ export default function Blogs({ blogTags, data }) {
   );
 }
 
-export async function getServerSideProps(ctx) {
-  const query = ctx.query.tag || "all";
+export async function getStaticProps(ctx) {
+  const query = ctx.query?.tag || "all";
   const data = await fetch("https://dev.to/api/articles/me", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
@@ -183,5 +186,7 @@ export async function getServerSideProps(ctx) {
       // blogs: !temp.length == 0 ? temp : data,
       data: data,
     },
+    // updates the page automatically after 1/2 an hour
+    revalidate: 30 * 60,
   };
 }

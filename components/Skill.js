@@ -16,7 +16,7 @@ function Skill({ data }) {
 
   return (
     <motion.div
-      className="max-w-sm w-full flex items-center justify-center px-4 py-3 shadow-md rounded-lg ring-1 ring-gray-300 dark:ring-gray-500"
+      className="max-w-sm w-full flex items-center justify-center px-4 py-3 shadow-md rounded-lg ring-1 ring-gray-300 dark:ring-gray-600 dark:bg-darkSecondary"
       ref={ref}
       variants={slideFromBottom}
       initial="hidden"
@@ -36,9 +36,9 @@ function Skill({ data }) {
               maxWidth: "100%",
               width: data.level ? `${data.level}` : "10%",
             }}
-            className="skill__bar absolute text-center h-[10px] rounded-xl z-10 bg-gray-900 dark:bg-gray-500"
+            className="skill__bar absolute text-center h-[10px] rounded-xl z-10 bg-gray-900 dark:bg-gray-600"
           ></div>
-          <div className="w-ull bg-gray-200 dark:bg-darkSecondary h-[10px] z-0 rounded-xl"></div>
+          <div className="w-ull bg-gray-200 dark:bg-darkPrimary h-[10px] z-0 rounded-xl"></div>
         </div>
       </div>
     </motion.div>

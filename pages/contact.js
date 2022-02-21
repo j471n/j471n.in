@@ -9,9 +9,11 @@ import { FaDev } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen } from "react-icons/si";
 import SocialIcon from "../components/SocialIcon";
-import socialMedia from "../content/socialMedia";
+// import socialMedia from "../content/socialMedia";
 import Loading from "../components/Loading";
 import CoverPage from "../components/CoverPage";
+import { getSocialMedia } from "../lib/dataFetch";
+import Metadata from "../components/MetaData";
 
 // initial State of the form
 const initialFormState = {
@@ -22,7 +24,7 @@ const initialFormState = {
   message: "",
 };
 
-export default function Contact() {
+export default function Contact({ socialMedia }) {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
 
@@ -53,6 +55,8 @@ export default function Contact() {
 
   return (
     <>
+      <Metadata title="Contact 🤙" />
+
       <CoverPage
         title="Want to"
         mainHeading="Contact me"
@@ -151,7 +155,7 @@ export default function Contact() {
                 <SocialIcon
                   Icon={AiOutlineInstagram}
                   title="Instagram"
-                  url={socialMedia.instagram}
+                  url={socialMedia?.instagram}
                 />
                 <SocialIcon
                   Icon={AiOutlineTwitter}
@@ -211,4 +215,13 @@ export default function Contact() {
       </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const socialMedia = getSocialMedia();
+  return {
+    props: {
+      socialMedia,
+    },
+  };
 }
