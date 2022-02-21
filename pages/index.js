@@ -8,6 +8,11 @@ import { BiTime } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
 import { motion } from "framer-motion";
 import Author from "../components/Author";
+import {
+  getPinnedProjects,
+  getPinnedSkills,
+  getPinnedCertificates,
+} from "../lib/dataFetch";
 
 export default function Home({
   blogs,
@@ -215,15 +220,19 @@ export async function getStaticProps() {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
       },
     }).then((res) => res.json()),
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/skills?pinned=true").then((res) =>
-      res.json()
-    ),
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/certificates?pinned=true").then(
-      (res) => res.json()
-    ),
-    fetch(process.env.NEXT_PUBLIC_API_URL + "/project-list?pinned=true").then(
-      (res) => res.json()
-    ),
+    // fetch(process.env.BASE_URL + "/api/skills/pinned").then((res) =>
+    //   res.json()
+    // ),
+    getPinnedSkills(),
+    // fetch(process.env.BASE_URL + "/api/certificates?pinned=true").then((res) =>
+    //   res.json()
+    // ),
+    getPinnedCertificates(),
+
+    // fetch(process.env.BASE_URL + "/api/projects?pinned=true").then((res) =>
+    //   res.json()
+    // ),
+    getPinnedProjects(),
     fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
       (res) => res.json()
     ),

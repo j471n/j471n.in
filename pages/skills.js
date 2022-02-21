@@ -1,6 +1,7 @@
 import Skill from "../components/Skill";
 import CoverPage from "../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import { getSkills } from "../lib/dataFetch";
 
 export default function Skills({ skills }) {
   return (
@@ -27,9 +28,7 @@ export default function Skills({ skills }) {
 }
 
 export async function getStaticProps() {
-  const skills = await fetch(process.env.BASE_URL + "/api/skills").then((res) =>
-    res.json()
-  );
+  const skills = getSkills();
   return {
     props: {
       skills,

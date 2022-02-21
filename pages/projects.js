@@ -2,6 +2,7 @@ import React from "react";
 import Project from "../components/Project";
 import CoverPage from "../components/CoverPage";
 import LazyLoad from "react-lazyload";
+import { getProjects } from "../lib/dataFetch";
 
 export default function Projects({ projects }) {
   // const { response, loading } = useFetch("/project-list");
@@ -33,7 +34,7 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-  const projects = await fetch(process.env.BASE_URL + "/api/projects").then((res) => res.json());
+  const projects = getProjects();
 
   return {
     props: {

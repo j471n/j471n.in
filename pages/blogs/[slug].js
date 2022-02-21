@@ -127,9 +127,9 @@ export default function Article({ article, comments, followers }) {
   );
 }
 
-export async function getStaticProps({ params: { slug } }) {
+export async function getServerSideProps(context) {
   // Getting slug from query
-  // const slug = context.query.slug;
+  const slug = context.query.slug;
 
   // Promises for article and followers
   const [article, followers] = await Promise.all([
@@ -153,24 +153,5 @@ export async function getStaticProps({ params: { slug } }) {
       comments,
       followers: followers.followers_count,
     },
-    revalidate: 60,
-  };
-}
-
-export async function getStaticPaths() {
-  // const categories = await fetchCategoriesFromCMS();
-  const blogs = await fetch("https://dev.to/api/articles/me", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
-
-  return {
-    paths: blogs?.map((article) => ({
-      params: { slug: article?.slug },
-    })),
-    fallback: true,
   };
 }
