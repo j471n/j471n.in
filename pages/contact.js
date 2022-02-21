@@ -13,6 +13,7 @@ import SocialIcon from "../components/SocialIcon";
 import Loading from "../components/Loading";
 import CoverPage from "../components/CoverPage";
 import { getSocialMedia } from "../lib/dataFetch";
+import Metadata from "../components/MetaData";
 
 // initial State of the form
 const initialFormState = {
@@ -54,6 +55,8 @@ export default function Contact({ socialMedia }) {
 
   return (
     <>
+      <Metadata title="Contact 🤙" />
+
       <CoverPage
         title="Want to"
         mainHeading="Contact me"

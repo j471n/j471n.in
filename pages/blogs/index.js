@@ -10,6 +10,7 @@ import Typed from "typed.js";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { slideFromLeft } from "../../content/FramerMotionVariants";
+import Metadata from "../../components/MetaData";
 
 export default function Blogs({ blogTags, data }) {
   const [blogs, setBlogs] = useState([]);
@@ -89,6 +90,8 @@ export default function Blogs({ blogTags, data }) {
 
   return (
     <>
+      <Metadata title="Blogs 📰" />
+
       <CoverPage
         title="I write about"
         mainHeading={["CSS", "Javascript", "React"]}
