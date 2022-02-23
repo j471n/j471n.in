@@ -13,24 +13,22 @@ import Metadata from "../../components/MetaData";
 
 export default function Article({ article, comments, followers }) {
   const router = useRouter();
-  const [progressWidth, setProgressWidth] = useState(0);
+  const [scroll, setScroll] = useState(0);
 
   useEffect(() => {
-    function getScrollPercentage() {
-      var winScroll =
-        document.body.scrollTop || document.documentElement.scrollTop;
-      var height =
+    let progressBarHandler = () => {
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      var scrolled = (winScroll / height) * 100;
-      setProgressWidth(parseInt(scrolled));
-    }
+      const scroll = `${totalScroll / windowHeight}`;
 
-    window.addEventListener("scroll", getScrollPercentage);
-    return () => {
-      window.removeEventListener("scroll", getScrollPercentage);
+      setScroll(scroll);
     };
-  }, []);
+
+    window.addEventListener("scroll", progressBarHandler);
+    return () => window.removeEventListener("scroll", progressBarHandler);
+  });
 
   return (
     <>
@@ -38,9 +36,9 @@ export default function Article({ article, comments, followers }) {
         <>
           <Metadata title={article.title} />
           <div
-            style={{ width: `${progressWidth}%` }}
-            className="h-2 bg-purple-600 dark:bg-purple-400  transition-all duration-200 ease-linear fixed top-0 z-50 print:hidden"
-          ></div>
+            className="fixed top-0 left-0 z-50 w-full bg-purple-600 h-2 origin-top-left scale-0 transform duration-300"
+            style={{ transform: `scale(${scroll}, 1)` }}
+          />
           <div className="flex flex-col-reverse md:flex-row-reverse relative max-w-screen p-3 mb:p-5 mb-10 lg:px-10 gap-5 dark:bg-darkPrimary">
             <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100 print:hidden">
               <div className="p-0">
