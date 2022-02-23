@@ -3,6 +3,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { slideFromBottom } from "../content/FramerMotionVariants";
 import { useEffect } from "react";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 function Skill({ data }) {
   const controls = useAnimation();
@@ -16,30 +18,42 @@ function Skill({ data }) {
 
   return (
     <motion.div
-      className="max-w-sm w-full flex items-center justify-center px-4 py-3 shadow-md rounded-lg ring-1 ring-gray-300 dark:ring-gray-600 dark:bg-darkSecondary"
+      className="max-w-sm  flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-4 h-full"
       ref={ref}
       variants={slideFromBottom}
       initial="hidden"
       animate={controls}
     >
-      <div className="image">
-        <Image src={`/${data.icon}`} alt={data.name} width={60} height={60} />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <Image
+            title={data.name}
+            src={`/${data.icon}`}
+            alt={data.name}
+            width={40}
+            height={40}
+          />
+          <h2 className="font-semibold capitalize w-fit">{data.name}</h2>
+        </div>
+        <div className="w-12 h-12 font-bold">
+          <CircularProgressbar
+            value={data.level}
+            text={`${data.level}%`}
+            strokeWidth={10}
+            styles={buildStyles({
+              // textColor: "black",
+              trailColor: "#d6d6d6",
+              pathColor: "#6E81E8",
+              textColor: "#6E81E8",
+              textSize: "24px",
+            })}
+          />
+        </div>
       </div>
-      <div className="flex flex-col pl-3 justify-evenly mx-auto my-0 capitalize w-full ">
-        <div className="w-full flex justify-between mb-2 text-xl dark:text-gray-200">
-          <p className="name font-medium">{data.name}</p>
-          <p className="font-bold">{data.level ? data.level : "0%"}</p>
-        </div>
-        <div className="relative">
-          <div
-            style={{
-              maxWidth: "100%",
-              width: data.level ? `${data.level}` : "10%",
-            }}
-            className="skill__bar absolute text-center h-[10px] rounded-xl z-10 bg-gray-900 dark:bg-gray-600"
-          ></div>
-          <div className="w-ull bg-gray-200 dark:bg-darkPrimary h-[10px] z-0 rounded-xl"></div>
-        </div>
+      <div>
+        <p className="text-xs sm:text-sm border-t-2 border-gray-200 mt-2 pt-2">
+          {data.about}
+        </p>
       </div>
     </motion.div>
   );

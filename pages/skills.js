@@ -10,14 +10,13 @@ export default function Skills({ skills }) {
       <Metadata title="Skills 🤹" />
 
       <div className="dark:bg-darkPrimary">
-        {/* <h3 className="title_of_page">Skills</h3> */}
-
         <CoverPage
           title="Let me show you my"
           mainHeading="Skills"
-          className="grid place-items-center"
+          className="grid place-items-center pl-4 md:pl-0"
         />
 
+        <h3 className="title_of_page">Skills</h3>
         <section className="page_container">
           {skills.map((skill) => {
             return (
