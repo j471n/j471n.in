@@ -99,13 +99,14 @@ export default function Project({ project }) {
             <ShareOnSocialMedia
               className={`${
                 showShare ? "visible scale-100" : "invisible scale-0"
-              } absolute inset-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+              } absolute inset-0 flex items-center justify-between sm:justify-evenly transition-all duration-150`}
               title={project.name}
               url={project.previewURL || project.githubURL}
               summary={project.description}
               body={project.description}
               subject={project.name}
               handleShare={handleShare}
+              cover_image={project.coverURL}
             />
           </div>
         </div>

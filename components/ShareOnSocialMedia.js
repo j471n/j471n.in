@@ -5,14 +5,12 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-  EmailShareButton,
 
   // icons for sharing
   FacebookIcon,
   TwitterIcon,
   LinkedinIcon,
   WhatsappIcon,
-  EmailIcon,
 } from "react-share";
 
 import useShare from "../hooks/useShare";
