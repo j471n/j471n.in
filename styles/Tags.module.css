@@ -1,5 +1,5 @@
 .container {
-  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 sm:px-24 space-x-2 dark:bg-darkSecondary;
+  @apply flex max-w-full p-2 overflow-x-scroll relative px-5 sm:px-24 space-x-2 dark:bg-darkSecondary;
 }
 
 .tag {

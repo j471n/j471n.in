@@ -62,7 +62,7 @@ export default function Blog({ blog }) {
       <div className="w-full p-4">
         <div className="flex items-center justify-between mb-3 lg:mb-1 ">
           <a
-            className="flex items-center lg:hover:bg-gray-100 lg:hover:dar  k:bg-darkSecondary lg:p-2 rounded-lg"
+            className="flex items-center lg:hover:bg-gray-100 dark:lg:hover:bg-darkPrimary lg:p-2 rounded-lg"
             href={`https://dev.to/${blog.user.username}`}
             target="_blank"
             rel="noopener noreferrer"

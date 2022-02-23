@@ -15,8 +15,8 @@ export default function Tags({ blogTags, handleTagSelection, query }) {
         })}
       </div>
       {/* Gradient touch to the left and right */}
-      <div className="absolute top-0 right-0 bottom-0 bg-gradient-to-l flex from-white dark:from-darkPrimary w-1/12" />
-      <div className="absolute top-0 left-0 bottom-0 bg-gradient-to-r flex from-white dark:from-darkPrimary w-1/12" />
+      <div className="absolute top-0 right-0 bottom-0 bg-gradient-to-l flex from-white dark:from-darkPrimary w-4" />
+      <div className="absolute top-0 left-0 bottom-0 bg-gradient-to-r flex from-white dark:from-darkPrimary w-4" />
     </div>
   );
 }
@@ -32,7 +32,7 @@ export function Tag({ tag, checked }) {
         checked={checked}
       />
       <label
-        className="dark:bg-darkPrimary dark:text-gray-300 dark:hover:bg-darkSecondary"
+        className={` dark:text-gray-300 dark:hover:bg-darkSecondary font-medium ${checked && "dark:!bg-white dark:!text-black"}`}
         htmlFor={tag ? tag : "all"}
       >
         {tag ? tag : "all"}
