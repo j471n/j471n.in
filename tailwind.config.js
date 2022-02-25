@@ -1,10 +1,14 @@
 module.exports = {
-  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
       exo: ['"Exo 2"', "sans-serif"],
       merriweather: ["Merriweather", "sans-serif"],
+      "bungee-shade": ["Bungee Shade", "cursive"],
     },
     extend: {
       colors: {

@@ -18,7 +18,7 @@ function Skill({ data }) {
 
   return (
     <motion.div
-      className="max-w-sm  flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-4 h-full"
+      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-4 h-full"
       ref={ref}
       variants={slideFromBottom}
       initial="hidden"

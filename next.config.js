@@ -6,6 +6,7 @@ module.exports = {
       "res.cloudinary.com",
       "imgur.com",
       "i.imgur.com",
+      "cutt.ly",
     ],
   },
 };
