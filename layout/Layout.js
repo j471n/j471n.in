@@ -6,7 +6,12 @@ export default function Layout({ children }) {
   return (
     <>
       <TopNavbar />
-      <main>{children}</main>
+      <main
+        className="bg-white dark:bg-darkPrimary"
+        style={{ paddingTop: "68px" }}
+      >
+        {children}
+      </main>
       <ScrollToTopButton />
       <Footer />
       <BottomNavbar />

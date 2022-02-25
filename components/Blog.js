@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { BiShareAlt } from "react-icons/bi";
+import { BiShareAlt, BiLike } from "react-icons/bi";
 import { FcLink } from "react-icons/fc";
 import { AiFillEye } from "react-icons/ai";
 import { MdInsertComment } from "react-icons/md";
@@ -44,7 +44,7 @@ export default function Blog({ blog }) {
   return (
     <motion.div
       ref={ref}
-      className="relative sm:pb-[10%] h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-2 rounded-xl "
+      className="relative sm:pb-[10%] h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl "
       initial="hidden"
       animate={controls}
       variants={slideFromBottom}
@@ -60,30 +60,19 @@ export default function Blog({ blog }) {
       />
 
       <div className="w-full p-4">
-        <div className="flex items-center justify-between mb-3 lg:mb-1 ">
-          <a
-            className="flex items-center lg:hover:bg-gray-100 dark:lg:hover:bg-darkPrimary lg:p-2 rounded-lg"
-            href={`https://dev.to/${blog.user.username}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="rounded-full"
-              src={blog.user.profile_image}
-              alt=""
-              width={40}
-              height={40}
-              loading="lazy"
-            />
-            <div className="text-xs ml-3 ">
-              <p className="font-semibold">{blog.user.name}</p>
-              <p>
-                {new Date(Date.parse(blog.published_at))
-                  .toDateString()
-                  .slice(4)}
-              </p>
-            </div>
-          </a>
+        <div className="flex items-center justify-between mb-3 lg:mb-1 relative">
+          <div className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
+            <p className="text-xl">
+              {new Date(Date.parse(blog.published_at))
+                .toDateString()
+                .slice(8, 10)}
+            </p>
+            <p className="text-xs">
+              {new Date(Date.parse(blog.published_at))
+                .toDateString()
+                .slice(4, 7)}
+            </p>
+          </div>
 
           {/* Checking if the post reaction is more than 100 and post is not more than 30 days old then show the hot sign */}
           {blog.public_reactions_count >= 100 &&
@@ -106,14 +95,14 @@ export default function Blog({ blog }) {
             )}
         </div>
 
-        <div className="mb-2">
+        <div className="mb-2 mt-5">
           <h3
-            className=" text-xl font-bold lg:hover:underline cursor-pointer select-none"
+            className=" text-xl font-bold lg:hover:underline cursor-pointer select-none "
             onClick={() => window.open(`blogs/${blog.slug}`, "_self")}
           >
             {blog.title}
           </h3>
-          <p className="text-xs sm:text-base">{blog.description}</p>
+          <p className="text-xs sm:text-sm  line-clamp-2">{blog.description}</p>
 
           <div className="flex pt-2 items-center flex-wrap space-x-2">
             {blog.tag_list.map((tag) => {
@@ -136,32 +125,24 @@ export default function Blog({ blog }) {
               <div
                 className={` ${
                   showShare ? "scale-0 invisible" : "scale-100 visible"
-                } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-evenly sm:justify-start space-x-3 duration-150`}
+                } absolute left-0 right-0 bottom-0 sm:relative flex w-full items-center justify-evenly sm:justify-start space-x-3 duration-150 text-base`}
               >
                 {/* Likes/Up votes */}
-                <div className="user_reaction group">
-                  <svg
-                    className="text-3xl p-1 rounded-lg dark:text-gray-300 lg:group-hover:bg-gray-100 lg:group-hover:fill-[#39e58c] dark:fill-[#E5E7EB]"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="1em"
-                    height="1em"
-                  >
-                    <path d="M13.162 3.813a2 2 0 01.465.465l6.674 9.343a1 1 0 01-1.102 1.539l-4.032-1.21a1 1 0 00-1.277.816l-.767 5.375a1 1 0 01-.99.859h-.266a1 1 0 01-.99-.859l-.767-5.375a1 1 0 00-1.278-.816l-4.031 1.21a1 1 0 01-1.102-1.54l6.674-9.342a2 2 0 012.79-.465z"></path>
-                  </svg>
+                <div className="user_reaction lg:hover:text-[#39e58c]">
+                  <BiLike />
                   <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
                 </div>
 
                 {/* Comments */}
-                <div className="user_reaction group lg:hover:text-yellow-400">
-                  <MdInsertComment className="text-3xl p-1 rounded-lg lg:group-hover:bg-gray-100" />
+                <div className="user_reaction lg:hover:text-yellow-400">
+                  <MdInsertComment />
                   <p>{numFormatter(parseInt(blog.comments_count))}</p>
                 </div>
 
                 {/* Views */}
                 {blog.page_views_count && (
-                  <div className="user_reaction group lg:hover:text-blue-400">
-                    <AiFillEye className="text-3xl p-1 rounded-lg lg:group-hover:bg-gray-100" />
+                  <div className="user_reaction lg:hover:text-blue-400">
+                    <AiFillEye />
                     <p>{numFormatter(parseInt(blog.page_views_count))}</p>
                   </div>
                 )}
@@ -171,7 +152,7 @@ export default function Blog({ blog }) {
               <ShareOnSocialMedia
                 className={`${
                   showShare ? "visible scale-100" : " invisible scale-0"
-                } absolute w-full h-full -top-5 sm:-top-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+                } absolute w-full h-full -top-5 sm:-top-0 bg-white dark:bg-darkSecondary flex items-center justify-between sm:justify-evenly transition-all duration-150`}
                 title={blog.title}
                 url={blog.url}
                 summary={blog.description}

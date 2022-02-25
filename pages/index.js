@@ -59,7 +59,7 @@ export default function Home({
           <section>
             <HomeHeading title="My Top ⚡kills" />
 
-            <div className="home-section-container no-scrollbar">
+            <div className="home-section-container no-scrollbar m-">
               {skills.map((skill) => {
                 return (
                   <div
@@ -145,7 +145,7 @@ export default function Home({
                       {certificate.title}
                     </p>
                     <button
-                      className="px-3 py-2  bg-purple-400 text-black text-center font-semibold outline-none clickable_button w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md"
+                      className="px-3 py-2  bg-purple-400 text-black text-center font-semibold outline-none w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
                       <GrCertificate className="text-xl" />
@@ -178,11 +178,12 @@ export default function Home({
                       layout="responsive"
                       objectFit="contain"
                     />
-                    <p className="capitalize my-2 font-bold text-lg md:text-xl border-purple-600">
+                    <h1 className="capitalize my-2 mt-4 font-bold text-lg md:text-xl border-purple-600">
                       {project.name}
+                    </h1>
+                    <p className="text-xs sm:text-base line-clamp-3">
+                      {project.description}
                     </p>
-
-                    <p className="line-clamp-3">{project.description}</p>
                   </div>
                 );
               })}
@@ -213,18 +214,8 @@ export async function getStaticProps() {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
       },
     }).then((res) => res.json()),
-    // fetch(process.env.BASE_URL + "/api/skills/pinned").then((res) =>
-    //   res.json()
-    // ),
     getPinnedSkills(),
-    // fetch(process.env.BASE_URL + "/api/certificates?pinned=true").then((res) =>
-    //   res.json()
-    // ),
     getPinnedCertificates(),
-
-    // fetch(process.env.BASE_URL + "/api/projects?pinned=true").then((res) =>
-    //   res.json()
-    // ),
     getPinnedProjects(),
     fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
       (res) => res.json()

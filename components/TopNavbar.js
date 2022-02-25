@@ -31,16 +31,21 @@ export default function TopNavbar() {
   }, [currentRoute]);
 
   return (
-    <div className="md:sticky w-full bg-white dark:bg-darkPrimary  dark:text-white top-0 flex items-center justify-between shadow p-4 z-40 print:hidden">
+    <div className="fixed w-full bg-white/30 dark:bg-darkPrimary/50   dark:text-white backdrop-blur-xl top-0 flex items-center justify-between shadow p-4 z-40 print:hidden">
+      {/* <div className="absolute inset-0  opacity-50 "></div> */}
+
       {/* Name*/}
-      <div className="text-center sm:text-left text-2xl font-bold" title="Jatin Sharma">
+      <div
+        className="text-center sm:text-left text-2xl font-bold z-40"
+        title="Jatin Sharma"
+      >
         <Link href="/">Jatin Sharma</Link>
       </div>
 
       {/* Dark Mode Toggle button */}
 
       <div
-        className="cursor-pointer rounded-full p-1 ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
+        className="cursor-pointer rounded-full p-1 ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500 xl:absolute left-2/4 -translate-x-2/4 z-40"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!darkMode)}
       >
@@ -53,7 +58,7 @@ export default function TopNavbar() {
         />
       </div>
       {/* Top Nav list */}
-      <nav className="hidden sm:flex">
+      <nav className="hidden sm:flex z-40">
         <ul className="flex items-center flex-1">
           <li className="top-nav-link">
             <Link href="/">Home</Link>

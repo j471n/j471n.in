@@ -39,7 +39,7 @@ export default function Article({ article, comments, followers }) {
             className="fixed top-0 left-0 z-50 w-full bg-purple-600 h-2 origin-top-left scale-0 transform duration-300"
             style={{ transform: `scale(${scroll}, 1)` }}
           />
-          <div className="flex flex-col-reverse md:flex-row-reverse relative max-w-screen p-3 mb:p-5 mb-10 lg:px-10 gap-5 dark:bg-darkPrimary">
+          <div className="flex flex-col-reverse md:flex-row-reverse relative max-w-screen p-3 mb:p-5 pb-10 lg:px-10 gap-5 dark:bg-darkPrimary">
             <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100 print:hidden">
               <div className="p-0">
                 <Author followers={followers} />

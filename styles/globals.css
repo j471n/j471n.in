@@ -96,7 +96,7 @@ body::-webkit-scrollbar-thumb {
     @apply m-1 text-3xl cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-300 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
+    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
   }
   .contact_field {
     @apply text-base font-medium text-black dark:text-white w-full px-4 py-2 m-2 rounded-md border-none outline-none shadow-inner shadow-slate-200 dark:shadow-zinc-900 focus:ring-1 focus:ring-purple-500 dark:bg-darkSecondary dark:placeholder-gray-500;
@@ -117,7 +117,7 @@ body::-webkit-scrollbar-thumb {
     @apply block sm:hidden py-1 w-full lg:hover:bg-gray-300 cursor-pointer bg-gray-200 rounded-md transform duration-100 active:scale-90 select-none;
   }
   .user_reaction {
-    @apply flex font-semibold items-center cursor-pointer lg:hover:text-[#39e58c] w-full justify-center sm:justify-start sm:w-auto space-x-1 text-xs lg:text-base;
+    @apply flex font-semibold items-center cursor-pointer w-full justify-center sm:justify-start sm:w-auto space-x-1 text-base lg:text-sm;
   }
   .project_link {
     @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 lg:dark:hover:bg-darkPrimary justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
@@ -127,9 +127,9 @@ body::-webkit-scrollbar-thumb {
   }
 
   .home-section-container {
-    @apply flex  overflow-x-scroll p-5 md:px-10 w-full min-h-[200px]  last:mr-10 select-none snap-x;
+    @apply flex space-x-2 overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] select-none snap-x lg:snap-none;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none hover:transform hover:-translate-x-5 hover:-rotate-3 hover:scale-105 scale-95 duration-150 hover:z-10 bg-white snap-center;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none lg:hover:-translate-x-5 lg:hover:-rotate-3 lg:hover:scale-105 scale-95 duration-150 lg:hover:z-10 bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24 ;
   }
 }
