@@ -67,7 +67,7 @@ export default function Contact({ socialMedia }) {
       </section>
 
       {/* Wrapper Container */}
-      <section className="flex flex-col lg:flex-row w-full mx-auto px-5 dark:bg-darkSecondary dark:text-white">
+      <section className="flex flex-col lg:flex-row w-full mx-auto px-5 dark:bg-darkSecondary dark:text-white lg:pb-10">
         {/* Left Contact form section */}
         <div className="w-full mx-auto mt-10">
           <h2 className="text-2xl font-bold w-full text-center my-2">
@@ -121,7 +121,7 @@ export default function Contact({ socialMedia }) {
               }
             />
             <textarea
-              className="contact_field custom-scrollbar h-44  !resize-none md:resize"
+              className="contact_field min-h-[100px] resize-y"
               name="message"
               value={emailInfo.message}
               placeholder="Message"
