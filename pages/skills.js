@@ -2,8 +2,8 @@ import Skill from "../components/Skill";
 import LazyLoad from "react-lazyload";
 import { getSkills } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
-import Image from "next/image";
-import {MdKeyboardArrowDown} from "react-icons/md"
+import { MdKeyboardArrowDown } from "react-icons/md";
+
 export default function Skills({ skills }) {
   return (
     <>
@@ -17,12 +17,13 @@ export default function Skills({ skills }) {
             </h1>
           </div>
           <div className="relative w-full">
-            <Image
+            <img
               src="https://cutt.ly/VP1Jgf9"
               width={941}
               height={758}
               layout="responsive"
               alt="skills"
+              loading="lazy"
             />
           </div>
           <div className="hidden lg:flex justify-center absolute w-full -bottom-4 animate-bounce text-6xl text-black dark:text-gray-300">
