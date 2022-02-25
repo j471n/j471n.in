@@ -8,6 +8,7 @@ module.exports = [
     githubURL: "https://github.com/j471n/ghost-invasion-game-python",
     previewURL: "",
     tools: ["python", "pygame"],
+    pinned: false,
   },
   {
     id: 2,

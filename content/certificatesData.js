@@ -25,7 +25,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/1HziWP3mLgDozfzXjXcs-qLvTzajU1x4j/view?usp=sharing",
     },
-    pinned: false,
+    pinned: true,
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/1OimrWK3_Jj78355DD3jOF8EscHATsMsZ/view?usp=sharing",
     },
-    pinned: false,
+    pinned: true,
   },
   {
     id: 5,
@@ -151,7 +151,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/16EfC-wEyLD8Yy0kQcthsUxGfF4gF1E_B/view?usp=sharing",
     },
-    pinned: false,
+    pinned: true,
   },
   {
     id: 12,

@@ -112,7 +112,7 @@ module.exports = [
     name: "git",
     level: 95,
     icon: "img/skills/git.webp",
-    pinned: false,
+    pinned: true,
     about:
       "Git is software for tracking changes in any set of files, usually used for coordinating work among programmers collaboratively developing source code during software development. Its goals include speed, data integrity, and support for distributed, non-linear workflows.",
   },
@@ -130,7 +130,7 @@ module.exports = [
     name: "Nodejs",
     level: 50,
     icon: "img/skills/nodejs.webp",
-    pinned: false,
+    pinned: true,
     about:
       "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.",
   },

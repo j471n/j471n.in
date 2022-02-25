@@ -209,7 +209,7 @@ export function HomeHeading({ title }) {
 export async function getStaticProps() {
   // fetching multiple requests by Promise.all
   const [blogs, skills, certificates, projects, followers] = await Promise.all([
-    fetch("https://dev.to/api/articles/me?per_page=5", {
+    fetch("https://dev.to/api/articles/me?per_page=10", {
       headers: {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
       },
