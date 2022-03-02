@@ -49,6 +49,11 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
+/* For preventing the blue highlight color box on tap(click) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @keyframes bar {
   from {
     width: 0;
@@ -130,6 +135,6 @@ body::-webkit-scrollbar-thumb {
     @apply flex space-x-2 overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] select-none snap-x lg:snap-none;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none lg:hover:-translate-x-5 lg:hover:-rotate-3 lg:hover:scale-105 scale-95 duration-150 lg:hover:z-10 bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24 ;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none lg:hover:-translate-x-5 lg:hover:-rotate-3 lg:hover:scale-105 scale-95 duration-150 lg:hover:z-10 bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24;
   }
 }

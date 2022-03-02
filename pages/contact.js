@@ -9,9 +9,9 @@ import {
   AiOutlineLoading,
 } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaDev } from "react-icons/fa";
+import { FaDev, FaPaypal } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
-import { SiCodepen } from "react-icons/si";
+import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../components/SocialIcon";
 import { getSocialMedia } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
@@ -214,13 +214,7 @@ export default function Contact({ socialMedia }) {
                 title="Buy me a coffee"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="https://imgur.com/a7OZ4EV.png"
-                  alt="Buy Me A Coffee"
-                  width={60}
-                  className="rounded-full"
-                  height={60}
-                />
+                <SiBuymeacoffee className="icon" />
               </a>
 
               {/* PayPal Link */}
@@ -230,13 +224,7 @@ export default function Contact({ socialMedia }) {
                 title="PayPal"
                 rel="noopener noreferrer"
               >
-                <Image
-                  src="https://imgur.com/jFdBFwG.png"
-                  alt="PayPal"
-                  className="rounded-full"
-                  width={60}
-                  height={60}
-                />
+                <FaPaypal className="icon" />
               </a>
             </div>
           </div>
