@@ -4,10 +4,6 @@ export const popUp = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: "easeInOut",
-    },
   },
 };
 

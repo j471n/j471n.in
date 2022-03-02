@@ -15,6 +15,7 @@ import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../components/SocialIcon";
 import { getSocialMedia } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
+import { motion } from "framer-motion";
 
 // initial State of the form
 const initialFormState = {
@@ -158,7 +159,7 @@ export default function Contact({ socialMedia }) {
           </h2>
 
           {/* Social Media Container */}
-          <div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100">
+          <motion.div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100">
             <SocialIcon
               Icon={AiOutlineInstagram}
               title="Instagram"
@@ -199,7 +200,7 @@ export default function Contact({ socialMedia }) {
               title="Instagram"
               url={socialMedia.devTo}
             />
-          </div>
+          </motion.div>
           {/* Support Me */}
           <div className="pb-24 lg:pb-0">
             <h2 className="text-lg sm:text-2xl font-bold my-2">
@@ -208,24 +209,19 @@ export default function Contact({ socialMedia }) {
 
             <div className="flex items-center justify-center space-x-4 my-6">
               {/* buy me a coffee */}
-              <a
-                href="https://www.buymeacoffee.com/j471n"
-                target="_blank"
+
+              <SocialIcon
+                Icon={SiBuymeacoffee}
                 title="Buy me a coffee"
-                rel="noopener noreferrer"
-              >
-                <SiBuymeacoffee className="icon" />
-              </a>
+                url="https://www.buymeacoffee.com/j471n"
+              />
 
               {/* PayPal Link */}
-              <a
-                href="https://www.paypal.com/paypalme/j47in"
-                target="_blank"
+              <SocialIcon
+                Icon={FaPaypal}
                 title="PayPal"
-                rel="noopener noreferrer"
-              >
-                <FaPaypal className="icon" />
-              </a>
+                url="https://www.paypal.com/paypalme/j47in"
+              />
             </div>
           </div>
         </div>
