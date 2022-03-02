@@ -1,6 +1,6 @@
 import Interweave from "interweave";
 import styles from "../../styles/Blog.module.css";
-import { AiOutlineCalendar } from "react-icons/ai";
+import { AiOutlineCalendar, AiOutlineLike, AiOutlineEye } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import { useEffect, useState } from "react";
@@ -65,7 +65,9 @@ export default function Article() {
               </div>
 
               <Comments
+                likes={data.public_reactions_count}
                 comments={comments}
+                comments_count={data.comments_count}
                 articleId={data.id}
                 articleAuthor={data.user}
               />
