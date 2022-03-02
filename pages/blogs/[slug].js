@@ -10,10 +10,27 @@ import Author from "../../components/Author";
 import Comments from "../../components/Comments";
 import { useRouter } from "next/router";
 import Metadata from "../../components/MetaData";
+import useFetchWithSWR from "../../hooks/useFetchWithSWR";
+import LoadingBlog from "../../components/SkeletonLoading/LoadingBlog";
 
-export default function Article({ article, comments, followers }) {
+export default function Article() {
   const router = useRouter();
   const [scroll, setScroll] = useState(0);
+
+  // Fetching the main blog content
+  const { data, isLoading: isDataLoading } = useFetchWithSWR(
+    "https://dev.to/api/articles/j471n/" + router.query.slug
+  );
+
+  // Fetching current Followers on dev.to/j471n
+  const { data: followers, isLoading: isFollowersLoading } = useFetchWithSWR(
+    process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers"
+  );
+
+  // Fetching Comments for current Article
+  const { data: comments, isLoading: isCommentsLoading } = useFetchWithSWR(
+    `https://dev.to/api/comments?a_id=${data?.id}?sort=-created_at`
+  );
 
   useEffect(() => {
     let progressBarHandler = () => {
@@ -30,11 +47,13 @@ export default function Article({ article, comments, followers }) {
     return () => window.removeEventListener("scroll", progressBarHandler);
   });
 
+  if (isDataLoading || isFollowersLoading || isCommentsLoading)
+    return <LoadingBlog />;
   return (
     <>
-      {!article.error ? (
+      {!data.error ? (
         <>
-          <Metadata title={article.title} />
+          <Metadata title={data.title} />
           <div
             className="fixed top-0 left-0 z-50 w-full bg-purple-600 h-2 origin-top-left scale-0 transform duration-300"
             style={{ transform: `scale(${scroll}, 1)` }}
@@ -42,45 +61,43 @@ export default function Article({ article, comments, followers }) {
           <div className="flex flex-col-reverse md:flex-row-reverse relative max-w-screen p-3 mb:p-5 pb-10 lg:px-10 gap-5 dark:bg-darkPrimary">
             <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100 print:hidden">
               <div className="p-0">
-                <Author followers={followers} />
+                <Author followers={followers?.followers_count} />
               </div>
 
               <Comments
                 comments={comments}
-                articleId={article.id}
-                articleAuthor={article.user}
+                articleId={data.id}
+                articleAuthor={data.user}
               />
             </div>
             <div className="mx-auto p-3 md:p-5 w-full md:w-[60%] xl:w-[70%] 2xl:w-[80%] xl:p-8 bg-gray-200 rounded-md dark:bg-darkSecondary dark:text-gray-100 h-fit">
-              <div className={styles.article_page}>
-                <h1 className=" text-4xl font-bold mb-4">{article.title}</h1>
-                <div className={styles.article_header}>
+              <div className={styles.data_page}>
+                <h1 className=" text-4xl font-bold mb-4">{data.title}</h1>
+                <div className={styles.data_header}>
                   <div className="flex space-x-2">
                     <div className="flex items-center">
                       <AiOutlineCalendar />
                       <p className="text-xs ml-1 font-medium">
-                        {new Date(
-                          Date.parse(article.published_at)
-                        ).toDateString()}
+                        {new Date(Date.parse(data.published_at)).toDateString()}
                       </p>
                     </div>
                     <div className="flex items-center">
                       <BiTime />
                       <p className="text-xs ml-1 font-medium">
-                        {article.reading_time_minutes} mins
+                        {data.reading_time_minutes} mins
                       </p>
                     </div>
                   </div>
                   <ShareOnSocialMedia
                     className={styles.socialMedia}
-                    title={article.title}
-                    url={article.url}
-                    summary={article.description}
-                    cover_image={article.cover_image}
+                    title={data.title}
+                    url={data.url}
+                    summary={data.description}
+                    cover_image={data.cover_image}
                   />
                 </div>
                 <div className="flex items-center flex-wrap my-2 uppercase text-xs sm:text-base text-purple-500 dark:text-purple-400 font-bold space-x-1 md:space-x-3 select-none max-w-full print:hidden">
-                  {article.tags?.map((tag) => {
+                  {data.tags?.map((tag) => {
                     return (
                       <span
                         key={tag}
@@ -93,9 +110,9 @@ export default function Article({ article, comments, followers }) {
                   })}
                 </div>
               </div>
-              {article.cover_image && (
+              {data.cover_image && (
                 <Image
-                  src={article.cover_image}
+                  src={data.cover_image}
                   className="w-full mx-auto rounded-md"
                   layout="responsive"
                   width={800}
@@ -105,7 +122,7 @@ export default function Article({ article, comments, followers }) {
               )}
               <Interweave
                 className={styles.dev_blog}
-                content={article.body_html}
+                content={data.body_html}
               />
             </div>
           </div>
@@ -125,33 +142,4 @@ export default function Article({ article, comments, followers }) {
       )}
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  // Getting slug from query
-  const slug = context.query.slug;
-
-  // Promises for article and followers
-  const [article, followers] = await Promise.all([
-    fetch("https://dev.to/api/articles/j471n/" + slug).then((res) =>
-      res.json()
-    ),
-
-    fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
-      (res) => res.json()
-    ),
-  ]);
-
-  // Fetching the comments of current slug
-  const comments = await fetch(
-    `https://dev.to/api/comments?a_id=${article.id}?sort=-created_at`
-  ).then((res) => res.json());
-
-  return {
-    props: {
-      article,
-      comments,
-      followers: followers.followers_count,
-    },
-  };
 }

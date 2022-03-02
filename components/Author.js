@@ -1,24 +1,15 @@
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { BsInstagram, BsTwitter, BsGithub, BsGlobe } from "react-icons/bs";
-import socialMedia from "../content/socialMedia";
-import SocialIcon from "./SocialIcon";
 import { TiLocation } from "react-icons/ti";
 import { RiUserFollowFill } from "react-icons/ri";
+import useFetchWithSWR from "../hooks/useFetchWithSWR";
+import { LoadingAuthor } from "./SkeletonLoading/LoadingBlog";
 
 export default function Author({ followers }) {
-  const [author, setAuthor] = useState(null);
+  const { data: author, isLoading } = useFetchWithSWR(
+    "https://dev.to/api/users/495014"
+  );
 
-  async function api() {
-    const response = await fetch("https://dev.to/api/users/495014");
-    const data = await response.json();
-    setAuthor(data);
-  }
-
-  useEffect(() => {
-    api();
-  }, []);
-
+  if (isLoading) return <LoadingAuthor />;
   return (
     <div className="max-w-lg rounded-lg  mx-auto md:w-full overflow-hidden bg-blue-200 dark:bg-darkSecondary relative">
       {author && (
@@ -34,10 +25,11 @@ export default function Author({ followers }) {
             <div className="flex flex-col space-y-2 items-center p-2">
               <div className="rounded-full w-24 h-24  p-2 bg-white shadow-xl">
                 <Image
-                  src={author.profile_image}
+                  src={author?.profile_image}
                   className="rounded-full"
                   width={80}
                   height={80}
+                  layout="responsive"
                 />
               </div>
               <p className="font-bold text-3xl ">{author.name}</p>
