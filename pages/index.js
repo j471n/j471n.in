@@ -110,8 +110,8 @@ export default function Home({
                           </span>
                         </p>
                       </div>
-                      <h3 className="text-xl mb-1 font-bold">{blog.title}</h3>
-                      <p className="text-xs sm:text-base line-clamp-3">
+                      <h3 className="text-xl mb-1 font-bold truncate-2">{blog.title}</h3>
+                      <p className="text-xs sm:text-base truncate-3">
                         {blog.description}
                       </p>
                     </div>
@@ -181,7 +181,7 @@ export default function Home({
                     <h1 className="capitalize my-2 mt-4 font-bold text-lg md:text-xl border-purple-600">
                       {project.name}
                     </h1>
-                    <p className="text-xs sm:text-base line-clamp-3">
+                    <p className="text-xs sm:text-base truncate-3">
                       {project.description}
                     </p>
                   </div>

@@ -67,6 +67,13 @@ body::-webkit-scrollbar-thumb {
   overflow: hidden;
 }
 
+.truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .auto-row {
   -webkit-margin-before: auto;
   margin-block-start: auto;
