@@ -15,7 +15,10 @@ import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../components/SocialIcon";
 import { getSocialMedia } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { popUp, popUpFromBottomForText } from "../content/FramerMotionVariants";
+import { useInView } from "react-intersection-observer";
+import AnimatedText from "../components/FramerMotion/AnimatedText";
 
 // initial State of the form
 const initialFormState = {
@@ -29,6 +32,8 @@ const initialFormState = {
 export default function Contact({ socialMedia }) {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
+  const [ref, inView] = useInView();
+  const controls = useAnimation();
 
   function sendEmail(e) {
     e.preventDefault();
@@ -61,10 +66,14 @@ export default function Contact({ socialMedia }) {
       {/* Get in touch top section */}
       <section className="w-full-width text-center pt-6 dark:bg-darkSecondary dark:text-white">
         <h1 className="font-bold text-4xl">Get in touch</h1>
-        <p className="px-4 py-2 font-medium dark:text-gray-300">
+
+        <AnimatedText
+          variants={popUpFromBottomForText}
+          className="px-4 py-2 font-medium dark:text-gray-300"
+        >
           Have a little something, something you wanna talk about? Please feel
           free to get in touch anytime, whether for work or to just Hi 🙋‍♂️.
-        </p>
+        </AnimatedText>
       </section>
 
       {/* Wrapper Container */}
@@ -75,7 +84,11 @@ export default function Contact({ socialMedia }) {
             Connect with me
           </h2>
 
-          <form
+          <motion.form
+            ref={ref}
+            initial="hidden"
+            animate={inView && "visible"}
+            variants={popUp}
             className="w-full flex flex-col items-center max-w-sm mx-auto dark:text-gray-300"
             onSubmit={sendEmail}
           >
@@ -150,7 +163,7 @@ export default function Contact({ socialMedia }) {
                 <p>{loading ? "Sending..." : "Send"}</p>
               </div>
             </button>
-          </form>
+          </motion.form>
         </div>
         {/* Right Other contact methods */}
         <div className="w-full mx-auto mt-10 lg:border-l-4 lg:dark:border-zinc-400 flex flex-col justify-center items-center">
