@@ -5,16 +5,17 @@ import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Typed from "typed.js";
-
-import { motion, useAnimation } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { slideFromLeft } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
+import Loading from "../../components/Loading";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 
-export default function Blogs({ blogTags, data }) {
-  const [blogs, setBlogs] = useState([]);
+export default function Blogs({ blogTags, blogs, err, allBlogs }) {
+  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
   const [searchResult, setSearchResult] = useState([]);
+  const [activeTag, setActiveTag] = useState("all");
   const router = useRouter();
   const searchRef = useRef();
   const searchInputRef = useRef();
@@ -22,45 +23,9 @@ export default function Blogs({ blogTags, data }) {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
-  const query = router.query.tag || "all";
+  console.log(blogs, filteredBlogs);
 
-  function sorting(q = "all") {
-    var filteredData = [];
-    data.map((blog) => {
-      // Sort By the query or tag
-      if (blog.tag_list.includes(q)) {
-        filteredData.push(blog);
-      } else {
-        // if the tag is missing then sort by on some special params
-        switch (q) {
-          case "all":
-            filteredData = data;
-            break;
-          case "popular":
-            filteredData = [...data]
-              .sort(
-                (a, b) => a.public_reactions_count - b.public_reactions_count
-              )
-              .reverse();
-
-            break;
-          default:
-            break;
-        }
-      }
-    });
-
-    return filteredData;
-  }
-
-  // Sorting the value as the query changes
-  useEffect(() => {
-    setBlogs(sorting(query));
-  }, [query]);
-
-  useEffect(() => {
-    router.prefetch("/blogs?tag=popular");
-  }, []);
+  if (!blogs && err) return <Loading />;
 
   function handleSearch(e) {
     e.preventDefault();
@@ -77,17 +42,6 @@ export default function Blogs({ blogTags, data }) {
     );
   }
 
-  useEffect(() => {
-    var options = {
-      strings: ["Search Blogs...", "Search Articles...", "Search Content..."],
-      typeSpeed: 75,
-      backSpeed: 75,
-      attr: "placeholder",
-      loop: true,
-    };
-    new Typed(searchInputRef.current, options);
-  }, []);
-
   return (
     <>
       <Metadata title="Blogs 📰" />
@@ -100,11 +54,12 @@ export default function Blogs({ blogTags, data }) {
 
       <div className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col items-center max-w-lg justify-center w-full mx-auto">
-          <form className="mx-auto mt-4   flex items-center w-full">
+          <form className="mx-auto mt-4 flex items-center w-full relative">
             <input
-              className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-gray-400 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
+              className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-1 ring-gray-200 dark:ring-zinc-600 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
               type="search"
               ref={searchInputRef}
+              placeholder="Search articles..."
               onChange={handleSearch}
             />
           </form>
@@ -142,18 +97,25 @@ export default function Blogs({ blogTags, data }) {
       {
         <>
           {/* Tags Section */}
-          <Tags blogTags={blogTags} query={query} />
+          <Tags
+            blogs={blogs}
+            blogTags={blogTags}
+            activeTag={activeTag}
+            setActiveTag={setActiveTag}
+            setFilteredBlogs={setFilteredBlogs}
+          />
           {/* Main Blogs Page Container */}
-          <section className="page_container ">
-            {blogs &&
-              blogs.map((blog) => {
+          <motion.section layout className="page_container relative">
+            <AnimatePresence>
+              {filteredBlogs.map((blog) => {
                 return (
-                  <LazyLoad key={blog.id} className="h-full w-full">
+                  <LazyLoad key={blog.id}>
                     <Blog key={blog.id} blog={blog} />
                   </LazyLoad>
                 );
               })}
-          </section>
+            </AnimatePresence>
+          </motion.section>
         </>
       }
     </>
@@ -161,32 +123,41 @@ export default function Blogs({ blogTags, data }) {
 }
 
 export async function getStaticProps(ctx) {
-  const query = ctx.query?.tag || "all";
-  const data = await fetch("https://dev.to/api/articles/me", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
+  try {
+    const query = ctx.query?.tag || "all";
+    const data = await fetch("https://dev.to/api/articles/me", {
+      headers: {
+        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+      },
+    })
+      .then((res) => res.json())
+      .catch((err) => console.error(err));
 
-  var blogTags = ["all", "popular"];
-  data.map((blog) => {
-    blog.tag_list.map((tag) => {
-      if (!blogTags.includes(tag)) {
-        blogTags.push(tag);
-      }
+    var blogTags = ["all", "popular"];
+    data.map((blog) => {
+      blog.tag_list.map((tag) => {
+        if (!blogTags.includes(tag)) {
+          blogTags.push(tag);
+        }
+      });
     });
-  });
 
-  return {
-    props: {
-      query,
-      blogTags,
-      // blogs: !temp.length == 0 ? temp : data,
-      data: data,
-    },
-    // updates the page automatically after 1/2 an hour
-    revalidate: 30 * 60,
-  };
+    return {
+      props: {
+        query,
+        blogTags,
+        allBlogs: data,
+        // blogs: !temp.length == 0 ? temp : data,
+        blogs: data,
+      },
+      // updates the page automatically after 1/2 an hour
+      revalidate: 30 * 60,
+    };
+  } catch (err) {
+    return {
+      props: {
+        error: err,
+      },
+    };
+  }
 }

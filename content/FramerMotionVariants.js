@@ -5,6 +5,10 @@ export const popUp = {
     opacity: 1,
     scale: 1,
   },
+  transition: {
+    duration: 1,
+    ease: "easeInOut",
+  },
 };
 
 // Slide from the Bottom animation
