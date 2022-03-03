@@ -9,7 +9,7 @@ export default function SocialIcon({ Icon, title, url }) {
 
   if (inView) controls.start("visible");
   return (
-    <motion.div
+    <motion.a
       ref={ref}
       initial="hidden"
       animate={controls}
@@ -19,6 +19,6 @@ export default function SocialIcon({ Icon, title, url }) {
       rel="noopener noreferrer"
     >
       <Icon className="icon" title={title} />
-    </motion.div>
+    </motion.a>
   );
 }
