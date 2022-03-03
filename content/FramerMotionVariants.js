@@ -45,3 +45,8 @@ export const popUpFromBottomForText = {
   hidden: { opacity: 0, y: 10 },
   visible: { opacity: 1, y: 0 },
 };
+
+export const pulseOpacity = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};

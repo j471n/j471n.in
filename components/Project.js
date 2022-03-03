@@ -6,7 +6,7 @@ import Image from "next/image";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { slideFromBottom } from "../content/FramerMotionVariants";
+import { pulseOpacity } from "../content/FramerMotionVariants";
 export default function Project({ project }) {
   // Sharing Project
   const controls = useAnimation();
@@ -51,7 +51,7 @@ export default function Project({ project }) {
       initial="hidden"
       ref={ref}
       animate={controls}
-      variants={slideFromBottom}
+      variants={pulseOpacity}
     >
       {project.coverURL && (
         <Image
