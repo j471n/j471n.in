@@ -1,21 +1,17 @@
-import CoverPage from "../components/CoverPage";
 import Link from "next/link";
 import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
-import Author from "../components/Author";
 import {
   getPinnedProjects,
   getPinnedSkills,
-  getPinnedCertificates,
+  getCertificates,
   getSocialMedia,
 } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
-// import Contact from "../components/Contact";
-// import { Contact } from "../components/Contact";
 import Contact from "../components/Contact";
 
 export default function Home({
@@ -23,7 +19,6 @@ export default function Home({
   skills,
   certificates,
   projects,
-  followers,
   socialMedia,
 }) {
   return (
@@ -75,10 +70,7 @@ export default function Home({
             <div className="home-section-container no-scrollbar m-">
               {skills.map((skill) => {
                 return (
-                  <div
-                    key={skill.id}
-                    className="home-content-section bg-gray-200"
-                  >
+                  <div key={skill.id} className="home-content-section !w-auto">
                     <Image width={70} height={70} src={`/${skill.icon}`} />
                     <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
                       {skill.name}
@@ -146,21 +138,34 @@ export default function Home({
                 return (
                   <div
                     key={certificate.id}
-                    className="home-content-section no-scrollbar flex flex-col justify-evenly cursor-auto"
+                    className="home-content-section no-scrollbar flex flex-col  cursor-auto"
                   >
-                    <Image
-                      width={100}
-                      height={20}
-                      src={certificate.issuedBy.orgLogo}
-                      alt={certificate.issuedBy.orgName}
-                      layout="responsive"
-                      objectFit="contain"
-                    />
-                    <p className="capitalize my-2 font-bold text-xs sm:text-base border-purple-600">
-                      {certificate.title}
-                    </p>
+                    <div className="flex items-center justify-between mb-3">
+                      <p className="font-bold capitalize text-xs sm:text-sm">
+                        {certificate.issuedBy.orgName}
+                      </p>
+                      <p className="font-medium text-xs sm:text-sm">
+                        {certificate.issuedDate}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="flex relative">
+                        <Image
+                          width={40}
+                          height={40}
+                          src={certificate.issuedBy.orgLogo}
+                          alt={certificate.issuedBy.orgName}
+                          objectFit="contain"
+                          layout="fixed"
+                        />
+                      </div>
+                      <p className="capitalize font-bold text-sm md:text-base border-purple-600">
+                        {certificate.title}
+                      </p>
+                    </div>
+
                     <button
-                      className="px-3 py-2  bg-purple-400 text-black text-center font-semibold outline-none w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md"
+                      className="px-3 py-2 mt-2  bg-purple-700 !text-white text-center font-semibold outline-none w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md auto-row"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
                       <GrCertificate className="text-xl" />
@@ -169,7 +174,7 @@ export default function Home({
                   </div>
                 );
               })}
-              <ExploreMoreButton link="/certificates" />
+              {/* <ExploreMoreButton link="/certificates" /> */}
             </div>
           </section>
 
@@ -221,7 +226,7 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates, projects, socialMedia, followers] =
+  const [blogs, skills, certificates, projects, socialMedia] =
     await Promise.all([
       fetch("https://dev.to/api/articles/me?per_page=10", {
         headers: {
@@ -229,12 +234,9 @@ export async function getStaticProps() {
         },
       }).then((res) => res.json()),
       getPinnedSkills(),
-      getPinnedCertificates(),
+      getCertificates(),
       getPinnedProjects(),
       getSocialMedia(),
-      fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
-        (res) => res.json()
-      ),
     ]);
   return {
     props: {
@@ -243,7 +245,6 @@ export async function getStaticProps() {
       certificates,
       projects,
       socialMedia,
-      followers: followers.followers_count,
     },
     // updates the page automatically after 1/2 an hour
     revalidate: 30 * 60,

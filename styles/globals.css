@@ -168,7 +168,7 @@ body::-webkit-scrollbar-thumb {
     @apply flex space-x-2 overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] select-none snap-x lg:snap-none;
   }
   .home-content-section {
-    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow ring-1 dark:bg-darkSecondary ring-gray-400 lg:hover:ring-2 rounded-xl p-3 cursor-pointer select-none lg:hover:-translate-x-5 lg:hover:-rotate-3 lg:hover:scale-105 scale-95 duration-150 lg:hover:z-10 bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24;
+    @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow shadow-black/20 dark:shadow-white/20 dark:bg-darkSecondary ring-gray-400 rounded-xl p-3 cursor-pointer select-none  lg:hover:scale-105 scale-95 transition bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24;
   }
   .blog-hover-button {
     @apply flex items-center space-x-2 border-2 border-white dark:border-zinc-600 px-3 py-1 font-semibold w-min text-white dark:text-white hover:bg-white dark:hover:bg-zinc-600 hover:text-black;
