@@ -17,10 +17,12 @@ export default function Article() {
   const router = useRouter();
   const [scroll, setScroll] = useState(0);
 
+  // for testing purposes
+  const isTesting = false;
   // Fetching the main blog content
-  const { data, isLoading: isDataLoading } = useFetchWithSWR(
-    "https://dev.to/api/articles/j471n/" + router.query.slug
-  );
+  const { data, isLoading: isDataLoading } = isTesting
+    ? { data: [], isLoading: true }
+    : useFetchWithSWR("https://dev.to/api/articles/j471n/" + router.query.slug);
 
   // Fetching current Followers on dev.to/j471n
   const { data: followers, isLoading: isFollowersLoading } = useFetchWithSWR(

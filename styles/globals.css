@@ -12,6 +12,15 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  padding-top: 68px;
+  background: white;
+}
+
+body.dark {
+  background-color: #181a1b;
+}
+
 body::-webkit-scrollbar {
   width: 8px;
 }

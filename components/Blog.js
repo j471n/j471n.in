@@ -35,7 +35,7 @@ export default function Blog({ blog }) {
   return (
     <motion.div
       layout
-      className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col"
+      className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
