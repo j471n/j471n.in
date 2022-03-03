@@ -12,15 +12,32 @@ export default function Projects({ projects }) {
     <>
       <Metadata title="Projects ⚒️" />
       <div>
-        <CoverPage
+        {/* <CoverPage
           title="Here are my "
           mainHeading="Projects"
           className="grid place-items-center"
-        />
+        /> */}
+        .
+        <div className="relative w-screen h-[85vh]">
+          <video
+            className="w-full h-full"
+            src="https://i.imgur.com/2cSaKIt.mp4"
+            autoPlay
+            muted
+            loop
+          ></video>
 
-        <h3 className="title_of_page">Projects</h3>
-
-        <section className="page_container">
+          <div className="absolute inset-0 bg-black text-white mix-blend-multiply flex flex-col items-center justify-center select-none">
+            <p class="capitalize font-bold text-6xl">my Projects</p>
+            <p
+              class="capitalize text-2xl font-thin font-merriweather border-b-2 border-transparent hover:border-gray-100 p-2 cursor-pointer"
+              onClick={() => (window.location.href = "#view")}
+            >
+              See my latest work
+            </p>
+          </div>
+        </div>
+        <section id="view" className="page_container mt-10">
           {projects &&
             projects.map((project) => {
               if (project.name === "" && project.githubURL === "") return null;
