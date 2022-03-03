@@ -49,10 +49,9 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
         buttonText="view recent posts"
       />
 
-      <div className="px-5 mx-auto dark:bg-darkPrimary">
-        <div className="flex flex-col items-center max-w-lg justify-center w-full mx-auto">
+      <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
+        <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">
           <form
-            id="view"
             className="mx-auto mt-4 flex items-center w-full relative"
           >
             <input
@@ -64,35 +63,35 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
             />
           </form>
           {/* {comment} */}
-          {/* {searchResult && ( */}
-          <div
-            className="mx-10 w-full flex flex-col space-y-3 mt-4 items-center transform duration-300 pb-5"
-            ref={searchRef}
-          >
-            {searchResult.map((res) => {
-              return (
-                <motion.div
-                  key={res.id}
-                  className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
-                  ref={ref}
-                  onClick={() => router.push(`/blogs/${res.slug}`)}
-                  initial="hidden"
-                  animate={controls}
-                  variants={slideFromLeft}
-                >
-                  <Image
-                    className="h-full rounded-lg"
-                    src={res.cover_image}
-                    width={200}
-                    height={85}
-                  />
-                  <p className="text-sm w-full font-medium">{res.title}</p>
-                </motion.div>
-              );
-            })}
-          </div>
+          {searchResult && (
+            <div
+              className="mx-10 w-full flex flex-col space-y-3 items-center transform duration-300"
+              ref={searchRef}
+            >
+              {searchResult.map((res) => {
+                return (
+                  <motion.div
+                    key={res.id}
+                    className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
+                    ref={ref}
+                    onClick={() => router.push(`/blogs/${res.slug}`)}
+                    initial="hidden"
+                    animate={controls}
+                    variants={slideFromLeft}
+                  >
+                    <Image
+                      className="h-full rounded-lg"
+                      src={res.cover_image}
+                      width={200}
+                      height={85}
+                    />
+                    <p className="text-sm w-full font-medium">{res.title}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          )}
         </div>
-        {/* )} */}
       </div>
       {
         <>

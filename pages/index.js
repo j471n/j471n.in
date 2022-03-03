@@ -34,11 +34,11 @@ export default function Home({
             Hi, welcome! I'm Jatin Sharma and I'm a self-taught React Developer
             👋 as I am currently perusing my Bachelor Degree in Computer
             Science. I wanted to learn the web development so desperately in my
-            High School, then as the time passed I've
+            High School, then as th e time passed I've
           </p> */}
         </VideoCover>
 
-        <div id="view" className="py-24">
+        <div id="view" className="pt-20">
           {/* About me */}
 
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">

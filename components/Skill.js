@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { slideFromBottom } from "../content/FramerMotionVariants";
+import { slideFromBottom, pulseOpacity } from "../content/FramerMotionVariants";
 import { useEffect } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -20,7 +20,7 @@ function Skill({ data }) {
     <motion.div
       className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-4 h-full"
       ref={ref}
-      variants={slideFromBottom}
+      variants={pulseOpacity}
       initial="hidden"
       animate={controls}
     >

@@ -11,25 +11,30 @@ export default function Projects({ projects }) {
   return (
     <>
       <Metadata title="Projects ⚒️" />
-      <div>
+      <>
         <VideoCover
           title="my Projects"
           buttonText="See my latest work"
           videoUrl="https://i.imgur.com/2cSaKIt.mp4"
         />
-        <section id="view" className="page_container mt-10">
-          {projects &&
-            projects.map((project) => {
-              if (project.name === "" && project.githubURL === "") return null;
 
-              return (
-                <LazyLoad key={project.id} className="h-full w-full">
-                  <Project key={project.id} project={project} />
-                </LazyLoad>
-              );
-            })}
-        </section>
-      </div>
+        <div className="relative">
+          <h1 className="absolute top-0 font-bold text-xl p-2 text-center w-full mt-5">Recent Projects</h1>
+          <section id="view" className="page_container pt-20">
+            {projects &&
+              projects.map((project) => {
+                if (project.name === "" && project.githubURL === "")
+                  return null;
+
+                return (
+                  <LazyLoad key={project.id} className="h-full w-full">
+                    <Project key={project.id} project={project} />
+                  </LazyLoad>
+                );
+              })}
+          </section>
+        </div>
+      </>
     </>
   );
 }
