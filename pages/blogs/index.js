@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import Blog from "../../components/Blog";
-import CoverPage from "../../components/CoverPage";
 import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 import { useRouter } from "next/router";
@@ -10,7 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { slideFromLeft } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
-import { LazyMotion, domAnimation, m } from "framer-motion";
+import VideoCover from "../../components/VideoCover";
 
 export default function Blogs({ blogTags, blogs, err, allBlogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
@@ -22,8 +21,6 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
-
-  console.log(blogs, filteredBlogs);
 
   if (!blogs && err) return <Loading />;
 
@@ -46,15 +43,18 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
     <>
       <Metadata title="Blogs 📰" />
 
-      <CoverPage
-        title="I write about"
-        mainHeading={["CSS", "Javascript", "React"]}
-        className="grid place-items-center"
+      <VideoCover
+        videoUrl="https://imgur.com/Ia5Byi2.mp4"
+        title="My articles"
+        buttonText="view recent posts"
       />
 
       <div className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col items-center max-w-lg justify-center w-full mx-auto">
-          <form className="mx-auto mt-4 flex items-center w-full relative">
+          <form
+            id="view"
+            className="mx-auto mt-4 flex items-center w-full relative"
+          >
             <input
               className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-1 ring-gray-200 dark:ring-zinc-600 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
               type="search"

@@ -12,6 +12,7 @@ import {
   getPinnedCertificates,
 } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
+import VideoCover from "../components/VideoCover";
 
 export default function Home({
   blogs,
@@ -24,13 +25,20 @@ export default function Home({
     <>
       <Metadata title="Home 🏠" />
       <div className="dark:bg-darkPrimary dark:text-gray-100">
-        <CoverPage
-          title="Hi There! I am"
-          className="flex flex-col justify-center items-center"
-          mainHeading="Jatin Sharma"
-        ></CoverPage>
+        <VideoCover
+          title="Jatin Sharma"
+          videoUrl={"https://imgur.com/GoHeE7r.mp4"}
+          buttonText="front-end developer"
+        >
+          {/* <p className="max-w-md p-5">
+            Hi, welcome! I'm Jatin Sharma and I'm a self-taught React Developer
+            👋 as I am currently perusing my Bachelor Degree in Computer
+            Science. I wanted to learn the web development so desperately in my
+            High School, then as the time passed I've
+          </p> */}
+        </VideoCover>
 
-        <div className="pb-24">
+        <div id="view" className="py-24">
           {/* About me */}
 
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
@@ -110,7 +118,9 @@ export default function Home({
                           </span>
                         </p>
                       </div>
-                      <h3 className="text-xl mb-1 font-bold truncate-2">{blog.title}</h3>
+                      <h3 className="text-xl mb-1 font-bold truncate-2">
+                        {blog.title}
+                      </h3>
                       <p className="text-xs sm:text-base truncate-3">
                         {blog.description}
                       </p>
