@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,13 +11,13 @@ import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaDev, FaPaypal } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
-import SocialIcon from "../components/SocialIcon";
-import { getSocialMedia } from "../lib/dataFetch";
-import Metadata from "../components/MetaData";
-import { motion, useAnimation } from "framer-motion";
-import { popUp, popUpFromBottomForText } from "../content/FramerMotionVariants";
+import SocialIcon from "../SocialIcon";
+// import { getSocialMedia } from "../../lib/dataFetch";
+import Metadata from "../MetaData";
+import { motion } from "framer-motion";
+import { popUp, popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import { useInView } from "react-intersection-observer";
-import AnimatedText from "../components/FramerMotion/AnimatedText";
+import AnimatedText from "../FramerMotion/AnimatedText";
 
 // initial State of the form
 const initialFormState = {
@@ -33,7 +32,6 @@ export default function Contact({ socialMedia }) {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView();
-  const controls = useAnimation();
 
   function sendEmail(e) {
     e.preventDefault();
@@ -60,11 +58,9 @@ export default function Contact({ socialMedia }) {
   }
 
   return (
-    <div className="min-h-screen dark:bg-darkSecondary">
-      <Metadata title="Contact 🤙" />
-
+    <div className="dark:bg-darkPrimary">
       {/* Get in touch top section */}
-      <section className="w-full-width text-center pt-6 dark:bg-darkSecondary dark:text-white">
+      <section className="w-full-width text-center pt-6 dark:bg-darkPrimary dark:text-white">
         <h1 className="font-bold text-4xl">Get in touch</h1>
 
         <AnimatedText
@@ -77,7 +73,7 @@ export default function Contact({ socialMedia }) {
       </section>
 
       {/* Wrapper Container */}
-      <section className="flex flex-col lg:flex-row w-full mx-auto px-5 dark:bg-darkSecondary dark:text-white lg:pb-10">
+      <section className="flex flex-col lg:flex-row w-full mx-auto px-5 dark:bg-darkPrimary dark:text-white lg:pb-10">
         {/* Left Contact form section */}
         <div className="w-full mx-auto mt-10">
           <h2 className="text-2xl font-bold w-full text-center my-2">
@@ -244,11 +240,11 @@ export default function Contact({ socialMedia }) {
   );
 }
 
-export async function getStaticProps() {
-  const socialMedia = getSocialMedia();
-  return {
-    props: {
-      socialMedia,
-    },
-  };
-}
+// export async function getStaticProps() {
+//   const socialMedia = getSocialMedia();
+//   return {
+//     props: {
+//       socialMedia,
+//     },
+//   };
+// }

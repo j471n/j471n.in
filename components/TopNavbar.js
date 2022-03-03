@@ -5,7 +5,7 @@ import useDarkmode from "../hooks/useDarkmode";
 import { RiLightbulbFlashFill } from "react-icons/ri";
 
 export default function TopNavbar() {
-  const routes = ["/", "/skills", "/blogs", "/projects", "/contact"];
+  const routes = ["/", "/skills", "/blogs", "/projects",];
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -61,7 +61,7 @@ export default function TopNavbar() {
       <nav className="hidden sm:flex z-40">
         <ul className="flex items-center flex-1">
           <li className="top-nav-link">
-            <Link href="/">Home</Link>
+            <Link href="/">About Me</Link>
           </li>
           <li className="top-nav-link">
             <Link href="/skills">Skills</Link>
@@ -72,9 +72,9 @@ export default function TopNavbar() {
           <li className="top-nav-link">
             <Link href="/projects">Projects</Link>
           </li>
-          <li className="top-nav-link">
+          {/* <li className="top-nav-link">
             <Link href="/contact">Contact</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

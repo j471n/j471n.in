@@ -10,9 +10,13 @@ import {
   getPinnedProjects,
   getPinnedSkills,
   getPinnedCertificates,
+  getSocialMedia,
 } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
+// import Contact from "../components/Contact";
+// import { Contact } from "../components/Contact";
+import Contact from "../components/Contact";
 
 export default function Home({
   blogs,
@@ -20,10 +24,11 @@ export default function Home({
   certificates,
   projects,
   followers,
+  socialMedia,
 }) {
   return (
     <>
-      <Metadata title="Home 🏠" />
+      <Metadata title="About" />
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         <VideoCover
           title="Jatin Sharma"
@@ -201,9 +206,7 @@ export default function Home({
             </div>
           </section>
 
-          <div className="m-3">
-            <Author followers={followers} />
-          </div>
+          <Contact socialMedia={socialMedia} />
         </div>
       </div>
     </>
@@ -218,25 +221,28 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates, projects, followers] = await Promise.all([
-    fetch("https://dev.to/api/articles/me?per_page=10", {
-      headers: {
-        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-      },
-    }).then((res) => res.json()),
-    getPinnedSkills(),
-    getPinnedCertificates(),
-    getPinnedProjects(),
-    fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
-      (res) => res.json()
-    ),
-  ]);
+  const [blogs, skills, certificates, projects, socialMedia, followers] =
+    await Promise.all([
+      fetch("https://dev.to/api/articles/me?per_page=10", {
+        headers: {
+          "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+        },
+      }).then((res) => res.json()),
+      getPinnedSkills(),
+      getPinnedCertificates(),
+      getPinnedProjects(),
+      getSocialMedia(),
+      fetch(process.env.NEXT_PUBLIC_PERSONAL_API + "/devto/followers").then(
+        (res) => res.json()
+      ),
+    ]);
   return {
     props: {
       blogs,
       skills,
       certificates,
       projects,
+      socialMedia,
       followers: followers.followers_count,
     },
     // updates the page automatically after 1/2 an hour
