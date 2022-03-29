@@ -18,7 +18,7 @@ function Skill({ data }) {
 
   return (
     <motion.div
-      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary lg:hover:ring-4 h-full"
+      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600"
       ref={ref}
       variants={pulseOpacity}
       initial="hidden"
@@ -33,7 +33,7 @@ function Skill({ data }) {
             width={40}
             height={40}
           />
-          <h2 className="font-semibold capitalize w-fit">{data.name}</h2>
+          <h2 className="font-semibold capitalize w-fit text-slate-600 dark:text-zinc-400">{data.name}</h2>
         </div>
         <div className="w-12 h-12 font-bold">
           <CircularProgressbar
@@ -50,10 +50,16 @@ function Skill({ data }) {
           />
         </div>
       </div>
-      <div>
-        <p className="text-xs sm:text-sm border-t-2 border-gray-200 mt-2 pt-2">
+      <div className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 ">
+        <p className="border-t-2 border-gray-200 mt-2 pt-2 truncate-3 ">
           {data.about}
         </p>
+        <span
+          className="underline cursor-pointer hover:text-purple-400 "
+          onClick={() => window.open(data.url)}
+        >
+          Read more
+        </span>
       </div>
     </motion.div>
   );
