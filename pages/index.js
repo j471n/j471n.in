@@ -9,10 +9,13 @@ import {
   getPinnedSkills,
   getCertificates,
   getSocialMedia,
+  getFAQs,
+  // getPinnedFAQs,
 } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
+import FAQ from "../components/FAQ";
 
 export default function Home({
   blogs,
@@ -20,6 +23,7 @@ export default function Home({
   certificates,
   projects,
   socialMedia,
+  faqs,
 }) {
   return (
     <>
@@ -43,23 +47,23 @@ export default function Home({
 
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
             <HomeHeading title="About Me" />
-            <p>
+            <p className="text-slate-500 dark:text-slate-400 font-[500]">
               Hi, welcome! I'm Jatin Sharma and I'm a self-taught React
               Developer 👋 as I am currently perusing my Bachelor Degree in
               Computer Science. I wanted to learn the web development so
               desperately in my High School, then as the time passed I've
               managed to get all the resources i need to start this journey,
-              I've watched so many tutorial followed so many articles to learn
-              this. I've also some other programming languages such as Python,
-              C, C++, etc. In my future, I also want to dive in the Mobile
-              Development as well as Backend Development. I am currently
-              Learning many things and backend is one on them. In my spare time
-              I also write blogs on{" "}
-              <Link className="text-blue-500" href="https://dev.to/j471n">
-                Dev.to
-              </Link>
+              I've watched so many tutorial followed so many articles and built
+              some projects. I've also some learned other programming languages
+              such as Python, C, C++, etc. In my future, I also want to dive in
+              the Mobile Development as well as Backend Development. I am
+              currently Learning many things and backend is one on them. In my
+              spare time I also write blogs on{" "}
+              <Link href="https://dev.to/j471n" passHref>
+                <a className="text-purple-600 underline">Dev.to</a>
+              </Link>{" "}
               about what I am learning or some tutorials as well. If you are
-              interested in it the must visit. 👋
+              interested then must visit. 👋
             </p>
           </section>
 
@@ -67,13 +71,25 @@ export default function Home({
           <section>
             <HomeHeading title="My Top ⚡kills" />
 
-            <div className="home-section-container no-scrollbar m-">
+            <div className="flex gap-2 overflow-x-scroll no-scrollbar p-5 md:px-10">
               {skills.map((skill) => {
                 return (
-                  <div key={skill.id} className="home-content-section !w-auto">
-                    <Image width={70} height={70} src={`/${skill.icon}`} />
-                    <p className="uppercase font-bold text-2xl absolute bottom-4 right-4 border-t-[3px] border-purple-600">
-                      {skill.name}
+                  <div
+                    title={skill.name}
+                    key={skill.id}
+                    className="home-content-section flex items-center justify-between overflow-hidden before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4   before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10">
+                        <Image width={60} height={60} src={`/${skill.icon}`} />
+                      </div>
+
+                      <p className="uppercase font-bold text-base">
+                        {skill.name}
+                      </p>
+                    </div>
+                    <p className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300">
+                      {skill.level}
                     </p>
                   </div>
                 );
@@ -99,7 +115,7 @@ export default function Home({
                         layout="responsive"
                       />
 
-                      <div className="flex items-center justify-between my-3">
+                      <div className="flex items-center justify-between my-3 text-sm sm:text-base">
                         <p className="flex items-center space-x-1">
                           <AiOutlineCalendar />
                           <span className="text-xs font-medium">
@@ -115,10 +131,10 @@ export default function Home({
                           </span>
                         </p>
                       </div>
-                      <h3 className="text-xl mb-1 font-bold truncate-2">
+                      <h3 className="text-base sm:text-lg mb-1 font-bold truncate text-slate-600 dark:text-slate-300">
                         {blog.title}
                       </h3>
-                      <p className="text-xs sm:text-base truncate-3">
+                      <p className="text-xs sm:text-sm truncate-3 text-slate-400">
                         {blog.description}
                       </p>
                     </div>
@@ -140,7 +156,7 @@ export default function Home({
                     key={certificate.id}
                     className="home-content-section no-scrollbar flex flex-col  cursor-auto"
                   >
-                    <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center justify-between mb-3 text-slate-400">
                       <p className="font-bold capitalize text-xs sm:text-sm">
                         {certificate.issuedBy.orgName}
                       </p>
@@ -159,7 +175,7 @@ export default function Home({
                           layout="fixed"
                         />
                       </div>
-                      <p className="capitalize font-bold text-sm md:text-base border-purple-600">
+                      <p className="capitalize font-semibold text-sm md:text-base border-purple-600 text-slate-600 dark:text-slate-300">
                         {certificate.title}
                       </p>
                     </div>
@@ -198,10 +214,10 @@ export default function Home({
                       layout="responsive"
                       objectFit="contain"
                     />
-                    <h1 className="capitalize my-2 mt-4 font-bold text-lg md:text-xl border-purple-600">
+                    <h1 className="capitalize my-2 mt-4 font-bold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate">
                       {project.name}
                     </h1>
-                    <p className="text-xs sm:text-base truncate-3">
+                    <p className="text-xs sm:text-sm truncate-3 text-slate-400">
                       {project.description}
                     </p>
                   </div>
@@ -211,6 +227,7 @@ export default function Home({
             </div>
           </section>
 
+          <FAQ faqs={faqs} />
           <Contact socialMedia={socialMedia} />
         </div>
       </div>
@@ -226,7 +243,7 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates, projects, socialMedia] =
+  const [blogs, skills, certificates, projects, socialMedia, faqs] =
     await Promise.all([
       fetch("https://dev.to/api/articles/me?per_page=10", {
         headers: {
@@ -237,6 +254,7 @@ export async function getStaticProps() {
       getCertificates(),
       getPinnedProjects(),
       getSocialMedia(),
+      getFAQs(),
     ]);
   return {
     props: {
@@ -245,6 +263,7 @@ export async function getStaticProps() {
       certificates,
       projects,
       socialMedia,
+      faqs,
     },
     // updates the page automatically after 1/2 an hour
     revalidate: 30 * 60,
