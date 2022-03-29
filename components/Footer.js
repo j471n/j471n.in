@@ -7,7 +7,7 @@ import SocialIcon from "../components/SocialIcon";
 
 export default function Footer() {
   return (
-    <footer className=" flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white px-4 py-8 pb-24 sm:pb-8">
+    <footer className="flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white pt-4 sm:pt-8 pb-20 sm:pb-8">
       <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 md:grid-rows-1 place-items-center">
         <div className="flex items-center space-x-2 sm:space-x-8">
           <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-violet-100">
