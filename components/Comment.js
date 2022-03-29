@@ -1,8 +1,8 @@
 import Interweave from "interweave";
 import Image from "next/image";
 import { GoVerified } from "react-icons/go";
-import { DEFAULT_IMAGE_URL } from "../utils/utils";
 import styles from "../styles/Comment.module.css";
+
 export default function Comment({ comment, margin, articleAuthor }) {
   return (
     <div
@@ -25,7 +25,7 @@ export default function Comment({ comment, margin, articleAuthor }) {
         >
           <Image
             className="rounded-full w-full"
-            src={comment.user?.profile_image || DEFAULT_IMAGE_URL}
+            src={comment.user?.profile_image}
             width={30}
             height={30}
           />

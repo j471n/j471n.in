@@ -4,10 +4,10 @@ export const popUp = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: {
-      duration: 0.7,
-      ease: "easeInOut",
-    },
+  },
+  transition: {
+    duration: 1,
+    ease: "easeInOut",
   },
 };
 
@@ -39,4 +39,14 @@ export const slideFromLeft = {
       ease: "easeInOut",
     },
   },
+};
+
+export const popUpFromBottomForText = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export const pulseOpacity = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };

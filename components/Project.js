@@ -6,7 +6,7 @@ import Image from "next/image";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { slideFromBottom } from "../content/FramerMotionVariants";
+import { pulseOpacity } from "../content/FramerMotionVariants";
 export default function Project({ project }) {
   // Sharing Project
   const controls = useAnimation();
@@ -47,11 +47,11 @@ export default function Project({ project }) {
 
   return (
     <motion.div
-      className="relative sm:pb-[15%] h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl"
+      className="relative h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl flex flex-col"
       initial="hidden"
       ref={ref}
       animate={controls}
-      variants={slideFromBottom}
+      variants={pulseOpacity}
     >
       {project.coverURL && (
         <Image
@@ -65,53 +65,59 @@ export default function Project({ project }) {
       )}
 
       {project.name && (
-        <div className="w-full p-2 capitalize select-none">
+        <div className="w-full p-2 capitalize select-none flex flex-col">
           {project.name && (
-            <h4 className="pb-1 font-bold text-lg">{project.name}</h4>
+            <h3 className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300">
+              {project.name}
+            </h3>
           )}
           {project.description && (
-            <p className="text-xs pb-1">{project.description}</p>
+            <p className="text-xs truncate-3 text-slate-500">
+              {project.description}
+            </p>
           )}
-          <div className="relative overflow-hidden mt-2">
-            {/* Tools used in project */}
-            {project.tools && (
-              <p
-                className={`${
-                  showShare ? "invisible  scale-0" : "visible scale-100"
-                } w-full select-none flex gap-2 justify-center items-center transition-all duration-150`}
-              >
-                {project.tools.map((tool) => {
-                  return (
-                    <Image
-                      key={tool}
-                      title={tool}
-                      src={`/img/skills/${tool}.webp`}
-                      alt={tool}
-                      width={30}
-                      height={30}
-                    />
-                  );
-                })}
-              </p>
-            )}
-
-            {/* ShareIcons */}
-            <ShareOnSocialMedia
-              className={`${
-                showShare ? "visible scale-100" : "invisible scale-0"
-              } absolute inset-0 bg-white flex items-center justify-between sm:justify-evenly transition-all duration-150`}
-              title={project.name}
-              url={project.previewURL || project.githubURL}
-              summary={project.description}
-              body={project.description}
-              subject={project.name}
-              handleShare={handleShare}
-            />
-          </div>
         </div>
       )}
 
-      <div className="sm:absolute right-0 left-0 bottom-0 p-2 w-full flex items-center">
+      <div className="relative overflow-hidden !mt-4 auto-row">
+        {/* Tools used in project */}
+        {project.tools && (
+          <p
+            className={`${
+              showShare ? "invisible  scale-0" : "visible scale-100"
+            } w-full select-none flex gap-3 flex-wrap justify-center items-center transition-all duration-150`}
+          >
+            {project.tools.map((tool) => {
+              return (
+                <Image
+                  key={tool}
+                  title={tool}
+                  src={`/img/skills/${tool}.webp`}
+                  alt={tool}
+                  width={30}
+                  height={30}
+                />
+              );
+            })}
+          </p>
+        )}
+
+        {/* ShareIcons */}
+        <ShareOnSocialMedia
+          className={`${
+            showShare ? "visible scale-100" : "invisible scale-0"
+          } absolute inset-0 flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+          title={project.name}
+          url={project.previewURL || project.githubURL}
+          summary={project.description}
+          body={project.description}
+          subject={project.name}
+          handleShare={handleShare}
+          cover_image={project.coverURL}
+        />
+      </div>
+
+      <div className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row">
         {project.githubURL && (
           <a
             title="Github"

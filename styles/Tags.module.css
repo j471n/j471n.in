@@ -1,19 +1,24 @@
 .container {
-  @apply flex max-w-full p-2 overflow-x-scroll relative px-10 sm:px-24 space-x-2 dark:bg-darkSecondary;
+  @apply flex max-w-full p-2 overflow-x-scroll relative px-5 sm:px-24 space-x-2 dark:bg-darkSecondary;
 }
 
 .tag {
-  @apply flex items-center cursor-pointer dark:bg-darkSecondary dark:text-gray-300;
+  @apply flex items-center cursor-pointer  dark:bg-darkSecondary dark:text-gray-300;
 }
 
 .tag > input {
   all: unset;
 }
 
-.tag > label {
+/* .tag > label {
   @apply py-1 px-4 ring-1 ring-gray-300 dark:ring-gray-500 cursor-pointer dark:bg-darkSecondary dark:text-gray-300 uppercase rounded-md hover:bg-gray-100 transition duration-200 text-sm sm:text-base select-none;
+} */
+
+.tag > label {
+  @apply px-4 py-1 capitalize rounded-full cursor-pointer border border-zinc-600 text-sm;
 }
 
 .tag > input:checked ~ label {
   @apply bg-[#222] text-white dark:text-black dark:bg-white border-transparent;
 }
+
