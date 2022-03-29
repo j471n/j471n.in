@@ -67,10 +67,14 @@ export default function Project({ project }) {
       {project.name && (
         <div className="w-full p-2 capitalize select-none flex flex-col">
           {project.name && (
-            <h3 className="pb-1 font-bold text-md">{project.name}</h3>
+            <h3 className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300">
+              {project.name}
+            </h3>
           )}
           {project.description && (
-            <p className="text-xs truncate-3">{project.description}</p>
+            <p className="text-xs truncate-3 text-slate-500">
+              {project.description}
+            </p>
           )}
         </div>
       )}
@@ -111,35 +115,31 @@ export default function Project({ project }) {
           handleShare={handleShare}
           cover_image={project.coverURL}
         />
+      </div>
 
-        <div className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row">
-          {project.githubURL && (
-            <a
-              title="Github"
-              href={project.githubURL}
-              target="blank"
-              className="project_link"
-            >
-              <BsGithub className="text-lg text-center" />
-            </a>
-          )}
-          {project.previewURL && (
-            <a
-              title="Visit"
-              href={project.previewURL}
-              target="blank"
-              className="project_link"
-            >
-              <FcLink className="text-lg" />
-            </a>
-          )}
-          <div
-            title="Share"
+      <div className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row">
+        {project.githubURL && (
+          <a
+            title="Github"
+            href={project.githubURL}
+            target="blank"
             className="project_link"
-            onClick={displayShareIcons}
           >
-            <BiShareAlt className="text-lg" />
-          </div>
+            <BsGithub className="text-lg text-center" />
+          </a>
+        )}
+        {project.previewURL && (
+          <a
+            title="Visit"
+            href={project.previewURL}
+            target="blank"
+            className="project_link"
+          >
+            <FcLink className="text-lg" />
+          </a>
+        )}
+        <div title="Share" className="project_link" onClick={displayShareIcons}>
+          <BiShareAlt className="text-lg" />
         </div>
       </div>
     </motion.div>

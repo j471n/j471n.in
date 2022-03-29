@@ -19,7 +19,7 @@ export default function Projects({ projects }) {
         />
 
         <div className="relative">
-          <h1 className="absolute top-0 font-bold text-xl p-2 text-center w-full mt-5">Recent Projects</h1>
+          <h1 className="absolute top-0 font-bold text-xl p-2 text-center w-full mt-5 text-slate-600 dark:text-slate-200">Recent Projects</h1>
           <section id="view" className="page_container pt-20">
             {projects &&
               projects.map((project) => {
