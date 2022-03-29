@@ -11,7 +11,7 @@ export default function VideoCover({ videoUrl, title, buttonText, children }) {
         loop
       ></video>
 
-      <div className="absolute inset-0 bg-black text-white mix-blend-multiply flex flex-col items-start sm:items-center px-5 justify-center select-none">
+      <div className="absolute inset-0 bg-black text-white mix-blend-multiply flex flex-col items-center px-5 justify-center select-none">
         <h1 className="capitalize font-bold text-4xl sm:text-6xl ">{title}</h1>
         {children}
 
