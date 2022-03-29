@@ -126,7 +126,7 @@ body::-webkit-scrollbar-thumb {
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
-    @apply m-1 text-3xl cursor-pointer;
+    @apply m-1 text-2xl cursor-pointer;
   }
   .top-nav-link {
     @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
