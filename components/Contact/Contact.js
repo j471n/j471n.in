@@ -65,7 +65,7 @@ export default function Contact({ socialMedia }) {
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          className="px-4 py-2 font-medium dark:text-gray-300"
+          className="px-4 py-2 font-medium text-slate-400"
         >
           Have a little something, something you wanna talk about? Please feel
           free to get in touch anytime, whether for work or to just Hi 🙋‍♂️.
@@ -144,7 +144,7 @@ export default function Contact({ socialMedia }) {
               }
             ></textarea>
             <button
-              className="w-full max-w-sm p-3 border-none rounded-md bg-purple-400 dark:text-darkPrimary font-semibold mt-4 cursor-pointer transform duration-150 active:scale-95 disabled:opacity-50 disabled:transform-none disabled:cursor-wait"
+              className="w-full max-w-sm p-3 border-none rounded-md bg-purple-700 text-white font-semibold mt-4 cursor-pointer transform duration-150 active:scale-95 disabled:opacity-50 disabled:transform-none disabled:cursor-wait"
               type="submit"
               disabled={loading}
             >
@@ -168,7 +168,7 @@ export default function Contact({ socialMedia }) {
           </h2>
 
           {/* Social Media Container */}
-          <motion.div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100">
+          <motion.div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none">
             <SocialIcon
               Icon={AiOutlineInstagram}
               title="Instagram"
