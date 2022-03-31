@@ -7,7 +7,6 @@ export default function Tags({
   setActiveTag,
   setFilteredBlogs,
 }) {
-
   useEffect(() => {
     if (activeTag === "all") {
       setFilteredBlogs(blogs);
@@ -24,12 +23,16 @@ export default function Tags({
 
   return (
     <div className="relative dark:bg-darkPrimary">
-      <div
-        className={styles.container}
-        onChange={(e) => setActiveTag(e.target.value)}
-      >
+      <div className={styles.container}>
         {blogTags.map((tag) => {
-          return <Tag key={tag} tag={tag} checked={tag === activeTag} />;
+          return (
+            <Tag
+              key={tag}
+              tag={tag}
+              checked={tag === activeTag}
+              setActiveTag={setActiveTag}
+            />
+          );
         })}
       </div>
       {/* Gradient touch to the left and right */}
@@ -39,7 +42,7 @@ export default function Tags({
   );
 }
 
-export function Tag({ tag, checked }) {
+export function Tag({ tag, checked, setActiveTag }) {
   return (
     <div className={`${styles.tag} scrollbar-hide`}>
       <input
@@ -48,6 +51,7 @@ export function Tag({ tag, checked }) {
         id={tag ? tag : "all"}
         value={tag ? tag : "all"}
         checked={checked}
+        onChange={(e) => setActiveTag(tag ? tag : "all")}
       />
       <label
         className={` dark:text-gray-300 dark:hover:bg-darkSecondary font-medium ${
