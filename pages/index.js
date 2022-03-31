@@ -16,6 +16,8 @@ import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
 import FAQ from "../components/FAQ";
+import AnimatedText from "../components/FramerMotion/AnimatedText";
+import { popUpFromBottomForText } from "../content/FramerMotionVariants";
 
 export default function Home({
   blogs,
@@ -46,7 +48,10 @@ export default function Home({
           {/* About me */}
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
             <HomeHeading title="About Me" />
-            <p className="text-slate-500 dark:text-slate-400 font-[500]">
+            <AnimatedText
+              className="text-slate-500 dark:text-slate-400 font-[500]"
+              variants={popUpFromBottomForText}
+            >
               Hi, welcome! I'm Jatin Sharma and I'm a self-taught React
               Developer 👋 as I am currently perusing my Bachelor Degree in
               Computer Science. I wanted to learn the web development so
@@ -63,7 +68,7 @@ export default function Home({
               </Link>{" "}
               about what I am learning or some tutorials as well. If you are
               interested then must visit. 👋
-            </p>
+            </AnimatedText>
           </section>
           {/* Skills Section */}
           <section>
@@ -226,14 +231,18 @@ export default function Home({
             </div>
           </section>
 
-          <div className="w-full px-3 md:px-5 relative">
-            <Image
-              className="mx-auto rounded-lg"
-              src="https://activity-graph.herokuapp.com/graph?username=j471n"
-              alt=""
-              width={1200}
-              height={420}
-            />
+          <div className="w-full px-3 md:px-5 relative flex flex-col items-center gap-3">
+            <HomeHeading title="Github Contribution 📊" />
+
+            <div className="">
+              <Image
+                className="!mx-auto rounded-lg"
+                src="https://activity-graph.herokuapp.com/graph?username=j471n"
+                alt=""
+                width={1200}
+                height={420}
+              />
+            </div>
           </div>
 
           <FAQ faqs={faqs} />
@@ -246,7 +255,7 @@ export default function Home({
 
 export function HomeHeading({ title }) {
   return (
-    <h1 className="w-full font-bold text-2xl text-center my-2">{title}</h1>
+    <h1 className="w-full font-bold text-2xl text-center my-2 font-exo">{title}</h1>
   );
 }
 
