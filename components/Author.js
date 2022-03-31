@@ -3,6 +3,7 @@ import { TiLocation } from "react-icons/ti";
 import { RiUserFollowFill } from "react-icons/ri";
 import useFetchWithSWR from "../hooks/useFetchWithSWR";
 import { LoadingAuthor } from "./SkeletonLoading/LoadingBlog";
+import { AvatarImage } from "../utils/utils";
 
 export default function Author({ followers }) {
   const { data: author, isLoading } = useFetchWithSWR(
@@ -25,7 +26,7 @@ export default function Author({ followers }) {
             <div className="flex flex-col space-y-2 items-center p-2">
               <div className="rounded-full w-24 h-24  p-2 bg-white shadow-xl">
                 <Image
-                  src={author?.profile_image}
+                  src={AvatarImage} 
                   className="rounded-full"
                   width={80}
                   height={80}

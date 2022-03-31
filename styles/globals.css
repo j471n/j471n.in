@@ -129,7 +129,7 @@ body::-webkit-scrollbar-thumb {
     @apply m-1 text-2xl cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
+    @apply list-none mx-1 px-3 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none sm:text-sm md:text-base;
   }
   .contact_field {
     @apply text-sm font-medium text-black dark:text-white w-full px-4 py-2 m-2 rounded-md border-none outline-none shadow-inner shadow-slate-200 dark:shadow-zinc-800 focus:ring-1 focus:ring-purple-500 dark:bg-darkPrimary dark:placeholder-gray-500;
