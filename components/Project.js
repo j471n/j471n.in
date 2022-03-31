@@ -91,9 +91,8 @@ export default function Project({ project }) {
           >
             {project.tools.map((tool) => {
               return (
-                <div>
+                <div key={tool}>
                   <Image
-                    key={tool}
                     title={tool}
                     src={`/img/skills/${tool}.webp`}
                     alt={tool}
