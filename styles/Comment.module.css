@@ -15,10 +15,10 @@
 /* Comment */
 
 .comment {
-  @apply pl-10 break-words overflow-x-hidden w-full;
+  @apply pl-10 break-words overflow-x-hidden w-full font-inter;
 }
 .comment a {
-  @apply text-blue-400 underline my-2;
+  @apply text-purple-500 underline my-2;
 }
 .comment blockquote {
   @apply border-l-4 border-gray-500 pl-3 text-xs sm:text-base my-1;
@@ -59,7 +59,7 @@
 }
 .comment > span > ul > li > a,
 .comment a {
-  @apply no-underline space-x-3 text-blue-500 font-medium my-2 hover:underline;
+  @apply no-underline space-x-3 text-purple-500 font-medium my-2 hover:underline;
 }
 
 .comment > span > p img {
