@@ -9,13 +9,17 @@ function FAQ({ faqs = [] }) {
         </h1>
 
         <div className="grid grid-cols-1 gap-8 mt-8 lg:mt-16 md:grid-cols-2 xl:grid-cols-3">
-          {faqs.map((faq) => {
+          {faqs.map((faq ,index ) => {
             return (
-              <QuestionAndAnswer
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
-              />
+              <>
+                {faq.question && faq.answer && (
+                  <QuestionAndAnswer
+                    key={index}
+                    question={faq.question}
+                    answer={faq.answer}
+                  />
+                )}
+              </>
             );
           })}
         </div>
