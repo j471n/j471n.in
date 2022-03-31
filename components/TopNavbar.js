@@ -51,7 +51,9 @@ export default function TopNavbar() {
                 alt="Profile Image"
               ></Image>
             </div>
-            <p className="absolute sm:relative left-0 right-0 pointer-events-none">Jatin Sharma</p>
+            <p className="absolute sm:relative left-0 right-0 pointer-events-none">
+              Jatin Sharma
+            </p>
           </div>
         </Link>
       </div>
