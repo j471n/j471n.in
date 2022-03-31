@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import Metadata from "../../components/MetaData";
 import useFetchWithSWR from "../../hooks/useFetchWithSWR";
 import LoadingBlog from "../../components/SkeletonLoading/LoadingBlog";
+// import ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 
 export default function Article() {
   const router = useRouter();
@@ -122,10 +124,13 @@ export default function Article() {
                   alt=""
                 />
               )}
-              <Interweave
-                className={styles.dev_blog}
-                content={data.body_html}
-              />
+
+              <article className="">
+                <Interweave
+                  className={styles.dev_blog}
+                  content={data.body_html}
+                />
+              </article>
             </div>
           </div>
         </>

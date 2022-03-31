@@ -1,4 +1,4 @@
-/*  main data Container */
+ /* main data Container */
 
 .article_page {
   @apply p-3;
@@ -32,13 +32,15 @@
 .dev_blog h3,
 .dev_blog h4,
 .dev_blog h5,
-.dev_blog h6 {
+.dev_blog h6
+* {
   @apply my-2;
 }
 
-.dev_blog > p img {
-  @apply mx-auto rounded-lg;
+.dev_blog img {
+  @apply mx-auto rounded-lg my-2;
 }
+
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
@@ -124,7 +126,7 @@
 }
 
 .dev_blog > figure img {
-  @apply text-center mx-auto;
+  @apply text-center mx-auto my-0 rounded-none;
 }
 .dev_blog > figure figcaption {
   @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2;

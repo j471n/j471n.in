@@ -174,3 +174,10 @@ body::-webkit-scrollbar-thumb {
     @apply flex items-center space-x-2 border-2 border-white dark:border-zinc-600 px-3 py-1 font-semibold w-min text-white dark:text-white hover:bg-white dark:hover:bg-zinc-600 hover:text-black;
   }
 }
+
+
+/* @layer base {
+  * {
+    @apply text- 
+  }
+} */
