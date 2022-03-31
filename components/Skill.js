@@ -26,14 +26,18 @@ function Skill({ data }) {
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <Image
-            title={data.name}
-            src={`/${data.icon}`}
-            alt={data.name}
-            width={40}
-            height={40}
-          />
-          <h2 className="font-semibold capitalize w-fit text-slate-600 dark:text-zinc-400">{data.name}</h2>
+          <div>
+            <Image
+              title={data.name}
+              src={`/${data.icon}`}
+              alt={data.name}
+              width={40}
+              height={40}
+            />
+          </div>
+          <h2 className="font-semibold capitalize w-fit text-slate-600 dark:text-zinc-400">
+            {data.name}
+          </h2>
         </div>
         <div className="w-12 h-12 font-bold">
           <CircularProgressbar

@@ -54,14 +54,16 @@ export default function Project({ project }) {
       variants={pulseOpacity}
     >
       {project.coverURL && (
-        <Image
-          className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
-          src={project.coverURL}
-          alt={project.name}
-          width={360}
-          layout="responsive"
-          height={200}
-        />
+        <div>
+          <Image
+            className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
+            src={project.coverURL}
+            alt={project.name}
+            width={360}
+            layout="responsive"
+            height={200}
+          />
+        </div>
       )}
 
       {project.name && (
@@ -89,14 +91,16 @@ export default function Project({ project }) {
           >
             {project.tools.map((tool) => {
               return (
-                <Image
-                  key={tool}
-                  title={tool}
-                  src={`/img/skills/${tool}.webp`}
-                  alt={tool}
-                  width={30}
-                  height={30}
-                />
+                <div>
+                  <Image
+                    key={tool}
+                    title={tool}
+                    src={`/img/skills/${tool}.webp`}
+                    alt={tool}
+                    width={30}
+                    height={30}
+                  />
+                </div>
               );
             })}
           </p>

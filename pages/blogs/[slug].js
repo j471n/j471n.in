@@ -115,14 +115,16 @@ export default function Article() {
                 </div>
               </div>
               {data.cover_image && (
-                <Image
-                  src={data.cover_image}
-                  className="w-full mx-auto rounded-md"
-                  layout="responsive"
-                  width={800}
-                  height={336}
-                  alt=""
-                />
+                <div>
+                  <Image
+                    src={data.cover_image}
+                    className="w-full mx-auto rounded-md"
+                    layout="responsive"
+                    width={800}
+                    height={336}
+                    alt={data.title}
+                  />
+                </div>
               )}
 
               <Interweave

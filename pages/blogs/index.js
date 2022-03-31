@@ -51,9 +51,7 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
 
       <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">
-          <form
-            className="mx-auto mt-4 flex items-center w-full relative"
-          >
+          <form className="mx-auto mt-4 flex items-center w-full relative">
             <input
               className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-1 ring-gray-200 dark:ring-zinc-600 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
               type="search"
@@ -79,12 +77,14 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
                     animate={controls}
                     variants={slideFromLeft}
                   >
-                    <Image
-                      className="h-full rounded-lg"
-                      src={res.cover_image}
-                      width={200}
-                      height={85}
-                    />
+                    <div>
+                      <Image
+                        className="h-full rounded-lg"
+                        src={res.cover_image}
+                        width={200}
+                        height={85}
+                      />
+                    </div>
                     <p className="text-sm w-full font-medium">{res.title}</p>
                   </motion.div>
                 );

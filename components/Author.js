@@ -15,18 +15,20 @@ export default function Author({ followers }) {
     <div className="max-w-lg rounded-lg  mx-auto md:w-full overflow-hidden bg-blue-200 dark:bg-darkSecondary relative">
       {author && (
         <>
-          <Image
-            src="https://imgur.com/5uHsGPh.png"
-            width={500}
-            height={166}
-            layout="responsive"
-          />
+          <div>
+            <Image
+              src="https://imgur.com/5uHsGPh.png"
+              width={500}
+              height={166}
+              layout="responsive"
+            />
+          </div>
 
           <div className="relative -mt-12 pb-4">
             <div className="flex flex-col space-y-2 items-center p-2">
               <div className="rounded-full w-24 h-24  p-2 bg-white shadow-xl">
                 <Image
-                  src={AvatarImage} 
+                  src={AvatarImage}
                   className="rounded-full"
                   width={80}
                   height={80}

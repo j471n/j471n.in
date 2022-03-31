@@ -39,14 +39,16 @@ export default function Blog({ blog }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <Image
-        className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
-        src={blog.cover_image}
-        alt={blog.title}
-        width={360}
-        height={150}
-        layout="responsive"
-      />
+      <div>
+        <Image
+          className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
+          src={blog.cover_image}
+          alt={blog.title}
+          width={360}
+          height={150}
+          layout="responsive"
+        />
+      </div>
 
       <div className="w-full p-4">
         <div className="relative">

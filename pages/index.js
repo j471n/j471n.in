@@ -103,14 +103,16 @@ export default function Home({
                 return (
                   <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
                     <div className="home-content-section">
-                      <Image
-                        className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
-                        src={blog.cover_image}
-                        alt={blog.title}
-                        width={500}
-                        height={207}
-                        layout="responsive"
-                      />
+                      <div>
+                        <Image
+                          className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
+                          src={blog.cover_image}
+                          alt={blog.title}
+                          width={500}
+                          height={207}
+                          layout="responsive"
+                        />
+                      </div>
 
                       <div className="flex items-center justify-between my-3 text-sm sm:text-base">
                         <p className="flex items-center space-x-1">
@@ -200,15 +202,17 @@ export default function Home({
                     className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start"
                     onClick={() => window.open(project.githubURL)}
                   >
-                    <Image
-                      className="rounded-xl mb-2"
-                      width={360}
-                      height={200}
-                      src={project.coverURL}
-                      alt={project.name}
-                      layout="responsive"
-                      objectFit="contain"
-                    />
+                    <div>
+                      <Image
+                        className="rounded-xl mb-2"
+                        width={360}
+                        height={200}
+                        src={project.coverURL}
+                        alt={project.name}
+                        layout="responsive"
+                        objectFit="contain"
+                      />
+                    </div>
                     <h1 className="capitalize my-2 mt-4 font-bold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate">
                       {project.name}
                     </h1>

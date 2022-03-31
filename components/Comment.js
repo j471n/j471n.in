@@ -23,12 +23,14 @@ export default function Comment({ comment, margin, articleAuthor }) {
             )
           }
         >
-          <Image
-            className="rounded-full w-full"
-            src={comment.user?.profile_image}
-            width={30}
-            height={30}
-          />
+          <div>
+            <Image
+              className="rounded-full w-full"
+              src={comment.user?.profile_image}
+              width={30}
+              height={30}
+            />
+          </div>
           <p className="text-xs">{comment.user?.name || "Anonymous"}</p>
           {comment.user?.username === articleAuthor.username && (
             <GoVerified className="text-gray-500 -m-2 " />
