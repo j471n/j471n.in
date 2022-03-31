@@ -1,4 +1,4 @@
- /* main data Container */
+/* main data Container */
 
 .article_page {
   @apply p-3;
@@ -25,6 +25,13 @@
 }
 
 /* Dev blog */
+
+.dev_blog {
+}
+
+.dev_blog > * {
+  @apply my-3 font-inter font-[500] text-sm;
+}
 .dev_blog > p,
 .dev_blog > span,
 .dev_blog h1,
@@ -32,9 +39,8 @@
 .dev_blog h3,
 .dev_blog h4,
 .dev_blog h5,
-.dev_blog h6
-* {
-  @apply my-2;
+.dev_blog h6 * {
+  @apply my-2 font-inter;
 }
 
 .dev_blog img {
@@ -47,15 +53,11 @@
 
 .dev_blog > p code,
 .dev_blog > ul li code {
-  @apply  px-2 py-1 bg-slate-500 text-white text-sm rounded-sm;
+  @apply px-1 py-[2px] bg-slate-500 text-white text-xs rounded-sm;
 }
 
 .dev_blog > p strong {
   @apply font-bold;
-}
-
-.dev_blog > * {
-  @apply my-3;
 }
 
 .dev_blog h1 {
@@ -88,7 +90,7 @@
 }
 .dev_blog > ul > li > a,
 .dev_blog a {
-  @apply no-underline space-x-3 text-blue-500 font-medium my-2 hover:underline;
+  @apply space-x-3 text-purple-600  font-[600] my-2  underline;
 }
 
 .dev_blog > ul ul {
@@ -96,11 +98,9 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs md:text-base;
-
+  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs sm:text-sm ;
 }
 
-  /* @apply flex overflow-x-scroll bg-[#222] p-4 rounded-lg text-gray-200 text-xs */md:text-base;  
 .dev_blog > div > table {
   @apply border border-black;
 }

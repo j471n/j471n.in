@@ -44,7 +44,6 @@ export default function Home({
 
         <div id="view" className="pt-20">
           {/* About me */}
-
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
             <HomeHeading title="About Me" />
             <p className="text-slate-500 dark:text-slate-400 font-[500]">
@@ -66,7 +65,6 @@ export default function Home({
               interested then must visit. 👋
             </p>
           </section>
-
           {/* Skills Section */}
           <section>
             <HomeHeading title="My Top ⚡kills" />
@@ -97,7 +95,6 @@ export default function Home({
               <ExploreMoreButton link="/skills" />
             </div>
           </section>
-
           {/* Blogs Section */}
           <section>
             <HomeHeading title="Recent Blogs 👩‍💻" />
@@ -145,7 +142,6 @@ export default function Home({
               <ExploreMoreButton link="/blogs" />
             </div>
           </section>
-
           {/* Certification Section */}
           <section>
             <HomeHeading title="Certification 📜" />
@@ -193,7 +189,6 @@ export default function Home({
               {/* <ExploreMoreButton link="/certificates" /> */}
             </div>
           </section>
-
           {/* Project Section */}
           <section>
             <HomeHeading title="Projects 📂" />
@@ -226,6 +221,16 @@ export default function Home({
               <ExploreMoreButton link="/projects" />
             </div>
           </section>
+
+          <div className="w-full px-3 md:px-5 relative">
+            <Image
+              className="mx-auto rounded-lg"
+              src="https://activity-graph.herokuapp.com/graph?username=j471n"
+              alt=""
+              width={1200}
+              height={420}
+            />
+          </div>
 
           <FAQ faqs={faqs} />
           <Contact socialMedia={socialMedia} />
