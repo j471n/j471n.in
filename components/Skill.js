@@ -18,7 +18,7 @@ function Skill({ data }) {
 
   return (
     <motion.div
-      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600"
+      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600 hover-slide-animation before:!bg-purple-900"
       ref={ref}
       variants={pulseOpacity}
       initial="hidden"
@@ -26,7 +26,7 @@ function Skill({ data }) {
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div>
+          <div className="inline-flex">
             <Image
               title={data.name}
               src={`/${data.icon}`}
@@ -45,16 +45,15 @@ function Skill({ data }) {
             text={`${data.level}%`}
             strokeWidth={10}
             styles={buildStyles({
-              // textColor: "black",
               trailColor: "#d6d6d6",
-              pathColor: "#6E81E8",
-              textColor: "#6E81E8",
+              pathColor: "#9333ea",
+              textColor: "#9333ea",
               textSize: "24px",
             })}
           />
         </div>
       </div>
-      <div className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400 ">
+      <div className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400">
         <p className="border-t-2 border-gray-200 mt-2 pt-2 truncate-3 ">
           {data.about}
         </p>

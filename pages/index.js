@@ -80,7 +80,7 @@ export default function Home({
                   <div
                     title={skill.name}
                     key={skill.id}
-                    className="home-content-section flex items-center justify-between overflow-hidden before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4   before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4"
+                    className="home-content-section flex items-center justify-between overflow-hidden  before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7]   before:duration-500"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10">
@@ -107,7 +107,7 @@ export default function Home({
               {blogs.map((blog) => {
                 return (
                   <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
-                    <div className="home-content-section">
+                    <div className="home-content-section hover-slide-animation">
                       <div>
                         <Image
                           className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
@@ -152,12 +152,12 @@ export default function Home({
           {/* Certification Section */}
           <section>
             <HomeHeading title="Certification 📜" />
-            <div className="home-section-container no-scrollbar">
+            <div className="home-section-container no-scrollbar ">
               {certificates.map((certificate) => {
                 return (
                   <div
                     key={certificate.id}
-                    className="home-content-section no-scrollbar flex flex-col  cursor-auto"
+                    className="home-content-section no-scrollbar flex flex-col  cursor-auto hover-slide-animation"
                   >
                     <div className="flex items-center justify-between mb-3 text-slate-400">
                       <p className="font-bold capitalize text-xs sm:text-sm">
@@ -204,7 +204,7 @@ export default function Home({
                 return (
                   <div
                     key={project.id}
-                    className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start"
+                    className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start hover-slide-animation"
                     onClick={() => window.open(project.githubURL)}
                   >
                     <div>

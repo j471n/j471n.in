@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -174,8 +174,10 @@ body::-webkit-scrollbar-thumb {
   .blog-hover-button {
     @apply flex items-center space-x-2 border-2 border-white dark:border-zinc-600 px-3 py-1 font-semibold w-min text-white dark:text-white hover:bg-white dark:hover:bg-zinc-600 hover:text-black;
   }
+  .hover-slide-animation {
+    @apply relative overflow-hidden before:absolute before:h-full before:w-40 before:bg-stone-900 dark:before:bg-gray-50 before:opacity-10 dark:before:opacity-5 before:-right-10 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7] before:duration-700;
+  }
 }
-
 
 /* @layer base {
   * {
