@@ -9,6 +9,7 @@ module.exports = {
       exo: ['"Exo 2"', "sans-serif"],
       merriweather: ["Merriweather", "sans-serif"],
       "bungee-shade": ["Bungee Shade", "cursive"],
+      inter: ["Inter", "sans-serif"],
     },
     extend: {
       colors: {

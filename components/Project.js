@@ -106,7 +106,7 @@ export default function Project({ project }) {
         <ShareOnSocialMedia
           className={`${
             showShare ? "visible scale-100" : "invisible scale-0"
-          } absolute inset-0 flex items-center justify-between sm:justify-evenly transition-all duration-150`}
+          } absolute inset-0 flex items-center justify-between sm:justify-evenly transition-all duration-150 px-3`}
           title={project.name}
           url={project.previewURL || project.githubURL}
           summary={project.description}

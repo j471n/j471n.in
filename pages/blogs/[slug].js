@@ -100,7 +100,7 @@ export default function Article() {
                     cover_image={data.cover_image}
                   />
                 </div>
-                <div className="flex items-center flex-wrap my-2 uppercase text-xs sm:text-base text-purple-500 dark:text-purple-400 font-bold space-x-1 md:space-x-3 select-none max-w-full print:hidden">
+                <div className="flex items-center flex-wrap my-2 uppercase text-xs sm:text-base text-purple-500 dark:text-purple-400 font-bold gap-1 md:gap-3 select-none max-w-full print:hidden">
                   {data.tags?.map((tag) => {
                     return (
                       <span
