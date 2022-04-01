@@ -17,7 +17,18 @@ import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
 import FAQ from "../components/FAQ";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
-import { popUpFromBottomForText } from "../content/FramerMotionVariants";
+import {
+  popUpFromBottomForText,
+  headingFromLeft,
+  cardFromRight,
+  popUp,
+  slideFromLeft,
+} from "../content/FramerMotionVariants";
+// import { motion, useAnimation } from "framer-motion";
+import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
+import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
+import { motion } from "framer-motion";
+import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 
 export default function Home({
   blogs,
@@ -35,14 +46,7 @@ export default function Home({
           title="Jatin Sharma"
           videoUrl={"https://imgur.com/GoHeE7r.mp4"}
           buttonText="front-end developer"
-        >
-          {/* <p className="max-w-md p-5">
-            Hi, welcome! I'm Jatin Sharma and I'm a self-taught React Developer
-            👋 as I am currently perusing my Bachelor Degree in Computer
-            Science. I wanted to learn the web development so desperately in my
-            High School, then as th e time passed I've
-          </p> */}
-        </VideoCover>
+        ></VideoCover>
 
         <div id="view" className="pt-20">
           {/* About me */}
@@ -74,26 +78,34 @@ export default function Home({
           <section>
             <HomeHeading title="My Top ⚡kills" />
 
-            <div className="flex gap-2 overflow-x-scroll no-scrollbar p-5 md:px-10">
+            <div className="snap-center flex gap-2 overflow-x-scroll no-scrollbar p-5 md:px-10">
               {skills.map((skill) => {
                 return (
                   <div
                     title={skill.name}
                     key={skill.id}
-                    className="home-content-section flex items-center justify-between overflow-hidden  before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7]   before:duration-500"
+                    className="home-content-section flex items-center justify-between overflow-hidden  before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7]   before:duration-500 "
                   >
-                    <div className="flex items-center gap-4">
+                    <AnimatedDiv
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                      className="flex items-center gap-2"
+                    >
                       <div className="w-10 h-10">
                         <Image width={60} height={60} src={`/${skill.icon}`} />
                       </div>
 
-                      <p className="uppercase font-bold text-base">
+                      <p className="uppercase font-bold text-sm sm:text-base">
                         {skill.name}
                       </p>
-                    </div>
-                    <p className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300">
+                    </AnimatedDiv>
+                    <AnimatedText
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                      className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300"
+                    >
                       {skill.level}
-                    </p>
+                    </AnimatedText>
                   </div>
                 );
               })}
@@ -108,7 +120,10 @@ export default function Home({
                 return (
                   <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
                     <div className="home-content-section hover-slide-animation">
-                      <div>
+                      <AnimatedDiv
+                        variants={popUpFromBottomForText}
+                        infinity={true}
+                      >
                         <Image
                           className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
                           src={blog.cover_image}
@@ -117,9 +132,12 @@ export default function Home({
                           height={207}
                           layout="responsive"
                         />
-                      </div>
-
-                      <div className="flex items-center justify-between my-3 text-sm sm:text-base">
+                      </AnimatedDiv>
+                      <AnimatedDiv
+                        variants={popUpFromBottomForText}
+                        infinity={true}
+                        className="flex items-center justify-between my-3 text-sm sm:text-base"
+                      >
                         <p className="flex items-center space-x-1">
                           <AiOutlineCalendar />
                           <span className="text-xs font-medium">
@@ -134,13 +152,21 @@ export default function Home({
                             {blog.reading_time_minutes} mins
                           </span>
                         </p>
-                      </div>
-                      <h3 className="text-base sm:text-lg mb-1 font-bold truncate text-slate-600 dark:text-slate-300">
+                      </AnimatedDiv>
+                      <AnimatedHeading
+                        variants={popUpFromBottomForText}
+                        infinity={true}
+                        className="text-base sm:text-lg mb-1 font-bold truncate text-slate-600 dark:text-slate-300"
+                      >
                         {blog.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm truncate-3 text-slate-400">
+                      </AnimatedHeading>
+                      <AnimatedText
+                        variants={popUpFromBottomForText}
+                        className="text-xs sm:text-sm truncate-3 text-slate-400"
+                        infinity={true}
+                      >
                         {blog.description}
-                      </p>
+                      </AnimatedText>
                     </div>
                   </Link>
                 );
@@ -159,16 +185,24 @@ export default function Home({
                     key={certificate.id}
                     className="home-content-section no-scrollbar flex flex-col  cursor-auto hover-slide-animation"
                   >
-                    <div className="flex items-center justify-between mb-3 text-slate-400">
+                    <AnimatedDiv
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                      className="flex items-center justify-between mb-3 text-slate-400"
+                    >
                       <p className="font-bold capitalize text-xs sm:text-sm">
                         {certificate.issuedBy.orgName}
                       </p>
                       <p className="font-medium text-xs sm:text-sm">
                         {certificate.issuedDate}
                       </p>
-                    </div>
+                    </AnimatedDiv>
                     <div className="flex items-center gap-4">
-                      <div className="flex relative">
+                      <AnimatedDiv
+                        variants={popUpFromBottomForText}
+                        infinity={true}
+                        className="flex relative"
+                      >
                         <Image
                           width={40}
                           height={40}
@@ -177,19 +211,25 @@ export default function Home({
                           objectFit="contain"
                           layout="fixed"
                         />
-                      </div>
-                      <p className="capitalize font-semibold text-sm md:text-base border-purple-600 text-slate-600 dark:text-slate-300">
+                      </AnimatedDiv>
+                      <AnimatedText
+                        variants={popUpFromBottomForText}
+                        infinity={true}
+                        className="capitalize font-semibold text-sm md:text-base border-purple-600 text-slate-600 dark:text-slate-300"
+                      >
                         {certificate.title}
-                      </p>
+                      </AnimatedText>
                     </div>
 
-                    <button
+                    <AnimatedButton
+                      variants={popUpFromBottomForText}
+                      infinity={true}
                       className="px-3 py-2 mt-2  bg-purple-700 !text-white text-center font-semibold outline-none w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md auto-row"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
                       <GrCertificate className="text-xl" />
                       <p>View Certification</p>
-                    </button>
+                    </AnimatedButton>
                   </div>
                 );
               })}
@@ -207,7 +247,10 @@ export default function Home({
                     className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start hover-slide-animation"
                     onClick={() => window.open(project.githubURL)}
                   >
-                    <div>
+                    <AnimatedDiv
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                    >
                       <Image
                         className="rounded-xl mb-2"
                         width={360}
@@ -217,13 +260,21 @@ export default function Home({
                         layout="responsive"
                         objectFit="contain"
                       />
-                    </div>
-                    <h1 className="capitalize my-2 mt-4 font-bold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate">
+                    </AnimatedDiv>
+                    <AnimatedHeading
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                      className="capitalize my-2 mt-4 font-bold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate"
+                    >
                       {project.name}
-                    </h1>
-                    <p className="text-xs sm:text-sm truncate-3 text-slate-400">
+                    </AnimatedHeading>
+                    <AnimatedText
+                      variants={popUpFromBottomForText}
+                      infinity={true}
+                      className="text-xs sm:text-sm truncate-3 text-slate-400"
+                    >
                       {project.description}
-                    </p>
+                    </AnimatedText>
                   </div>
                 );
               })}
@@ -234,7 +285,7 @@ export default function Home({
           <div className="w-full px-3 md:px-5 relative flex flex-col items-center gap-3">
             <HomeHeading title="Github Contribution 📊" />
 
-            <div className="">
+            <AnimatedDiv variants={popUpFromBottomForText} infinity={true}>
               <Image
                 className="!mx-auto rounded-lg"
                 src="https://activity-graph.herokuapp.com/graph?username=j471n"
@@ -242,7 +293,7 @@ export default function Home({
                 width={1200}
                 height={420}
               />
-            </div>
+            </AnimatedDiv>
           </div>
 
           <FAQ faqs={faqs} />
@@ -255,7 +306,12 @@ export default function Home({
 
 export function HomeHeading({ title }) {
   return (
-    <h1 className="w-full font-bold text-2xl text-center my-2 font-exo">{title}</h1>
+    <AnimatedHeading
+      className="w-full font-bold text-2xl text-center my-2 font-exo"
+      variants={headingFromLeft}
+    >
+      {title}
+    </AnimatedHeading>
   );
 }
 
