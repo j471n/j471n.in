@@ -5,6 +5,12 @@ import useDarkmode from "../hooks/useDarkmode";
 import { RiLightbulbFlashFill } from "react-icons/ri";
 import Image from "next/image";
 import { AvatarImage } from "../utils/utils";
+import { motion } from "framer-motion";
+import {
+  fromLeftVariant,
+  fromRightVariant,
+  fromTopVariant,
+} from "../content/FramerMotionVariants";
 
 export default function TopNavbar() {
   const routes = ["/", "/skills", "/blogs", "/projects"];
@@ -37,31 +43,47 @@ export default function TopNavbar() {
       {/* <div className="absolute inset-0  opacity-50 "></div> */}
 
       {/* Name and Image*/}
-      <div
+      <motion.div
         className="text-center sm:text-left text-2xl font-bold z-40"
         title="Jatin Sharma"
       >
         <Link href="/">
           <div className="flex gap-2 items-center cursor-pointer">
-            <div className="rounded-full overflow-hidden w-10 h-10">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fromLeftVariant}
+              className="rounded-full overflow-hidden w-10 h-10"
+            >
               <Image
                 src={AvatarImage}
                 width={100}
                 height={100}
                 alt="Profile Image"
               ></Image>
-            </div>
-            <p className="absolute sm:relative left-0 right-0 pointer-events-none">
+            </motion.div>
+            <motion.p
+              initial="hidden"
+              animate="visible"
+              variants={fromTopVariant}
+              className="absolute sm:relative left-0 right-0 pointer-events-none"
+            >
               Jatin Sharma
-            </p>
+            </motion.p>
           </div>
         </Link>
-      </div>
+      </motion.div>
 
       {/* Dark Mode Toggle button */}
 
       {/* Top Nav list */}
-      <nav className="hidden sm:flex z-40">
+      {/* <AnimatedDiv variants={fromTopVariant}> */}
+      <motion.nav
+        initial="hidden"
+        animate="visible"
+        variants={fromTopVariant}
+        className="hidden sm:flex z-40"
+      >
         <ul className="flex items-center">
           <li className="top-nav-link">
             <Link href="/">About Me</Link>
@@ -79,8 +101,12 @@ export default function TopNavbar() {
             <Link href="/contact">Contact</Link>
           </li> */}
         </ul>
-      </nav>
-      <div
+      </motion.nav>
+      {/* </AnimatedDiv> */}
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fromRightVariant}
         className="cursor-pointer rounded-full p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!darkMode)}
@@ -92,7 +118,7 @@ export default function TopNavbar() {
               : "text-yellow-400 lg:hover:text-gray-500"
           }`}
         />
-      </div>
+      </motion.div>
     </div>
   );
 }
