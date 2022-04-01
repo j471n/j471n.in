@@ -1,41 +1,12 @@
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import {
-  slideFromBottom,
-  pulseOpacity,
-  headingFromLeft,
-  bounceScale,
-  popUpFromBottomForText,
-  cardFromRight,
-  skillHeader,
-  slideFromLeft,
-  popUp,
-} from "../content/FramerMotionVariants";
-import { useEffect } from "react";
+import { popUpFromBottomForText, popUp} from "../content/FramerMotionVariants";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 
 function Skill({ data }) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
   return (
-    <AnimatedDiv
-      className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600 hover-slide-animation before:!bg-purple-900"
-      // ref={ref}
-      // variants={}
-      // infinity={true}
-      // initial="hidden"
-      // animate={controls}
-    >
+    <div className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600 hover-slide-animation before:!bg-purple-900">
       <div className="flex items-center justify-between">
         <AnimatedDiv
           variants={popUp}
@@ -88,7 +59,7 @@ function Skill({ data }) {
           Read more
         </span>
       </AnimatedDiv>
-    </AnimatedDiv>
+    </div>
   );
 }
 
