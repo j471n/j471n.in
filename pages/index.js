@@ -282,20 +282,6 @@ export default function Home({
             </div>
           </section>
 
-          <div className="w-full px-3 md:px-5 relative flex flex-col items-center gap-3">
-            <HomeHeading title="Github Contribution 📊" />
-
-            <AnimatedDiv variants={popUpFromBottomForText} infinity={true}>
-              <Image
-                className="!mx-auto rounded-lg"
-                src="https://activity-graph.herokuapp.com/graph?username=j471n"
-                alt=""
-                width={1200}
-                height={420}
-              />
-            </AnimatedDiv>
-          </div>
-
           <FAQ faqs={faqs} />
           <Contact socialMedia={socialMedia} />
         </div>
