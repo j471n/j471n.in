@@ -14,6 +14,9 @@ import {
 } from "react-icons/bs";
 import { RiArticleLine, RiArticleFill } from "react-icons/ri";
 import BottomNavLink from "./BottomNavLink";
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+import { fromBottomVariant } from "../content/FramerMotionVariants";
+import { motion } from "framer-motion";
 
 const initialRouteState = {
   home: false,
