@@ -3,7 +3,6 @@ import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-import { GrCertificate } from "react-icons/gr";
 import {
   getPinnedProjects,
   getPinnedSkills,
@@ -20,15 +19,12 @@ import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
   popUpFromBottomForText,
   headingFromLeft,
-  cardFromRight,
-  popUp,
-  slideFromLeft,
 } from "../content/FramerMotionVariants";
 // import { motion, useAnimation } from "framer-motion";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
-import { motion } from "framer-motion";
 import AnimatedButton from "../components/FramerMotion/AnimatedButton";
+import { MdVerified } from "react-icons/md";
 
 export default function Home({
   blogs,
@@ -228,7 +224,7 @@ export default function Home({
                       className="px-3 py-2 mt-2  bg-purple-700 !text-white text-center font-semibold outline-none w-full mx-auto flex items-center text-xs justify-center space-x-3 rounded-md auto-row"
                       onClick={() => window.open(certificate.urls.pdfURL)}
                     >
-                      <GrCertificate className="text-xl" />
+                      <MdVerified className="text-xl text-white" />
                       <p>View Certification</p>
                     </AnimatedButton>
                   </div>

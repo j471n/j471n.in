@@ -3,9 +3,7 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function AnimatedButton(props) {
-  const [ref, inView] = useInView({
-    threshold: 0.4,
-  });
+  const [ref, inView] = useInView();
   const controls = useAnimation();
 
   useEffect(() => {
@@ -23,9 +21,6 @@ export default function AnimatedButton(props) {
       ref={ref}
       animate={controls}
       initial="hidden"
-      // variants={props.variants}
-      // className={className}
-      // onClick={onClick}
       {...props}
     >
       {props.children}
