@@ -35,14 +35,14 @@ export const slideFromLeft = {
     scale: 1,
     x: 0,
     transition: {
-      duration: 0.3,
-      ease: "easeInOut",
+      type: "spring",
+      stiffness: 150,
     },
   },
 };
 
 export const popUpFromBottomForText = {
-  hidden: { opacity: 0, y: 10 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
@@ -84,14 +84,14 @@ export const inputSlideAnimation = {
 };
 
 export const fromBottomVariant = {
-  hidden: { y: 200, opacity: 0 },
+  hidden: { y: 100, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.1,
       type: "spring",
-      stiffness: 100,
+      stiffness: 70,
     },
   },
 };
@@ -111,20 +111,104 @@ export const cardFromRight = {
 };
 
 export const homeEnterVariant = {
-  hidden: { x: "100vw", opacity: 1 },
+  hidden: { x: "100vw", opacity: 0 },
   visible: {
     x: 0,
     opacity: 1,
     transition: {
       type: "spring",
       mass: 0.4,
-      damping: 8,
-      when: "beforeChildren",
-      staggerChildren: 0.4,
+      // damping: 10,
+      stiffness: 100,
+      // when: "beforeChildren",
+      // staggerChildren: 0.6,
     },
   },
   exit: {
     x: "-100vw",
+    transition: {
+      duration: 0.3,
+      delay: 0.3,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+
+export const bounceScale = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
     opacity: 1,
+    transition: {
+      type: "spring",
+      mass: 0.4,
+      damping: 8,
+      ease: "easeInOut",
+    },
+  },
+};
+
+/* Skills Animation */
+export const skillHeader = {
+  hidden: { x: 50 },
+  visible: {
+    x: 0,
+    transition: {
+      // duration: 0.1,
+      // type: "spring",
+      // stiffness: 70,
+    },
+  },
+};
+
+// top Navbar
+
+export const fromLeftVariant = {
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+export const fromRightVariant = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+export const fromTopVariant = {
+  hidden: { y: -100, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+export const fromBottomVariantIcons = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
   },
 };
