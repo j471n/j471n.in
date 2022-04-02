@@ -1,20 +1,15 @@
 import { useState, useRef } from "react";
 import Blog from "../../components/Blog";
-import LazyLoad from "react-lazyload";
+// import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  fromBottomVariant,
-  popUpFromBottomForText,
-  slideFromLeft,
-} from "../../content/FramerMotionVariants";
+import { fromBottomVariant } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
 import VideoCover from "../../components/VideoCover";
-import AnimatedDiv from "../../components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogTags, blogs, err, allBlogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);

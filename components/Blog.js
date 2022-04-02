@@ -4,34 +4,16 @@ import { BiLike } from "react-icons/bi";
 import { AiFillEye } from "react-icons/ai";
 import { FaDev, FaGlobe } from "react-icons/fa";
 import { MdInsertComment } from "react-icons/md";
-import { motion } from "framer-motion";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
   fromBottomVariant,
-  fromLeftVariant,
-  fromTopVariant,
-  headingFromLeft,
   popUp,
   popUpFromBottomForText,
-  slideFromLeft,
 } from "../content/FramerMotionVariants";
 import { useRouter } from "next/router";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
-import AnimatedHeading from "./FramerMotion/AnimatedHeading";
 import AnimatedButton from "./FramerMotion/AnimatedButton";
 
-const buttonFromLeft = {
-  hidden: { y: 30, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      stiffness: 100,
-    },
-  },
-};
 
 export default function Blog({ blog }) {
   const router = useRouter();
