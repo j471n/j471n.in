@@ -1,5 +1,14 @@
 import styles from "../styles/Tags.module.css";
 import { useEffect } from "react";
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+import {
+  fromBottomVariant,
+  fromRightVariant,
+  fromTopVariant,
+  headingFromLeft,
+  popUp,
+  popUpFromBottomForText,
+} from "../content/FramerMotionVariants";
 export default function Tags({
   blogs,
   blogTags,
@@ -44,7 +53,11 @@ export default function Tags({
 
 export function Tag({ tag, checked, setActiveTag }) {
   return (
-    <div className={`${styles.tag} scrollbar-hide`}>
+    <AnimatedDiv
+      variants={popUp}
+      infinity={true}
+      className={`${styles.tag} scrollbar-hide`}
+    >
       <input
         type="radio"
         name="tag"
@@ -61,6 +74,6 @@ export function Tag({ tag, checked, setActiveTag }) {
       >
         {tag ? tag : "all"}
       </label>
-    </div>
+    </AnimatedDiv>
   );
 }

@@ -6,8 +6,33 @@ import { FaDev, FaGlobe } from "react-icons/fa";
 import { MdInsertComment } from "react-icons/md";
 import { motion } from "framer-motion";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
-import { popUpFromBottomForText } from "../content/FramerMotionVariants";
+import {
+  fromBottomVariant,
+  fromLeftVariant,
+  fromTopVariant,
+  headingFromLeft,
+  popUp,
+  popUpFromBottomForText,
+  slideFromLeft,
+} from "../content/FramerMotionVariants";
 import { useRouter } from "next/router";
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+import AnimatedHeading from "./FramerMotion/AnimatedHeading";
+import AnimatedButton from "./FramerMotion/AnimatedButton";
+
+const buttonFromLeft = {
+  hidden: { y: 30, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+    },
+  },
+};
+
 export default function Blog({ blog }) {
   const router = useRouter();
 
@@ -33,13 +58,13 @@ export default function Blog({ blog }) {
     ) <= 15;
 
   return (
-    <motion.div
+    <AnimatedDiv
       layout
       className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      variants={fromBottomVariant}
+      infinity={true}
     >
-      <div>
+      <div variants={fromBottomVariant} infinity={true}>
         <Image
           className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
           src={blog.cover_image}
@@ -64,37 +89,32 @@ export default function Blog({ blog }) {
                 .slice(4, 7)}
             </p>
           </div>
-
-          {/* Checking if the post reaction is more than 100 and post is not more than 30 days old then show the hot sign */}
-          {/* {isTrending() && (
-            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
-              <Image
-                className="rounded-full"
-                src="/img/fire-icon.jpg"
-                alt=""
-                height={20}
-                width={16}
-              />
-              <p className="text-xs font-bold text-white ml-3">Hot</p>
-            </div>
-          )} */}
         </div>
 
         <div className="mt-5 relative">
-          <p className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse">
+          <p
+            variants={fromBottomVariant}
+            infinity={true}
+            className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse"
+          >
             {isTrending && "Trending"}
           </p>
 
-          <h3 className=" text-md font-bold cursor-pointer select-none">
+          <h3
+            variants={popUpFromBottomForText}
+            infinity={true}
+            className=" text-md font-bold cursor-pointer select-none"
+          >
             {blog.title}
           </h3>
-          {/* <p className="text-xs line-clamp-2 truncate-2">{blog.description}</p> */}
 
           <div className="flex pt-2 items-center truncate space-x-2">
             {blog.tag_list.map((tag) => {
               return (
                 <p
                   key={tag}
+                  variants={popUp}
+                  infinity={true}
                   className="rounded-md cursor-pointer uppercase font-bold text-[9px] lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
                   {tag}
@@ -107,20 +127,20 @@ export default function Blog({ blog }) {
       {/* Reaction Icons (UpVotes, comments , views) */}
       <div className="auto-row flex items-center justify-between p-4 px-8 pt-0">
         {/* Likes/Up votes */}
-        <div className="user_reaction">
+        <div variants={popUp} infinity={true} className="user_reaction">
           <BiLike />
           <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
         </div>
 
         {/* Comments */}
-        <div className="user_reaction">
+        <div variants={popUp} infinity={true} className="user_reaction">
           <MdInsertComment />
           <p>{numFormatter(parseInt(blog.comments_count))}</p>
         </div>
 
         {/* Views */}
         {blog.page_views_count && (
-          <div className="user_reaction">
+          <div variants={popUp} infinity={true} className="user_reaction">
             <AiFillEye />
             <p>{numFormatter(parseInt(blog.page_views_count))}</p>
           </div>
@@ -130,29 +150,34 @@ export default function Blog({ blog }) {
       <div className="absolute w-full h-full top-full group-hover:top-0 transition-all duration-300  bg-black/70 backdrop-blur-sm cursor-pointer grid place-content-center text-white p-4">
         <AnimatedText
           variants={popUpFromBottomForText}
+          infinity={true}
           className="mb-2 font-medium text-sm"
         >
           {blog.description}
         </AnimatedText>
 
         <div className="flex items-center space-x-2">
-          <button
+          <AnimatedButton
             className="blog-hover-button"
+            variants={popUpFromBottomForText}
+            infinity={true}
             onClick={() => router.push(`/blogs/${blog.slug}`)}
           >
             <FaGlobe />
             <span>View</span>
-          </button>
+          </AnimatedButton>
 
-          <button
+          <AnimatedButton
             className="blog-hover-button"
+            variants={popUpFromBottomForText}
+            infinity={true}
             onClick={() => window.open(blog.url)}
           >
             <FaDev />
             <span>Dev.to</span>
-          </button>
+          </AnimatedButton>
         </div>
       </div>
-    </motion.div>
+    </AnimatedDiv>
   );
 }
