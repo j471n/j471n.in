@@ -4,13 +4,11 @@ import { FcLink } from "react-icons/fc";
 import { BiShareAlt } from "react-icons/bi";
 import Image from "next/image";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { pulseOpacity } from "../content/FramerMotionVariants";
+import { popUpFromBottomForText } from "../content/FramerMotionVariants";
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+
 export default function Project({ project }) {
   // Sharing Project
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
   const [showShare, setShowShare] = useState(false);
 
   async function handleShare() {
@@ -36,22 +34,15 @@ export default function Project({ project }) {
     setShowShare(!showShare);
     setTimeout(() => {
       setShowShare(false);
-    }, 5000);
+    }, 7 * 1000);
   }
 
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
   return (
-    <motion.div
+    <AnimatedDiv
       className="relative h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl flex flex-col"
       initial="hidden"
-      ref={ref}
-      animate={controls}
-      variants={pulseOpacity}
+      variants={popUpFromBottomForText}
+      infinity={true}
     >
       {project.coverURL && (
         <div>
@@ -145,6 +136,6 @@ export default function Project({ project }) {
           <BiShareAlt className="text-lg" />
         </div>
       </div>
-    </motion.div>
+    </AnimatedDiv>
   );
 }
