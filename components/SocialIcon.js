@@ -1,7 +1,7 @@
 // import Link from "next/link";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { popUp } from "../content/FramerMotionVariants";
+import { fromRightVariant } from "../content/FramerMotionVariants";
 import { useEffect } from "react";
 
 export default function SocialIcon({ Icon, title, url }) {
@@ -23,7 +23,7 @@ export default function SocialIcon({ Icon, title, url }) {
       ref={ref}
       initial="hidden"
       animate={controls}
-      variants={popUp}
+      variants={fromRightVariant}
       href={url}
       target="_blank"
       rel="noopener noreferrer"

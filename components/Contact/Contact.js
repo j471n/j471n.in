@@ -16,6 +16,7 @@ import Metadata from "../MetaData";
 import { motion } from "framer-motion";
 import {
   fromBottomVariant,
+  fromTopVariant,
   headingFromLeft,
   inputSlideAnimation,
   popUpFromBottomForText,
@@ -70,8 +71,9 @@ export default function Contact({ socialMedia }) {
       {/* Get in touch top section */}
       <section className="w-full-width text-center pt-6 dark:bg-darkPrimary dark:text-white">
         <AnimatedHeading
-          variants={headingFromLeft}
+          variants={popUpFromBottomForText}
           className="font-bold text-4xl"
+          infinity={true}
         >
           Get in touch
         </AnimatedHeading>

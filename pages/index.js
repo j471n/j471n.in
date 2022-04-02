@@ -55,6 +55,7 @@ export default function Home({
             <AnimatedText
               className="text-slate-500 dark:text-slate-400 font-[500]"
               variants={popUpFromBottomForText}
+              infinity={true}
             >
               Hi, welcome! I'm Jatin Sharma and I'm a self-taught React
               Developer 👋 as I am currently perusing my Bachelor Degree in
@@ -295,6 +296,7 @@ export function HomeHeading({ title }) {
     <AnimatedHeading
       className="w-full font-bold text-2xl text-center my-2 font-exo"
       variants={headingFromLeft}
+      infinity={true}
     >
       {title}
     </AnimatedHeading>
