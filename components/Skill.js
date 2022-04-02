@@ -1,15 +1,45 @@
 import Image from "next/image";
-import { popUpFromBottomForText, popUp} from "../content/FramerMotionVariants";
+import {
+  popUpFromBottomForText,
+  popUp,
+  fromLeftVariant,
+  fromRightVariant,
+} from "../content/FramerMotionVariants";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 
 function Skill({ data }) {
+  const fromRight = {
+    hidden: { x: 30, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.1,
+        type: "spring",
+        stiffness: 50,
+      },
+    },
+  };
+  const fromLeft = {
+    hidden: { x: -20, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.1,
+        type: "spring",
+        stiffness: 50,
+      },
+    },
+  };
+
   return (
     <div className="max-w-md mx-auto flex flex-col px-4 py-3 shadow shadow-zinc-400 rounded-lg ring-gray-400 dark:ring-gray-600 dark:bg-darkSecondary h-full border-t-4 border-purple-600 hover-slide-animation before:!bg-purple-900">
       <div className="flex items-center justify-between">
         <AnimatedDiv
-          variants={popUp}
+          variants={fromLeft}
           infinity={true}
           className="flex items-center space-x-3"
         >
@@ -27,7 +57,7 @@ function Skill({ data }) {
           </h2>
         </AnimatedDiv>
         <AnimatedDiv
-          variants={popUp}
+          variants={fromRight}
           infinity={true}
           className="w-12 h-12 font-bold"
         >
