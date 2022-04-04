@@ -48,7 +48,7 @@ export default function Blog({ blog }) {
       className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
       variants={fromBottomVariant}
     >
-      <AnimatedDiv variants={opacityVariant}>
+      <AnimatedDiv variants={opacityVariant} infinity={true}>
         <Image
           className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
           src={blog.cover_image}
