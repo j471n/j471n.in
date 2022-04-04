@@ -13,7 +13,7 @@ export default function VideoCover({ videoUrl, title, buttonText, children }) {
       ></video>
 
       <div className="absolute inset-0 bg-black text-white mix-blend-multiply flex flex-col items-center px-5 justify-center select-none">
-        <div className="relative">
+        <div className="relative text-center">
           <AnimatedHeading
             variants={popUpFromBottomForText}
             className="capitalize font-bold text-4xl sm:text-6xl 3xl:text-8xl"
