@@ -7,13 +7,16 @@ import { MdInsertComment } from "react-icons/md";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
   fromBottomVariant,
+  fromRightVariant,
+  opacityVariant,
   popUp,
   popUpFromBottomForText,
+  smallTextFromBottom,
 } from "../content/FramerMotionVariants";
 import { useRouter } from "next/router";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 import AnimatedButton from "./FramerMotion/AnimatedButton";
-
+import AnimatedHeading from "./FramerMotion/AnimatedHeading";
 
 export default function Blog({ blog }) {
   const router = useRouter();
@@ -40,13 +43,12 @@ export default function Blog({ blog }) {
     ) <= 15;
 
   return (
-    <AnimatedDiv
+    <div
       layout
       className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
       variants={fromBottomVariant}
-      infinity={true}
     >
-      <div variants={fromBottomVariant} infinity={true}>
+      <AnimatedDiv variants={opacityVariant}>
         <Image
           className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
           src={blog.cover_image}
@@ -55,11 +57,11 @@ export default function Blog({ blog }) {
           height={150}
           layout="responsive"
         />
-      </div>
+      </AnimatedDiv>
 
       <div className="w-full p-4">
         <div className="relative">
-          <div className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
+          <AnimatedDiv variants={opacityVariant} infinity={true} className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
             <p className="text-xl">
               {new Date(Date.parse(blog.published_at))
                 .toDateString()
@@ -70,44 +72,44 @@ export default function Blog({ blog }) {
                 .toDateString()
                 .slice(4, 7)}
             </p>
-          </div>
+          </AnimatedDiv>
         </div>
 
         <div className="mt-5 relative">
-          <p
-            variants={fromBottomVariant}
+          <AnimatedText
+            variants={opacityVariant}
             infinity={true}
             className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse"
           >
             {isTrending && "Trending"}
-          </p>
+          </AnimatedText>
 
-          <h3
-            variants={popUpFromBottomForText}
+          <AnimatedHeading
+            variants={opacityVariant}
             infinity={true}
             className=" text-md font-bold cursor-pointer select-none"
           >
             {blog.title}
-          </h3>
+          </AnimatedHeading>
 
           <div className="flex pt-2 items-center truncate space-x-2">
             {blog.tag_list.map((tag) => {
               return (
-                <p
+                <AnimatedText
                   key={tag}
-                  variants={popUp}
                   infinity={true}
+                  variants={popUp}
                   className="rounded-md cursor-pointer uppercase font-bold text-[9px] lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
                   {tag}
-                </p>
+                </AnimatedText>
               );
             })}
           </div>
         </div>
       </div>
       {/* Reaction Icons (UpVotes, comments , views) */}
-      <div className="auto-row flex items-center justify-between p-4 px-8 pt-0">
+      <AnimatedDiv variants={popUp} infinity={true} className="auto-row flex items-center justify-between p-4 px-8 pt-0">
         {/* Likes/Up votes */}
         <div variants={popUp} infinity={true} className="user_reaction">
           <BiLike />
@@ -127,7 +129,7 @@ export default function Blog({ blog }) {
             <p>{numFormatter(parseInt(blog.page_views_count))}</p>
           </div>
         )}
-      </div>
+      </AnimatedDiv>
 
       <div className="absolute w-full h-full top-full group-hover:top-0 transition-all duration-300  bg-black/70 backdrop-blur-sm cursor-pointer grid place-content-center text-white p-4">
         <AnimatedText
@@ -160,6 +162,6 @@ export default function Blog({ blog }) {
           </AnimatedButton>
         </div>
       </div>
-    </AnimatedDiv>
+    </div>
   );
 }

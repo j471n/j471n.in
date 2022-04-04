@@ -3,7 +3,7 @@ import LazyLoad from "react-lazyload";
 import { getSkills } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
-import { motion } from "framer-motion";
+
 
 export default function Skills({ skills }) {
   return (
@@ -17,11 +17,7 @@ export default function Skills({ skills }) {
           videoUrl="https://imgur.com/GoHeE7r.mp4"
         />
 
-        <motion.section
-          id="view"
-          className="page_container pt-10"
-          // transition={{ when: "beforeChildren", staggerChildren: 0.4 }}
-        >
+        <div id="view" className="page_container pt-10">
           {skills.map((skill) => {
             return (
               // <LazyLoad key={skill.id} className="h-full w-full">
@@ -29,7 +25,7 @@ export default function Skills({ skills }) {
               // </LazyLoad>
             );
           })}
-        </motion.section>
+        </div>
       </div>
     </>
   );

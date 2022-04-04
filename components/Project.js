@@ -4,8 +4,16 @@ import { FcLink } from "react-icons/fc";
 import { BiShareAlt } from "react-icons/bi";
 import Image from "next/image";
 import ShareOnSocialMedia from "./ShareOnSocialMedia";
-import { popUpFromBottomForText } from "../content/FramerMotionVariants";
+import { AnimatePresence } from "framer-motion";
+import {
+  fromBottomVariant,
+  opacityVariant,
+  popUp,
+  popUpFromBottomForText,
+} from "../content/FramerMotionVariants";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+import AnimatedHeading from "./FramerMotion/AnimatedHeading";
+import AnimatedText from "./FramerMotion/AnimatedText";
 
 export default function Project({ project }) {
   // Sharing Project
@@ -38,39 +46,48 @@ export default function Project({ project }) {
   }
 
   return (
-    <AnimatedDiv
+    <div
       className="relative h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl flex flex-col"
-      initial="hidden"
-      variants={popUpFromBottomForText}
-      infinity={true}
+      // initial="hidden"
+      // variants={popUpFromBottomForText}
     >
-      {project.coverURL && (
-        <div>
-          <Image
-            className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
-            src={project.coverURL}
-            alt={project.name}
-            width={360}
-            layout="responsive"
-            height={200}
-          />
-        </div>
-      )}
+      <AnimatePresence>
+        {project.coverURL && (
+          <AnimatedDiv variants={opacityVariant} infinity={true}>
+            <Image
+              className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
+              src={project.coverURL}
+              alt={project.name}
+              width={360}
+              layout="responsive"
+              height={200}
+            />
+          </AnimatedDiv>
+        )}
 
-      {project.name && (
-        <div className="w-full p-2 capitalize select-none flex flex-col">
-          {project.name && (
-            <h3 className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300">
-              {project.name}
-            </h3>
-          )}
-          {project.description && (
-            <p className="text-xs truncate-3 text-slate-500">
-              {project.description}
-            </p>
-          )}
-        </div>
-      )}
+        {project.name && (
+          <div className="w-full p-2 capitalize select-none flex flex-col">
+            {project.name && (
+              <AnimatedHeading
+                variants={opacityVariant}
+                infinity={true}
+                className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300"
+              >
+                {project.name}
+              </AnimatedHeading>
+            )}
+            {project.description && (
+              <AnimatedText
+                variants={opacityVariant}
+                infinity={true}
+                className="text-xs truncate-3 text-slate-500"
+              >
+                {project.description}
+              </AnimatedText>
+            )}
+          </div>
+        )}
+      </AnimatePresence>
 
       <div className="relative overflow-hidden !mt-4 auto-row">
         {/* Tools used in project */}
@@ -82,7 +99,7 @@ export default function Project({ project }) {
           >
             {project.tools.map((tool) => {
               return (
-                <div key={tool}>
+                <AnimatedDiv variants={popUp} infinity={true} key={tool}>
                   <Image
                     title={tool}
                     src={`/img/skills/${tool}.webp`}
@@ -90,7 +107,7 @@ export default function Project({ project }) {
                     width={30}
                     height={30}
                   />
-                </div>
+                </AnimatedDiv>
               );
             })}
           </p>
@@ -111,7 +128,11 @@ export default function Project({ project }) {
         />
       </div>
 
-      <div className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row">
+      <AnimatedDiv
+        variants={popUpFromBottomForText}
+        infinity={true}
+        className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row"
+      >
         {project.githubURL && (
           <a
             title="Github"
@@ -135,7 +156,7 @@ export default function Project({ project }) {
         <div title="Share" className="project_link" onClick={displayShareIcons}>
           <BiShareAlt className="text-lg" />
         </div>
-      </div>
-    </AnimatedDiv>
+      </AnimatedDiv>
+    </div>
   );
 }
