@@ -10,7 +10,10 @@ import {
   fromBottomVariant,
   fromLeftVariant,
   fromRightVariant,
+  popUpFromBottomForText,
+  smallTextFromBottom,
 } from "../content/FramerMotionVariants";
+import { AvatarImage } from "../utils/utils";
 
 export default function Footer() {
   return (
@@ -21,9 +24,9 @@ export default function Footer() {
           infinity={true}
           className="flex items-center space-x-2 sm:space-x-8"
         >
-          <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-violet-100">
+          <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-violet-100 overflow-hidden">
             <Image
-              src="https://imgur.com/3P7K4v2.png"
+              src={AvatarImage}
               width={50}
               height={50}
               alt="Profile Image"
@@ -39,7 +42,7 @@ export default function Footer() {
         </AnimatedDiv>
 
         <AnimatedText
-          variants={fromBottomVariant}
+          variants={smallTextFromBottom}
           infinity={true}
           className="text-center text-gray-500 font-medium text-sm sm:text-base col-span-2 md:col-span-1 row-start-2 md:row-start-auto"
         >
