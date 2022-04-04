@@ -47,7 +47,8 @@ export const popUpFromBottomForText = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.1,
+      type: "spring",
+      stiffness: 60,
     },
   },
 };
@@ -211,4 +212,22 @@ export const fromBottomVariantIcons = {
       stiffness: 100,
     },
   },
+};
+
+export const smallTextFromBottom = {
+  hidden: { y: 10, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.1,
+      type: "spring",
+      stiffness: 70,
+    },
+  },
+};
+
+export const opacityVariant = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { delay: 0.2 } },
 };
