@@ -19,6 +19,7 @@ import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
   popUpFromBottomForText,
   headingFromLeft,
+  opacityVariant,
 } from "../content/FramerMotionVariants";
 // import { motion, useAnimation } from "framer-motion";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
@@ -97,9 +98,9 @@ export default function Home({
                       </p>
                     </AnimatedDiv>
                     <AnimatedText
-                      variants={popUpFromBottomForText}
+                      variants={opacityVariant}
                       infinity={true}
-                      className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300"
+                      className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300 z-10"
                     >
                       {skill.level}
                     </AnimatedText>
