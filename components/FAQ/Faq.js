@@ -1,4 +1,4 @@
-import { headingFromLeft } from "../../content/FramerMotionVariants";
+import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import AnimatedHeading from "../FramerMotion/AnimatedHeading";
 import QuestionAndAnswer from "./QuestionAndAnswer";
 
@@ -7,7 +7,8 @@ function FAQ({ faqs = [] }) {
     <section className="bg-white dark:bg-darkPrimary">
       <div className="px-8 md:px-36 py-8 mx-auto">
         <AnimatedHeading
-          variants={headingFromLeft}
+          variants={popUpFromBottomForText}
+          infinity={true}
           className="text-2xl font-bold text-center sm:text-left lg:text-center text-gray-800 lg:text-4xl dark:text-white"
         >
           Frequently asked questions

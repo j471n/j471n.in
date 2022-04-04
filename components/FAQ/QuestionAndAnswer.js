@@ -41,7 +41,7 @@ export default function QuestionAndAnswer({ question, answer }) {
         <AnimatedText
           variants={popUpFromBottomForText}
           infinity={true}
-          className="mt-2 text-sm text-gray-400 dark:text-slate-400"
+          className="mt-1 text-sm text-gray-400 dark:text-slate-400 font-medium"
         >
           {answer}
         </AnimatedText>

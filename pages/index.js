@@ -50,7 +50,7 @@ export default function Home({
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
             <HomeHeading title="About Me" />
             <AnimatedText
-              className="text-slate-500 dark:text-slate-400 font-[500]"
+              className="text-slate-500 dark:text-slate-400 font-medium"
               variants={popUpFromBottomForText}
               infinity={true}
             >
@@ -154,13 +154,13 @@ export default function Home({
                       <AnimatedHeading
                         variants={popUpFromBottomForText}
                         infinity={true}
-                        className="text-base sm:text-lg mb-1 font-bold truncate text-slate-600 dark:text-slate-300"
+                        className="text-base sm:text-lg mb-1 font-bold md:font-extrabold truncate text-slate-600 dark:text-slate-300"
                       >
                         {blog.title}
                       </AnimatedHeading>
                       <AnimatedText
                         variants={popUpFromBottomForText}
-                        className="text-xs sm:text-sm truncate-3 text-slate-400"
+                        className="text-xs sm:text-sm truncate-3 text-slate-400 font-medium"
                         infinity={true}
                       >
                         {blog.description}
@@ -262,14 +262,14 @@ export default function Home({
                     <AnimatedHeading
                       variants={popUpFromBottomForText}
                       infinity={true}
-                      className="capitalize my-2 mt-4 font-bold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate"
+                      className="capitalize my-2 mt-4 font-bold md:font-extrabold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate"
                     >
                       {project.name}
                     </AnimatedHeading>
                     <AnimatedText
                       variants={popUpFromBottomForText}
                       infinity={true}
-                      className="text-xs sm:text-sm truncate-3 text-slate-400"
+                      className="text-xs sm:text-sm truncate-3 text-slate-400 font-medium"
                     >
                       {project.description}
                     </AnimatedText>

@@ -16,6 +16,8 @@ import Metadata from "../MetaData";
 import { motion } from "framer-motion";
 import {
   fromBottomVariant,
+  fromLeftVariant,
+  fromRightVariant,
   fromTopVariant,
   headingFromLeft,
   inputSlideAnimation,
@@ -27,6 +29,7 @@ import AnimatedInput from "../FramerMotion/AnimatedInput";
 import AnimatedTextArea from "../FramerMotion/AnimatedTextArea";
 import AnimatedButton from "../FramerMotion/AnimatedButton";
 import useDarkMode from "../../hooks/useDarkmode";
+import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 
 // initial State of the form
 const initialFormState = {
@@ -198,7 +201,11 @@ export default function Contact({ socialMedia }) {
           </AnimatedHeading>
 
           {/* Social Media Container */}
-          <motion.div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none">
+          <AnimatedDiv
+            variants={fromRightVariant}
+            infinity={true}
+            className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none"
+          >
             <SocialIcon
               Icon={AiOutlineInstagram}
               title="Instagram"
@@ -239,7 +246,7 @@ export default function Contact({ socialMedia }) {
               title="Instagram"
               url={socialMedia.devTo}
             />
-          </motion.div>
+          </AnimatedDiv>
           {/* Support Me */}
           <div className="pb-24 lg:pb-0">
             <AnimatedHeading
@@ -250,7 +257,11 @@ export default function Contact({ socialMedia }) {
               Support me 💪
             </AnimatedHeading>
 
-            <div className="flex items-center justify-center space-x-4 my-6">
+            <AnimatedDiv
+              variants={fromRightVariant}
+              infinity={true}
+              className="flex items-center justify-center space-x-4 my-6"
+            >
               {/* buy me a coffee */}
 
               <SocialIcon
@@ -265,7 +276,7 @@ export default function Contact({ socialMedia }) {
                 title="PayPal"
                 url="https://www.paypal.com/paypalme/j47in"
               />
-            </div>
+            </AnimatedDiv>
           </div>
         </div>
       </section>
