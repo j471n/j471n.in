@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Script from "next/script";
-import Head from "next/head";
 
 NProgress.configure({
   easing: "ease",
@@ -37,12 +36,6 @@ function MyApp({ Component, pageProps }) {
     <>
       {process.env.NODE_ENV === "production" && (
         <>
-          <Head>
-            <link
-              rel="stylesheet"
-              href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
-            />
-          </Head>
           <Script
             strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
