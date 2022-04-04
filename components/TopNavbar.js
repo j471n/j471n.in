@@ -39,7 +39,7 @@ export default function TopNavbar() {
   }, [currentRoute]);
 
   return (
-    <div className="fixed w-full bg-white/30 dark:bg-darkPrimary/50   dark:text-white backdrop-blur-xl top-0 flex items-center justify-between shadow p-4 z-40 print:hidden">
+    <div className="fixed w-full bg-white/30 dark:bg-darkPrimary/50   dark:text-white backdrop-blur-xl top-0 flex items-center justify-between shadow px-4 py-[10px] sm:p-4 z-40 print:hidden">
       {/* <div className="absolute inset-0  opacity-50 "></div> */}
 
       {/* Name and Image*/}
@@ -53,12 +53,12 @@ export default function TopNavbar() {
               initial="hidden"
               animate="visible"
               variants={fromLeftVariant}
-              className="rounded-full overflow-hidden w-10 h-10"
+              className="rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10"
             >
               <Image
                 src={AvatarImage}
-                width={100}
-                height={100}
+                width={50}
+                height={50}
                 alt="Profile Image"
               ></Image>
             </motion.div>
@@ -107,12 +107,12 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={fromRightVariant}
-        className="cursor-pointer rounded-full p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
+        className="cursor-pointer rounded-full p-1 sm:p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!darkMode)}
       >
         <RiLightbulbFlashFill
-          className={`text-3xl transition-all duration-1000 rotate-180 ${
+          className={`text-2xl sm:text-3xl transition-all duration-500 rotate-180 ${
             darkMode
               ? "text-gray-500 lg:hover:text-yellow-400"
               : "text-yellow-400 lg:hover:text-gray-500"

@@ -24,7 +24,7 @@ export default function BottomNavLink({ Icon, active, href, title }) {
           initial="hidden"
           animate="visible"
           variants={bottomNavVariant}
-          className="flex flex-col justify-center items-center"
+          className="flex flex-col justify-center items-center mt-[3px]"
         >
           <Icon className="bottom_nav_icon" />
           <p className="text-[10px] font-semibold text-center uppercase">

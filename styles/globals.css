@@ -14,8 +14,14 @@ html {
 }
 
 body {
-  padding-top: 68px;
+  padding-top: 52px;
   background: white;
+}
+
+@media screen and (min-width: 640px) {
+  body {
+    padding-top: 72px;
+  }
 }
 
 body.dark {
@@ -127,7 +133,7 @@ body::-webkit-scrollbar-thumb {
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
-    @apply m-1 text-2xl cursor-pointer;
+    @apply mb-[2px] text-2xl cursor-pointer;
   }
   .top-nav-link {
     @apply list-none mx-1 px-3 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none sm:text-sm md:text-base;

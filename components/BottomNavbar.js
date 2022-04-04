@@ -50,7 +50,7 @@ function BottomNavbar() {
   return (
     <div className="fixed bg-white dark:bg-darkPrimary sm:hidden ring-2 w-full ring-purple-400 bottom-0  rounded-tl-2xl rounded-tr-2xl z-40 print:hidden">
       {/* Bottom NavBar Links */}
-      <div className="flex items-center px-8 py-2 justify-between transition-all duration-150 select-none">
+      <div className="flex items-center px-8 py-1 justify-between transition-all duration-150 select-none">
         {/* Home Icon */}
         <BottomNavLink
           Icon={routes.home ? BsInfoCircleFill : BsInfoCircle}
