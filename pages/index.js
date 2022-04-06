@@ -27,14 +27,24 @@ import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { MdVerified } from "react-icons/md";
 
+// Static Data Import--------
+
+// Static Data END--------
+
 export default function Home({
   blogs,
-  skills,
-  certificates,
-  projects,
-  socialMedia,
-  faqs,
+  // skills,
+  // certificates,
+  // projects,
+  // socialMedia,
+  // faqs,
 }) {
+  const skills = getPinnedSkills();
+  const certificates = getCertificates();
+  const projects = getPinnedProjects();
+  const socialMedia = getSocialMedia();
+  const faqs = getFAQs();
+
   return (
     <>
       <Metadata title="About" />
@@ -302,29 +312,35 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   // fetching multiple requests by Promise.all
-  const [blogs, skills, certificates, projects, socialMedia, faqs] =
-    await Promise.all([
-      fetch("https://dev.to/api/articles/me?per_page=10", {
-        headers: {
-          "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-        },
-      }).then((res) => res.json()),
-      getPinnedSkills(),
-      getCertificates(),
-      getPinnedProjects(),
-      getSocialMedia(),
-      getFAQs(),
-    ]);
+  const [
+    blogs,
+    // skills,
+    // certificates,
+    // projects,
+    // socialMedia,
+    // faqs
+  ] = await Promise.all([
+    fetch("https://dev.to/api/articles/me?per_page=10", {
+      headers: {
+        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+      },
+    }).then((res) => res.json()),
+    // getPinnedSkills(),
+    // getCertificates(),
+    // getPinnedProjects(),
+    // getSocialMedia(),
+    // getFAQs(),
+  ]);
   return {
     props: {
       blogs,
-      skills,
-      certificates,
-      projects,
-      socialMedia,
-      faqs,
+      // skills,
+      // certificates,
+      // projects,
+      // socialMedia,
+      // faqs,
     },
-    // updates the page automatically after 1/2 an hour
-    revalidate: 30 * 60,
+    // updates the page automatically after 1 hour
+    revalidate: 60 * 60,
   };
 }
