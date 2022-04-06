@@ -15,17 +15,14 @@ function FAQ({ faqs = [] }) {
         </AnimatedHeading>
 
         <div className="grid grid-cols-1 gap-8 mt-8 lg:mt-16 md:grid-cols-2 xl:grid-cols-3">
-          {faqs.map((faq, index) => {
+          {faqs.map((faq) => {
+            if (!faq.question && !faq.answer) return null;
             return (
-              <>
-                {faq.question && faq.answer && (
-                  <QuestionAndAnswer
-                    key={index}
-                    question={faq.question}
-                    answer={faq.answer}
-                  />
-                )}
-              </>
+              <QuestionAndAnswer
+                key={faq.question}a
+                question={faq.question}
+                answer={faq.answer}
+              />
             );
           })}
         </div>
