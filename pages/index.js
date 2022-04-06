@@ -4,7 +4,6 @@ import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import Metadata from "../components/MetaData";
-import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
 import FAQ from "../components/FAQ";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
@@ -31,11 +30,61 @@ export default function Home({ blogs }) {
     <>
       <Metadata title="About" />
       <div className="dark:bg-darkPrimary dark:text-gray-100">
-        <VideoCover
-          title="Jatin Sharma"
-          videoUrl={"https://imgur.com/GoHeE7r.mp4"}
-          buttonText="front-end developer"
-        ></VideoCover>
+
+        {/* HomPage */}
+
+        <div className="relative w-screen h-[85vh] md:h-[90vh] flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center">
+          <div className="w-full md:w-1/2 h- grid place-items-center">
+            <div className="text-center md:text-left my-7 md:my-0">
+              <p className="uppercase font-medium text-sm sm:text-base">
+                Hi there! I'm
+              </p>
+              <AnimatedHeading
+                // variants={popUpFromBottomForText}
+                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-purple-600"
+              >
+                Jatin Sharma
+              </AnimatedHeading>
+              <p className="capitalize text-base sm:text-2xl font-thin font-merriweather">
+                React Developer
+              </p>
+
+              <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start">
+                <button
+                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
+                  onClick={() => (window.location.href = "#view")}
+                >
+                  About me
+                </button>
+
+                <button
+                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
+                  onClick={() => (window.location.href = "#contact")}
+                >
+                  Contact
+                </button>
+              </div>
+            </div>
+            {/* <div></div> */}
+          </div>
+
+          <div className="w-full md:w-1/2 grid place-items-center">
+            <div
+              className="relative bg-purple-800 w-3/5 sm:w-1/2 md:w-3/5 lg:w-1/2"
+              style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%  " }}
+            >
+              <Image
+                src="https://imgur.com/mKrXwWF.png"
+                className="rounded-full  shadow-purple-400"
+                layout="responsive"
+                width={400}
+                height={400}
+                alt="cover Profile Image"
+                priority={true}
+              />
+            </div>
+          </div>
+        </div>
 
         <div id="view" className="pt-20">
           {/* About me */}
@@ -83,7 +132,12 @@ export default function Home({ blogs }) {
                       className="flex items-center gap-2"
                     >
                       <div className="relative w-10 h-10">
-                        <Image width={50} height={50} alt={skill.name} src={`/${skill.icon}`} />
+                        <Image
+                          width={50}
+                          height={50}
+                          alt={skill.name}
+                          src={`/${skill.icon}`}
+                        />
                       </div>
 
                       <p className="uppercase font-bold text-sm sm:text-base">
