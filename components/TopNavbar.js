@@ -40,8 +40,6 @@ export default function TopNavbar() {
 
   return (
     <div className="fixed w-full bg-white/30 dark:bg-darkPrimary/50   dark:text-white backdrop-blur-xl top-0 flex items-center justify-between shadow px-4 py-[10px] sm:p-4 z-40 print:hidden">
-      {/* <div className="absolute inset-0  opacity-50 "></div> */}
-
       {/* Name and Image*/}
       <motion.div
         className="text-center sm:text-left text-2xl font-bold z-40"
