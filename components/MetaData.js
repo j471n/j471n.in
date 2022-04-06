@@ -10,7 +10,7 @@ export default function MetaData({ title, description }) {
       <meta charset="utf-8" />
       <meta
         name="viewport"
-        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=2"
       />
       <meta name="theme-color" content="#000" />
       <link rel="icon" href="/favicon.ico" />

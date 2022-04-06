@@ -57,10 +57,11 @@ export default function TopNavbar() {
             >
               <Image
                 src={AvatarImage}
-                width={50}
-                height={50}
+                width={64}
+                height={64}
                 alt="Profile Image"
                 priority={true}
+                
               ></Image>
             </motion.div>
             <motion.p
