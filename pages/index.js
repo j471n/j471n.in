@@ -3,14 +3,14 @@ import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-import {
-  getPinnedProjects,
-  getPinnedSkills,
-  getCertificates,
-  getSocialMedia,
-  getFAQs,
-  // getPinnedFAQs,
-} from "../lib/dataFetch";
+// import {
+//   getPinnedProjects,
+//   getPinnedSkills,
+//   getCertificates,
+//   getSocialMedia,
+//   getFAQs,
+//   // getPinnedFAQs,
+// } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
@@ -28,7 +28,11 @@ import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { MdVerified } from "react-icons/md";
 
 // Static Data Import--------
-
+import skills from "../content/skillsData";
+import certificates from "../content/certificatesData";
+import projects from "../content/projectData";
+import socialMedia from "../content/socialMedia";
+import faqs from "../content/faqData";
 // Static Data END--------
 
 export default function Home({
@@ -39,11 +43,11 @@ export default function Home({
   // socialMedia,
   // faqs,
 }) {
-  const skills = getPinnedSkills();
-  const certificates = getCertificates();
-  const projects = getPinnedProjects();
-  const socialMedia = getSocialMedia();
-  const faqs = getFAQs();
+  // const skills = getPinnedSkills();
+  // const certificates = getCertificates();
+  // const projects = getPinnedProjects();
+  // const socialMedia = getSocialMedia();
+  // const faqs = getFAQs();
 
   return (
     <>
@@ -88,6 +92,7 @@ export default function Home({
 
             <div className="snap-center flex gap-2 overflow-x-scroll no-scrollbar p-5 md:px-10">
               {skills.map((skill) => {
+                if (!skill.pinned) return null;
                 return (
                   <div
                     title={skill.name}
@@ -249,6 +254,8 @@ export default function Home({
             <HomeHeading title="Projects 📂" />
             <div className="home-section-container no-scrollbar">
               {projects.map((project) => {
+                if (!project.pinned) return null;
+
                 return (
                   <div
                     key={project.id}
