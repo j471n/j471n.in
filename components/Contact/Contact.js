@@ -70,7 +70,7 @@ export default function Contact({ socialMedia }) {
   }
 
   return (
-    <div className="dark:bg-darkPrimary">
+    <div id="contact" className="dark:bg-darkPrimary">
       {/* Get in touch top section */}
       <section className="w-full-width text-center pt-6 dark:bg-darkPrimary dark:text-white">
         <AnimatedHeading
