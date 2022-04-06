@@ -3,14 +3,6 @@ import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-// import {
-//   getPinnedProjects,
-//   getPinnedSkills,
-//   getCertificates,
-//   getSocialMedia,
-//   getFAQs,
-//   // getPinnedFAQs,
-// } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import VideoCover from "../components/VideoCover";
 import Contact from "../components/Contact";
@@ -21,7 +13,6 @@ import {
   headingFromLeft,
   opacityVariant,
 } from "../content/FramerMotionVariants";
-// import { motion, useAnimation } from "framer-motion";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import AnimatedButton from "../components/FramerMotion/AnimatedButton";
@@ -35,20 +26,7 @@ import socialMedia from "../content/socialMedia";
 import faqs from "../content/faqData";
 // Static Data END--------
 
-export default function Home({
-  blogs,
-  // skills,
-  // certificates,
-  // projects,
-  // socialMedia,
-  // faqs,
-}) {
-  // const skills = getPinnedSkills();
-  // const certificates = getCertificates();
-  // const projects = getPinnedProjects();
-  // const socialMedia = getSocialMedia();
-  // const faqs = getFAQs();
-
+export default function Home({ blogs }) {
   return (
     <>
       <Metadata title="About" />
@@ -318,34 +296,14 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  // fetching multiple requests by Promise.all
-  const [
-    blogs,
-    // skills,
-    // certificates,
-    // projects,
-    // socialMedia,
-    // faqs
-  ] = await Promise.all([
-    fetch("https://dev.to/api/articles/me?per_page=10", {
-      headers: {
-        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-      },
-    }).then((res) => res.json()),
-    // getPinnedSkills(),
-    // getCertificates(),
-    // getPinnedProjects(),
-    // getSocialMedia(),
-    // getFAQs(),
-  ]);
+  const blogs = await fetch("https://dev.to/api/articles/me?per_page=10", {
+    headers: {
+      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+    },
+  }).then((res) => res.json());
   return {
     props: {
       blogs,
-      // skills,
-      // certificates,
-      // projects,
-      // socialMedia,
-      // faqs,
     },
     // updates the page automatically after 1 hour
     revalidate: 60 * 60,
