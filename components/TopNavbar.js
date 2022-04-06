@@ -60,6 +60,7 @@ export default function TopNavbar() {
                 width={50}
                 height={50}
                 alt="Profile Image"
+                priority={true}
               ></Image>
             </motion.div>
             <motion.p

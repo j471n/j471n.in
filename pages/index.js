@@ -82,8 +82,8 @@ export default function Home({ blogs }) {
                       infinity={true}
                       className="flex items-center gap-2"
                     >
-                      <div className="w-10 h-10">
-                        <Image width={60} height={60} src={`/${skill.icon}`} />
+                      <div className="relative w-10 h-10">
+                        <Image width={50} height={50} alt={skill.name} src={`/${skill.icon}`} />
                       </div>
 
                       <p className="uppercase font-bold text-sm sm:text-base">

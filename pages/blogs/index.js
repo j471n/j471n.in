@@ -85,6 +85,7 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
                           src={res.cover_image}
                           width={200}
                           height={85}
+                          alt="blog cover Image"
                         />
                       </div>
                       <p className="text-sm w-full font-medium">{res.title}</p>

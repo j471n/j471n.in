@@ -29,6 +29,7 @@ export default function Comment({ comment, margin, articleAuthor }) {
               src={comment.user?.profile_image}
               width={30}
               height={30}
+              alt="userProfile"
             />
           </div>
           <p className="text-xs">{comment.user?.name || "Anonymous"}</p>

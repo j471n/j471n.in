@@ -21,6 +21,7 @@ export default function Author({ followers }) {
               width={500}
               height={166}
               layout="responsive"
+              alt="Cover Image for Profile"
             />
           </div>
 
@@ -33,6 +34,7 @@ export default function Author({ followers }) {
                   width={80}
                   height={80}
                   layout="responsive"
+                  alt="avatar Image"
                 />
               </div>
               <p className="font-bold text-3xl ">{author.name}</p>

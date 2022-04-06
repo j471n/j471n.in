@@ -6,7 +6,7 @@ function Loading() {
       <Image
         className=" opacity-100 bg-transparent text-white"
         src="/loading/loading.svg"
-        alt=""
+        alt="Loading"
         width={100}
         height={100}
       />
