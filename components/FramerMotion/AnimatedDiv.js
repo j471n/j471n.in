@@ -7,6 +7,7 @@ export default function AnimatedDiv({
   className,
   children,
   infinity,
+  style,
 }) {
   const [ref, inView] = useInView({
     threshold: 0.4,
@@ -30,6 +31,7 @@ export default function AnimatedDiv({
       initial="hidden"
       variants={variants}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

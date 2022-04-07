@@ -11,6 +11,7 @@ import {
   popUpFromBottomForText,
   headingFromLeft,
   opacityVariant,
+  popUp,
 } from "../content/FramerMotionVariants";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
@@ -26,50 +27,75 @@ import faqs from "../content/faqData";
 // Static Data END--------
 
 export default function Home({ blogs }) {
+  const buttonsLinearVariant = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "tween",
+        velocity: 10,
+      },
+    },
+  };
   return (
     <>
       <Metadata title="About" />
       <div className="dark:bg-darkPrimary dark:text-gray-100">
-
         {/* HomPage */}
 
         <div className="relative w-screen h-[85vh] md:h-[90vh] flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center">
           <div className="w-full md:w-1/2 h- grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
-              <p className="uppercase font-medium text-sm sm:text-base">
+              <AnimatedText
+                variants={opacityVariant}
+                infinity={true}
+                className="uppercase font-medium text-sm sm:text-base"
+              >
                 Hi there! I'm
-              </p>
+              </AnimatedText>
               <AnimatedHeading
-                // variants={popUpFromBottomForText}
+                variants={popUp}
+                infinity={true}
                 className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-purple-600"
               >
                 Jatin Sharma
               </AnimatedHeading>
-              <p className="capitalize text-base sm:text-2xl font-thin font-merriweather">
+              <AnimatedText
+                variants={opacityVariant}
+                infinity={true}
+                className="capitalize text-base sm:text-2xl font-thin font-merriweather"
+              >
                 React Developer
-              </p>
+              </AnimatedText>
 
               <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start">
-                <button
+                <AnimatedButton
+                  variants={buttonsLinearVariant}
+                  infinity={true}
                   className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
                   onClick={() => (window.location.href = "#view")}
                 >
                   About me
-                </button>
+                </AnimatedButton>
 
-                <button
+                <AnimatedButton
+                  variants={buttonsLinearVariant}
+                  infinity={true}
                   className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
                   onClick={() => (window.location.href = "#contact")}
                 >
                   Contact
-                </button>
+                </AnimatedButton>
               </div>
             </div>
             {/* <div></div> */}
           </div>
 
           <div className="w-full md:w-1/2 grid place-items-center">
-            <div
+            <AnimatedDiv
+              variants={popUp}
+              infinity={true}
               className="relative bg-purple-800 w-3/5 sm:w-1/2 md:w-3/5 lg:w-1/2"
               style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%  " }}
             >
@@ -80,9 +106,9 @@ export default function Home({ blogs }) {
                 width={400}
                 height={400}
                 alt="cover Profile Image"
-                priority={true}
+                // priority={true}
               />
-            </div>
+            </AnimatedDiv>
           </div>
         </div>
 
@@ -176,6 +202,7 @@ export default function Home({ blogs }) {
                           width={500}
                           height={207}
                           layout="responsive"
+                          quality="50"
                         />
                       </AnimatedDiv>
                       <AnimatedDiv
@@ -306,6 +333,7 @@ export default function Home({ blogs }) {
                         alt={project.name}
                         layout="responsive"
                         objectFit="contain"
+                        quality="50"
                       />
                     </AnimatedDiv>
                     <AnimatedHeading
