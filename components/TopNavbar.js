@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useDarkmode from "../hooks/useDarkmode";
 import { RiLightbulbFlashFill } from "react-icons/ri";
 import Image from "next/image";
 import { AvatarImage } from "../utils/utils";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import {
   fromLeftVariant,
   fromRightVariant,
   fromTopVariant,
+  popUp,
 } from "../content/FramerMotionVariants";
 
 export default function TopNavbar() {
   const routes = ["/", "/skills", "/blogs", "/projects"];
   const router = useRouter();
   const currentRoute = router.pathname;
+  const navRef = useRef(null);
+  const control = useAnimation();
 
   const { darkMode, changeDarkMode } = useDarkmode();
 
@@ -38,8 +41,44 @@ export default function TopNavbar() {
     }
   }, [currentRoute]);
 
+  // Adding Shadow, backdrop to the navbar as user scroll the screen
+  function addShadowToNavbar() {
+    if (window.pageYOffset > 30) {
+      navRef.current.classList.add(
+        ...[
+          "shadow",
+          "backdrop-blur-xl",
+          "bg-white/30",
+          "dark:bg-darkSecondary/50",
+        ]
+      );
+
+      control.start("visible");
+    } else {
+      navRef.current.classList.remove(
+        ...[
+          "shadow",
+          "backdrop-blur-xl",
+          "bg-white/30",
+          "dark:bg-darkSecondary/50",
+        ]
+      );
+      control.start("hidden");
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", addShadowToNavbar);
+    return () => {
+      window.removeEventListener("scroll", addShadowToNavbar);
+    };
+  }, []);
+
   return (
-    <div className="fixed w-full bg-white/30 dark:bg-darkPrimary/50   dark:text-white backdrop-blur-xl top-0 flex items-center justify-between shadow px-4 py-[10px] sm:p-4 z-40 print:hidden">
+    <div
+      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 z-40 print:hidden"
+      ref={navRef}
+    >
       {/* Name and Image*/}
       <motion.div
         className="text-center sm:text-left text-2xl font-bold z-40"
@@ -59,13 +98,12 @@ export default function TopNavbar() {
                 height={64}
                 alt="Profile Image"
                 priority={true}
-                
               ></Image>
             </motion.div>
             <motion.p
               initial="hidden"
-              animate="visible"
-              variants={fromTopVariant}
+              animate={control}
+              variants={popUp}
               className="absolute sm:relative left-0 right-0 pointer-events-none"
             >
               Jatin Sharma
