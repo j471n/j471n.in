@@ -44,7 +44,7 @@ export default function Home({ blogs }) {
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         {/* HomPage */}
 
-        <div className="relative w-screen h-[85vh] md:h-[90vh] flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center">
+        <div className="relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b from-purple-300 dark:from-darkSecondary dark:to-darkPrimary to-white">
           <div className="w-full md:w-1/2 h- grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText
@@ -96,8 +96,8 @@ export default function Home({ blogs }) {
             <AnimatedDiv
               variants={popUp}
               infinity={true}
-              className="relative bg-purple-800 w-3/5 sm:w-1/2 md:w-3/5 lg:w-1/2"
-              style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%  " }}
+              className="relative bg-purple-800 w-3/5 xs:w-1/3 sm:!2/5 md:!w-1/2"
+              style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
             >
               <Image
                 src="https://imgur.com/mKrXwWF.png"
