@@ -7,7 +7,6 @@ export const popUp = {
   },
   transition: {
     type: "spring",
-    duration: 1,
   },
 };
 
@@ -201,6 +200,7 @@ export const fromTopVariant = {
     },
   },
 };
+
 export const fromBottomVariantIcons = {
   hidden: { y: 50, opacity: 0 },
   visible: {
