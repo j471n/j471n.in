@@ -1,3 +1,11 @@
+// Static Data Import--------
+import skills from "../content/skillsData";
+import certificates from "../content/certificatesData";
+import projects from "../content/projectData";
+import socialMedia from "../content/socialMedia";
+import faqs from "../content/faqData";
+// Static Data END--------
+
 import Link from "next/link";
 import Image from "next/image";
 import ExploreMoreButton from "../components/Buttons/ExploreMoreButton";
@@ -17,14 +25,7 @@ import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { MdVerified } from "react-icons/md";
-
-// Static Data Import--------
-import skills from "../content/skillsData";
-import certificates from "../content/certificatesData";
-import projects from "../content/projectData";
-import socialMedia from "../content/socialMedia";
-import faqs from "../content/faqData";
-// Static Data END--------
+import { homeProfileImage } from "../utils/utils";
 
 export default function Home({ blogs }) {
   const buttonsLinearVariant = {
@@ -44,7 +45,7 @@ export default function Home({ blogs }) {
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         {/* HomPage */}
 
-        <div className="relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b from-purple-300 dark:from-darkSecondary dark:to-darkPrimary to-white">
+        <div className="relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b from-gray-400 dark:from-[#444] dark:to-darkPrimary to-white">
           <div className="w-full md:w-1/2 h- grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText
@@ -73,7 +74,7 @@ export default function Home({ blogs }) {
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
+                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none"
                   onClick={() => (window.location.href = "#view")}
                 >
                   About me
@@ -82,7 +83,7 @@ export default function Home({ blogs }) {
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700"
+                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none"
                   onClick={() => (window.location.href = "#contact")}
                 >
                   Contact
@@ -96,17 +97,19 @@ export default function Home({ blogs }) {
             <AnimatedDiv
               variants={popUp}
               infinity={true}
-              className="relative bg-purple-800 w-3/5 xs:w-1/3 sm:!2/5 md:!w-1/2"
-              style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+              className="relative w-3/5 xs:w-1/3 sm:!2/5 md:!w-1/2 group"
             >
+              <div
+                className="absolute inset-0 bg-purple-800 animate-[spin_3s_linear_infinite]"
+                style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+              ></div>
               <Image
-                src="https://imgur.com/mKrXwWF.png"
-                className="rounded-full  shadow-purple-400"
+                src={homeProfileImage}
+                className="rounded-full shadow"
                 layout="responsive"
                 width={400}
                 height={400}
                 alt="cover Profile Image"
-                // priority={true}
               />
             </AnimatedDiv>
           </div>
