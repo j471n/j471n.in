@@ -26,6 +26,7 @@ import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { MdVerified } from "react-icons/md";
 import { homeProfileImage } from "../utils/utils";
+import TopContainer from "../components/Home/TopContainer";
 
 export default function Home({ blogs }) {
   const buttonsLinearVariant = {
@@ -45,13 +46,13 @@ export default function Home({ blogs }) {
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         {/* HomPage */}
 
-        <div className="relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b from-gray-400 dark:from-[#444] dark:to-darkPrimary to-white">
-          <div className="w-full md:w-1/2 h- grid place-items-center">
+        <TopContainer>
+          <div className="w-full md:w-1/2 grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText
                 variants={opacityVariant}
                 infinity={true}
-                className="uppercase font-medium text-sm sm:text-base"
+                className="uppercase font-medium text-[10px] xs:text-sm sm:text-base text-left"
               >
                 Hi there! I'm
               </AnimatedText>
@@ -70,11 +71,11 @@ export default function Home({ blogs }) {
                 React Developer
               </AnimatedText>
 
-              <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start">
+              <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none"
+                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none "
                   onClick={() => (window.location.href = "#view")}
                 >
                   About me
@@ -90,7 +91,6 @@ export default function Home({ blogs }) {
                 </AnimatedButton>
               </div>
             </div>
-            {/* <div></div> */}
           </div>
 
           <div className="w-full md:w-1/2 grid place-items-center">
@@ -113,7 +113,7 @@ export default function Home({ blogs }) {
               />
             </AnimatedDiv>
           </div>
-        </div>
+        </TopContainer>
 
         <div id="view" className="pt-20">
           {/* About me */}
