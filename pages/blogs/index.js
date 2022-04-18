@@ -13,7 +13,6 @@ import {
 } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
-// import VideoCover from "../../components/VideoCover";
 import TopContainer from "../../components/Home/TopContainer";
 import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
 import AnimatedButton from "../../components/FramerMotion/AnimatedButton";
@@ -97,7 +96,7 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
             src="/img/cover/blogCover.svg"
             width={1354}
             height={1032}
-            alt="skills"
+            alt="blogs"
             priority={true}
           ></Image>
         </AnimatedDiv>
