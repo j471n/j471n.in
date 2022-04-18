@@ -231,3 +231,16 @@ export const opacityVariant = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { delay: 0.2 } },
 };
+
+
+export const buttonsLinearVariant = {
+  hidden: { y: 50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "tween",
+      velocity: 10,
+    },
+  },
+};
