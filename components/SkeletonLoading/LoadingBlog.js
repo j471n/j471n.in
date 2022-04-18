@@ -6,7 +6,7 @@ export default function LoadingBlog() {
       <Head>
         <title>Loading...</title>
       </Head>
-      <div className="min-h-screen flex flex-col md:flex-row justify-center space-y-3 md:space-y-0 mx-auto  p-3">
+      <div className="min-h-screen flex flex-col md:flex-row justify-center space-y-3 md:space-y-0 mx-auto  p-3 mt-[52px] sm:mt-[72px]">
         {/* left blog */}
         <div className="p-3 md:p-5 w-full flex-grow  bg-gray-200 dark:bg-darkSecondary rounded-md animate-pulse dark:text-gray-100 space-y-2 h-full">
           <h1 className="w-full h-7 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse "></h1>
