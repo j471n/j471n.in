@@ -6,10 +6,18 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { fromBottomVariant } from "../../content/FramerMotionVariants";
+import {
+  fromBottomVariant,
+  fromRightVariant,
+  smallTextFromBottom,
+} from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
-import VideoCover from "../../components/VideoCover";
+// import VideoCover from "../../components/VideoCover";
+import TopContainer from "../../components/Home/TopContainer";
+import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
+import AnimatedButton from "../../components/FramerMotion/AnimatedButton";
+import AnimatedDiv from "../../components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogTags, blogs, err, allBlogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
@@ -39,15 +47,61 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
     );
   }
 
+  const buttonsLinearVariant = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "tween",
+        velocity: 10,
+      },
+    },
+  };
+
   return (
     <>
       <Metadata title="Blogs 📰" />
 
-      <VideoCover
-        videoUrl="https://imgur.com/Ia5Byi2.mp4"
-        title="My articles"
-        buttonText="view recent posts"
-      />
+      <TopContainer>
+        <div className="w-full md:w-1/2 grid place-items-center">
+          <div className="text-center md:text-left my-7 md:my-0">
+            <AnimatedHeading
+              variants={smallTextFromBottom}
+              infinity={true}
+              className="capitalize font-bold text-3xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-blue-700 font-inter"
+            >
+              Blog Posts
+            </AnimatedHeading>
+
+            <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
+              <AnimatedButton
+                variants={buttonsLinearVariant}
+                infinity={true}
+                className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-blue-900 select-none text-xs sm:text-base text-gray-800 dark:text-gray-200"
+                onClick={() => (window.location.href = "#view")}
+              >
+                <span> View Recent Posts</span>
+              </AnimatedButton>
+            </div>
+          </div>
+        </div>
+
+        <AnimatedDiv
+          variants={fromRightVariant}
+          infinity={true}
+          className="relative w-full md:w-1/2 grid place-items-center"
+        >
+          <Image
+            className="dark:brightness-75"
+            src="/img/cover/blogCover.svg"
+            width={1354}
+            height={1032}
+            alt="skills"
+            priority={true}
+          ></Image>
+        </AnimatedDiv>
+      </TopContainer>
 
       <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">
@@ -86,6 +140,7 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
                           width={200}
                           height={85}
                           alt="blog cover Image"
+                          priority={true}
                         />
                       </div>
                       <p className="text-sm w-full font-medium">{res.title}</p>
