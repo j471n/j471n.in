@@ -55,7 +55,7 @@ export default function PageCover({
           src={imgSrc}
           width={1300}
           height={1000}
-          alt="blogs"
+          alt={pageTitle}
           priority={true}
         ></Image>
       </AnimatedDiv>
