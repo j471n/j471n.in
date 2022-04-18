@@ -12,8 +12,7 @@ import { useRouter } from "next/router";
 import Metadata from "../../components/MetaData";
 import useFetchWithSWR from "../../hooks/useFetchWithSWR";
 import LoadingBlog from "../../components/SkeletonLoading/LoadingBlog";
-// import ReactMarkdown from "react-markdown";
-import ReactMarkdown from "react-markdown";
+import PageNotFound from "../404";
 
 export default function Article() {
   const router = useRouter();
@@ -135,17 +134,7 @@ export default function Article() {
           </div>
         </>
       ) : (
-        <div className="absolute w-full h-[90%] grid place-items-center">
-          <div className="flex flex-col space-y-2 items-center">
-            <p className="font-bold text-2xl">404 NOT FOUND</p>
-
-            <Link href="/" class="">
-              <p className="bg-purple-500 px-5 py-2 font-medium rounded-xl cursor-pointer">
-                Home
-              </p>
-            </Link>
-          </div>
-        </div>
+        <PageNotFound />
       )}
     </>
   );
