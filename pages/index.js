@@ -27,26 +27,16 @@ import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { MdVerified } from "react-icons/md";
 import { homeProfileImage } from "../utils/utils";
 import TopContainer from "../components/Home/TopContainer";
+import { buttonsLinearVariant } from "../content/FramerMotionVariants";
 
 export default function Home({ blogs }) {
-  const buttonsLinearVariant = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "tween",
-        velocity: 10,
-      },
-    },
-  };
   return (
     <>
       <Metadata title="About" />
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         {/* HomPage */}
 
-        <TopContainer>
+        <TopContainer className="from-purple-900/50">
           <div className="w-full md:w-1/2 grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText
@@ -59,7 +49,7 @@ export default function Home({ blogs }) {
               <AnimatedHeading
                 variants={popUp}
                 infinity={true}
-                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-purple-600"
+                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-purple-700"
               >
                 Jatin Sharma
               </AnimatedHeading>
@@ -97,7 +87,7 @@ export default function Home({ blogs }) {
             <AnimatedDiv
               variants={popUp}
               infinity={true}
-              className="relative w-3/5 xs:w-1/3 sm:!2/5 md:!w-1/2 group"
+              className="relative w-3/5 xs:w-1/3 sm:!w-2/5 md:!w-1/2 group"
             >
               <div
                 className="absolute inset-0 bg-purple-800 animate-[spin_3s_linear_infinite]"
