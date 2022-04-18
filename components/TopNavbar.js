@@ -10,7 +10,6 @@ import {
   fromLeftVariant,
   fromRightVariant,
   fromTopVariant,
-  popUp,
 } from "../content/FramerMotionVariants";
 
 export default function TopNavbar() {
@@ -103,8 +102,11 @@ export default function TopNavbar() {
             <motion.p
               initial="hidden"
               animate={control}
-              variants={popUp}
-              className="absolute sm:relative left-0 right-0 pointer-events-none"
+              variants={{
+                hidden: { opacity: 0, scale: 1 },
+                visible: { opacity: 1, scale: 1 },
+              }}
+              className="absolute sm:relative left-0 right-0 pointer-events-none text-base"
             >
               Jatin Sharma
             </motion.p>
