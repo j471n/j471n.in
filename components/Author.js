@@ -55,7 +55,7 @@ export default function Author({ followers }) {
                   <p>{followers}</p>
                 </div>
               </div>
-              <div className="text-sm lg:text-base !mb-4">{author.summary}</div>
+              <div className="text-sm lg:text-base text-center px-4 !mb-4">{author.summary}</div>
               <button
                 className="w-10/12 sm:w-1/2 mx-10 bg-yellow-400 text-black text-md rounded-full py-2 clickable_button font-semibold"
                 onClick={() => window.open("https://dev.to/j471n")}
