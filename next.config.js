@@ -7,6 +7,7 @@ module.exports = {
       "imgur.com",
       "i.imgur.com",
       "cutt.ly",
+      "activity-graph.herokuapp.com",
     ],
   },
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,12 +12,24 @@ import { FaDev, FaPaypal } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../SocialIcon";
-// import { getSocialMedia } from "../../lib/dataFetch";
 import Metadata from "../MetaData";
 import { motion } from "framer-motion";
-import { popUp, popUpFromBottomForText } from "../../content/FramerMotionVariants";
-import { useInView } from "react-intersection-observer";
+import {
+  fromBottomVariant,
+  fromLeftVariant,
+  fromRightVariant,
+  fromTopVariant,
+  headingFromLeft,
+  inputSlideAnimation,
+  popUpFromBottomForText,
+} from "../../content/FramerMotionVariants";
 import AnimatedText from "../FramerMotion/AnimatedText";
+import AnimatedHeading from "../FramerMotion/AnimatedHeading";
+import AnimatedInput from "../FramerMotion/AnimatedInput";
+import AnimatedTextArea from "../FramerMotion/AnimatedTextArea";
+import AnimatedButton from "../FramerMotion/AnimatedButton";
+import useDarkMode from "../../hooks/useDarkmode";
+import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 
 // initial State of the form
 const initialFormState = {
@@ -31,7 +43,7 @@ const initialFormState = {
 export default function Contact({ socialMedia }) {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
-  const [ref, inView] = useInView();
+  const { darkMode } = useDarkMode();
 
   function sendEmail(e) {
     e.preventDefault();
@@ -58,13 +70,20 @@ export default function Contact({ socialMedia }) {
   }
 
   return (
-    <div className="dark:bg-darkPrimary">
+    <div id="contact" className="dark:bg-darkPrimary">
       {/* Get in touch top section */}
       <section className="w-full-width text-center pt-6 dark:bg-darkPrimary dark:text-white">
-        <h1 className="font-bold text-4xl">Get in touch</h1>
+        <AnimatedHeading
+          variants={popUpFromBottomForText}
+          className="font-bold text-4xl"
+          infinity={true}
+        >
+          Get in touch
+        </AnimatedHeading>
 
         <AnimatedText
           variants={popUpFromBottomForText}
+          infinity={true}
           className="px-4 py-2 font-medium text-slate-400"
         >
           Have a little something, something you wanna talk about? Please feel
@@ -76,19 +95,21 @@ export default function Contact({ socialMedia }) {
       <section className="flex flex-col lg:flex-row w-full mx-auto px-5 dark:bg-darkPrimary dark:text-white lg:pb-10">
         {/* Left Contact form section */}
         <div className="w-full mx-auto mt-10">
-          <h2 className="text-2xl font-bold w-full text-center my-2">
+          <AnimatedHeading
+            variants={popUpFromBottomForText}
+            infinity={true}
+            className="text-2xl font-bold w-full text-center my-2"
+          >
             Connect with me
-          </h2>
+          </AnimatedHeading>
 
-          <motion.form
-            ref={ref}
-            initial="hidden"
-            animate={inView && "visible"}
-            variants={popUp}
+          <form
             className="w-full flex flex-col items-center max-w-sm mx-auto dark:text-gray-300"
             onSubmit={sendEmail}
           >
-            <input
+            <AnimatedInput
+              variants={inputSlideAnimation}
+              infinity={true}
               className="contact_field"
               value={emailInfo.from_name}
               type="text"
@@ -102,7 +123,9 @@ export default function Contact({ socialMedia }) {
                 })
               }
             />
-            <input
+            <AnimatedInput
+              variants={inputSlideAnimation}
+              infinity={true}
               className="contact_field"
               value={emailInfo.email}
               type="email"
@@ -116,7 +139,9 @@ export default function Contact({ socialMedia }) {
                 })
               }
             />
-            <input
+            <AnimatedInput
+              variants={inputSlideAnimation}
+              infinity={true}
               className="contact_field"
               value={emailInfo.subject}
               type="text"
@@ -130,7 +155,9 @@ export default function Contact({ socialMedia }) {
                 })
               }
             />
-            <textarea
+            <AnimatedTextArea
+              variants={inputSlideAnimation}
+              infinity={true}
               className="contact_field min-h-[100px] resize-y"
               name="message"
               value={emailInfo.message}
@@ -142,8 +169,10 @@ export default function Contact({ socialMedia }) {
                   [e.target.name]: e.target.value,
                 })
               }
-            ></textarea>
-            <button
+            />
+            <AnimatedButton
+              variants={inputSlideAnimation}
+              infinity={true}
               className="w-full max-w-sm p-3 border-none rounded-md bg-purple-700 text-white font-semibold mt-4 cursor-pointer transform duration-150 active:scale-95 disabled:opacity-50 disabled:transform-none disabled:cursor-wait"
               type="submit"
               disabled={loading}
@@ -158,17 +187,25 @@ export default function Contact({ socialMedia }) {
                 </p>
                 <p>{loading ? "Sending..." : "Send"}</p>
               </div>
-            </button>
-          </motion.form>
+            </AnimatedButton>
+          </form>
         </div>
         {/* Right Other contact methods */}
         <div className="w-full mx-auto mt-10 lg:border-l-4 lg:dark:border-zinc-400 flex flex-col justify-center items-center">
-          <h2 className="text-lg sm:text-2xl font-bold my-2">
+          <AnimatedHeading
+            variants={popUpFromBottomForText}
+            infinity={true}
+            className="text-lg sm:text-2xl font-bold my-2"
+          >
             Connect with me on Social Media
-          </h2>
+          </AnimatedHeading>
 
           {/* Social Media Container */}
-          <motion.div className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none">
+          <AnimatedDiv
+            variants={fromRightVariant}
+            infinity={true}
+            className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none"
+          >
             <SocialIcon
               Icon={AiOutlineInstagram}
               title="Instagram"
@@ -209,14 +246,22 @@ export default function Contact({ socialMedia }) {
               title="Instagram"
               url={socialMedia.devTo}
             />
-          </motion.div>
+          </AnimatedDiv>
           {/* Support Me */}
           <div className="pb-24 lg:pb-0">
-            <h2 className="text-lg sm:text-2xl font-bold my-2">
+            <AnimatedHeading
+              variants={popUpFromBottomForText}
+              infinity={true}
+              className="text-lg sm:text-2xl font-bold my-2"
+            >
               Support me 💪
-            </h2>
+            </AnimatedHeading>
 
-            <div className="flex items-center justify-center space-x-4 my-6">
+            <AnimatedDiv
+              variants={fromRightVariant}
+              infinity={true}
+              className="flex items-center justify-center space-x-4 my-6"
+            >
               {/* buy me a coffee */}
 
               <SocialIcon
@@ -231,11 +276,11 @@ export default function Contact({ socialMedia }) {
                 title="PayPal"
                 url="https://www.paypal.com/paypalme/j47in"
               />
-            </div>
+            </AnimatedDiv>
           </div>
         </div>
       </section>
-      <ToastContainer theme="dark" />
+      <ToastContainer theme={darkMode ? "dark" : "colored"} />
     </div>
   );
 }

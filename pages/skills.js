@@ -1,8 +1,7 @@
 import Skill from "../components/Skill";
-import LazyLoad from "react-lazyload";
 import { getSkills } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
-import VideoCover from "../components/VideoCover";
+import PageCover from "../components/Home/PageCover";
 
 export default function Skills({ skills }) {
   return (
@@ -10,21 +9,18 @@ export default function Skills({ skills }) {
       <Metadata title="Skills 🤹" />
 
       <div className="dark:bg-darkPrimary">
-        <VideoCover
-          title="Skills & Experience"
-          // buttonText="view in details"
-          videoUrl="https://imgur.com/GoHeE7r.mp4"
+        <PageCover
+          imgSrc="/img/cover/skill.svg"
+          pageTitle="Skills & Experience"
+          titleClass="text-[#642994]"
+          containerClass="from-[#642994]/50 to-white"
         />
 
-        <section id="view" className="page_container pt-10">
+        <div id="view" className="page_container">
           {skills.map((skill) => {
-            return (
-              <LazyLoad key={skill.id} className="h-full w-full">
-                <Skill key={skill.id} data={skill} />
-              </LazyLoad>
-            );
+            return <Skill key={skill.id} data={skill} />;
           })}
-        </section>
+        </div>
       </div>
     </>
   );

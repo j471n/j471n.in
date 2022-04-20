@@ -4,10 +4,20 @@ import { BiLike } from "react-icons/bi";
 import { AiFillEye } from "react-icons/ai";
 import { FaDev, FaGlobe } from "react-icons/fa";
 import { MdInsertComment } from "react-icons/md";
-import { motion } from "framer-motion";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
-import { popUpFromBottomForText } from "../content/FramerMotionVariants";
+import {
+  fromBottomVariant,
+  fromRightVariant,
+  opacityVariant,
+  popUp,
+  popUpFromBottomForText,
+  smallTextFromBottom,
+} from "../content/FramerMotionVariants";
 import { useRouter } from "next/router";
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
+import AnimatedButton from "./FramerMotion/AnimatedButton";
+import AnimatedHeading from "./FramerMotion/AnimatedHeading";
+
 export default function Blog({ blog }) {
   const router = useRouter();
 
@@ -33,24 +43,25 @@ export default function Blog({ blog }) {
     ) <= 15;
 
   return (
-    <motion.div
+    <div
       layout
       className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      variants={fromBottomVariant}
     >
-      <Image
-        className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
-        src={blog.cover_image}
-        alt={blog.title}
-        width={360}
-        height={150}
-        layout="responsive"
-      />
+      <AnimatedDiv variants={opacityVariant} infinity={true}>
+        <Image
+          className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
+          src={blog.cover_image}
+          alt={blog.title}
+          width={360}
+          height={150}
+          layout="responsive"
+        />
+      </AnimatedDiv>
 
       <div className="w-full p-4">
         <div className="relative">
-          <div className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
+          <AnimatedDiv variants={opacityVariant} infinity={true} className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
             <p className="text-xl">
               {new Date(Date.parse(blog.published_at))
                 .toDateString()
@@ -61,96 +72,96 @@ export default function Blog({ blog }) {
                 .toDateString()
                 .slice(4, 7)}
             </p>
-          </div>
-
-          {/* Checking if the post reaction is more than 100 and post is not more than 30 days old then show the hot sign */}
-          {/* {isTrending() && (
-            <div className="flex items-center rounded-xl cursor-pointer bg-[#FF4500] px-4 py-2 transform duration-100 lg:hover:scale-110 lg:hover:-rotate-6">
-              <Image
-                className="rounded-full"
-                src="/img/fire-icon.jpg"
-                alt=""
-                height={20}
-                width={16}
-              />
-              <p className="text-xs font-bold text-white ml-3">Hot</p>
-            </div>
-          )} */}
+          </AnimatedDiv>
         </div>
 
         <div className="mt-5 relative">
-          <p className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse">
+          <AnimatedText
+            variants={opacityVariant}
+            infinity={true}
+            className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse"
+          >
             {isTrending && "Trending"}
-          </p>
+          </AnimatedText>
 
-          <h3 className=" text-md font-bold cursor-pointer select-none">
+          <AnimatedHeading
+            variants={opacityVariant}
+            infinity={true}
+            className=" text-md font-bold cursor-pointer select-none"
+          >
             {blog.title}
-          </h3>
-          {/* <p className="text-xs line-clamp-2 truncate-2">{blog.description}</p> */}
+          </AnimatedHeading>
 
           <div className="flex pt-2 items-center truncate space-x-2">
             {blog.tag_list.map((tag) => {
               return (
-                <p
+                <AnimatedText
                   key={tag}
+                  infinity={true}
+                  variants={popUp}
                   className="rounded-md cursor-pointer uppercase font-bold text-[9px] lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
                   {tag}
-                </p>
+                </AnimatedText>
               );
             })}
           </div>
         </div>
       </div>
       {/* Reaction Icons (UpVotes, comments , views) */}
-      <div className="auto-row flex items-center justify-between p-4 px-8 pt-0">
+      <AnimatedDiv variants={popUp} infinity={true} className="auto-row flex items-center justify-between p-4 px-8 pt-0">
         {/* Likes/Up votes */}
-        <div className="user_reaction">
+        <div variants={popUp} infinity={true} className="user_reaction">
           <BiLike />
           <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
         </div>
 
         {/* Comments */}
-        <div className="user_reaction">
+        <div variants={popUp} infinity={true} className="user_reaction">
           <MdInsertComment />
           <p>{numFormatter(parseInt(blog.comments_count))}</p>
         </div>
 
         {/* Views */}
         {blog.page_views_count && (
-          <div className="user_reaction">
+          <div variants={popUp} infinity={true} className="user_reaction">
             <AiFillEye />
             <p>{numFormatter(parseInt(blog.page_views_count))}</p>
           </div>
         )}
-      </div>
+      </AnimatedDiv>
 
       <div className="absolute w-full h-full top-full group-hover:top-0 transition-all duration-300  bg-black/70 backdrop-blur-sm cursor-pointer grid place-content-center text-white p-4">
         <AnimatedText
           variants={popUpFromBottomForText}
+          infinity={true}
           className="mb-2 font-medium text-sm"
         >
           {blog.description}
         </AnimatedText>
 
         <div className="flex items-center space-x-2">
-          <button
+          <AnimatedButton
             className="blog-hover-button"
+            variants={popUpFromBottomForText}
+            infinity={true}
             onClick={() => router.push(`/blogs/${blog.slug}`)}
           >
             <FaGlobe />
             <span>View</span>
-          </button>
+          </AnimatedButton>
 
-          <button
+          <AnimatedButton
             className="blog-hover-button"
+            variants={popUpFromBottomForText}
+            infinity={true}
             onClick={() => window.open(blog.url)}
           >
             <FaDev />
             <span>Dev.to</span>
-          </button>
+          </AnimatedButton>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +14,14 @@ html {
 }
 
 body {
-  padding-top: 68px;
-  background: white;
+  /* padding-top: 52px; */
+  /* background: white; */
+}
+
+@media screen and (min-width: 640px) {
+  body {
+    /* padding-top: 72px; */
+  }
 }
 
 body.dark {
@@ -126,10 +133,10 @@ body::-webkit-scrollbar-thumb {
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
-    @apply m-1 text-2xl cursor-pointer;
+    @apply mb-[2px] text-2xl cursor-pointer;
   }
   .top-nav-link {
-    @apply list-none mx-1 px-4 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none;
+    @apply list-none mx-1 px-3 py-1 border-black dark:border-white transition-all duration-200 hover:rounded-md hover:bg-gray-100 dark:hover:bg-darkSecondary cursor-pointer text-lg font-semibold select-none sm:text-sm md:text-base;
   }
   .contact_field {
     @apply text-sm font-medium text-black dark:text-white w-full px-4 py-2 m-2 rounded-md border-none outline-none shadow-inner shadow-slate-200 dark:shadow-zinc-800 focus:ring-1 focus:ring-purple-500 dark:bg-darkPrimary dark:placeholder-gray-500;
@@ -173,4 +180,13 @@ body::-webkit-scrollbar-thumb {
   .blog-hover-button {
     @apply flex items-center space-x-2 border-2 border-white dark:border-zinc-600 px-3 py-1 font-semibold w-min text-white dark:text-white hover:bg-white dark:hover:bg-zinc-600 hover:text-black;
   }
+  .hover-slide-animation {
+    @apply relative overflow-hidden before:absolute before:h-full before:w-40 before:bg-stone-900 dark:before:bg-gray-50 before:opacity-10 dark:before:opacity-5 before:-right-10 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7] before:duration-700;
+  }
 }
+
+/* @layer base {
+  * {
+    @apply text- 
+  }
+} */

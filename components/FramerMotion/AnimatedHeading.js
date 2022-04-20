@@ -2,7 +2,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function AnimatedText({
+export default function AnimatedHeading({
   variants,
   className,
   children,
@@ -24,7 +24,7 @@ export default function AnimatedText({
   }, [controls, inView]);
 
   return (
-    <motion.p
+    <motion.h1
       ref={ref}
       animate={controls}
       initial="hidden"
@@ -32,6 +32,6 @@ export default function AnimatedText({
       className={className}
     >
       {children}
-    </motion.p>
+    </motion.h1>
   );
 }

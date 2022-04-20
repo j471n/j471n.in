@@ -9,6 +9,7 @@ module.exports = {
       exo: ['"Exo 2"', "sans-serif"],
       merriweather: ["Merriweather", "sans-serif"],
       "bungee-shade": ["Bungee Shade", "cursive"],
+      inter: ["Inter", "sans-serif"],
     },
     extend: {
       colors: {
@@ -30,12 +31,14 @@ module.exports = {
       },
       screens: {
         "3xl": "2000px",
+        xs: "480px",
       },
     },
     variants: {
       extend: {},
     },
     plugins: [
+      // require("@tailwindcss/typography"),
       require("tailwind-scrollbar-hide"),
       require("@tailwindcss/line-clamp"),
     ],

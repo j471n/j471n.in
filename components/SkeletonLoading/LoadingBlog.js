@@ -6,9 +6,9 @@ export default function LoadingBlog() {
       <Head>
         <title>Loading...</title>
       </Head>
-      <div className="min-h-screen flex flex-col md:flex-row justify-center space-y-3 mx-auto  p-5">
+      <div className="min-h-screen flex flex-col md:flex-row justify-center space-y-3 md:space-y-0 mx-auto  p-3 mt-[52px] sm:mt-[72px]">
         {/* left blog */}
-        <div className="p-3 md:p-5 w-full flex-grow  bg-gray-200 dark:bg-darkSecondary rounded-md animate-pulse  dark:text-gray-100 space-y-2 h-full">
+        <div className="p-3 md:p-5 w-full flex-grow  bg-gray-200 dark:bg-darkSecondary rounded-md animate-pulse dark:text-gray-100 space-y-2 h-full">
           <h1 className="w-full h-7 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse "></h1>
           <h1 className="w-[80%] h-7 !m b-2 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse "></h1>
 
@@ -35,7 +35,7 @@ export default function LoadingBlog() {
 
           <div className="w-full h-44 md:h-60 !my-5 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse  animate-pulse"></div>
 
-          <div className="flex flex-col space-y-3">
+          <div className="flex flex-col gap-3">
             <p className="rounded-md animate-pulse  w-full h-3 bg-gray-400 dark:bg-zinc-600 "></p>
             <p className="rounded-md animate-pulse  w-full h-3 bg-gray-400 dark:bg-zinc-600 "></p>
             <p className="rounded-md animate-pulse  w-[80%] h-3 bg-gray-400 dark:bg-zinc-600 "></p>
@@ -44,7 +44,7 @@ export default function LoadingBlog() {
         </div>
 
         {/* author and comments */}
-        <div className="flex flex-col md:ml-5">
+        <div className="flex flex-col md:ml-4">
           <LoadingAuthor />
 
           <div className="flex items-center my-3 rounded-md shadow overflow-hidden">
@@ -90,8 +90,8 @@ function Comment({ className }) {
 
 export function LoadingAuthor() {
   return (
-    <div className="w-full md:w-96 h-80 bg-gray-200 dark:bg-darkSecondary  rounded-md animate-pulse  flex flex-col space-y-3 items-center">
-      <div className="w-24 h-24 rounded-full mx-auto bg-gray-400 dark:bg-zinc-600 mt-5"></div>
+    <div className="w-full md:w-96 h-80 bg-gray-200 dark:bg-darkSecondary  rounded-md animate-pulse  flex flex-col space-y-3 items-center justify-center">
+      <div className="w-24 h-24 rounded-full mx-auto bg-gray-400 dark:bg-zinc-600 "></div>
 
       <h1 className="w-1/2 bg-gray-400 dark:bg-zinc-600 h-3   rounded-md animate-pulse  mt-2"></h1>
 

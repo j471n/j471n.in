@@ -2,11 +2,12 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function AnimatedText({
+export default function AnimatedDiv({
   variants,
   className,
   children,
   infinity,
+  style,
 }) {
   const [ref, inView] = useInView({
     threshold: 0.4,
@@ -24,14 +25,15 @@ export default function AnimatedText({
   }, [controls, inView]);
 
   return (
-    <motion.p
+    <motion.div
       ref={ref}
       animate={controls}
       initial="hidden"
       variants={variants}
       className={className}
+      style={style}
     >
       {children}
-    </motion.p>
+    </motion.div>
   );
 }

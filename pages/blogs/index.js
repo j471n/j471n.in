@@ -1,15 +1,14 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Blog from "../../components/Blog";
-import LazyLoad from "react-lazyload";
 import Tags from "../../components/Tags";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { slideFromLeft } from "../../content/FramerMotionVariants";
+import { fromBottomVariant } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
-import VideoCover from "../../components/VideoCover";
+import PageCover from "../../components/Home/PageCover";
 
 export default function Blogs({ blogTags, blogs, err, allBlogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
@@ -42,18 +41,18 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
   return (
     <>
       <Metadata title="Blogs 📰" />
-
-      <VideoCover
-        videoUrl="https://imgur.com/Ia5Byi2.mp4"
-        title="My articles"
-        buttonText="view recent posts"
+      <PageCover
+        imgSrc="/img/cover/blogCover.svg"
+        pageTitle="Blog Posts"
+        buttonText="View Recent Posts"
+        titleClass="text-blue-700"
+        imgClass={"dark:brightness-75"}
+        buttonClass={"before:bg-blue-900"}
+        containerClass="from-[#847ce3]/60"
       />
-
       <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">
-          <form
-            className="mx-auto mt-4 flex items-center w-full relative"
-          >
+          <form className="mx-auto mt-4 flex items-center w-full relative">
             <input
               className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-1 ring-gray-200 dark:ring-zinc-600 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
               type="search"
@@ -63,34 +62,41 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
             />
           </form>
           {/* {comment} */}
-          {searchResult && (
-            <div
-              className="mx-10 w-full flex flex-col space-y-3 items-center transform duration-300"
-              ref={searchRef}
-            >
-              {searchResult.map((res) => {
-                return (
-                  <motion.div
-                    key={res.id}
-                    className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
-                    ref={ref}
-                    onClick={() => router.push(`/blogs/${res.slug}`)}
-                    initial="hidden"
-                    animate={controls}
-                    variants={slideFromLeft}
-                  >
-                    <Image
-                      className="h-full rounded-lg"
-                      src={res.cover_image}
-                      width={200}
-                      height={85}
-                    />
-                    <p className="text-sm w-full font-medium">{res.title}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          )}
+
+          <AnimatePresence>
+            {searchResult && (
+              <div
+                className="mx-10 w-full flex flex-col space-y-3 mb-2 items-center transform duration-300"
+                ref={searchRef}
+              >
+                {searchResult.map((res) => {
+                  return (
+                    <motion.div
+                      key={res.id}
+                      className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
+                      ref={ref}
+                      onClick={() => router.push(`/blogs/${res.slug}`)}
+                      initial="hidden"
+                      animate={controls}
+                      variants={fromBottomVariant}
+                    >
+                      <div className="inline-flex">
+                        <Image
+                          className="h-full rounded-lg"
+                          src={res.cover_image}
+                          width={200}
+                          height={85}
+                          alt="blog cover Image"
+                          priority={true}
+                        />
+                      </div>
+                      <p className="text-sm w-full font-medium">{res.title}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
       {
@@ -108,9 +114,9 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
             <AnimatePresence>
               {filteredBlogs.map((blog) => {
                 return (
-                  <LazyLoad key={blog.id}>
-                    <Blog key={blog.id} blog={blog} />
-                  </LazyLoad>
+                  // <LazyLoad key={blog.id}>
+                  <Blog key={blog.id} blog={blog} />
+                  // </LazyLoad>
                 );
               })}
             </AnimatePresence>
