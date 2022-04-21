@@ -13,7 +13,7 @@ export default function Skills({ skills }) {
           imgSrc="/img/cover/skill.svg"
           pageTitle="Skills & Experience"
           titleClass="text-[#642994]"
-          containerClass="from-[#642994]/50 to-white"
+          containerClass="!from-[#642994]/50 to-white"
         />
 
         <div id="view" className="page_container">

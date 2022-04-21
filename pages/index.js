@@ -36,7 +36,7 @@ export default function Home({ blogs }) {
       <div className="dark:bg-darkPrimary dark:text-gray-100">
         {/* HomPage */}
 
-        <TopContainer className="from-purple-900/50">
+        <TopContainer className="!from-purple-900/50">
           <div className="w-full md:w-1/2 grid place-items-center">
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText

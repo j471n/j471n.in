@@ -48,7 +48,7 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
         titleClass="text-blue-700"
         imgClass={"dark:brightness-75"}
         buttonClass={"before:bg-blue-900"}
-        containerClass="from-[#847ce3]/60"
+        containerClass="!from-[#847ce3]/80"
       />
       <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
         <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">

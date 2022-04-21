@@ -15,12 +15,12 @@ export default function Projects({ projects }) {
           pageTitle="Work & Projects"
           buttonText="View Recent Work"
           titleClass="text-yellow-500"
-          buttonClass={"before:bg-yellow-700"}
-          containerClass="from-yellow-50"
+          buttonClass={"before:bg-yellow-600"}
+          containerClass="!from-yellow-100"
         />
 
         <div className="relative">
-          <h1 className="absolute top-0 font-bold text-xl p-2 text-center w-full mt-5 text-slate-600 dark:text-slate-200">
+          <h1 className="absolute top-0 font-b  old text-xl p-2 text-center w-full mt-5 text-slate-600 dark:text-slate-200">
             Recent Projects
           </h1>
           <section id="view" className="page_container pt-20">
