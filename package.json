@@ -27,8 +27,10 @@
     "react-share": "^4.4.0",
     "react-share-social": "^0.1.48",
     "react-toastify": "^8.0.3",
+    "react-tsparticles": "^2.0.6",
     "swr": "^1.2.2",
     "tailwind-scrollbar-hide": "^1.1.5",
+    "tsparticles": "^2.0.6",
     "typed.js": "^2.0.12"
   },
   "devDependencies": {
