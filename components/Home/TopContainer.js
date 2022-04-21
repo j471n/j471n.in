@@ -1,12 +1,11 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import useDarkMode from "../../hooks/useDarkMode";
+import { useDarkMode } from "../../context/darkModeContext";
 
 export default function TopContainer({ className, children }) {
-  const { darkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
+  
   const particlesInit = async (main) => {
-    console.log(main);
-
     // you can initialize the tsParticles instance (main) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
@@ -14,26 +13,24 @@ export default function TopContainer({ className, children }) {
   };
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    // console.log(container);
   };
 
-  const clr = darkMode ? "#fff" : "#222";
+  // color of particles based on DarkMode
+  const clr = isDarkMode ? "#fff" : "#222";
+
   return (
     <div
-      className={`relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b dark:!from-[#444] dark:!to-darkPrimary !to-white ${className}`}
+      className={`!relative w-screen h-screen flex flex-col-reverse gap-10 md:gap-0 md:flex-row justify-center bg-gradient-to-b dark:!from-[#444] dark:!to-darkPrimary !to-white ${className}`}
     >
-      <div className="absolute inset-0 z-0">
         <Particles
           id="tsparticles"
+          className="absolute inset-0"
           init={particlesInit}
           loaded={particlesLoaded}
           options={{
-            background: {
-              color: {
-                // value: clr,
-              },
-            },
             fpsLimit: 244,
+
             interactivity: {
               events: {
                 // onClick: {
@@ -60,6 +57,7 @@ export default function TopContainer({ className, children }) {
               color: {
                 value: clr,
               },
+
               links: {
                 color: clr,
                 distance: 150,
@@ -97,10 +95,12 @@ export default function TopContainer({ className, children }) {
                 value: { min: 1, max: 5 },
               },
             },
+            fullScreen: {
+              enable: false,
+            },
             detectRetina: false,
           }}
         />
-      </div>
       {children}
     </div>
   );

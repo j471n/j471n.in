@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import Script from "next/script";
+import { DarkModeProvider } from "../context/darkModeContext";
 
 NProgress.configure({
   easing: "ease",
@@ -57,9 +58,11 @@ function MyApp({ Component, pageProps }) {
           />
         </>
       )}
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <DarkModeProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </DarkModeProvider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,20 +6,15 @@ import {
   AiOutlineInstagram,
   AiOutlineTwitter,
   AiOutlineLoading,
+  AiFillCheckCircle,
 } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaDev, FaPaypal } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../SocialIcon";
-import Metadata from "../MetaData";
-import { motion } from "framer-motion";
 import {
-  fromBottomVariant,
-  fromLeftVariant,
   fromRightVariant,
-  fromTopVariant,
-  headingFromLeft,
   inputSlideAnimation,
   popUpFromBottomForText,
 } from "../../content/FramerMotionVariants";
@@ -28,8 +23,8 @@ import AnimatedHeading from "../FramerMotion/AnimatedHeading";
 import AnimatedInput from "../FramerMotion/AnimatedInput";
 import AnimatedTextArea from "../FramerMotion/AnimatedTextArea";
 import AnimatedButton from "../FramerMotion/AnimatedButton";
-import useDarkMode from "../../hooks/useDarkmode";
 import AnimatedDiv from "../FramerMotion/AnimatedDiv";
+import { useDarkMode } from "../../context/darkModeContext";
 
 // initial State of the form
 const initialFormState = {
@@ -43,12 +38,14 @@ const initialFormState = {
 export default function Contact({ socialMedia }) {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
   const [loading, setLoading] = useState(false);
-  const { darkMode } = useDarkMode();
+  const [msgSent, setMessageSent] = useState(false);
+  const [error, setError] = useState(false);
+  const { isDarkMode } = useDarkMode();
 
   function sendEmail(e) {
     e.preventDefault();
-
     setLoading(true);
+
     emailjs
       .send(
         process.env.NEXT_PUBLIC_YOUR_SERVICE_ID,
@@ -57,20 +54,29 @@ export default function Contact({ socialMedia }) {
         process.env.NEXT_PUBLIC_YOUR_USER_ID
       )
       .then((res) => {
-        console.log("Email Sent Successfully");
         setLoading(false);
         setEmailInfo(initialFormState);
         toast.success("Message Sent ✌");
+        setMessageSent(true);
+
+        setTimeout(() => {
+          setMessageSent(false);
+        }, 2000);
       })
       .catch((err) => {
         console.log(err.text);
         setLoading(false);
         toast.error("😢 " + err.text);
+        setError(true);
+
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
       });
   }
 
   return (
-    <div id="contact" className="dark:bg-darkPrimary">
+    <div id="contact" className="dark:bg-darkPrimary !relative">
       {/* Get in touch top section */}
       <section className="w-full-width text-center pt-6 dark:bg-darkPrimary dark:text-white">
         <AnimatedHeading
@@ -185,7 +191,19 @@ export default function Contact({ socialMedia }) {
                 >
                   <AiOutlineLoading className="font-bold text-2xl" />
                 </p>
-                <p>{loading ? "Sending..." : "Send"}</p>
+
+                {msgSent && (
+                  <AiFillCheckCircle className="font-bold text-2xl mr-3" />
+                )}
+                <p>
+                  {loading
+                    ? "Sending..."
+                    : msgSent
+                    ? "Message Sent"
+                    : error
+                    ? "Something Went Wrong"
+                    : "Send"}
+                </p>
               </div>
             </AnimatedButton>
           </form>
@@ -280,16 +298,11 @@ export default function Contact({ socialMedia }) {
           </div>
         </div>
       </section>
-      <ToastContainer theme={darkMode ? "dark" : "colored"} />
+      <ToastContainer
+        theme={isDarkMode ? "dark" : "colored"}
+        // className="z-50l top[10%] right-[10%]"
+        style={{ zIndex: 1000 }}
+      />
     </div>
   );
 }
-
-// export async function getStaticProps() {
-//   const socialMedia = getSocialMedia();
-//   return {
-//     props: {
-//       socialMedia,
-//     },
-//   };
-// }

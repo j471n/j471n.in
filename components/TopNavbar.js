@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useDarkmode from "../hooks/useDarkmode";
 import { RiLightbulbFlashFill } from "react-icons/ri";
 import Image from "next/image";
 import { AvatarImage } from "../utils/utils";
@@ -11,6 +10,7 @@ import {
   fromRightVariant,
   fromTopVariant,
 } from "../content/FramerMotionVariants";
+import { useDarkMode } from "../context/darkModeContext";
 
 export default function TopNavbar() {
   const routes = ["/", "/skills", "/blogs", "/projects"];
@@ -19,7 +19,7 @@ export default function TopNavbar() {
   const navRef = useRef(null);
   const control = useAnimation();
 
-  const { darkMode, changeDarkMode } = useDarkmode();
+  const { isDarkMode, changeDarkMode } = useDarkMode();
 
   useEffect(() => {
     // Gathering all the top-nav-links it returns an object
@@ -149,11 +149,11 @@ export default function TopNavbar() {
         variants={fromRightVariant}
         className="cursor-pointer rounded-full p-1 sm:p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
         title="Toggle Theme"
-        onClick={() => changeDarkMode(!darkMode)}
+        onClick={() => changeDarkMode(!isDarkMode)}
       >
         <RiLightbulbFlashFill
-          className={`text-2xl sm:text-3xl transition-all duration-500 rotate-180 ${
-            darkMode
+          className={`text-2xl sm:text-3xl transition-all duration-300 rotate-180 ${
+            isDarkMode
               ? "text-gray-500 lg:hover:text-yellow-400"
               : "text-yellow-400 lg:hover:text-gray-500"
           }`}
