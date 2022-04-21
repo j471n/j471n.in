@@ -100,6 +100,7 @@ export default function Home({ blogs }) {
                 width={400}
                 height={400}
                 alt="cover Profile Image"
+                quality={75}
               />
             </AnimatedDiv>
           </div>
@@ -156,6 +157,7 @@ export default function Home({ blogs }) {
                           height={50}
                           alt={skill.name}
                           src={`/${skill.icon}`}
+                          quality={50}
                         />
                       </div>
 
@@ -195,7 +197,7 @@ export default function Home({ blogs }) {
                           width={500}
                           height={207}
                           layout="responsive"
-                          quality="50"
+                          quality={25}
                         />
                       </AnimatedDiv>
                       <AnimatedDiv
@@ -273,6 +275,7 @@ export default function Home({ blogs }) {
                           height={40}
                           src={certificate.issuedBy.orgLogo}
                           alt={certificate.issuedBy.orgName}
+                          quality={50}
                           objectFit="contain"
                           layout="fixed"
                         />
@@ -326,7 +329,7 @@ export default function Home({ blogs }) {
                         alt={project.name}
                         layout="responsive"
                         objectFit="contain"
-                        quality="50"
+                        quality={50}
                       />
                     </AnimatedDiv>
                     <AnimatedHeading
