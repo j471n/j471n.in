@@ -8,8 +8,10 @@ export function DarkModeProvider({ children }) {
     const currentTheme = localStorage.getItem("isDarkMode") || "false";
     if (currentTheme === "true") {
       document.body.classList.add("dark");
+      setDarkMode(true);
     } else {
       document.body.classList.remove("dark");
+      setDarkMode(false);
     }
   }
   useEffect(() => {
@@ -17,7 +19,7 @@ export function DarkModeProvider({ children }) {
   }, []);
   function changeDarkMode(value) {
     localStorage.setItem("isDarkMode", value.toString());
-    setDarkMode(value);
+    // setDarkMode(value);
     updateTheme();
   }
 
