@@ -57,6 +57,7 @@ export default function PageCover({
           height={1000}
           alt={pageTitle}
           priority={true}
+          quality={50}
         ></Image>
       </AnimatedDiv>
     </TopContainer>

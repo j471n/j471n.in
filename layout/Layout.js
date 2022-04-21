@@ -16,7 +16,7 @@ export default function Layout({ children }) {
   return (
     <>
       <TopNavbar />
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence initial={false}>
         <motion.main
           key={router.route}
           variants={pageTransition}
