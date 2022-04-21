@@ -106,7 +106,7 @@ export default function TopNavbar() {
                 hidden: { opacity: 0, scale: 1 },
                 visible: { opacity: 1, scale: 1 },
               }}
-              className="absolute sm:relative left-0 right-0 pointer-events-none text-base"
+              className="absolute sm:relative left-0 right-0 pointer-events-none text-base font-sarina"
             >
               Jatin Sharma
             </motion.p>
