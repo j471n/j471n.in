@@ -62,7 +62,7 @@ export default function TopContainer({ className, children }) {
                 color: clr,
                 distance: 150,
                 enable: true,
-                opacity: 0.5,
+                opacity: 0.2,
                 width: 1,
               },
               collisions: {
@@ -83,10 +83,10 @@ export default function TopContainer({ className, children }) {
                   enable: true,
                   area: 800,
                 },
-                value: 30,
+                value: 50,
               },
               opacity: {
-                value: 0.5,
+                value: 0.4,
               },
               shape: {
                 type: "circle",
