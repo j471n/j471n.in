@@ -93,6 +93,7 @@ export default function Home({ blogs }) {
                 height={400}
                 alt="cover Profile Image"
                 quality={75}
+                priority={true}
               />
             </AnimatedDiv>
           </div>
