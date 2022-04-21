@@ -28,6 +28,7 @@ import { MdVerified } from "react-icons/md";
 import { homeProfileImage } from "../utils/utils";
 import TopContainer from "../components/Home/TopContainer";
 import { buttonsLinearVariant } from "../content/FramerMotionVariants";
+import { resumeDownloadLink } from "../utils/utils";
 
 export default function Home({ blogs }) {
   return (
@@ -42,21 +43,21 @@ export default function Home({ blogs }) {
               <AnimatedText
                 variants={opacityVariant}
                 infinity={true}
-                className="uppercase font-medium text-[10px] xs:text-sm sm:text-base text-left"
+                className="uppercase font-medium text-[10px] xs:text-sm sm:text-base text-center sm:text-left text-slate-700 dark:text-gray-400"
               >
                 Hi there! I'm
               </AnimatedText>
               <AnimatedHeading
-                variants={popUp}
+                variants={opacityVariant}
                 infinity={true}
-                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl text-purple-700"
+                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl font-sarina text-gray-800 dark:text-gray-300"
               >
                 Jatin Sharma
               </AnimatedHeading>
               <AnimatedText
                 variants={opacityVariant}
                 infinity={true}
-                className="capitalize text-base sm:text-2xl font-thin font-merriweather"
+                className="text-base sm:text-xl font-thin  uppercase tracking-widest font-merriweather text-slate-700 dark:text-gray-400"
               >
                 React Developer
               </AnimatedText>
@@ -65,19 +66,10 @@ export default function Home({ blogs }) {
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none "
-                  onClick={() => (window.location.href = "#view")}
+                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-white"
+                  onClick={() => window.open(resumeDownloadLink, "_self")}
                 >
-                  About me
-                </AnimatedButton>
-
-                <AnimatedButton
-                  variants={buttonsLinearVariant}
-                  infinity={true}
-                  className="px-2 py-1 transition-all font-medium relative hover:text-white z-10 before:-z-10 before:absolute before:inset-0 before:w-0.5 before:transition-all before:hover:w-full before:bg-purple-700 select-none"
-                  onClick={() => (window.location.href = "#contact")}
-                >
-                  Contact
+                  Download CV
                 </AnimatedButton>
               </div>
             </div>

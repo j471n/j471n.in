@@ -21,6 +21,7 @@ export default function AnimatedButton(props) {
       ref={ref}
       animate={controls}
       initial="hidden"
+      onClick={props.onClick}
       {...props}
     >
       {props.children}

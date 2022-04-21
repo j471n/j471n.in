@@ -10,6 +10,8 @@ module.exports = {
       merriweather: ["Merriweather", "sans-serif"],
       "bungee-shade": ["Bungee Shade", "cursive"],
       inter: ["Inter", "sans-serif"],
+      sarina: ["Sarina", "cursive"],
+      "open-sans": ["Open Sans", "sans-serif"],
     },
     extend: {
       colors: {
