@@ -18,9 +18,13 @@ body {
   /* background: white; */
 }
 
-@media screen and (min-width: 640px) {
-  body {
-    /* padding-top: 72px; */
+/* Adding Scroll Margin for top */
+* {
+  scroll-margin-top: 80px;
+}
+@media screen and (max-width: 640px) {
+  * {
+    scroll-margin-top: 60px;
   }
 }
 
