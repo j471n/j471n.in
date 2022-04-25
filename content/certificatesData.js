@@ -25,6 +25,10 @@ const Codecademy = {
   orgName: "Codecademy",
   orgLogo: "https://imgur.com/1EnKFi6.png",
 };
+const HackerRank = {
+  orgName: "HackerRank",
+  orgLogo: "https://imgur.com/mw6pqQD.png",
+};
 
 module.exports = [
   {
@@ -47,7 +51,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/1HziWP3mLgDozfzXjXcs-qLvTzajU1x4j/view?usp=sharing",
     },
-    pinned: true,
+    pinned: false,
   },
   {
     id: 3,
@@ -102,7 +106,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/12ntomCXfXQ_n_IMyPtMCYcJqT21hZsLy/view?usp=sharing",
     },
-    pinned: false,
+    pinned: true,
   },
   {
     id: 8,
@@ -113,7 +117,7 @@ module.exports = [
       pdfURL:
         "https://drive.google.com/file/d/1y82rc6vF7QMhEosx_oSzmKvtQNGxNkv6/view?usp=sharing",
     },
-    pinned: false,
+    pinned: true,
   },
   {
     id: 9,
@@ -169,5 +173,35 @@ module.exports = [
         "https://drive.google.com/file/d/1H2znARDQD91Mt8IAC3RPIuuv9oMGkAyB/view?usp=sharing",
     },
     pinned: false,
+  },
+  {
+    id: 14,
+    title: "JavaScript (Basic)",
+    issuedDate: "Dec 26, 2020",
+    issuedBy: HackerRank,
+    urls: {
+      pdfURL: "https://www.hackerrank.com/certificates/18ff8a46b713",
+    },
+    pinned: true,
+  },
+  {
+    id: 15,
+    title: "JavaScript (Intermediate)",
+    issuedDate: "Apr 20, 2022",
+    issuedBy: HackerRank,
+    urls: {
+      pdfURL: "https://www.hackerrank.com/certificates/fde0087a00a7",
+    },
+    pinned: true,
+  },
+  {
+    id: 16,
+    title: "Python (Basic) ",
+    issuedDate: "Aug 20, 2020",
+    issuedBy: HackerRank,
+    urls: {
+      pdfURL: "https://www.hackerrank.com/certificates/830bc394dfca",
+    },
+    pinned: true,
   },
 ];

@@ -246,8 +246,9 @@ export default function Home({ blogs }) {
           {/* Certification Section */}
           <section>
             <HomeHeading title="Certification 📜" />
-            <div className="home-section-container no-scrollbar ">
+            <div className="home-section-container no-scrollbar">
               {certificates.map((certificate) => {
+                if (!certificate.pinned) return;
                 return (
                   <div
                     key={certificate.id}
@@ -279,6 +280,8 @@ export default function Home({ blogs }) {
                           quality={50}
                           objectFit="contain"
                           layout="fixed"
+                          placeholder="blur"
+                          blurDataURL={certificate.issuedBy.orgLogo}
                         />
                       </AnimatedDiv>
                       <AnimatedText
