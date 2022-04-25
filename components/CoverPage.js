@@ -21,7 +21,7 @@ export default function CoverPage({ title, mainHeading, className }) {
       loop: true,
     };
     new Typed(typingSpan.current, options);
-  }, []);
+  }, [mainHeading]);
 
   return (
     <div

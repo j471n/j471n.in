@@ -185,7 +185,7 @@ export default function Home({ blogs }) {
             <div className="home-section-container no-scrollbar">
               {blogs.map((blog) => {
                 return (
-                  <Link key={blog.slug} href={`/blogs/${blog.slug}`}>
+                  <Link key={blog.slug} href={`/blogs/${blog.slug}`} passHref>
                     <div className="home-content-section hover-slide-animation">
                       <AnimatedDiv
                         variants={popUpFromBottomForText}
