@@ -103,10 +103,10 @@ export default function TopNavbar() {
               initial="hidden"
               animate={control}
               variants={{
-                hidden: { opacity: 0, scale: 1 },
-                visible: { opacity: 1, scale: 1 },
+                hidden: { opacity: 0, scale: 1, display: "none" },
+                visible: { opacity: 1, scale: 1, display: "inline-flex" },
               }}
-              className="absolute sm:relative left-0 right-0 pointer-events-none text-base font-sarina"
+              className="absolute sm:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
             >
               Jatin Sharma
             </motion.p>
@@ -117,12 +117,11 @@ export default function TopNavbar() {
       {/* Dark Mode Toggle button */}
 
       {/* Top Nav list */}
-      {/* <AnimatedDiv variants={fromTopVariant}> */}
       <motion.nav
         initial="hidden"
         animate="visible"
         variants={fromTopVariant}
-        className="hidden sm:flex z-40"
+        className="hidden sm:flex z-40 lg:absolute lg:inset-0 lg:justify-center"
       >
         <ul className="flex items-center">
           <li className="top-nav-link">
@@ -142,6 +141,7 @@ export default function TopNavbar() {
           </li> */}
         </ul>
       </motion.nav>
+
       {/* </AnimatedDiv> */}
       <motion.div
         initial="hidden"
