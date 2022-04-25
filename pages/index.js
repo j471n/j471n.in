@@ -62,11 +62,19 @@ export default function Home({ blogs }) {
                 React Developer
               </AnimatedText>
 
-              <div className="flex gap-4 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
+              <div className="flex gap-2 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-white"
+                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative ring-2 ring-purple-700 select-none text-purple-700 lg:hover:bg-purple-700 dark:text-purple-300"
+                  onClick={() => (window.location.href = "#view")}
+                >
+                  About me
+                </AnimatedButton>
+                <AnimatedButton
+                  variants={buttonsLinearVariant}
+                  infinity={true}
+                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-white  dark:text-purple-200"
                   onClick={() => window.open(resumeDownloadLink, "_self")}
                 >
                   Download CV
@@ -99,7 +107,7 @@ export default function Home({ blogs }) {
           </div>
         </TopContainer>
 
-        <div id="view" className="pt-20">
+        <div id="view">
           {/* About me */}
           <section className="px-5 sm:px-20 sm:mx-20 text-md sm:text-base">
             <HomeHeading title="About Me" />
