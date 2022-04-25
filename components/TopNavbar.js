@@ -121,7 +121,7 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={fromTopVariant}
-        className="hidden sm:flex z-40 lg:absolute lg:inset-0 lg:justify-center"
+        className="hidden sm:flex z-10 lg:absolute lg:inset-0 lg:justify-center"
       >
         <ul className="flex items-center">
           <li className="top-nav-link">
@@ -147,7 +147,7 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={fromRightVariant}
-        className="cursor-pointer rounded-full p-1 sm:p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500"
+        className="cursor-pointer rounded-full p-1 sm:p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500 z-50"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!isDarkMode)}
       >
