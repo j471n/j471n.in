@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsGithub } from "react-icons/bs";
 import { FcLink } from "react-icons/fc";
 import { BiShareAlt } from "react-icons/bi";
@@ -46,14 +46,10 @@ export default function Project({ project }) {
   }
 
   return (
-    <div
-      className="relative h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4 rounded-xl flex flex-col"
-      // initial="hidden"
-      // variants={popUpFromBottomForText}
-    >
+    <div className="relative h-full w-full break-words shadow ring-1 ring-gray-400 dark:ring-gray-600 transform duration-200 lg:hover:ring-4  rounded-xl flex flex-col">
       <AnimatePresence>
         {project.coverURL && (
-          <AnimatedDiv variants={opacityVariant} infinity={true}>
+          <div>
             <Image
               className="min-w-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
               src={project.coverURL}
@@ -61,8 +57,11 @@ export default function Project({ project }) {
               width={360}
               layout="responsive"
               height={200}
+              placeholder="blur"
+              blurDataURL={project.coverURL}
+              quality={50}
             />
-          </AnimatedDiv>
+          </div>
         )}
 
         {project.name && (
@@ -70,7 +69,7 @@ export default function Project({ project }) {
             {project.name && (
               <AnimatedHeading
                 variants={opacityVariant}
-                infinity={true}
+                // infinity={true}
                 className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300"
               >
                 {project.name}
@@ -79,7 +78,7 @@ export default function Project({ project }) {
             {project.description && (
               <AnimatedText
                 variants={opacityVariant}
-                infinity={true}
+                // infinity={true}
                 className="text-xs truncate-3 text-slate-500"
               >
                 {project.description}
@@ -99,7 +98,7 @@ export default function Project({ project }) {
           >
             {project.tools.map((tool) => {
               return (
-                <AnimatedDiv variants={popUp} infinity={true} key={tool}>
+                <AnimatedDiv variants={popUp} key={tool}>
                   <Image
                     title={tool}
                     src={`/img/skills/${tool}.webp`}
@@ -130,7 +129,7 @@ export default function Project({ project }) {
 
       <AnimatedDiv
         variants={popUpFromBottomForText}
-        infinity={true}
+        // infinity={true}
         className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row"
       >
         {project.githubURL && (

@@ -122,6 +122,8 @@ export default function Article() {
                     width={800}
                     height={336}
                     alt={data.title}
+                    placeholder="blur"
+                    blurDataURL={data.cover_image}
                   />
                 </div>
               )}

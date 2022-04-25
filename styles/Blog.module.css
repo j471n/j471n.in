@@ -50,6 +50,9 @@
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
+.dev_blog blockquote img {
+  @apply mx-0;
+}
 
 .dev_blog > p code,
 .dev_blog > ul li code {
@@ -98,7 +101,7 @@
 }
 
 .dev_blog pre {
-  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs sm:text-sm ;
+  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs sm:text-sm;
 }
 
 .dev_blog > div > table {

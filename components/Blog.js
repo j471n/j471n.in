@@ -43,12 +43,8 @@ export default function Blog({ blog }) {
     ) <= 15;
 
   return (
-    <div
-      layout
-      className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none"
-      variants={fromBottomVariant}
-    >
-      <AnimatedDiv variants={opacityVariant} infinity={true}>
+    <div className="relative h-full w-full break-words shadow shadow-gray-400 dark:shadow-zinc-600  dark:bg-darkSecondary rounded-xl overflow-hidden group flex flex-col select-none">
+      <AnimatedDiv>
         <Image
           className="w-full h-full rounded-tl-xl rounded-tr-xl cursor-pointer select-none"
           src={blog.cover_image}
@@ -56,12 +52,19 @@ export default function Blog({ blog }) {
           width={360}
           height={150}
           layout="responsive"
+          placeholder="blur"
+          blurDataURL={blog.cover_image}
+          quality={50}
         />
       </AnimatedDiv>
 
       <div className="w-full p-4">
         <div className="relative">
-          <AnimatedDiv variants={opacityVariant} infinity={true} className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none">
+          <AnimatedDiv
+            variants={opacityVariant}
+            // infinity={true}
+            className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none"
+          >
             <p className="text-xl">
               {new Date(Date.parse(blog.published_at))
                 .toDateString()
@@ -78,7 +81,7 @@ export default function Blog({ blog }) {
         <div className="mt-5 relative">
           <AnimatedText
             variants={opacityVariant}
-            infinity={true}
+            // infinity={true}
             className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse"
           >
             {isTrending && "Trending"}
@@ -86,7 +89,7 @@ export default function Blog({ blog }) {
 
           <AnimatedHeading
             variants={opacityVariant}
-            infinity={true}
+            // infinity={true}
             className=" text-md font-bold cursor-pointer select-none"
           >
             {blog.title}
@@ -97,7 +100,7 @@ export default function Blog({ blog }) {
               return (
                 <AnimatedText
                   key={tag}
-                  infinity={true}
+                  // infinity={true}
                   variants={popUp}
                   className="rounded-md cursor-pointer uppercase font-bold text-[9px] lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
@@ -109,22 +112,26 @@ export default function Blog({ blog }) {
         </div>
       </div>
       {/* Reaction Icons (UpVotes, comments , views) */}
-      <AnimatedDiv variants={popUp} infinity={true} className="auto-row flex items-center justify-between p-4 px-8 pt-0">
+      <AnimatedDiv
+        variants={popUp}
+        // infinity={true}
+        className="auto-row flex items-center justify-between p-4 px-8 pt-0"
+      >
         {/* Likes/Up votes */}
-        <div variants={popUp} infinity={true} className="user_reaction">
+        <div variants={popUp} className="user_reaction">
           <BiLike />
           <p>{numFormatter(parseInt(blog.public_reactions_count))}</p>
         </div>
 
         {/* Comments */}
-        <div variants={popUp} infinity={true} className="user_reaction">
+        <div variants={popUp} className="user_reaction">
           <MdInsertComment />
           <p>{numFormatter(parseInt(blog.comments_count))}</p>
         </div>
 
         {/* Views */}
         {blog.page_views_count && (
-          <div variants={popUp} infinity={true} className="user_reaction">
+          <div variants={popUp} className="user_reaction">
             <AiFillEye />
             <p>{numFormatter(parseInt(blog.page_views_count))}</p>
           </div>
