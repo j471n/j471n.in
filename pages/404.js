@@ -15,7 +15,7 @@ export default function PageNotFound() {
         setSeconds((seconds) => seconds - 1);
       }
     }, 1000);
-  }, [seconds]);
+  }, [seconds, router]);
 
   return (
     <div className="min-h-screen min-w-screen flex gap-5 flex-col items-center justify-center">

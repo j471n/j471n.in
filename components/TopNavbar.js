@@ -83,7 +83,7 @@ export default function TopNavbar() {
         className="text-center sm:text-left text-2xl font-bold z-40"
         title="Jatin Sharma"
       >
-        <Link href="/">
+        <Link href="/" passHref>
           <div className="flex gap-2 items-center cursor-pointer">
             <motion.div
               initial="hidden"

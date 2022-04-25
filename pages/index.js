@@ -148,8 +148,7 @@ export default function Home({ blogs }) {
                     className="home-content-section flex items-center justify-between overflow-hidden  before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7]   before:duration-500 "
                   >
                     <AnimatedDiv
-                      variants={popUpFromBottomForText}
-                      infinity={true}
+                      variants={opacityVariant}
                       className="flex items-center gap-2"
                     >
                       <div className="relative w-10 h-10">
