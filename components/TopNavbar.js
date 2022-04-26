@@ -38,6 +38,7 @@ export default function TopNavbar() {
       // then we change the style according to the index e.g. navLinks[0].style.color ="black";
       navLinks[routes.indexOf(currentRoute)].style.borderBottom = "4px solid";
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRoute]);
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen

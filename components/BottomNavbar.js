@@ -45,6 +45,7 @@ function BottomNavbar() {
     } else {
       console.error("404 NOT FOUND");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRoute]);
 
   return (
