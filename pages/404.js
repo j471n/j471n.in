@@ -7,7 +7,8 @@ export default function PageNotFound() {
   const [seconds, setSeconds] = useState(5);
 
   const router = useRouter();
-  useEffect(() => {
+
+  function returnHomeTimer() {
     setTimeout(() => {
       if (seconds <= 0) {
         router.push("/");
@@ -15,7 +16,11 @@ export default function PageNotFound() {
         setSeconds((seconds) => seconds - 1);
       }
     }, 1000);
-  }, [seconds, router]);
+  }
+  
+  useEffect(() => {
+    returnHomeTimer();
+  }, [returnHomeTimer]);
 
   return (
     <div className="min-h-screen min-w-screen flex gap-5 flex-col items-center justify-center">

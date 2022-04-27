@@ -72,7 +72,7 @@ export default function TopNavbar() {
     return () => {
       window.removeEventListener("scroll", addShadowToNavbar);
     };
-  }, []);
+  }, [addShadowToNavbar]);
 
   return (
     <div
