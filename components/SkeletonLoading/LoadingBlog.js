@@ -33,7 +33,7 @@ export default function LoadingBlog() {
             <p className="w-[30%] md:w-[20%] h-3 animate-pulse bg-gray-400 dark:bg-zinc-600 rounded-md"></p>
           </div>
 
-          <div className="w-full h-44 md:h-60 !my-5 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse  animate-pulse"></div>
+          <div className="w-full h-44 md:h-60 !my-5 bg-gray-400 dark:bg-zinc-600 rounded-md animate-pulse"></div>
 
           <div className="flex flex-col gap-3">
             <p className="rounded-md animate-pulse  w-full h-3 bg-gray-400 dark:bg-zinc-600 "></p>
@@ -46,37 +46,17 @@ export default function LoadingBlog() {
         {/* author and comments */}
         <div className="flex flex-col md:ml-4">
           <LoadingAuthor />
-
-          <div className="flex items-center my-3 rounded-md shadow overflow-hidden">
-            <div className="flex flex-col items-center w-1/2  bg-zinc-100  dark:bg-darkSecondary dark:text-white py-4 first:border-r-2 dark:border-zinc-600">
-              <h1 className="h-10 w-10 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></h1>
-              <div className="flex items-center gap-2 mt-2 text-md w-3/4">
-                <p className="w-full h-3 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center w-1/2  bg-zinc-100  dark:bg-darkSecondary dark:text-white py-4 first:border-r-2 dark:border-zinc-600">
-              <h1 className="h-10 w-10 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></h1>
-              <div className="flex items-center gap-2 mt-2 text-md w-3/4">
-                <p className="w-full h-3 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></p>
-              </div>
-            </div>
-          </div>
           {/* comments */}
-          <Comment />
-          <Comment className="ml-5" />
-          <Comment className="ml-10" />
-          <Comment />
+          <CommentsLoading />
         </div>
       </div>
     </>
   );
 }
 
-function Comment({ className }) {
+function Comment() {
   return (
-    <div
-      className={`rounded-md animate-pulse w-auto bg-gray-200 dark:bg-darkSecondary  my-1  ${className}`}
-    >
+    <div className="rounded-md animate-pulse w-auto bg-gray-200 dark:bg-darkSecondary  my-1">
       <div className="flex items-center m-5 overflow-hidden gap-2">
         <div className="!h-10 !w-10 bg-gray-400 dark:bg-zinc-600 rounded-full flex items-center gap-2 relative"></div>
         <div className="flex flex-col space-y-2 w-full">
@@ -84,6 +64,31 @@ function Comment({ className }) {
           <p className="w-[50%] rounded-md animate-pulse h-3  bg-gray-400 dark:bg-zinc-600"></p>
         </div>
       </div>
+    </div>
+  );
+}
+
+export function CommentsLoading() {
+  return (
+    <div className="flex flex-col mt-2">
+      <div className="flex items-center my-3 rounded-md shadow overflow-hidden">
+        <div className="flex flex-col items-center w-1/2  bg-zinc-100  dark:bg-darkSecondary dark:text-white py-4 first:border-r-2 dark:border-zinc-600">
+          <h1 className="h-10 w-10 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></h1>
+          <div className="flex items-center gap-2 mt-2 text-md w-3/4">
+            <p className="w-full h-3 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></p>
+          </div>
+        </div>
+        <div className="flex flex-col items-center w-1/2  bg-zinc-100  dark:bg-darkSecondary dark:text-white py-4 first:border-r-2 dark:border-zinc-600">
+          <h1 className="h-10 w-10 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></h1>
+          <div className="flex items-center gap-2 mt-2 text-md w-3/4">
+            <p className="w-full h-3 bg-gray-300 dark:bg-zinc-600 rounded-md animate-pulse"></p>
+          </div>
+        </div>
+      </div>
+      <Comment />
+      <Comment />
+      <Comment />
+      <Comment />
     </div>
   );
 }
