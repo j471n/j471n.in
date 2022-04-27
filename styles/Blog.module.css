@@ -34,7 +34,7 @@
 }
 
 .dev_blog ul > li {
-  @apply marker:text-purple-600;
+  @apply marker:!text-purple-600;
 }
 
 .dev_blog img {
@@ -46,12 +46,56 @@
 .dev_blog h3,
 .dev_blog h4,
 .dev_blog h5,
-.dev_blog h6 * {
-  @apply text-purple-700 dark:text-purple-100 font-bold;
+.dev_blog h6,
+.dev_blog strong {
+  @apply text-purple-700 dark:text-purple-100 font-bold my-0;
+}
+
+.dev_blog a,
+.dev_blog > ul > li > a {
+  @apply text-indigo-700 font-semibold;
 }
 
 .dev_blog > ul {
-  @apply ml-2;
+  @apply ml-2 list-item;
+}
+
+.dev_blog > p code,
+.dev_blog code ,
+.dev_blog > ul li code {
+  @apply bg-slate-700 dark:!bg-white text-white  rounded-sm;
+}
+
+.dev_blog blockquote {
+  @apply border-l-4 border-gray-500 pl-3;
+}
+.dev_blog blockquote img {
+  @apply !mx-0 !my-1;
+}
+
+.dev_blog blockquote p {
+  @apply text-gray-500;
+}
+
+.dev_blog > div > table > thead > tr > th {
+  @apply border border-black text-teal-500 text-center !p-2 !font-bold;
+}
+.dev_blog > div > table > thead {
+  @apply !text-gray-800;
+}
+.dev_blog > div > table tbody > tr > td {
+  @apply border border-black !p-2 table-cell;
+}
+
+.dev_blog > figure {
+  @apply border border-gray-400 rounded-md mx-auto overflow-hidden;
+}
+
+.dev_blog > figure img {
+  @apply text-center mx-auto my-0 rounded-none;
+}
+.dev_blog > figure figcaption {
+  @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2 !m-0;
 }
 
 /*
@@ -73,9 +117,7 @@
 .dev_blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
-.dev_blog blockquote img {
-  @apply mx-0;
-}
+
 
 .dev_blog > p code,
 .dev_blog > ul li code {
@@ -126,7 +168,7 @@
 .dev_blog pre {
   @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs sm:text-sm;
 }
-
+j
 .dev_blog > div > table {
   @apply border border-black;
 }

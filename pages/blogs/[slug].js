@@ -106,21 +106,23 @@ export default function Article({ article, error }) {
             )}
 
             <article
-              className="mx-auto
-            prose-sm
-            md:prose-base 
-            lg:prose-lg 
-            xl:prose-lg 
-            3xl:prose-xl
-            prose-heading
-            prose
-            dark:not-prose
-            prose-ul:list-none
-            
+              className="
+              mx-auto
+              prose
+              prose-sm
+              md:prose-base 
+              lg:prose-lg 
+              xl:prose-lg 
+              3xl:prose-xl
+              dark:prose-invert
+              selection:bg-slate-700
+              selection:text-purple-400
+              dark:text-white
+          
             "
             >
               <Interweave
-                // className="mx-auto prose-sm md:prose-base lg:prose-lg xl:prose-lg 3xl:prose-xl prose-img:!rounded-xl font-inter font-[500] prose-img:mx-auto"
+                // className={`mx-auto prose prose-sm md:prose-base lg:prose-lg xl:prose-lg 3xl:prose-xl prose-img:!rounded-xl font-inter font-[500] prose-img:mx-auto dark:prose-invert ${styles.dev_blog}`}
                 className={styles.dev_blog}
                 content={article?.body_html}
               />
