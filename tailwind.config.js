@@ -43,6 +43,7 @@ module.exports = {
       // require("@tailwindcss/typography"),
       require("tailwind-scrollbar-hide"),
       require("@tailwindcss/line-clamp"),
+      require("@tailwindcss/typography"),
     ],
   },
 };

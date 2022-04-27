@@ -30,8 +30,31 @@
 }
 
 .dev_blog > * {
-  @apply my-3 font-inter font-[500] text-sm;
+  @apply font-inter font-[500] dark:!text-gray-400;
 }
+
+.dev_blog ul > li {
+  @apply marker:text-purple-600;
+}
+
+.dev_blog img {
+  @apply !mx-auto rounded-lg;
+}
+
+.dev_blog h1,
+.dev_blog h2,
+.dev_blog h3,
+.dev_blog h4,
+.dev_blog h5,
+.dev_blog h6 * {
+  @apply text-purple-700 dark:text-purple-100 font-bold;
+}
+
+.dev_blog > ul {
+  @apply ml-2;
+}
+
+/*
 .dev_blog > p,
 .dev_blog > span,
 .dev_blog h1,
@@ -134,3 +157,6 @@
 .dev_blog > figure figcaption {
   @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2;
 }
+
+
+*/
