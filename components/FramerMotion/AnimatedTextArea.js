@@ -2,7 +2,13 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function AnimatedTextArea(props) {
+export default function AnimatedTextArea({
+  infinity,
+  className,
+  variants,
+  options,
+  onChange,
+}) {
   const [ref, inView] = useInView({
     threshold: 0.4,
   });
@@ -12,11 +18,20 @@ export default function AnimatedTextArea(props) {
     if (inView) {
       controls.start("visible");
     } else {
-      if (props.infinity) {
+      if (infinity) {
         controls.start("hidden");
       }
     }
   }, [controls, inView]);
 
-  return <motion.textarea animate={controls} ref={ref} {...props} />;
+  return (
+    <motion.textarea
+      animate={controls}
+      ref={ref}
+      variants={variants}
+      className={className}
+      onChange={onChange}
+      {...options}
+    />
+  );
 }

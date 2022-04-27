@@ -117,11 +117,13 @@ export default function Contact({ socialMedia }) {
               variants={inputSlideAnimation}
               infinity={true}
               className="contact_field"
-              value={emailInfo.from_name}
-              type="text"
-              name="from_name"
-              placeholder="Name"
-              required
+              options={{
+                value: emailInfo.from_name,
+                type: "text",
+                name: "from_name",
+                placeholder: "Name",
+                required: true,
+              }}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
@@ -133,11 +135,13 @@ export default function Contact({ socialMedia }) {
               variants={inputSlideAnimation}
               infinity={true}
               className="contact_field"
-              value={emailInfo.email}
-              type="email"
-              name="email"
-              placeholder="example@gmail.com"
-              required
+              options={{
+                value: emailInfo.email,
+                type: "email",
+                name: "email",
+                placeholder: "example@mail.com",
+                required: true,
+              }}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
@@ -149,11 +153,13 @@ export default function Contact({ socialMedia }) {
               variants={inputSlideAnimation}
               infinity={true}
               className="contact_field"
-              value={emailInfo.subject}
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              required
+              options={{
+                value: emailInfo.subject,
+                type: "text",
+                name: "subject",
+                placeholder: "Subject",
+                required: true,
+              }}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
@@ -165,10 +171,12 @@ export default function Contact({ socialMedia }) {
               variants={inputSlideAnimation}
               infinity={true}
               className="contact_field min-h-[100px] resize-y"
-              name="message"
-              value={emailInfo.message}
-              placeholder="Message"
-              required
+              options={{
+                value: emailInfo.message,
+                name: "message",
+                placeholder: "Type your text...",
+                required: true,
+              }}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
