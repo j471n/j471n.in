@@ -307,8 +307,7 @@ export default function Contact({ socialMedia }) {
         </div>
       </section>
       <ToastContainer
-        theme={isDarkMode ? "dark" : "colored"}
-        // className="z-50l top[10%] right-[10%]"
+        theme={isDarkMode ? "dark" : "light"}
         style={{ zIndex: 1000 }}
       />
     </div>
