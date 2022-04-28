@@ -1,6 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export default function AnimatedInput({
   infinity,
@@ -9,25 +7,11 @@ export default function AnimatedInput({
   options,
   onChange,
 }) {
-  const [ref, inView] = useInView({
-    threshold: 0.4,
-  });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      if (infinity) {
-        controls.start("hidden");
-      }
-    }
-  }, [controls, inView]);
-
   return (
     <motion.input
-      animate={controls}
-      ref={ref}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: !infinity }}
       variants={variants}
       className={className}
       onChange={onChange}

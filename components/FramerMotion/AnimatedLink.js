@@ -1,22 +1,13 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export default function AnimatedLink(props) {
-  const [ref, inView] = useInView({
-    threshold: 0.4,
-  });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      if (props.infinity) {
-        controls.start("hidden");
-      }
-    }
-  }, [controls, inView]);
-
-  return <motion.a animate={controls} ref={ref} {...props} />;
+  return (
+    <motion.a
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: !props.infinity }}
+      ref={ref}
+      {...props}
+    />
+  );
 }
