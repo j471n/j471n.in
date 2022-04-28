@@ -6,12 +6,9 @@ import { FaDev, FaGlobe } from "react-icons/fa";
 import { MdInsertComment } from "react-icons/md";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
-  fromBottomVariant,
-  fromRightVariant,
   opacityVariant,
   popUp,
   popUpFromBottomForText,
-  smallTextFromBottom,
 } from "../content/FramerMotionVariants";
 import { useRouter } from "next/router";
 import AnimatedDiv from "./FramerMotion/AnimatedDiv";
@@ -62,7 +59,6 @@ export default function Blog({ blog }) {
         <div className="relative">
           <AnimatedDiv
             variants={opacityVariant}
-            // infinity={true}
             className="h-14 w-14 rounded-full font-bold uppercase text-center bg-white dark:bg-darkSecondary ring-4 ring-purple-400 flex flex-col justify-center absolute right-0 -top-11 select-none"
           >
             <p className="text-xl">
@@ -81,7 +77,6 @@ export default function Blog({ blog }) {
         <div className="mt-5 relative">
           <AnimatedText
             variants={opacityVariant}
-            // infinity={true}
             className="absolute -top-5 left-0 text-xs uppercase font-bold text-[#ff591c] animate-pulse"
           >
             {isTrending && "Trending"}
@@ -89,7 +84,6 @@ export default function Blog({ blog }) {
 
           <AnimatedHeading
             variants={opacityVariant}
-            // infinity={true}
             className=" text-md font-bold cursor-pointer select-none"
           >
             {blog.title}
@@ -100,7 +94,6 @@ export default function Blog({ blog }) {
               return (
                 <AnimatedText
                   key={tag}
-                  // infinity={true}
                   variants={popUp}
                   className="rounded-md cursor-pointer uppercase font-bold text-[9px] lg:hover:underline text-purple-600 dark:text-purple-400 select-none"
                 >
@@ -114,7 +107,6 @@ export default function Blog({ blog }) {
       {/* Reaction Icons (UpVotes, comments , views) */}
       <AnimatedDiv
         variants={popUp}
-        // infinity={true}
         className="auto-row flex items-center justify-between p-4 px-8 pt-0"
       >
         {/* Likes/Up votes */}
@@ -141,7 +133,6 @@ export default function Blog({ blog }) {
       <div className="absolute w-full h-full top-full group-hover:top-0 transition-all duration-300  bg-black/70 backdrop-blur-sm cursor-pointer grid place-content-center text-white p-4">
         <AnimatedText
           variants={popUpFromBottomForText}
-          infinity={true}
           className="mb-2 font-medium text-sm"
         >
           {blog.description}
@@ -151,7 +142,6 @@ export default function Blog({ blog }) {
           <AnimatedButton
             className="blog-hover-button"
             variants={popUpFromBottomForText}
-            infinity={true}
             onClick={() => router.push(`/blogs/${blog.slug}`)}
           >
             <FaGlobe />
@@ -161,7 +151,6 @@ export default function Blog({ blog }) {
           <AnimatedButton
             className="blog-hover-button"
             variants={popUpFromBottomForText}
-            infinity={true}
             onClick={() => window.open(blog.url)}
           >
             <FaDev />

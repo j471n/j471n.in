@@ -8,7 +8,6 @@ function FAQ({ faqs = [] }) {
       <div className="px-8 md:px-36 py-8 mx-auto">
         <AnimatedHeading
           variants={popUpFromBottomForText}
-          infinity={true}
           className="text-2xl font-bold text-center sm:text-left lg:text-center text-gray-800 lg:text-4xl dark:text-white"
         >
           Frequently asked questions
@@ -19,7 +18,7 @@ function FAQ({ faqs = [] }) {
             if (!faq.question && !faq.answer) return null;
             return (
               <QuestionAndAnswer
-                key={faq.question}a
+                key={faq.question}
                 question={faq.question}
                 answer={faq.answer}
               />

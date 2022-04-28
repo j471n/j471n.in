@@ -82,14 +82,12 @@ export default function Contact({ socialMedia }) {
         <AnimatedHeading
           variants={popUpFromBottomForText}
           className="font-bold text-4xl"
-          infinity={true}
         >
           Get in touch
         </AnimatedHeading>
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          infinity={true}
           className="px-4 py-2 font-medium text-slate-400"
         >
           Have a little something, something you wanna talk about? Please feel
@@ -103,7 +101,6 @@ export default function Contact({ socialMedia }) {
         <div className="w-full mx-auto mt-10">
           <AnimatedHeading
             variants={popUpFromBottomForText}
-            infinity={true}
             className="text-2xl font-bold w-full text-center my-2"
           >
             Connect with me
@@ -115,7 +112,6 @@ export default function Contact({ socialMedia }) {
           >
             <AnimatedInput
               variants={inputSlideAnimation}
-              infinity={true}
               className="contact_field"
               options={{
                 value: emailInfo.from_name,
@@ -133,7 +129,6 @@ export default function Contact({ socialMedia }) {
             />
             <AnimatedInput
               variants={inputSlideAnimation}
-              infinity={true}
               className="contact_field"
               options={{
                 value: emailInfo.email,
@@ -151,7 +146,6 @@ export default function Contact({ socialMedia }) {
             />
             <AnimatedInput
               variants={inputSlideAnimation}
-              infinity={true}
               className="contact_field"
               options={{
                 value: emailInfo.subject,
@@ -169,7 +163,6 @@ export default function Contact({ socialMedia }) {
             />
             <AnimatedTextArea
               variants={inputSlideAnimation}
-              infinity={true}
               className="contact_field min-h-[100px] resize-y"
               options={{
                 value: emailInfo.message,
@@ -186,7 +179,6 @@ export default function Contact({ socialMedia }) {
             />
             <AnimatedButton
               variants={inputSlideAnimation}
-              infinity={true}
               className="w-full max-w-sm p-3 border-none rounded-md bg-purple-700 text-white font-semibold mt-4 cursor-pointer transform duration-150 active:scale-95 disabled:opacity-50 disabled:transform-none disabled:cursor-wait"
               type="submit"
               disabled={loading}
@@ -220,7 +212,6 @@ export default function Contact({ socialMedia }) {
         <div className="w-full mx-auto mt-10 lg:border-l-4 lg:dark:border-zinc-400 flex flex-col justify-center items-center">
           <AnimatedHeading
             variants={popUpFromBottomForText}
-            infinity={true}
             className="text-lg sm:text-2xl font-bold my-2"
           >
             Connect with me on Social Media
@@ -229,7 +220,6 @@ export default function Contact({ socialMedia }) {
           {/* Social Media Container */}
           <AnimatedDiv
             variants={fromRightVariant}
-            infinity={true}
             className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none"
           >
             <SocialIcon
@@ -277,7 +267,6 @@ export default function Contact({ socialMedia }) {
           <div className="pb-24 lg:pb-0">
             <AnimatedHeading
               variants={popUpFromBottomForText}
-              infinity={true}
               className="text-lg sm:text-2xl font-bold my-2"
             >
               Support me 💪
@@ -285,7 +274,6 @@ export default function Contact({ socialMedia }) {
 
             <AnimatedDiv
               variants={fromRightVariant}
-              infinity={true}
               className="flex items-center justify-center space-x-4 my-6"
             >
               {/* buy me a coffee */}

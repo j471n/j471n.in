@@ -18,7 +18,7 @@ export default function BlogsSection({ blogs }) {
           return (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`} passHref>
               <div className="home-content-section hover-slide-animation">
-                <AnimatedDiv variants={popUpFromBottomForText} infinity={true}>
+                <AnimatedDiv variants={popUpFromBottomForText}>
                   <Image
                     className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
                     src={blog.cover_image}
@@ -31,7 +31,6 @@ export default function BlogsSection({ blogs }) {
                 </AnimatedDiv>
                 <AnimatedDiv
                   variants={popUpFromBottomForText}
-                  infinity={true}
                   className="flex items-center justify-between my-3 text-sm sm:text-base"
                 >
                   <p className="flex items-center space-x-1">
@@ -51,7 +50,6 @@ export default function BlogsSection({ blogs }) {
                 </AnimatedDiv>
                 <AnimatedHeading
                   variants={popUpFromBottomForText}
-                  infinity={true}
                   className="text-base sm:text-lg mb-1 font-bold md:font-extrabold truncate text-slate-600 dark:text-slate-300"
                 >
                   {blog.title}
@@ -59,7 +57,6 @@ export default function BlogsSection({ blogs }) {
                 <AnimatedText
                   variants={popUpFromBottomForText}
                   className="text-xs sm:text-sm truncate-3 text-slate-400 font-medium"
-                  infinity={true}
                 >
                   {blog.description}
                 </AnimatedText>

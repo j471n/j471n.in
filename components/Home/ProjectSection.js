@@ -2,7 +2,7 @@ import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import projectData from "../../content/projectData";
 import { HomeHeading } from "../../pages";
 import AnimatedDiv from "../FramerMotion/AnimatedDiv";
-import Image from "next/image"
+import Image from "next/image";
 import AnimatedHeading from "../FramerMotion/AnimatedHeading";
 import AnimatedText from "../FramerMotion/AnimatedText";
 import ExploreMoreButton from "../Buttons/ExploreMoreButton";
@@ -20,7 +20,7 @@ export default function ProjectSection() {
               className="home-content-section no-scrollbar rounded-lg flex flex-col justify-start hover-slide-animation"
               onClick={() => window.open(project.githubURL)}
             >
-              <AnimatedDiv variants={popUpFromBottomForText} infinity={true}>
+              <AnimatedDiv variants={popUpFromBottomForText}>
                 <Image
                   className="rounded-xl mb-2"
                   width={360}
@@ -34,14 +34,12 @@ export default function ProjectSection() {
               </AnimatedDiv>
               <AnimatedHeading
                 variants={popUpFromBottomForText}
-                infinity={true}
                 className="capitalize my-2 mt-4 font-bold md:font-extrabold text-sm md:text-base dark:text-slate-300 text-slate-600 border-purple-600 truncate"
               >
                 {project.name}
               </AnimatedHeading>
               <AnimatedText
                 variants={popUpFromBottomForText}
-                infinity={true}
                 className="text-xs sm:text-sm truncate-3 text-slate-400 font-medium"
               >
                 {project.description}

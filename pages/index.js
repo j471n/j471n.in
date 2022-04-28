@@ -40,21 +40,18 @@ export default function Home({ blogs }) {
             <div className="text-center md:text-left my-7 md:my-0">
               <AnimatedText
                 variants={opacityVariant}
-                infinity={true}
                 className="uppercase font-medium text-[10px] xs:text-sm sm:text-base text-center sm:text-left text-slate-700 dark:text-gray-400"
               >
                 Hi there! I'm
               </AnimatedText>
               <AnimatedHeading
                 variants={opacityVariant}
-                infinity={true}
                 className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl font-sarina text-gray-800 dark:text-gray-300"
               >
                 Jatin Sharma
               </AnimatedHeading>
               <AnimatedText
                 variants={opacityVariant}
-                infinity={true}
                 className="text-base sm:text-xl font-thin  uppercase tracking-widest font-merriweather text-slate-700 dark:text-gray-400"
               >
                 React Developer
@@ -63,7 +60,6 @@ export default function Home({ blogs }) {
               <div className="flex gap-2 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
                 <AnimatedButton
                   variants={buttonsLinearVariant}
-                  infinity={true}
                   className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative ring-2 ring-purple-700 select-none text-purple-700 lg:hover:bg-purple-700 lg:hover:text-purple-100 dark:text-purple-200"
                   onClick={() => (window.location.href = "#view")}
                 >
@@ -71,7 +67,6 @@ export default function Home({ blogs }) {
                 </AnimatedButton>
                 <AnimatedButton
                   variants={buttonsLinearVariant}
-                  infinity={true}
                   className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-purple-200"
                   onClick={() => window.open(resumeDownloadLink, "_self")}
                 >
@@ -84,7 +79,6 @@ export default function Home({ blogs }) {
           <div className="w-full md:w-1/2 grid place-items-center">
             <AnimatedDiv
               variants={popUp}
-              infinity={true}
               className="relative w-3/5 xs:w-1/3 sm:!w-2/5 md:!w-1/2 group"
             >
               <div
@@ -131,7 +125,6 @@ export function HomeHeading({ title }) {
     <AnimatedHeading
       className="w-full font-bold text-2xl text-center my-2 font-exo"
       variants={headingFromLeft}
-      infinity={true}
     >
       {title}
     </AnimatedHeading>

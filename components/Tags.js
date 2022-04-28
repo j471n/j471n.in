@@ -53,11 +53,7 @@ export default function Tags({
 
 export function Tag({ tag, checked, setActiveTag }) {
   return (
-    <AnimatedDiv
-      variants={popUp}
-      infinity={true}
-      className={`${styles.tag} scrollbar-hide`}
-    >
+    <AnimatedDiv variants={popUp} className={`${styles.tag} scrollbar-hide`}>
       <input
         type="radio"
         name="tag"

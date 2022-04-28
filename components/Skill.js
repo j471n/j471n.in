@@ -40,7 +40,6 @@ function Skill({ data }) {
       <div className="flex items-center justify-between">
         <AnimatedDiv
           variants={fromLeft}
-          infinity={true}
           className="flex items-center space-x-3"
         >
           <div className="inline-flex">
@@ -56,11 +55,7 @@ function Skill({ data }) {
             {data.name}
           </h2>
         </AnimatedDiv>
-        <AnimatedDiv
-          variants={fromRight}
-          infinity={true}
-          className="w-12 h-12 font-bold"
-        >
+        <AnimatedDiv variants={fromRight} className="w-12 h-12 font-bold">
           <CircularProgressbar
             value={data.level}
             text={`${data.level}%`}
@@ -76,7 +71,6 @@ function Skill({ data }) {
       </div>
       <AnimatedDiv
         variants={popUpFromBottomForText}
-        infinity={true}
         className="text-xs sm:text-sm text-slate-500 dark:text-zinc-400"
       >
         <p className="border-t-2 border-gray-200 mt-2 pt-2 truncate-3 ">

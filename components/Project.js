@@ -69,7 +69,6 @@ export default function Project({ project }) {
             {project.name && (
               <AnimatedHeading
                 variants={opacityVariant}
-                // infinity={true}
                 className="pb-1 font-bold text-md text-slate-600 dark:text-slate-300"
               >
                 {project.name}
@@ -78,7 +77,6 @@ export default function Project({ project }) {
             {project.description && (
               <AnimatedText
                 variants={opacityVariant}
-                // infinity={true}
                 className="text-xs truncate-3 text-slate-500"
               >
                 {project.description}
@@ -129,7 +127,6 @@ export default function Project({ project }) {
 
       <AnimatedDiv
         variants={popUpFromBottomForText}
-        // infinity={true}
         className=" right-0 left-0 bottom-0 p-2 w-full flex items-center auto-row"
       >
         {project.githubURL && (

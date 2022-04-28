@@ -11,7 +11,6 @@ export default function AboutMe() {
       <AnimatedText
         className="text-slate-500 dark:text-slate-400 font-medium"
         variants={popUpFromBottomForText}
-        infinity={true}
       >
         Hi, welcome! I'm Jatin Sharma and I'm a self-taught React Developer 👋
         as I am currently perusing my Bachelor Degree in Computer Science. I

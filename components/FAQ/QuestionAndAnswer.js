@@ -1,7 +1,6 @@
 import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import AnimatedHeading from "../FramerMotion/AnimatedHeading";
 import AnimatedText from "../FramerMotion/AnimatedText";
-import { motion } from "framer-motion";
 import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 
 export default function QuestionAndAnswer({ question, answer }) {
@@ -10,7 +9,6 @@ export default function QuestionAndAnswer({ question, answer }) {
     <div>
       <AnimatedDiv
         variants={popUpFromBottomForText}
-        infinity={true}
         className="inline-block p-2 sm:p-3 text-white bg-purple-700 rounded-lg"
       >
         <svg
@@ -32,7 +30,6 @@ export default function QuestionAndAnswer({ question, answer }) {
       <div>
         <AnimatedHeading
           variants={popUpFromBottomForText}
-          infinity={true}
           className="text-base sm:text-lg font-semibold text-gray-600 dark:text-slate-200"
         >
           {question}
@@ -40,7 +37,6 @@ export default function QuestionAndAnswer({ question, answer }) {
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          infinity={true}
           className="mt-1 text-sm text-gray-400 dark:text-slate-400 font-medium"
         >
           {answer}

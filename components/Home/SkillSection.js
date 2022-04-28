@@ -40,7 +40,6 @@ export default function SkillSection() {
               </AnimatedDiv>
               <AnimatedText
                 variants={opacityVariant}
-                infinity={true}
                 className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300 z-10"
               >
                 {skill.level}
