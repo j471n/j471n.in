@@ -13,36 +13,34 @@ export default function Article({ article, error }) {
   const router = useRouter();
   const [scroll, setScroll] = useState(0);
 
-  useEffect(() => {
-    const progressBarHandler = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
+  const progressBarHandler = () => {
+    const totalScroll = document.documentElement.scrollTop;
+    const windowHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+    const scroll = `${totalScroll / windowHeight}`;
 
-      setScroll(scroll);
-    };
+    setScroll(scroll);
+  };
+
+  useEffect(() => {
     window.addEventListener("scroll", progressBarHandler);
     return () => window.removeEventListener("scroll", progressBarHandler);
-  }, []);
+  }, [progressBarHandler]);
 
   if (error) return <PageNotFound />;
   return (
-    <div style={{ zIndex: 100 }}>
+    <div className="">
       <Metadata title={article?.title} />
       <div
-        className="fixed top-0 left-0 w-full bg-purple-600 h-1 origin-top-left transform duration-300"
+        className="!fixed left-0 w-full h-1 bg-purple-600 origin-top-left  transform duration-300 top-[52px] sm:top-[72px]"
         style={{
-          transform: `scale(${scroll}, 1)`,
-          // width: `${scroll * 100}%`,
-          zIndex: "100",
-          top: 0,
-          left: 0,
+          transform: `scale(${scroll},1)`,
+          zIndex: 1000,
         }}
       />
       {article?.body_html && (
-        <div className=" dark:bg-darkPrimary mt-[52px] sm:mt-[72px] !mx-auto p-3 md:pb-5 pb-10">
+        <div className=" dark:bg-darkPrimary mt-[52px] sm:mt-[72px] !mx-auto p-3 md:pb-5 pb-10 z-10">
           <div className="flex flex-col relative mx-auto w-full md:max-w-sm font-exo dark:text-gray-100 print:hidden">
             <div className="p-0">
               {/* {false ? <LoadingAuthor /> : <Author followers={"2000+"} />} */}

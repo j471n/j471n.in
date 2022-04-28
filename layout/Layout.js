@@ -9,14 +9,24 @@ export default function Layout({ children }) {
   const router = useRouter();
 
   const pageTransition = {
-    hidden: { opacity: 0, x: "100vw" },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: "-100vw" },
+    hidden: {
+      opacity: 0,
+      x: 500,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+    },
+    exit: {
+      opacity: 0,
+      x: -500,
+    },
   };
+
   return (
     <>
       <TopNavbar />
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} exitBeforeEnter>
         <motion.main
           key={router.route}
           variants={pageTransition}
@@ -27,8 +37,8 @@ export default function Layout({ children }) {
         >
           {children}
         </motion.main>
-        <Footer />
       </AnimatePresence>
+      <Footer />
       <ScrollToTopButton />
       <BottomNavbar />
     </>
