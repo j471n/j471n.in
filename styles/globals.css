@@ -13,11 +13,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  /* padding-top: 52px; */
-  /* background: white; */
-}
-
 /* Adding Scroll Margin for top */
 * {
   scroll-margin-top: 80px;

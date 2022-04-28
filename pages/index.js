@@ -64,7 +64,7 @@ export default function Home({ blogs }) {
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative ring-2 ring-purple-700 select-none text-purple-700 lg:hover:bg-purple-700 dark:text-purple-300"
+                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative ring-2 ring-purple-700 select-none text-purple-700 lg:hover:bg-purple-700 lg:hover:text-purple-100 dark:text-purple-200"
                   onClick={() => (window.location.href = "#view")}
                 >
                   About me
@@ -72,7 +72,7 @@ export default function Home({ blogs }) {
                 <AnimatedButton
                   variants={buttonsLinearVariant}
                   infinity={true}
-                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-white  dark:text-purple-200"
+                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-purple-200"
                   onClick={() => window.open(resumeDownloadLink, "_self")}
                 >
                   Download CV
