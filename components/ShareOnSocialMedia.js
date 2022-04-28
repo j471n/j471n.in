@@ -24,6 +24,7 @@ export default function ShareOnSocialMedia({
   url,
   summary,
   cover_image,
+  children,
 }) {
   const { isShareSupported } = useShare();
 
@@ -56,7 +57,7 @@ export default function ShareOnSocialMedia({
     }
     navigator.clipboard.writeText(text).then(
       function () {
-        toast.success("Copied Successfully 🙌");
+        toast.success("Link Copied Successfully 🙌");
       },
       function (err) {
         console.error(err);
@@ -88,11 +89,12 @@ export default function ShareOnSocialMedia({
           <WhatsappIcon size={30} round />
         </WhatsappShareButton>
         <div className="bg-black text-white w-[30px] h-[30px] grid place-items-center cursor-pointer rounded-full clickable_button">
-          <FiCopy
-            className=""
-            onClick={() => copyTextToClipboard(url)}
-          ></FiCopy>
+          <FiCopy className="" onClick={() => copyTextToClipboard(url)} />
         </div>
+
+        {/* children of components */}
+        {children}
+
         {isShareSupported && (
           <BsThreeDots
             className="bg-gray-400 dark:bg-zinc-500 text-white cursor-pointer text-3xl rounded-full p-1 clickable_button"
