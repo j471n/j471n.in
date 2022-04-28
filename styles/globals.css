@@ -1,7 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +7,7 @@ body,
 html {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 /* Adding Scroll Margin for top */
@@ -94,27 +91,7 @@ body::-webkit-scrollbar-thumb {
   margin-block-start: auto;
 }
 
-/* Page Container Sliding animation */
-/* .page_container > *:nth-child(odd) {
-  animation: slide-in-left 1s ease-in-out both;
-}
 
-.page_container > *:nth-child(even) {
-  animation: slide-in-right 1s ease-in-out both;
-}
-
-@keyframes slide-in-right {
-  0% {
-    -webkit-transform: translateX(150px);
-    transform: translateX(150px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-} */
 
 @keyframes slide-in-left {
   0% {
@@ -146,9 +123,7 @@ body::-webkit-scrollbar-thumb {
   .icon {
     @apply text-2xl sm:text-3xl m-1 transform duration-200 lg:hover:scale-150 text-zinc-500 hover:text-zinc-800 dark:hover:text-white cursor-pointer;
   }
-  /* .page_container {
-    @apply p-5 md:px-24 my-0 mx-auto place-items-center gap-8 pb-28 z-0 grid grid-rows-[1fr] grid-cols-1 sm:grid-cols-2  3xl:grid-cols-5 dark:bg-darkPrimary dark:text-gray-200;
-  } */
+
 
   .page_container {
     @apply p-5 md:px-24 pb-10 dark:bg-darkPrimary dark:text-gray-200 grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5;
@@ -184,8 +159,3 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
-/* @layer base {
-  * {
-    @apply text- 
-  }
-} */
