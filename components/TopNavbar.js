@@ -43,7 +43,7 @@ export default function TopNavbar() {
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen
   function addShadowToNavbar() {
-    if (window.pageYOffset > 30) {
+    if (window.pageYOffset > 10) {
       navRef.current.classList.add(
         ...[
           "shadow",
