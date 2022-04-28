@@ -1,38 +1,31 @@
 import { useState, useRef } from "react";
 import Blog from "../../components/Blog";
-import Tags from "../../components/Tags";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { fromBottomVariant } from "../../content/FramerMotionVariants";
+import { AnimatePresence } from "framer-motion";
+import { fromLeftVariant, opacityVariant } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
-import PageCover from "../../components/Home/PageCover";
+import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
+import AnimatedText from "../../components/FramerMotion/AnimatedText";
+import Link from "next/link";
 
-export default function Blogs({ blogTags, blogs, err, allBlogs }) {
-  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
-  const [searchResult, setSearchResult] = useState([]);
-  const [activeTag, setActiveTag] = useState("all");
-  const router = useRouter();
-  const searchRef = useRef();
+export default function Blogs({ blogs, err }) {
+  const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
   const searchInputRef = useRef();
-
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
 
   if (!blogs && err) return <Loading />;
 
   function handleSearch(e) {
     e.preventDefault();
-    controls.start("visible");
 
-    setSearchResult(() =>
+    if (searchInputRef.current.value.trim() === "") {
+      return setFilteredBlogs([...blogs]);
+    }
+    setFilteredBlogs(() =>
       searchInputRef.current.value
-        ? blogs.filter((blog) =>
+        ? filteredBlogs.filter((blog) =>
             blog.title
               .toLowerCase()
-              .includes(searchInputRef.current.value.toLowerCase())
+              .includes(searchInputRef.current.value.trim().toLowerCase())
           )
         : []
     );
@@ -40,96 +33,97 @@ export default function Blogs({ blogTags, blogs, err, allBlogs }) {
 
   return (
     <>
-      <Metadata title="Blogs 📰" />
-      <PageCover
-        imgSrc="/img/cover/blogCover.svg"
-        pageTitle="Blog Posts"
-        buttonText="View Recent Posts"
-        titleClass="text-blue-700"
-        imgClass={"dark:brightness-75"}
-        buttonClass={"before:bg-blue-900"}
-        containerClass="!from-[#847ce3]/80"
-      />
-      <div id="view" className="px-5 mx-auto dark:bg-darkPrimary">
-        <div className="flex flex-col gap-4 items-center max-w-lg justify-center w-full mx-auto">
-          <form className="mx-auto mt-4 flex items-center w-full relative">
+      <Metadata title="Blogs" />
+
+      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">
+        <div className="w-full flex flex-col p-5 gap-3 select-none">
+          <AnimatedHeading
+            variants={fromLeftVariant}
+            className="text-6xl font-bold"
+          >
+            Blogs
+          </AnimatedHeading>
+          <AnimatedText
+            variants={opacityVariant}
+            className="font-medium text-lg"
+          >
+            I've been writing online since 2021, mostly about web development
+            and tech careers. In total, I've written {blogs.length} articles on{" "}
+            <Link href="https://dev.to/j471n" passHref>
+              <span className="underline">my blog</span>
+            </Link>
+          </AnimatedText>
+        </div>
+
+        <div className="px-5">
+          <button
+            type="button"
+            id="view"
+            className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-300 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto mt-4 flex relative"
+            onClick={() => searchInputRef.current.focus()}
+          >
+            <svg
+              width="24"
+              height="24"
+              fill="none"
+              aria-hidden="true"
+              className="mr-3 flex-none"
+            >
+              <path
+                d="m19 19-3.5-3.5"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></path>
+              <circle
+                cx="11"
+                cy="11"
+                r="6"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              ></circle>
+            </svg>
             <input
-              className="px-5 text-gray-500 dark:text-gray-300 py-2 shadow ring-1 ring-gray-200 dark:ring-zinc-600 w-full rounded-full outline-none focus:shadow-md transition duration-200 dark:bg-darkSecondary"
+              className="px-5 text-slate-400  py-2 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter"
               type="search"
               ref={searchInputRef}
               placeholder="Search articles..."
               onChange={handleSearch}
             />
-          </form>
-          {/* {comment} */}
+          </button>
+        </div>
 
+        <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
           <AnimatePresence>
-            {searchResult && (
-              <div
-                className="mx-10 w-full flex flex-col space-y-3 mb-2 items-center transform duration-300"
-                ref={searchRef}
-              >
-                {searchResult.map((res) => {
-                  return (
-                    <motion.div
-                      key={res.id}
-                      className="flex items-center w-full p-2 ring-1 ring-gray-300 dark:text-gray-300 rounded-lg space-x-2 shadow cursor-pointer hover:ring-2 lg:hover:scale-105 transform duration-150"
-                      ref={ref}
-                      onClick={() => router.push(`/blogs/${res.slug}`)}
-                      initial="hidden"
-                      animate={controls}
-                      variants={fromBottomVariant}
-                    >
-                      <div className="inline-flex">
-                        <Image
-                          className="h-full rounded-lg"
-                          src={res.cover_image}
-                          width={200}
-                          height={85}
-                          alt="blog cover Image"
-                          priority={true}
-                        />
-                      </div>
-                      <p className="text-sm w-full font-medium">{res.title}</p>
-                    </motion.div>
-                  );
+            {filteredBlogs.length != 0 ? (
+              <>
+                <AnimatedHeading
+                  variants={opacityVariant}
+                  className="text-left font-bold text-3xl ml-4 mb-4"
+                >
+                  All Posts ({filteredBlogs.length})
+                </AnimatedHeading>
+                {filteredBlogs.map((blog) => {
+                  return <Blog key={blog.id} blog={blog} />;
                 })}
+              </>
+            ) : (
+              <div className="font-inter text-center font-medium dark:text-gray-400">
+                No Result Found
               </div>
             )}
           </AnimatePresence>
-        </div>
-      </div>
-      {
-        <>
-          {/* Tags Section */}
-          <Tags
-            blogs={blogs}
-            blogTags={blogTags}
-            activeTag={activeTag}
-            setActiveTag={setActiveTag}
-            setFilteredBlogs={setFilteredBlogs}
-          />
-          {/* Main Blogs Page Container */}
-          <motion.section layout className="page_container relative">
-            <AnimatePresence>
-              {filteredBlogs.map((blog) => {
-                return (
-                  // <LazyLoad key={blog.id}>
-                  <Blog key={blog.id} blog={blog} />
-                  // </LazyLoad>
-                );
-              })}
-            </AnimatePresence>
-          </motion.section>
-        </>
-      }
+        </section>
+      </section>
     </>
   );
 }
 
 export async function getStaticProps(ctx) {
   try {
-    const query = ctx.query?.tag || "all";
     const data = await fetch("https://dev.to/api/articles/me", {
       headers: {
         "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
@@ -138,22 +132,10 @@ export async function getStaticProps(ctx) {
       .then((res) => res.json())
       .catch((err) => console.error(err));
 
-    var blogTags = ["all", "popular"];
-    data.map((blog) => {
-      blog.tag_list.map((tag) => {
-        if (!blogTags.includes(tag)) {
-          blogTags.push(tag);
-        }
-      });
-    });
-
     return {
       props: {
-        query,
-        blogTags,
-        allBlogs: data,
-        // blogs: !temp.length == 0 ? temp : data,
         blogs: data,
+        err: false,
       },
       // updates the page automatically after 1/2 an hour
       revalidate: 30 * 60,
