@@ -29,7 +29,7 @@ export default function TopContainer({ className, children }) {
         init={particlesInit}
         loaded={particlesLoaded}
         options={{
-          fpsLimit: 244,
+          fpsLimit: 120,
 
           interactivity: {
             events: {
