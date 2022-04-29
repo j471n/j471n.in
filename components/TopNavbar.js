@@ -59,7 +59,7 @@ export default function TopNavbar() {
 
   return (
     <div
-      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 z-40 print:hidden"
+      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 sm:px-6 z-40 print:hidden"
       ref={navRef}
     >
       {/* Mobile Navigation Hamburger and MobileMenu */}
@@ -152,9 +152,9 @@ function NavItem({ href, text, router }) {
       <a
         className={`${
           isActive
-            ? "font-bold text-gray-800 dark:text-gray-200 border-gray-800 dark:border-gray-200"
-            : "font-medium text-gray-600 dark:text-gray-400 border-transparent"
-        } sm:inline-block hover:text-gray-900 dark:hover:text-gray-50 transition-all text-lg mr-4 sm:mr-7 hidden border-b-[3px] font-inter`}
+            ? "font-bold text-gray-800 dark:text-gray-200"
+            : "font-medium text-gray-600 dark:text-gray-400"
+        } sm:inline-block hover:text-gray-900 dark:hover:text-gray-50 transition-all text-lg mr-4 sm:mr-7 hidden font-inter`}
       >
         <span className="capitalize">{text}</span>
       </a>
