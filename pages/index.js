@@ -4,11 +4,7 @@ import faqs from "../content/faqData";
 // Static Data END--------
 
 // Page Components START----------
-import AboutMe from "../components/Home/AboutMe";
-import SkillSection from "../components/Home/SkillSection";
 import BlogsSection from "../components/Home/BlogsSection";
-import CertificationSection from "../components/Home/CertificationSection";
-import ProjectSection from "../components/Home/ProjectSection";
 // Page Components END------------
 
 import Image from "next/image";
@@ -19,97 +15,69 @@ import AnimatedText from "../components/FramerMotion/AnimatedText";
 import {
   headingFromLeft,
   opacityVariant,
-  popUp,
+  popUpFromBottomForText,
 } from "../content/FramerMotionVariants";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
-import AnimatedButton from "../components/FramerMotion/AnimatedButton";
 import { homeProfileImage } from "../utils/utils";
-import TopContainer from "../components/Home/TopContainer";
-import { buttonsLinearVariant } from "../content/FramerMotionVariants";
-import { resumeDownloadLink } from "../utils/utils";
+// import { resumeDownloadLink } from "../utils/utils";
 
 export default function Home({ blogs }) {
   return (
     <>
       <Metadata title="About" />
-      <div className="dark:bg-darkPrimary dark:text-gray-100">
-        {/* HomPage */}
-        <TopContainer className="!from-purple-900/50">
-          <div className="w-full md:w-1/2 grid place-items-center">
-            <div className="text-center md:text-left my-7 md:my-0">
-              <AnimatedText
-                variants={opacityVariant}
-                className="uppercase font-medium text-[10px] xs:text-sm sm:text-base text-center sm:text-left text-slate-700 dark:text-gray-400"
-              >
-                Hi there! I'm
-              </AnimatedText>
+      <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
+        <section className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen">
+          <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
+            <div className="flex flex-col gap-1">
               <AnimatedHeading
                 variants={opacityVariant}
-                className="capitalize font-bold text-4xl sm:text-4xl lg:text-6xl 3xl:text-8xl font-sarina text-gray-800 dark:text-gray-300"
+                className="text-5xl lg:text-6xl font-bold font-sarina"
               >
                 Jatin Sharma
               </AnimatedHeading>
               <AnimatedText
                 variants={opacityVariant}
-                className="text-base sm:text-xl font-thin  uppercase tracking-widest font-merriweather text-slate-700 dark:text-gray-400"
+                className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
               >
-                React Developer
+                React Developer, Competitive Programmer
               </AnimatedText>
-
-              <div className="flex gap-2 mt-4 md:mt-4 justify-center md:justify-start text-xs sm:text-base">
-                <AnimatedButton
-                  variants={buttonsLinearVariant}
-                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative ring-2 ring-purple-700 select-none text-purple-700 lg:hover:bg-purple-700 lg:hover:text-purple-100 dark:text-purple-200"
-                  onClick={() => (window.location.href = "#view")}
-                >
-                  About me
-                </AnimatedButton>
-                <AnimatedButton
-                  variants={buttonsLinearVariant}
-                  className="px-8 py-3 sm:px-6 sm:py-2 rounded-full  font-semibold relative  bg-purple-700 select-none text-purple-200"
-                  onClick={() => window.open(resumeDownloadLink, "_self")}
-                >
-                  Download CV
-                </AnimatedButton>
-              </div>
             </div>
+
+            <AnimatedText
+              variants={popUpFromBottomForText}
+              className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
+            >
+              I am currently perusing my Bachelor Degree in Computer Science. I
+              can code in Python, C, C++, etc.
+            </AnimatedText>
           </div>
 
-          <div className="w-full md:w-1/2 grid place-items-center">
-            <AnimatedDiv
-              variants={popUp}
-              className="relative w-3/5 xs:w-1/3 sm:!w-2/5 md:!w-1/2 group"
-            >
-              <div
-                className="absolute inset-0 bg-purple-800 animate-[spin_3s_linear_infinite]"
-                style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
-              ></div>
-              <Image
-                src={homeProfileImage}
-                className="rounded-full shadow"
-                layout="responsive"
-                width={400}
-                height={400}
-                alt="cover Profile Image"
-                quality={75}
-                priority={true}
-              />
-            </AnimatedDiv>
-          </div>
-        </TopContainer>
+          <AnimatedDiv className="w-44 h-44" variants={opacityVariant}>
+            <Image
+              src={homeProfileImage}
+              className="rounded-full shadow filter saturate-0"
+              layout="responsive"
+              width={400}
+              height={400}
+              alt="cover Profile Image"
+              quality={75}
+              priority={true}
+            />
+          </AnimatedDiv>
+        </section>
 
         <div id="view">
           {/* About me */}
-          <AboutMe />
+          {/* <AboutMe /> */}
           {/* Skills Section */}
-          <SkillSection />
+          {/* <SkillSection /> */}
           {/* Blogs Section */}
           <BlogsSection blogs={blogs} />
           {/* Certification Section */}
-          <CertificationSection />
+          {/* <CertificationSection /> */}
           {/* Project Section */}
-          <ProjectSection />
+          {/* <ProjectSection /> */}
           {/* FAQs */}
           <FAQ faqs={faqs} />
           {/* Contact on Social Media */}
@@ -123,7 +91,7 @@ export default function Home({ blogs }) {
 export function HomeHeading({ title }) {
   return (
     <AnimatedHeading
-      className="w-full font-bold text-2xl text-center my-2 font-exo"
+      className="w-full font-bold text-3xl text-left my-2 mx-3 font-inter"
       variants={headingFromLeft}
     >
       {title}
@@ -132,7 +100,7 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  const blogs = await fetch("https://dev.to/api/articles/me?per_page=10", {
+  const blogs = await fetch("https://dev.to/api/articles/me?per_page=3", {
     headers: {
       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
     },

@@ -10,6 +10,7 @@ export default function AnimatedTextArea({
   return (
     <motion.textarea
       whileInView="visible"
+      initial="hidden"
       viewport={{ once: !infinity }}
       variants={variants}
       className={className}

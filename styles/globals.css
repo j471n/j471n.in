@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -91,8 +90,6 @@ body::-webkit-scrollbar-thumb {
   margin-block-start: auto;
 }
 
-
-
 @keyframes slide-in-left {
   0% {
     -webkit-transform: translateX(-150px);
@@ -124,7 +121,6 @@ body::-webkit-scrollbar-thumb {
     @apply text-2xl sm:text-3xl m-1 transform duration-200 lg:hover:scale-150 text-zinc-500 hover:text-zinc-800 dark:hover:text-white cursor-pointer;
   }
 
-
   .page_container {
     @apply p-5 md:px-24 pb-10 dark:bg-darkPrimary dark:text-gray-200 grid gap-6 grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5;
   }
@@ -146,7 +142,7 @@ body::-webkit-scrollbar-thumb {
   }
 
   .home-section-container {
-    @apply flex gap-2 overflow-x-scroll p-5 md:px-10 w-full min-h-[200px] select-none snap-x lg:snap-none;
+    @apply flex gap-2 overflow-x-scroll p-5 md:px-24 w-full min-h-[200px] select-none snap-x lg:snap-none;
   }
   .home-content-section {
     @apply relative min-w-[250px] xl:min-w-[300px] break-words shadow shadow-black/20 dark:shadow-white/20 dark:bg-darkSecondary ring-gray-400 rounded-xl p-3 cursor-pointer select-none  lg:hover:scale-105 scale-95 transition bg-white snap-center lg:snap-align-none md:first:ml-24 md:last:mr-24;
@@ -158,4 +154,3 @@ body::-webkit-scrollbar-thumb {
     @apply relative overflow-hidden before:absolute before:h-full before:w-40 before:bg-stone-900 dark:before:bg-gray-50 before:opacity-10 dark:before:opacity-5 before:-right-10 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7] before:duration-700;
   }
 }
-

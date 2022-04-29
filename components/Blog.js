@@ -29,7 +29,7 @@ export default function Blog({ blog }) {
 
   return (
     <Link passHref href={`/blogs/${blog?.slug}`}>
-      <div className="relative p-4 w-full flex flex-col gap-2 font-inter rounded-md md:hover:ring-4 ring-neutral-900 dark:ring-neutral-200 transition-all cursor-pointer select-none transform duration-200 active:scale-90 active:ring-4">
+      <div className="relative p-4 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-90 active:ring-4">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <AnimatedText
             variants={popUpFromBottomForText}
