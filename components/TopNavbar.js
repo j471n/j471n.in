@@ -12,6 +12,7 @@ import {
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
+import { navigationRoutes } from "../utils/utils";
 
 export default function TopNavbar() {
   const router = useRouter();
@@ -19,9 +20,6 @@ export default function TopNavbar() {
   const control = useAnimation();
 
   const { isDarkMode, changeDarkMode } = useDarkMode();
-
-  // navigation links
-  const navlinks = ["home", "skills", "blogs", "certificates", "projects"];
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen
   function addShadowToNavbar() {
@@ -107,12 +105,12 @@ export default function TopNavbar() {
         className="hidden sm:flex z-10 md:absolute md:inset-0 md:justify-center"
       >
         <AnimatedDiv className="flex items-center">
-          {navlinks.map((navlink, index) => {
+          {navigationRoutes.map((link, index) => {
             return (
               <NavItem
                 key={index}
-                href={`/${navlink}`}
-                text={navlink}
+                href={`/${link}`}
+                text={link}
                 router={router}
               />
             );
