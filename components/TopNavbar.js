@@ -89,7 +89,7 @@ export default function TopNavbar() {
                 hidden: { opacity: 0, scale: 1, display: "none" },
                 visible: { opacity: 1, scale: 1, display: "inline-flex" },
               }}
-              className="absolute sm:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
+              className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
             >
               Jatin Sharma
             </motion.p>
@@ -104,7 +104,7 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={fromTopVariant}
-        className="hidden sm:flex z-10 lg:absolute lg:inset-0 lg:justify-center"
+        className="hidden sm:flex z-10 md:absolute md:inset-0 md:justify-center"
       >
         <AnimatedDiv className="flex items-center">
           {navlinks.map((navlink, index) => {
