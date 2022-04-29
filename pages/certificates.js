@@ -38,8 +38,8 @@ export default function Certificates() {
           {certificatesData.map((cer) => {
             return (
               <AnimatedDiv
-                className="flex flex-col md:flex-row md:items-center  md:justify-between gap-2 md:gap-4 lg:hover:bg-neutral-100 p-2 rounded-lg"
-                variants={popUpFromBottomForText}
+              className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 lg:hover:bg-neutral-100 dark:lg:hover:bg-darkSecondary p-2 rounded-lg"
+              variants={popUpFromBottomForText}
               >
                 <div className="flex items-center gap-3">
                   <div className="relative flex items-center justify-center">
