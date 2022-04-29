@@ -4,14 +4,11 @@ import Image from "next/image";
 import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import Blog from "../Blog";
-import AnimatedButton from "../FramerMotion/AnimatedButton";
-import AnimatedText from "../FramerMotion/AnimatedText";
 import { motion } from "framer-motion";
-import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function BlogsSection({ blogs }) {
   return (
-    <section className="mx-4">
+    <section className="mx-5">
       <HomeHeading title="Recent Posts" />
 
       <div className="flex flex-col gap-2 w-full">
