@@ -30,7 +30,7 @@ export default function Blog({ blog, className }) {
   return (
     <Link passHref href={`/blogs/${blog?.slug}`}>
       <div
-        className={`relative py-3 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-90 ${className}`}
+        className={`relative lg:p-3 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-95 lg:hover:bg-neutral-100 dark:lg:hover:bg-darkSecondary  ${className}`}
       >
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <AnimatedText
