@@ -1,24 +1,27 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { RiLightbulbFlashFill } from "react-icons/ri";
 import Image from "next/image";
 import { AvatarImage } from "../utils/utils";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import {
   fromLeftVariant,
   fromRightVariant,
   fromTopVariant,
+  hamFastFadeContainer,
+  headingFromLeft,
+  mobileNavItemSideways,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import { navigationRoutes } from "../utils/utils";
+import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
 export default function TopNavbar() {
   const router = useRouter();
   const navRef = useRef(null);
   const control = useAnimation();
-
+  const [navOpen, setNavOpen] = useState(false);
   const { isDarkMode, changeDarkMode } = useDarkMode();
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen
@@ -59,43 +62,43 @@ export default function TopNavbar() {
       className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 z-40 print:hidden"
       ref={navRef}
     >
-      {/* Name and Image*/}
-      <motion.div
-        className="text-center sm:text-left text-2xl font-bold z-40"
-        title="Jatin Sharma"
-      >
-        <Link href="/" passHref>
-          <div className="flex gap-2 items-center cursor-pointer">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fromLeftVariant}
-              className="rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10"
-            >
-              <Image
-                src={AvatarImage}
-                width={64}
-                height={64}
-                alt="Profile Image"
-                priority={true}
-              ></Image>
-            </motion.div>
-            <motion.p
-              initial="hidden"
-              animate={control}
-              variants={{
-                hidden: { opacity: 0, scale: 1, display: "none" },
-                visible: { opacity: 1, scale: 1, display: "inline-flex" },
-              }}
-              className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
-            >
-              Jatin Sharma
-            </motion.p>
-          </div>
-        </Link>
-      </motion.div>
+      {/* Mobile Navigation Hamburger and MobileMenu */}
+      <HamBurger open={navOpen} setOpen={setNavOpen} />
+      <AnimatePresence>
+        {navOpen && (
+          <MobileMenu links={navigationRoutes} setNavOpen={setNavOpen} />
+        )}
+      </AnimatePresence>
 
-      {/* Dark Mode Toggle button */}
+      <Link href="/" passHref>
+        <div className="flex gap-2 items-center cursor-pointer">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fromLeftVariant}
+            className="rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex"
+          >
+            <Image
+              src={AvatarImage}
+              width={64}
+              height={64}
+              alt="Profile Image"
+              priority={true}
+            ></Image>
+          </motion.div>
+          <motion.p
+            initial="hidden"
+            animate={control}
+            variants={{
+              hidden: { opacity: 0, scale: 1, display: "none" },
+              visible: { opacity: 1, scale: 1, display: "inline-flex" },
+            }}
+            className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
+          >
+            Jatin Sharma
+          </motion.p>
+        </div>
+      </Link>
 
       {/* Top Nav list */}
       <motion.nav
@@ -118,28 +121,30 @@ export default function TopNavbar() {
         </AnimatedDiv>
       </motion.nav>
 
-      {/* </AnimatedDiv> */}
+      {/* DarkMode Container */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={fromRightVariant}
-        className="cursor-pointer rounded-full p-1 sm:p-[5px] ring-1 ring-gray-100 dark:ring-gray-600 hover:ring-gray-400 dark:hover:ring-gray-500 z-50"
+        className="cursor-pointer rounded-full z-30 "
         title="Toggle Theme"
         onClick={() => changeDarkMode(!isDarkMode)}
+        whileTap={{
+          scale: 0.7,
+          rotateZ: "-45deg",
+        }}
       >
-        <RiLightbulbFlashFill
-          className={`text-2xl sm:text-3xl transition-all duration-300 rotate-180 ${
-            isDarkMode
-              ? "text-gray-500 lg:hover:text-yellow-400"
-              : "text-yellow-400 lg:hover:text-gray-500"
-          }`}
-        />
+        {isDarkMode ? (
+          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8" />
+        ) : (
+          <BsMoonFill className="h-6 w-6 sm:h-8 sm:w-8" />
+        )}
       </motion.div>
     </div>
   );
 }
 
-// Navlink
+// NavItem Container
 function NavItem({ href, text, router }) {
   const isActive = router.asPath === (href === "/home" ? "/" : href);
   return (
@@ -156,3 +161,81 @@ function NavItem({ href, text, router }) {
     </Link>
   );
 }
+
+// Hamburger Button
+function HamBurger({ open, setOpen }) {
+  return (
+    <motion.div
+      style={{ zIndex: 1000 }}
+      initial="hidden"
+      animate="visible"
+      variants={headingFromLeft}
+      className="sm:hidden"
+    >
+      {!open ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-8 w-8 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
+          onClick={() => setOpen((open) => !open)}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      ) : (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-8 w-8 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
+          onClick={() => setOpen((open) => !open)}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      )}
+    </motion.div>
+  );
+}
+
+// Mobile navigation menu
+const MobileMenu = ({ links, setNavOpen }) => {
+  return (
+    <motion.div
+      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10"
+      variants={hamFastFadeContainer}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
+      <motion.nav className="mt-32 mx-8 flex flex-col">
+        {links.map((link, index) => (
+          <Link
+            href={link.toLowerCase() === "home" ? "/" : link.toLowerCase()}
+            key={index}
+            passHref
+          >
+            <motion.a
+              className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide"
+              variants={mobileNavItemSideways}
+              onClick={() => setNavOpen(false)}
+            >
+              {link}
+            </motion.a>
+          </Link>
+        ))}
+      </motion.nav>
+    </motion.div>
+  );
+};
