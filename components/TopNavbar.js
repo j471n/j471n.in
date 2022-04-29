@@ -11,35 +11,17 @@ import {
   fromTopVariant,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
+import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 
 export default function TopNavbar() {
-  const routes = ["/", "/skills", "/blogs", "/projects"];
   const router = useRouter();
-  const currentRoute = router.pathname;
   const navRef = useRef(null);
   const control = useAnimation();
 
   const { isDarkMode, changeDarkMode } = useDarkMode();
 
-  useEffect(() => {
-    // Gathering all the top-nav-links it returns an object
-    var navLinks = document.querySelectorAll(".top-nav-link");
-
-    // iterating through object and removing the border if exist
-    Object.entries(navLinks).forEach(
-      // link is an array of id and the item, changing the item
-      (link) => (link[1].style.borderBottom = "none")
-    );
-
-    // Checking if the current route is valid
-    if (routes.includes(currentRoute)) {
-      // navLinks.map((link) => console.log(link));
-      // this checks the currentRoute index the return it the navLinks
-      // then we change the style according to the index e.g. navLinks[0].style.color ="black";
-      navLinks[routes.indexOf(currentRoute)].style.borderBottom = "4px solid";
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRoute]);
+  // navigation links
+  const navlinks = ["home", "skills", "blogs", "certificates", "projects"];
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen
   function addShadowToNavbar() {
@@ -124,23 +106,18 @@ export default function TopNavbar() {
         variants={fromTopVariant}
         className="hidden sm:flex z-10 lg:absolute lg:inset-0 lg:justify-center"
       >
-        <ul className="flex items-center">
-          <li className="top-nav-link">
-            <Link href="/">About Me</Link>
-          </li>
-          <li className="top-nav-link">
-            <Link href="/skills">Skills</Link>
-          </li>
-          <li className="top-nav-link">
-            <Link href="/blogs">Blogs</Link>
-          </li>
-          <li className="top-nav-link">
-            <Link href="/projects">Projects</Link>
-          </li>
-          {/* <li className="top-nav-link">
-            <Link href="/contact">Contact</Link>
-          </li> */}
-        </ul>
+        <AnimatedDiv className="flex items-center">
+          {navlinks.map((navlink, index) => {
+            return (
+              <NavItem
+                key={index}
+                href={`/${navlink}`}
+                text={navlink}
+                router={router}
+              />
+            );
+          })}
+        </AnimatedDiv>
       </motion.nav>
 
       {/* </AnimatedDiv> */}
@@ -161,5 +138,23 @@ export default function TopNavbar() {
         />
       </motion.div>
     </div>
+  );
+}
+
+// Navlink
+function NavItem({ href, text, router }) {
+  const isActive = router.asPath === (href === "/home" ? "/" : href);
+  return (
+    <Link href={href === "/home" ? "/" : href} passHref>
+      <a
+        className={`${
+          isActive
+            ? "font-bold text-gray-800 dark:text-gray-200 border-gray-800 dark:border-gray-200"
+            : "font-medium text-gray-600 dark:text-gray-400 border-transparent"
+        } sm:inline-block hover:text-gray-900 dark:hover:text-gray-50 transition-all text-lg mr-4 sm:mr-7 hidden border-b-[3px] `}
+      >
+        <span className="capitalize">{text}</span>
+      </a>
+    </Link>
   );
 }
