@@ -1,7 +1,10 @@
 import { useState, useRef } from "react";
 import Blog from "../../components/Blog";
 import { AnimatePresence } from "framer-motion";
-import { fromLeftVariant, opacityVariant } from "../../content/FramerMotionVariants";
+import {
+  fromLeftVariant,
+  opacityVariant,
+} from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
 import Loading from "../../components/Loading";
 import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
@@ -36,7 +39,7 @@ export default function Blogs({ blogs, err }) {
       <Metadata title="Blogs" />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">
-        <div className="w-full flex flex-col p-5 gap-3 select-none">
+        <div className="w-full flex flex-col px-2 py-5 gap-3 select-none">
           <AnimatedHeading
             variants={fromLeftVariant}
             className="text-6xl font-bold"
@@ -55,7 +58,7 @@ export default function Blogs({ blogs, err }) {
           </AnimatedText>
         </div>
 
-        <div className="px-5">
+        <div className="px-2">
           <button
             type="button"
             id="view"
@@ -102,7 +105,7 @@ export default function Blogs({ blogs, err }) {
               <>
                 <AnimatedHeading
                   variants={opacityVariant}
-                  className="text-left font-bold text-3xl ml-4 mb-4"
+                  className="text-left font-bold text-3xl"
                 >
                   All Posts ({filteredBlogs.length})
                 </AnimatedHeading>

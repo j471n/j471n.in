@@ -3,7 +3,7 @@ import QuestionAndAnswer from "./QuestionAndAnswer";
 
 function FAQ({ faqs = [] }) {
   return (
-    <section className="bg-white dark:bg-darkPrimary">
+    <section>
       <div className="py-8 mx-auto">
         <HomeHeading title="Frequently asked questions" />
 

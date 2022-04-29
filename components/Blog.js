@@ -3,7 +3,7 @@ import AnimatedText from "../components/FramerMotion/AnimatedText";
 import { popUpFromBottomForText } from "../content/FramerMotionVariants";
 import Link from "next/link";
 
-export default function Blog({ blog }) {
+export default function Blog({ blog, className }) {
   const monthNames = [
     "Jan",
     "Feb",
@@ -29,7 +29,9 @@ export default function Blog({ blog }) {
 
   return (
     <Link passHref href={`/blogs/${blog?.slug}`}>
-      <div className="relative p-4 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-90 active:ring-4">
+      <div
+        className={`relative py-3 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-90 ${className}`}
+      >
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <AnimatedText
             variants={popUpFromBottomForText}

@@ -18,6 +18,7 @@ export default function Footer() {
     <footer className="flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white pt-4 sm:pt-8 pb-20 sm:pb-8">
       <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 md:grid-rows-1 place-items-center">
         <AnimatedDiv
+          className="flex items-center gap-2"
           variants={fromLeftVariant}
         >
           <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-violet-100 overflow-hidden">
@@ -30,7 +31,7 @@ export default function Footer() {
           </div>
           <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
             <li className="font-bold lg:hover:underline text-xs sm:text-base text-gray-500">
-              <Link rel="noopener noreferrer" href="/" >
+              <Link rel="noopener noreferrer" href="/">
                 Jatin Sharma
               </Link>
             </li>

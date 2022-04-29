@@ -30,14 +30,14 @@ export default function QuestionAndAnswer({ question, answer }) {
       <div>
         <AnimatedHeading
           variants={popUpFromBottomForText}
-          className="text-base sm:text-lg font-semibold text-gray-600 dark:text-slate-200"
+          className="text-base sm:text-lg font-semibold text-neutral-900 dark:text-neutral-200"
         >
           {question}
         </AnimatedHeading>
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          className="mt-1 text-sm text-gray-400 dark:text-slate-400 font-medium"
+          className="mt-1 text-sm text-gray-500 font-medium"
         >
           {answer}
         </AnimatedText>

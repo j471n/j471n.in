@@ -91,7 +91,7 @@ export default function Home({ blogs }) {
 export function HomeHeading({ title }) {
   return (
     <AnimatedHeading
-      className="w-full font-bold text-3xl text-left my-2 mx-3 font-inter"
+      className="w-full font-bold text-3xl text-left my-2 font-inter"
       variants={headingFromLeft}
     >
       {title}

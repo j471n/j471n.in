@@ -4,93 +4,68 @@ import Image from "next/image";
 import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import Blog from "../Blog";
+import AnimatedButton from "../FramerMotion/AnimatedButton";
+import AnimatedText from "../FramerMotion/AnimatedText";
+import { motion } from "framer-motion";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 export default function BlogsSection({ blogs }) {
   return (
-    <section>
+    <section className="mx-4">
       <HomeHeading title="Recent Posts" />
 
       <div className="flex flex-col gap-2 w-full">
         {blogs.map((blog) => {
           return (
             <Link key={blog.slug} href={`/blogs/${blog.slug}`} passHref>
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-2 ">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
                 <AnimatedDiv
                   variants={popUpFromBottomForText}
-                  className="relative hidden md:inline-flex max-w-xs ml-3"
+                  className="relative hidden md:inline-flex max-w-xs rounded-xl overflow-hidden"
                 >
                   <Image
-                    className="w-full h-full rounded-xl cursor-pointer select-none"
+                    className="rounded-xl cursor-pointer select-none"
                     src={blog?.cover_image}
                     alt={blog.title}
                     width={500}
                     height={207}
-                    // layout=""
                     quality={25}
+                    placeholder="blur"
+                    blurDataURL={blog?.cover_image}
                   />
                 </AnimatedDiv>
 
-                <Blog blog={blog} />
+                <Blog blog={blog} className="active:!scale-100" />
               </div>
             </Link>
           );
         })}
+
+        <Link href="/blogs">
+          <div
+            variants={popUpFromBottomForText}
+            className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black transform duration-200 active:scale-90 active:border-black w-fit"
+          >
+            <motion.a href="/blogs" className="flex items-center gap-1 ">
+              Read all posts
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="h-6 w-6 ml-1"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17.5 12h-15m11.667-4l3.333 4-3.333-4zm3.333 4l-3.333 4 3.333-4z"
+                ></path>
+              </svg>
+            </motion.a>
+          </div>
+        </Link>
       </div>
     </section>
   );
 }
-
-// {/* <div className="home-section-container no-scrollbar">
-//   {blogs.map((blog) => {
-//     return (
-//       <Link key={blog.slug} href={`/blogs/${blog.slug}`} passHref>
-//         <div className="home-content-section hover-slide-animation">
-//           <AnimatedDiv variants={popUpFromBottomForText}>
-//             <Image
-//               className="hidden w-full h-full rounded-xl mb-3 cursor-pointer select-none"
-//               src={blog.cover_image}
-//               alt={blog.title}
-//               width={500}
-//               height={207}
-//               layout="responsive"
-//               quality={25}
-//             />
-//           </AnimatedDiv>
-//           <AnimatedDiv
-//             variants={popUpFromBottomForText}
-//             className="flex items-center justify-between my-3 text-sm sm:text-base"
-//           >
-//             <p className="flex items-center space-x-1">
-//               <AiOutlineCalendar />
-//               <span className="text-xs font-medium">
-//                 {new Date(Date.parse(blog.published_at))
-//                   .toDateString()
-//                   .slice(4)}
-//               </span>
-//             </p>
-//             <p className="flex items-center space-x-1">
-//               <BiTime />
-//               <span className="text-xs ml-1 font-medium">
-//                 {blog.reading_time_minutes} mins
-//               </span>
-//             </p>
-//           </AnimatedDiv>
-//           <AnimatedHeading
-//             variants={popUpFromBottomForText}
-//             className="text-base sm:text-lg mb-1 font-bold md:font-extrabold truncate text-slate-600 dark:text-slate-300"
-//           >
-//             {blog.title}
-//           </AnimatedHeading>
-//           <AnimatedText
-//             variants={popUpFromBottomForText}
-//             className="text-xs sm:text-sm truncate-3 text-slate-400 font-medium"
-//           >
-//             {blog.description}
-//           </AnimatedText>
-//         </div>
-//       </Link>
-//     );
-//   })}
-
-//   <ExploreMoreButton link="/blogs" />
-// </div>; */}
