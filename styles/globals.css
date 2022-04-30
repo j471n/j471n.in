@@ -135,7 +135,7 @@ body::-webkit-scrollbar-thumb {
     @apply flex font-semibold items-center cursor-pointer w-full justify-center sm:justify-start sm:w-auto space-x-1 text-base;
   }
   .project_link {
-    @apply w-full text-center flex bg-gray-100 dark:bg-darkSecondary ring-gray-500 dark:hover:ring-1 lg:hover:bg-gray-200 lg:dark:hover:bg-darkPrimary justify-center py-2 m-1  rounded-lg transform duration-100 active:scale-95 active:bg-gray-200 cursor-pointer;
+    @apply text-center bg-gray-200 p-2 my-1 rounded-full dark:bg-darkSecondary dark:text-white cursor-pointer;
   }
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;

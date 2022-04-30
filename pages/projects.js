@@ -3,38 +3,36 @@ import Project from "../components/Project";
 import { getProjects } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import { AnimatePresence } from "framer-motion";
-import PageCover from "../components/Home/PageCover";
+import PageTop from "../components/PageTop";
 
 export default function Projects({ projects }) {
   return (
     <>
-      <Metadata title="Projects ⚒️" />
-      <>
-        <PageCover
-          imgSrc="/img/cover/projectCover.svg"
-          pageTitle="Work & Projects"
-          buttonText="View Recent Work"
-          titleClass="text-yellow-500"
-          buttonClass={"before:bg-yellow-600"}
-          containerClass="!from-yellow-100"
-        />
+      <Metadata title="Projects" />
+      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto p-4 mb-10">
+        <PageTop pageTitle="Projects">
+          I've been making various types of projects some of them were basics
+          and some of them were complicated. So far I've made{" "}
+          <span className="font-bold text-gray-600 dark:text-gray-200">
+            {projects.length}
+          </span>{" "}
+          projects.
+        </PageTop>
 
-        <div className="relative">
-          <h1 className="absolute top-0 font-b  old text-xl p-2 text-center w-full mt-5 text-slate-600 dark:text-slate-200">
-            Recent Projects
-          </h1>
-          <section id="view" className="page_container pt-20">
-            <AnimatePresence>
-              {projects &&
-                projects.map((project) => {
-                  if (project.name === "" && project.githubURL === "")
-                    return null;
-                  return <Project key={project.id} project={project} />;
-                })}
-            </AnimatePresence>
-          </section>
-        </div>
-      </>
+        <section
+          id="view"
+          className="relative py-5 px-2 flex flex-col gap-4 min-h-[50vh]"
+        >
+          <AnimatePresence>
+            {projects &&
+              projects.map((project, index) => {
+                if (project.name === "" && project.githubURL === "")
+                  return null;
+                return <Project key={index} project={project} />;
+              })}
+          </AnimatePresence>
+        </section>
+      </section>
     </>
   );
 }
