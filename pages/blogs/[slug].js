@@ -5,13 +5,11 @@ import { BiTime } from "react-icons/bi";
 import ShareOnSocialMedia from "../../components/ShareOnSocialMedia";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Metadata from "../../components/MetaData";
 import PageNotFound from "../404";
 import { FiPrinter } from "react-icons/fi";
 
 export default function Article({ article, error }) {
-  const router = useRouter();
   const [scroll, setScroll] = useState(0);
 
   const progressBarHandler = () => {
@@ -46,7 +44,7 @@ export default function Article({ article, error }) {
             <div className={styles.data_page}>
               <h1 className=" text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
                 {article?.title}
-            </h1>
+              </h1>
               <div className={styles.data_header}>
                 <div className="flex space-x-2">
                   <div className="flex items-center">
@@ -101,26 +99,8 @@ export default function Article({ article, error }) {
               </div>
             )}
 
-            <article
-              className="
-              mx-auto
-              prose
-              prose-sm
-              md:prose-base 
-              lg:prose-lg 
-              xl:prose-lg 
-              3xl:prose-xl
-              dark:prose-invert
-              selection:bg-slate-700
-              selection:text-purple-400
-              dark:text-white
-              my-5
-              
-          
-            "
-            >
+            <article className="mx-auto prose prose-sm md:prose-base  lg:prose-lg  xl:prose-lg  3xl:prose-xl dark:prose-invert selection:bg-slate-700 selection:text-purple-400 dark:text-white my-5">
               <Interweave
-                // className={`mx-auto prose prose-sm md:prose-base lg:prose-lg xl:prose-lg 3xl:prose-xl prose-img:!rounded-xl font-inter font-[500] prose-img:mx-auto dark:prose-invert ${styles.dev_blog}`}
                 className={styles.dev_blog}
                 content={article?.body_html}
               />
