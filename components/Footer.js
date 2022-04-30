@@ -15,7 +15,7 @@ import { AvatarImage } from "../utils/utils";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white pt-4 sm:pt-8 pb-20 sm:pb-8">
+    <footer className="flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white p-4 sm:pb-8">
       <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 md:grid-rows-1 place-items-center">
         <AnimatedDiv
           className="flex items-center gap-2"
