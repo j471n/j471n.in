@@ -14,7 +14,7 @@ import { HiMail } from "react-icons/hi";
 import { SiCodepen, SiBuymeacoffee } from "react-icons/si";
 import SocialIcon from "../SocialIcon";
 import {
-  fromRightVariant,
+  FromRightContainer,
   inputSlideAnimation,
   popUpFromBottomForText,
 } from "../../content/FramerMotionVariants";
@@ -219,7 +219,7 @@ export default function Contact({ socialMedia }) {
 
           {/* Social Media Container */}
           <AnimatedDiv
-            variants={fromRightVariant}
+            variants={FromRightContainer}
             className="flex flex-wrap gap-2 sm:gap-4 items-center py-4 dark:text-gray-100 select-none"
           >
             <SocialIcon
@@ -273,7 +273,7 @@ export default function Contact({ socialMedia }) {
             </AnimatedHeading>
 
             <AnimatedDiv
-              variants={fromRightVariant}
+              variants={FromRightContainer}
               className="flex items-center justify-center space-x-4 my-6"
             >
               {/* buy me a coffee */}

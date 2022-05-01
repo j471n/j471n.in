@@ -270,3 +270,18 @@ export const FadeContainer = {
     transition: { delayChildren: 0, staggerChildren: 0.1 },
   },
 };
+
+export const FromRightContainer = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+      delayChildren: 0,
+      staggerChildren: 0.2,
+    },
+  },
+};

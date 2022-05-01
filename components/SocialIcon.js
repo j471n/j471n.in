@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { popUp } from "../content/FramerMotionVariants";
 
 export default function SocialIcon({ Icon, title, url }) {
   return (
@@ -7,6 +8,7 @@ export default function SocialIcon({ Icon, title, url }) {
       <motion.a
         // initial="hidden"
         // whileInView="visible"
+        variants={popUp}
         href={url}
         rel="noopener noreferrer"
         target="_blank"
