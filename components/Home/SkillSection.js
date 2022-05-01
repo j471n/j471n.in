@@ -1,54 +1,46 @@
-import { opacityVariant } from "../../content/FramerMotionVariants";
+import { FadeContainer, popUp } from "../../content/FramerMotionVariants";
 import skillsData from "../../content/skillsData";
 import { HomeHeading } from "../../pages";
-import AnimatedDiv from "../FramerMotion/AnimatedDiv";
 import Image from "next/image";
-import AnimatedText from "../FramerMotion/AnimatedText";
-import ExploreMoreButton from "../Buttons/ExploreMoreButton";
+import { motion } from "framer-motion";
 
 export default function SkillSection() {
   return (
-    <section>
-      <HomeHeading title="My Top ⚡kills" />
+    <section className="mx-5">
+      <HomeHeading title="My Top Skills" />
 
-      <div className="snap-center flex gap-2 overflow-x-scroll no-scrollbar p-5 md:px-10">
-        {skillsData.map((skill) => {
-          if (!skill.pinned) return null;
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={FadeContainer}
+        viewport={{ once: true }}
+        className="grid my-10 gap-4 grid-cols-3"
+      >
+        {skillsData.map((skill, index) => {
+          if (!skill.pinned) return;
           return (
-            <div
+            <motion.div
+              variants={popUp}
+              key={index}
               title={skill.name}
-              key={skill.id}
-              className="home-content-section flex items-center justify-between overflow-hidden  before:absolute before:h-full before:w-20 before:bg-purple-600 before:-right-4 before:-z-10 before:rotate-[20deg] before:scale-y-150 before:top-4 hover:before:scale-[7]   before:duration-500 "
+              className="p-4 flex items-center justify-center sm:justify-start gap-4 bg-gray-50 hover:bg-gray-100 dark:bg-darkPrimary hover:dark:bg-darkSecondary border rounded-sm border-gray-300 dark:border-neutral-700 transform origin-center md:origin-top "
             >
-              <AnimatedDiv
-                variants={opacityVariant}
-                className="flex items-center gap-2"
-              >
-                <div className="relative w-10 h-10">
-                  <Image
-                    width={50}
-                    height={50}
-                    alt={skill.name}
-                    src={`/${skill.icon}`}
-                    quality={50}
-                  />
-                </div>
-
-                <p className="uppercase font-bold text-sm sm:text-base">
-                  {skill.name}
-                </p>
-              </AnimatedDiv>
-              <AnimatedText
-                variants={opacityVariant}
-                className="uppercase font-bold text-lg border-t-[3px] border-purple-100 text-purple-300 z-10"
-              >
-                {skill.level}
-              </AnimatedText>
-            </div>
+              <div className="relative w-10 h-10">
+                <Image
+                  width={50}
+                  height={50}
+                  alt={skill.name}
+                  src={`/${skill.icon}`}
+                  quality={50}
+                />
+              </div>
+              <p className="hidden sm:inline-flex text-sm md:text-base font-semibold">
+                {skill.name}
+              </p>
+            </motion.div>
           );
         })}
-        <ExploreMoreButton link="/skills" />
-      </div>
+      </motion.div>
     </section>
   );
 }

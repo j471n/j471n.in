@@ -262,3 +262,11 @@ export const mobileNavItemSideways = {
     opacity: 1,
   },
 };
+
+export const FadeContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delayChildren: 0, staggerChildren: 0.1 },
+  },
+};

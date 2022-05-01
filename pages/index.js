@@ -5,6 +5,7 @@ import faqs from "../content/faqData";
 
 // Page Components START----------
 import BlogsSection from "../components/Home/BlogsSection";
+import SkillSection from "../components/Home/SkillSection";
 // Page Components END------------
 
 import Image from "next/image";
@@ -71,7 +72,7 @@ export default function Home({ blogs }) {
           {/* About me */}
           {/* <AboutMe /> */}
           {/* Skills Section */}
-          {/* <SkillSection /> */}
+          <SkillSection />
           {/* Blogs Section */}
           <BlogsSection blogs={blogs} />
           {/* Certification Section */}
