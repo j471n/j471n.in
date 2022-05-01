@@ -4,10 +4,8 @@ import PageTop from "../components/PageTop";
 import StatsCard from "../components/Stats/StatsCard";
 import fetcher from "../lib/fetcher";
 import useSWR from "swr";
-import { motion } from "framer-motion";
-import { opacityVariant } from "../content/FramerMotionVariants";
-import { getGithubStats, getOldStats } from "../lib/github";
-import { data } from "autoprefixer";
+import { AnimatePresence, motion } from "framer-motion";
+import { FadeContainer, opacityVariant } from "../content/FramerMotionVariants";
 
 export default function Stats() {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
@@ -56,23 +54,25 @@ export default function Stats() {
 
         <motion.div
           className="grid grid-rows-auto sm:grid-cols-2 gap-5"
-          variants={opacityVariant}
+          variants={FadeContainer}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
         >
+          {/* <AnimatePresence> */}
           {stats.map((stat, index) => (
             <StatsCard
               key={index}
               title={stat.title}
               value={
                 stat.value === undefined ? (
-                  <div className="w-28 h-8 rounded-sm bg-gray-300 animate-pulse" />
+                  <div className="w-28 h-8 rounded-sm bg-gray-300 dark:bg-neutral-800 animate-pulse" />
                 ) : (
                   stat.value
                 )
               }
             />
           ))}
+          {/* </AnimatePresence> */}
         </motion.div>
 
         {/* TODO: Add Spotify Stats */}
