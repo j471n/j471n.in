@@ -9,6 +9,7 @@ import { opacityVariant } from "../content/FramerMotionVariants";
 
 export default function Stats() {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
+  const { data: github } = useSWR("/api/stats/github", fetcher);
   const stats = [
     {
       title: "Total Posts",
@@ -30,6 +31,14 @@ export default function Stats() {
       title: "Blog Comments",
       value: devto?.comments.toLocaleString(),
     },
+    {
+      title: "Github Repos",
+      value: github?.repos,
+    },
+    {
+      title: "Github Gists",
+      value: github?.gists,
+    },
   ];
   return (
     <>
@@ -38,7 +47,7 @@ export default function Stats() {
       <section className="pageTop">
         <PageTop pageTitle="Statistics">
           These are my personal statistics about me built with Next.js routes.
-          It includes My Blogs stats and my music preferences.
+          It includes My Blogs and github Stats.
         </PageTop>
 
         <motion.div
