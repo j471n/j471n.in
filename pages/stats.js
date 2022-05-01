@@ -6,9 +6,13 @@ import fetcher from "../lib/fetcher";
 import useSWR from "swr";
 import { motion } from "framer-motion";
 import { opacityVariant } from "../content/FramerMotionVariants";
+import { getGithubStats, getOldStats } from "../lib/github";
+import { data } from "autoprefixer";
 
-export default function Stats({ github }) {
+export default function Stats() {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
+  var { data: github } = useSWR("/api/stats/github", fetcher);
+
   const stats = [
     {
       title: "Total Posts",
@@ -31,7 +35,7 @@ export default function Stats({ github }) {
       value: devto?.comments.toLocaleString(),
     },
     {
-      title: github && "Github Repos",
+      title: "Github Repos",
       value: github?.repos,
     },
     {
@@ -39,6 +43,7 @@ export default function Stats({ github }) {
       value: github?.gists,
     },
   ];
+
   return (
     <>
       <MetaData title="Stats" />
@@ -74,16 +79,4 @@ export default function Stats({ github }) {
       </section>
     </>
   );
-}
-// :
-export async function getStaticProps() {
-  const github = await fetch(process.env.VERCEL_URL + "/api/stats/github").then(
-    (res) => res.json()
-  );
-  return {
-    props: {
-      github,
-    },
-    revalidate: 24 * 60 * 60,
-  };
 }

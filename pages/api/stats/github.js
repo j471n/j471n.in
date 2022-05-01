@@ -1,8 +1,16 @@
-import { getGithubPublicStats } from "../../../lib/github";
+import { fetchGithub, getOldStats } from "../../../lib/github";
 
 export default async function handler(req, res) {
-  const { public_repos: repos, public_gists: gists } =
-    await getGithubPublicStats();
+  const { public_repos: repos, public_gists: gists } = await fetchGithub();
+
+  // it runs when user's api is exhausted, it gives the old data
+  if (repos === undefined && gists === undefined) {
+    const { public_repos: repos, public_gists: gists } = getOldStats();
+    return res.status(200).json({
+      repos,
+      gists,
+    });
+  }
 
   res.setHeader(
     "Cache-Control",
