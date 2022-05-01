@@ -7,9 +7,8 @@ import useSWR from "swr";
 import { motion } from "framer-motion";
 import { opacityVariant } from "../content/FramerMotionVariants";
 
-export default function Stats() {
+export default function Stats({ github }) {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
-  const { data: github } = useSWR("/api/stats/github", fetcher);
   const stats = [
     {
       title: "Total Posts",
@@ -32,7 +31,7 @@ export default function Stats() {
       value: devto?.comments.toLocaleString(),
     },
     {
-      title: "Github Repos",
+      title: github && "Github Repos",
       value: github?.repos,
     },
     {
@@ -75,4 +74,16 @@ export default function Stats() {
       </section>
     </>
   );
+}
+// :
+export async function getStaticProps() {
+  const github = await fetch(process.env.VERCEL_URL + "/api/stats/github").then(
+    (res) => res.json()
+  );
+  return {
+    props: {
+      github,
+    },
+    revalidate: 24 * 60 * 60,
+  };
 }
