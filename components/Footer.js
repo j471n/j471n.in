@@ -21,12 +21,15 @@ export default function Footer() {
           className="flex items-center gap-2"
           variants={fromLeftVariant}
         >
-          <div className="flex items-center justify-center flex-shrink-0 w-10 h-10 rounded-full bg-violet-100 overflow-hidden">
+          <div className="w-10 h-10">
             <Image
               src={AvatarImage}
               width={50}
+              className="rounded-full"
               height={50}
               alt="Profile Image"
+              // layout="responsive"
+              quality={75}
             />
           </div>
           <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
@@ -63,7 +66,7 @@ export default function Footer() {
             </li>
             <li>
               <SocialIcon
-                Icon={BsGithub}
+                Icon={BsGithub}p
                 title="Github"
                 url={socialMedia.github}
               />
