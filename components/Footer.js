@@ -1,86 +1,68 @@
-import Image from "next/image";
 import Link from "next/link";
 import socialMedia from "../content/socialMedia";
-import { BsGithub, BsTwitter } from "react-icons/bs";
-import { FiLinkedin } from "react-icons/fi";
-import SocialIcon from "../components/SocialIcon";
-import AnimatedText from "./FramerMotion/AnimatedText";
-import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 import {
-  fromBottomVariant,
-  fromLeftVariant,
-  fromRightVariant,
+  FadeContainer,
+  popUp,
 } from "../content/FramerMotionVariants";
-import { AvatarImage } from "../utils/utils";
+import { navigationRoutes } from "../utils/utils";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col space-y-4 bg-gray-100 dark:bg-zinc-800 dark:text-white p-4 sm:pb-8">
-      <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 md:grid-rows-1 place-items-center">
-        <AnimatedDiv
-          className="flex items-center gap-2"
-          variants={fromLeftVariant}
-        >
-          <div className="w-10 h-10">
-            <Image
-              src={AvatarImage}
-              width={50}
-              className="rounded-full"
-              height={50}
-              alt="Profile Image"
-              // layout="responsive"
-              quality={75}
-            />
-          </div>
-          <ul className="flex flex-wrap items-center space-x-4 sm:space-x-8">
-            <li className="font-bold lg:hover:underline text-xs sm:text-base text-gray-500">
-              <Link rel="noopener noreferrer" href="/">
-                Jatin Sharma
+    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        variants={FadeContainer}
+        viewport={{ once: true }}
+        className="max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl px-5 py-10 border-t-2 border-gray-200  dark:border-gray-400/10 grid grid-cols-3 gap-10 mx-auto text-sm sm:text-base"
+      >
+        <div className="flex flex-col gap-4 capitalize">
+          {navigationRoutes.map((route, index) => {
+            return (
+              <Link key={index} href={`/${route}`} passHref>
+                <motion.a variants={popUp} href={`/${route}`}>
+                  {route}
+                </motion.a>
               </Link>
-            </li>
-          </ul>
-        </AnimatedDiv>
-
-        <AnimatedText
-          variants={fromBottomVariant}
-          className="text-center text-gray-500 font-medium text-sm sm:text-base col-span-2 md:col-span-1 row-start-2 md:row-start-auto"
-        >
-          &copy; {new Date().getFullYear()},{" "}
-          <Link
-            className="select-none hover:text-black dark:hover:text-white"
-            rel="noopener noreferrer"
-            href="/"
-          >
-            Jatin Sharma
-          </Link>
-        </AnimatedText>
-
-        <AnimatedDiv variants={fromRightVariant}>
-          <ul className="flex flex-wrap space-x-4 !m-0 sm:space-x-7">
-            <li>
-              <SocialIcon
-                Icon={BsTwitter}
-                title="Twitter"
-                url={socialMedia.twitter}
-              />
-            </li>
-            <li>
-              <SocialIcon
-                Icon={BsGithub}p
-                title="Github"
-                url={socialMedia.github}
-              />
-            </li>
-            <li>
-              <SocialIcon
-                Icon={FiLinkedin}
-                title="LinkedIn"
-                url={socialMedia.linkedIn}
-              />
-            </li>
-          </ul>
-        </AnimatedDiv>
-      </div>
+            );
+          })}
+        </div>
+        <div className="flex flex-col gap-4 capitalize">
+          {socialMedia.map((platform, index) => {
+            if (index > 3) return;
+            return (
+              <Link key={index} href={platform.url} passHref>
+                <motion.a
+                  variants={popUp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={platform.url}
+                >
+                  {platform.title}
+                </motion.a>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="flex flex-col gap-4 capitalize">
+          {socialMedia.map((platform, index) => {
+            if (index < 4) return;
+            return (
+              <Link key={index} href={platform.url} passHref>
+                <motion.a
+                  variants={popUp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={platform.url}
+                >
+                  {platform.title}
+                </motion.a>
+              </Link>
+            );
+          })}
+        </div>
+      </motion.div>
     </footer>
   );
 }
