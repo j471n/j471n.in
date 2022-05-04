@@ -21,9 +21,7 @@ export default function Track({ url, title, artist, coverImage }) {
             width={50}
             height={50}
             layout="fixed"
-            placeholder="blur"
             alt={title}
-            blurDataURL={coverImage}
             quality={50}
           ></Image>
         </motion.div>

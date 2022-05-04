@@ -22,9 +22,7 @@ export default function Track({ name, url, coverImage, followers }) {
             width={100}
             height={100}
             layout="responsive"
-            placeholder="blur"
             alt={name}
-            blurDataURL={coverImage}
             quality={50}
           ></Image>
         </motion.div>
