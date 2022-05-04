@@ -11,8 +11,6 @@ import fetcher from "../lib/fetcher";
 export default function Footer() {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
-  console.log(currentSong);
-
   return (
     <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter">
       <motion.div
