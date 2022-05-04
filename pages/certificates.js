@@ -23,14 +23,14 @@ export default function Certificates() {
             variants={fromLeftVariant}
             className="text-4xl  md:text-5xl font-bold text-neutral-900 dark:text-neutral-200"
           >
-            Certifications
+            Certificates
           </AnimatedHeading>
           <AnimatedText
             variants={opacityVariant}
             className="font-medium text-lg text-gray-400"
           >
             I've participated in many contests, courses and test and get
-            certified in many skills. You can find the certification below.
+            certified in many skills. You can find the certificates below.
           </AnimatedText>
         </div>
 
