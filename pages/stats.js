@@ -57,8 +57,8 @@ export default function Stats() {
 
       <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">
-          These are my personal statistics about me built with Next.js routes.
-          It includes My Blogs and github Stats.
+          These are my personal statistics about me built with Next.js API
+          routes. It includes My Blogs and github Stats and top music stats.
         </PageTop>
 
         {/* Blogs and github stats */}

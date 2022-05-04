@@ -12,7 +12,7 @@ export default function Footer() {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
   return (
-    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter">
+    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-10">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -105,7 +105,7 @@ function WhenPlaying({ song }) {
       <Link href={song.songUrl} passHref>
         <a
           href={song.songUrl}
-          className="flex items-center justify-between hover:bg-gray-100 dark:hover:bg-darkSecondary p-2 sm:p-4"
+          className="flex items-center justify-between hover:bg-gray-100 dark:hover:bg-darkSecondary p-2 sm:p-4 animate-pulse "
         >
           <div className=" flex items-center gap-2">
             <div className="w-10 h-10">
