@@ -12,6 +12,7 @@ module.exports = {
       inter: ["Inter", "sans-serif"],
       sarina: ["Sarina", "cursive"],
       "open-sans": ["Open Sans", "sans-serif"],
+      barlow: ["Barlow", "sans-serif"],
     },
     extend: {
       colors: {

@@ -2,14 +2,24 @@ import React from "react";
 import MetaData from "../components/MetaData";
 import PageTop from "../components/PageTop";
 import StatsCard from "../components/Stats/StatsCard";
+import Track from "../components/Stats/Track";
+import Artist from "../components/Stats/Artist";
 import fetcher from "../lib/fetcher";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import { FadeContainer } from "../content/FramerMotionVariants";
+import {
+  FadeContainer,
+  fromLeftVariant,
+} from "../content/FramerMotionVariants";
+import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
+import AnimatedText from "../components/FramerMotion/AnimatedText";
 
 export default function Stats() {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
-  var { data: github } = useSWR("/api/stats/github", fetcher);
+  const { data: github } = useSWR("/api/stats/github", fetcher);
+  const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
+  const { data: artists } = useSWR("/api/stats/artists", fetcher);
+  console.log(artists);
 
   const stats = [
     {
@@ -46,17 +56,19 @@ export default function Stats() {
     <>
       <MetaData title="Stats" />
 
-      <section className="pageTop">
+      <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">
           These are my personal statistics about me built with Next.js routes.
           It includes My Blogs and github Stats.
         </PageTop>
 
+        {/* Blogs and github stats */}
         <motion.div
-          className="grid grid-rows-auto sm:grid-cols-2 gap-5"
+          className="grid grid-rows-auto sm:grid-cols-2 gap-5 my-10"
           variants={FadeContainer}
           initial="hidden"
           whileInView="visible"
+          viewport={{ once: true }}
         >
           {stats.map((stat, index) => (
             <StatsCard
@@ -73,7 +85,74 @@ export default function Stats() {
           ))}
         </motion.div>
 
-        {/* TODO: Add Spotify Stats */}
+        {/* Spotify top songs */}
+        <motion.div
+          className="font-barlow"
+          variants={FadeContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <AnimatedHeading
+            variants={fromLeftVariant}
+            className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
+          >
+            My Top streams songs
+          </AnimatedHeading>
+
+          <AnimatedText className="mt-4">
+            <span className="font-medium">
+              {topTracks && topTracks[0].title}
+            </span>{" "}
+            is the most streamed song of mine. Here's my top tracks on Spotify
+            updated daily.
+          </AnimatedText>
+          <div className="flex flex-col my-10 gap-0 font-barlow">
+            {topTracks?.map((track, index) => (
+              <Track
+                key={index}
+                track={track}
+                url={track.url}
+                title={track.title}
+                coverImage={track.coverImage.url}
+                artist={track.artist}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Spotify top Artists */}
+
+        <motion.div
+          className="font-barlow"
+          variants={FadeContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <AnimatedHeading
+            variants={fromLeftVariant}
+            className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
+          >
+            My Top Artists
+          </AnimatedHeading>
+          <AnimatedText className="mt-4">
+            My currently favorite Artists is{" "}
+            <span className="font-medium">KR$NA</span>{" "}
+          </AnimatedText>
+
+          <div className="flex flex-col my-10 gap-0 font-barlow">
+            {artists?.map((artist, index) => (
+              <Artist
+                key={index}
+                name={artist.name}
+                url={artist.url}
+                coverImage={artist.coverImage.url}
+                followers={artist.followers}
+              />
+            ))}
+          </div>
+        </motion.div>
       </section>
     </>
   );

@@ -9,6 +9,7 @@ module.exports = {
       "i.imgur.com",
       "cutt.ly",
       "activity-graph.herokuapp.com",
+      "i.scdn.co", // images from spotify
     ],
   },
 };
