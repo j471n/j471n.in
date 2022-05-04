@@ -24,51 +24,27 @@ body.dark {
 }
 
 body::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 body::-webkit-scrollbar-track {
   background: transparent;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #b98dff;
-  border-radius: 20px;
+  background-color: #b3b3b3;
 }
 
-/* Custom Scrollbar Class */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: lightgray;
-  border-radius: 20px;
+body.dark::-webkit-scrollbar-thumb {
+  background-color: #393e41;
 }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* SKill bar animation */
-.skill__bar {
-  animation: bar 2s linear;
-}
-
-*::-webkit-scrollbar {
-  display: none;
-}
-
 /* For preventing the blue highlight color box on tap(click) */
 * {
   -webkit-tap-highlight-color: transparent;
-}
-
-@keyframes bar {
-  from {
-    width: 0;
-  }
 }
 
 .truncate-2 {
@@ -88,19 +64,6 @@ body::-webkit-scrollbar-thumb {
 .auto-row {
   -webkit-margin-before: auto;
   margin-block-start: auto;
-}
-
-@keyframes slide-in-left {
-  0% {
-    -webkit-transform: translateX(-150px);
-    transform: translateX(-150px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
 }
 
 /* Layers Components or the custom class extends with tailwind */
