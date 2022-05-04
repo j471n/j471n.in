@@ -126,18 +126,14 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={fromRightVariant}
-        className="cursor-pointer rounded-full z-30 "
+        className="cursor-pointer rounded-full z-30 duration-300 group"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!isDarkMode)}
-        whileTap={{
-          scale: 0.7,
-          rotateZ: "-45deg",
-        }}
       >
         {isDarkMode ? (
-          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8" />
+          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
         ) : (
-          <BsMoonFill className="h-6 w-6 sm:h-8 sm:w-8" />
+          <BsMoonFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
         )}
       </motion.div>
     </div>
