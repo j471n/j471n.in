@@ -19,7 +19,6 @@ export default function Stats() {
   const { data: github } = useSWR("/api/stats/github", fetcher);
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
   const { data: artists } = useSWR("/api/stats/artists", fetcher);
-  console.log(artists);
 
   const stats = [
     {
@@ -100,8 +99,8 @@ export default function Stats() {
             My Top streams songs
           </AnimatedHeading>
 
-          <AnimatedText className="mt-4">
-            <span className="font-medium">
+          <AnimatedText className="mt-4 text-gray-500">
+            <span className="font-semibold">
               {topTracks && topTracks[0].title}
             </span>{" "}
             is the most streamed song of mine. Here's my top tracks on Spotify
@@ -136,9 +135,9 @@ export default function Stats() {
           >
             My Top Artists
           </AnimatedHeading>
-          <AnimatedText className="mt-4">
+          <AnimatedText className="mt-4 text-gray-500">
             My currently favorite Artists is{" "}
-            <span className="font-medium">KR$NA</span>{" "}
+            <span className="font-semibold">KR$NA</span>{" "}
           </AnimatedText>
 
           <div className="flex flex-col my-10 gap-0 font-barlow">
