@@ -5,7 +5,6 @@ import Link from "next/link";
 import AnimatedHeading from "./FramerMotion/AnimatedHeading";
 
 export default function Blog({ blog, className }) {
-  console.log(blog);
   return (
     <Link passHref href={`/blogs/${blog.slug}`}>
       <div
