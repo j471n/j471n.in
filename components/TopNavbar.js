@@ -207,6 +207,7 @@ function HamBurger({ open, setOpen }) {
 
 // Mobile navigation menu
 const MobileMenu = ({ links, setNavOpen }) => {
+  console.table(links);
   return (
     <motion.div
       className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10"
@@ -216,21 +217,22 @@ const MobileMenu = ({ links, setNavOpen }) => {
       exit="hidden"
     >
       <motion.nav className="mt-32 mx-8 flex flex-col">
-        {links.map((link, index) => (
-          <Link
-            href={link.toLowerCase() === "home" ? "/" : link.toLowerCase()}
-            key={index}
-            passHref
-          >
-            <motion.a
-              className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide"
-              variants={mobileNavItemSideways}
-              onClick={() => setNavOpen(false)}
-            >
-              {link}
-            </motion.a>
-          </Link>
-        ))}
+        {links.map((link, index) => {
+          const navlink =
+            link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
+          return (
+            <Link href={navlink} key={index} passHref>
+              <motion.a
+                href={navlink}
+                className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide"
+                variants={mobileNavItemSideways}
+                onClick={() => setNavOpen(false)}
+              >
+                {link}
+              </motion.a>
+            </Link>
+          );
+        })}
       </motion.nav>
     </motion.div>
   );
