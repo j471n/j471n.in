@@ -207,7 +207,6 @@ function HamBurger({ open, setOpen }) {
 
 // Mobile navigation menu
 const MobileMenu = ({ links, setNavOpen }) => {
-  console.table(links);
   return (
     <motion.div
       className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10"
