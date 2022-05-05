@@ -19,6 +19,10 @@ html {
   }
 }
 
+pre::-webkit-scrollbar {
+  display: none;
+}
+
 body.dark {
   background-color: #181a1b;
 }

@@ -1,209 +1,57 @@
-/* main data Container */
-
-.article_page {
-  @apply p-3;
-}
-
-.article_sidebar {
-  @apply block md:sticky  w-full;
-}
-
 .blog {
-  @apply p-2;
+  @apply font-inter dark:!text-gray-400 w-full;
 }
 
-.article_header {
-  @apply flex  flex-col space-y-2 print:hidden;
-}
-
-.socialMedia {
-  @apply flex flex-wrap items-center my-2 space-x-3 print:hidden;
-}
-
-.tag {
-  @apply text-xs p-1 mr-2 rounded-md cursor-pointer hover:underline;
-}
-
-/* Dev blog */
-
-.dev_blog {
-}
-
-.dev_blog > * {
-  @apply font-inter font-[500] dark:!text-gray-400;
-}
-
-.dev_blog img {
+.blog img {
   @apply !mx-auto rounded-lg;
 }
-
-.dev_blog h1,
-.dev_blog h2,
-.dev_blog h3,
-.dev_blog h4,
-.dev_blog h5,
-.dev_blog h6,
-.dev_blog strong {
-  @apply text-purple-600 dark:text-purple-100 font-bold my-0;
+.blog a,
+.blog > ul > li > a {
+  @apply text-blue-500 underline;
 }
 
-.dev_blog h1 a,
-.dev_blog h2 a,
-.dev_blog h3 a,
-.dev_blog h4 a,
-.dev_blog h5 a,
-.dev_blog h6 a {
-  @apply text-purple-600;
+.blog h1,
+.blog h2,
+.blog h3,
+.blog h4,
+.blog h5,
+.blog h6,
+.blog strong {
+  @apply text-blue-700  font-semibold my-2;
 }
 
-.dev_blog a,
-.dev_blog > ul > li > a {
-  @apply text-indigo-500 font-semibold;
-}
-
-.dev_blog > ul li {
-  @apply ml-2  marker:!text-purple-900 list-inside;
-}
-
-.dev_blog > p code,
-.dev_blog code,
-.dev_blog > ul li code {
-  @apply bg-slate-700 dark:!bg-white text-white  rounded-sm;
-}
-
-.dev_blog blockquote {
+.blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
 }
-.dev_blog blockquote img {
+.blog blockquote img {
   @apply !mx-0 !my-1;
 }
 
-.dev_blog blockquote p {
+.blog blockquote p {
   @apply text-gray-500;
 }
 
-.dev_blog > div > table > thead > tr > th {
+.blog > div > table > thead > tr > th {
   @apply border border-black text-teal-500 text-center !p-2 !font-bold;
 }
-.dev_blog > div > table > thead {
+.blog > div > table > thead {
   @apply !text-gray-800;
 }
-.dev_blog > div > table tbody > tr > td {
+.blog > div > table tbody > tr > td {
   @apply border border-black !p-2 table-cell;
 }
 
-.dev_blog > figure {
+.blog > figure {
   @apply border border-gray-400 rounded-md mx-auto overflow-hidden;
 }
 
-.dev_blog > figure img {
+.blog > figure img {
   @apply text-center mx-auto my-0 rounded-none;
 }
-.dev_blog > figure figcaption {
+.blog > figure figcaption {
   @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2 !m-0;
 }
 
-/*
-.dev_blog > p,
-.dev_blog > span,
-.dev_blog h1,
-.dev_blog h2,
-.dev_blog h3,
-.dev_blog h4,
-.dev_blog h5,
-.dev_blog h6 * {
-  @apply my-2 font-inter;
+.blog code {
+  @apply bg-gray-800 text-white px-2 py-0.5;
 }
-
-.dev_blog img {
-  @apply mx-auto rounded-lg my-2;
-}
-
-.dev_blog blockquote {
-  @apply border-l-4 border-gray-500 pl-3;
-}
-
-
-.dev_blog > p code,
-.dev_blog > ul li code {
-  @apply px-1 py-[2px] bg-slate-500 text-white text-xs rounded-sm;
-}
-
-.dev_blog > p strong {
-  @apply font-bold;
-}
-
-.dev_blog h1 {
-  font-size: 2rem;
-  font-weight: bolder;
-}
-.dev_blog h2 {
-  font-size: 1.75rem;
-  font-weight: bolder;
-}
-.dev_blog h3 {
-  font-size: 1.5rem;
-  font-weight: bolder;
-}
-.dev_blog h4 {
-  font-size: 1.25rem;
-  font-weight: bolder;
-}
-.dev_blog h5 {
-  font-size: 1rem;
-  font-weight: bolder;
-}
-.dev_blog h6 {
-  font-size: 0.75rem;
-  font-weight: bolder;
-}
-
-.dev_blog > ul {
-  @apply list-disc ml-4;
-}
-.dev_blog > ul > li > a,
-.dev_blog a {
-  @apply space-x-3 text-purple-600  font-[600] my-2  underline;
-}
-
-.dev_blog > ul ul {
-  @apply list-square ml-5;
-}
-
-.dev_blog pre {
-  @apply flex overflow-x-scroll bg-slate-700 p-4 rounded-lg text-gray-200 text-xs sm:text-sm;
-}
-j
-.dev_blog > div > table {
-  @apply border border-black;
-}
-
-.dev_blog > div > table thead {
-  @apply bg-gray-800 border border-black text-gray-300 font-normal;
-}
-
-.dev_blog > div > table tbody tr > td {
-  @apply border border-black p-1;
-}
-
-.dev_blog > div > table tbody tr:hover {
-  @apply bg-white transition duration-200;
-}
-
-.dev_blog > blockquote > p {
-  @apply flex flex-col space-y-2;
-}
-
-.dev_blog > figure {
-  @apply border border-gray-400 rounded-md mx-auto overflow-hidden;
-}
-
-.dev_blog > figure img {
-  @apply text-center mx-auto my-0 rounded-none;
-}
-.dev_blog > figure figcaption {
-  @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2;
-}
-
-
-*/
