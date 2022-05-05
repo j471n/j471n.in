@@ -6,16 +6,15 @@ import {
   opacityVariant,
 } from "../../content/FramerMotionVariants";
 import Metadata from "../../components/MetaData";
-import Loading from "../../components/Loading";
 import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
 import AnimatedText from "../../components/FramerMotion/AnimatedText";
 import Link from "next/link";
+import { getAllPosts } from "../../lib/posts";
+import { motion } from "framer-motion";
 
-export default function Blogs({ blogs, err }) {
+export default function Blogs({ blogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
   const searchInputRef = useRef();
-
-  if (!blogs && err) return <Loading />;
 
   function handleSearch(e) {
     e.preventDefault();
@@ -58,7 +57,12 @@ export default function Blogs({ blogs, err }) {
           </AnimatedText>
         </div>
 
-        <div className="px-2">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={opacityVariant}
+          className="px-2"
+        >
           <button
             type="button"
             id="view"
@@ -97,7 +101,7 @@ export default function Blogs({ blogs, err }) {
               onChange={handleSearch}
             />
           </button>
-        </div>
+        </motion.div>
 
         <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
           <AnimatePresence>
@@ -109,8 +113,8 @@ export default function Blogs({ blogs, err }) {
                 >
                   All Posts ({filteredBlogs.length})
                 </AnimatedHeading>
-                {filteredBlogs.map((blog) => {
-                  return <Blog key={blog.id} blog={blog} />;
+                {filteredBlogs.map((blog, index) => {
+                  return <Blog key={index} blog={blog} />;
                 })}
               </>
             ) : (
@@ -125,29 +129,9 @@ export default function Blogs({ blogs, err }) {
   );
 }
 
-export async function getStaticProps(ctx) {
-  try {
-    const data = await fetch("https://dev.to/api/articles/me", {
-      headers: {
-        "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-      },
-    })
-      .then((res) => res.json())
-      .catch((err) => console.error(err));
-
-    return {
-      props: {
-        blogs: data,
-        err: false,
-      },
-      // updates the page automatically after 1/2 an hour
-      revalidate: 30 * 60,
-    };
-  } catch (err) {
-    return {
-      props: {
-        error: err,
-      },
-    };
-  }
+export async function getStaticProps() {
+  const blogs = getAllPosts().map((post) => post.meta);
+  return {
+    props: { blogs },
+  };
 }

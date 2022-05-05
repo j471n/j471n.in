@@ -21,6 +21,7 @@ import {
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import { homeProfileImage } from "../utils/utils";
+import { getAllPosts } from "../lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
 
 export default function Home({ blogs }) {
@@ -101,16 +102,25 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  const blogs = await fetch("https://dev.to/api/articles/me?per_page=3", {
-    headers: {
-      "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-    },
-  }).then((res) => res.json());
+  const blogs = getAllPosts()
+    .slice(0, 3)
+    .map((post) => post.meta);
   return {
-    props: {
-      blogs,
-    },
-    // updates the page automatically after 1 hour
-    revalidate: 60 * 60,
+    props: { blogs },
   };
 }
+
+// export async function getStaticProps() {
+//   const blogs = await fetch("https://dev.to/api/articles/me?per_page=3", {
+//     headers: {
+//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
+//     },
+//   }).then((res) => res.json());
+//   return {
+//     props: {
+//       blogs,
+//     },
+//     // updates the page automatically after 1 hour
+//     revalidate: 60 * 60,
+//   };
+// }
