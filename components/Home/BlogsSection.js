@@ -12,30 +12,8 @@ export default function BlogsSection({ blogs }) {
       <HomeHeading title="Recent Posts" />
 
       <div className="flex flex-col gap-2 w-full">
-        {blogs.map((blog) => {
-          return (
-            <Link key={blog.slug} href={`/blogs/${blog.slug}`} passHref>
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-3">
-                <AnimatedDiv
-                  variants={popUpFromBottomForText}
-                  className="relative hidden md:inline-flex max-w-xs rounded-xl overflow-hidden"
-                >
-                  <Image
-                    className="rounded-xl cursor-pointer select-none"
-                    src={blog?.cover_image}
-                    alt={blog.title}
-                    width={500}
-                    height={207}
-                    quality={25}
-                    placeholder="blur"
-                    blurDataURL={blog?.cover_image}
-                  />
-                </AnimatedDiv>
-
-                <Blog blog={blog} className="active:!scale-100" />
-              </div>
-            </Link>
-          );
+        {blogs.map((blog, index) => {
+          return <Blog key={index} blog={blog} className="active:!scale-100" />;
         })}
 
         <Link href="/blogs">
