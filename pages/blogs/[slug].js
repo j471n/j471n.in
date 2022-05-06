@@ -7,7 +7,8 @@ import BlogLayout from "../../layout/BlogLayout";
 import "highlight.js/styles/atom-one-dark.css";
 
 // Components for MDX
-import Codepen from "../../components/Embed/Codepen";
+// import Codepen from "../../components/Embed/Codepen";
+import MDXComponents from "../../components/MDXComponents";
 
 export default function Post({ post }) {
   const [scroll, setScroll] = useState(0);
@@ -41,7 +42,7 @@ export default function Post({ post }) {
         <MDXRemote
           {...post.source}
           frontmatter={post.meta}
-          components={{ Codepen }}
+          components={MDXComponents}
         />
       </BlogLayout>
     </>
