@@ -130,7 +130,7 @@ export default function Blogs({ blogs }) {
 }
 
 export async function getStaticProps() {
-  const blogs = getAllPosts().map((post) => post.meta);
+  const blogs = getAllPosts();
   return {
     props: { blogs },
   };

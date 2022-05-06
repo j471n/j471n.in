@@ -102,25 +102,8 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  const blogs = getAllPosts()
-    .slice(0, 3)
-    .map((post) => post.meta);
+  const blogs = getAllPosts().slice(0, 3);
   return {
     props: { blogs },
   };
 }
-
-// export async function getStaticProps() {
-//   const blogs = await fetch("https://dev.to/api/articles/me?per_page=3", {
-//     headers: {
-//       "api-key": process.env.NEXT_PUBLIC_BLOGS_API,
-//     },
-//   }).then((res) => res.json());
-//   return {
-//     props: {
-//       blogs,
-//     },
-//     // updates the page automatically after 1 hour
-//     revalidate: 60 * 60,
-//   };
-// }
