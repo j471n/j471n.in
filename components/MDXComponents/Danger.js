@@ -1,7 +1,7 @@
 export default function Danger({ title, text }) {
   return (
     <div className="border-l-4  border-red-700 dark:border-red-500 bg-red-100 dark:bg-red-700/30 p-6 my-4 w-full">
-      <div class="text-2xl font-medium leading-tight mb-2 flex items-center gap-2 text-red-700 dark:text-red-500">
+      <div className="text-2xl font-medium leading-tight mb-2 flex items-center gap-2 text-red-700 dark:text-red-500">
         <svg
           aria-hidden="true"
           focusable="false"
