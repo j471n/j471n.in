@@ -3,11 +3,6 @@ import Metadata from "../../components/MetaData";
 
 import { getPostFromSlug, getSlugs } from "../../lib/posts";
 import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeHighlight from "rehype-highlight";
-import rehypeCodeTitles from "rehype-code-titles";
 import BlogLayout from "../../layout/BlogLayout";
 import "highlight.js/styles/atom-one-dark.css";
 
@@ -55,22 +50,12 @@ export default function Post({ post }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const { content, meta } = getPostFromSlug(slug);
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behaviour: "wrap" }],
-        rehypeHighlight,
-        rehypeCodeTitles,
-      ],
-    },
-  });
+  const { content: source, meta } = await getPostFromSlug(slug);
   return {
     props: {
       post: {
         meta,
-        source: mdxSource,
+        source,
       },
     },
   };
