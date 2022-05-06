@@ -27,7 +27,7 @@ export default function Blog({ blog, className }) {
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          className="font-medium sm:font-normal text-gray-500 sm:text-lg truncate"
+          className="font-medium sm:font-normal text-gray-500 sm:text-lg truncate-2 "
         >
           {blog.excerpt}
         </AnimatedText>

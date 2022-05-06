@@ -45,9 +45,9 @@ export default function BlogLayout({ post, children }) {
         >
           {children}
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-2 print:hidden  sm:justify-between p-2 w-full">
+        <div className="w-full flex flex-col items-center gap-2 my-10 ">
           <h3
-            style={{ margin: "0 !important" }}
+            style={{ margin: "0" }}
             className="font-semibold text-xl dark:text-white"
           >
             Share on Social Media:
