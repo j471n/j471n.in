@@ -1,6 +1,6 @@
 export default function Codepen({ id }) {
   return (
-    <div className="my-3">
+    <div className="my-3 print:hidden">
       <h3>Codepen</h3>
       <iframe
         height="600"
