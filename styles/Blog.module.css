@@ -42,16 +42,26 @@
 }
 
 .blog > figure {
-  @apply border border-gray-400 rounded-md mx-auto overflow-hidden;
+  @apply rounded-md mx-auto overflow-hidden;
 }
 
 .blog > figure img {
-  @apply text-center mx-auto my-0 rounded-none;
+  @apply mx-auto my-0 rounded-lg;
 }
 .blog > figure figcaption {
-  @apply text-center text-sm font-medium md:font-semibold text-black bg-gray-300 p-2 !m-0;
+  @apply text-center text-sm font-medium italic text-gray-500 max-w-xl  mx-auto;
 }
 
 .blog code {
-  @apply bg-gray-800 text-white px-2 py-0.5;
+  @apply bg-gray-600 text-white px-2 py-0.5;
+}
+
+.blog h1 code,
+.blog h2 code,
+.blog h3 code,
+.blog h4 code,
+.blog h5 code,
+.blog h6 code,
+.blog ul li * {
+  @apply bg-transparent font-semibold my-2 text-blue-500;
 }

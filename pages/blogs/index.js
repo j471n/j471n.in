@@ -50,10 +50,8 @@ export default function Blogs({ blogs }) {
             className="font-medium text-lg"
           >
             I've been writing online since 2021, mostly about web development
-            and tech careers. In total, I've written {blogs.length} articles on{" "}
-            <Link href="https://dev.to/j471n" passHref>
-              <span className="underline">my blog</span>
-            </Link>
+            and tech careers. In total, I've written {blogs.length} articles
+            till now.
           </AnimatedText>
         </div>
 
@@ -109,7 +107,7 @@ export default function Blogs({ blogs }) {
               <>
                 <AnimatedHeading
                   variants={opacityVariant}
-                  className="text-left font-bold text-3xl"
+                  className="text-left font-bold text-3xl my-5"
                 >
                   All Posts ({filteredBlogs.length})
                 </AnimatedHeading>
