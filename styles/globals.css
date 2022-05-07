@@ -8,6 +8,9 @@ html {
   overflow-x: hidden;
   scroll-behavior: auto;
 }
+body::-webkit-scrollbar {
+  width: 6px;
+}
 
 /* Adding Scroll Margin for top */
 * {
@@ -16,6 +19,9 @@ html {
 @media screen and (max-width: 640px) {
   * {
     scroll-margin-top: 60px;
+  }
+  body::-webkit-scrollbar {
+    width: 2px;
   }
 }
 
