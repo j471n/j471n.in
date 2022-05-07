@@ -1,0 +1,23 @@
+.uses {
+  @apply font-barlow;
+}
+
+.uses p {
+  @apply text-lg;
+}
+
+.uses h2 > * {
+  @apply !font-barlow font-semibold text-2xl sm:text-3xl !text-gray-600;
+}
+
+.uses ul {
+  @apply text-gray-500 sm:text-lg m-5;
+}
+
+.uses ul li {
+  @apply list-disc list-inside;
+}
+
+.uses a {
+  @apply underline text-gray-500;
+}

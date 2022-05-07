@@ -6,6 +6,7 @@ export const resumeDownloadLink =
 export const navigationRoutes = [
   "home",
   "stats",
+  "uses",
   "blogs",
   "certificates",
   "projects",
