@@ -20,14 +20,16 @@ export default function Blog({ blog, className }) {
         </div>
         <AnimatedText
           variants={popUpFromBottomForText}
-          className="text-gray-500 text-xs sm:text-sm"
+          className="text-gray-500 text-xs sm:text-sm flex gap-2"
         >
-          {blog.stringDate}
+          <span>{blog.stringDate}</span>
+          <span>•</span>
+          <span>{blog.readingTime.text}</span>
         </AnimatedText>
 
         <AnimatedText
           variants={popUpFromBottomForText}
-          className="font-medium sm:font-normal text-gray-500 sm:text-lg truncate-2 "
+          className="text-sm sm:text-base sm:font-normal text-gray-500 truncate-2 "
         >
           {blog.excerpt}
         </AnimatedText>

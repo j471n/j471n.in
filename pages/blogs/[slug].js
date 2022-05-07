@@ -51,11 +51,12 @@ export default function Post({ post }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const { content: source, meta } = await getPostFromSlug(slug);
+  const { content: source, meta, readingTime } = await getPostFromSlug(slug);
   return {
     props: {
       post: {
         meta,
+        readingTime,
         source,
       },
     },

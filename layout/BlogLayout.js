@@ -4,8 +4,10 @@ import Image from "next/image";
 import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
+import Newsletter from "../components/Newsletter";
 
 export default function BlogLayout({ post, children }) {
+  console.log(post);
   const [pageURL, setPageURL] = useState("");
   useEffect(() => {
     setPageURL(window.location.href);
@@ -23,21 +25,33 @@ export default function BlogLayout({ post, children }) {
 
         <div
           style={{ marginBottom: "0 !important" }}
-          className="flex flex-col items-start justify-between md:flex-row md:items-center"
+          className="flex items-center !w-full"
         >
-          <div className="flex items-center">
-            <Image
-              alt="Jatin Sharma"
-              height={30}
-              width={30}
-              src={AvatarImage}
-              className="rounded-full"
-            />
-            <p className="ml-2 text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium">
-              <span>Jatin Sharma</span>
-              <span>•</span>
-              <span>{post.meta.stringDate}</span>
-            </p>
+          <div className="flex items-center gap-2 w-full">
+            <div className="relative w-10 h-10 sm:w-8 sm:h-8">
+              <Image
+                alt="Jatin Sharma"
+                height={30}
+                width={30}
+                src={AvatarImage}
+                layout="responsive"
+                className="rounded-full"
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row sm:justify-between w-full">
+              <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
+                <span>Jatin Sharma</span>
+                <span>•</span>
+                <span>{post.meta.stringDate}</span>
+              </p>
+
+              {/* { text: '3 min read', minutes: 2.955, time: 177300, words: 591 } */}
+              <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
+                <span>{post.readingTime.text}</span>
+                <span>•</span>
+                <span>{post.readingTime.words} words</span>
+              </p>
+            </div>
           </div>
         </div>
         <div
@@ -45,6 +59,9 @@ export default function BlogLayout({ post, children }) {
         >
           {children}
         </div>
+
+        <Newsletter />
+
         <div className="w-full flex flex-col items-center gap-2 my-10 ">
           <h3
             style={{ margin: "0" }}
