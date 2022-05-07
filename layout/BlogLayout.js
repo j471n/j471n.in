@@ -7,7 +7,6 @@ import { FiPrinter } from "react-icons/fi";
 import Newsletter from "../components/Newsletter";
 
 export default function BlogLayout({ post, children }) {
-  console.log(post);
   const [pageURL, setPageURL] = useState("");
   useEffect(() => {
     setPageURL(window.location.href);
