@@ -19,7 +19,6 @@ export default async function handler(req, res) {
       body: data,
     }).then((res) => res.json());
 
-    console.log(response);
     return res.status(200).json({
       title: response.title,
       status: response.status,
