@@ -15,6 +15,7 @@ You may have seen various types of website in that there is a button that takes 
 
 Firstly, We need to create a `button`. For that in your main page or in the `body` of your HTML create a `button` with your suitable icon, for instance `arrow-up`.
 
+<CodeTitle title="index.html" />
 ```html
 <button class="scroll-button">
   <img
@@ -28,6 +29,7 @@ Also, you need to make sure that your button is directly inside the body on leve
 
 **Wrong Place-**
 
+<CodeTitle title="index.html" />
 ```html
 <!--WRONG-->
 <body>
@@ -42,6 +44,7 @@ Also, you need to make sure that your button is directly inside the body on leve
 
 **Correct Place-**
 
+<CodeTitle title="index.html" />
 ```html
 <!--CORRECT-->
 <body>
@@ -54,6 +57,7 @@ Also, you need to make sure that your button is directly inside the body on leve
 </body>
 ```
 
+<CodeTitle title="directory" />
 ```
 body/
 ├─ level-one
@@ -69,6 +73,7 @@ The above code explains that how the button should be placed on a level-one.
 
 Now we've created a button we need to style it. You can style, however you want, but there are many things which you should remember, for that look at the following code-
 
+<CodeTitle title="styles.css" />
 ```css
 .scroll-button {
   /* position should be fixed so that it sticks to the bottom */
@@ -103,6 +108,7 @@ Now we've created a button we need to style it. You can style, however you want,
 
 Now we have a button and we've styled it also. Now we just need to make it work so that we can scroll to the top. For that we are going to use Javascript.
 
+<CodeTitle title="script.js" />
 ```js
 const scrollButton = document.querySelector(".scroll-button");
 
@@ -122,6 +128,8 @@ scrollButton.addEventListener("click", () => {
 });
 ```
 
+
+<CodeTitle title="styles.css" />
 ```css
 .show-btn {
   opacity: 1 !important;
@@ -135,8 +143,8 @@ scrollButton.addEventListener("click", () => {
 
 You can also create a component of this button and place that in your React app. For that you will require the following code.
 
+<CodeTitle title="components/ScrollToTopButton.jsx" />
 ```jsx
-// .../components/ScrollToTopButton.jsx
 // used Technologies : tailwindCSS, React, React-icons
 
 import { IoIosArrowUp } from "react-icons/io";
@@ -184,6 +192,7 @@ export default function ScrollToTopButton() {
 
 ### How to use this Component?
 
+<CodeTitle title="src/App.js" />
 ```jsx
 // ..App.js
 import ScrollToTopButton from "./components/ScrollToTopButton";

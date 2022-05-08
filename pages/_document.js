@@ -17,7 +17,7 @@ export default function Document() {
         ></link>
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Exo+2:wght@400;500;600;&family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&family=Sarina&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Exo+2:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&family=Sarina&display=swap"
         ></link>
         <link
           rel="stylesheet"

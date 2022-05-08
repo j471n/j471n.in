@@ -19,22 +19,22 @@ First of all, let's visualize what I am talking about -
 
 To make this work we need to use a library called [typed.js](https://mattboldt.github.io/typed.js/) So firstly add the following script to your project.
 
+<CodeTitle title="index.html" />
 ```html
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 ```
 
 Now let's look at the rest of code, how this is cooking.
 
-### HTML
-
+<CodeTitle title="index.html" />
 ```html
 <h1>Hi, I am <span class="title"></span></h1>
 ```
 
 HTML is very simple we just need to use only one element in order to make this work.
 
-### JS
 
+<CodeTitle title="script.js" />
 ```js
 var options = {
   strings: ["Jatin Sharma", "React Developer", "Python Developer"],

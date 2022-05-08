@@ -17,6 +17,7 @@ I'm using the vanilla Javascript to show the demo you can use `axios` as well.
 
 ### Fetch the public Articles without `API_KEY`
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(`https://dev.to/api/articles?username=${username}`).then(
   (res) => res.json()
@@ -25,6 +26,7 @@ const article = fetch(`https://dev.to/api/articles?username=${username}`).then(
 
 ### Fetch the public Articles by `API_KEY`
 
+<CodeTitle title="script.js" />
 ```js
 const articles = fetch("https://dev.to/api/articles/me", {
   headers: {
@@ -35,6 +37,7 @@ const articles = fetch("https://dev.to/api/articles/me", {
 
 ### Fetch the Articles by Path (`slug`)
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(
   `https://dev.to/api/articles/<your_username>/${slug}`
@@ -43,6 +46,7 @@ const article = fetch(
 
 ### Fetch the Articles by `article_id`
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(`https://dev.to/api/articles/${articleId}`).then((res) =>
   res.json()
@@ -51,6 +55,7 @@ const article = fetch(`https://dev.to/api/articles/${articleId}`).then((res) =>
 
 ### Fetch the Comments of article by `article_id`
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(
   `https://dev.to/api/comments?a_id=${articleId}?sort=-created_at`
@@ -59,6 +64,7 @@ const article = fetch(
 
 ### Fetch the user by `user_id`
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(`https://dev.to/api/users/${userId}`).then((res) =>
   res.json()
@@ -67,6 +73,7 @@ const article = fetch(`https://dev.to/api/users/${userId}`).then((res) =>
 
 ### Fetch the user by `username`
 
+<CodeTitle title="script.js" />
 ```js
 const article = fetch(
   `https://dev.to/api/users/by_username?url=${username}`

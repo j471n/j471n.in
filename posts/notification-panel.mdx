@@ -19,6 +19,8 @@ To get all the icons you can Sign Up to the [FontAwesome](https://fontawesome.co
 
 ### HTML
 
+<CodeTitle title="index.html" />
+
 ```html
 <div class="container">
   <button class="icon">
@@ -31,7 +33,8 @@ I'm showing just a single icon button (`.icon`), but there are more than just on
 
 ### CSS
 
-```css
+<CodeTitle title="styles.css" />
+```css 
 :root {
   --icon-bg: #212121;
   --icon-fg: gray;
@@ -49,14 +52,14 @@ I'm showing just a single icon button (`.icon`), but there are more than just on
 }
 
 .icon {
-  all: unset; /* removing all the pre defined style */
+  all: unset; /_ removing all the pre defined style _/
   font-size: 1.4rem;
   width: 40px;
   height: 40px;
   padding: 0.5rem;
   border-radius: 999px;
 
-  display: grid; /* making icon center horizontally and vertically */
+  display: grid; /_ making icon center horizontally and vertically _/
   place-items: center;
 
   background: var(--icon-bg);
@@ -65,7 +68,7 @@ I'm showing just a single icon button (`.icon`), but there are more than just on
 
   transition: background 200ms ease-in-out;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; /* Removing Blue Highlight box */
+  -webkit-tap-highlight-color: transparent; /_ Removing Blue Highlight box _/
 }
 
 /* To Prevent Hover on smaller Devices */
@@ -74,16 +77,17 @@ I'm showing just a single icon button (`.icon`), but there are more than just on
     border: 2px solid white;
     box-shadow: 0 0 20px -5px white;
   }
+  /* Change the bg and fg */
+  .active-icon {
+    --icon-bg: white;
+    --icon-fg: black;
+  }
 }
-/* Change the bg and fg */
-.active-icon {
-  --icon-bg: white;
-  --icon-fg: black;
-}
-```
+````
 
 ### Javascript
 
+<CodeTitle title="script.js" />
 ```js
 const icons = document.querySelectorAll(".icon");
 // Adding an event listener to the icons to change the active status
@@ -92,6 +96,6 @@ icons.forEach((icon) =>
     icon.classList.toggle("active-icon");
   })
 );
-```
+````
 
 <Codepen id="QWqeOjg" />

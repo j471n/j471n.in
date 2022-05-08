@@ -20,16 +20,13 @@ To make Next.js app into PWA, we need the given things -
 To convert your nextjs app into PWA you need to install this package via `npm` or `yarn`  
 to install this run -
 
-```bash
-npm i next-pwa # npm
-yarn add next-pwa # yarn
-```
+<CodeTitle title="bash" />
+```bash npm i next-pwa # npm yarn add next-pwa # yarn ```
 
 After installation go to your next `next.config.js` as update it as follows -
 
+<CodeTitle title="next.config.js" />
 ```js
-// next.confg.js
-
 const withPWA = require("next-pwa");
 module.exports = withPWA({
   //...before
@@ -46,10 +43,8 @@ module.exports = withPWA({
 
 We don't need to add external service worker the `next-pwa` will take care of that and it will auto generate the `sw.js` for us so we don't need to do anything in that
 
-```
-├── public
-|  ├── sw.js
-```
+<CodeTitle title="directory" />
+``` ├── public | ├── sw.js ```
 
 ### 3\. Manifest and Icons
 
@@ -61,17 +56,13 @@ Fill all the details and attach the `icon` in 512x512 it will generate the icons
 
 Go to your public directory and create a folder `icons` and put all the icons in that folder like this
 
-```
-├── public
-|  ├── icons
-|  |  ├── icons.png
-```
+<CodeTitle title="directory" />
+``` ├── public | ├── icons | | ├── icons.png ```
 
 after that create a `manifest.json` in you `public/` which should be look like this -
 
+<CodeTitle title="manifest.json" />
 ```json
-// manifest.json
-
 {
   "theme_color": "#000",
   "background_color": "#fff",
@@ -110,18 +101,10 @@ After that we need the `favicon` to get that go to [Favicon Generator](https://f
 
 Here is the path -
 
-```
-├── public
-|  ├── apple-touch-icon.png
-|  ├── favicon.ico
-|  ├── icons
-|  |  ├── icon-192x192.png
-|  |  ├── icon-256x256.png
-|  |  ├── icon-384x384.png
-|  |  ├── icon-512x512.png
-|  |  └── maskable.png
-|  ├── manifest.json
-```
+<CodeTitle title="directory" />
+``` ├── public | ├── apple-touch-icon.png | ├── favicon.ico | ├── icons | | ├── icon-192x192.png
+| | ├── icon-256x256.png | | ├── icon-384x384.png | | ├── icon-512x512.png | | └──
+maskable.png | ├── manifest.json ```
 
 ### 4\. Maskable Icon
 
@@ -135,30 +118,28 @@ always choose the square ration and remember the ratio because we will need it i
 
 After downloading the `icon` put it into the `public/icons/`
 
-```
-├── public
-|  ├── icons
-|  |  └── maskable.png
-```
+<CodeTitle title="directory" />
+``` ├── public | ├── icons | | └── maskable.png ```
 
 and add that to the `manifest.json`
 
+<CodeTitle title="manifest.json" />
 ```json
-// manifest.json
 
 "icons": [
 
 // ...
-    {
-      "src": "maskable.png",
-      "sizes": "48x48",
-      "type": "image/x-icon",
-      "purpose": "maskable"
-    },
+{
+"src": "maskable.png",
+"sizes": "48x48",
+"type": "image/x-icon",
+"purpose": "maskable"
+},
 
 //...
 ]
-```
+
+````
 
 Here you need to specify the size of the maskable image if the image size is `512x512` then in the `json` it should be `"sizes": "512x512"`
 
@@ -166,8 +147,8 @@ Here you need to specify the size of the maskable image if the image size is `51
 
 Now to get all this work we need some meta tags put them wher is the `Head` of your application, which are given below
 
+<CodeTitle title="index.html" />
 ```html
-<!-- index.js -->
 
 <Head>
   <meta charset="utf-8" />
@@ -181,7 +162,7 @@ Now to get all this work we need some meta tags put them wher is the `Head` of y
   <link rel="apple-touch-icon" href="/apple-icon.png"></link>
 </Head>;
 
-```
+````
 
 After all that Go to the Developer Console and Generate Resport for PWA in Lighthouse you will see the PWA and installable badge.
 
