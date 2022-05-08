@@ -1,29 +1,22 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
-export default function AnimatedButton(props) {
-  const [ref, inView] = useInView();
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      if (props.infinity) {
-        controls.start("hidden");
-      }
-    }
-  }, [controls, inView]);
-
+export default function AnimatedButton({
+  onClick,
+  infinity,
+  className,
+  children,
+  variants,
+}) {
   return (
     <motion.button
-      ref={ref}
-      animate={controls}
+      className={className}
       initial="hidden"
-      {...props}
+      onClick={onClick}
+      variants={variants}
+      whileInView="visible"
+      viewport={{ once: !infinity }}
     >
-      {props.children}
+      {children}
     </motion.button>
   );
 }

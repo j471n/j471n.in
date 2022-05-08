@@ -1,34 +1,23 @@
-// import Link from "next/link";
-// import { motion, useAnimation } from "framer-motion";
-// import { useInView } from "react-intersection-observer";
-// import { cardFromRight, fromBottomVariant, fromLeftVariant, fromRightVariant } from "../content/FramerMotionVariants";
-// import { useEffect } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { popUp } from "../content/FramerMotionVariants";
 
 export default function SocialIcon({ Icon, title, url }) {
-  // const controls = useAnimation();
-  // const [ref, inView] = useInView({
-  //   threshold: 0.4,
-  // });
-
-  // useEffect(() => {
-  //   if (inView) {
-  //     controls.start("visible");
-  //   } else {
-  //     controls.start("hidden");
-  //   }
-  // }, [inView]);
-
   return (
-    <a
-      // ref={ref}
-      // initial="hidden"
-      // animate={controls}
-      // variants={fromBottomVariant}
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <Icon className="icon" title={title} />
-    </a>
+    <Link href={url} passHref>
+      <motion.a
+        // initial="hidden"
+        // whileInView="visible"
+        variants={popUp}
+        href={url}
+        rel="noopener noreferrer"
+        target="_blank"
+        whileHover={{ scale: 1.2 }}
+        whileTap={{ scale: 0.8 }}
+        aria-label={title}
+      >
+        <Icon className="icon" title={title} />
+      </motion.a>
+    </Link>
   );
 }

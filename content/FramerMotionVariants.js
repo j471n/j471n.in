@@ -232,7 +232,6 @@ export const opacityVariant = {
   visible: { opacity: 1, transition: { delay: 0.2 } },
 };
 
-
 export const buttonsLinearVariant = {
   hidden: { y: 50, opacity: 0 },
   visible: {
@@ -241,6 +240,48 @@ export const buttonsLinearVariant = {
     transition: {
       type: "tween",
       velocity: 10,
+    },
+  },
+};
+
+export const hamFastFadeContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+export const mobileNavItemSideways = {
+  hidden: { x: -40, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+};
+
+export const FadeContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delayChildren: 0, staggerChildren: 0.1 },
+  },
+};
+
+export const FromRightContainer = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      stiffness: 100,
+      delayChildren: 0,
+      staggerChildren: 0.2,
     },
   },
 };

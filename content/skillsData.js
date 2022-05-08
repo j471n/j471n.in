@@ -4,7 +4,7 @@ module.exports = [
     name: "HTML",
     level: 100,
     icon: "img/skills/html.webp",
-    pinned: false,
+    pinned: true,
     about:
       "The HyperText Markup Language, or HTML is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets and scripting languages such as JavaScript.",
     url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
@@ -14,14 +14,14 @@ module.exports = [
     name: "CSS",
     level: 95,
     icon: "img/skills/css.webp",
-    pinned: false,
+    pinned: true,
     about:
       "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.",
     url: "https://developer.mozilla.org/en-US/docs/Web/CSS",
   },
   {
     id: 3,
-    name: "javascript",
+    name: "Javascript",
     level: 80,
     icon: "img/skills/js.webp",
     pinned: true,
@@ -51,7 +51,7 @@ module.exports = [
   },
   {
     id: 6,
-    name: "react.js",
+    name: "React.js",
     level: 80,
     icon: "img/skills/reactjs.webp",
     pinned: true,
@@ -71,7 +71,7 @@ module.exports = [
   },
   {
     id: 7,
-    name: "tailwind CSS",
+    name: "Tailwind CSS",
     level: 100,
     icon: "img/skills/tailwind.webp",
     pinned: true,
@@ -94,7 +94,7 @@ module.exports = [
     name: "C++",
     level: 60,
     icon: "img/skills/cpp.webp",
-    pinned: false,
+    pinned: true,
     about:
       'C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes".',
     url: "https://en.wikipedia.org/wiki/C%2B%2B",
@@ -114,14 +114,14 @@ module.exports = [
     name: "MySQL",
     level: 85,
     icon: "img/skills/mysql.webp",
-    pinned: false,
+    pinned: true,
     about:
       'MySQL is an open-source relational database management system. Its name is a combination of "My", the name of co-founder Michael Widenius\'s daughter, and "SQL", the abbreviation for Structured Query Language.',
     url: "https://www.mysql.com/",
   },
   {
     id: 12,
-    name: "git",
+    name: "Git",
     level: 95,
     icon: "img/skills/git.webp",
     pinned: true,
@@ -144,7 +144,7 @@ module.exports = [
     name: "Nodejs",
     level: 50,
     icon: "img/skills/nodejs.webp",
-    pinned: true,
+    pinned: false,
     about:
       "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.",
     url: "https://nodejs.org/en/",
@@ -184,7 +184,7 @@ module.exports = [
     name: "MS Office",
     level: 70,
     icon: "img/skills/msOffice.webp",
-    pinned: false,
+    pinned: true,
     about:
       "Microsoft Office is a suite of applications designed to help with productivity and completing common tasks on a computer. You can create and edit documents containing text and images, work with data in spreadsheets and databases, and create presentations and posters. Word. Excel. PowerPoint.",
     url: "https://en.wikipedia.org/wiki/Microsoft_Office",

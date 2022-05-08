@@ -1,6 +1,4 @@
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 export default function AnimatedText({
   variants,
@@ -8,26 +6,11 @@ export default function AnimatedText({
   children,
   infinity,
 }) {
-  const [ref, inView] = useInView({
-    threshold: 0.4,
-  });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      if (infinity) {
-        controls.start("hidden");
-      }
-    }
-  }, [controls, inView]);
-
   return (
     <motion.p
-      ref={ref}
-      animate={controls}
       initial="hidden"
+      whileInView="visible"
+      viewport={{ once: !infinity }}
       variants={variants}
       className={className}
     >

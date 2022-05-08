@@ -15,6 +15,9 @@
 # production
 /build
 
+# private markdown
+meta.md
+
 # misc
 .DS_Store
 *.pem

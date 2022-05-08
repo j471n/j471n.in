@@ -1,25 +1,18 @@
-import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
-import AnimatedHeading from "../FramerMotion/AnimatedHeading";
+import { HomeHeading } from "../../pages";
 import QuestionAndAnswer from "./QuestionAndAnswer";
 
 function FAQ({ faqs = [] }) {
   return (
-    <section className="bg-white dark:bg-darkPrimary">
-      <div className="px-8 md:px-36 py-8 mx-auto">
-        <AnimatedHeading
-          variants={popUpFromBottomForText}
-          infinity={true}
-          className="text-2xl font-bold text-center sm:text-left lg:text-center text-gray-800 lg:text-4xl dark:text-white"
-        >
-          Frequently asked questions
-        </AnimatedHeading>
+    <section className="mx-5">
+      <div className="py-8 mx-auto">
+        <HomeHeading title="Frequently asked questions" />
 
-        <div className="grid grid-cols-1 gap-8 mt-8 lg:mt-16 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 mt-8 lg:mt-16 sm:grid-cols-2">
           {faqs.map((faq) => {
             if (!faq.question && !faq.answer) return null;
             return (
               <QuestionAndAnswer
-                key={faq.question}a
+                key={faq.question}
                 question={faq.question}
                 answer={faq.answer}
               />

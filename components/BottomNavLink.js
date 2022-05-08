@@ -14,7 +14,7 @@ const bottomNavVariant = {
 
 export default function BottomNavLink({ Icon, active, href, title }) {
   return (
-    <Link href={href}>
+    <Link href={href} passHref >
       <div
         className={`relative flex flex-col flex-grow transition-all  ${
           active ? "dark:text-purple-400" : "dark:text-gray-400"
