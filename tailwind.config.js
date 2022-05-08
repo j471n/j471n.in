@@ -13,6 +13,7 @@ module.exports = {
       sarina: ["Sarina", "cursive"],
       "open-sans": ["Open Sans", "sans-serif"],
       barlow: ["Barlow", "sans-serif"],
+      code: ["Source Code Pro", "monospace"],
     },
     extend: {
       // typography: (theme) => ({

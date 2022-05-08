@@ -65,3 +65,14 @@
 .blog ul li * {
   @apply bg-transparent font-semibold my-2 text-blue-500;
 }
+
+.blog
+  /* > div[data-rehype-pretty-code-fragment] */
+   div[data-rehype-pretty-code-title] {
+  @apply bg-[#1f2937] rounded-tl-md rounded-tr-md p-3 border-b text-gray-500 dark:text-white;
+}
+
+/* Main code */
+.blog > div[data-rehype-pretty-code-fragment] > pre {
+  @apply my-0 border border-gray-50/50 border-t-0 rounded-none rounded-bl-md rounded-br-md  rounded-tl-none rounded-tr-none;
+}
