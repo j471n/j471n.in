@@ -61,7 +61,7 @@ export default function BlogLayout({ post, children }) {
 
         <Newsletter />
 
-        <div className="w-full flex flex-col items-center gap-2 my-10 ">
+        <div className="w-full flex flex-col items-center gap-2 my-10 print:hidden">
           <h3
             style={{ margin: "0" }}
             className="font-semibold text-xl dark:text-white"

@@ -41,7 +41,7 @@ export default function Newsletter() {
 
   return (
     <>
-      <div className="w-full p-4 font-barlow rounded-lg border-2 bg-gray-50/40 dark:bg-darkSecondary/20 dark:border-neutral-600 flex flex-col gap-4 mt-10">
+      <div className="w-full p-4 font-barlow rounded-lg border-2 bg-gray-50/40 dark:bg-darkSecondary/20 dark:border-neutral-600 flex flex-col gap-4 mt-10 print:hidden">
         <h2 className="text-2xl font-bold dark:text-white !my-0">
           Jatin's Newsletter
         </h2>
