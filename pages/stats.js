@@ -15,10 +15,10 @@ import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
 
 export default function Stats() {
-  const { data: devto } = useSWR("/api/stats/devto", fetcher);
-  const { data: github } = useSWR("/api/stats/github", fetcher);
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
   const { data: artists } = useSWR("/api/stats/artists", fetcher);
+  const { data: devto } = useSWR("/api/stats/devto", fetcher);
+  const { data: github } = useSWR("/api/stats/github", fetcher);
 
   const stats = [
     {

@@ -1,24 +1,43 @@
 import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { sanitize } from "dompurify";
-import { useDarkMode } from "../context/darkModeContext";
 import { ToastContainer, toast } from "react-toastify";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
-  const { isDarkMode } = useDarkMode();
+
+  const toastOptions = {
+    theme: "colored",
+    className: "w-full sm:w-96 font-inter",
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+  };
 
   async function subscribeNewsLetter(e) {
     e.preventDefault();
-
     setLoading(true);
 
-    if (email === "") {
+    // validating the email if it is disposable or not
+    const { disposable } = await fetch(
+      `https://open.kickbox.com/v1/disposable/${email.split("@")[1]}`,
+      { method: "GET" }
+    ).then((res) => res.json());
+
+    if (disposable) {
       setLoading(false);
-      return toast.error("Forgot to add your email? 🤔");
+      return toast.error(
+        "You almost had me, now seriously enter the valid email",
+        toastOptions
+      );
     }
 
+    // Adding the subscriber to the database
     fetch("/api/subscribe", {
       method: "POST",
       body: JSON.stringify({
@@ -27,15 +46,13 @@ export default function Newsletter() {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res.status === 400 && res.title === "Member Exists") {
-          toast.error(res.title);
-        } else if (res.status === "subscribed") {
-          toast.success("You've subscribed successfully");
+        console.log("client:", res);
+        if (res.error) {
+          toast.error(res.msg, toastOptions);
         } else {
-          toast.error("Something went wrong");
+          toast.success(res.msg, toastOptions);
         }
         setLoading(false);
-        setEmail("");
       });
   }
 
@@ -57,13 +74,12 @@ export default function Newsletter() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@email.com"
-            required={true}
+            required
           />
 
           <button
             className="absolute right-0 top-0 bottom-0 px-4 m-[3px] bg-white dark:text-white dark:bg-neutral-600/40   rounded-md font-medium font-inter transform duration-200 active:scale-90 select-none"
             type="submit"
-            onClick={subscribeNewsLetter}
           >
             <div className="relative flex items-center gap-2 !my-0">
               {loading ? (
@@ -98,9 +114,18 @@ export default function Newsletter() {
         </form>
       </div>
       <ToastContainer
-        theme={isDarkMode ? "dark" : "light"}
+        className="w-full mx-auto"
+        theme={"colored"}
         style={{ zIndex: 1000 }}
-        autoClose={true}
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
       />
     </>
   );

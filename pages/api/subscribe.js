@@ -1,32 +1,32 @@
-import { getRequestParams } from "../../lib/newsletter";
-
 export default async function handler(req, res) {
   const body = req.body;
   const { email } = JSON.parse(body);
 
-  if (!email || !email.length) {
+  if (!email) {
     return res.status(400).json({
-      error: "Forgot to add your email?",
+      error: true,
+      msg: "Forgot to add your email?",
     });
   }
 
-  try {
-    const { url, data, headers } = getRequestParams(email);
+  const result = await fetch("https://www.getrevue.co/api/v2/subscribers", {
+    method: "POST",
+    headers: {
+      Authorization: `Token ${process.env.REVUE_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+  });
+  const data = await result.json();
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers,
-      body: data,
-    }).then((res) => res.json());
+  console.log("server-", data);
 
-    return res.status(200).json({
-      title: response.title,
-      status: response.status,
-    });
-    // Success
-  } catch (error) {
-    return res.status(400).json({
-      error: "Oops, something went wrong... Try again later",
-    });
+  if (!result.ok) {
+    return res.status(500).json({ error: true, msg: data.error.email[0] });
   }
+
+  return res.status(201).json({
+    error: false,
+    msg: "Voilà, you are on my list. Please check your inbox",
+  });
 }
