@@ -53,6 +53,17 @@ export default function BlogLayout({ post, children }) {
             </div>
           </div>
         </div>
+
+        {/* <div>
+          <Image
+            alt=""
+            height={420}
+            width={1000}
+            src={`/blogs/${post.meta.slug}/banner.png`}
+            layout="responsive"
+            className="rounded-md"
+          />
+        </div> */}
         <div
           className={` ${styles.blog} !w-full prose-sm  selection:bg-blue-100 selection:text-white-400 dark:text-neutral-400 my-2  font-medium prose-stone`}
         >
@@ -73,6 +84,7 @@ export default function BlogLayout({ post, children }) {
             title={post.meta.title}
             url={pageURL}
             summary={post.meta.excerpt}
+            cover_image={`/blogs/${post.meta.slug}/banner.png`}
           >
             <div className="bg-blue-600 text-white w-[30px] h-[30px] grid place-items-center cursor-pointer rounded-full clickable_button scroll-mt-20">
               <FiPrinter className="" onClick={() => window.print()} />
