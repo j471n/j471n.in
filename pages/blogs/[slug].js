@@ -30,7 +30,11 @@ export default function Post({ post }) {
 
   return (
     <>
-      <Metadata title={post.meta.title} />
+      <Metadata
+        title={post.meta.title}
+        description={post.meta.excerpt}
+        previewImage={`/blogs/${post.meta.slug}/banner.png`}
+      />
       <div
         className="!fixed left-0 w-full h-1 bg-blue-600 origin-top-left  transform duration-300 top-[52px] sm:top-[72px]"
         style={{
