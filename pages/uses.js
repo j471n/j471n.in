@@ -11,7 +11,11 @@ import styles from "../styles/Uses.module.css";
 export default function Uses({ post }) {
   return (
     <>
-      <MetaData title={post.meta.title} />
+      <MetaData
+        title={post.meta.title}
+        description={post.meta.excerpt}
+        previewImage="/pageBanner/uses.png"
+      />
 
       <section className="pageTop font-inter">
         <PageTop pageTitle={post.meta.title}>{post.meta.excerpt}</PageTop>

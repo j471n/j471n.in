@@ -53,7 +53,12 @@ export default function Stats() {
 
   return (
     <>
-      <MetaData title="Stats" />
+      <MetaData
+        title="Statistics"
+        description=" These are my personal statistics about me built with Next.js API
+          routes. It includes My Blogs and github Stats and top music stats."
+        previewImage="/pageBanner/stats.png"
+      />
 
       <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">

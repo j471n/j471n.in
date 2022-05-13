@@ -27,7 +27,11 @@ import { getAllPosts } from "../lib/posts";
 export default function Home({ blogs }) {
   return (
     <>
-      <Metadata title="About" />
+      <Metadata
+        description="I am currently perusing my Bachelor Degree in Computer Science. I
+              can code in Python, C, C++, etc. I also work on React & Next.js"
+        previewImage="/pageBanner/index.png"
+      />
       <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
         <section className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen">
           <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
