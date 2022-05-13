@@ -4,6 +4,7 @@ import { getProjects } from "../lib/dataFetch";
 import Metadata from "../components/MetaData";
 import { AnimatePresence } from "framer-motion";
 import PageTop from "../components/PageTop";
+import { pagePreviewImage } from "../utils/utils";
 
 export default function Projects({ projects }) {
   return (
@@ -11,7 +12,7 @@ export default function Projects({ projects }) {
       <Metadata
         title="Projects"
         description={` I've been making various types of projects some of them were basics and some of them were complicated. So far I've made ${projects.length} projects.`}
-        previewImage="/pageBanner/projects.png"
+        previewImage={pagePreviewImage.projects}
       />
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto p-4 mb-10">
         <PageTop pageTitle="Projects">

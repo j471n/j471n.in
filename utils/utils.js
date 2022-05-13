@@ -11,3 +11,12 @@ export const navigationRoutes = [
   "certificates",
   "projects",
 ];
+
+export const pagePreviewImage = {
+  home: "https://imgur.com/oYlyddc.png",
+  stats: "https://imgur.com/eSS84ff.png",
+  uses: "https://imgur.com/wbmHm2d.png",
+  blogs: "https://imgur.com/Anrnix9.png",
+  certificates: "https://imgur.com/GyWZVXc.png",
+  projects: "https://imgur.com/sJmnqGt.png",
+};

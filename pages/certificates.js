@@ -11,6 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
+import { pagePreviewImage } from "../utils/utils";
 
 export default function Certificates() {
   return (
@@ -18,7 +19,7 @@ export default function Certificates() {
       <MetaData
         title="Certificates"
         description="I've participated in many contests, courses and test and get certified in many skills. You can find the certificates below."
-        previewImage="/pagesBanner/certificate.png"
+        previewImage={pagePreviewImage.certificates}
       />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto mb-20">

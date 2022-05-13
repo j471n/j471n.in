@@ -13,6 +13,7 @@ import {
 } from "../content/FramerMotionVariants";
 import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
 import AnimatedText from "../components/FramerMotion/AnimatedText";
+import { pagePreviewImage } from "../utils/utils";
 
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
@@ -57,7 +58,7 @@ export default function Stats() {
         title="Statistics"
         description=" These are my personal statistics about me built with Next.js API
           routes. It includes My Blogs and github Stats and top music stats."
-        previewImage="/pageBanner/stats.png"
+        previewImage={pagePreviewImage.stats}
       />
 
       <section className="pageTop font-inter">

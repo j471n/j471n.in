@@ -8,9 +8,9 @@ import {
 import Metadata from "../../components/MetaData";
 import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
 import AnimatedText from "../../components/FramerMotion/AnimatedText";
-import Link from "next/link";
 import { getAllPosts } from "../../lib/posts";
 import { motion } from "framer-motion";
+import { pagePreviewImage } from "../../utils/utils";
 
 export default function Blogs({ blogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
@@ -40,7 +40,7 @@ export default function Blogs({ blogs }) {
         description={
           "I've been writing online since 2021, mostly about web development and tech careers. In total, I've written {blogs.length} articles till now."
         }
-        previewImage="https://imgur.com/oYlyddc.png"
+        previewImage={pagePreviewImage.blogs}
       />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">

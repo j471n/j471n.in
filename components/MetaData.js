@@ -16,6 +16,7 @@ export default function MetaData({ title, description, previewImage }) {
       <meta name="theme-color" content="#000" />
       <link rel="icon" href="/favicon.ico" />
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="author" content="Jatin Sharma"></meta>
 
       {/* Og */}
       <meta property="og:title" content={`${title || ""} Jatin Sharma`} />

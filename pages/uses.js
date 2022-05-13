@@ -7,6 +7,7 @@ import "highlight.js/styles/atom-one-dark.css";
 import MDXComponents from "../components/MDXComponents";
 import PageTop from "../components/PageTop";
 import styles from "../styles/Uses.module.css";
+import { pagePreviewImage } from "../utils/utils";
 
 export default function Uses({ post }) {
   return (
@@ -14,7 +15,7 @@ export default function Uses({ post }) {
       <MetaData
         title={post.meta.title}
         description={post.meta.excerpt}
-        previewImage="/pageBanner/uses.png"
+        previewImage={pagePreviewImage.uses}
       />
 
       <section className="pageTop font-inter">

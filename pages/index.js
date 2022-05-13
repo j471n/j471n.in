@@ -23,6 +23,8 @@ import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import { homeProfileImage } from "../utils/utils";
 import { getAllPosts } from "../lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
+import { pagePreviewImage } from "../utils/utils";
+
 
 export default function Home({ blogs }) {
   return (
@@ -30,7 +32,7 @@ export default function Home({ blogs }) {
       <Metadata
         description="I am currently perusing my Bachelor Degree in Computer Science. I
               can code in Python, C, C++, etc. I also work on React & Next.js"
-        previewImage="/pageBanner/index.png"
+        previewImage={pagePreviewImage.home}
       />
       <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
         <section className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen">
