@@ -23,6 +23,14 @@ export default function MetaData({ title, description, previewImage }) {
       <meta property="og:site_name" content="Jatin Sharma" />
       <meta property="og:url" content={URL} key="ogurl" />
       <meta property="og:image" content={previewImage} />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content="@j471n_" />
+      <meta name="twitter:title" content={`${title || ""} Jatin Sharma`} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={previewImage} />
+      <meta name="twitter:domain" content={URL} />
     </Head>
   );
 }
