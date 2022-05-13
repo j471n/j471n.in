@@ -10,7 +10,7 @@ export default function Projects({ projects }) {
   return (
     <>
       <Metadata
-        title="Projects"
+        title="Projects -"
         description={` I've been making various types of projects some of them were basics and some of them were complicated. So far I've made ${projects.length} projects.`}
         previewImage={pagePreviewImage.projects}
       />

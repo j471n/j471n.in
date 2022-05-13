@@ -17,7 +17,7 @@ export default function Certificates() {
   return (
     <>
       <MetaData
-        title="Certificates"
+        title="Certificates -"
         description="I've participated in many contests, courses and test and get certified in many skills. You can find the certificates below."
         previewImage={pagePreviewImage.certificates}
       />

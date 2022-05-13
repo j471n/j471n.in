@@ -36,7 +36,7 @@ export default function Blogs({ blogs }) {
   return (
     <>
       <Metadata
-        title="Blogs"
+        title="Blogs -"
         description={
           "I've been writing online since 2021, mostly about web development and tech careers. In total, I've written {blogs.length} articles till now."
         }

@@ -13,7 +13,7 @@ export default function Uses({ post }) {
   return (
     <>
       <MetaData
-        title={post.meta.title}
+        title={post.meta.title + " -"}
         description={post.meta.excerpt}
         previewImage={pagePreviewImage.uses}
       />
