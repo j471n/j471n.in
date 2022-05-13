@@ -15,6 +15,17 @@ export default function BlogLayout({ post, children }) {
   return (
     <>
       <section className="mt-[52px] md:mt-[72px] max-w-3xl relative mx-auto p-5 font-barlow prose dark:prose-invert">
+        {/* <div className="my-4">
+          <Image
+            alt={post.meta.title}
+            height={420}
+            width={1000}
+            src={post.meta.image}
+            objectFit="contain"
+            layout="responsive"
+            className="rounded-md"
+          />
+        </div> */}
         <h1
           style={{ marginBottom: "10px !important" }}
           className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white"
@@ -54,16 +65,6 @@ export default function BlogLayout({ post, children }) {
           </div>
         </div>
 
-        {/* <div>
-          <Image
-            alt=""
-            height={420}
-            width={1000}
-            src={`/blogs/${post.meta.slug}/banner.png`}
-            layout="responsive"
-            className="rounded-md"
-          />
-        </div> */}
         <div
           className={` ${styles.blog} !w-full prose-sm  selection:bg-blue-100 selection:text-white-400 dark:text-neutral-400 my-2  font-medium prose-stone`}
         >
