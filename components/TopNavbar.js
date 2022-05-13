@@ -5,12 +5,14 @@ import Image from "next/image";
 import { AvatarImage } from "../utils/utils";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import {
+  FadeContainer,
   fromLeftVariant,
   fromRightVariant,
   fromTopVariant,
   hamFastFadeContainer,
   headingFromLeft,
   mobileNavItemSideways,
+  popUp,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
@@ -75,7 +77,7 @@ export default function TopNavbar() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={fromLeftVariant}
+            variants={popUp}
             className="rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex"
           >
             <Image
@@ -90,7 +92,7 @@ export default function TopNavbar() {
             initial="hidden"
             animate={control}
             variants={{
-              hidden: { opacity: 0, scale: 1, display: "none" },
+              hidden: { opacity: 0,   scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
             className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
@@ -101,13 +103,13 @@ export default function TopNavbar() {
       </Link>
 
       {/* Top Nav list */}
-      <motion.nav
-        initial="hidden"
-        animate="visible"
-        variants={fromTopVariant}
-        className="hidden sm:flex z-10 md:absolute md:inset-0 md:justify-center"
-      >
-        <AnimatedDiv className="flex items-center">
+      <motion.nav className="hidden sm:flex z-10 md:absolute md:inset-0 md:justify-center">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={FadeContainer}
+          className="flex items-center"
+        >
           {navigationRoutes.map((link, index) => {
             return (
               <NavItem
@@ -118,14 +120,14 @@ export default function TopNavbar() {
               />
             );
           })}
-        </AnimatedDiv>
+        </motion.div>
       </motion.nav>
 
       {/* DarkMode Container */}
       <motion.div
         initial="hidden"
         animate="visible"
-        variants={fromRightVariant}
+        variants={popUp}
         className="cursor-pointer rounded-full z-30 duration-300 group"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!isDarkMode)}
@@ -145,7 +147,8 @@ function NavItem({ href, text, router }) {
   const isActive = router.asPath === (href === "/home" ? "/" : href);
   return (
     <Link href={href === "/home" ? "/" : href} passHref>
-      <a
+      <motion.a
+        variants={popUp}
         className={`${
           isActive
             ? "font-bold text-gray-800 dark:text-gray-200"
@@ -153,7 +156,7 @@ function NavItem({ href, text, router }) {
         } sm:inline-block hover:text-gray-900 dark:hover:text-gray-50 transition-all text-lg mr-4 sm:mr-7 hidden font-inter`}
       >
         <span className="capitalize">{text}</span>
-      </a>
+      </motion.a>
     </Link>
   );
 }
@@ -165,7 +168,7 @@ function HamBurger({ open, setOpen }) {
       style={{ zIndex: 1000 }}
       initial="hidden"
       animate="visible"
-      variants={headingFromLeft}
+      variants={popUp}
       className="sm:hidden"
     >
       {!open ? (
