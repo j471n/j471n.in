@@ -18,8 +18,8 @@ export default function BlogLayout({ post, children }) {
         {/* <div className="my-4">
           <Image
             alt={post.meta.title}
-            height={420}
-            width={1000}
+            height={630}
+            width={1200}
             src={post.meta.image}
             objectFit="contain"
             layout="responsive"

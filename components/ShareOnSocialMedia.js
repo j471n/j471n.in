@@ -25,16 +25,19 @@ export default function ShareOnSocialMedia({
   const { isShareSupported } = useShare();
 
   async function handleShare() {
-    const image = await fetch(cover_image || "");
-    const blob = await image.blob();
-    const file = new File([blob], "image.jpg", { type: "image/jpeg" });
+    // const blob = await fetch(cover_image).then((res) => res.blob());
+    // // const blob = await image.blob();
+    // const file = new File([blob], "image.png", { type: "image/png" });
     if (window.navigator.share) {
       window.navigator
         .share({
-          title: title,
+          title: `
+          ${title} -
+          ${summary}
+          `,
           text: summary,
           url: url,
-          files: [file],
+          // files: [file ],
         })
         .then(() => {
           console.log("Thanks for sharing!");
@@ -103,10 +106,12 @@ export default function ShareOnSocialMedia({
         {children}
 
         {isShareSupported && (
-          <BsThreeDots
-            className="bg-gray-700 text-white cursor-pointer text-3xl rounded-full p-1"
+          <div
+            className="bg-gray-700 text-white p-2 rounded-full cursor-pointer"
             onClick={handleShare}
-          />
+          >
+            <BsThreeDots className="w-4 h-4" />
+          </div>
         )}
       </div>
     </>
