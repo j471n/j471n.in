@@ -40,7 +40,7 @@ export default function Blogs({ blogs }) {
         description={
           "I've been writing online since 2021, mostly about web development and tech careers. In total, I've written {blogs.length} articles till now."
         }
-        previewImage="/pageBanner/blogs.png"
+        previewImage="https://imgur.com/oYlyddc.png"
       />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">

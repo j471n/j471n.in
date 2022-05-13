@@ -30,6 +30,7 @@ export default function MetaData({ title, description, previewImage }) {
       <meta name="twitter:title" content={`${title || ""} Jatin Sharma`} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={previewImage} />
+      <meta name="twitter:image:alt" content={title || "Jatin Sharma"}></meta>
       <meta name="twitter:domain" content={URL} />
     </Head>
   );
