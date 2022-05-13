@@ -73,7 +73,7 @@ export default function BlogLayout({ post, children }) {
 
         <Newsletter />
 
-        <div className="w-full flex flex-col items-center gap-2 my-10 print:hidden">
+        <div className="w-full flex flex-col items-center gap-4 my-10 print:hidden">
           <h3
             style={{ margin: "0" }}
             className="font-semibold text-xl dark:text-white"
@@ -85,10 +85,10 @@ export default function BlogLayout({ post, children }) {
             title={post.meta.title}
             url={pageURL}
             summary={post.meta.excerpt}
-            cover_image={`/blogs/${post.meta.slug}/banner.png`}
+            cover_image={post.meta.image}
           >
-            <div className="bg-blue-600 text-white w-[30px] h-[30px] grid place-items-center cursor-pointer rounded-full clickable_button scroll-mt-20">
-              <FiPrinter className="" onClick={() => window.print()} />
+            <div className="bg-gray-700 text-white p-2 rounded-full cursor-pointer">
+              <FiPrinter className="w-4 h-4" onClick={() => window.print()} />
             </div>
           </ShareOnSocialMedia>
         </div>

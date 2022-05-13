@@ -5,18 +5,14 @@ import {
   LinkedinShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-
-  // icons for sharing
-  FacebookIcon,
-  TwitterIcon,
-  LinkedinIcon,
-  WhatsappIcon,
 } from "react-share";
 
 import useShare from "../hooks/useShare";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { FiCopy } from "react-icons/fi";
+import { FiCopy, FiLinkedin } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
+import { GrFacebookOption, GrTwitter } from "react-icons/gr";
 
 export default function ShareOnSocialMedia({
   className,
@@ -70,12 +66,16 @@ export default function ShareOnSocialMedia({
 
   return (
     <>
-      <div className={className}>
+      <div className={`${className} transform sm:scale-150 my-5`}>
         <FacebookShareButton quote={title} url={url}>
-          <FacebookIcon size={30} round />
+          <div className="bg-gray-700 text-white p-2 rounded-full">
+            <GrFacebookOption className="w-4 h-4" />
+          </div>
         </FacebookShareButton>
-        <TwitterShareButton title={title} url={url}>
-          <TwitterIcon size={30} round />
+        <TwitterShareButton title={title} url={url} related={["@j471n_"]}>
+          <div className="bg-gray-700 text-white p-2 rounded-full">
+            <GrTwitter className="w-4 h-4" />
+          </div>
         </TwitterShareButton>
         <LinkedinShareButton
           title={title}
@@ -83,13 +83,20 @@ export default function ShareOnSocialMedia({
           url={url}
           source={url}
         >
-          <LinkedinIcon size={30} round />
+          <div className="bg-gray-700 text-white p-2 rounded-full">
+            <FiLinkedin className="w-4 h-4 " />
+          </div>
         </LinkedinShareButton>
         <WhatsappShareButton title={title} url={url}>
-          <WhatsappIcon size={30} round />
+          <div className="bg-gray-700 text-white p-1.5 rounded-full">
+            <FaWhatsapp className="w-5 h-5 " />
+          </div>
         </WhatsappShareButton>
-        <div className="bg-black text-white w-[30px] h-[30px] grid place-items-center cursor-pointer rounded-full clickable_button">
-          <FiCopy className="" onClick={() => copyTextToClipboard(url)} />
+        <div className="bg-gray-700 text-white p-2 rounded-full cursor-pointer">
+          <FiCopy
+            className="w-4 h-4 "
+            onClick={() => copyTextToClipboard(url)}
+          />
         </div>
 
         {/* children of components */}
@@ -97,12 +104,11 @@ export default function ShareOnSocialMedia({
 
         {isShareSupported && (
           <BsThreeDots
-            className="bg-gray-400 dark:bg-zinc-500 text-white cursor-pointer text-3xl rounded-full p-1 clickable_button"
+            className="bg-gray-700 text-white cursor-pointer text-3xl rounded-full p-1"
             onClick={handleShare}
           />
         )}
       </div>
-      <ToastContainer />
     </>
   );
 }
