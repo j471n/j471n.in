@@ -1,30 +1,30 @@
 // Static Data Import--------
-import socialMedia from "../content/socialMedia";
-import faqs from "../content/faqData";
+import socialMedia from "@content/socialMedia";
+import faqs from "@content/faqData";
 // Static Data END--------
 
 // Page Components START----------
-import BlogsSection from "../components/Home/BlogsSection";
-import SkillSection from "../components/Home/SkillSection";
+// import BlogsSection from "../components/Home/BlogsSection";
+import BlogsSection from "@components/Home/BlogsSection";
+import SkillSection from "@components/Home/SkillSection";
 // Page Components END------------
 
 import Image from "next/image";
-import Metadata from "../components/MetaData";
-import Contact from "../components/Contact";
-import FAQ from "../components/FAQ";
-import AnimatedText from "../components/FramerMotion/AnimatedText";
+import Metadata from "@components/MetaData";
+import Contact from "@components/Contact";
+import FAQ from "@components/FAQ";
+import AnimatedText from "@components/FramerMotion/AnimatedText";
 import {
   headingFromLeft,
   opacityVariant,
   popUpFromBottomForText,
-} from "../content/FramerMotionVariants";
-import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
-import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
-import { homeProfileImage } from "../utils/utils";
-import { getAllPosts } from "../lib/posts";
+} from "@content/FramerMotionVariants";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { homeProfileImage } from "@utils/utils";
+import { getAllPosts } from "@lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
-import { pagePreviewImage } from "../utils/utils";
-
+import { pagePreviewImage } from "@utils/utils";
 
 export default function Home({ blogs }) {
   return (

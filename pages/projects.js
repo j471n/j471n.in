@@ -1,10 +1,10 @@
 import React from "react";
-import Project from "../components/Project";
-import { getProjects } from "../lib/dataFetch";
-import Metadata from "../components/MetaData";
 import { AnimatePresence } from "framer-motion";
-import PageTop from "../components/PageTop";
-import { pagePreviewImage } from "../utils/utils";
+import Project from "@components/Project";
+import Metadata from "@components/MetaData";
+import PageTop from "@components/PageTop";
+import { pagePreviewImage } from "@utils/utils";
+import { getProjects } from "@lib/dataFetch";
 
 export default function Projects({ projects }) {
   return (

@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
-import Metadata from "../../components/MetaData";
+import BlogLayout from "@layout/BlogLayout";
+import { getPostFromSlug, getSlugs } from "@lib/posts";
+import Metadata from "@components/MetaData";
+import MDXComponents from "@components/MDXComponents";
 
-import { getPostFromSlug, getSlugs } from "../../lib/posts";
 import { MDXRemote } from "next-mdx-remote";
-import BlogLayout from "../../layout/BlogLayout";
 import "highlight.js/styles/atom-one-dark.css";
-
-// Components for MDX
-// import Codepen from "../../components/Embed/Codepen";
-import MDXComponents from "../../components/MDXComponents";
 
 export default function Post({ post }) {
   const [scroll, setScroll] = useState(0);

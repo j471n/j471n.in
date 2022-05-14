@@ -1,17 +1,17 @@
-import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
-import AnimatedText from "../components/FramerMotion/AnimatedText";
-import MetaData from "../components/MetaData";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import AnimatedText from "@components/FramerMotion/AnimatedText";
+import MetaData from "@components/MetaData";
 import {
   fromLeftVariant,
   opacityVariant,
   popUpFromBottomForText,
-} from "../content/FramerMotionVariants";
-import certificatesData from "../content/certificatesData";
+} from "@content/FramerMotionVariants";
+import certificatesData from "@content/certificatesData";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
-import { pagePreviewImage } from "../utils/utils";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { pagePreviewImage } from "@utils/utils";
 
 export default function Certificates() {
   return (
