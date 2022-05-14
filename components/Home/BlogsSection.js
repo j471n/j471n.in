@@ -16,7 +16,7 @@ export default function BlogsSection({ blogs }) {
       <div className="flex flex-col gap-3 w-full">
         {blogs.map((blog, index) => {
           return (
-            <div className="flex flex-col xs:flex-row items-center gap-2">
+            <div key={index} className="flex flex-col xs:flex-row items-center gap-2">
               <motion.div
                 variants={opacityVariant}
                 initial="hidden"
@@ -35,7 +35,7 @@ export default function BlogsSection({ blogs }) {
                   blurDataURL={blog.image}
                 ></Image>
               </motion.div>
-              <Blog key={index} blog={blog} className="active:!scale-100" />
+              <Blog blog={blog} className="active:!scale-100" />
             </div>
           );
         })}
