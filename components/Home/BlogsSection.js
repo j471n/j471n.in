@@ -1,8 +1,10 @@
 import { HomeHeading } from "../../pages";
 import Link from "next/link";
 import Image from "next/image";
-import AnimatedDiv from "../FramerMotion/AnimatedDiv";
-import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
+import {
+  opacityVariant,
+  popUpFromBottomForText,
+} from "../../content/FramerMotionVariants";
 import Blog from "../Blog";
 import { motion } from "framer-motion";
 
@@ -11,9 +13,31 @@ export default function BlogsSection({ blogs }) {
     <section className="mx-5">
       <HomeHeading title="Recent Posts" />
 
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-3 w-full">
         {blogs.map((blog, index) => {
-          return <Blog key={index} blog={blog} className="active:!scale-100" />;
+          return (
+            <div className="flex flex-col xs:flex-row items-center gap-2">
+              <motion.div
+                variants={opacityVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="w-full h-full sm:w-1/2 sm:h-1/2 md:w-2/5 md:h-2/5"
+              >
+                <Image
+                  className="rounded-md"
+                  src={blog.image}
+                  width={1200}
+                  height={630}
+                  layout="responsive"
+                  alt=""
+                  placeholder="blur"
+                  blurDataURL={blog.image}
+                ></Image>
+              </motion.div>
+              <Blog key={index} blog={blog} className="active:!scale-100" />
+            </div>
+          );
         })}
 
         <Link href="/blogs">
