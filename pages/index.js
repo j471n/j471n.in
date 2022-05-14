@@ -82,8 +82,6 @@ export default function Home({ blogs }) {
           <SkillSection />
           {/* Blogs Section */}
           <BlogsSection blogs={blogs} />
-          {/* Certification Section */}
-          {/* <CertificationSection /> */}
           {/* Project Section */}
           {/* <ProjectSection /> */}
           {/* FAQs */}
