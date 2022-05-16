@@ -23,16 +23,10 @@ export default function SkillSection() {
               variants={popUp}
               key={index}
               title={skill.name}
-              className="p-4 flex items-center justify-center sm:justify-start gap-4 bg-gray-50 hover:bg-gray-100 dark:bg-darkPrimary hover:dark:bg-darkSecondary border rounded-sm border-gray-300 dark:border-neutral-700 transform origin-center md:origin-top "
+              className="p-4 flex items-center justify-center sm:justify-start gap-4 bg-gray-50 hover:bg-gray-100 dark:bg-darkPrimary hover:dark:bg-darkSecondary border rounded-sm border-gray-300 dark:border-neutral-700 transform origin-center md:origin-top group"
             >
-              <div className="relative w-10 h-10">
-                <Image
-                  width={50}
-                  height={50}
-                  alt={skill.name}
-                  src={`/${skill.icon}`}
-                  quality={50}
-                />
+              <div className="relative transition group-hover:scale-110 sm:group-hover:scale-100">
+                {skill.Icon}
               </div>
               <p className="hidden sm:inline-flex text-sm md:text-base font-semibold">
                 {skill.name}

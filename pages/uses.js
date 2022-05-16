@@ -1,13 +1,12 @@
-import MetaData from "../components/MetaData";
+import MetaData from "@components/MetaData";
+import MDXComponents from "@components/MDXComponents";
+import PageTop from "@components/PageTop";
+import { getPostFromSlug } from "@lib/posts";
+import { pagePreviewImage } from "@utils/utils";
+import styles from "@styles/Uses.module.css";
 
-import { getPostFromSlug } from "../lib/posts";
 import { MDXRemote } from "next-mdx-remote";
 import "highlight.js/styles/atom-one-dark.css";
-
-import MDXComponents from "../components/MDXComponents";
-import PageTop from "../components/PageTop";
-import styles from "../styles/Uses.module.css";
-import { pagePreviewImage } from "../utils/utils";
 
 export default function Uses({ post }) {
   return (

@@ -13,6 +13,7 @@
     "@tailwindcss/line-clamp": "^0.4.0",
     "dompurify": "^2.3.6",
     "emailjs-com": "^3.2.0",
+    "feed": "^4.2.2",
     "framer-motion": "^6.3.3",
     "fs": "^0.0.1-security",
     "gray-matter": "^4.0.3",

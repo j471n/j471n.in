@@ -1,19 +1,16 @@
 import React from "react";
-import MetaData from "../components/MetaData";
-import PageTop from "../components/PageTop";
-import StatsCard from "../components/Stats/StatsCard";
-import Track from "../components/Stats/Track";
-import Artist from "../components/Stats/Artist";
-import fetcher from "../lib/fetcher";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import {
-  FadeContainer,
-  fromLeftVariant,
-} from "../content/FramerMotionVariants";
-import AnimatedHeading from "../components/FramerMotion/AnimatedHeading";
-import AnimatedText from "../components/FramerMotion/AnimatedText";
-import { pagePreviewImage } from "../utils/utils";
+import { FadeContainer, fromLeftVariant } from "@content/FramerMotionVariants";
+import { pagePreviewImage } from "@utils/utils";
+import fetcher from "@lib/fetcher";
+import MetaData from "@components/MetaData";
+import PageTop from "@components/PageTop";
+import StatsCard from "@components/Stats/StatsCard";
+import Track from "@components/Stats/Track";
+import Artist from "@components/Stats/Artist";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import AnimatedText from "@components/FramerMotion/AnimatedText";
 
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);

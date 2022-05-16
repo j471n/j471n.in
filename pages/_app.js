@@ -1,10 +1,10 @@
-import "../styles/globals.css";
-import Layout from "../layout/Layout";
+import "@styles/globals.css";
+import Layout from "@layout/Layout";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { DarkModeProvider } from "../context/darkModeContext";
+import { DarkModeProvider } from "@context/darkModeContext";
 
 NProgress.configure({
   easing: "ease",

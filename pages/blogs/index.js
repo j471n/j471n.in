@@ -1,16 +1,12 @@
 import { useState, useRef } from "react";
-import Blog from "../../components/Blog";
-import { AnimatePresence } from "framer-motion";
-import {
-  fromLeftVariant,
-  opacityVariant,
-} from "../../content/FramerMotionVariants";
-import Metadata from "../../components/MetaData";
-import AnimatedHeading from "../../components/FramerMotion/AnimatedHeading";
-import AnimatedText from "../../components/FramerMotion/AnimatedText";
-import { getAllPosts } from "../../lib/posts";
-import { motion } from "framer-motion";
-import { pagePreviewImage } from "../../utils/utils";
+import { motion, AnimatePresence } from "framer-motion";
+import { fromLeftVariant, opacityVariant } from "@content/FramerMotionVariants";
+import Blog from "@components/Blog";
+import Metadata from "@components/MetaData";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import AnimatedText from "@components/FramerMotion/AnimatedText";
+import { getAllPosts } from "@lib/posts";
+import { pagePreviewImage } from "@utils/utils";
 
 export default function Blogs({ blogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
