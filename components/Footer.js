@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 capitalize">
             {footerNavigation.map((route, index) => {
               let url = route;
-              if (route === "RSS"){ url = "rss/feed.xml";}
+              if (url === "RSS") url = "feed.xml";
               return (
                 <Link key={index} href={`/${url}`} passHref>
                   <motion.a variants={popUp} href={`/${url}`}>
@@ -133,7 +133,6 @@ function WhenPlaying({ song }) {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            {/* <p className="animate-pulse">Currently Playing</p> */}
             <SiSpotify className="w-6 h-6 text-green-500 animate-bounce" />
           </div>
         </a>
