@@ -6,6 +6,7 @@ import Danger from "./Danger";
 import CodeTitle from "./CodeTitle";
 import Tip from "./Tip";
 import Pre from "./Pre";
+import Step from "./Step";
 
 export default {
   Codepen,
@@ -15,5 +16,6 @@ export default {
   Danger,
   CodeTitle,
   Tip,
+  Step,
   pre: Pre,
 };
