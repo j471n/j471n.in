@@ -26,7 +26,7 @@ In my case, I am creating an RSS feed for my blogs to show the latest blogs as t
 
 I am assuming you already have your blog page where all the blogs are listed. I am using [MDX](https://mdxjs.com/) for managing the blog content. You might be using the same or anything else that doesn't matter. The main thing is you need to have an array containing all the blogs.
 
-As I am using the MDX, that's how I fetch all my blogs of mine.
+As I am using the MDX, that's how I fetch all my blogs.
 
 <CodeTitle title="lib/posts.js" />
 
@@ -258,4 +258,4 @@ export async function getStaticProps() {
 
 That's it everything is done. Now if you are in the development then you can go to the [localhost:3000/rss/feed.xml](http://localhost:3000/rss/feed.xml) and if you are in the production then you can just simply go to `https://yoursite.com/rss/feed.xml`. You will find the RSS in `xml` format. In case you want to get the `json` data just use `https://yoursite.com/rss/feed.json`.
 
-My [RSS feed](/rss/feed.xml) is live right now you can check it out.
+My [RSS feed](/feed.xml) is live right now you can check it out.
