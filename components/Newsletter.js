@@ -46,7 +46,6 @@ export default function Newsletter() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log("client:", res);
         if (res.error) {
           toast.error(res.msg, toastOptions);
         } else {

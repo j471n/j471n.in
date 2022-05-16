@@ -18,9 +18,6 @@ export default async function handler(req, res) {
     body: JSON.stringify({ email }),
   });
   const data = await result.json();
-
-  console.log("server-", data);
-
   if (!result.ok) {
     return res.status(500).json({ error: true, msg: data.error.email[0] });
   }
