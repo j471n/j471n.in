@@ -20,7 +20,7 @@ Web share has the following capabilities and limitations:
 
 To share links and text, use the `share()` method, which is a promise-based method with a required properties object. To keep the browser from throwing a `TypeError`, the object must contain at least one of the following properties: `title`, `text`, `url` or `files`
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // check for support of web share API
 if (navigator.share) {
@@ -43,7 +43,7 @@ So you need to make sure that you handle that case. For example the above code w
 
 Here is the example code what i was saying
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 const btn = document.getElementById("btn");
 

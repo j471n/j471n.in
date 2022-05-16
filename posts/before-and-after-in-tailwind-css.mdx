@@ -12,23 +12,21 @@ In this article we are going to learn that how you can use `::before` and `::aft
 
 Now let's continue with this article. This feature is only available in [Just-in-Time (JIT)](https://tailwindcss.com/docs/just-in-time-mode) mode. Tailwind has first-party support for styling pseudo-elements like `before` and `after`:
 
-<CodeTitle title="index.html" />
+<CodeTitle lang="html" title="index.html" />
 ```html
-<div
-  class="before:absolute before:bg-blue-500 after:flex after:bg-blue-300"
-></div>
+<div class="before:absolute before:bg-blue-500 after:flex after:bg-blue-300"></div>
 ```
 
 It has `content: ""` by default so you don't need to worry about that. Any time you use a `before` or `after` variant to make sure the elements are rendered, but you can override it using the content utilities which have full arbitrary value support:
 
-<CodeTitle title="index.html" />
+<CodeTitle lang="html" title="index.html" />
 ```html
 <div class="before:content-['hello'] before:block ..."></div>
 ```
 
 You can even grab the content from an attribute using the CSS `attr()` function:
 
-<CodeTitle title="index.html" />
+<CodeTitle lang="html" title="index.html" />
 ```html
 <div
   before="hello world"

@@ -16,7 +16,7 @@ In this article, we are going to make an Image Slider also known as carousel wit
 
 ### HTML
 
-<CodeTitle title="index.html" />
+<CodeTitle lang="html" title="index.html" />
 ```html
 <div class="container-slider">
   <!-- Slider Container with images...  -->
@@ -47,7 +47,7 @@ I guess now you have an overview of what are we doing. Now let's get into the CS
 
 ### CSS
 
-<CodeTitle title="styles.css" />
+<CodeTitle lang="css" title="styles.css" />
 ```css
 * {
   margin: 0;
@@ -180,7 +180,7 @@ Everything in the CSS is self-explanatory so I am not going to talk about that. 
 
 This is where the fun begins. Let's see, from scratch.First, we need to import the two containers which will be `. Slides` and the `. Container-dots`.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 const slides = document.querySelector(".slides");
 const containerDots = document.querySelector(".container-dots");
@@ -188,7 +188,7 @@ const containerDots = document.querySelector(".container-dots");
 
 Now we need images to add to the `.slides` container. And we also need a global counter or global index to track which image is displaying right now.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Global Index to track Image
 var slideIndex = 1;
@@ -205,7 +205,7 @@ const images = [
 
 Now we have images, now let's add them to the `.slides` and also we need to add `.dot` to the `.container-dots`. Total images and total dots should be the same e.g. there are five images, then there should be five dots. So let's see how we are going to do that.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Adding images and dots to the Respective Container
 images.map((img) => {
@@ -227,7 +227,7 @@ It will do the trick ad it will add them to their respective container. Now we n
 
 **Next Slide Button**
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Slide Next Button Click Event
 const nextSlide = () => {
@@ -245,7 +245,7 @@ nextBtn.onclick = nextSlide;
 
 **Previous Slide Button**
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Slide Previous Button Click Event
 const prevSlide = () => {
@@ -265,7 +265,7 @@ Now these buttons will allow you to scroll infinite according to the `slideIndex
 
 But after implementing it you will see the image is not displaying it is because we are not updating the image according to the `slideIndex` right now, let's implement that.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Update Image And Slide Dot according to the [data-active]
 function updateImageAndDot() {
@@ -285,7 +285,7 @@ Here we are getting the `activeSlide` and `activeDot`. Which will have a `[data-
 
 Now we need to call this function inside the `nextSlide` and `prevSlide` function in the end.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 const nextSlide = () => {
   /* .... */
@@ -300,7 +300,7 @@ const prevSlide = () => {
 
 We also need to call the `updateImageAndDot` in the global scope. This will allow it to show the image and dot as the page loads.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // Show the Image as the page loads;
 updateImageAndDot();
@@ -312,7 +312,7 @@ Now we are going to implement one more feature which is when the user press the 
 
 It's not that hard we just need to make a function in our case called `moveDot` and just add the Event Listener to every dot. Let's see it in action.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 // It helps to move the dot, it take "index" as parameter and update the slideIndex
 function moveDot(index) {
@@ -332,7 +332,7 @@ Now we have covered all the aspects of this now let's see the full Javascript fi
 
 ### Full Javascript Code
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 const slides = document.querySelector(".slides");
 const containerDots = document.querySelector(".container-dots");

@@ -24,7 +24,7 @@ In this article, we are gonna look at some javascript methods that you should kn
 
 This method can be used in Array as well as in strings. this joins the two variables or parts together if they belong to the same data type.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = "foo";
 let b = ["f", "o", "o"];
@@ -36,7 +36,7 @@ let d = b.concat(["b", "a", "r"]); // ["f","o","o","b","a","r"]
 Since it doesn't' not change the actual variable so we always need to store the value returns from `concat`
 for example -
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 console.log(a); // "foo"
 console.log(b); // [ 'f', 'o', 'o' ]
@@ -48,7 +48,7 @@ console.log(d); // [ 'f', 'o', 'o', 'b', 'a', 'r' ]
 
 Arrays have a `reverse()` in-place mutator method, but strings do not so we can only use it in arrays and not for strings.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = "foo";
 let b = ["f", "o", "o", "!"];
@@ -60,7 +60,7 @@ console.log(b); // ["!","o","O","f"]
 
 Since this method cannot reverse string so the question is how we can reverse sting? The answer is simple we have to make a function for it.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = "foo";
 
@@ -81,7 +81,7 @@ console.log(b); // "oof"
 
 In the previous section we used the `split()` method now let's see how it actually works.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = "foo";
 let arr = a.split("");
@@ -96,7 +96,7 @@ console.log(arr); //  [ 'f', 'o', 'o' ]
 
 In the the previous example we used the `join()` as well it was for to convert the array into the string.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = ["f", "o", "o", "!"];
 let str = a.join("");
@@ -109,7 +109,7 @@ console.log(str); //  foo!
 
 This method converts the value to the exponential as we can already understand by name of it. Let's see how we can implement it.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = 5e7;
 console.log(a); // 50000000
@@ -119,7 +119,7 @@ console.log(b); // 5e+7
 
 Now, what if we use some mathematical operations in it. let's see.
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 var c = b * b;
 console.log(c); // 2.5e+21
@@ -132,7 +132,7 @@ console.log(d); // 2e-11
 `toFixed(..)` method allows you to specify how many fractional
 decimal places you’d like the value to be represented with:
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 let a = 42.59;
 a.toFixed(0); // "43"
@@ -146,7 +146,7 @@ a.toFixed(4); // "42.5900"
 
 `toPrecision(..)` is similar, but specifies how many significant digits should be used to represent the value:
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 var a = 42.59;
 a.toPrecision(1); // "4e+1"
@@ -158,7 +158,7 @@ a.toPrecision(5); // "42.590"
 
 Some other example -
 
-<CodeTitle title="script.js" />
+<CodeTitle lang="js" title="script.js" />
 ```js
 42.toFixed( 3 ); // SyntaxError
 

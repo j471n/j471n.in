@@ -102,7 +102,7 @@ After doing all this work now we need to get the `refresh_token` to authorizatio
 
 Your url should look like this - 
 
-<CodeTitle title="Demo URL" />
+<CodeTitle lang="bash" title="Demo URL" />
 ```bash
 # URL to get "refresh_token"
 
@@ -119,7 +119,7 @@ YmRhMTBjZDcxOTU2NDg5ODgxODJmMmQ5NzcyN2RlN2U6NjZmZTU5OTJjYjZlNDFjZmEwNDdfkdjfkHKk
 
 Now the final url should looks like this-
 
-<CodeTitle title="Auth URL"/>
+<CodeTitle lang="bash" title="Auth URL"/>
 ```bash
 curl -H "Authorization: Basic YmRhMTBjZDcxOTU2NDg5ODgxODJmMmQ5NzcyN2RlN2U6NjZmZTU5OTJjYjZlNDFjZmEwNDdfkdjfkHKkjdfdwODk0YjI="
 -d grant_type=authorization_code -d code=AQD_kIzZ0OVXkeeIU4jnLWADFJDKdcWLYo9ySdfdfdkHKJFtGExxgw_aCxJrZflWVeARvjaGDfdfddf6KYpFlo2t2JZ0SQceyvdKs4AcGgCLSqm7vMyiRWCy_t06WmLet8v6aEBx8U4eKHxKiEx_sBgvCSlYo5wptKUd0Gwa6oyqOHFZnE7KSbxTVwMkQ668Ezjz2aeFEPp1TU9ij6dM4AjO4YFCH2hoMWgO3k5XrbdKnK7U2Y30wb8gHjEA6LnE8yu8cyvaY9WQ -d redirect_uri=http%3A%2F%2Flocalhost:3000/callback https://accounts.spotify.com/api/token
@@ -157,7 +157,7 @@ SPOTIFY_REFRESH_TOKEN=
 Now we can use the `refresh_token` to get the final `access_token`. The following Code fetches the `access_token` by using the `refresh_token`  
 
 
-<CodeTitle title="lib/spotify.js" />
+<CodeTitle lang="js" title="lib/spotify.js" />
 ```js
 const getAccessToken = async () => {
   const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
@@ -184,7 +184,7 @@ const getAccessToken = async () => {
 
 Now you can use this `access_token` fetch your data. In our case it is the top tracks. 
 
-<CodeTitle title="lib/spotify.js" />
+<CodeTitle lang="js" title="lib/spotify.js" />
 ```js
 export const topTracks = async () => {
   const { access_token } = await getAccessToken();
@@ -202,7 +202,7 @@ export const topTracks = async () => {
 In the beginning, I mentioned that we are going to use the Next.js API routes. If you are not familiar with that then [give this a read](https://nextjs.org/docs/api-routes/introduction)
 
 
-<CodeTitle title="pages/api/stats/tracks.js" />
+<CodeTitle lang="js" title="pages/api/stats/tracks.js" />
 ```js
 import { topTracks } from "../../../lib/spotify";
 
@@ -228,7 +228,7 @@ export default async function handler(req, res) {
 
 This will return the first five top tracks, I've removed unnecessary information. You can modify this as you like. Now visit the `localhost:3000/api/stats/tracks`. If everything worked correctly,  you should see some data like this -
 
-<CodeTitle title="localhost:3000/api/stats/tracks" />
+<CodeTitle lang="js" title="localhost:3000/api/stats/tracks" />
 ```json
 [
   // ...........
@@ -263,7 +263,7 @@ To see my stats you can visit `https://jatin.vercel.app/api/stats/tracks`.
 
 Now you can use this `access_token` fetch your data. In our case it is the top artists.
 
-<CodeTitle title="lib/spotify.js" />
+<CodeTitle lang="js" title="lib/spotify.js" />
 ```js
 export const topArtists = async () => {
   const { access_token } = await getAccessToken();
@@ -278,7 +278,7 @@ export const topArtists = async () => {
 
 ### Creating API route top artists
 
-<CodeTitle title="pages/api/stats/artists.js" />
+<CodeTitle lang="js" title="pages/api/stats/artists.js" />
 ```js
 import { topArtists } from "../../../lib/spotify";
 
@@ -308,7 +308,7 @@ It returns your's top Spotify artists.
 
 Now, as you can see on my [website's](http://jatin.vercel.app/) footer there is an option to see if I am currently playing the song or not, if yes then which one. To do that, we fetch the following URL.
 
-<CodeTitle title="lib/spotify.js" />
+<CodeTitle lang="js" title="lib/spotify.js" />
 ```js
 export const currentlyPlayingSong = async () => {
   const { access_token } = await getAccessToken();
@@ -323,7 +323,7 @@ export const currentlyPlayingSong = async () => {
 
 ### Creating API route for Currently Playing Song
 
-<CodeTitle title="pages/api/now-playing .js" />
+<CodeTitle lang="js" title="pages/api/now-playing .js" />
 ```js
 import { currentlyPlayingSong } from "../../lib/spotify";
 

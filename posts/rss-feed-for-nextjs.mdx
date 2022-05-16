@@ -11,7 +11,7 @@ image: https://imgur.com/MuMZbDH.png
 In this article, I will explain how you can create an RSS feed for your Next.js application in XML and JSON format. So without further delay, let's get into it.
 
 ## Table of Contents
-- [what is RSS?](#what-is-rss)
+- [What is RSS?](#what-is-rss)
 - [What do we need?](#what-do-we-need)
 - [Method-1](#method-1)
   - [Getting the Blogs' data](#getting-the-blogs-data)
@@ -22,7 +22,7 @@ In this article, I will explain how you can create an RSS feed for your Next.js 
   - [Generating RSS](#generating-rss)
   - [Call the function](#call-the-function)
 
-## what is RSS?
+## What is RSS?
 
 An RSS (Really Simple Syndication) feed is a file that contains a summary of updates from a website, often in the form of a list of articles with links.
 
@@ -42,7 +42,7 @@ I am assuming you already have your blog page where all the blogs are listed. I 
 
 As I am using the MDX, that's how I fetch all my blogs.
 
-<CodeTitle title="lib/posts.js" />
+<CodeTitle lang="js" title="lib/posts.js" />
 
 ```jsx
 export function getAllPosts() {
@@ -66,7 +66,7 @@ The above function gets all the blogs by fetching all the `slugs` and the for ev
 
 It's very simple, you just have to install the package called `feed` to create RSS. You can install it with `npm` or `yarn`, whatever you prefer.
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 
 ```bash
 yarn add feed
@@ -80,7 +80,7 @@ To generate the RSS feed we create a function called `generateRssFeed`. You can 
 
 <Step id={1}>First, we import all the important packages or functions.</Step>
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 import fs from "fs";
@@ -93,7 +93,7 @@ import { getAllPosts } from "./posts";
   talk about later in this article.
 </Step>
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="bash" title="lib/generateRssFeed.js" />
 
 ```js
 export default async function generateRssFeed() {}
@@ -104,7 +104,7 @@ export default async function generateRssFeed() {}
   blogs, today's date, and the author and the siteURL.
 </Step>
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 const posts = getAllPosts();
@@ -133,7 +133,7 @@ VERCEL_URL=http://localhost:3000
 
 <Step id={4}>After that we will create a feed.</Step>
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 ```js
 const feed = new Feed({
   title: "Your Blog name",
@@ -159,7 +159,7 @@ The above code creates an RSS feed in `XML` and `JSON` format.
 
 Now, as our feed is created, we just need to add all the blogs in that feed. To do that, we loop through the array of blogs and add the blog to the feed. The following code shows how you can do it.
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 posts.forEach((post) => {
@@ -183,7 +183,7 @@ This code is straight forward and we just add the important data to the feed.
 
 After all this, we just need to make an `xml` and `json` file. The following code will create `xml` and `json` files for the RSS feed.
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 fs.mkdirSync("./public/rss", { recursive: true });
@@ -193,7 +193,7 @@ fs.writeFileSync("./public/rss/feed.json", feed.json1());
 
 Now our work is almost completed. And our `generateRssFeed.js` looks something like this -
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 import fs from "fs";
@@ -252,7 +252,7 @@ export default async function generateRssFeed() {
 
 Now, we just need to call this function to generate the feed as the data is updated. To do that we call this function inside the `getStaticProps` in `pages/index.js` because whenever our site is built and deployed, our RSS feed will be created and updated as well.
 
-<CodeTitle title="pages/index.js" />
+<CodeTitle lang="js" title="pages/index.js" />
 
 ```js
 // first import that function
@@ -279,7 +279,7 @@ That's it everything is done. Now if you are in the development then you can go 
 ### Install `rss` package
 In the second method you need to install the `rss` package through `npm` or `yarn`
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 
 ```bash
 yarn add rss
@@ -291,7 +291,7 @@ npm i rss
 
 To generate an RSS feed, you need to create a function the same as we did in the previous method.
 
-<CodeTitle title="lib/generateRssFeed.js" />
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
 ```js
 import { writeFileSync } from "fs";
@@ -328,7 +328,7 @@ export default async function getRSS() {
 
 As we did in the previous method we can call it inside the `getStaticProps` in `pages/index.js`
 
-<CodeTitle title="pages/index.js" />
+<CodeTitle lang="js" title="pages/index.js" />
 
 ```js
 // first import that function

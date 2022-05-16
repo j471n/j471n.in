@@ -30,7 +30,7 @@ In the previous [article](/blogs/getting-started-with-bash) we have learned what
 - To create an empty bash script, first, change the directory in which you want to save your script using **cd** command.
 - Use **touch** command to create a bash script as shown below.
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 ```bash
 touch first.sh
 ```
@@ -47,7 +47,7 @@ touch first.sh
   - `#!` - is referred to as the **_shebang_** and re st of the line is the path to the interpreter specifying the location of bash shell in our operating system.
 - Now we add `echo Hello World` in the file in next line so your bash script will look like-
 
-<CodeTitle title="first.sh" />
+<CodeTitle lang="bash" title="first.sh" />
 ```bash
 #! /bin/bash
 echo Hello World
@@ -64,7 +64,7 @@ echo Hello World
 
 To do the type the following in the command line-
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 ```bash
 ./<fileName>.sh
 ```
@@ -73,7 +73,7 @@ After runnnig this your screen will look like this-
 ![permission](https://i.imgur.com/6zQdAwV.gif)
 It shows _permission denied_. It is because user don't have permission to execute the file right now. For that run the following command in the terminal-
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 ```bash
 chmod +x first.sh
 ```
@@ -97,7 +97,7 @@ Linux-based Operating System requires file permissions to secure its filesystem.
 
 You can change the permission of the file by using `chmod` command. Syntax of `chmod` is -
 
-<CodeTitle title="bash" />
+<CodeTitle lang="bash" title="bash" />
 ```bash
 chmod [class][operator][permission] file_name
 ```
