@@ -36,7 +36,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4 capitalize">
             {footerNavigation.map((route, index) => {
               let url = route;
-              if (url === "RSS  ") url = "rss/feed.xml";
+              if (route === "RSS"){ url = "rss/feed.xml";}
               return (
                 <Link key={index} href={`/${url}`} passHref>
                   <motion.a variants={popUp} href={`/${url}`}>
