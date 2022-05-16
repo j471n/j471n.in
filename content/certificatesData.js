@@ -30,9 +30,13 @@ const HackerRank = {
   orgLogo: "https://imgur.com/mw6pqQD.png",
 };
 
+const FreeCodeCamp = {
+  orgName: "freeCodeCamp",
+  orgLogo: "https://imgur.com/iAue2Tq.png",
+};
+
 module.exports = [
   {
-    id: 1,
     title: "Become a Software Developer",
     issuedDate: "Oct 25, 2020",
     issuedBy: LinkedIn,
@@ -43,7 +47,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 2,
     title: "Web Development",
     issuedDate: "Oct 17, 2020",
     issuedBy: Mimo,
@@ -54,7 +57,6 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 3,
     title: "Microsoft AI Classroom Series",
     issuedDate: "Nov 8, 2020",
     issuedBy: Microsoft,
@@ -65,7 +67,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 4,
     title: "Python 3 Master Course for 2021",
     issuedDate: "April 6, 2021",
     issuedBy: Udemy,
@@ -76,7 +77,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 5,
     title: "Easy to Advanced Data Structures",
     issuedDate: "Nov 6, 2020",
     issuedBy: Skillzcafe,
@@ -87,7 +87,6 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 6,
     title: "Analyze Data with SQL Skill Path",
     issuedDate: "Sep 21, 2020",
     issuedBy: Codecademy,
@@ -98,7 +97,6 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 7,
     title: "Building Interactive JavaScript Websites",
     issuedDate: "Sep 24, 2020",
     issuedBy: Codecademy,
@@ -109,7 +107,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 8,
     title: "Learn C++ Course",
     issuedDate: "Sep 25, 2020",
     issuedBy: Codecademy,
@@ -120,7 +117,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 9,
     title: "Learn CSS Course",
     issuedDate: "Sep 22, 2020",
     issuedBy: Codecademy,
@@ -131,7 +127,6 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 10,
     title: "Learn Git Course",
     issuedDate: "Sep 21, 2020",
     issuedBy: Codecademy,
@@ -142,7 +137,6 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 11,
     title: "Learn JavaScript Course",
     issuedDate: "15 Sep, 2020",
     issuedBy: Codecademy,
@@ -153,7 +147,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 12,
     title: "Learn Python 3 Course",
     issuedDate: "Sep 18, 2020",
     issuedBy: Codecademy,
@@ -164,7 +157,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 13,
     title: "Web Development Career Path",
     issuedDate: "Oct 13, 2020",
     issuedBy: Codecademy,
@@ -175,7 +167,15 @@ module.exports = [
     pinned: false,
   },
   {
-    id: 14,
+    title: "Python (Basic)",
+    issuedDate: "Aug 20, 2020",
+    issuedBy: HackerRank,
+    urls: {
+      pdfURL: "https://www.hackerrank.com/certificates/830bc394dfca",
+    },
+    pinned: true,
+  },
+  {
     title: "JavaScript (Basic)",
     issuedDate: "Dec 26, 2020",
     issuedBy: HackerRank,
@@ -185,7 +185,6 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 15,
     title: "JavaScript (Intermediate)",
     issuedDate: "Apr 20, 2022",
     issuedBy: HackerRank,
@@ -195,12 +194,22 @@ module.exports = [
     pinned: true,
   },
   {
-    id: 16,
-    title: "Python (Basic) ",
-    issuedDate: "Aug 20, 2020",
-    issuedBy: HackerRank,
+    title: "JavaScript Algorithms and Data Structures",
+    issuedDate: "Dec 16, 2021",
+    issuedBy: FreeCodeCamp,
     urls: {
-      pdfURL: "https://www.hackerrank.com/certificates/830bc394dfca",
+      pdfURL:
+        "https://www.freecodecamp.org/certification/j471n/javascript-algorithms-and-data-structures",
+    },
+    pinned: true,
+  },
+  {
+    title: "Scientific Computing with Python",
+    issuedDate: "Apr 16, 2021",
+    issuedBy: FreeCodeCamp,
+    urls: {
+      pdfURL:
+        "https://www.freecodecamp.org/certification/j471n/scientific-computing-with-python-v7",
     },
     pinned: true,
   },
