@@ -25,6 +25,7 @@ import { homeProfileImage } from "@utils/utils";
 import { getAllPosts } from "@lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
 import { pagePreviewImage } from "@utils/utils";
+import generateRSS from "@lib/generateRSS";
 
 export default function Home({ blogs }) {
   return (
@@ -107,6 +108,7 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   const blogs = getAllPosts().slice(0, 3);
+  await generateRSS();
   return {
     props: { blogs },
   };
