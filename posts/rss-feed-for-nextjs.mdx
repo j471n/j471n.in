@@ -14,7 +14,7 @@ In this article, I will explain how you can create an RSS feed for your Next.js 
 
 An RSS (Really Simple Syndication) feed is a file that contains a summary of updates from a website, often in the form of a list of articles with links.
 
-In my case, I am creating an RSS feed for my blogs to show the latest blogs as the site updates. The user doesn't need to visit to check if there is an update or a new blog. RSS send you the notification or shows the list of updates. You can use [RSS Feed Reader](https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp?hl=en) chrome extension to manage your feed.
+In my case, I am creating an RSS feed for my blogs to show the latest blogs as the site updates. The user doesn't need to visit to check if there is an update or a new blog. RSS sends you the notification or shows the list of updates. You can use [RSS Feed Reader](https://chrome.google.com/webstore/detail/rss-feed-reader/pnjaodmkngahhkoihejjehlcdlnohgmp?hl=en) chrome extension to manage your feed.
 
 ## What do we need?
 
@@ -46,7 +46,7 @@ export function getAllPosts() {
 }
 ```
 
-The above function gets all the blogs by fetching all the `slugs` and the for every slug it returns the `frontMatter` of that blog and the sorted it in descending order by date, which contains information like title, publishedDate, excerpt etc. Now we use this information to create the RSS feed.
+The above function gets all the blogs by fetching all the `slugs` and the for every slug it returns the `frontMatter` of that blog and then sorted it in descending order by date, which contains information like title, publishedDate, excerpt, etc. Now we use this information to create the RSS feed.
 
 ### Install the `feed` package
 
@@ -167,7 +167,7 @@ This code is straight forward and we just add the important data to the feed.
 
 <Step id={6}>Write the rss files in the public folder</Step>
 
-After all this, we just need to make a `xml` and `json` file. The following code will create `xml` and `json` files for the RSS feed.
+After all this, we just need to make an `xml` and `json` file. The following code will create `xml` and `json` files for the RSS feed.
 
 <CodeTitle title="lib/generateRssFeed.js" />
 
