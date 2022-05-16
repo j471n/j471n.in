@@ -10,6 +10,18 @@ image: https://imgur.com/MuMZbDH.png
 
 In this article, I will explain how you can create an RSS feed for your Next.js application in XML and JSON format. So without further delay, let's get into it.
 
+## Table of Contents
+- [what is RSS?](#what-is-rss)
+- [What do we need?](#what-do-we-need)
+- [Method-1](#method-1)
+  - [Getting the Blogs' data](#getting-the-blogs-data)
+  - [Install the `feed` package](#install-the-feed-package)
+  - [Create RSS Feed](#create-rss-feed)
+- [Method-2](#method-2)
+  - [Install `rss` package](#install-rss-package)
+  - [Generating RSS](#generating-rss)
+  - [Call the function](#call-the-function)
+
 ## what is RSS?
 
 An RSS (Really Simple Syndication) feed is a file that contains a summary of updates from a website, often in the form of a list of articles with links.
@@ -22,6 +34,8 @@ In my case, I am creating an RSS feed for my blogs to show the latest blogs as t
 - install the `feed` package
 - Create RSS Feed
 
+
+## Method-1
 ### Getting the Blogs' data
 
 I am assuming you already have your blog page where all the blogs are listed. I am using [MDX](https://mdxjs.com/) for managing the blog content. You might be using the same or anything else that doesn't matter. The main thing is you need to have an array containing all the blogs.
@@ -257,5 +271,77 @@ export async function getStaticProps() {
 </Tip>
 
 That's it everything is done. Now if you are in the development then you can go to the [localhost:3000/rss/feed.xml](http://localhost:3000/rss/feed.xml) and if you are in the production then you can just simply go to `https://yoursite.com/rss/feed.xml`. You will find the RSS in `xml` format. In case you want to get the `json` data just use `https://yoursite.com/rss/feed.json`.
+
+
+
+## Method-2
+
+### Install `rss` package
+In the second method you need to install the `rss` package through `npm` or `yarn`
+
+<CodeTitle title="bash" />
+
+```bash
+yarn add rss
+# or
+npm i rss
+```
+
+### Generating RSS
+
+To generate an RSS feed, you need to create a function the same as we did in the previous method.
+
+<CodeTitle title="lib/generateRssFeed.js" />
+
+```js
+import { writeFileSync } from "fs";
+import { getAllPosts } from "./posts";
+import RSS from "rss";
+export default async function getRSS() {
+  const siteURL = "https://yourdomain.com";
+  const allBlogs = getAllPosts();
+
+  const feed = new RSS({
+    title: "Your Name",
+    description: "your description",
+    site_url: siteURL,
+    feed_url: `${siteURL}/feed.xml`,
+    language: "en",
+    pubDate: new Date(),
+    copyright: `All rights reserved ${new Date().getFullYear()}, Your Name`,
+  });
+
+  allBlogs.map((post) => {
+    feed.item({
+      title: post.title,
+      url: `${siteURL}/blogs/${post.slug}`,
+      date: post.date,
+      description: post.excerpt,
+    });
+  });
+
+  writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
+}
+```
+
+### Call the function
+
+As we did in the previous method we can call it inside the `getStaticProps` in `pages/index.js`
+
+<CodeTitle title="pages/index.js" />
+
+```js
+// first import that function
+import generateRSS from "../lib/generateRssFeed";
+
+export async function getStaticProps() {
+  // ........
+  await generateRSS(); // calling to generate the feed
+  // ........
+}
+```
+
+After applying this method you just need to visit the `/feed.xml` and it'll give you the result. For example - `https://youdomain.com/feex.xml`
+
 
 My [RSS feed](/feed.xml) is live right now you can check it out.
