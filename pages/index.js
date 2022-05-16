@@ -4,7 +4,6 @@ import faqs from "@content/faqData";
 // Static Data END--------
 
 // Page Components START----------
-// import BlogsSection from "../components/Home/BlogsSection";
 import BlogsSection from "@components/Home/BlogsSection";
 import SkillSection from "@components/Home/SkillSection";
 // Page Components END------------
@@ -25,10 +24,10 @@ import { homeProfileImage } from "@utils/utils";
 import { getAllPosts } from "@lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
 import { pagePreviewImage } from "@utils/utils";
-// import generateRSS from "@lib/generateRSS";
 import getRSS from "@lib/generateRSS";
+import { getPinnedSkills } from "@lib/dataFetch";
 
-export default function Home({ blogs }) {
+export default function Home({ blogs, skills }) {
   return (
     <>
       <Metadata
@@ -81,7 +80,7 @@ export default function Home({ blogs }) {
           {/* About me */}
           {/* <AboutMe /> */}
           {/* Skills Section */}
-          <SkillSection />
+          <SkillSection skills={skills} />
           {/* Blogs Section */}
           <BlogsSection blogs={blogs} />
           {/* Project Section */}
@@ -109,9 +108,10 @@ export function HomeHeading({ title }) {
 
 export async function getStaticProps() {
   const blogs = getAllPosts().slice(0, 3);
-  // await generateRSS();
+  const skills = getPinnedSkills();
   await getRSS();
+
   return {
-    props: { blogs },
+    props: { blogs, skills },
   };
 }
