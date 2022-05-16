@@ -11,6 +11,8 @@ import fetcher from "../lib/fetcher";
 export default function Footer() {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
+  const footerNavigation = [...navigationRoutes, "RSS"];
+
   return (
     <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-10 print:hidden">
       <motion.div
@@ -21,7 +23,6 @@ export default function Footer() {
         className="max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl p-5 border-t-2 border-gray-200  dark:border-gray-400/10 mx-auto text-sm sm:text-base flex flex-col gap-5"
       >
         <div>
-          {/* <SiSpotify className="w-8 h-8" /> */}
           {currentSong?.isPlaying ? (
             <WhenPlaying song={currentSong} />
           ) : (
@@ -33,10 +34,12 @@ export default function Footer() {
 
         <section className="grid grid-cols-3 gap-10">
           <div className="flex flex-col gap-4 capitalize">
-            {navigationRoutes.map((route, index) => {
+            {footerNavigation.map((route, index) => {
+              let url = route;
+              if (url === "RSS  ") url = "rss/feed.xml";
               return (
-                <Link key={index} href={`/${route}`} passHref>
-                  <motion.a variants={popUp} href={`/${route}`}>
+                <Link key={index} href={`/${url}`} passHref>
+                  <motion.a variants={popUp} href={`/${url}`}>
                     {route}
                   </motion.a>
                 </Link>
