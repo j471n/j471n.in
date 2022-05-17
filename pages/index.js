@@ -24,8 +24,9 @@ import { homeProfileImage } from "@utils/utils";
 import { getAllPosts } from "@lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
 import { pagePreviewImage } from "@utils/utils";
-import getRSS from "@lib/generateRSS";
 import { getPinnedSkills } from "@lib/dataFetch";
+import getRSS from "@lib/generateRSS";
+import generateSitemap from "@lib/sitemap"
 
 export default function Home({ blogs, skills }) {
   return (
@@ -39,30 +40,30 @@ export default function Home({ blogs, skills }) {
         <section className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen">
           <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
             <div className="flex flex-col gap-1">
-              <AnimatedHeading
+              <h2
                 variants={opacityVariant}
                 className="text-5xl lg:text-6xl font-bold font-sarina"
               >
                 Jatin Sharma
-              </AnimatedHeading>
-              <AnimatedText
+              </h2>
+              <p
                 variants={opacityVariant}
                 className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
               >
                 React Developer, Competitive Programmer
-              </AnimatedText>
+              </p>
             </div>
 
-            <AnimatedText
-              variants={popUpFromBottomForText}
+            <p
+              // variants={popUpFromBottomForText}
               className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
             >
               I am currently perusing my Bachelor Degree in Computer Science. I
               can code in Python, C, C++, etc.
-            </AnimatedText>
+            </p>
           </div>
 
-          <AnimatedDiv className="w-44 h-44" variants={opacityVariant}>
+          <div className="w-44 h-44">
             <Image
               src={homeProfileImage}
               className="rounded-full shadow filter saturate-0"
@@ -73,7 +74,7 @@ export default function Home({ blogs, skills }) {
               quality={75}
               priority={true}
             />
-          </AnimatedDiv>
+          </div>
         </section>
 
         <div id="view">
@@ -110,6 +111,7 @@ export async function getStaticProps() {
   const blogs = getAllPosts().slice(0, 3);
   const skills = getPinnedSkills();
   await getRSS();
+  await generateSitemap();
 
   return {
     props: { blogs, skills },
