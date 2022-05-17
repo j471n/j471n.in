@@ -82,7 +82,7 @@ To generate the RSS feed we create a function called `generateRssFeed`. You can 
 
 <CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
-```js
+```js {1-3}
 import fs from "fs";
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
@@ -95,7 +95,11 @@ import { getAllPosts } from "./posts";
 
 <CodeTitle lang="bash" title="lib/generateRssFeed.js" />
 
-```js
+```js {5}
+import fs from "fs";
+import { Feed } from "feed";
+import { getAllPosts } from "./posts";
+
 export default async function generateRssFeed() {}
 ```
 
@@ -106,15 +110,21 @@ export default async function generateRssFeed() {}
 
 <CodeTitle lang="js" title="lib/generateRssFeed.js" />
 
-```js
-const posts = getAllPosts();
-const siteURL = process.env.VERCEL_URL;
-const date = new Date();
-const author = {
-  name: "John Doe",
-  email: "example@gmail.com",
-  link: "https://twitter.com/<username>",
-};
+```js {6-13}
+import fs from "fs";
+import { Feed } from "feed";
+import { getAllPosts } from "./posts";
+
+export default async function generateRssFeed() {
+  const posts = getAllPosts();
+  const siteURL = process.env.VERCEL_URL;
+  const date = new Date();
+  const author = {
+    name: "John Doe",
+    email: "example@gmail.com",
+    link: "https://twitter.com/<username>",
+  };
+}
 ```
 
 In the above code, I've used the `process.env.VERCEL_URL` as the siteURL. You might be wondering why I used that. In my case, I am using [vercel](https://vercel.com/) to host my website. So we need to pass the siteURL to the RSS. In the production or Preview in Vercel, it provides us the environment variable called `VERCEL_URL` which is nothing but your site root URL. For example `https://google.com`. We need the root URL for the production as well as the development phase because we need to check if our RSS is working or not. That's why I've chosen `VERCEL_URL` as the environment variable. My `.env.local` looks like this-
@@ -134,68 +144,7 @@ VERCEL_URL=http://localhost:3000
 <Step id={4}>After that we will create a feed.</Step>
 
 <CodeTitle lang="js" title="lib/generateRssFeed.js" />
-```js
-const feed = new Feed({
-  title: "Your Blog name",
-  description: "Your Blog description",
-  id: siteURL,
-  link: siteURL,
-  image: `${siteURL}/favicon.ico`,
-  favicon: `${siteURL}/favicon.ico`,
-  copyright: `All rights reserved ${date.getFullYear()}, Jatin Sharma`,
-  updated: date, // today's date
-  generator: "Feed for Node.js",
-  feedLinks: {
-    rss2: `${siteURL}/rss/feed.xml`,  // xml format
-    json: `${siteURL}/rss/feed.json`,// json fromat
-  },
-  author,
-});
-```
-
-The above code creates an RSS feed in `XML` and `JSON` format.
-
-<Step id={5}>Add Blogs to the Feed</Step>
-
-Now, as our feed is created, we just need to add all the blogs in that feed. To do that, we loop through the array of blogs and add the blog to the feed. The following code shows how you can do it.
-
-<CodeTitle lang="js" title="lib/generateRssFeed.js" />
-
-```js
-posts.forEach((post) => {
-  const url = `${siteURL}/blog/${post.slug}`;
-  feed.addItem({
-    title: post.title,
-    id: url,
-    link: url,
-    description: post.excerpt,
-    content: post.excerpt,
-    author: [author],
-    contributor: [author],
-    date: new Date(post.date),
-  });
-});
-```
-
-This code is straight forward and we just add the important data to the feed.
-
-<Step id={6}>Write the rss files in the public folder</Step>
-
-After all this, we just need to make an `xml` and `json` file. The following code will create `xml` and `json` files for the RSS feed.
-
-<CodeTitle lang="js" title="lib/generateRssFeed.js" />
-
-```js
-fs.mkdirSync("./public/rss", { recursive: true });
-fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
-fs.writeFileSync("./public/rss/feed.json", feed.json1());
-```
-
-Now our work is almost completed. And our `generateRssFeed.js` looks something like this -
-
-<CodeTitle lang="js" title="lib/generateRssFeed.js" />
-
-```js
+```js {15-30}
 import fs from "fs";
 import { Feed } from "feed";
 import { getAllPosts } from "./posts";
@@ -210,7 +159,6 @@ export default async function generateRssFeed() {
     link: "https://twitter.com/<username>",
   };
 
-  // Creating feed
   const feed = new Feed({
     title: "Your Blog name",
     description: "Your Blog description",
@@ -222,13 +170,110 @@ export default async function generateRssFeed() {
     updated: date, // today's date
     generator: "Feed for Node.js",
     feedLinks: {
-      rss2: `${siteURL}/rss/feed.xml`, // xml format
-      json: `${siteURL}/rss/feed.json`, // json fromat
+      rss2: `${siteURL}/rss/feed.xml`,  // xml format
+      json: `${siteURL}/rss/feed.json`,// json fromat
+    },
+    author,
+  });
+}
+```
+
+The above code creates an RSS feed in `XML` and `JSON` format.
+
+<Step id={5}>Add Blogs to the Feed</Step>
+
+Now, as our feed is created, we just need to add all the blogs in that feed. To do that, we loop through the array of blogs and add the blog to the feed. The following code shows how you can do it.
+
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
+
+```js {32-44}
+import fs from "fs";
+import { Feed } from "feed";
+import { getAllPosts } from "./posts";
+
+export default async function generateRssFeed() {
+  const posts = getAllPosts();
+  const siteURL = process.env.VERCEL_URL;
+  const date = new Date();
+  const author = {
+    name: "John Doe",
+    email: "example@gmail.com",
+    link: "https://twitter.com/<username>",
+  };
+  
+  const feed = new Feed({
+    title: "Your Blog name",
+    description: "Your Blog description",
+    id: siteURL,
+    link: siteURL,
+    image: `${siteURL}/favicon.ico`,
+    favicon: `${siteURL}/favicon.ico`,
+    copyright: `All rights reserved ${date.getFullYear()}, Jatin Sharma`,
+    updated: date, // today's date
+    generator: "Feed for Node.js",
+    feedLinks: {
+      rss2: `${siteURL}/rss/feed.xml`,  // xml format
+      json: `${siteURL}/rss/feed.json`,// json fromat
     },
     author,
   });
 
-  // Adding blogs to the rss feed
+  posts.forEach((post) => {
+    const url = `${siteURL}/blog/${post.slug}`;
+    feed.addItem({
+      title: post.title,
+      id: url,
+      link: url,
+      description: post.excerpt,
+      content: post.excerpt,
+      author: [author],
+      contributor: [author],
+      date: new Date(post.date),
+    });
+  });
+}
+```
+
+This code is straight forward and we just add the important data to the feed.
+
+<Step id={6}>Write the rss files in the public folder</Step>
+
+After all this, we just need to make an `xml` and `json` file. The following code will create `xml` and `json` files for the RSS feed.
+
+<CodeTitle lang="js" title="lib/generateRssFeed.js" />
+
+```js {46-48}
+import fs from "fs";
+import { Feed } from "feed";
+import { getAllPosts } from "./posts";
+
+export default async function generateRssFeed() {
+  const posts = getAllPosts();
+  const siteURL = process.env.VERCEL_URL;
+  const date = new Date();
+  const author = {
+    name: "John Doe",
+    email: "example@gmail.com",
+    link: "https://twitter.com/<username>",
+  };
+  
+  const feed = new Feed({
+    title: "Your Blog name",
+    description: "Your Blog description",
+    id: siteURL,
+    link: siteURL,
+    image: `${siteURL}/favicon.ico`,
+    favicon: `${siteURL}/favicon.ico`,
+    copyright: `All rights reserved ${date.getFullYear()}, Jatin Sharma`,
+    updated: date, // today's date
+    generator: "Feed for Node.js",
+    feedLinks: {
+      rss2: `${siteURL}/rss/feed.xml`,  // xml format
+      json: `${siteURL}/rss/feed.json`,// json fromat
+    },
+    author,
+  });
+  
   posts.forEach((post) => {
     const url = `${siteURL}/blog/${post.slug}`;
     feed.addItem({
@@ -243,7 +288,6 @@ export default async function generateRssFeed() {
     });
   });
 
-  // generating the xml and json for rss
   fs.mkdirSync("./public/rss", { recursive: true });
   fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
   fs.writeFileSync("./public/rss/feed.json", feed.json1());
@@ -254,7 +298,7 @@ Now, we just need to call this function to generate the feed as the data is upda
 
 <CodeTitle lang="js" title="pages/index.js" />
 
-```js
+```js {6}
 // first import that function
 import generateRSS from "../lib/generateRssFeed";
 
@@ -330,7 +374,7 @@ As we did in the previous method we can call it inside the `getStaticProps` in `
 
 <CodeTitle lang="js" title="pages/index.js" />
 
-```js
+```js {6}
 // first import that function
 import generateRSS from "../lib/generateRssFeed";
 
