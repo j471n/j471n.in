@@ -38,13 +38,13 @@ export default function BlogLayout({ post, children }) {
           className="flex items-center !w-full"
         >
           <div className="flex items-center gap-2 w-full">
-            <div className="relative w-10 h-10 sm:w-8 sm:h-8">
+            <div className="relative">
               <Image
                 alt="Jatin Sharma"
                 height={30}
                 width={30}
                 src={AvatarImage}
-                layout="responsive"
+                layout="fixed"
                 className="rounded-full"
               />
             </div>
