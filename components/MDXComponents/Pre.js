@@ -22,7 +22,7 @@ const Pre = (props) => {
 
   return (
     <div
-      className="relative -mt-1"
+      className="relative "
       ref={textInput}
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
@@ -68,7 +68,7 @@ const Pre = (props) => {
         </button>
       )}
 
-      <pre className="!my-0 !py-3.5 border border-transparent border-t-gray-400 !rounded-tl-none !rounded-tr-none dark:border-gray-50/50">
+      <pre className="!my-0 !rounded-tl-none !rounded-tr-none !rounded-md  !w-full !p-0 !py-3">
         {props.children}
       </pre>
     </div>

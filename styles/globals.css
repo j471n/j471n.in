@@ -76,6 +76,36 @@ body.dark::-webkit-scrollbar-thumb {
   margin-block-start: auto;
 }
 
+/* Code Line Highlighting START */
+code {
+  counter-reset: line;
+}
+
+code span.line {
+  padding: 3px 12px;
+  border-left: 3px solid transparent;
+}
+
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
+
+  /* Other styling */
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+  font-weight: 500;
+  border-right: 4px solid transparent;
+}
+
+.highlighted {
+  background: rgba(200, 200, 255, 0.1);
+  border-left: 4px solid #3777de !important;
+}
+/* Code Line Highlighting ENDS */
+
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {
