@@ -14,12 +14,9 @@ export default function PageNotFound() {
       </p>
 
       <Link href="/" passHref>
-        <a
-          class="p-3 w-full xs:max-w-[200px] xs:mx-0 sm:p-3 font-bold mx-auto bg-gray-200 dark:bg-darkSecondary text-center rounded-md text-black dark:text-white select-none"
-          href="/"
-        >
+        <div className="p-3 w-full xs:max-w-[200px] xs:mx-0 sm:p-3 font-bold mx-auto bg-gray-200 dark:bg-darkSecondary text-center rounded-md text-black dark:text-white select-none">
           Take me there!
-        </a>
+        </div>
       </Link>
     </section>
   );
