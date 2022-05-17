@@ -1,42 +1,26 @@
 import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/dist/client/router";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function PageNotFound() {
-  const [seconds, setSeconds] = useState(5);
-
-  const router = useRouter();
-
-  function returnHomeTimer() {
-    setTimeout(() => {
-      if (seconds <= 0) {
-        router.push("/");
-      } else {
-        setSeconds((seconds) => seconds - 1);
-      }
-    }, 1000);
-  }
-  
-  useEffect(() => {
-    returnHomeTimer();
-  }, [returnHomeTimer]);
-
   return (
-    <div className="min-h-screen min-w-screen flex gap-5 flex-col items-center justify-center">
-      <div className="relative p-5 sm:w-1/2 -mt-20 sm:mt-0">
-        <Image
-          src="/img/cover/404.svg"
-          width={903}
-          height={561}
-          alt="error 404"
-          priority={true}
-        ></Image>
-      </div>
-
-      <h1 className="dark:text-gray-300 font-bold">
-        Returning Home in <span>{seconds}</span> seconds
+    <section className="pageTop flex flex-col gap-5 md:pt-20">
+      <h1 className="font-bold font-barlow text-3xl md:text-5xl uppercase dark:text-white">
+        Stay calm and don't freak out!!
       </h1>
-    </div>
+      <p className="font-inter text-gray-500 dark:text-gray-400/70">
+        Looks like you've found the doorway to the great nothing. You didn't
+        break the internet, but we can't find what you are looking for. Please
+        visit our <b>Homepage</b> to get where you need to go.
+      </p>
+
+      <Link href="/" passHref>
+        <a
+          class="p-3 w-full xs:max-w-[200px] xs:mx-0 sm:p-3 font-bold mx-auto bg-gray-200 dark:bg-darkSecondary text-center rounded-md text-black dark:text-white select-none"
+          href="/"
+        >
+          Take me there!
+        </a>
+      </Link>
+    </section>
   );
 }
