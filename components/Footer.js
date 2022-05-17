@@ -11,8 +11,6 @@ import fetcher from "../lib/fetcher";
 export default function Footer() {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
-  const footerNavigation = [...navigationRoutes, "RSS"];
-
   return (
     <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-10 print:hidden">
       <motion.div
@@ -34,13 +32,13 @@ export default function Footer() {
 
         <section className="grid grid-cols-3 gap-10">
           <div className="flex flex-col gap-4 capitalize">
-            {footerNavigation.map((route, index) => {
-              let url = route;
-              if (url === "RSS") url = "feed.xml";
+            {navigationRoutes.map((route, index) => {
+              let text = route;
+              if (route === "rss") text = "RSS";
               return (
-                <Link key={index} href={`/${url}`} passHref>
-                  <motion.a variants={popUp} href={`/${url}`}>
-                    {route}
+                <Link key={index} href={`/${route}`} passHref>
+                  <motion.a variants={popUp} href={`/${route}`}>
+                    {text}
                   </motion.a>
                 </Link>
               );

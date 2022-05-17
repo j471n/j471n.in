@@ -110,7 +110,7 @@ export default function TopNavbar() {
           variants={FadeContainer}
           className="flex items-center"
         >
-          {navigationRoutes.map((link, index) => {
+          {navigationRoutes.slice(0,6).map((link, index) => {
             return (
               <NavItem
                 key={index}
