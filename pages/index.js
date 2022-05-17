@@ -12,15 +12,13 @@ import Image from "next/image";
 import Metadata from "@components/MetaData";
 import Contact from "@components/Contact";
 import FAQ from "@components/FAQ";
-import AnimatedText from "@components/FramerMotion/AnimatedText";
 import {
+  FadeContainer,
   headingFromLeft,
   opacityVariant,
   popUp,
-  popUpFromBottomForText,
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { homeProfileImage } from "@utils/utils";
 import { getAllPosts } from "@lib/posts";
 // import { resumeDownloadLink } from "../utils/utils";
@@ -28,6 +26,7 @@ import { pagePreviewImage } from "@utils/utils";
 import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
+import { motion } from "framer-motion";
 
 export default function Home({ blogs, skills }) {
   return (
@@ -38,33 +37,38 @@ export default function Home({ blogs, skills }) {
         previewImage={pagePreviewImage.home}
       />
       <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
-        <section className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          variants={FadeContainer}
+          className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen"
+        >
           <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
             <div className="flex flex-col gap-1">
-              <AnimatedHeading
+              <motion.h1
                 variants={opacityVariant}
                 className="text-5xl lg:text-6xl font-bold font-sarina"
               >
                 Jatin Sharma
-              </AnimatedHeading>
-              <AnimatedText
+              </motion.h1>
+              <motion.p
                 variants={opacityVariant}
                 className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
               >
                 React Developer, Competitive Programmer
-              </AnimatedText>
+              </motion.p>
             </div>
 
-            <AnimatedText
-              variants={popUpFromBottomForText}
+            <motion.p
+              variants={opacityVariant}
               className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
             >
               I am currently perusing my Bachelor Degree in Computer Science. I
               can code in Python, C, C++, etc.
-            </AnimatedText>
+            </motion.p>
           </div>
 
-          <AnimatedDiv variants={popUp} className="w-44 h-44">
+          <motion.div variants={popUp} className="w-44 h-44">
             <Image
               src={homeProfileImage}
               className="rounded-full shadow filter saturate-0"
@@ -75,21 +79,15 @@ export default function Home({ blogs, skills }) {
               quality={75}
               priority={true}
             />
-          </AnimatedDiv>
-        </section>
+          </motion.div>
+        </motion.section>
 
-        <div id="view">
-          {/* About me */}
+        <div>
           {/* <AboutMe /> */}
-          {/* Skills Section */}
           <SkillSection skills={skills} />
-          {/* Blogs Section */}
           <BlogsSection blogs={blogs} />
-          {/* Project Section */}
           {/* <ProjectSection /> */}
-          {/* FAQs */}
           <FAQ faqs={faqs} />
-          {/* Contact on Social Media */}
           <Contact socialMedia={socialMedia} />
         </div>
       </div>

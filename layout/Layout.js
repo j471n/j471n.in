@@ -6,8 +6,8 @@ import { AnimatePresence } from "framer-motion";
 export default function Layout({ children }) {
   return (
     <>
+      <TopNavbar />
       <AnimatePresence initial={false}>
-        <TopNavbar />
         <main>{children}</main>
       </AnimatePresence>
       <Footer />
