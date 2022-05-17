@@ -1,12 +1,14 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fromLeftVariant, opacityVariant } from "@content/FramerMotionVariants";
+import Link from "next/link";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import { getAllPosts } from "@lib/posts";
 import { pagePreviewImage } from "@utils/utils";
+import { BiRss } from "react-icons/bi";
 
 export default function Blogs({ blogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
@@ -107,11 +109,16 @@ export default function Blogs({ blogs }) {
           <AnimatePresence>
             {filteredBlogs.length != 0 ? (
               <>
-                <AnimatedHeading
-                  variants={opacityVariant}
-                  className="text-left font-bold text-3xl my-5"
+                <AnimatedHeading variants={opacityVariant}
+                className="flex items-center justify-between"
                 >
-                  All Posts ({filteredBlogs.length})
+                  <h1 className="text-left font-bold text-3xl my-5">
+                    All Posts ({filteredBlogs.length})
+                  </h1>
+
+                  <Link href="/rss" passHref>
+                    <BiRss title="RSS" className="text-3xl cursor-pointer" />
+                  </Link>
                 </AnimatedHeading>
                 {filteredBlogs.map((blog, index) => {
                   return <Blog key={index} blog={blog} />;
