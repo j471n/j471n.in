@@ -10,6 +10,7 @@ NProgress.configure({
   easing: "ease",
   speed: 800,
   showSpinner: false,
+
 });
 
 function MyApp({ Component, pageProps }) {
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", end);
       router.events.off("routeChangeError", end);
     };
-  }, []);
+  }, [router.events]);
 
   return (
     <DarkModeProvider>
