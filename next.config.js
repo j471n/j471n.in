@@ -6,7 +6,6 @@ module.exports = {
     return config;
   },
   reactStrictMode: true,
-  optimizeFonts: false,
   images: {
     domains: [
       "cdn.buymeacoffee.com",
