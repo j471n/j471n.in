@@ -1,5 +1,4 @@
 import Codepen from "./Codepen";
-import BlogImage from "./BlogImage";
 import Figcaption from "./Figcaption";
 import Warning from "./Warning";
 import Danger from "./Danger";
@@ -10,7 +9,6 @@ import Step from "./Step";
 
 const MDXComponents = {
   Codepen,
-  BlogImage,
   Figcaption,
   Warning,
   Danger,
