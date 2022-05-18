@@ -9,6 +9,7 @@ import AnimatedText from "@components/FramerMotion/AnimatedText";
 import { getAllPosts } from "@lib/posts";
 import { pagePreviewImage } from "@utils/utils";
 import { BiRss } from "react-icons/bi";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogs }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
@@ -109,7 +110,7 @@ export default function Blogs({ blogs }) {
           <AnimatePresence>
             {filteredBlogs.length != 0 ? (
               <>
-                <AnimatedHeading variants={opacityVariant}
+                <AnimatedDiv variants={opacityVariant}
                 className="flex items-center justify-between"
                 >
                   <h1 className="text-left font-bold text-3xl my-5">
@@ -119,7 +120,7 @@ export default function Blogs({ blogs }) {
                   <Link href="/rss" passHref>
                     <BiRss title="RSS" className="text-3xl cursor-pointer" />
                   </Link>
-                </AnimatedHeading>
+                </AnimatedDiv>
                 {filteredBlogs.map((blog, index) => {
                   return <Blog key={index} blog={blog} />;
                 })}
