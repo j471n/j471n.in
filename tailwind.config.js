@@ -6,14 +6,12 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
-      exo: ['"Exo 2"', "sans-serif"],
       merriweather: ["Merriweather", "sans-serif"],
-      "bungee-shade": ["Bungee Shade", "cursive"],
       inter: ["Inter", "sans-serif"],
       sarina: ["Sarina", "cursive"],
       "open-sans": ["Open Sans", "sans-serif"],
       barlow: ["Barlow", "sans-serif"],
-      code: ["Source Code Pro", "monospace"],
+      mono: ["monospace"],
     },
     extend: {
       // typography: (theme) => ({
