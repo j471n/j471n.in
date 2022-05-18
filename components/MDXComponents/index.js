@@ -8,7 +8,7 @@ import Tip from "./Tip";
 import Pre from "./Pre";
 import Step from "./Step";
 
-export default {
+const MDXComponents = {
   Codepen,
   BlogImage,
   Figcaption,
@@ -19,3 +19,5 @@ export default {
   Step,
   pre: Pre,
 };
+
+export default MDXComponents;
