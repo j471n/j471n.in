@@ -18,7 +18,7 @@ export default function Post({ post }) {
     const scroll = `${totalScroll / windowHeight}`;
 
     setScroll(scroll);
-  }, [scroll]);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", progressBarHandler);
