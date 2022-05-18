@@ -17,20 +17,21 @@ export default function MetaData({ title, description, previewImage }) {
       <link rel="icon" href="/favicon.ico" />
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="author" content="Jatin Sharma"></meta>
+      <meta name="robots" content="index,follow" />
 
       {/* Og */}
       <meta property="og:title" content={`${title || ""} Jatin Sharma`} />
       <meta property="og:description" content={description || "Jatin Sharma"} />
       <meta property="og:site_name" content="Jatin Sharma" />
       <meta property="og:url" content={URL} key="ogurl" />
-      <meta property="og:image" content={previewImage} />
+      <meta property="og:image" content={previewImage || ""} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@j471n_" />
       <meta name="twitter:title" content={`${title || ""} Jatin Sharma`} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={previewImage} />
+      <meta name="twitter:image" content={previewImage || ""} />
       <meta name="twitter:image:alt" content={title || "Jatin Sharma"}></meta>
       <meta name="twitter:domain" content={URL} />
     </Head>

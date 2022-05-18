@@ -1,5 +1,5 @@
 import { IoIosArrowUp } from "react-icons/io";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function ScrollToTopButton() {
   const [showButton, setShowButton] = useState(false);
@@ -13,19 +13,20 @@ export default function ScrollToTopButton() {
       ((h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight)) * 100
     );
   }
-  function scrollEvent() {
+  const scrollEvent = useCallback(() => {
     if (window.pageYOffset > 300 && getScrollPercent() < 95) {
       setShowButton(true);
     } else {
       setShowButton(false);
     }
-  }
+  }, []);
+
   useEffect(() => {
     window.addEventListener("scroll", scrollEvent);
     return () => {
       window.removeEventListener("scroll", scrollEvent);
     };
-  }, []);
+  }, [scrollEvent]);
 
   // This function will scroll the window to the top
   const scrollToTop = () => {

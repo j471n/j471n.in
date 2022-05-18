@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -6,16 +6,11 @@ import { AvatarImage } from "../utils/utils";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import {
   FadeContainer,
-  fromLeftVariant,
-  fromRightVariant,
-  fromTopVariant,
   hamFastFadeContainer,
-  headingFromLeft,
   mobileNavItemSideways,
   popUp,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
-import AnimatedDiv from "../components/FramerMotion/AnimatedDiv";
 import { navigationRoutes } from "../utils/utils";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 
@@ -27,7 +22,7 @@ export default function TopNavbar() {
   const { isDarkMode, changeDarkMode } = useDarkMode();
 
   // Adding Shadow, backdrop to the navbar as user scroll the screen
-  function addShadowToNavbar() {
+  const addShadowToNavbar = useCallback(() => {
     if (window.pageYOffset > 10) {
       navRef.current.classList.add(
         ...[
@@ -50,7 +45,7 @@ export default function TopNavbar() {
       );
       control.start("hidden");
     }
-  }
+  }, [control]);
 
   useEffect(() => {
     window.addEventListener("scroll", addShadowToNavbar);
@@ -92,7 +87,7 @@ export default function TopNavbar() {
             initial="hidden"
             animate={control}
             variants={{
-              hidden: { opacity: 0,   scale: 1, display: "none" },
+              hidden: { opacity: 0, scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
             className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
@@ -110,7 +105,7 @@ export default function TopNavbar() {
           variants={FadeContainer}
           className="flex items-center"
         >
-          {navigationRoutes.map((link, index) => {
+          {navigationRoutes.slice(0, 6).map((link, index) => {
             return (
               <NavItem
                 key={index}

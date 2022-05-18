@@ -1,5 +1,4 @@
 import Codepen from "./Codepen";
-import BlogImage from "./BlogImage";
 import Figcaption from "./Figcaption";
 import Warning from "./Warning";
 import Danger from "./Danger";
@@ -8,9 +7,8 @@ import Tip from "./Tip";
 import Pre from "./Pre";
 import Step from "./Step";
 
-export default {
+const MDXComponents = {
   Codepen,
-  BlogImage,
   Figcaption,
   Warning,
   Danger,
@@ -19,3 +17,5 @@ export default {
   Step,
   pre: Pre,
 };
+
+export default MDXComponents;

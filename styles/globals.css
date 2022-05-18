@@ -106,6 +106,19 @@ code > .line::before {
 }
 /* Code Line Highlighting ENDS */
 
+/* Nprogress bar Custom Styling (force) : STARTS */
+#nprogress .bar {
+  background-color: rgba(0, 89, 255, 0.7) !important;
+  height: 3px !important;
+}
+.dark #nprogress .bar {
+  background: #fff !important;
+}
+#nprogress .peg {
+  box-shadow: none !important;
+}
+/* Nprogress bar Custom Styling (force) : ENDS */
+
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
   .bottom_nav_icon {

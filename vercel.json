@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/rss",
+      "destination": "/feed.xml"
+    },
+    {
+      "source": "/sitemap",
+      "destination": "/sitemap.xml"
+    }
+  ]
+}
