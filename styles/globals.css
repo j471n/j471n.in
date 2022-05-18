@@ -1,12 +1,59 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Sarina&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700;800&display=swap"); */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/fonts/Barlow/Barlow-400.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/fonts/Barlow/Barlow-500.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/fonts/Barlow/Barlow-600.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(/fonts/Barlow/Barlow-700.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(/fonts/Barlow/Barlow-800.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(/fonts/Inter-var.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Sarina";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url(/fonts/Sarina/Sarina-400.woff2) format("woff2");
+}
+
 body,
 html {
-  font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
   scroll-behavior: auto;
 }
@@ -173,5 +220,11 @@ code > .line::before {
   }
   .pageTop {
     @apply mt-[52px] md:mt-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto p-4 mb-10;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-inter;
   }
 }
