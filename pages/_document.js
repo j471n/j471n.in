@@ -13,8 +13,8 @@ export default function Document() {
         <link rel="DNS-prefetch" href="//fonts.googleapis.com" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Sarina&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700;800&display=swap"
-        ></link>
+          href="https://fonts.googleapis.com/css2?family=Sarina&family=Montserrat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Barlow:wght@400;500;600;700;800&display=optional"
+        />
         <link
           rel="stylesheet"
           href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
