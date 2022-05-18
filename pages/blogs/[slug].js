@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import BlogLayout from "@layout/BlogLayout";
 import { getPostFromSlug, getSlugs } from "@lib/posts";
 import Metadata from "@components/MetaData";
@@ -10,7 +10,7 @@ import "highlight.js/styles/atom-one-dark.css";
 export default function Post({ post }) {
   const [scroll, setScroll] = useState(0);
 
-  const progressBarHandler = () => {
+  const progressBarHandler = useCallback(() => {
     const totalScroll = document.documentElement.scrollTop;
     const windowHeight =
       document.documentElement.scrollHeight -
@@ -18,7 +18,7 @@ export default function Post({ post }) {
     const scroll = `${totalScroll / windowHeight}`;
 
     setScroll(scroll);
-  };
+  }, [scroll]);
 
   useEffect(() => {
     window.addEventListener("scroll", progressBarHandler);
