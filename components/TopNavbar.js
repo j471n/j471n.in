@@ -73,14 +73,14 @@ export default function TopNavbar() {
             initial="hidden"
             animate="visible"
             variants={popUp}
-            className="rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex"
+            className="relative rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex mr-3"
           >
             <Image
               src={AvatarImage}
-              width={64}
-              height={64}
+              layout="fill"
               alt="Profile Image"
               priority={true}
+              objectFit="contain"
             ></Image>
           </motion.div>
           <motion.p
