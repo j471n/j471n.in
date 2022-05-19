@@ -101,6 +101,10 @@ body.dark::-webkit-scrollbar-thumb {
   display: none;
 }
 
+.lock-scroll {
+  overflow: hidden !important;
+}
+
 /* For preventing the blue highlight color box on tap(click) */
 * {
   -webkit-tap-highlight-color: transparent;

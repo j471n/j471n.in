@@ -38,6 +38,6 @@ export default function CodeTitle({ title, lang }) {
         <Icon className="flex items-center w-4 h-4" />
         <p className="!my-0 font-[600] text-sm">{title}</p>
       </div>
-    </div>
+    </div>  
   );
 }

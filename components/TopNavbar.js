@@ -158,6 +158,12 @@ function NavItem({ href, text, router }) {
 
 // Hamburger Button
 function HamBurger({ open, setOpen }) {
+  // to lock the scroll when mobile is open
+  function lockScroll() {
+    const root = document.getElementsByTagName("html")[0];
+    root.classList.toggle("lock-scroll"); // class is define in the global.css
+  }
+
   return (
     <motion.div
       style={{ zIndex: 1000 }}
@@ -170,7 +176,10 @@ function HamBurger({ open, setOpen }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
-          onClick={() => setOpen((open) => !open)}
+          onClick={() => {
+            setOpen((open) => !open);
+            lockScroll();
+          }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -186,7 +195,10 @@ function HamBurger({ open, setOpen }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
-          onClick={() => setOpen((open) => !open)}
+          onClick={() => {
+            setOpen((open) => !open);
+            lockScroll();
+          }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -207,7 +219,7 @@ function HamBurger({ open, setOpen }) {
 const MobileMenu = ({ links, setNavOpen }) => {
   return (
     <motion.div
-      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10"
+      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10 !pointer-events-none"
       variants={hamFastFadeContainer}
       initial="hidden"
       animate="visible"
@@ -221,7 +233,7 @@ const MobileMenu = ({ links, setNavOpen }) => {
             <Link href={navlink} key={index} passHref>
               <motion.a
                 href={navlink}
-                className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide"
+                className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide pointer-events-auto"
                 variants={mobileNavItemSideways}
                 onClick={() => setNavOpen(false)}
               >
