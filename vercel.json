@@ -74,6 +74,10 @@
     {
       "source": "/sitemap",
       "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/newsletter",
+      "destination": "https://www.getrevue.co/profile/j471n"
     }
   ]
 }

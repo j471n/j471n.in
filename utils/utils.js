@@ -10,7 +10,8 @@ export const navigationRoutes = [
   "blogs",
   "certificates",
   "projects",
-  "rss"
+  "newsletter",
+  "rss",
 ];
 
 export const pagePreviewImage = {
