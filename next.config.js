@@ -1,4 +1,8 @@
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer({
   webpack: true,
   webpack: (config) => {
     // Fixes npm packages that depend on `fs` module
@@ -6,7 +10,6 @@ module.exports = {
     return config;
   },
   reactStrictMode: true,
-  optimizeFonts: false,
   images: {
     domains: [
       "cdn.buymeacoffee.com",
@@ -18,4 +21,4 @@ module.exports = {
       "i.scdn.co", // images from spotify
     ],
   },
-};
+});

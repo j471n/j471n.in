@@ -16,25 +16,10 @@ export default function BlogsSection({ blogs }) {
       <div className="flex flex-col gap-3 w-full">
         {blogs.map((blog, index) => {
           return (
-            <div key={index} className="flex flex-col xs:flex-row items-center gap-2">
-              <motion.div
-                variants={opacityVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="w-full h-full sm:w-1/2 sm:h-1/2 md:w-2/5 md:h-2/5"
-              >
-                <Image
-                  className="rounded-md"
-                  src={blog.image}
-                  width={1200}
-                  height={630}
-                  layout="responsive"
-                  alt=""
-                  placeholder="blur"
-                  blurDataURL={blog.image}
-                ></Image>
-              </motion.div>
+            <div
+              key={index}
+              className="flex flex-col xs:flex-row items-center gap-2"
+            >
               <Blog blog={blog} className="active:!scale-100" />
             </div>
           );
