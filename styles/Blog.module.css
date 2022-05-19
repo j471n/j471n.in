@@ -53,7 +53,7 @@
 }
 
 .blog code {
-  @apply bg-gray-600 text-white px-2 py-0.5;
+  @apply bg-gray-600 text-white;
 }
 
 .blog h1 code,
