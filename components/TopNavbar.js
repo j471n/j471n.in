@@ -219,7 +219,7 @@ function HamBurger({ open, setOpen }) {
 const MobileMenu = ({ links, setNavOpen }) => {
   return (
     <motion.div
-      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10 !pointer-events-none"
+      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10 sm:hidden"
       variants={hamFastFadeContainer}
       initial="hidden"
       animate="visible"
@@ -230,10 +230,10 @@ const MobileMenu = ({ links, setNavOpen }) => {
           const navlink =
             link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
           return (
-            <Link href={navlink} key={index} passHref>
+            <Link href={navlink} key={`mobileNav-${index}`} passHref>
               <motion.a
                 href={navlink}
-                className="list-none text-xl my-3 uppercase font-inter font-medium tracking-wide pointer-events-auto"
+                className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
                 variants={mobileNavItemSideways}
                 onClick={() => setNavOpen(false)}
               >
