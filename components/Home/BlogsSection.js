@@ -20,25 +20,6 @@ export default function BlogsSection({ blogs }) {
               key={index}
               className="flex flex-col xs:flex-row items-center gap-2"
             >
-              <motion.div
-                variants={opacityVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="w-full h-full sm:w-1/2 sm:h-1/2 md:w-2/5 md:h-2/5"
-              >
-                <Image
-                  className="rounded-md"
-                  src={blog.image}
-                  width={600}
-                  height={315}
-                  layout="responsive"
-                  alt={blog.title}
-                  placeholder="blur"
-                  blurDataURL={blog.image}  
-                  quality={10}
-                ></Image>
-              </motion.div>
               <Blog blog={blog} className="active:!scale-100" />
             </div>
           );
