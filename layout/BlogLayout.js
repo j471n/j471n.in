@@ -15,17 +15,6 @@ export default function BlogLayout({ post, children }) {
   return (
     <>
       <section className="mt-[52px] md:mt-[72px] max-w-3xl relative mx-auto p-5 font-barlow prose dark:prose-invert">
-        {/* <div className="my-4">
-          <Image
-            alt={post.meta.title}
-            height={630}
-            width={1200}
-            src={post.meta.image}
-            objectFit="contain"
-            layout="responsive"
-            className="rounded-md"
-          />
-        </div> */}
         <h1
           style={{ marginBottom: "10px !important" }}
           className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white"
@@ -38,7 +27,7 @@ export default function BlogLayout({ post, children }) {
           className="flex items-center !w-full"
         >
           <div className="flex items-center gap-2 w-full">
-            <div className="relative">
+            <div className="relative grid">
               <Image
                 alt="Jatin Sharma"
                 height={30}

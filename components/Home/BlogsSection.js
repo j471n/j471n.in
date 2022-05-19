@@ -1,10 +1,6 @@
 import { HomeHeading } from "../../pages";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  opacityVariant,
-  popUpFromBottomForText,
-} from "../../content/FramerMotionVariants";
+import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import Blog from "../Blog";
 import { motion } from "framer-motion";
 
