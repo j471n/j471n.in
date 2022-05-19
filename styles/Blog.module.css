@@ -73,7 +73,7 @@
 /* Main code */
 .blog > div[data-rehype-pretty-code-fragment] > pre,
 .blog > pre {
-  @apply my-0 border border-gray-50/50 rounded-none rounded-bl-md rounded-br-md  rounded-tl-none rounded-tr-none mb-4 sm:text-sm w-full !p-0;
+  @apply my-0 border border-gray-50/50 rounded-bl-md rounded-br-md mb-4 sm:text-sm w-full !p-0;
 }
 
 .blog > div[data-rehype-pretty-code-fragment] code {
