@@ -11,6 +11,7 @@ import Track from "@components/Stats/Track";
 import Artist from "@components/Stats/Artist";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
+import { topArtists } from "@lib/spotify";
 
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
@@ -113,6 +114,7 @@ export default function Stats() {
             {topTracks?.map((track, index) => (
               <Track
                 key={index}
+                id={index}
                 track={track}
                 url={track.url}
                 title={track.title}
@@ -139,14 +141,17 @@ export default function Stats() {
             My Top Artists
           </AnimatedHeading>
           <AnimatedText className="mt-4 text-gray-500">
-            My currently favorite Artists is{" "}
-            <span className="font-semibold">KR$NA</span>{" "}
+            My most listened Artist is {" "}
+            <span className="font-semibold">
+              {artists && artists[0].name}
+            </span>{" "} on Spotify.
           </AnimatedText>
 
           <div className="flex flex-col my-10 gap-0 font-barlow">
             {artists?.map((artist, index) => (
               <Artist
                 key={index}
+                id={index}
                 name={artist.name}
                 url={artist.url}
                 coverImage={artist.coverImage.url}

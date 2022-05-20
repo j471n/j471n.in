@@ -3,15 +3,22 @@ import Link from "next/link";
 import { popUp } from "../../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
-export default function Track({ url, title, artist, coverImage }) {
+export default function Track({ url, title, artist, coverImage, id }) {
   return (
     <Link href={url} passHref>
       <a
         href={url}
-        className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden "
+        className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden relative xs:pl-16 md:!pl-20 "
         rel="noreferrer"
         target="_blank"
       >
+        <motion.div
+          variants={popUp}
+          className="absolute left-4 md:left-6 text-xl text-gray-500 transform origin-center font-inter tracking-wider hidden xs:inline-flex"
+        >
+          #{id + 1}
+        </motion.div>
+
         <motion.div
           variants={popUp}
           className="relative w-12 h-12 transform origin-center"

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { popUp } from "../../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
-export default function Track({ name, url, coverImage, followers }) {
+export default function Track({ name, url, coverImage, followers, id }) {
   return (
     <Link href={url} passHref>
       <a
@@ -12,6 +12,12 @@ export default function Track({ name, url, coverImage, followers }) {
         rel="noreferrer"
         target="_blank"
       >
+        <motion.div
+          variants={popUp}
+          className="text-xl text-gray-500 transform origin-center font-inter tracking-wider hidden xs:inline-flex"
+        >
+          #{id + 1}
+        </motion.div>
         <motion.div
           variants={popUp}
           className="relative w-12 md:w-24 h-12 md:h-24 transform origin-center"
