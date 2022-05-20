@@ -236,7 +236,7 @@ const MobileMenu = ({ links, handleClick }) => {
                 variants={mobileNavItemSideways}
                 onClick={handleClick}
               >
-                {link}
+                {link === "rss" ? link.toUpperCase() : link}
               </motion.a>
             </Link>
           );
