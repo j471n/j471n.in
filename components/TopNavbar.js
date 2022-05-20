@@ -54,16 +54,27 @@ export default function TopNavbar() {
     };
   }, [addShadowToNavbar]);
 
+  // to lock the scroll when mobile is open
+  function lockScroll() {
+    const root = document.getElementsByTagName("html")[0];
+    root.classList.toggle("lock-scroll"); // class is define in the global.css
+  }
+
+  function handleClick() {
+    lockScroll();
+    setNavOpen(!navOpen);
+  }
+
   return (
     <div
       className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 sm:px-6 z-40 print:hidden"
       ref={navRef}
     >
       {/* Mobile Navigation Hamburger and MobileMenu */}
-      <HamBurger open={navOpen} setOpen={setNavOpen} />
+      <HamBurger open={navOpen} handleClick={handleClick} />
       <AnimatePresence>
         {navOpen && (
-          <MobileMenu links={navigationRoutes} setNavOpen={setNavOpen} />
+          <MobileMenu links={navigationRoutes} handleClick={handleClick} />
         )}
       </AnimatePresence>
 
@@ -157,13 +168,7 @@ function NavItem({ href, text, router }) {
 }
 
 // Hamburger Button
-function HamBurger({ open, setOpen }) {
-  // to lock the scroll when mobile is open
-  function lockScroll() {
-    const root = document.getElementsByTagName("html")[0];
-    root.classList.toggle("lock-scroll"); // class is define in the global.css
-  }
-
+function HamBurger({ open, handleClick }) {
   return (
     <motion.div
       style={{ zIndex: 1000 }}
@@ -176,10 +181,7 @@ function HamBurger({ open, setOpen }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
-          onClick={() => {
-            setOpen((open) => !open);
-            lockScroll();
-          }}
+          onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -195,10 +197,7 @@ function HamBurger({ open, setOpen }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
-          onClick={() => {
-            setOpen((open) => !open);
-            lockScroll();
-          }}
+          onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -216,7 +215,7 @@ function HamBurger({ open, setOpen }) {
 }
 
 // Mobile navigation menu
-const MobileMenu = ({ links, setNavOpen }) => {
+const MobileMenu = ({ links, handleClick }) => {
   return (
     <motion.div
       className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10 sm:hidden"
@@ -235,7 +234,7 @@ const MobileMenu = ({ links, setNavOpen }) => {
                 href={navlink}
                 className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
                 variants={mobileNavItemSideways}
-                onClick={() => setNavOpen(false)}
+                onClick={handleClick}
               >
                 {link}
               </motion.a>

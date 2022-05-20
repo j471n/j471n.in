@@ -1,12 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { popUp } from "../../content/FramerMotionVariants";
+import { fromTopVariant, popUp } from "../../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
 export default function Track({ url, title, artist, coverImage, id }) {
   return (
     <Link href={url} passHref>
-      <a
+      <motion.a
+        variants={{
+          hidden: { y: -200, opacity: 0 },
+          visible: { y: 0, opacity: 1 },
+        }}
         href={url}
         className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden relative xs:pl-16 md:!pl-20 "
         rel="noreferrer"
@@ -46,7 +50,7 @@ export default function Track({ url, title, artist, coverImage, id }) {
             {artist}
           </motion.p>
         </div>
-      </a>
+      </motion.a>
     </Link>
   );
 }
