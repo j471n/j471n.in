@@ -26,7 +26,7 @@ import { pagePreviewImage } from "@utils/utils";
 import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Home({ blogs, skills }) {
   return (
@@ -37,52 +37,50 @@ export default function Home({ blogs, skills }) {
         previewImage={pagePreviewImage.home}
       />
       <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
-        <AnimatePresence initial={false}>
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            variants={FadeContainer}
-            className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen"
-          >
-            <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
-              <div className="flex flex-col gap-1">
-                <motion.h1
-                  variants={opacityVariant}
-                  className="text-5xl lg:text-6xl font-bold font-sarina"
-                >
-                  Jatin Sharma
-                </motion.h1>
-                <motion.p
-                  variants={opacityVariant}
-                  className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
-                >
-                  React Developer, Competitive Programmer
-                </motion.p>
-              </div>
-
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          variants={FadeContainer}
+          className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen"
+        >
+          <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
+            <div className="flex flex-col gap-1">
+              <motion.h1
+                variants={opacityVariant}
+                className="text-5xl lg:text-6xl font-bold font-sarina"
+              >
+                Jatin Sharma
+              </motion.h1>
               <motion.p
                 variants={opacityVariant}
-                className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
+                className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
               >
-                I am currently perusing my Bachelor Degree in Computer Science.
-                I can code in Python, C, C++, etc.
+                React Developer, Competitive Programmer
               </motion.p>
             </div>
 
-            <motion.div variants={popUp} className="w-44 h-44">
-              <Image
-                src={homeProfileImage}
-                className="rounded-full shadow filter saturate-0"
-                layout="responsive"
-                width={400}
-                height={400}
-                alt="cover Profile Image"
-                quality={75}
-                priority={true}
-              />
-            </motion.div>
-          </motion.section>
-        </AnimatePresence>
+            <motion.p
+              variants={opacityVariant}
+              className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
+            >
+              I am currently perusing my Bachelor Degree in Computer Science. I
+              can code in Python, C, C++, etc.
+            </motion.p>
+          </div>
+
+          <motion.div variants={popUp} className="w-44 h-44">
+            <Image
+              src={homeProfileImage}
+              className="rounded-full shadow filter saturate-0"
+              layout="responsive"
+              width={400}
+              height={400}
+              alt="cover Profile Image"
+              quality={75}
+              priority={true}
+            />
+          </motion.div>
+        </motion.section>
 
         <div>
           {/* <AboutMe /> */}
