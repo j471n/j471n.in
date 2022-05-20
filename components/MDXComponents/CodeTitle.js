@@ -1,10 +1,5 @@
 import { BsFileEarmarkCodeFill } from "react-icons/bs";
-import {
-  SiCss3,
-  SiPython,
-  SiGnubash,
-  SiHtml5,
-} from "react-icons/si";
+import { SiCss3, SiPython, SiGnubash, SiHtml5 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import { IoLogoJavascript } from "react-icons/io5";
 export default function CodeTitle({ title, lang }) {
@@ -33,11 +28,13 @@ export default function CodeTitle({ title, lang }) {
       break;
   }
   return (
-    <div className="bg-[#1f2937] rounded-tl-md rounded-tr-md p-3 text-gray-200 flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border-b  border-b-gray-50/50 !z-20">
-      <div className="flex items-center gap-2">
-        <Icon className="flex items-center w-4 h-4" />
-        <p className="!my-0 font-[600] text-sm">{title}</p>
+    <div className="relative !z-10">
+      <div className="bg-[#1f2937] rounded-tl-md rounded-tr-md p-3 text-gray-200 flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border-b  border-b-gray-50/50 ">
+        <div className="flex items-center gap-2">
+          <Icon className="flex items-center w-4 h-4" />
+          <p className="!my-0 font-[600] text-sm">{title}</p>
+        </div>
       </div>
-    </div>  
+    </div>
   );
 }

@@ -70,6 +70,10 @@
   @apply bg-[#1f2937] rounded-tl-md rounded-tr-md border-b text-gray-500 dark:text-white w-full;
 }
 
+.blog > div[data-rehype-pretty-code-fragment] {
+  @apply -mt-[6px] !-z-10;
+}
+
 /* Main code */
 .blog > div[data-rehype-pretty-code-fragment] > pre,
 .blog > pre {
