@@ -10,11 +10,18 @@ export default function MetaData({ title, description, previewImage }) {
   return (
     <Head>
       <meta charSet="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+      />
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="description" content={description || "Jatin Sharma"} />
       <title>{`${title || ""} Jatin Sharma`}</title>
       <meta name="theme-color" content="#000" />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="manifest" href="/manifest.json" />
+      <link rel="apple-touch-icon" href="/icons/icon-192x192.png"></link>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="author" content="Jatin Sharma"></meta>
       <meta name="robots" content="index,follow" />

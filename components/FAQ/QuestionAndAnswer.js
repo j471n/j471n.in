@@ -9,7 +9,7 @@ export default function QuestionAndAnswer({ question, answer }) {
     <div>
       <AnimatedDiv
         variants={popUpFromBottomForText}
-        className="inline-block p-2 sm:p-3 text-white bg-slate-500 dark:bg-slate-700 rounded-lg"
+        className="inline-block p-2 sm:p-3 text-white bg-gray-800 dark:bg-neutral-800 rounded-lg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

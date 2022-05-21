@@ -16,7 +16,7 @@ export default function BlogsSection({ blogs }) {
               key={index}
               className="flex flex-col xs:flex-row items-center gap-2"
             >
-              <Blog blog={blog} className="active:!scale-100" />
+              <Blog blog={blog} />
             </div>
           );
         })}

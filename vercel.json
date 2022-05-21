@@ -68,6 +68,10 @@
   ],
   "redirects": [
     {
+      "source": "/home",
+      "destination": "/"
+    },
+    {
       "source": "/rss",
       "destination": "/feed.xml"
     },
