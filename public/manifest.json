@@ -5,7 +5,7 @@
   "scope": "/",
   "start_url": "/",
   "name": "Jatin Sharma",
-  "short_name": "Jatin",
+  "short_name": "Jatin - Portfolio",
   "description": "I am currently perusing my Bachelor Degree in Computer Science. I can code in Python, C, C++, etc. I also work on React & Next.js. This is my portfolio which you can install as Progressive Web app.",
   "icons": [
     {
@@ -85,6 +85,24 @@
       "src": "screenshots/contact.png",
       "sizes": "320x640",
       "type": "image/gif"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Blogs",
+      "url": "/blogs"
+    },
+    {
+      "name": "Projects",
+      "url": "/projects"
+    },
+    {
+      "name": "Newsletter",
+      "url": "/newsletter"
+    },
+    {
+      "name": "Stats",
+      "url": "/stats"
     }
   ]
 }
