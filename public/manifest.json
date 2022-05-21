@@ -63,27 +63,27 @@
   "screenshots": [
     {
       "src": "screenshots/home.png",
-      "sizes": "320x640",
+      "sizes": "360x721",
       "type": "image/gif"
     },
     {
       "src": "screenshots/blogs.png",
-      "sizes": "320x640",
+      "sizes": "360x721",
       "type": "image/gif"
     },
     {
       "src": "screenshots/projects.png",
-      "sizes": "320x640",
+      "sizes": "360x721",
       "type": "image/gif"
     },
     {
       "src": "screenshots/stats.png",
-      "sizes": "320x640",
+      "sizes": "360x721",
       "type": "image/gif"
     },
     {
       "src": "screenshots/contact.png",
-      "sizes": "320x640",
+      "sizes": "360x721",
       "type": "image/gif"
     }
   ],
@@ -93,8 +93,9 @@
       "url": "/blogs",
       "icons": [
         {
-          "src": "shortcuts/blog.svg",
-          "type": "image/svg+xml",
+          "src": "shortcuts/blog.png",
+          "sizes": "202x202",
+          "type": "image/png",
           "purpose": "any"
         }
       ]
@@ -104,8 +105,9 @@
       "url": "/projects",
       "icons": [
         {
-          "src": "shortcuts/projects.svg",
-          "type": "image/svg+xml",
+          "src": "shortcuts/projects.png",
+          "sizes": "202x202",
+          "type": "image/png",
           "purpose": "any"
         }
       ]
@@ -115,8 +117,9 @@
       "url": "/newsletter",
       "icons": [
         {
-          "src": "shortcuts/newsletter.svg",
-          "type": "image/svg+xml",
+          "src": "shortcuts/newsletter.png",
+          "sizes": "202x202",
+          "type": "image/png",
           "purpose": "any"
         }
       ]
