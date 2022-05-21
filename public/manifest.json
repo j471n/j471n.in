@@ -90,19 +90,36 @@
   "shortcuts": [
     {
       "name": "Blogs",
-      "url": "/blogs"
+      "url": "/blogs",
+      "icons": [
+        {
+          "src": "shortcuts/blog.svg",
+          "type": "image/svg+xml",
+          "purpose": "any"
+        }
+      ]
     },
     {
       "name": "Projects",
-      "url": "/projects"
+      "url": "/projects",
+      "icons": [
+        {
+          "src": "shortcuts/projects.svg",
+          "type": "image/svg+xml",
+          "purpose": "any"
+        }
+      ]
     },
     {
       "name": "Newsletter",
-      "url": "/newsletter"
-    },
-    {
-      "name": "Stats",
-      "url": "/stats"
+      "url": "/newsletter",
+      "icons": [
+        {
+          "src": "shortcuts/newsletter.svg",
+          "type": "image/svg+xml",
+          "purpose": "any"
+        }
+      ]
     }
   ]
 }
