@@ -19,7 +19,7 @@ yarn dev
 
 After that server should be running on [localhost:3000](http://localhost:3000)
 
-> Warning: You could ran to into errors if you haven't populated the `.env.local` with correct values
+> Warning: You could ran to into errors if you don't populate the `.env.local` with correct values
 
 # Tools Used 
 
