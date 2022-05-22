@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import { AvatarImage } from "../utils/utils";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import {
   FadeContainer,
@@ -84,15 +82,9 @@ export default function TopNavbar() {
             initial="hidden"
             animate="visible"
             variants={popUp}
-            className="relative rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex mr-3"
+            className="relative hidden sm:inline-flex mr-3"
           >
-            <Image
-              src="/logo.svg"
-              layout="fill"
-              alt="Profile Image"
-              priority={true}
-              objectFit="contain"
-            ></Image>
+            <h1 className="font-sarina text-xl">JS</h1>
           </motion.div>
           <motion.p
             initial="hidden"
