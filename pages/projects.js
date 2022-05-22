@@ -25,8 +25,7 @@ export default function Projects({ projects }) {
         </PageTop>
 
         <section
-          id="view"
-          className="relative py-5 px-2 flex flex-col gap-4 min-h-[50vh]"
+          className="relative py-5 flex flex-col gap-4 min-h-[50vh]"
         >
           <AnimatePresence>
             {projects &&

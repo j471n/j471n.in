@@ -204,7 +204,7 @@ code > .line::before {
     @apply flex font-semibold items-center cursor-pointer w-full justify-center sm:justify-start sm:w-auto space-x-1 text-base;
   }
   .project_link {
-    @apply text-center bg-gray-200 p-2 my-1 rounded-full dark:bg-darkSecondary dark:text-white cursor-pointer;
+    @apply text-center bg-gray-200 p-2 my-1 rounded-full dark:bg-darkSecondary dark:text-white cursor-pointer shadow dark:shadow-gray-500;
   }
   .clickable_button {
     @apply transform duration-100 active:scale-90 lg:hover:scale-105;

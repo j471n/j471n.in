@@ -35,7 +35,7 @@ export default function Project({ project }) {
   }
 
   return (
-    <div className="relative flex items-center gap-2 w-full">
+    <div className="relative flex items-center gap-5 w-full bg-gray-400/10 dark:bg-darkSecondary py-3 px-5 rounded-md">
       <div className="flex flex-col gap-1 w-full">
         <AnimatedHeading
           variants={popUpFromBottomForText}
@@ -81,7 +81,7 @@ export default function Project({ project }) {
         whileInView="visible"
         variants={hamFastFadeContainer}
         viewport={{ once: true }}
-        className="flex flex-col"
+        className="flex flex-col gap-1"
       >
         {isShareSupported && (
           <motion.div
