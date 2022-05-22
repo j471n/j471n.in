@@ -204,25 +204,28 @@ export default function Form() {
           </label>
         </motion.div>
 
-        <Ripples
-          className="flex justify-center w-full sm:w-[24rem]"
-          color="rgba(225, 225,225,0.2)"
-        >
-          <motion.button
-            variants={mobileNavItemSideways}
-            type="submit"
-            className="text-white bg-neutral-800  dark:bg-darkSecondary  font-medium rounded-lg text-sm w-full sm:max-w-sm px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none"
+        <motion.div variants={mobileNavItemSideways}>
+          <Ripples
+            className="flex justify-center w-full sm:w-[24rem]"
+            color="rgba(225, 225,225,0.2)"
           >
-            <div className="relative w-full flex items-center justify-center">
-              <p
-                className={loading ? "inline-flex animate-spin mr-3" : "hidden"}
-              >
-                <AiOutlineLoading className="font-bold text-xl" />
-              </p>
-              <p>{loading ? "Sending..." : "Send"}</p>
-            </div>
-          </motion.button>
-        </Ripples>
+            <button
+              type="submit"
+              className="text-white bg-neutral-800  dark:bg-darkSecondary  font-medium rounded-lg text-sm w-full sm:max-w-sm px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none"
+            >
+              <div className="relative w-full flex items-center justify-center">
+                <p
+                  className={
+                    loading ? "inline-flex animate-spin mr-3" : "hidden"
+                  }
+                >
+                  <AiOutlineLoading className="font-bold text-xl" />
+                </p>
+                <p>{loading ? "Sending..." : "Send"}</p>
+              </div>
+            </button>
+          </Ripples>
+        </motion.div>
       </motion.form>
       <ToastContainer
         theme={isDarkMode ? "dark" : "light"}
