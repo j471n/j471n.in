@@ -12,8 +12,8 @@ export default function PageNotFound() {
         </h1>
         <p className="font-inter text-gray-500 dark:text-gray-400/70">
           Looks like you've found the doorway to the great nothing. You didn't
-          break the internet, but we can't find what you are looking for. Please
-          visit our <b>Homepage</b> to get where you need to go.
+          break the internet, but I can't find what you are looking for. Please
+          visit my <b>Homepage</b> to get where you need to go.
         </p>
 
         <Link href="/" passHref>
