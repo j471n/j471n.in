@@ -139,9 +139,9 @@ export default function TopNavbar() {
         onClick={() => changeDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
-        ) : (
           <BsMoonFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
+        ) : (
+          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
         )}
       </motion.div>
     </div>
