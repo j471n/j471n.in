@@ -33,7 +33,7 @@ export default function Post({ post }) {
         previewImage={post.meta.image}
       />
       <div
-        className="!fixed left-0 w-full h-1 bg-blue-600 origin-top-left  transform duration-300 top-[52px] sm:top-[72px]"
+        className="!fixed left-0 w-full h-1 bg-black dark:bg-white origin-top-left  transform duration-300  top-[52px] sm:top-[72px]"
         style={{
           transform: `scale(${scroll},1)`,
           zIndex: 1000,

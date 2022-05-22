@@ -14,7 +14,10 @@ export default function BlogLayout({ post, children }) {
 
   return (
     <>
-      <section className="mt-[52px] md:mt-[72px] max-w-3xl relative mx-auto p-5 font-barlow prose dark:prose-invert">
+      <section
+        className="pageTop  p-5 sm:pt-10 w-full relative mx-auto font-barlow prose dark:prose-invert"
+        style={{ maxWidth: "800px" }}
+      >
         <h1
           style={{ marginBottom: "10px !important" }}
           className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white"
