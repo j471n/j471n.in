@@ -27,6 +27,8 @@ import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { FiDownload } from "react-icons/fi";
 
 export default function Home({ blogs, skills }) {
   return (
@@ -41,45 +43,62 @@ export default function Home({ blogs, skills }) {
           initial="hidden"
           whileInView="visible"
           variants={FadeContainer}
-          className="py-20 w-full relative mx-auto flex flex-col-reverse lg:flex-row items-center justify-evenly min-h-screen"
+          viewport={{ once: true }}
+          className="grid place-content-center py-20  min-h-screen"
         >
-          <div className="w-full flex flex-col p-5 gap-3 select-none text-center lg:text-left">
-            <div className="flex flex-col gap-1">
-              <motion.h1
-                variants={opacityVariant}
-                className="text-5xl lg:text-6xl font-bold font-sarina"
-              >
-                Jatin Sharma
-              </motion.h1>
+          <div className="w-full relative mx-auto flex flex-col items-center gap-10">
+            <motion.div
+              variants={popUp}
+              className="w-44 h-44 xs:w-52 xs:h-52 flex justify-center items-center"
+            >
+              <Image
+                src={homeProfileImage}
+                className="rounded-full shadow filter saturate-0"
+                width={400}
+                height={400}
+                alt="cover Profile Image"
+                quality={75}
+                priority={true}
+              />
+            </motion.div>
+
+            <div className="w-full flex flex-col p-5 gap-3 select-none text-center ">
+              <div className="flex flex-col gap-1">
+                <motion.h1
+                  variants={opacityVariant}
+                  className="text-5xl lg:text-6xl font-bold font-sarina"
+                >
+                  Jatin Sharma
+                </motion.h1>
+                <motion.p
+                  variants={opacityVariant}
+                  className="font-medium text-xs md:text-sm lg:text-lg text-gray-500"
+                >
+                  React Developer, Competitive Programmer
+                </motion.p>
+              </div>
+
               <motion.p
                 variants={opacityVariant}
-                className="font-medium text-xs md:text-sm lg:text-base  md:ml-5 text-gray-500"
+                className=" text-slate-500 dark:text-gray-300 font-medium text-sm md:text-base text-center"
               >
-                React Developer, Competitive Programmer
+                I am currently perusing my Bachelor Degree in Computer Science.
+                I can code in Python, C, C++, etc.
               </motion.p>
             </div>
 
-            <motion.p
-              variants={opacityVariant}
-              className="md:ml-5 md:mr-20 text-slate-500 dark:text-slate-400 font-medium text-sm md:text-base"
-            >
-              I am currently perusing my Bachelor Degree in Computer Science. I
-              can code in Python, C, C++, etc.
-            </motion.p>
+            <motion.div variants={popUp}>
+              <Link href="/resume" passHref>
+                <motion.a
+                  href="/resume"
+                  className="flex items-center gap-2 px-5 py-2 border rounded-md border-gray-500 dark:border-gray-400 select-none active:scale-95 duration-200 hover:bg-gray-100 dark:hover:bg-neutral-800"
+                >
+                  <FiDownload className="" />
+                  <p>Resume</p>
+                </motion.a>
+              </Link>
+            </motion.div>
           </div>
-
-          <motion.div variants={popUp} className="w-44 h-44">
-            <Image
-              src={homeProfileImage}
-              className="rounded-full shadow filter saturate-0"
-              layout="responsive"
-              width={400}
-              height={400}
-              alt="cover Profile Image"
-              quality={75}
-              priority={true}
-            />
-          </motion.div>
         </motion.section>
 
         <div>

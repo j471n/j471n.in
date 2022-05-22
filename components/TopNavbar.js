@@ -87,7 +87,7 @@ export default function TopNavbar() {
             className="relative rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 hidden sm:inline-flex mr-3"
           >
             <Image
-              src={AvatarImage}
+              src="/logo.svg"
               layout="fill"
               alt="Profile Image"
               priority={true}
@@ -101,7 +101,7 @@ export default function TopNavbar() {
               hidden: { opacity: 0, scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
-            className="absolute sm:!hidden lg:!inline-flex md:relative left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
+            className="absolute sm:!hidden left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
           >
             Jatin Sharma
           </motion.p>

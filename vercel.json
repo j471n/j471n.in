@@ -82,6 +82,10 @@
     {
       "source": "/newsletter",
       "destination": "https://www.getrevue.co/profile/j471n"
+    },
+    {
+      "source": "/resume",
+      "destination": "/resume.pdf"
     }
   ]
 }
