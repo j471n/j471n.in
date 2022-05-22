@@ -8,6 +8,7 @@ import {
   FadeContainer,
   mobileNavItemSideways,
 } from "../../content/FramerMotionVariants";
+import Ripples from "react-ripples";
 
 // initial State of the form
 const initialFormState = {
@@ -24,6 +25,7 @@ export default function Form() {
   const [loading, setLoading] = useState(false);
   const { isDarkMode } = useDarkMode();
 
+  // TODO: make an ripple effect
   function sendEmail(e) {
     e.preventDefault();
     setLoading(true);
@@ -84,7 +86,7 @@ export default function Form() {
               type="text"
               name="first_name"
               id="floating_first_name"
-              className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2 mt-2 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-black peer"
               placeholder=" "
               required
               onChange={(e) =>
@@ -96,7 +98,7 @@ export default function Form() {
             />
             <label
               htmlFor="floating_first_name"
-              className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               First name
             </label>
@@ -109,7 +111,7 @@ export default function Form() {
               type="text"
               name="last_name"
               id="floating_last_name"
-              className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-black peer"
               placeholder=" "
               required
               onChange={(e) =>
@@ -121,7 +123,7 @@ export default function Form() {
             />
             <label
               htmlFor="floating_last_name"
-              className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Last name
             </label>
@@ -135,7 +137,7 @@ export default function Form() {
             type="email"
             name="floating_email"
             id="floating_email"
-            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-white peer"
             placeholder=" "
             required
             onChange={(e) =>
@@ -147,7 +149,7 @@ export default function Form() {
           />
           <label
             htmlFor="floating_email"
-            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Email address
           </label>
@@ -160,7 +162,7 @@ export default function Form() {
             type="subject"
             name="floating_subject"
             id="floating_subject"
-            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-white peer"
             placeholder=" "
             required
             onChange={(e) =>
@@ -172,7 +174,7 @@ export default function Form() {
           />
           <label
             htmlFor="floating_subject"
-            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Subject
           </label>
@@ -184,7 +186,7 @@ export default function Form() {
           <textarea
             name="message"
             id="floating_message"
-            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer min-h-[100px] resize-y"
+            className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0  peer min-h-[100px] resize-y"
             placeholder=" "
             required
             onChange={(e) =>
@@ -196,24 +198,31 @@ export default function Form() {
           />
           <label
             htmlFor="floating_message"
-            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-slate-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-black dark:peer-focus:text-white peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Message
           </label>
         </motion.div>
 
-        <motion.button
-          variants={mobileNavItemSideways}
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:max-w-sm px-4 py-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        <Ripples
+          className="flex justify-center w-full sm:w-[24rem]"
+          color="rgba(225, 225,225,0.2)"
         >
-          <div className="relative w-full flex items-center justify-center">
-            <p className={loading ? "inline-flex animate-spin mr-3" : "hidden"}>
-              <AiOutlineLoading className="font-bold text-xl" />
-            </p>
-            <p>{loading ? "Sending..." : "Send"}</p>
-          </div>
-        </motion.button>
+          <motion.button
+            variants={mobileNavItemSideways}
+            type="submit"
+            className="text-white bg-neutral-800  dark:bg-darkSecondary  font-medium rounded-lg text-sm w-full sm:max-w-sm px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none"
+          >
+            <div className="relative w-full flex items-center justify-center">
+              <p
+                className={loading ? "inline-flex animate-spin mr-3" : "hidden"}
+              >
+                <AiOutlineLoading className="font-bold text-xl" />
+              </p>
+              <p>{loading ? "Sending..." : "Send"}</p>
+            </div>
+          </motion.button>
+        </Ripples>
       </motion.form>
       <ToastContainer
         theme={isDarkMode ? "dark" : "light"}
