@@ -204,9 +204,9 @@ export default function Form() {
           </label>
         </motion.div>
 
-        <motion.div variants={mobileNavItemSideways} className="w-full">
+        <motion.div variants={mobileNavItemSideways} className="w-full ">
           <Ripples
-            className="flex justify-center w-full sm:w-[24rem]"
+            className="flex w-full justify-center"
             color="rgba(225, 225,225,0.2)"
           >
             <button
