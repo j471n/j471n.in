@@ -21,7 +21,7 @@ export default function Uses({ post }) {
         <PageTop pageTitle={post.meta.title}>{post.meta.excerpt}</PageTop>
 
         <div
-          className={`${styles.uses} !w-full  selection:bg-blue-300 dark:selection:bg-blue-900 selection:text-white-400 dark:text-neutral-400 my-2 font-medium`}
+          className={`${styles.uses} !w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 my-2 font-medium`}
         >
           <MDXRemote
             {...post.source}
