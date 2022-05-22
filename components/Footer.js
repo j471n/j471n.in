@@ -106,7 +106,7 @@ function WhenPlaying({ song }) {
       <Link href={song.songUrl} passHref>
         <a
           href={song.songUrl}
-          className="flex items-center justify-between hover:bg-gray-100 dark:hover:bg-darkSecondary p-2 sm:p-4 animate-pulse "
+          className="flex items-center justify-between bg-gray-200 dark:bg-darkSecondary  p-3 sm:p-4 rounded-sm"
         >
           <div className=" flex items-center gap-2">
             <div className="w-10 h-10">
@@ -122,16 +122,16 @@ function WhenPlaying({ song }) {
               />
             </div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
-              <h3 className="font-semibold md:text-lg text-black dark:text-white">
+              <h3 className="font-semibold md:text-lg text-black dark:text-white animate-">
                 {song.title}
               </h3>
               <span className="hidden md:inline-flex">—</span>
 
-              <p className="text-gray-500 text-xs sm:text-sm">{song.artist}</p>
+              <p className="text-gray-600 text-xs sm:text-sm">{song.artist}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <SiSpotify className="w-6 h-6 text-green-500 animate-bounce" />
+            <SiSpotify className="w-6 h-6 text-green-500 animate-[spin_2s_linear_infinite]" />
           </div>
         </a>
       </Link>
