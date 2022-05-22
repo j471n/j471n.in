@@ -4926,6 +4926,11 @@ react-property@2.0.0:
   resolved "https://registry.yarnpkg.com/react-property/-/react-property-2.0.0.tgz#2156ba9d85fa4741faf1918b38efc1eae3c6a136"
   integrity sha512-kzmNjIgU32mO4mmH5+iUyrqlpFQhF8K2k7eZ4fdLSOPFrD1XgEuSBv9LDEgxRXTMBqMd8ppT0x6TIzqE5pdGdw==
 
+react-ripples@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-ripples/-/react-ripples-2.2.1.tgz#bab529eb10e06f7e660561d97e2442a38b9f4687"
+  integrity sha512-TfLjgZICQlsYCN2iX4fdeZNjoDzhJVC7r+R3irqyaNvCtWezouS9j+sE+nwSk747irtV8RKRDHmwMmsNBOw8Qg==
+
 react-share-social@^0.1.48:
   version "0.1.48"
   resolved "https://registry.yarnpkg.com/react-share-social/-/react-share-social-0.1.48.tgz#e637035d1766ac11b0af7708c5d1bdd941de9336"

@@ -34,6 +34,7 @@
     "react-icons": "^4.3.1",
     "react-intersection-observer": "^9.1.0",
     "react-markdown": "^8.0.3",
+    "react-ripples": "^2.2.1",
     "react-share": "^4.4.0",
     "react-share-social": "^0.1.48",
     "react-toastify": "^9.0.1",
