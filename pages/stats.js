@@ -1,7 +1,11 @@
 import React from "react";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import { FadeContainer, fromLeftVariant } from "@content/FramerMotionVariants";
+import {
+  FadeContainer,
+  fromLeftVariant,
+  popUpFromBottomForText,
+} from "@content/FramerMotionVariants";
 import { pagePreviewImage } from "@utils/utils";
 import fetcher from "@lib/fetcher";
 import MetaData from "@components/MetaData";
@@ -89,13 +93,7 @@ export default function Stats() {
         </motion.div>
 
         {/* Spotify top songs */}
-        <motion.div
-          className="font-barlow"
-          variants={FadeContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="font-barlow">
           <AnimatedHeading
             variants={fromLeftVariant}
             className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
@@ -103,14 +101,23 @@ export default function Stats() {
             My Top streams songs
           </AnimatedHeading>
 
-          <AnimatedText className="mt-4 text-gray-500">
+          <AnimatedText
+            variants={popUpFromBottomForText}
+            className="mt-4 text-gray-500"
+          >
             <span className="font-semibold">
               {topTracks && topTracks[0].title}
             </span>{" "}
             is the most streamed song of mine. Here's my top tracks on Spotify
             updated daily.
           </AnimatedText>
-          <div className="flex flex-col my-10 gap-0 font-barlow">
+          <motion.div
+            variants={FadeContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col my-10 gap-0 font-barlow"
+          >
             {topTracks?.map((track, index) => (
               <Track
                 key={index}
@@ -122,18 +129,12 @@ export default function Stats() {
                 artist={track.artist}
               />
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Spotify top Artists */}
 
-        <motion.div
-          className="font-barlow"
-          variants={FadeContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="font-barlow">
           <AnimatedHeading
             variants={fromLeftVariant}
             className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
@@ -141,13 +142,18 @@ export default function Stats() {
             My Top Artists
           </AnimatedHeading>
           <AnimatedText className="mt-4 text-gray-500">
-            My most listened Artist is {" "}
-            <span className="font-semibold">
-              {artists && artists[0].name}
-            </span>{" "} on Spotify.
+            My most listened Artist is{" "}
+            <span className="font-semibold">{artists && artists[0].name}</span>{" "}
+            on Spotify.
           </AnimatedText>
 
-          <div className="flex flex-col my-10 gap-0 font-barlow">
+          <motion.div
+            variants={FadeContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col my-10 gap-0 font-barlow"
+          >
             {artists?.map((artist, index) => (
               <Artist
                 key={index}
@@ -158,8 +164,8 @@ export default function Stats() {
                 followers={artist.followers}
               />
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </section>
     </>
   );
