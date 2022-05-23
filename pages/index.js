@@ -87,15 +87,14 @@ export default function Home({ blogs, skills }) {
               </motion.p>
             </div>
 
-            <Link href="/resume" passHref>
-              <motion.a
-                variants={popUp}
-                className="flex items-center gap-2 px-5 py-2 border rounded-md border-gray-500 dark:border-gray-400 select-none active:scale-95 duration-200 hover:bg-gray-100 dark:hover:bg-neutral-800"
-              >
-                <FiDownload className="" />
-                <p>Resume</p>
-              </motion.a>
-            </Link>
+            <motion.button
+              onClick={() => window.open("/resume")}
+              variants={popUp}
+              className="flex items-center gap-2 px-5 py-2 border rounded-md border-gray-500 dark:border-gray-400 select-none active:scale-95 duration-200 hover:bg-gray-100 dark:hover:bg-neutral-800"
+            >
+              <FiDownload className="" />
+              <p>Resume</p>
+            </motion.button>
           </div>
         </motion.section>
 

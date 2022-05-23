@@ -31,6 +31,7 @@ module.exports = withBundleAnalyzer(
       register: true,
       skipWaiting: true,
       disable: process.env.NODE_ENV === "development",
+      publicExcludes: ["!resume.pdf"],
     },
   })
 );
