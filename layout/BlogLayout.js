@@ -5,6 +5,7 @@ import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
 import Newsletter from "../components/Newsletter";
+import Link from "next/link";
 
 export default function BlogLayout({ post, children }) {
   const [pageURL, setPageURL] = useState("");
@@ -61,6 +62,18 @@ export default function BlogLayout({ post, children }) {
         </div>
 
         <Newsletter />
+
+        <Link
+          href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
+          passHref
+        >
+          <a
+            href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
+            className="dark:text-white my-10"
+          >
+            Edit on Github
+          </a>
+        </Link>
 
         <div className="w-full flex flex-col items-center gap-4 my-10 print:hidden">
           <h3
