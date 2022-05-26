@@ -18,10 +18,7 @@ export default function BlogLayout({ post, children }) {
         className="pageTop  p-5 sm:pt-10 w-full relative mx-auto font-barlow prose dark:prose-invert"
         style={{ maxWidth: "800px" }}
       >
-        <h1
-          style={{ marginBottom: "10px !important" }}
-          className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white"
-        >
+        <h1 className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.meta.title}
         </h1>
 

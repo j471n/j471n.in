@@ -6,6 +6,7 @@ import CodeTitle from "./CodeTitle";
 import Tip from "./Tip";
 import Pre from "./Pre";
 import Step from "./Step";
+import CodeSandbox from "./CodeSandbox";
 
 const MDXComponents = {
   Codepen,
@@ -15,6 +16,7 @@ const MDXComponents = {
   CodeTitle,
   Tip,
   Step,
+  CodeSandbox,
   pre: Pre,
 };
 
