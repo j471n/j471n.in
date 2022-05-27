@@ -26,8 +26,8 @@ export default function TopNavbar() {
         ...[
           "shadow",
           "backdrop-blur-xl",
-          "bg-white/30",
-          "dark:bg-darkSecondary/50",
+          "bg-white/70",
+          "dark:bg-darkSecondary",
         ]
       );
 
@@ -37,8 +37,8 @@ export default function TopNavbar() {
         ...[
           "shadow",
           "backdrop-blur-xl",
-          "bg-white/30",
-          "dark:bg-darkSecondary/50",
+          "bg-white/70",
+          "dark:bg-darkSecondary",
         ]
       );
       control.start("hidden");
@@ -106,7 +106,7 @@ export default function TopNavbar() {
           initial="hidden"
           animate="visible"
           variants={FadeContainer}
-          className="flex items-center"
+          className="flex items-center gap-2"
         >
           {navigationRoutes.slice(0, 6).map((link, index) => {
             return (
@@ -149,9 +149,9 @@ function NavItem({ href, text, router }) {
         variants={popUp}
         className={`${
           isActive
-            ? "font-bold text-gray-800 dark:text-gray-200"
-            : "font-medium text-gray-600 dark:text-gray-400"
-        } sm:inline-block hover:text-gray-900 dark:hover:text-gray-50 transition-all text-lg mr-4 sm:mr-7 hidden font-inter`}
+            ? "font-bold text-gray-800 dark:text-gray-100"
+            : "font-medium text-gray-600 dark:text-gray-300"
+        } sm:inline-block transition-all text-[17px] hidden px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
       >
         <span className="capitalize">{text}</span>
       </motion.a>
