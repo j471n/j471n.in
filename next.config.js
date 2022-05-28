@@ -22,6 +22,7 @@ module.exports = withBundleAnalyzer(
         "cutt.ly",
         "activity-graph.herokuapp.com",
         "i.scdn.co", // images from spotify
+        "images.unsplash.com"
       ],
     },
 

@@ -5,6 +5,8 @@ import Metadata from "@components/MetaData";
 import PageTop from "@components/PageTop";
 import { pagePreviewImage } from "@utils/utils";
 import { getProjects } from "@lib/dataFetch";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { FadeContainer } from "@content/FramerMotionVariants";
 
 export default function Projects({ projects }) {
   return (
@@ -24,8 +26,9 @@ export default function Projects({ projects }) {
           projects.
         </PageTop>
 
-        <section
-          className="relative py-5 flex flex-col gap-4 min-h-[50vh]"
+        <AnimatedDiv
+          variants={FadeContainer}
+          className="relative grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-3"
         >
           <AnimatePresence>
             {projects &&
@@ -35,7 +38,7 @@ export default function Projects({ projects }) {
                 return <Project key={index} project={project} />;
               })}
           </AnimatePresence>
-        </section>
+        </AnimatedDiv>
       </section>
     </>
   );

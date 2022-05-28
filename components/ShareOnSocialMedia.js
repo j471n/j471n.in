@@ -31,10 +31,7 @@ export default function ShareOnSocialMedia({
     if (window.navigator.share) {
       window.navigator
         .share({
-          title: `
-          ${title} -
-          ${summary}
-          `,
+          title: title,
           text: summary,
           url: url,
           // files: [file ],
