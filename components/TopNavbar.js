@@ -10,7 +10,7 @@ import {
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import { navigationRoutes } from "../utils/utils";
-import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 export default function TopNavbar() {
   const router = useRouter();
@@ -122,20 +122,21 @@ export default function TopNavbar() {
       </motion.nav>
 
       {/* DarkMode Container */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={popUp}
+      <div
         className="cursor-pointer rounded-full z-30 duration-300 group"
         title="Toggle Theme"
         onClick={() => changeDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          <BsMoonFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
+          <motion.div whileTap={{ scale: 0.5 }}>
+            <FiMoon className="h-6 w-6 sm:h-7 sm:w-7 select-none " />
+          </motion.div>
         ) : (
-          <BsSunFill className="h-6 w-6 sm:h-8 sm:w-8 select-none transform duration-100 group-active:scale-50" />
+          <motion.div whileTap={{ scale: 0.5 }}>
+            <FiSun className="h-6 w-6 sm:h-7 sm:w-7 select-none " />
+          </motion.div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -172,7 +173,7 @@ function HamBurger({ open, handleClick }) {
       {!open ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
+          className="h-6 w-6 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
           onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
@@ -188,7 +189,7 @@ function HamBurger({ open, handleClick }) {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
+          className="h-6 w-6 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
           onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
