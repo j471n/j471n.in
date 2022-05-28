@@ -4,10 +4,9 @@ import Image from "next/image";
 import Ripples from "react-ripples";
 
 export default function Blog({ blog }) {
-  console.log(blog.readingTime);
   return (
-    <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-lg shadow ">
-      <div className="relative rounded-md overflow-hidden">
+    <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-xl shadow ">
+      <div className="relative rounded-lg overflow-hidden">
         <Image
           src={blog.image}
           width={600}
