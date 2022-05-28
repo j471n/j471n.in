@@ -1,23 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import Ripples from "react-ripples";
+import OgImage from "./OgImage";
 
 export default function Blog({ blog }) {
   return (
     <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-xl shadow ">
-      <div className="relative rounded-lg overflow-hidden">
-        <Image
-          src={blog.image}
-          width={600}
-          height={315}
-          layout="responsive"
-          alt={blog.title}
-          placeholder="blur"
-          blurDataURL={blog.image}
-          quality={75}
-        />
-      </div>
+      <OgImage src={blog.image} alt={blog.title} />
       <div className="flex flex-col p-2 gap-2 w-fit flex-shrink">
         <div className={`relative w-full flex flex-col gap-1 `}>
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
