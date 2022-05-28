@@ -1,39 +1,54 @@
 import React from "react";
-import AnimatedText from "../components/FramerMotion/AnimatedText";
-import { popUpFromBottomForText } from "../content/FramerMotionVariants";
 import Link from "next/link";
-import AnimatedHeading from "./FramerMotion/AnimatedHeading";
+import Image from "next/image";
+import Ripples from "react-ripples";
 
-export default function Blog({ blog, className }) {
+export default function Blog({ blog }) {
+  console.log(blog.readingTime);
   return (
-    <Link passHref href={`/blogs/${blog.slug}`}>
-      <div
-        className={`relative lg:p-3 w-full flex flex-col gap-2 font-inter rounded-md transition-all cursor-pointer select-none transform duration-200 active:scale-95 lg:hover:bg-neutral-100 dark:lg:hover:bg-darkSecondary  ${className}`}
-      >
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-          <AnimatedHeading
-            variants={popUpFromBottomForText}
-            className="font-semibold text-neutral-900 dark:text-neutral-200 sm:text-xl"
-          >
-            {blog.title}
-          </AnimatedHeading>
-        </div>
-        <AnimatedText
-          variants={popUpFromBottomForText}
-          className="text-gray-500 text-xs sm:text-sm flex gap-2"
-        >
-          <span>{blog.stringDate}</span>
-          <span>•</span>
-          <span>{blog.readingTime.text}</span>
-        </AnimatedText>
-
-        <AnimatedText
-          variants={popUpFromBottomForText}
-          className="text-sm sm:text-base sm:font-normal text-gray-500 truncate-2 "
-        >
-          {blog.excerpt}
-        </AnimatedText>
+    <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-lg shadow ">
+      <div className="relative rounded-md overflow-hidden">
+        <Image
+          src={blog.image}
+          width={600}
+          height={315}
+          layout="responsive"
+          alt={blog.title}
+          placeholder="blur"
+          blurDataURL={blog.image}
+          quality={75}
+        />
       </div>
-    </Link>
+      <div className="flex flex-col p-2 gap-2 w-fit flex-shrink">
+        <div className={`relative w-full flex flex-col gap-1 `}>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <h1 className="font-bold text-neutral-900 dark:text-neutral-200">
+              {blog.title}
+            </h1>
+          </div>
+          <p className="text-gray-500 text-xs flex justify-between items-center">
+            <span>{blog.stringDate}</span>
+            <span>{blog.readingTime.text}</span>
+          </p>
+
+          <p className="text-sm  text-gray-600 dark:text-gray-400 truncate-2">
+            {blog.excerpt}
+          </p>
+        </div>
+      </div>
+      <Ripples
+        className="w-fit h-fit mt-auto m-2"
+        color="rgba(225, 225,225,0.2) "
+      >
+        <Link passHref href={`/blogs/${blog.slug}`}>
+          <a
+            href={`/blogs/${blog.slug}`}
+            className="px-4 py-2 rounded bg-black text-white w-fit text-xs "
+          >
+            Read more
+          </a>
+        </Link>
+      </Ripples>
+    </div>
   );
 }

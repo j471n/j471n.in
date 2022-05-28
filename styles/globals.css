@@ -229,6 +229,6 @@ code > .line::before {
 
 @layer base {
   body {
-    @apply font-inter;
+    @apply font-inter bg-darkWhite;
   }
 }

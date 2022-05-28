@@ -9,22 +9,15 @@ export default function BlogsSection({ blogs }) {
     <section className="mx-5">
       <HomeHeading title="Recent Posts" />
 
-      <div className="flex flex-col gap-3 w-full">
+      <div className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4">
         {blogs.map((blog, index) => {
-          return (
-            <div
-              key={index}
-              className="flex flex-col xs:flex-row items-center gap-2"
-            >
-              <Blog blog={blog} />
-            </div>
-          );
+          return <Blog key={`home-blog-${index}`} blog={blog} />;
         })}
 
         <Link href="/blogs">
           <div
             variants={popUpFromBottomForText}
-            className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black transform duration-200 active:scale-90 active:border-black w-fit"
+            className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black dark:lg:hover:border-white transform duration-200 active:scale-90 active:border-black w-fit"
           >
             <motion.a href="/blogs" className="flex items-center gap-1 ">
               Read all posts

@@ -1,6 +1,10 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { fromLeftVariant, opacityVariant } from "@content/FramerMotionVariants";
+import {
+  FadeContainer,
+  fromLeftVariant,
+  opacityVariant,
+} from "@content/FramerMotionVariants";
 import Link from "next/link";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
@@ -110,8 +114,9 @@ export default function Blogs({ blogs }) {
           <AnimatePresence>
             {filteredBlogs.length != 0 ? (
               <>
-                <AnimatedDiv variants={opacityVariant}
-                className="flex items-center justify-between"
+                <AnimatedDiv
+                  variants={opacityVariant}
+                  className="flex items-center justify-between"
                 >
                   <h1 className="text-left font-bold text-3xl my-5">
                     All Posts ({filteredBlogs.length})
@@ -121,9 +126,12 @@ export default function Blogs({ blogs }) {
                     <BiRss title="RSS" className="text-3xl cursor-pointer" />
                   </Link>
                 </AnimatedDiv>
-                {filteredBlogs.map((blog, index) => {
-                  return <Blog key={index} blog={blog} />;
-                })}
+
+                <div className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4">
+                  {filteredBlogs.map((blog, index) => {
+                    return <Blog key={index} blog={blog} />;
+                  })}
+                </div>
               </>
             ) : (
               <div className="font-inter text-center font-medium dark:text-gray-400">
