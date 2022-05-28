@@ -4,6 +4,7 @@ import {
   FadeContainer,
   fromLeftVariant,
   opacityVariant,
+  popUpFromBottomForText,
 } from "@content/FramerMotionVariants";
 import Link from "next/link";
 import Blog from "@components/Blog";
@@ -18,7 +19,7 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
-  const [filteredBlogs, setFilteredBlogs] = useState([]);
+  const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
 
   useEffect(() => {
     setFilteredBlogs(
@@ -117,20 +118,28 @@ export default function Blogs({ blogs }) {
                   variants={opacityVariant}
                   className="flex items-center justify-between"
                 >
-                  <h1 className="text-left font-bold text-3xl my-5">
+                  <AnimatedHeading
+                    variants={popUpFromBottomForText}
+                    className="text-left font-bold text-3xl my-5"
+                  >
                     All Posts ({filteredBlogs.length})
-                  </h1>
+                  </AnimatedHeading>
 
                   <Link href="/rss" passHref>
-                    <BiRss title="RSS" className="text-3xl cursor-pointer" />
+                    <a href="/rss">
+                      <BiRss title="RSS" className="text-3xl cursor-pointer" />
+                    </a>
                   </Link>
                 </AnimatedDiv>
 
-                <div className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4">
+                <AnimatedDiv
+                  variants={FadeContainer}
+                  className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4"
+                >
                   {filteredBlogs.map((blog, index) => {
                     return <Blog key={index} blog={blog} />;
                   })}
-                </div>
+                </AnimatedDiv>
               </>
             ) : (
               <div className="font-inter text-center font-medium dark:text-gray-400">
