@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FadeContainer,
@@ -13,28 +13,20 @@ import AnimatedText from "@components/FramerMotion/AnimatedText";
 import { getAllPosts } from "@lib/posts";
 import { pagePreviewImage } from "@utils/utils";
 import { BiRss } from "react-icons/bi";
+import { RiCloseCircleLine } from "react-icons/ri";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogs }) {
-  const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
-  const searchInputRef = useRef();
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
 
-  function handleSearch(e) {
-    e.preventDefault();
-
-    if (searchInputRef.current.value.trim() === "") {
-      return setFilteredBlogs([...blogs]);
-    }
-    setFilteredBlogs(() =>
-      searchInputRef.current.value
-        ? filteredBlogs.filter((blog) =>
-            blog.title
-              .toLowerCase()
-              .includes(searchInputRef.current.value.trim().toLowerCase())
-          )
-        : []
+  useEffect(() => {
+    setFilteredBlogs(
+      blogs.filter((post) =>
+        post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
+      )
     );
-  }
+  }, [searchValue]);
 
   return (
     <>
@@ -70,18 +62,17 @@ export default function Blogs({ blogs }) {
           variants={opacityVariant}
           className="px-2"
         >
-          <button
-            type="button"
+          <div
+            // type="button"
             id="view"
-            className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-300 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto mt-4 flex relative"
-            onClick={() => searchInputRef.current.focus()}
+            className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-400 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto mt-4 flex relative bg-white group"
           >
             <svg
               width="24"
               height="24"
               fill="none"
               aria-hidden="true"
-              className="mr-3 flex-none"
+              className="mx-3 flex-none"
             >
               <path
                 d="m19 19-3.5-3.5"
@@ -101,13 +92,21 @@ export default function Blogs({ blogs }) {
               ></circle>
             </svg>
             <input
-              className="px-5 text-slate-400  py-2 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter"
-              type="search"
-              ref={searchInputRef}
+              className="px-3 text-slate-400  py-2 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter"
+              type="text"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
               placeholder="Search articles..."
-              onChange={handleSearch}
             />
-          </button>
+
+            <button
+              type="button"
+              onClick={() => setSearchValue("")}
+              className="hidden group-hover:inline-flex"
+            >
+              <RiCloseCircleLine className="w-5 h-5 mr-3" />
+            </button>
+          </div>
         </motion.div>
 
         <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
