@@ -1,121 +1,59 @@
-import { BsGithub, BsFillEyeFill } from "react-icons/bs";
-import { BiShareAlt } from "react-icons/bi";
-import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import {
-  hamFastFadeContainer,
-  popUp,
-  popUpFromBottomForText,
-} from "../content/FramerMotionVariants";
-import AnimatedHeading from "./FramerMotion/AnimatedHeading";
-import AnimatedText from "./FramerMotion/AnimatedText";
-import useShare from "../hooks/useShare";
+import { BsGithub } from "react-icons/bs";
+import { MdOutlineLink } from "react-icons/md";
+import Link from "next/link";
+import OgImage from "@components/OgImage";
+
 
 export default function Project({ project }) {
-  const { isShareSupported } = useShare();
-
-  async function handleShare() {
-    const image = fetch(project.coverURL, { mode: "no-cors" }).then((image) =>
-      image.blob()
-    );
-    const file = new File([image], "image.jpg", { type: "image/jpeg" });
-    if (window.navigator.share) {
-      window.navigator
-        .share({
-          title: project.name,
-          text: project.desc || "",
-          url: project.previewURL || project.githubURL,
-          files: [file],
-        })
-        .then(() => {
-          console.log("Thanks for sharing! Project");
-        })
-        .catch(console.error);
-    }
-  }
 
   return (
-    <div className="relative flex items-center gap-5 w-full bg-gray-400/10 dark:bg-darkSecondary py-3 px-5 rounded-md">
-      <div className="flex flex-col gap-1 w-full">
-        <AnimatedHeading
-          variants={popUpFromBottomForText}
-          className="font-bold sm:text-xl capitalize text-neutral-900 dark:text-neutral-200"
-        >
-          {project.name}
-        </AnimatedHeading>
-        <AnimatedText
-          variants={popUpFromBottomForText}
-          className="font-medium text-sm  text-gray-400 dark:text-neutral-400 sm:text-base"
-        >
-          {project.description}
-        </AnimatedText>
+    <div className="flex flex-col gap-2 p-2 rounded-xl bg-white dark:bg-darkSecondary shadow">
+      <OgImage src={project.coverURL} alt={project.name} />
 
-        <AnimatePresence>
-          {project.tools && (
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              variants={hamFastFadeContainer}
-              viewport={{ once: true }}
-              className="w-full select-none flex gap-3 flex-wrap justify-start items-center transition-all duration-150 mt-1"
-            >
-              {project.tools.map((tool) => {
-                return (
-                  <motion.div variants={popUp} key={tool}>
-                    <Image
-                      title={tool}
-                      src={`/img/skills/${tool}.webp`}
-                      alt={tool}
-                      width={20}
-                      height={20}
-                    />
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div className="flex flex-col gap-2 px-2 mb-2">
+        <h1 className="font-bold capitalize text-neutral-900 dark:text-neutral-200">
+          {project.name}
+        </h1>
+        <p className="text-sm text-gray-400 dark:text-neutral-400 ">
+          {project.description}
+        </p>
+
+        <div className="flex items-center gap-1 flex-wrap">
+          {project.tools.map((tool, index) => {
+            return (
+              <span key={`${tool}-${index}`} className="bg-gray-100 dark:bg-darkPrimary text-gray-500 rounded px-2 py-1 text-xs capitalize">
+                {tool}
+              </span>
+            );
+          })}
+        </div>
       </div>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        variants={hamFastFadeContainer}
-        viewport={{ once: true }}
-        className="flex flex-col gap-1"
-      >
-        {isShareSupported && (
-          <motion.div
-            variants={popUp}
-            title="Share"
-            className="project_link"
-            onClick={handleShare}
-          >
-            <BiShareAlt className="text-lg" />
-          </motion.div>
-        )}
-        {project.githubURL && (
-          <motion.a
-            variants={popUp}
-            title="Github"
+
+      <div className="mt-auto p-2 w-fit flex items-center gap-4">
+        <Link href={project.githubURL} passHref>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
             href={project.githubURL}
-            target="blank"
-            className="project_link"
+            className="text-gray-500 hover:text-black dark:hover:text-white"
           >
-            <BsGithub className="text-lg text-center" />
-          </motion.a>
-        )}
+            <BsGithub className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
+          </a>
+        </Link>
+
         {project.previewURL && (
-          <motion.a
-            variants={popUp}
-            title="Visit"
-            href={project.previewURL}
-            target="blank"
-            className="project_link"
-          >
-            <BsFillEyeFill className="text-lg" />
-          </motion.a>
+          <Link href={project.previewURL} passHref>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={project.previewURL}
+              className="text-gray-500 hover:text-black dark:hover:text-white"
+            >
+              <MdOutlineLink className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
+            </a>
+          </Link>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
