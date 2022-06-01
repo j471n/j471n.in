@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AvatarImage } from "../utils/utils";
 import Image from "next/image";
 import styles from "../styles/Blog.module.css";
@@ -6,12 +5,10 @@ import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
+import useWindowLocation from "@hooks/useWindowLocation";
 
 export default function BlogLayout({ post, children }) {
-  const [pageURL, setPageURL] = useState("");
-  useEffect(() => {
-    setPageURL(window.location.href);
-  }, []);
+  const { currentURL } = useWindowLocation();
 
   return (
     <>
@@ -85,7 +82,7 @@ export default function BlogLayout({ post, children }) {
           <ShareOnSocialMedia
             className="flex gap-2 items-center flex-wrap w-fit"
             title={post.meta.title}
-            url={pageURL}
+            url={currentURL}
             summary={post.meta.excerpt}
             cover_image={post.meta.image}
           >

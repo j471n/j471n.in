@@ -1,11 +1,8 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-export default function MetaData({ title, description, previewImage }) {
-  const [URL, setURL] = useState("");
+import useWindowLocation from "@hooks/useWindowLocation";
 
-  useEffect(() => {
-    setURL(window.location.href);
-  }, []);
+export default function MetaData({ title, description, previewImage }) {
+  const { currentURL } = useWindowLocation();
 
   return (
     <Head>
@@ -30,7 +27,7 @@ export default function MetaData({ title, description, previewImage }) {
       <meta property="og:title" content={`${title || ""} Jatin Sharma`} />
       <meta property="og:description" content={description || "Jatin Sharma"} />
       <meta property="og:site_name" content="Jatin Sharma" />
-      <meta property="og:url" content={URL} key="ogurl" />
+      <meta property="og:url" content={currentURL} key="ogurl" />
       <meta property="og:image" content={previewImage || ""} />
 
       {/* Twitter */}
@@ -40,7 +37,7 @@ export default function MetaData({ title, description, previewImage }) {
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={previewImage || ""} />
       <meta name="twitter:image:alt" content={title || "Jatin Sharma"}></meta>
-      <meta name="twitter:domain" content={URL} />
+      <meta name="twitter:domain" content={currentURL} />
     </Head>
   );
 }

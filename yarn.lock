@@ -4845,6 +4845,11 @@ purgecss@^4.1.3:
     postcss "^8.3.5"
     postcss-selector-parser "^6.0.6"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha1-ys6GOG9ZoNuAUPqQ2baw6IoeNk8=
+
 queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
@@ -4925,6 +4930,14 @@ react-property@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-property/-/react-property-2.0.0.tgz#2156ba9d85fa4741faf1918b38efc1eae3c6a136"
   integrity sha512-kzmNjIgU32mO4mmH5+iUyrqlpFQhF8K2k7eZ4fdLSOPFrD1XgEuSBv9LDEgxRXTMBqMd8ppT0x6TIzqE5pdGdw==
+
+react-qr-code@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/react-qr-code/-/react-qr-code-2.0.7.tgz#508304e031e82426a044f5e9490aca87d7c3de38"
+  integrity sha512-NpknL80p7dWbLdHfBSIxQIqLCu3+kBlyzYD692rO0UnVwfCSziIxc1xn/p3JhPEv1RV1lRD8j0w+hR3L7tawTQ==
+  dependencies:
+    prop-types "^15.7.2"
+    qr.js "0.0.0"
 
 react-ripples@^2.2.1:
   version "2.2.1"
