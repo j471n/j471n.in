@@ -7,8 +7,9 @@ import { motion } from "framer-motion";
 import { SiSpotify } from "react-icons/si";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
+import { HiOutlineQrcode } from "react-icons/hi";
 
-export default function Footer() {
+export default function Footer({ setShowQR, showQR }) {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
   return (
@@ -80,6 +81,15 @@ export default function Footer() {
           </div>
         </section>
       </motion.div>
+
+      <div className="w-full flex justify-center">
+        <div className="bg-gray-700 text-white p-4 rounded-full cursor-pointer transition-all active:scale-90 hover:scale-105">
+          <HiOutlineQrcode
+            className="w-6 h-6 "
+            onClick={() => setShowQR(!showQR)}
+          />
+        </div>
+      </div>
     </footer>
   );
 }
