@@ -44,7 +44,6 @@ export default function Footer({ setShowQR, showQR }) {
               );
             })}
           </div>
-          {console.log(navigationRoutes.slice(4, navigationRoutes.length))}
           <div className="flex flex-col gap-4 capitalize">
             {navigationRoutes
               .slice(4, navigationRoutes.length)
