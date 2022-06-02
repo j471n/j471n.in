@@ -27,8 +27,8 @@ import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { FiDownload } from "react-icons/fi";
+import Ripples from "react-ripples";
 
 export default function Home({ blogs, skills }) {
   return (
@@ -87,14 +87,17 @@ export default function Home({ blogs, skills }) {
               </motion.p>
             </div>
 
-            <motion.button
-              onClick={() => window.open("/resume")}
-              variants={popUp}
-              className="flex items-center gap-2 px-5 py-2 border rounded-md border-gray-500 dark:border-gray-400 select-none active:scale-95 duration-200 hover:bg-gray-100 dark:hover:bg-neutral-800"
-            >
-              <FiDownload className="" />
-              <p>Resume</p>
-            </motion.button>
+            <motion.div className="rounded-md overflow-hidden" variants={popUp}>
+              <Ripples className="w-full" color="rgba(0, 0, 0, 0.5)">
+                <button
+                  className="flex items-center gap-2 px-5 py-2 border rounded-md border-gray-500 dark:border-gray-400 select-none  hover:bg-gray-100 dark:hover:bg-neutral-800 outline-none"
+                  onClick={() => window.open("/resume")}
+                >
+                  <FiDownload />
+                  <p>Resume</p>
+                </button>
+              </Ripples>
+            </motion.div>
           </div>
         </motion.section>
 
