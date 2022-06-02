@@ -33,39 +33,37 @@ export default function Footer({ setShowQR, showQR }) {
 
         <section className="grid grid-cols-3 gap-10">
           <div className="flex flex-col gap-4 capitalize">
-            {navigationRoutes.map((route, index) => {
-              let text = route;
-              if (route === "rss") text = "RSS";
+            {navigationRoutes.slice(0, 4).map((text, index) => {
+
               return (
-                <Link key={index} href={`/${route}`} passHref>
-                  <motion.a variants={popUp} href={`/${route}`}>
+                <Link key={index} href={`/${text}`} passHref>
+                  <motion.a variants={popUp} href={`/${text}`}>
                     {text}
                   </motion.a>
                 </Link>
               );
             })}
           </div>
+          {console.log(navigationRoutes.slice(4, navigationRoutes.length))}
           <div className="flex flex-col gap-4 capitalize">
-            {socialMedia.map((platform, index) => {
-              if (index > 3) return;
-              return (
-                <Link key={index} href={platform.url} passHref>
-                  <motion.a
-                    variants={popUp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={platform.url}
-                  >
-                    {platform.title}
-                  </motion.a>
-                </Link>
-              );
-            })}
+            {navigationRoutes
+              .slice(4, navigationRoutes.length)
+              .map((route, index) => {
+                let text = route;
+                if (route === "rss") text = "RSS";
+
+                return (
+                  <Link key={index} href={`/${route}`} passHref>
+                    <motion.a variants={popUp} href={`/${route}`}>
+                      {text}
+                    </motion.a>
+                  </Link>
+                );
+              })}
           </div>
           <div className="flex flex-col gap-4 capitalize">
-            {socialMedia.map((platform, index) => {
-              if (index < 4) return;
-              return (
+            {socialMedia.slice(0, 4).map((platform, index) => {
+              return (  
                 <Link key={index} href={platform.url} passHref>
                   <motion.a
                     variants={popUp}

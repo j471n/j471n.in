@@ -6,29 +6,9 @@ import { SiCodepen } from "react-icons/si";
 
 export default [
   {
-    title: "Instagram",
-    Icon: AiOutlineInstagram,
-    url: "https://www.instagram.com/jatin47.47/",
-  },
-  {
     title: "Twitter",
     Icon: AiOutlineTwitter,
     url: "https://twitter.com/j471n_",
-  },
-  {
-    title: "Codepen",
-    Icon: SiCodepen,
-    url: "https://codepen.io/j471n",
-  },
-  {
-    title: "Dev.to",
-    Icon: FaDev,
-    url: "https://dev.to/j471n",
-  },
-  {
-    title: "Facebook",
-    Icon: BsFacebook,
-    url: "https://www.facebook.com/ja7in/",
   },
   {
     title: "LinkedIn",
@@ -39,6 +19,26 @@ export default [
     title: "Github",
     Icon: BsGithub,
     url: "https://github.com/j471n",
+  },
+  {
+    title: "Dev.to",
+    Icon: FaDev,
+    url: "https://dev.to/j471n",
+  },
+  {
+    title: "Instagram",
+    Icon: AiOutlineInstagram,
+    url: "https://www.instagram.com/jatin47.47/",
+  },
+  {
+    title: "Codepen",
+    Icon: SiCodepen,
+    url: "https://codepen.io/j471n",
+  },
+  {
+    title: "Facebook",
+    Icon: BsFacebook,
+    url: "https://www.facebook.com/ja7in/",
   },
   {
     title: "Mail",
