@@ -34,13 +34,8 @@ export default function Footer({ setShowQR, showQR }) {
         <section className="grid grid-cols-3 gap-10">
           <div className="flex flex-col gap-4 capitalize">
             {navigationRoutes.slice(0, 4).map((text, index) => {
-
               return (
-                <Link key={index} href={`/${text}`} passHref>
-                  <motion.a variants={popUp} href={`/${text}`}>
-                    {text}
-                  </motion.a>
-                </Link>
+                <FooterLink key={index} id={index} route={text} text={text} />
               );
             })}
           </div>
@@ -50,21 +45,15 @@ export default function Footer({ setShowQR, showQR }) {
               .map((route, index) => {
                 let text = route;
                 if (route === "rss") text = "RSS";
-
-                return (
-                  <Link key={index} href={`/${route}`} passHref>
-                    <motion.a variants={popUp} href={`/${route}`}>
-                      {text}
-                    </motion.a>
-                  </Link>
-                );
+                return <FooterLink key={index} route={route} text={text} />;
               })}
           </div>
           <div className="flex flex-col gap-4 capitalize">
             {socialMedia.slice(0, 4).map((platform, index) => {
-              return (  
+              return (
                 <Link key={index} href={platform.url} passHref>
                   <motion.a
+                    className="hover:text-black dark:hover:text-white w-fit"
                     variants={popUp}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -88,6 +77,20 @@ export default function Footer({ setShowQR, showQR }) {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ route, text }) {
+  return (
+    <Link href={`/${route}`} passHref>
+      <motion.a
+        className="hover:text-black dark:hover:text-white w-fit"
+        variants={popUp}
+        href={`/${route}`}
+      >
+        {text}
+      </motion.a>
+    </Link>
   );
 }
 
