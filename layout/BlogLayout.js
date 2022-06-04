@@ -20,10 +20,7 @@ export default function BlogLayout({ post, children }) {
           {post.meta.title}
         </h1>
 
-        <div
-          style={{ marginBottom: "0 !important" }}
-          className="flex items-center !w-full"
-        >
+        <div className="flex items-center !w-full">
           <div className="flex items-center gap-2 w-full">
             <div className="relative grid">
               <Image
@@ -53,7 +50,7 @@ export default function BlogLayout({ post, children }) {
         </div>
 
         <div
-          className={` ${styles.blog} !w-full prose-sm  selection:bg-blue-100 selection:text-white-400 dark:text-neutral-400 my-2  font-medium prose-stone`}
+          className={` ${styles.blog} !w-full prose-sm  selection:bg-blue-100 selection:text-white-400 dark:text-neutral-400 my-5 font-medium prose-stone`}
         >
           {children}
         </div>
