@@ -25,7 +25,6 @@ export default function Form() {
   const [loading, setLoading] = useState(false);
   const { isDarkMode } = useDarkMode();
 
-  // TODO: make an ripple effect
   function sendEmail(e) {
     e.preventDefault();
     setLoading(true);
@@ -89,6 +88,7 @@ export default function Form() {
               className="block py-2 mt-2 px-0 w-full text-sm text-white-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-black peer"
               placeholder=" "
               required
+              value={emailInfo.first_name}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
@@ -114,6 +114,7 @@ export default function Form() {
               className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-black peer"
               placeholder=" "
               required
+              value={emailInfo.last_name}
               onChange={(e) =>
                 setEmailInfo({
                   ...emailInfo,
@@ -135,11 +136,12 @@ export default function Form() {
         >
           <input
             type="email"
-            name="floating_email"
+            name="email"
             id="floating_email"
             className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 focus:dark:border-white focus:border-black peer"
             placeholder=" "
             required
+            value={emailInfo.email}
             onChange={(e) =>
               setEmailInfo({
                 ...emailInfo,
@@ -160,11 +162,12 @@ export default function Form() {
         >
           <input
             type="subject"
-            name="floating_subject"
+            name="subject"
             id="floating_subject"
             className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0 focus:border-black peer"
             placeholder=" "
             required
+            value={emailInfo.subject}
             onChange={(e) =>
               setEmailInfo({
                 ...emailInfo,
@@ -189,6 +192,7 @@ export default function Form() {
             className="block py-2 mt-2 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-white focus:outline-none focus:ring-0  peer min-h-[100px] resize-y focus:border-black"
             placeholder=" "
             required
+            value={emailInfo.message}
             onChange={(e) =>
               setEmailInfo({
                 ...emailInfo,
