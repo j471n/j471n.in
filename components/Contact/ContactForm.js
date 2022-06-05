@@ -208,14 +208,17 @@ export default function Form() {
           </label>
         </motion.div>
 
-        <motion.div variants={mobileNavItemSideways} className="w-full ">
+        <motion.div
+          variants={mobileNavItemSideways}
+          className="w-full sm:max-w-sm rounded-lg overflow-hidden "
+        >
           <Ripples
             className="flex w-full justify-center"
             color="rgba(225, 225,225,0.2)"
           >
             <button
               type="submit"
-              className="text-white bg-neutral-800  dark:bg-darkSecondary  font-medium rounded-lg text-sm w-full sm:max-w-sm px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none active:scale-95"
+              className="text-white bg-neutral-800  dark:bg-darkSecondary font-medium rounded-lg text-sm w-full px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none active:scale-95"
             >
               <div className="relative w-full flex items-center justify-center">
                 <p
