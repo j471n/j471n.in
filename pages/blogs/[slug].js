@@ -25,6 +25,16 @@ export default function Post({ post }) {
     return () => window.removeEventListener("scroll", progressBarHandler);
   }, [progressBarHandler]);
 
+  // Adding Views to the firebase database
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`/api/views/${post.meta.slug}`, {
+        method: "POST",
+      });
+
+    registerView();
+  }, [post.meta.slug]);
+
   return (
     <>
       <Metadata
@@ -46,6 +56,8 @@ export default function Post({ post }) {
           components={MDXComponents}
         />
       </BlogLayout>
+
+      {/* <ViewsCounter slug={post.meta.slug} /> */}
     </>
   );
 }
