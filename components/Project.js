@@ -7,14 +7,14 @@ import OgImage from "@components/OgImage";
 export default function Project({ project }) {
 
   return (
-    <div className="flex flex-col gap-2 p-2 rounded-xl bg-white dark:bg-darkSecondary shadow">
+    <div className="flex flex-col gap-2 p-2 rounded-xl bg-white dark:bg-darkSecondary shadow group">
       <OgImage src={project.coverURL} alt={project.name} />
 
       <div className="flex flex-col gap-2 px-2 mb-2">
         <h1 className="font-bold capitalize text-neutral-900 dark:text-neutral-200">
           {project.name}
         </h1>
-        <p className="text-sm text-gray-400 dark:text-neutral-400 ">
+        <p className="text-sm text-gray-400 dark:text-neutral-400 truncate-2">
           {project.description}
         </p>
 
