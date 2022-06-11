@@ -1,11 +1,9 @@
-import React from "react";
 import Link from "next/link";
-import Ripples from "react-ripples";
 import OgImage from "./OgImage";
 
 export default function Blog({ blog }) {
   return (
-    <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-xl shadow ">
+    <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-xl shadow group ">
       <OgImage src={blog.image} alt={blog.title} />
       <div className="flex flex-col p-2 gap-2 w-fit flex-shrink">
         <div className={`relative w-full flex flex-col gap-1 `}>
@@ -24,19 +22,14 @@ export default function Blog({ blog }) {
           </p>
         </div>
       </div>
-      <Ripples
-        className="w-fit h-fit mt-auto m-2"
-        color="rgba(225, 225,225,0.2) "
-      >
-        <Link passHref href={`/blogs/${blog.slug}`}>
-          <a
-            href={`/blogs/${blog.slug}`}
-            className="px-4 py-2 rounded bg-black text-white w-fit text-xs "
-          >
-            Read more
-          </a>
-        </Link>
-      </Ripples>
+      <Link passHref href={`/blogs/${blog.slug}`}>
+        <a
+          href={`/blogs/${blog.slug}`}
+          className="px-4 py-2 rounded bg-black text-white w-fit text-xs mt-auto m-2 transition-all active:scale-90 hover:bg-gray-200 hover:text-black font-medium"
+        >
+          Read more
+        </a>
+      </Link>
     </div>
   );
 }
