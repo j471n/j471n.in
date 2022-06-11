@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import { useDarkMode } from "../../context/darkModeContext";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import {
   FadeContainer,
