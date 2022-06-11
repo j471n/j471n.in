@@ -1,23 +1,24 @@
 
 # Getting Started
 
-Clone the repo
+Clone the repository-
 ```bash
 git clone https://github.com/j471n/j471n.in.git
 ```
 
-Install all the deps-
+Install all the dependencies-
 ```bash
 cd j471n.in
 
-# Install deps
-yarn
+# Install dependencies with pnpm
+pnpm install
 
 # Running the dev server
-yarn dev
+pnpm dev
 ```
 
 After that server should be running on [localhost:3000](http://localhost:3000)
+> I am using [pnpm](https://pnpm.io/) you can use [yarn](https://yarnpkg.com/) as well as [npm](https://www.npmjs.com/)
 
 > Warning: You could ran to into errors if you don't populate the `.env.local` with correct values
 
@@ -32,7 +33,7 @@ After that server should be running on [localhost:3000](http://localhost:3000)
 - **Plugins**: [rehype](https://github.com/rehypejs/rehype)
 - [SWR](https://swr.vercel.app/)
 - [Prettier](https://prettier.io)
-- [Email.js](https://github.com/emailjs-com/emailjs-sdk)
+- [Email.js](https://www.emailjs.com/)
 - [highlight.js](https://github.com/highlightjs/highlight.js)
 - [React Toastify](https://github.com/fkhadra/react-toastify)
 
