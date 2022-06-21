@@ -6,16 +6,70 @@ import { FiPrinter } from "react-icons/fi";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
+import ScrollProgressBar from "@components/ScrollProgressBar";
+import { stringToSlug } from "@lib/toc";
+import { useState } from "react";
+import { lockScroll } from "@utils/functions";
+import useWindowSize from "@hooks/useWindowSize";
 
 export default function BlogLayout({ post, children }) {
   const { currentURL } = useWindowLocation();
+  const [isTOCActive, setIsTOCActive] = useState(false);
+  const size = useWindowSize();
 
   return (
-    <>
-      <section
-        className="pageTop  p-5 sm:pt-10 w-full relative mx-auto font-barlow prose dark:prose-invert"
-        style={{ maxWidth: "800px" }}
+    <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
+      {/* TOC */}
+      <div
+        className={`fixed h-full ${
+          isTOCActive
+            ? "left-0 opacity-100 top-[44px] md:top-[100px]"
+            : "-left-[100%] opacity-0"
+        } md:left-0 md:opacity-100 md:max-w-[35%] lg:max-w-[30%]  transition-all duration-200 flex flex-col gap-1 pb-28 overflow-y-scroll p-10 md:p-14 h-screen fixed w-full font-barlow bg-darkWhite dark:bg-darkPrimary text-neutral-800 dark:text-gray-200  mb-10 z-50 `}
       >
+        <h2 className="font-bold text-xl md:text-2xl -ml-[5px] md:-ml-[6px]">
+          Table of Contents
+        </h2>
+
+        <div className="flex flex-col  border-l-2 border-neutral-500">
+          {post.tableOfContents.map((content) => {
+            return (
+              <Link href={`#${stringToSlug(content.heading)}`} passHref>
+                <a
+                  className={`relative px-2 py-0.5 md:py-1 hover:bg-white dark:hover:bg-darkSecondary rounded-tr-md rounded-br-md md:truncate text-neutral-700 dark:text-neutral-200 font-medium ${
+                    content.level != 0 && " border-l-2 border-neutral-500 "
+                  }`}
+                  style={{ marginLeft: `${content.level * 15}px` }}
+                  key={content.heading}
+                  href={`#${stringToSlug(content.heading)}`}
+                  onClick={() => {
+                    size.width < 768 && lockScroll() && setIsTOCActive(false);
+                  }}
+                >
+                  {content.heading}
+                </a>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      <button
+        onClick={() => {
+          setIsTOCActive(!isTOCActive);
+          lockScroll();
+        }}
+        className="md:hidden w-full py-2 font-medium bg-black dark:bg-white text-white dark:text-black fixed bottom-0 outline-none z-50"
+      >
+        Table of Contents
+      </button>
+
+      {/* Blog Content */}
+      <section
+        className="p-5 sm:pt-10 relative font-barlow prose dark:prose-invert md:ml-[35%] lg:ml-[30%]"
+        style={{ maxWidth: "800px", opacity: isTOCActive && "0.3" }}
+      >
+        <ScrollProgressBar />
         <h1 className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.meta.title}
         </h1>
@@ -39,7 +93,6 @@ export default function BlogLayout({ post, children }) {
                 <span>{post.meta.stringDate}</span>
               </p>
 
-              {/* { text: '3 min read', minutes: 2.955, time: 177300, words: 591 } */}
               <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
                 <span>{post.readingTime.text}</span>
                 <span>•</span>
@@ -89,6 +142,6 @@ export default function BlogLayout({ post, children }) {
           </ShareOnSocialMedia>
         </div>
       </section>
-    </>
+    </section>
   );
 }
