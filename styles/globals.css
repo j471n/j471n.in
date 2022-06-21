@@ -82,18 +82,18 @@ body.dark {
   background-color: #181a1b;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 6px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #b3b3b3;
 }
 
-body.dark::-webkit-scrollbar-thumb {
+.dark::-webkit-scrollbar-thumb {
   background-color: #393e41;
 }
 
@@ -172,6 +172,12 @@ code > .line::before {
   box-shadow: none !important;
 }
 /* Nprogress bar Custom Styling (force) : ENDS */
+
+.blogGrid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 1fr;
+}
 
 /* Layers Components or the custom class extends with tailwind */
 @layer components {
