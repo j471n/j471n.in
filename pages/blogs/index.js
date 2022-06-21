@@ -15,6 +15,7 @@ import { getAllPosts } from "@lib/posts";
 import { pagePreviewImage } from "@utils/utils";
 import { BiRss } from "react-icons/bi";
 import { RiCloseCircleLine } from "react-icons/ri";
+import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function Blogs({ blogs }) {
@@ -33,9 +34,7 @@ export default function Blogs({ blogs }) {
     <>
       <Metadata
         title="Blogs -"
-        description={
-          "I've been writing online since 2021, mostly about web development and tech careers. In total, I've written {blogs.length} articles till now."
-        }
+        description={`I've been writing online since 2021, mostly about web development and tech careers. In total, I've written ${blogs.length} articles till now.`}
         previewImage={pagePreviewImage.blogs}
       />
 
@@ -125,11 +124,25 @@ export default function Blogs({ blogs }) {
                     All Posts ({filteredBlogs.length})
                   </AnimatedHeading>
 
-                  <Link href="/rss" passHref>
-                    <a href="/rss">
-                      <BiRss title="RSS" className="text-3xl cursor-pointer" />
-                    </a>
-                  </Link>
+                  <div className="flex items-center gap-2">
+                    <Link href="/blogs/bookmark" passHref>
+                      <a href="/blogs/bookmark">
+                        <BsBookmark
+                          title="Bookmark"
+                          className="text-2xl cursor-pointer"
+                        />
+                      </a>
+                    </Link>
+
+                    <Link href="/rss" passHref>
+                      <a href="/rss">
+                        <BiRss
+                          title="RSS"
+                          className="text-3xl cursor-pointer"
+                        />
+                      </a>
+                    </Link>
+                  </div>
                 </AnimatedDiv>
 
                 <AnimatedDiv

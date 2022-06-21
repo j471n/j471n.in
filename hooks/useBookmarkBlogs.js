@@ -14,10 +14,10 @@ const useBookmarkBlogs = (key, defaultValue) => {
   });
 
   function getValue() {
-    var data = JSON.parse(localStorage.getItem("blogs"));
+    var data = JSON.parse(localStorage.getItem(key));
     if (data === null) {
-      localStorage.setItem("blogs", JSON.stringify([]));
-      return JSON.parse(localStorage.getItem("blogs"));
+      localStorage.setItem(key, JSON.stringify([]));
+      return JSON.parse(localStorage.getItem(key));
     }
     return data;
   }
@@ -32,7 +32,7 @@ const useBookmarkBlogs = (key, defaultValue) => {
 
   function removeFromBookmark(v) {
     var data = getValue();
-    setBookmarkedBlogs(data.filter((slug) => slug != v));
+    setBookmarkedBlogs(data.filter((blog) => blog.slug != v));
   }
 
   useEffect(() => {

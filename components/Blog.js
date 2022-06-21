@@ -4,11 +4,15 @@ import useLocalStorage from "@hooks/useBookmarkBlogs";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 export default function Blog({ blog }) {
-  const [setBookmarkedBlogs, addToBookmark, removeFromBookmark] =
-    useLocalStorage("blogs", []);
+  const [bookmarkedBlogs, addToBookmark, removeFromBookmark] = useLocalStorage(
+    "blogs",
+    []
+  );
 
   // check if the article is already bookmarked or not
-  const isAlreadyBookmarked = setBookmarkedBlogs.includes(blog.slug);
+  const isAlreadyBookmarked = bookmarkedBlogs
+    .map((bookmarkedBlog) => bookmarkedBlog.slug === blog.slug)
+    .includes(true);
 
   return (
     <div className="flex flex-col p-2 gap-2 bg-white dark:bg-darkSecondary rounded-xl shadow group ">
@@ -42,11 +46,12 @@ export default function Blog({ blog }) {
         </Link>
 
         <button
+          title="Save for Later"
           className="transition active:scale-90"
           onClick={() => {
             isAlreadyBookmarked
               ? removeFromBookmark(blog.slug)
-              : addToBookmark(blog.slug);
+              : addToBookmark(blog);
           }}
         >
           {isAlreadyBookmarked ? (
