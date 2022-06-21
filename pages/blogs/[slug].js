@@ -56,21 +56,25 @@ export default function Post({ post }) {
           components={MDXComponents}
         />
       </BlogLayout>
-
-      {/* <ViewsCounter slug={post.meta.slug} /> */}
     </>
   );
 }
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const { content: source, meta, readingTime } = await getPostFromSlug(slug);
+const {
+    content: source,
+    meta,
+    readingTime,
+    tableOfContents,
+  } = await getPostFromSlug(slug);
   return {
     props: {
       post: {
         meta,
         readingTime,
         source,
+        tableOfContents,
       },
     },
   };
