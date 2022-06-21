@@ -13,7 +13,7 @@ export default function Footer({ setShowQR, showQR }) {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
 
   return (
-    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-10 print:hidden">
+    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-20 print:hidden">
       <motion.div
         initial="hidden"
         whileInView="visible"
