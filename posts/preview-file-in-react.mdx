@@ -12,11 +12,11 @@ This article will explain how you can build a file previewer in React that works
 
 <Warning text="This article only showcases the preview for an image and video." />
 
-### Demo
+## Demo
 
 ![demo](https://imgur.com/YfD8krA.png)
 
-### Creating `FilePreviewer` Component
+## Creating `FilePreviewer` Component
 
 First, let's just create a file `components/FilePreviewer.js` after that we need to import two things in that file `useState` and `useRef`.
 
@@ -61,7 +61,7 @@ This is just a starter code, I am going to add more things to this. First, under
 
 ![filename shows](https://imgur.com/zcMTlet.png)
 
-### Handling File Input button
+## Handling File Input button
 
 I have created a new button to choose the file. To make this work we need to create a reference (ref) for file input. and handle the `onChange` event after that it will look something like this.
 
@@ -88,7 +88,7 @@ export default function FilePreviewer() {
 
 We will create the `previewFile` function in just a moment to handle the file selection.
 
-#### Creating Custom File input Button
+### Creating Custom File input Button
 
 Now as I have hidden the original file input button we need to create our own.
 
@@ -115,7 +115,7 @@ export default function FilePreviewer() {
 
 In this, I am just triggering the file input button through `ref` when the user clicks this button.
 
-### File Selection
+## File Selection
 
 As we are handling two files (image and video). we need to create two states for that `imagePreview` and `videoPreview`.
 
@@ -192,7 +192,7 @@ I know it's too much so let's break it down. I am using [FileReader](https://dev
 - If the user has selected a file then read that as [Data URLs](https://flaviocopes.com/data-urls).
 - When the file is loaded then check for the file type and set the image and video accordingly.
 
-#### Preview the file
+### Preview the file
 
 After file selection is done then we need to preview the file to the user. For that I have already created a container called `.preview`, In that, there were two elements `img` and `video`. Now we need to render these elements conditionally. and after that they will look like this-
 
@@ -237,7 +237,7 @@ export default function FilePreviewer() {
 }
 ```
 
-#### Clear Input Field
+### Clear Input Field
 
 Now, what if the user wants to clear the input field or remove the image he has selected. We haven't implemented that yet. To do that I've created a `close` button earlier. Now let's just add the functionality to it. When the user clicks on the button then it should fire `clearFiles` function. So let's just create it.
 
