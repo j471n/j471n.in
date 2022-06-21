@@ -77,7 +77,7 @@ To do that we need a `url` that send the following parameter to the Spotify-
 We want to fetch the user's top stats and the currently playing song. for that scope is `user-top-read` and `user-read-currently-playing`. You can add as many scopes as you want separated by space (" "). So, now our URL looks like this (enter your project `client_id`)-
 
 <CodeTitle title="Decoded URL" />
-```
+```bash
 https://accounts.spotify.com/authorize?client_id=bda10cd719564898818245d97727de7e&response_type=code&redirect_uri=http://localhost:3000/callback&scope=user-read-currently-playing
 user-top-read 
 ```
@@ -85,14 +85,14 @@ user-top-read
 But we cannot use this URL because we need to encode to the URL string, For that, you can use this [tool](https://www.url-encode-decode.com/). Now the encode URL looks like this-
 
 <CodeTitle title="Encoded URL" />
-```
+```bash
 https%3A%2F%2Faccounts.spotify.com%2Fauthorize%3Fclient_id%3Dbda10cd71956489881825d97727de7e%26response_type%3Dcode%26redirect_uri%3Dhttp%3A%2F%2Flocalhost%3A3000%2Fcallback%26scope%3Duser-read-currently-playing+user-top-read
 ``` 
 
 Now enter the URL in the browser and then click **Enter**. After authorizing, you'll be redirected back to your `redirect_uri`. In the URL, there's a `code` query parameter. Store this value somewhere because we are going to need it in the next step.
 
 <CodeTitle title="Code" />
-```
+```bash
 http://localhost:3000/callback?code=CDxRCu......NLdsM
 ```
 
@@ -113,7 +113,7 @@ curl -H "Authorization: Basic <base64 encoded client_id:client_secret>"
 So after encoding the  **Client ID** and **Client Secret** it should be looks like this-
 
 <CodeTitle title="client_id:client_secret"/>
-```
+```bash
 YmRhMTBjZDcxOTU2NDg5ODgxODJmMmQ5NzcyN2RlN2U6NjZmZTU5OTJjYjZlNDFjZmEwNDdfkdjfkHKkjdfdwODk0YjI=
 ```
 
