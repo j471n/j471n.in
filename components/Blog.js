@@ -47,7 +47,7 @@ export default function Blog({ blog }) {
 
         <button
           title="Save for Later"
-          className="transition active:scale-90"
+          className="transition active:scale-75"
           onClick={() => {
             isAlreadyBookmarked
               ? removeFromBookmark(blog.slug)
