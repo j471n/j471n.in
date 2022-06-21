@@ -11,7 +11,7 @@ function OgImage({ src, alt }) {
         placeholder="blur"
         blurDataURL={src}
         quality={75}
-        className="group-hover:scale-110 transition-all duration-300"
+        className="lg:group-hover:scale-110 transition-all duration-300"
       />
     </div>
   );
