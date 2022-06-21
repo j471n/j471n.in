@@ -58,14 +58,14 @@ export default function TopNavbar() {
     root.classList.toggle("lock-scroll"); // class is define in the global.css
   }
 
-  function handleClick() {
+  function handleClick() {  
     lockScroll();
     setNavOpen(!navOpen);
   }
 
   return (
     <div
-      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 sm:px-6 z-40 print:hidden"
+      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 sm:px-6 z-50 print:hidden"
       ref={navRef}
     >
       {/* Mobile Navigation Hamburger and MobileMenu */}
