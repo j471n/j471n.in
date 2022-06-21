@@ -156,6 +156,7 @@ code > .line::before {
 .highlighted {
   background: rgba(200, 200, 255, 0.1);
   border-left: 4px solid #3777de !important;
+  filter: saturate(1.5);
 }
 /* Code Line Highlighting ENDS */
 
