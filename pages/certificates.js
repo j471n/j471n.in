@@ -43,7 +43,7 @@ export default function Certificates() {
           {certificatesData.map((cer, index) => {
             return (
               <AnimatedDiv
-                className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 lg:hover:bg-white dark:lg:hover:bg-darkSecondary/50 p-3 rounded-lg dark:bg-darkSecondary/50 sm:dark:bg-transparent"
+                className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4  p-3 rounded-lg bg-white shadow dark:bg-darkSecondary/50"
                 variants={popUpFromBottomForText}
                 key={index}
               >
@@ -77,7 +77,7 @@ export default function Certificates() {
                       href={cer.urls.pdfURL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-1 rounded-md bg-neutral-300 dark:bg-black shadow dark:text-white transform duration-200 font-medium  active:scale-90"
+                      className="px-4 py-1 rounded-md bg-neutral-200 dark:bg-black shadow dark:text-white transform duration-200 font-medium  active:scale-90 lg:hover:bg-black lg:hover:text-white dark:lg:hover:bg-white dark:lg:hover:text-black"
                     >
                       View
                     </motion.a>
