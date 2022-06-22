@@ -5,12 +5,12 @@ import { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { DarkModeProvider } from "@context/darkModeContext";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 NProgress.configure({
   easing: "ease",
   speed: 800,
   showSpinner: false,
-
 });
 
 function MyApp({ Component, pageProps }) {
@@ -36,6 +36,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <DarkModeProvider>
       <Layout>
+        <GoogleAnalytics strategy="lazyOnload" />
         <Component {...pageProps} />
       </Layout>
     </DarkModeProvider>
