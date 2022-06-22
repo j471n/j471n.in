@@ -8,26 +8,28 @@ import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
 import ScrollProgressBar from "@components/ScrollProgressBar";
 import { stringToSlug } from "@lib/toc";
-import { useState } from "react";
-import { lockScroll } from "@utils/functions";
+import { useState, useEffect } from "react";
+import { lockScroll, removeScrollLock } from "@utils/functions";
 import useWindowSize from "@hooks/useWindowSize";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   FadeContainer,
-  FadeContainerFromLeft,
-  fromBottomVariant,
-  FromRightContainer,
-  hamFastFadeContainer,
-  mobileNavItemSideways,
   opacityVariant,
-  popUpFromBottomForText,
-  slideFromLeft,
 } from "@content/FramerMotionVariants";
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function BlogLayout({ post, children }) {
   const { currentURL } = useWindowLocation();
   const [isTOCActive, setIsTOCActive] = useState(false);
   const size = useWindowSize();
+
+  useEffect(() => {
+    // In Case user exists from mobile to desktop then remove the scroll lock and TOC active to false
+    if (size.width > 768) {
+      removeScrollLock();
+      setIsTOCActive(false);
+    }
+  }, [size]);
 
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
@@ -35,48 +37,45 @@ export default function BlogLayout({ post, children }) {
       <div
         className={`fixed h-full ${
           isTOCActive
-            ? "left-0 opacity-100 top-[44px] md:top-[100px]"
+            ? "left-0 opacity-100 top-[44px] md:top-[60px]"
             : "-left-[100%] opacity-0"
-        } md:left-0 md:opacity-100 md:max-w-[35%] lg:max-w-[30%]  transition-all duration-500 flex flex-col gap-1 pb-28 overflow-y-scroll p-10 md:p-14 h-screen fixed w-full font-barlow bg-darkWhite dark:bg-darkPrimary text-neutral-800 dark:text-gray-200  mb-10 z-50 `}
+        } md:left-0 md:opacity-100 md:max-w-[35%] lg:max-w-[30%]  transition-all duration-500 flex flex-col gap-1 !pb-[100px] overflow-y-scroll p-10 md:p-14 h-screen fixed w-full font-barlow bg-darkWhite dark:bg-darkPrimary text-neutral-800 dark:text-gray-200 z-50 `}
       >
-        <motion.h2
-          variants={popUpFromBottomForText}
-          whileInView="visible"
-          initial="hidden"
-          exit="hidden"
+        <AnimatedHeading
+          variants={opacityVariant}
           className="font-bold text-xl md:text-2xl -ml-[5px] md:-ml-[6px]"
         >
           Table of Contents
-        </motion.h2>
+        </AnimatedHeading>
 
-        <motion.div
+        <AnimatedDiv
           variants={FadeContainer}
-          whileInView="visible"
-          initial="hidden"
-          exit="hidden"
           className="flex flex-col border-l-2 border-neutral-500"
         >
           {post.tableOfContents.map((content) => {
             return (
               <Link href={`#${stringToSlug(content.heading)}`} passHref>
-                <motion.a
-                  variants={popUpFromBottomForText}
+                <a
                   className={`relative px-2 py-0.5 md:py-1 hover:bg-white dark:hover:bg-darkSecondary rounded-tr-md rounded-br-md md:truncate text-neutral-700 dark:text-neutral-200 font-medium ${
                     content.level != 0 && " border-l-2 border-neutral-500 "
                   }`}
                   style={{ marginLeft: `${content.level * 15}px` }}
                   key={content.heading}
-                  href={`#${stringToSlug(content.heading)}`}
                   onClick={() => {
-                    size.width < 768 && lockScroll() && setIsTOCActive(false);
+                    if (size.width < 768) {
+                      lockScroll();
+                      setIsTOCActive(false);
+                    }
+                    setIsTOCActive(false);
+                    removeScrollLock();
                   }}
                 >
                   {content.heading}
-                </motion.a>
+                </a>
               </Link>
             );
           })}
-        </motion.div>
+        </AnimatedDiv>
       </div>
 
       <button
