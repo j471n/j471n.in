@@ -11,17 +11,19 @@ import { stringToSlug } from "@lib/toc";
 import { useState, useEffect } from "react";
 import { lockScroll, removeScrollLock } from "@utils/functions";
 import useWindowSize from "@hooks/useWindowSize";
-import {
-  FadeContainer,
-  opacityVariant,
-} from "@content/FramerMotionVariants";
+import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 export default function BlogLayout({ post, children }) {
   const { currentURL } = useWindowLocation();
   const [isTOCActive, setIsTOCActive] = useState(false);
   const size = useWindowSize();
+
+  const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
+    useBookmarkBlogs("blogs", []);
 
   useEffect(() => {
     // In Case user exists from mobile to desktop then remove the scroll lock and TOC active to false
@@ -118,12 +120,27 @@ export default function BlogLayout({ post, children }) {
               </p>
 
               <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
-                <span>{post.readingTime.text}</span>
+                <span>{post.meta.readingTime.text}</span>
                 <span>•</span>
-                <span>{post.readingTime.words} words</span>
+                <span>{post.meta.readingTime.words} words</span>
               </p>
             </div>
           </div>
+          <button
+            title="Save for Later"
+            className="transition active:scale-75 ml-10"
+            onClick={() => {
+              isAlreadyBookmarked(post.meta.slug)
+                ? removeFromBookmark(post.meta.slug)
+                : addToBookmark(post.meta);
+            }}
+          >
+            {isAlreadyBookmarked(post.meta.slug) ? (
+              <BsBookmarkFill className="w-6 h-6" />
+            ) : (
+              <BsBookmark className="w-6 h-6" />
+            )}
+          </button>
         </div>
 
         <div

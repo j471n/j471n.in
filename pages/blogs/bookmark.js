@@ -8,7 +8,7 @@ import PageTop from "@components/PageTop";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 
 export default function Blogs() {
-  const [bookmarkedBlogs] = useBookmarkBlogs("blogs", []);
+  const { bookmarkedBlogs } = useBookmarkBlogs("blogs", []);
 
   return (
     <>

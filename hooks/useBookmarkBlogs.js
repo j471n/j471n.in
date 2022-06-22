@@ -35,11 +35,22 @@ const useBookmarkBlogs = (key, defaultValue) => {
     setBookmarkedBlogs(data.filter((blog) => blog.slug != v));
   }
 
+  function isAlreadyBookmarked(searchBySlug) {
+    return bookmarkedBlogs
+      .map((bookmarkedBlog) => bookmarkedBlog.slug === searchBySlug)
+      .includes(true);
+  }
+
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(bookmarkedBlogs));
   }, [bookmarkedBlogs]);
 
-  return [bookmarkedBlogs, addToBookmark, removeFromBookmark];
+  return {
+    bookmarkedBlogs,
+    addToBookmark,
+    removeFromBookmark,
+    isAlreadyBookmarked,
+  };
 };
 
 export default useBookmarkBlogs;
