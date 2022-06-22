@@ -1,6 +1,6 @@
 import { ref } from "@lib/firebase";
 
-export default async (req, res) => {
+export default async function views(req, res) {
   if (req.method === "GET") {
     ref.on("value", (snapshots) => {
       let totalViews = 0;
@@ -17,4 +17,4 @@ export default async (req, res) => {
       });
     });
   }
-};
+}

@@ -1,6 +1,6 @@
 import { ref } from "@lib/firebase";
 
-export default async (req, res) => {
+export default async function viewsSlug(req, res) {
   // Get the total views of the page according to the slug by GET method
   if (req.method === "GET") {
     const snapshot = await ref.child(req.query.slug).once("value");
@@ -25,4 +25,4 @@ export default async (req, res) => {
       message: "In Development, Can't add views",
     });
   }
-};
+}

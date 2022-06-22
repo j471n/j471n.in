@@ -28,7 +28,7 @@ export default function Blogs({ blogs }) {
         post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
       )
     );
-  }, [searchValue]);
+  }, [searchValue, blogs]);
 
   return (
     <>
@@ -126,7 +126,7 @@ export default function Blogs({ blogs }) {
 
                   <div className="flex items-center gap-2">
                     <Link href="/blogs/bookmark" passHref>
-                      <a href="/blogs/bookmark">
+                      <a>
                         <BsBookmark
                           title="Bookmark"
                           className="text-2xl cursor-pointer"
@@ -135,7 +135,7 @@ export default function Blogs({ blogs }) {
                     </Link>
 
                     <Link href="/rss" passHref>
-                      <a href="/rss">
+                      <a>
                         <BiRss
                           title="RSS"
                           className="text-3xl cursor-pointer"
