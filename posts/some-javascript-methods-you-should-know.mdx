@@ -10,17 +10,7 @@ image: https://imgur.com/yeT21oX.png
 
 In this article, we are gonna look at some javascript methods that you should know. You might know some as well if yes then feel free to skip that particular section. So let's get into it.
 
-## Table of Contents
-
-- [concat(..)](#concat)
-- [reverse()](#reverse)
-- [split(..)](#split)
-- [join(..)](#join)
-- [toExponential()](#toexponential)
-- [toFixed(..)](#tofixed)
-- [toPrecision(..)](#toprecision)
-
-### concat(..)
+## concat(..)
 
 This method can be used in Array as well as in strings. this joins the two variables or parts together if they belong to the same data type.
 
@@ -44,7 +34,7 @@ console.log(c); // "foobar"
 console.log(d); // [ 'f', 'o', 'o', 'b', 'a', 'r' ]
 ```
 
-### reverse()
+## reverse()
 
 Arrays have a `reverse()` in-place mutator method, but strings do not so we can only use it in arrays and not for strings.
 
@@ -77,7 +67,7 @@ console.log(b); // "oof"
 
 `reverseString()` method returns the value so we need to store that in the variable and voila it works. In the above example, we are just taking a string and splitting it into an array then we use the `reverse()` and `join()` back together.
 
-### split(..)
+## split(..)
 
 In the previous section we used the `split()` method now let's see how it actually works.
 
@@ -92,7 +82,7 @@ console.log(arr); //  [ 'f', 'o', 'o' ]
 
 `split()` method returns an array and it splits based on what you passed as the argument in that. For example:
 
-### join(..)
+## join(..)
 
 In the the previous example we used the `join()` as well it was for to convert the array into the string.
 
@@ -105,7 +95,7 @@ console.log(a); // [ 'f', 'o', 'o', '!' ]
 console.log(str); //  foo!
 ```
 
-### toExponential()
+## toExponential()
 
 This method converts the value to the exponential as we can already understand by name of it. Let's see how we can implement it.
 
@@ -127,7 +117,7 @@ var d = 1 / b;
 console.log(d); // 2e-11
 ```
 
-### toFixed(..)
+## toFixed(..)
 
 `toFixed(..)` method allows you to specify how many fractional
 decimal places you’d like the value to be represented with:
@@ -142,7 +132,7 @@ a.toFixed(3); // "42.590"
 a.toFixed(4); // "42.5900"
 ```
 
-### toPrecision(..)
+## toPrecision(..)
 
 `toPrecision(..)` is similar, but specifies how many significant digits should be used to represent the value:
 
@@ -172,6 +162,6 @@ Some other example -
 
 `42..toFixed(3)` works because the first `.` is part of the number and the second `.` is the property operator. But it probably looks strange, and indeed it’s very rare to see something like that in actual Java‐Script code.
 
-### Wrapping up
+## Wrapping up
 
 There are a bunch more methods that I have not covered such as `length`, `indexOf`, `toUpperCase`, and so on. Maybe we will cover those in the future.

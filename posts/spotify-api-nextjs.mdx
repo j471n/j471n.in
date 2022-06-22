@@ -11,23 +11,6 @@ image : https://imgur.com/SAhercO.png
 On my website, there is a [stats](/stats) page, which showcases many things such as my Dev. To blog stats and the GitHub repository count and the Spotify stats, we will talk about how you can implement that in your dream project.
 
 
-## Table of Contents
-
-- [Create a Spotify App](#create-a-spotify-app)
-- [Authentication with `refresh_token`](#authentication-with-refresh_token)
-  - [Authorization Code](#authorization-code)
-  - [Get `refresh_token`](#get-refresh_token)
-- [Setting up Environment Variables](#setting-up-environment-variables)
-- [Using Spotify API](#using-spotify-api)
-  - [Fetch the Top Tracks](#fetch-the-top-tracks)
-    - [Creating API route top tracks](#creating-api-route-top-tracks)
-  - [Fetch the Top Artist](#fetch-the-top-artist)
-    - [Creating API route top artists](#creating-api-route-top-artists)
-  - [Fetch the Currently Playing Song](#fetch-the-currently-playing-song)
-    - [Creating API route for Currently Playing Song](#creating-api-route-for-currently-playing-song)
-
-
-
 ## Preview
 
 Let's first Look what am talking about. The following images are just to showcase what I made with Spotify API.
@@ -197,7 +180,7 @@ export const topTracks = async () => {
 };
 ```
 
-### Creating API route top tracks
+#### Creating API route top tracks
 
 In the beginning, I mentioned that we are going to use the Next.js API routes. If you are not familiar with that then [give this a read](https://nextjs.org/docs/api-routes/introduction)
 
@@ -276,7 +259,7 @@ export const topArtists = async () => {
 };
 ```
 
-### Creating API route top artists
+#### Creating API route top artists
 
 <CodeTitle lang="js" title="pages/api/stats/artists.js" />
 ```js
@@ -321,7 +304,7 @@ export const currentlyPlayingSong = async () => {
 };
 ```
 
-### Creating API route for Currently Playing Song
+#### Creating API route for Currently Playing Song
 
 <CodeTitle lang="js" title="pages/api/now-playing .js" />
 ```js
@@ -370,7 +353,7 @@ This returns all the song details if the user is playing the song. Otherwise, `i
 You should use `swr` to fetch the data Otherwise it will show you the old data which you might not like.
 </Tip>
 
-### Output
+## Output
 
 You can view the Example of this on my [website](http://jatin.vercel.app/stats)
 

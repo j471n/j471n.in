@@ -8,7 +8,7 @@ excerpt: This article is the breif documentation about how you can fetch the dat
 image: https://imgur.com/qAgqWls.png
 ---
 
-### Why do we need to use it ?
+## Why do we need to use it ?
 
 In this article I am only covering the article api of Dev.to. we can use this api for our personal portfolio website. Think like you are building a portfolio website and you need to show your blogs from Dev.to in your portfolio so this api comes into play.
 
@@ -16,7 +16,7 @@ In this article I am only covering the article api of Dev.to. we can use this ap
 
 I'm using the vanilla Javascript to show the demo you can use `axios` as well.
 
-### Fetch the public Articles without `API_KEY`
+## Fetch the public Articles without `API_KEY`
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -25,7 +25,7 @@ const article = fetch(`https://dev.to/api/articles?username=${username}`).then(
 );
 ```
 
-### Fetch the public Articles by `API_KEY`
+## Fetch the public Articles by `API_KEY`
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -36,7 +36,7 @@ const articles = fetch("https://dev.to/api/articles/me", {
 }).then((res) => res.json());
 ```
 
-### Fetch the Articles by Path (`slug`)
+## Fetch the Articles by Path (`slug`)
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -45,7 +45,7 @@ const article = fetch(
 ).then((res) => res.json());
 ```
 
-### Fetch the Articles by `article_id`
+## Fetch the Articles by `article_id`
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -54,7 +54,7 @@ const article = fetch(`https://dev.to/api/articles/${articleId}`).then((res) =>
 );
 ```
 
-### Fetch the Comments of article by `article_id`
+## Fetch the Comments of article by `article_id`
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -63,7 +63,7 @@ const article = fetch(
 ).then((res) => res.json());
 ```
 
-### Fetch the user by `user_id`
+## Fetch the user by `user_id`
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -72,7 +72,7 @@ const article = fetch(`https://dev.to/api/users/${userId}`).then((res) =>
 );
 ```
 
-### Fetch the user by `username`
+## Fetch the user by `username`
 
 <CodeTitle lang="js" title="script.js" />
 ```js

@@ -16,7 +16,7 @@ To make Next.js app into PWA, we need the given things -
 - Maskable Icon
 - Meta Tags
 
-### 1\. `next-pwa` package
+## 1\. `next-pwa` package
 
 To convert your nextjs app into PWA you need to install this package via `npm` or `yarn`  
 to install this run -
@@ -43,7 +43,7 @@ module.exports = withPWA({
 });
 ```
 
-### 2\. Service Worker
+## 2\. Service Worker
 
 We don't need to add external service worker the `next-pwa` will take care of that and it will auto generate the `sw.js` for us so we don't need to do anything in that
 
@@ -53,7 +53,7 @@ We don't need to add external service worker the `next-pwa` will take care of th
 |  ├── sw.js
 ```
 
-### 3\. Manifest and Icons
+## 3\. Manifest and Icons
 
 To gernerate Icon and Manifest Go to [PWA Manifest](https://www.simicart.com/manifest-generator.html/)
 
@@ -126,7 +126,7 @@ Here is the path -
 |  ├── manifest.json
 ```
 
-### 4. Maskable Icon
+## 4. Maskable Icon
 
 To make the maskabel icon we need to visit [Maskable Editor](https://maskable.app/editor) and upload your icon and edit it  
 ![masakable](https://i.imgur.com/WBk9a7y.png)
@@ -164,7 +164,7 @@ and add that to the `manifest.json`
 
 Here you need to specify the size of the maskable image if the image size is `512x512` then in the `json` it should be `"sizes": "512x512"`
 
-### 5. Meta Tags
+## 5. Meta Tags
 
 Now to get all this work we need some meta tags put them wher is the `Head` of your application, which are given below
 

@@ -8,19 +8,7 @@ excerpt: In this article, I've discussed about the Absolute and Relative paths a
 image: https://imgur.com/QKfQW9y.png
 ---
 
-## Table of Contents
-
-- [What is Path?](#what-is-path)
-  - [Absolute Path](#absolute-path)
-  - [Relative Path](#relative-path)
-- [Commands](#commands)
-- [Bash Comments](#bash-comments)
-  - [Single Line Comments](#single-line-comments)
-  - [Multiline Comments](#multiline-comments)
-    - [Method - 1](#method---1)
-    - [Method - 2](#method---2)
-
-# What is Path?
+## What is Path?
 
 A **path** to a file is to determine the unique location of a file or directory in an OS filesystem. You can travel or change the location of the current directory through a terminal or command line.
 
@@ -29,7 +17,7 @@ In file system, there are two types of paths by which you can locate the directo
 - Absolute Path
 - Relative Path
 
-## Absolute Path
+### Absolute Path
 
 An **Absolute Path** is the full path of the file or directory from root to the file. An Absolute path of any directory always starts with a slash (/) representing the directory root.
 
@@ -42,7 +30,7 @@ Now if you are in the some directory `x` and you want to determine the absolute 
 
 ![pwd](https://i.imgur.com/LdcwcVi.gif)
 
-## Relative Path
+### Relative Path
 
 The **Relative Path** of a file is its location relative to the current working directory. It never starts with a slash (/) or root. It begins with the current work directory.
 
@@ -51,7 +39,7 @@ The **Relative Path** of a file is its location relative to the current working 
 Desktop/Bash 
 ```
 
-# Commands
+## Commands
 
 - `cd .` refers to the currect directory
 - `cd ..` moves the directory back one directory
@@ -60,7 +48,7 @@ Desktop/Bash
 - `pwd` prints the absolute path of the current directory
   ![](https://i.imgur.com/5uj6QIV.gif)
 
-# Bash Comments
+## Bash Comments
 
 It does not matter which language you are using comments are one of the essential things. In our case, you can also create comments in the bash. There are two types of comments-
 
@@ -91,7 +79,7 @@ echo "hiii, good morning"
 
 In bash there are two ways to write multiline comments. You can use any of them according to your preference.
 
-### Method - 1
+### Method-1
 
 <CodeTitle lang="bash" title="multiline-comment.sh" />
 ```bash
@@ -107,7 +95,7 @@ COMMENTS
 echo "Hello World"
 ```
 
-### Method - 2
+### Method-2
 
 <CodeTitle lang="bash" title="multiline-comment.sh" />
 ```bash 
@@ -126,7 +114,7 @@ echo "Hello World"
 
 In this article I've discussed about the Absolute and Relative paths and how you can use them and also how you can write the Single and Multiline comments in the bash script.
 
-# Bash series
+## Bash series
 
 - [Part 1: Getting Started With Bash](/blogs/getting-started-with-bash)
 - [Part 2: Create Bash Script & File Permission](/blogs/create-bash-script-and-file-permissions)

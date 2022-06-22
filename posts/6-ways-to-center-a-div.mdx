@@ -10,16 +10,6 @@ image: https://imgur.com/Sdss9LN.png
 
 Yeah, I know we all have struggled with this situation. We want to center a `div` or `child` inside the parent element, but sometimes it won't work or it's hard to do. So now let me introduce to you 6 ways by which you can center a `div` mostly in every situation.
 
-## Table of Contents
-
-- [Problem](#problem)
-- [1. Using Flexbox](#1-using-flexbox)
-- [2. Using Position](#2-using-position)
-- [3. Using CSS grid](#3-using-css-grid)
-- [4. Using `margin: auto` on a `flex` item](#4-using-margin-auto-on-a-flex-item)
-- [5. Pseudo-elements on a `flex` container](#5-pseudo-elements-on-a-flex-container)
-- [6. `margin: auto` on a `grid` item](#6-margin-auto-on-a-grid-item)
-
 ## Problem
 
 We have 2 divs `parent` and `child` and we need to center `child` with respect to the `parent`.
@@ -123,7 +113,7 @@ Apply following properties to `.parent` will center `.child` horizontally and ve
 .child {
 margin: auto;
 }
-````
+```
 
 <Codepen id="zYEKyKJ" />
 
@@ -149,7 +139,7 @@ Apply following properties to `.parent` will center `.child` horizontally and ve
   /* ...other CSS */
   margin: 0 auto;
 }
-````
+```
 
 <Codepen id="RwLGEKN" />
 
@@ -169,6 +159,6 @@ Similarly to Flexbox, applying `margin:` `auto` on a `grid` item centers it on b
 
 <Codepen id="ExwgGZd" />
 
-### Wrapping up
+## Wrapping up
 
 These are not the only solution or the ways to center a child. There are many other ways to achieve the same thing, But I know only these so I shared them with you.

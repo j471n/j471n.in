@@ -10,11 +10,11 @@ image: https://imgur.com/qVRW1ds.png
 
 In this article, we are going to make an Image Slider also known as carousel with a clean UI. It can slide the images with awesome animation and it will track the current image which you can see via dots on the bottom. First, Let's see what are we building.
 
-### Preview
+## Preview
 
 ![preview](https://i.imgur.com/0VPV8kU.gif)
 
-### HTML
+## HTML
 
 <CodeTitle lang="html" title="index.html" />
 ```html
@@ -45,7 +45,7 @@ We will have an outer `div` with class `.container-slider`. It will have four se
 
 I guess now you have an overview of what are we doing. Now let's get into the CSS.
 
-### CSS
+## CSS
 
 <CodeTitle lang="css" title="styles.css" />
 ```css
@@ -176,7 +176,7 @@ body {
 
 Everything in the CSS is self-explanatory so I am not going to talk about that. If you have any queries about CSS then comment down.
 
-### Javascript
+## Javascript
 
 This is where the fun begins. Let's see, from scratch.First, we need to import the two containers which will be `. Slides` and the `. Container-dots`.
 
@@ -225,7 +225,7 @@ images.map((img) => {
 
 It will do the trick ad it will add them to their respective container. Now we need buttons to add to the slider. Let's do it also. We need two buttons `.prev` and `.next` we have already added those into the HTML now we just need to make them work.
 
-**Next Slide Button**
+### Next Slide Button
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -243,7 +243,7 @@ const nextBtn = document.querySelector(".next");
 nextBtn.onclick = nextSlide;
 ```
 
-**Previous Slide Button**
+### Previous Slide Button
 
 <CodeTitle lang="js" title="script.js" />
 ```js
@@ -308,6 +308,7 @@ updateImageAndDot();
 
 Now we are going to implement one more feature which is when the user press the dots it should take the user to the respective images.
 
+### Preview-2
 ![preview-2](https://i.imgur.com/QmikK4O.gif)
 
 It's not that hard we just need to make a function in our case called `moveDot` and just add the Event Listener to every dot. Let's see it in action.
