@@ -42,14 +42,12 @@ export async function getStaticProps({ params }) {
   const {
     content: source,
     meta,
-    readingTime,
     tableOfContents,
   } = await getPostFromSlug(slug);
   return {
     props: {
       post: {
         meta,
-        readingTime,
         source,
         tableOfContents,
       },
