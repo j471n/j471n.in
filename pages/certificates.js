@@ -1,16 +1,11 @@
-import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import AnimatedText from "@components/FramerMotion/AnimatedText";
 import MetaData from "@components/MetaData";
-import {
-  fromLeftVariant,
-  opacityVariant,
-  popUpFromBottomForText,
-} from "@content/FramerMotionVariants";
+import { popUpFromBottomForText } from "@content/FramerMotionVariants";
 import certificatesData from "@content/certificatesData";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import PageTop from "@components/PageTop";
 import { pagePreviewImage } from "@utils/utils";
 
 export default function Certificates() {
@@ -23,21 +18,10 @@ export default function Certificates() {
       />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto mb-20">
-        <div className="w-full flex flex-col px-5 py-5 gap-3 select-none mt-20 mb-10">
-          <AnimatedHeading
-            variants={fromLeftVariant}
-            className="text-4xl  md:text-5xl font-bold text-neutral-900 dark:text-neutral-200"
-          >
-            Certificates
-          </AnimatedHeading>
-          <AnimatedText
-            variants={opacityVariant}
-            className="font-medium text-lg text-gray-400"
-          >
-            I've participated in many contests, courses and test and get
-            certified in many skills. You can find the certificates below.
-          </AnimatedText>
-        </div>
+        <PageTop pageTitle="Certificates">
+          I've participated in many contests, courses and test and get certified
+          in many skills. You can find the certificates below.
+        </PageTop>
 
         <div className="flex flex-col gap-3 font-inter px-5">
           {certificatesData.map((cer, index) => {

@@ -17,6 +17,7 @@ import { BiRss } from "react-icons/bi";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import PageTop from "@components/PageTop";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
@@ -39,22 +40,10 @@ export default function Blogs({ blogs }) {
       />
 
       <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">
-        <div className="w-full flex flex-col px-2 py-5 gap-3 select-none">
-          <AnimatedHeading
-            variants={fromLeftVariant}
-            className="text-6xl font-bold"
-          >
-            Blogs
-          </AnimatedHeading>
-          <AnimatedText
-            variants={opacityVariant}
-            className="font-medium text-lg"
-          >
-            I've been writing online since 2021, mostly about web development
-            and tech careers. In total, I've written {blogs.length} articles
-            till now.
-          </AnimatedText>
-        </div>
+        <PageTop pageTitle="Blogs">
+          I've been writing online since 2021, mostly about web development and
+          tech careers. In total, I've written {blogs.length} articles till now.
+        </PageTop>
 
         <motion.div
           initial="hidden"

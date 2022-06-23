@@ -15,7 +15,6 @@ import Track from "@components/Stats/Track";
 import Artist from "@components/Stats/Artist";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
-import { topArtists } from "@lib/spotify";
 
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
