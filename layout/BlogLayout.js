@@ -58,7 +58,7 @@ export default function BlogLayout({ post, children }) {
 
         <AnimatedDiv
           variants={FadeContainer}
-          className="flex flex-col border-l-2 border-neutral-500"
+          className="flex flex-col relative before:absolute before:left-0 before:h-full before:w-[1.5px] before:bg-neutral-500"
         >
           {post.tableOfContents.map((content) => {
             return (
@@ -68,9 +68,7 @@ export default function BlogLayout({ post, children }) {
                 passHref
               >
                 <a
-                  className={`relative px-2 py-0.5 md:py-1 hover:bg-white dark:hover:bg-darkSecondary rounded-tr-md rounded-br-md md:truncate text-neutral-700 dark:text-neutral-200 font-medium ${
-                    content.level != 0 && " border-l-2 border-neutral-500 "
-                  }`}
+                  className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
                   style={{ marginLeft: `${content.level * 15}px` }}
                   key={content.heading}
                   onClick={() => {
