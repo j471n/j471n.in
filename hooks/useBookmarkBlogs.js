@@ -22,17 +22,17 @@ const useBookmarkBlogs = (key, defaultValue) => {
     return data;
   }
 
-  function addToBookmark(v) {
+  function addToBookmark(blogToBookmark) {
     var data = getValue();
-    if (!data.includes(v)) {
-      data.push(v);
+    if (!data.includes(blogToBookmark)) {
+      data.unshift(blogToBookmark); // add blog to the starting of the array
       setBookmarkedBlogs(data);
     }
   }
 
-  function removeFromBookmark(v) {
+  function removeFromBookmark(blogToRemove) {
     var data = getValue();
-    setBookmarkedBlogs(data.filter((blog) => blog.slug != v));
+    setBookmarkedBlogs(data.filter((blog) => blog.slug != blogToRemove));
   }
 
   function isAlreadyBookmarked(searchBySlug) {
