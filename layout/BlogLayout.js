@@ -108,7 +108,7 @@ export default function BlogLayout({ post, children }) {
           {post.meta.title}
         </h1>
 
-        <div className="flex items-center !w-full">
+        <div className="flex items-center !w-full text-gray-700 dark:text-gray-300">
           <div className="flex items-center gap-2 w-full">
             <div className="relative grid">
               <Image
@@ -121,13 +121,13 @@ export default function BlogLayout({ post, children }) {
               />
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between w-full">
-              <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
+              <p className="text-sm  flex items-center gap-2 font-medium !my-0">
                 <span>Jatin Sharma</span>
                 <span>•</span>
                 <span>{post.meta.stringDate}</span>
               </p>
 
-              <p className="text-sm text-gray-700 dark:text-gray-300 flex items-center gap-2 font-medium !my-0">
+              <p className="text-sm  flex items-center gap-2 font-medium !my-0">
                 <span>{post.meta.readingTime.text}</span>
                 <span>•</span>
                 <span>{post.meta.readingTime.words} words</span>
@@ -144,9 +144,9 @@ export default function BlogLayout({ post, children }) {
             }}
           >
             {alreadyBookmarked ? (
-              <BsBookmarkFill className="w-6 h-6" />
+              <BsBookmarkFill className="w-6 h-6 " />
             ) : (
-              <BsBookmark className="w-6 h-6" />
+              <BsBookmark className="w-6 h-6 " />
             )}
           </button>
         </div>
