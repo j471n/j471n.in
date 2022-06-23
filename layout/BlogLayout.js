@@ -20,6 +20,8 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 export default function BlogLayout({ post, children }) {
   const { currentURL } = useWindowLocation();
   const [isTOCActive, setIsTOCActive] = useState(false);
+  const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
+
   const size = useWindowSize();
 
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
@@ -32,6 +34,10 @@ export default function BlogLayout({ post, children }) {
       setIsTOCActive(false);
     }
   }, [size]);
+
+  useEffect(() => {
+    setAlreadyBookmarked(isAlreadyBookmarked(post.meta.slug));
+  }, [isAlreadyBookmarked, post.meta.slug]);
 
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
@@ -56,7 +62,11 @@ export default function BlogLayout({ post, children }) {
         >
           {post.tableOfContents.map((content) => {
             return (
-              <Link href={`#${stringToSlug(content.heading)}`} passHref>
+              <Link
+                key={content.heading}
+                href={`#${stringToSlug(content.heading)}`}
+                passHref
+              >
                 <a
                   className={`relative px-2 py-0.5 md:py-1 hover:bg-white dark:hover:bg-darkSecondary rounded-tr-md rounded-br-md md:truncate text-neutral-700 dark:text-neutral-200 font-medium ${
                     content.level != 0 && " border-l-2 border-neutral-500 "
@@ -130,12 +140,12 @@ export default function BlogLayout({ post, children }) {
             title="Save for Later"
             className="transition active:scale-75 ml-10"
             onClick={() => {
-              isAlreadyBookmarked(post.meta.slug)
+              alreadyBookmarked
                 ? removeFromBookmark(post.meta.slug)
                 : addToBookmark(post.meta);
             }}
           >
-            {isAlreadyBookmarked(post.meta.slug) ? (
+            {alreadyBookmarked ? (
               <BsBookmarkFill className="w-6 h-6" />
             ) : (
               <BsBookmark className="w-6 h-6" />
