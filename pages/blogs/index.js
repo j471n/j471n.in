@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import {
   FadeContainer,
-  fromLeftVariant,
   opacityVariant,
   popUpFromBottomForText,
 } from "@content/FramerMotionVariants";
@@ -39,23 +38,14 @@ export default function Blogs({ blogs }) {
         previewImage={pagePreviewImage.blogs}
       />
 
-      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">
+      <section className="pageTop flex flex-col gap-2">
         <PageTop pageTitle="Blogs">
           I've been writing online since 2021, mostly about web development and
           tech careers. In total, I've written {blogs.length} articles till now.
         </PageTop>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={opacityVariant}
-          className="px-2"
-        >
-          <div
-            // type="button"
-            id="view"
-            className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-400 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto mt-4 flex relative bg-white group"
-          >
+        <AnimatedDiv variants={opacityVariant} className="px-2">
+          <div className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-400 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative bg-white group">
             <svg
               width="24"
               height="24"
@@ -93,12 +83,12 @@ export default function Blogs({ blogs }) {
               onClick={() => setSearchValue("")}
               className="hidden group-hover:inline-flex"
             >
-              <RiCloseCircleLine className="w-5 h-5 mr-3" />
+              <RiCloseCircleLine className="w-4 h-4 mr-3" />
             </button>
           </div>
-        </motion.div>
+        </AnimatedDiv>
 
-        <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
+        <section className="relative py-5  flex flex-col gap-2 min-h-[50vh]">
           <AnimatePresence>
             {filteredBlogs.length != 0 ? (
               <>
@@ -108,7 +98,7 @@ export default function Blogs({ blogs }) {
                 >
                   <AnimatedHeading
                     variants={popUpFromBottomForText}
-                    className="text-left font-bold text-3xl my-5"
+                    className="text-left font-bold text-2xl sm:text-3xl my-5"
                   >
                     All Posts ({filteredBlogs.length})
                   </AnimatedHeading>

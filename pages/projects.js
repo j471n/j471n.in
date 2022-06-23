@@ -16,7 +16,7 @@ export default function Projects({ projects }) {
         description={` I've been making various types of projects some of them were basics and some of them were complicated. So far I've made ${projects.length} projects.`}
         previewImage={pagePreviewImage.projects}
       />
-      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto p-4 mb-10">
+      <section className="pageTop">
         <PageTop pageTitle="Projects">
           I've been making various types of projects some of them were basics
           and some of them were complicated. So far I've made{" "}

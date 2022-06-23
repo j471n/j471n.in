@@ -18,7 +18,7 @@ export default function Blogs() {
         previewImage={pagePreviewImage.blogs}
       />
 
-      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto py-5 px-2 flex flex-col gap-2 text-neutral-900 dark:text-neutral-200 font-inter pb-10">
+      <section className="pageTop flex flex-col gap-2 text-neutral-900 dark:text-neutral-200">
         <PageTop pageTitle="Bookmarked Blogs">
           Here you can find article bookmarked by you for Later use.
         </PageTop>

@@ -17,7 +17,7 @@ export default function Certificates() {
         previewImage={pagePreviewImage.certificates}
       />
 
-      <section className="mt-[52px] md:t-[72px] max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl relative mx-auto mb-20">
+      <section className="pageTop">
         <PageTop pageTitle="Certificates">
           I've participated in many contests, courses and test and get certified
           in many skills. You can find the certificates below.
