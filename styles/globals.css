@@ -238,4 +238,7 @@ code > .line::before {
   body {
     @apply font-inter bg-darkWhite;
   }
+  button {
+    @apply outline-none;
+  }
 }
