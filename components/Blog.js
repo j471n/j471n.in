@@ -32,7 +32,7 @@ export default function Blog({ blog }) {
         <Link passHref href={`/blogs/${blog.slug}`}>
           <a
             href={`/blogs/${blog.slug}`}
-            className="px-4 py-2 rounded bg-black text-white w-fit text-xs transition-all active:scale-90 hover:bg-gray-200 hover:text-black font-medium"
+            className="px-4 py-2 rounded bg-black text-white w-fit text-xs transition-all active:scale-90 hover:bg-gray-200 hover:text-black font-medium select-none"
           >
             Read more
           </a>
