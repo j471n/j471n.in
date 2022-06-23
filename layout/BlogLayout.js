@@ -25,7 +25,6 @@ export default function BlogLayout({ post, children }) {
 
   const scrollPercentage = useScrollPercentage();
 
-  console.log(scrollPercentage);
   const size = useWindowSize();
 
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
