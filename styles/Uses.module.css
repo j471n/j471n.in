@@ -21,3 +21,7 @@
 .uses a {
   @apply underline text-gray-500;
 }
+
+.uses table {
+  @apply m-5;
+}

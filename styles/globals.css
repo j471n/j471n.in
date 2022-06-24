@@ -260,4 +260,7 @@ code > .line::before {
   table th {
     @apply font-bold;
   }
+  table a {
+    @apply !text-blue-500;
+  }
 }
