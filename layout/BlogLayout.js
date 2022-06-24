@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
+import { MdModeEdit } from "react-icons/md";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
@@ -139,21 +140,37 @@ export default function BlogLayout({ post, children }) {
               </p>
             </div>
           </div>
-          <button
-            title="Save for Later"
-            className="transition active:scale-75 ml-10"
-            onClick={() => {
-              alreadyBookmarked
-                ? removeFromBookmark(post.meta.slug)
-                : addToBookmark(post.meta);
-            }}
-          >
-            {alreadyBookmarked ? (
-              <BsBookmarkFill className="w-6 h-6 " />
-            ) : (
-              <BsBookmark className="w-6 h-6 " />
-            )}
-          </button>
+
+          <div className="flex gap-2 ml-4">
+            <Link
+              href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
+              passHref
+            >
+              <a
+                title="Edit on Github"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-1 rounded-full border-2 border-gray-700 dark:border-gray-300 transition active:scale-75 select-none"
+              >
+                <MdModeEdit className="w-4 h-4 text-gray-700 dark:text-gray-300 " />
+              </a>
+            </Link>
+            <button
+              title="Save for Later"
+              className="transition active:scale-75"
+              onClick={() => {
+                alreadyBookmarked
+                  ? removeFromBookmark(post.meta.slug)
+                  : addToBookmark(post.meta);
+              }}
+            >
+              {alreadyBookmarked ? (
+                <BsBookmarkFill className="w-6 h-6 " />
+              ) : (
+                <BsBookmark className="w-6 h-6 " />
+              )}
+            </button>
+          </div>
         </div>
 
         <div
@@ -163,18 +180,6 @@ export default function BlogLayout({ post, children }) {
         </div>
 
         <Newsletter />
-
-        <Link
-          href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
-          passHref
-        >
-          <a
-            href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
-            className="dark:text-white my-10"
-          >
-            Edit on Github
-          </a>
-        </Link>
 
         <div className="w-full flex flex-col items-center gap-4 my-10 print:hidden">
           <h3
