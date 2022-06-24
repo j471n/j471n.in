@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 
-export default function AnimatedLink(props) {
+export default function AnimatedLink({ variants, infinity, children }) {
   return (
     <motion.a
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: !props.infinity }}
-      ref={ref}
-      {...props}
-    />
+      variants={variants}
+      viewport={{ once: !infinity }}
+    >
+      {children}
+    </motion.a>
   );
 }

@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   FadeContainer,
+  fromLeftVariant,
+  fromRightVariant,
   opacityVariant,
+  popUp,
   popUpFromBottomForText,
+  slideFromLeft,
 } from "@content/FramerMotionVariants";
 import Link from "next/link";
 import Blog from "@components/Blog";
@@ -17,6 +21,7 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
+import AnimatedLink from "@components/FramerMotion/AnimatedLink";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
@@ -93,33 +98,33 @@ export default function Blogs({ blogs }) {
             {filteredBlogs.length != 0 ? (
               <>
                 <AnimatedDiv
-                  variants={opacityVariant}
+                  variants={FadeContainer}
                   className="flex items-center justify-between"
                 >
-                  <AnimatedHeading
+                  <motion.h3
                     variants={popUpFromBottomForText}
                     className="text-left font-bold text-2xl sm:text-3xl my-5"
                   >
                     All Posts ({filteredBlogs.length})
-                  </AnimatedHeading>
+                  </motion.h3>
 
                   <div className="flex items-center gap-2">
                     <Link href="/blogs/bookmark" passHref>
-                      <a>
+                      <motion.a variants={popUp}>
                         <BsBookmark
                           title="Bookmark"
                           className="text-2xl cursor-pointer"
                         />
-                      </a>
+                      </motion.a>
                     </Link>
 
                     <Link href="/rss" passHref>
-                      <a>
+                      <motion.a variants={popUp}>
                         <BiRss
                           title="RSS"
                           className="text-3xl cursor-pointer"
                         />
-                      </a>
+                      </motion.a>
                     </Link>
                   </div>
                 </AnimatedDiv>
