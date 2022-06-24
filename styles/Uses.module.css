@@ -23,5 +23,5 @@
 }
 
 .uses table {
-  @apply m-5;
+  @apply my-5 sm:m-5 w-full sm:min-w-[50%] sm:w-auto text-sm sm:text-base;
 }
