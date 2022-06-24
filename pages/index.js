@@ -11,7 +11,6 @@ import SkillSection from "@components/Home/SkillSection";
 import Image from "next/image";
 import Metadata from "@components/MetaData";
 import Contact from "@components/Contact";
-import FAQ from "@components/FAQ";
 import {
   FadeContainer,
   headingFromLeft,
@@ -106,7 +105,7 @@ export default function Home({ blogs, skills }) {
           <SkillSection skills={skills} />
           <BlogsSection blogs={blogs} />
           {/* <ProjectSection /> */}
-          <FAQ faqs={faqs} />
+          {/* <FAQ faqs={faqs} /> */}
           <Contact socialMedia={socialMedia} />
         </div>
       </div>
