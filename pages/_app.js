@@ -36,7 +36,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <DarkModeProvider>
       <Layout>
-        <GoogleAnalytics strategy="lazyOnload" />
+        {process.env.NODE_ENV === "production" && (
+          <GoogleAnalytics strategy="lazyOnload" />
+        )}
         <Component {...pageProps} />
       </Layout>
     </DarkModeProvider>
