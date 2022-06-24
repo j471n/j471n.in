@@ -289,9 +289,9 @@ console.log(`Billy is ${6 + 8} years old.`);
 
 ### Control Flow
 
-Control 􀄳ow is the order in which statements are executed in a program. The default control 􀄳ow is for statements to be read and executed in order from left-to-right, top-to-bottom in a program file.
+Control Flow is the order in which statements are executed in a program. The default control Flow is for statements to be read and executed in order from left-to-right, top-to-bottom in a program file.
 
-Control structures such as conditionals ( if statements and the like) alter control 􀄳ow by only executing blocks of code if certain conditions are met. These structures essentially allow a program to make decisions about which code is executed as the program runs.
+Control structures such as conditionals ( if statements and the like) alter control Flow by only executing blocks of code if certain conditions are met. These structures essentially allow a program to make decisions about which code is executed as the program runs.
 
 [More info about Control Flow](https://developer.mozilla.org/en-US/docs/Glossary/Control_flow)
 
@@ -311,38 +311,42 @@ Falsy values include `false` , `0` , empty strings, `null`, `undefined` , and `N
 Comparison operators are used to comparing two values and return `true` or `false` depending on the validity of the comparison:
 
 <table>
-  <tr>
-    <td>Symbol</td>
-    <td>Name</td>
-  </tr>
-  <tr>
-    <td>===</td>
-    <td>Strict Equal</td>
-  </tr>
-  <tr>
-    <td>!==</td>
-    <td>Strict Not Equal</td>
-  </tr>
-  <tr>
-    <td>==</td>
-    <td>Loosed Equal</td>
-  </tr>
-  <tr>
-    <td>&gt;</td>
-    <td>Greater than</td>
-  </tr>
-  <tr>
-    <td>&gt;=</td>
-    <td>Greater than or Equal</td>
-  </tr>
-  <tr>
-    <td>&lt;</td>
-    <td>Less than</td>
-  </tr>
-  <tr>
-    <td>&lt;=</td>
-    <td>Less than or Equal</td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>===</td>
+      <td>Strict Equal</td>
+    </tr>
+    <tr>
+      <td>!==</td>
+      <td>Strict Not Equal</td>
+    </tr>
+    <tr>
+      <td>==</td>
+      <td>Loosed Equal</td>
+    </tr>
+    <tr>
+      <td>&gt;</td>
+      <td>Greater than</td>
+    </tr>
+    <tr>
+      <td>&gt;=</td>
+      <td>Greater than or Equal</td>
+    </tr>
+    <tr>
+      <td>&lt;</td>
+      <td>Less than</td>
+    </tr>
+    <tr>
+      <td>&lt;=</td>
+      <td>Less than or Equal</td>
+    </tr>
+  </tbody>
 </table>
 
 <CodeTitle lang="js" title="script.js" />
@@ -475,7 +479,7 @@ false || false; // false
 
 The `switch` statements provide a means of checking an expression against multiple `case` clauses. If a case matches, the code inside that clause is executed. The `case` clause should finish with a `break` keyword. If no case matches but a `default` clause is included, the code inside `default` will be executed.
 
-**Note**: If break is omitted from the block of a case , the switch statement will continue to check against case values until a break is encountered or the 􀄳ow is broken.
+**Note**: If break is omitted from the block of a case , the switch statement will continue to check against case values until a break is encountered.
 
 <CodeTitle lang="js" title="script.js" />
 ```js
