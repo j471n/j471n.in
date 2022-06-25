@@ -1,0 +1,77 @@
+---
+slug: css-battle-6
+title: "CSS Battle: #6 - Missing Slice"
+date: 2022-06-30
+stringDate: June 30, 2022
+published: false
+excerpt: In this article, I will solve a `Missing Slice` CSS Challenge on CSS Battle.
+image: https://imgur.com/f7JAbtw.png
+---
+
+
+In this article, I will solve a [Missing Slice](https://cssbattle.dev/play/6) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/6) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Missing Slice](https://cssbattle.dev/targets/6.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="one"></div>
+    <div class="two"></div>
+  <div class="three"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  width: 400px;
+  height: 300px;
+  background: #e3516e;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.one,
+.two,
+.three {
+  width: 100px;
+  height: 100px;
+}
+.one {
+  background: #51b5a9;
+  border-radius: 100% 0 0 0;
+  place-self: end;
+}
+.two {
+  background: #fade8b;
+  border-radius: 0 100% 0 0;
+  place-self: end start;
+}
+.three {
+  background: #f7f3d7;
+  border-radius: 0 0 0 100%;
+  place-self: start end;
+}
+```
+
+<Codepen id="abWZvOy" />
+
+

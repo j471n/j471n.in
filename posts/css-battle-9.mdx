@@ -1,0 +1,86 @@
+---
+slug: css-battle-9
+title: "CSS Battle: #9 - Tesseract"
+date: 2022-07-03
+stringDate: July 03, 2022
+published: false
+excerpt: In this article, I will solve a `Tesseract` CSS Challenge on CSS Battle.
+image: https://imgur.com/GiHIXMv.png
+---
+
+
+In this article, I will solve a [Tesseract](https://cssbattle.dev/play/9) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/9) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Tesseract](https://cssbattle.dev/targets/9.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="shape"></div>
+  <div class="line"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background: #222730;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shape {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background: #222730;
+  transform: rotate(45deg);
+  display: grid;
+  place-items: center;
+}
+.shape::after,
+.shape::before {
+  content: "";
+  position: absolute;
+}
+.shape::before {
+  width: 150px;
+  height: 150px;
+  background: #4caab3;
+}
+.shape::after {
+  width: 50px;
+  height: 50px;
+  border-radius: 10rem;
+  background: #393e46;
+}
+.line {
+  width: 100%;
+  height: 150px;
+  background: #4caab3;
+}
+```
+<Codepen id="LYyZXpO" />
+
+

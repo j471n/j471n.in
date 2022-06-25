@@ -1,0 +1,101 @@
+---
+slug: css-battle-3
+title: "CSS Battle: #3 - Push Button"
+date: 2022-06-27
+stringDate: June 27, 2022
+published: false
+excerpt: In this article, I will solve a `Push Button` CSS Challenge on CSS Battle.
+image: https://imgur.com/IXAF01S.png
+---
+
+
+In this article, I will solve a [Push Button](https://cssbattle.dev/play/3) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/3) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Simply Square](https://cssbattle.dev/targets/3.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="rect"></div>
+  <div class="circle"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  width: 400px;
+  height: 300px;
+  background: #6592cf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.rect,
+.rect::before {
+  height: 150px;
+  width: 100px;
+  background: #243d83;
+}
+.rect {
+  margin-left: -200px;
+}
+.rect::before {
+  content: "";
+  position: absolute;
+  margin-left: 200px;
+}
+.circle {
+  background: #6592cf;
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  border-radius: 10rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle::before,
+.circle::after {
+  content: "";
+  position: absolute;
+  border-radius: 10rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle::before {
+  width: 60%;
+  height: 60%;
+  background: #243d83;
+}
+.circle::after {
+  width: 20%;
+  height: 20%;
+  background: #eeb850;
+}
+
+```
+
+<Codepen id="abWdXJJ" />
+
+

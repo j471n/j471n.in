@@ -1,0 +1,79 @@
+---
+slug: css-battle-7
+title: "CSS Battle: #7 - Leafy Trail"
+date: 2022-07-01
+stringDate: July 01, 2022
+published: false
+excerpt: In this article, I will solve a `Leafy Trail` CSS Challenge on CSS Battle.
+image: https://imgur.com/MCqGANy.png
+---
+
+
+In this article, I will solve a [Leafy Trail](https://cssbattle.dev/play/7) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/7) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Leafy Trail](https://cssbattle.dev/targets/7.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="one"></div>
+    <div class="two"></div>
+  <div class="three"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  width: 400px;
+  height: 300px;
+  background: #0b2429;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one,
+.two,
+.three {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 100px 0;
+}
+.two {
+  z-index: 2;
+  background: #998235;
+}
+.one {
+  z-index: 1;
+  background: #1a4341;
+  margin-left: -100px;
+}
+.three {
+  margin-left: 100px;
+  z-index: 3;
+  background: #f3ac3c;
+}
+```
+
+<Codepen id="Vwbjvrq" />
+
+

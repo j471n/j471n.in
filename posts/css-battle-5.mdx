@@ -1,0 +1,84 @@
+---
+slug: css-battle-5
+title: "CSS Battle: #5 - Acid Rain"
+date: 2022-06-29
+stringDate: June 29, 2022
+published: false
+excerpt: In this article, I will solve a `Acid Rain` CSS Challenge on CSS Battle.
+image: https://imgur.com/5EkLGTx.png
+---
+
+
+In this article, I will solve a [Acid Rain](https://cssbattle.dev/play/5) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/5) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Acid Rain](https://cssbattle.dev/targets/5.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="one"></div>
+    <div class="two"></div>
+  <div class="three"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  width: 400px;
+  height: 300px;
+  background: #0b2429;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one,
+.two,
+.three {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #998235;
+  border-radius: 50% 0 50% 50%;
+}
+.two {
+  z-index: 10;
+}
+.one,
+.three {
+  background: #f3ac3c;
+}
+.one {
+  left: 20%;
+  top: 50%;
+  z-index: 11;
+}
+.three {
+  transform: rotate(180deg);
+  left: 50%;
+  top: 10%;
+  z-index: 9;
+}
+```
+
+<Codepen id="wvdWaYN" />
+
+

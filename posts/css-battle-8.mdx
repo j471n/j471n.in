@@ -1,0 +1,120 @@
+---
+slug: css-battle-8
+title: "CSS Battle: #8 - Forking Crazy"
+date: 2022-07-02
+stringDate: July 02, 2022
+published: false
+excerpt: In this article, I will solve a `Forking Crazy` CSS Challenge on CSS Battle.
+image: https://imgur.com/FKKp2s7.png
+---
+
+
+In this article, I will solve a [Forking Crazy](https://cssbattle.dev/play/8) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/8) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Forking Crazy](https://cssbattle.dev/targets/8.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="main_shape">
+    <div class="point one"></div>
+    <div class="point two"></div>
+    <div class="point three"></div>
+    <div class="point four"></div>
+    <div class="slot"></div>
+    <div class="handle"></div>
+  </div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  width: 400px;
+  height: 300px;
+  background: #6592cf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.main_shape {
+  position: relative;
+  width: 140px;
+  height: 190px;
+  margin-top: 10px;
+  background: #060f55;
+  border-radius: 0 0 100px 100px;
+}
+.main_shape .slot {
+  width: 20px;
+  height: 100px;
+  background: #6592cf;
+  border-radius: 0 0 100px 100px;
+  position: relative;
+  left: 20px;
+}
+.main_shape .slot::after,
+.main_shape .slot::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #6592cf;
+  border-radius: 0 0 100px 100px;
+}
+.main_shape div::before {
+  left: 40px;
+}
+.main_shape div::after {
+  left: 80px;
+}
+.handle {
+  position: relative;
+  width: 20px;
+  height: 100px;
+  background: #060f55;
+  left: calc(50% - 10px);
+  top: 30%;
+}
+.point {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 10rem;
+  top: -10px;
+  background: #060f55;
+}
+.two {
+  left: 40px;
+}
+.three {
+  left: 80px;
+}
+.four {
+  left: 120px;
+}
+```
+
+<Codepen id="vYmKVvd" />
+
+

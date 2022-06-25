@@ -1,0 +1,86 @@
+---
+slug: css-battle-4
+title: "CSS Battle: #4 - Ups n Downs"
+date: 2022-06-28
+stringDate: June 28, 2022
+published: false
+excerpt: In this article, I will solve a `Ups n Downs` CSS Challenge on CSS Battle.
+image: https://imgur.com/Kx6x9oq.png
+---
+
+
+In this article, I will solve a [Ups n Downs](https://cssbattle.dev/play/4) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/4) first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Ups n Downs](https://cssbattle.dev/targets/4.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  background: #62306d;
+  position: relative;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.box div {
+  background: #f7ec7d;
+  width: 100px;
+  height: 100px;
+  border-radius: 10rem 10rem 0 0;
+  grid-column: 2;
+  margin-top: 50px;
+}
+
+.box div::before,
+.box div::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 10rem 10rem 0 0;
+  background: #f7ec7d;
+  transform: rotate(180deg);
+  grid-row: 2;
+  top: 0%;
+}
+
+.box div::before {
+  left: 49.5px;
+  grid-column: 1;
+}
+
+.box div::after {
+  left: -17px;
+  grid-column: 3;
+}
+```
+<Codepen id="NWjrqNL" />
+
+

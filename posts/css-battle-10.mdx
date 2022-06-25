@@ -1,0 +1,107 @@
+---
+slug: css-battle-10
+title: "CSS Battle: #10 - Cloaked Spirits"
+date: 2022-07-04
+stringDate: July 04, 2022
+published: false
+excerpt: In this article, I will solve a `Cloaked Spirits` CSS Challenge on CSS Battle.
+image: https://imgur.com/9td1gmD.png
+---
+
+
+In this article, I will solve a [Cloaked Spirits](https://cssbattle.dev/play/10) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the problem first.
+
+## Problem 
+
+We need to create the following container by using CSS Properties only:
+![Cloaked Spirits](https://cssbattle.dev/targets/10.png)
+
+## Solution
+
+So now look at the Solution and how we are going to achieve this. 
+
+### HTML
+
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<div class="box">
+  <div class="shape"></div>
+  <div class="circle"></div>
+</div>
+```
+
+
+### CSS
+
+Now let's style the containers. 
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+}
+.box {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  background: #62306d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shape {
+  position: relative;
+  width: 100px;
+  height: 250px;
+  background: #f7ec7d;
+  margin-top: 50px;
+  border-radius: 100px 100px 0 0;
+}
+.shape::after,
+.shape::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  bottom: 0;
+  background: #f7ec7d;
+  border-radius: 100px 100px 0 0;
+}
+.shape::before {
+  left: -100%;
+}
+.shape::after {
+  left: 100%;
+}
+.circle,
+.circle::after,
+.circle::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e38f66;
+  border: 20px solid #aa445f;
+  border-radius: 100px;
+}
+.circle {
+  width: 60px;
+  height: 60px;
+  background: #aa445f;
+  border: 20px solid #e38f66;
+  margin-top: -100px;
+}
+.circle::before {
+  margin-left: -120px;
+  margin-top: 80px;
+}
+.circle::after {
+  margin-left: 80px;
+  margin-top: 80px;
+}
+```
+
+<Codepen id="gOWMQxy" />
+
+
