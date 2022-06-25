@@ -36,12 +36,12 @@ export default function Uses({ post }) {
 }
 
 export async function getStaticProps() {
-  const { content: source, meta } = await getPostFromSlug("/page/uses", true);
+  const { post } = await getPostFromSlug("/page/uses", true);
   return {
     props: {
       post: {
-        meta,
-        source,
+        meta: post.meta,
+        source: post.content,
       },
     },
   };

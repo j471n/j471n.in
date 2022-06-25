@@ -3,11 +3,12 @@ import BlogLayout from "@layout/BlogLayout";
 import { getPostFromSlug, getSlugs } from "@lib/posts";
 import Metadata from "@components/MetaData";
 import MDXComponents from "@components/MDXComponents";
+import PageNotFound from "pages/404";
 
 import { MDXRemote } from "next-mdx-remote";
 import "highlight.js/styles/atom-one-dark.css";
 
-export default function Post({ post }) {
+export default function Post({ post, error }) {
   // Adding Views to the firebase database
   useEffect(() => {
     const registerView = () =>
@@ -15,8 +16,10 @@ export default function Post({ post }) {
         method: "POST",
       });
 
-    registerView();
-  }, [post.meta.slug]);
+    post != null && registerView();
+  }, [post !== null && post.meta.slug]);
+
+  if (error) return <PageNotFound />;
 
   return (
     <>
@@ -39,20 +42,27 @@ export default function Post({ post }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const {
-    content: source,
-    meta,
-    tableOfContents,
-  } = await getPostFromSlug(slug);
-  return {
-    props: {
-      post: {
-        meta,
-        source,
-        tableOfContents,
+  const { post } = await getPostFromSlug(slug);
+
+  if (post != null) {
+    return {
+      props: {
+        error: false,
+        post: {
+          meta: post.meta,
+          source: post.content,
+          tableOfContents: post.tableOfContents,
+        },
       },
-    },
-  };
+    };
+  } else {
+    return {
+      props: {
+        error: true,
+        post: null,
+      },
+    };
+  }
 }
 
 export async function getStaticPaths() {
