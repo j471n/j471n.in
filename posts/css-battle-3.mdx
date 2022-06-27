@@ -3,99 +3,132 @@ slug: css-battle-3
 title: "CSS Battle: #3 - Push Button"
 date: 2022-06-27
 stringDate: June 27, 2022
-published: false
+published: true
 excerpt: In this article, I will solve a `Push Button` CSS Challenge on CSS Battle.
 image: https://imgur.com/IXAF01S.png
 ---
 
-
 In this article, I will solve a [Push Button](https://cssbattle.dev/play/3) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/3) first.
 
-## Problem 
+## Problem
 
 We need to create the following container by using CSS Properties only:
 ![Simply Square](https://cssbattle.dev/targets/3.png)
 
 ## Solution
 
-So now look at the Solution and how we are going to achieve this. 
+So now look at the Solution and how we are going to achieve this.
 
 ### HTML
 
-
-<CodeTitle title="index.html" lang="html"/>
+<CodeTitle title="index.html" lang="html" />
 ```html
-<div class="box">
-  <div class="rect"></div>
-  <div class="circle"></div>
-</div>
+<div class="box"></div>
+<div class="circle"></div>
 ```
 
+It contains two `div` one for the box and the other for circle.
 
 ### CSS
 
-Now let's style the containers. 
+Now let's style the containers.
 
 <CodeTitle title="styles.css" lang="css"/>
 ```css
 body {
   margin: 0;
+  background: #6592CF
 }
 .box {
-  width: 400px;
-  height: 300px;
-  background: #6592cf;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.rect,
-.rect::before {
-  height: 150px;
-  width: 100px;
-  background: #243d83;
-}
-.rect {
-  margin-left: -200px;
-}
-.rect::before {
-  content: "";
-  position: absolute;
-  margin-left: 200px;
+  background: #243D83;
+  width: 300;
+  height: 150;
+  transform: translate(50px, 50%)
 }
 .circle {
-  background: #6592cf;
-  width: 250px;
-  height: 250px;
   position: absolute;
-  border-radius: 10rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.circle::before,
-.circle::after {
-  content: "";
-  position: absolute;
-  border-radius: 10rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(75px, -50%);
+  background: #243D83;
+  width: 150;
+  height: 150;
+  border: 50px solid #6592CF;
+  border-radius: 999px
 }
 .circle::before {
-  width: 60%;
-  height: 60%;
-  background: #243d83;
+  position: absolute;
+  content: "";
+  border-radius: 10rem;
+  inset: 50px;
+  width: 50;
+  height: 50;
+  background: #EEB850
 }
-.circle::after {
-  width: 20%;
-  height: 20%;
-  background: #eeb850;
-}
-
 ```
+
+> In CSS Battle you can use `100` instead of `100px`. You don't need to define `px` in CSS. However, if you are using `rem` or `%` then you need to pass them separately. That's why in the above CSS code there are no units mostly. For more info [visit here](https://cssbattle.dev/tips)
+
+## Codepen
 
 <Codepen id="abWdXJJ" />
 
+## Alternate Solution
 
+There could be many Alternative Solution I've used this one because of the less characters and simplicity.
+
+### HTML
+
+<CodeTitle title="index.html" lang="html" />
+
+```html
+<p b></p>
+<p c></p>
+```
+
+Here I am using `<p>` tag and inside them `b` stands for box and `c` stands for circle.
+
+### CSS
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+body {
+  margin: 0;
+  background: #6592CF
+}
+p[b] {
+  background: #243D83;
+  width: 300;
+  height: 150;
+  transform: translate(50px, 50%)
+}
+p[c] {
+  position: absolute;
+  transform: translate(75px, -63%);
+  background: #243D83;
+  width: 150;
+  height: 150;
+  border: 50px solid #6592CF;
+  border-radius: 999px
+}
+p[c]::before {
+  position: absolute;
+  content: "";
+  border-radius: 10rem;
+  inset: 50px;
+  width: 50;
+  height: 50;
+  background: #EEB850
+}
+```
+
+<Tip>
+  Minify the code or CSS by using any [CSS Minifier](https://www.minifier.org/).
+  It helps you to reduce the characters in the code that will increase score.
+</Tip>
+
+## Wrapping up
+
+If you like this then don't forget to ❤️ it. And I'll see you in the next article. See you soon.
+
+## Related Articles
+
+- [CSS Battle: #2 - Carrom](blogs/css-battle-2)
