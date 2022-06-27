@@ -13,13 +13,13 @@ export default function Blogs() {
   return (
     <>
       <Metadata
-        title="Bookmarked Blogs -"
+        title="Bookmarks -"
         description={"Bookmarked Blogs of Jatin Sharma by you"}
         previewImage={pagePreviewImage.blogs}
       />
 
       <section className="pageTop flex flex-col gap-2 text-neutral-900 dark:text-neutral-200">
-        <PageTop pageTitle="Bookmarked Blogs">
+        <PageTop pageTitle="Bookmarks">
           Here you can find article bookmarked by you for Later use.
         </PageTop>
 
