@@ -7,6 +7,7 @@ import Tip from "./Tip";
 import Pre from "./Pre";
 import Step from "./Step";
 import CodeSandbox from "./CodeSandbox";
+import NextAndPreviousButton from "./NextAndPreviousButton";
 
 const MDXComponents = {
   Codepen,
@@ -17,6 +18,7 @@ const MDXComponents = {
   Tip,
   Step,
   CodeSandbox,
+  NextAndPreviousButton,
   pre: Pre,
 };
 
