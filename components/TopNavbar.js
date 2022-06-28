@@ -93,7 +93,7 @@ export default function TopNavbar() {
               hidden: { opacity: 0, scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
-            className="absolute sm:!hidden left-0 right-0 flex justify-center  text-base font-sarina"
+            className="absolute sm:!hidden w-fit left-0 right-0 mx-auto flex justify-center  text-base font-sarina"
           >
             Jatin Sharma
           </motion.p>
