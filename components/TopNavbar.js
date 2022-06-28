@@ -77,15 +77,15 @@ export default function TopNavbar() {
       </AnimatePresence>
 
       <Link href="/" passHref>
-        <div className="flex gap-2 items-center cursor-pointer">
-          <motion.div
+        <div className="flex gap-2 items-center cursor-pointer z-50">
+          <motion.a
             initial="hidden"
             animate="visible"
             variants={popUp}
             className="relative hidden sm:inline-flex mr-3"
           >
             <h1 className="font-sarina text-xl">JS</h1>
-          </motion.div>
+          </motion.a>
           <motion.p
             initial="hidden"
             animate={control}
@@ -93,7 +93,7 @@ export default function TopNavbar() {
               hidden: { opacity: 0, scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
-            className="absolute sm:!hidden left-0 right-0 flex justify-center pointer-events-none text-base font-sarina"
+            className="absolute sm:!hidden left-0 right-0 flex justify-center  text-base font-sarina"
           >
             Jatin Sharma
           </motion.p>
@@ -131,13 +131,9 @@ export default function TopNavbar() {
         onClick={() => changeDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          // <>
           <FiMoon className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
         ) : (
-          // </>
-          // <motion.div whileTap={{ scale: 0.5 }}>
           <FiSun className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
-          // </motion.div>
         )}
       </motion.div>
     </div>
