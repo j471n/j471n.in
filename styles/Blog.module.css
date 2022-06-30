@@ -15,10 +15,10 @@
 .blog h3,
 .blog h4,
 .blog h5,
-.blog h6,
-.blog strong {
-  @apply text-blue-700  font-semibold my-2;
+.blog h6 {
+  @apply  my-2;
 }
+
 
 .blog blockquote {
   @apply border-l-4 border-gray-500 pl-3;
@@ -82,4 +82,10 @@
 
 .blog > div[data-rehype-pretty-code-fragment] code {
   @apply grid;
+}
+
+
+/* Main Heading of the Blog */
+.blog h2 {
+  @apply  text-2xl;
 }

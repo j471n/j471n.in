@@ -242,7 +242,7 @@ code > .line::before {
     @apply outline-none;
   }
   hr {
-    @apply !mx-auto w-1/2 h-1 !bg-gray-700 rounded-full;
+    @apply !mx-auto !w-1/2 h-0.5 !bg-gray-700 dark:!bg-gray-300 border-0 !rounded-full;
   }
 
   table {
@@ -262,5 +262,18 @@ code > .line::before {
   }
   table a {
     @apply !text-blue-500 dark:!text-blue-400;
+  }
+
+  strong {
+    @apply text-black dark:text-white !font-bold;
+  }
+
+  /* For Blog page to remove the underline  */
+  h2 > a,
+  h3 > a,
+  h4 > a,
+  h5 > a,
+  h6 > a {
+    @apply !text-black dark:!text-white !font-bold !no-underline;
   }
 }
