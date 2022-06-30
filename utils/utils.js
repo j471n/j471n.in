@@ -6,7 +6,7 @@ export const resumeDownloadLink =
 export const navigationRoutes = [
   "home",
   "stats",
-  "uses",
+  "utilities",
   "blogs",
   "certificates",
   "projects",
@@ -17,7 +17,7 @@ export const navigationRoutes = [
 export const pagePreviewImage = {
   home: "https://imgur.com/oYlyddc.png",
   stats: "https://imgur.com/eSS84ff.png",
-  uses: "https://imgur.com/wbmHm2d.png",
+  utilities: "https://imgur.com/jNsHxeu.png",
   blogs: "https://imgur.com/Anrnix9.png",
   certificates: "https://imgur.com/GyWZVXc.png",
   projects: "https://imgur.com/sJmnqGt.png",
