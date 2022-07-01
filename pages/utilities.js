@@ -3,7 +3,15 @@ import PageTop from "@components/PageTop";
 import { pagePreviewImage } from "@utils/utils";
 import utilities from "@content/utilitiesData";
 import Link from "next/link";
-import { useDarkMode } from "@context/darkModeContext";
+import AnimatedText from "@components/FramerMotion/AnimatedText";
+import {
+  FadeContainer,
+  opacityVariant,
+  popUp,
+  popUpFromBottomForText,
+} from "@content/FramerMotionVariants";
+import { motion } from "framer-motion";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function Utilities() {
   return (
@@ -23,39 +31,47 @@ export default function Utilities() {
           <UtilitySection utility={utilities.software} />
         </div>
 
-        <p className="mt-12 -mb-10">
+        <AnimatedText variants={opacityVariant} className="mt-12 -mb-10">
           Last Update on{" "}
           <span className="font-semibold">{utilities.lastUpdate}</span>
-        </p>
+        </AnimatedText>
       </section>
     </>
   );
 }
 
 function UtilitySection({ utility }) {
-  const { isDarkMode } = useDarkMode();
   return (
-    <section className="!w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 font-medium">
-      <h2 className="font-bold text-2xl sm:text-3xl font-barlow mb-4">
+    <AnimatedDiv variants={FadeContainer} className="!w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 font-medium">
+      <motion.h2
+        variants={popUpFromBottomForText}
+        className="font-bold text-2xl sm:text-3xl font-barlow mb-4"
+      >
         {utility.title}
-      </h2>
+      </motion.h2>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:flex md:flex-wrap gap-3 my-5">
+      <AnimatedDiv
+        variants={FadeContainer}
+        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 mt-5"
+      >
         {utility.data.map((item) => {
           return (
             <Link href={item.link} key={item.name} passHref>
-              <a
+              <motion.a
+                variants={popUp}
                 title={item.name + " - " + item.description}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="relative flex flex-col gap-2 items-center bg-white dark:bg-darkSecondary shadow dark:shadow-md p-8 border border-transparent hover:border-gray-400 dark:hover:border-neutral-600 rounded-md transition-all active:scale-90 lg:hover:scale-[1.3] hover:z-10 hover:shadow-lg"
+                className="relative flex flex-col gap-3 items-center justify-center bg-white dark:bg-darkSecondary shadow dark:shadow-md p-8  border border-transparent hover:border-gray-400 dark:hover:border-neutral-600 rounded-md transition-all lg:hover:!scale-125 active:!scale-90 hover:z-10 hover:shadow-lg hover:origin-center text-gray-700 hover:text-black dark:text-gray-300/80 dark:hover:text-white"
               >
-                <item.Icon className="w-8 h-8 !pointer-events-none" />
-              </a>
+                <item.Icon className="utilities-svg" />
+
+                <p className="absolute bottom-3 text-[10px] select-none">{item.name}</p>
+              </motion.a>
             </Link>
           );
         })}
-      </div>
-    </section>
+      </AnimatedDiv>
+    </AnimatedDiv>
   );
 }
