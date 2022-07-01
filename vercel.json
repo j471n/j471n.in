@@ -86,6 +86,10 @@
     {
       "source": "/resume",
       "destination": "/resume.pdf"
+    },
+    {
+      "source": "/cv",
+      "destination": "https://read.cv/j471n"
     }
   ]
 }
