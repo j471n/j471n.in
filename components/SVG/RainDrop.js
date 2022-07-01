@@ -8,7 +8,7 @@ export default function RainDrop() {
       height="35"
       viewBox="0 0 32 35"
       fill="currentColor"
-      className="pointer-events-none"
+      className="utilities-svg"
     >
       <path
         d="M13.3433 13.6108C17.1634 17.0095 15.8846 24.5064 15.8846 27.8684C10.8766 27.8684 7.307 28.3185 4.09012 26.3952C0.217283 24.0796 0.108804 18.6472 2.664 15.1169C5.21919 11.5867 10.1254 10.7479 13.3433 13.6108Z"

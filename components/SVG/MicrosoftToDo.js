@@ -6,7 +6,7 @@ export default function MicrosoftToDo() {
       height="33"
       viewBox="0 0 41 33"
       fill="none"
-      className="pointer-events-none"
+      className="utilities-svg"
     >
       <rect
         width="22.3455"

@@ -10,7 +10,7 @@ export default function Ditto() {
       height="32"
       viewBox="0 0 32 32"
       fill="currentColor"
-      className="pointer-events-none"
+      className="utilities-svg"
     >
       <rect width="32" height="32" rx="8" fill="currentColor" />
       <g clip-path="url(#clip0_739_15)">

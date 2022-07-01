@@ -10,7 +10,7 @@ export default function ShareX() {
       viewBox="0 0 32 32"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      className="pointer-events-none"
+      className="utilities-svg"
     >
       <g clipPath="url(#clip0_736_2)">
         <path

@@ -10,7 +10,7 @@ export default function Flux() {
       height="32"
       viewBox="0 0 32 32"
       fill="currentColor"
-      className="pointer-events-none"
+      className="utilities-svg"
     >
       <g clipPath="url(#clip0_741_34)">
         <path
