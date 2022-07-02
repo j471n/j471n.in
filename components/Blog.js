@@ -29,8 +29,6 @@ export default function Blog({ blog }) {
     }
   }
 
-  console.log(bookmarkModal);
-
   return (
     <article className="bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8">
       <div className="relative -mt-[35%] sm:-mt-0 md:-ml-[35%] w-full sm:w-1/2 md:w-8/12 shrink-0 rounded-xl overflow-hidden shadow-2xl">
