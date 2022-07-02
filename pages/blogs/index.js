@@ -131,7 +131,7 @@ export default function Blogs({ blogs }) {
 
                 <AnimatedDiv
                   variants={FadeContainer}
-                  className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4"
+                  className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"
                 >
                   {filteredBlogs.map((blog, index) => {
                     return <Blog key={index} blog={blog} />;
