@@ -28,7 +28,7 @@ export default function Projects({ projects }) {
 
         <AnimatedDiv
           variants={FadeContainer}
-          className="relative grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-3"
+          className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"
         >
           <AnimatePresence>
             {projects &&
