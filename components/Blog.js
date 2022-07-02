@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import useLocalStorage from "@hooks/useBookmarkBlogs";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import OgImage from "./OgImage";
 
 export default function Blog({ blog }) {
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
@@ -30,21 +30,8 @@ export default function Blog({ blog }) {
   }
 
   return (
-    <article className="bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8">
-      <div className="relative -mt-[35%] sm:-mt-0 md:-ml-[35%] w-full sm:w-1/2 md:w-8/12 shrink-0 rounded-xl overflow-hidden shadow-2xl">
-        <Image
-          title={blog.title}
-          alt={blog.title}
-          src={blog.image}
-          width={1200}
-          height={630}
-          layout="responsive"
-          placeholder="blur"
-          blurDataURL={blog.image}
-          quality={50}
-          className="lg:group-hover:scale-110 transition-all duration-300"
-        />
-      </div>
+    <article className="card">
+      <OgImage src={blog.image} alt={blog.title} />
 
       <div className="flex flex-col">
         <p className="text-gray-500 text-sm font-medium flex justify-between items-center">
@@ -87,7 +74,7 @@ export default function Blog({ blog }) {
                 animate="visible"
                 exit="hidden"
                 variants={{
-                  hidden: { opacity: 0, right: -100  },
+                  hidden: { opacity: 0, right: -100 },
                   visible: { right: 40, opacity: 1 },
                 }}
                 className="absolute px-2 py-1 text-[10px] bg-black text-white"
