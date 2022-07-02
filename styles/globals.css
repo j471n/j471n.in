@@ -235,6 +235,9 @@ code > .line::before {
   .utilities-svg {
     @apply !pointer-events-none mb-4 w-8 h-8;
   }
+  .card {
+  @apply bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8 transition-all;
+  }
 }
 
 @layer base {
