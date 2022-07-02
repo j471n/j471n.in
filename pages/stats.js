@@ -51,6 +51,10 @@ export default function Stats() {
       title: "Github Gists",
       value: github?.gists,
     },
+    {
+      title: "Github Followers",
+      value: github?.followers,
+    },
   ];
 
   return (
