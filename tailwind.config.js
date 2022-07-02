@@ -24,7 +24,7 @@ module.exports = {
       },
       animation: {
         wiggle: "wiggle 1s ease-in-out infinite",
-        "photo-spin": "photo-spin 2s 2 linear forwards",
+        "photo-spin": "photo-spin 2s 1 linear forwards",
       },
       keyframes: {
         wiggle: {
