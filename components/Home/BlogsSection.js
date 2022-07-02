@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 
 export default function BlogsSection({ blogs }) {
   return (
-    <section className="mx-5">
+    <section className="mx-5 mb-5">
       <HomeHeading title="Recent Posts" />
 
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]">
         {blogs.map((blog, index) => {
           return <Blog key={`home-blog-${index}`} blog={blog} />;
         })}
@@ -19,10 +19,10 @@ export default function BlogsSection({ blogs }) {
             variants={popUpFromBottomForText}
             className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black dark:lg:hover:border-white transform duration-200 active:scale-90 active:border-black w-fit"
           >
-            <motion.a href="/blogs" className="flex items-center gap-1 ">
+            <motion.a href="/blogs" className="flex items-center gap-1 justify-center">
               Read all posts
               <svg
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns="http://www.w3.org/2000/svg"  
                 fill="none"
                 viewBox="0 0 24 24"
                 className="h-6 w-6 ml-1"
