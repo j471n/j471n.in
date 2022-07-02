@@ -2,18 +2,13 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FadeContainer,
-  fromLeftVariant,
-  fromRightVariant,
   opacityVariant,
   popUp,
   popUpFromBottomForText,
-  slideFromLeft,
 } from "@content/FramerMotionVariants";
 import Link from "next/link";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
-import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import AnimatedText from "@components/FramerMotion/AnimatedText";
 import { getAllPosts } from "@lib/posts";
 import { pagePreviewImage } from "@utils/utils";
 import { BiRss } from "react-icons/bi";
@@ -21,7 +16,6 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
-import AnimatedLink from "@components/FramerMotion/AnimatedLink";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
