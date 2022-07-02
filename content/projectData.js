@@ -154,7 +154,8 @@ module.exports = [
   {
     id: 15,
     name: "Google Docs with Next.js",
-    coverURL: "https://imgur.com/Ow10tX5.png",
+    coverURL : "https://imgur.com/bQkEGlb.png",
+    darkCoverURL: "https://imgur.com/Ow10tX5.png",
     description:
       "Next Google Docs is a web app which uses draft.js to create a document for you. It also uses Firebase to store all the user's data.",
     githubURL: "https://github.com/j471n/next-google-docs",
