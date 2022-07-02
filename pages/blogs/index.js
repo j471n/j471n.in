@@ -49,7 +49,7 @@ export default function Blogs({ blogs }) {
           tech careers. In total, I've written {blogs.length} articles till now.
         </PageTop>
 
-        <AnimatedDiv variants={opacityVariant} className="px-2">
+        <AnimatedDiv variants={opacityVariant}>
           <div className="w-full lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 px-2 py-1.5 shadow-sm hover:ring-slate-400 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative bg-white group">
             <svg
               width="24"
