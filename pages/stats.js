@@ -86,7 +86,7 @@ export default function Stats() {
               title={stat.title}
               value={
                 stat.value === undefined ? (
-                  <div className="w-28 h-8 rounded-sm bg-gray-300 dark:bg-neutral-800 animate-pulse" />
+                  <div className="w-28 h-8 rounded-sm bg-gray-300 dark:bg-neutral-700 animate-pulse" />
                 ) : (
                   stat.value
                 )
