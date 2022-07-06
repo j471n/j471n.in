@@ -252,13 +252,17 @@ code > .line::before {
   }
 
   table {
-    @apply !border-collapse text-left cursor-vertical-text;
+    @apply !border-collapse text-left;
   }
 
   table thead tr > th,
   table tbody tr > td {
     @apply !p-2 border border-gray-400 align-middle;
   }
+
+   table thead tr > th {
+    @apply text-black dark:text-white;
+   }
 
   table thead tr {
     @apply align-text-top;
