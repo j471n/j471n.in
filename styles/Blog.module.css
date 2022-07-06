@@ -61,8 +61,7 @@
 .blog h3 code,
 .blog h4 code,
 .blog h5 code,
-.blog h6 code,
-.blog ul li * {
+.blog h6 code {
   @apply bg-transparent font-semibold my-2 text-blue-500;
 }
 

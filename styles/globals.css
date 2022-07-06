@@ -271,7 +271,7 @@ code > .line::before {
   }
 
   strong {
-    @apply text-black dark:text-white !font-bold;
+    @apply !text-black dark:!text-white !font-bold;
   }
 
   /* For Blog page to remove the underline  */
