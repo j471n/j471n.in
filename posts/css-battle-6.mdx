@@ -1,13 +1,12 @@
 ---
 slug: css-battle-6
 title: "CSS Battle: #6 - Missing Slice"
-date: 2022-06-30
-stringDate: June 30, 2022
-published: false
-excerpt: In this article, I will solve a `Missing Slice` CSS Challenge on CSS Battle.
+date: 2022-07-10
+stringDate: July 10, 2022
+published: true
+excerpt: In this article, I have solved an Missing Slice CSS Challenge on CSS Battle. It contains two ways by which you can solve this challenge.
 image: https://imgur.com/f7JAbtw.png
 ---
-
 
 In this article, I will solve a [Missing Slice](https://cssbattle.dev/play/6) CSS Challenge on [CSS Battle](https://cssbattle.dev/). Let's look at the [problem](https://cssbattle.dev/play/6) first.
 
@@ -25,39 +24,46 @@ So now look at the Solution and how we are going to achieve this.
 
 <CodeTitle title="index.html" lang="html"/>
 ```html
-<div class="box">
-  <div class="one"></div>
-    <div class="two"></div>
-  <div class="three"></div>
-</div>
+<div class="one"></div>
+<div class="two"></div>
+<div class="three"></div>
 ```
 
 
+I took three divs to create the shape. Each one of them represents a slice.
+
 ### CSS
 
-Now let's style the containers. 
+Now let's style the body container first. 
 
 <CodeTitle title="styles.css" lang="css"/>
 ```css
 body {
   margin: 0;
-}
-.box {
-  width: 400px;
-  height: 300px;
   background: #e3516e;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.one,
-.two,
-.three {
-  width: 100px;
-  height: 100px;
+```
+I have used a `grid` to layout the children. `grid-template-columns: 1fr 1fr` property defines that there should be two columns with `1fr`. Here `fr` represents a fraction of the available space in the grid container. 
+
+Now Let's style the individual slices
+
+<CodeTitle title="styles.css" lang="css"/>
+```css {7-25}
+body {
+  margin: 0;
+  background: #e3516e;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.one, .two, .three {
+  width: 100;
+  height: 100;
 }
 .one {
   background: #51b5a9;
-  border-radius: 100% 0 0 0;
+  border-radius: 100% 0 0 0; 
   place-self: end;
 }
 .two {
@@ -67,11 +73,73 @@ body {
 }
 .three {
   background: #f7f3d7;
+  border-radius: 0 0 0 100%;      /* top-left , top-right, bottom-right, bottom-left */
+  place-self: start end;
+}
+```
+
+In the above code, you can see that I have used [place-self](https://developer.mozilla.org/en-US/docs/Web/CSS/place-self) in all of the slices. The `place-self` CSS shorthand property allows you to align an individual item in both the block and inline directions at once (i.e. the `align-self` and `justify-self` properties).
+
+<Tip>
+  Note: In CSS Battle you can use `100` instead of `100px`. You don't need to define `px` in CSS. However, if you are using `rem` or `%`, you need to pass them separately. That's why in the above CSS code there are no units mostly. For more info [visit here](https://cssbattle.dev/tips)
+</Tip>
+
+### Codepen 
+<Codepen id="abWZvOy" />
+
+
+## Alternate Solution
+There could be many Alternative Solutions I've used this one because of the fewer characters and simplicity.
+
+
+### HTML
+
+<CodeTitle title="index.html" lang="html"/>
+```html
+<p f></p>
+<p s></p>
+<p t></p>
+```
+
+Here `f` stands for the First slice, `s` stands for the Second slice, and `t` stands for the third slice.  
+
+### CSS
+
+<CodeTitle title="styles.css" lang="css"/>
+```css
+* { margin:0 }  
+body {
+  background: #e3516e;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+p[f], p[s], p[t] {
+  width: 100;
+  height: 100;
+}
+p[f] {
+  background: #51b5a9;
+  border-radius: 100% 0 0 0;
+  place-self: end;
+}
+p[s] {
+  background: #fade8b;
+  border-radius: 0 100% 0 0;
+  place-self: end start;
+}
+p[t] {
+  background: #f7f3d7;
   border-radius: 0 0 0 100%;
   place-self: start end;
 }
 ```
 
-<Codepen id="abWZvOy" />
+<Tip>
+  Minify the code or CSS by using any [CSS Minifier](https://www.minifier.org/). It helps you to reduce the characters in the code which will increase the score.
+</Tip>
 
 
+<NextAndPreviousButton
+  prevHref="/blogs/css-battle-5"
+  prevTitle="CSS Battle: #5 - Acid Rain"
+/>
