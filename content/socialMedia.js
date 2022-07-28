@@ -21,14 +21,14 @@ export default [
     url: "https://github.com/j471n",
   },
   {
+    title: "Instagram",
+    Icon: AiOutlineInstagram,
+    url: "https://www.instagram.com/j471n_",
+  },
+  {
     title: "Dev.to",
     Icon: FaDev,
     url: "https://dev.to/j471n",
-  },
-  {
-    title: "Instagram",
-    Icon: AiOutlineInstagram,
-    url: "https://www.instagram.com/jatin47.47/",
   },
   {
     title: "Codepen",
