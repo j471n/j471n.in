@@ -15,7 +15,7 @@ function OgImage({ src, alt, darkSrc }) {
         objectFit="cover"
         blurDataURL={darkSrc ? (isDarkMode ? darkSrc : src) : src}
         quality={50}
-        className="lg:group-hover:scale-110 transition-all duration-300"
+        className="lg:group-hover:scale-110 transition-all duration-300 backdrop-blur-xl"
       />
     </div>
   );
