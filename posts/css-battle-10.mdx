@@ -1,9 +1,9 @@
 ---
 slug: css-battle-10
 title: "CSS Battle: #10 - Cloaked Spirits"
-date: 2022-07-04
-stringDate: July 04, 2022
-published: false
+date: 2022-07-27
+stringDate: July 27, 2022
+published: true
 excerpt: In this article, I will solve a `Cloaked Spirits` CSS Challenge on CSS Battle.
 image: https://imgur.com/9td1gmD.png
 ---
@@ -20,15 +20,16 @@ We need to create the following container by using CSS Properties only:
 
 So now look at the Solution and how we are going to achieve this. 
 
+<YouTube id="7PAU0GvxefQ" />
+
+*Video's Code is a little bit different because in the following CSS code I've used `aspect-ratio` just to reduce character and to match the width and height which is not mentioned in the video. (Video code also works fine)*
+
 ### HTML
 
 
-<CodeTitle title="index.html" lang="html"/>
 ```html
-<div class="box">
-  <div class="shape"></div>
-  <div class="circle"></div>
-</div>
+<p b>
+<p c>
 ```
 
 
@@ -36,72 +37,65 @@ So now look at the Solution and how we are going to achieve this.
 
 Now let's style the containers. 
 
-<CodeTitle title="styles.css" lang="css"/>
+
 ```css
-body {
+* {
   margin: 0;
-}
-.box {
-  position: relative;
-  width: 400px;
-  height: 300px;
   background: #62306d;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-.shape {
-  position: relative;
-  width: 100px;
-  height: 250px;
+body {
+  display: grid;
+  place-items: center;
+}
+p {
+  position: fixed;
+  aspect-ratio: 1;
+}
+[b] {
+  width: 100;
   background: #f7ec7d;
-  margin-top: 50px;
-  border-radius: 100px 100px 0 0;
+  box-shadow: -100px 100px #f7ec7d, 
+              100px 100px #f7ec7d, 
+              0 100px #f7ec7d;
 }
-.shape::after,
-.shape::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 60%;
-  bottom: 0;
-  background: #f7ec7d;
-  border-radius: 100px 100px 0 0;
-}
-.shape::before {
-  left: -100%;
-}
-.shape::after {
-  left: 100%;
-}
-.circle,
-.circle::after,
-.circle::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #e38f66;
-  border: 20px solid #aa445f;
-  border-radius: 100px;
-}
-.circle {
-  width: 60px;
-  height: 60px;
+[c] {
+  width: 60;
   background: #aa445f;
-  border: 20px solid #e38f66;
-  margin-top: -100px;
-}
-.circle::before {
-  margin-left: -120px;
-  margin-top: 80px;
-}
-.circle::after {
-  margin-left: 80px;
-  margin-top: 80px;
+  border-radius: 1in;
+  bottom: 170;
+  box-shadow: 0 0 0 20px #e38f66, 
+              100px 100px #e38f66,
+              100px 100px 0 20px #aa445f, 
+              -100px 100px #e38f66,
+              -100px 100px 0 20px #aa445f;
 }
 ```
 
-<Codepen id="gOWMQxy" />
 
+
+<Tip id="1">
+  Note: In CSS Battle you can use `100` instead of `100px`. You don't need to define `px` in CSS. However, if you are using `rem` or `%`, you need to pass them separately. That's why in the above CSS code there are no units mostly. For more info [visit here](https://cssbattle.dev/tips).
+</Tip>
+
+<Tip id="2">
+  Minify the code or CSS by using any [CSS Minifier](https://www.minifier.org/). It helps you to reduce the characters in the code which will increase the score.
+</Tip>
+
+
+**Minified Version:**
+```text
+<p b><p c><style>*{margin:0;background:#62306D}body{display:grid;place-items:center}p{position:fixed}[b]{height:100;width:100;background:#F7EC7D;bottom:0;left:50;box-shadow:100px -100px #F7EC7D,100px 0 #F7EC7D,200px 0 #F7EC7D}[c]{width:60;height:60;background:#AA445F;border-radius:1in;bottom:170;box-shadow:0 0 0 20px #E38F66,100px 100px #E38F66,100px 100px 0 20px #AA445F,-100px 100px #E38F66,-100px 100px 0 20px #AA445F}
+```
+
+
+### Wrapping up
+There are many ways to solve this. You can share your approach in the comments. If you like this then you can extend your support by [Buying me a Coffee](https://buymeacoffee.com/j471n)
+
+
+<NextAndPreviousButton
+  prevHref="/blogs/css-battle-9"
+  prevTitle="CSS Battle: #9 - Tesseract"
+  nextHref="/blogs/css-battle-11"
+  nextTitle="CSS Battle: #10 - Cloaked Spirits"
+/>
 
