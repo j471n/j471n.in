@@ -58,7 +58,7 @@ export default function Form() {
   function submitFormOnEnter(event) {
     if ((event.keyCode == 10 || event.keyCode == 13) && event.ctrlKey) {
       if (validateForm()) {
-        return sendEmail();
+        return sendEmail(event);
       }
       toast.error("Looks like you have not filled the form");
     }
