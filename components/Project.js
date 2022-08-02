@@ -9,7 +9,7 @@ export default function Project({ project }) {
       <OgImage
         src={project.coverURL}
         alt={project.name}
-        darkSrc={project.darkCoverURL}  
+        darkSrc={project.darkCoverURL}
       />
 
       <div className="flex flex-col justify-start gap-3">
@@ -36,6 +36,7 @@ export default function Project({ project }) {
         <div className="mt-auto p-2 w-fit flex items-center gap-4">
           <Link href={project.githubURL} passHref>
             <a
+              title="Source Code on GitHub"
               target="_blank"
               rel="noopener noreferrer"
               href={project.githubURL}
@@ -48,6 +49,7 @@ export default function Project({ project }) {
           {project.previewURL && (
             <Link href={project.previewURL} passHref>
               <a
+                title="Live Preview"
                 target="_blank"
                 rel="noopener noreferrer"
                 href={project.previewURL}
