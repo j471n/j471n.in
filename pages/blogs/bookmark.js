@@ -28,7 +28,7 @@ export default function Blogs() {
             {bookmarkedBlogs.length != 0 ? (
               <AnimatedDiv
                 variants={FadeContainer}
-                className="grid grid-cols-1 xs:grid-cols-2 md:!grid-cols-3 gap-4"
+                className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"
               >
                 {bookmarkedBlogs.map((blog, index) => {
                   return <Blog key={index} blog={blog} />;
