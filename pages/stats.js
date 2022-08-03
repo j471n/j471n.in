@@ -68,13 +68,13 @@ export default function Stats() {
 
       <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">
-          These are my personal statistics built with Next.js API
-          routes. It includes My Dev.to Blogs, Github and Top Music stats of Spotify.
+          These are my personal statistics about my Dev.to Blogs, Github and Top
+          Streamed Music on Spotify.
         </PageTop>
 
         {/* Blogs and github stats */}
         <motion.div
-          className="grid grid-rows-auto sm:grid-cols-2 gap-5 my-10"
+          className="grid xs:grid-cols-2 sm:!grid-cols-3 md:!grid-cols-4 gap-5 my-10"
           variants={FadeContainer}
           initial="hidden"
           whileInView="visible"
