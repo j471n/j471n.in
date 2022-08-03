@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
-import { MdModeEdit } from "react-icons/md";
+import {TbEdit} from "react-icons/tb";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
@@ -150,9 +150,9 @@ export default function BlogLayout({ post, children }) {
                 title="Edit on Github"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1 rounded-full border-2 border-gray-700 dark:border-gray-300 transition active:scale-75 select-none"
+                className="transition active:scale-75 select-none"
               >
-                <MdModeEdit className="w-4 h-4 text-gray-700 dark:text-gray-300 " />
+                <TbEdit className="w-7 h-7 text-gray-700 dark:text-gray-300 " />
               </a>
             </Link>
             <button
