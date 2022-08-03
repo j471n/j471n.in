@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import BlogLayout from "@layout/BlogLayout";
-import { getPostFromSlug, getSlugs } from "@lib/posts";
 import Metadata from "@components/MetaData";
 import MDXComponents from "@components/MDXComponents";
 import PageNotFound from "pages/404";
-
+import MDXContent from "@lib/MDXContent";
 import { MDXRemote } from "next-mdx-remote";
 import "highlight.js/styles/atom-one-dark.css";
 
@@ -42,7 +41,7 @@ export default function Post({ post, error }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-  const { post } = await getPostFromSlug(slug);
+  const { post } = await new MDXContent("posts").getPostFromSlug(slug);
 
   if (post != null) {
     return {
@@ -66,7 +65,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = getSlugs().map((slug) => ({ params: { slug } }));
+  const paths = new MDXContent("posts")
+    .getSlugs()
+    .map((slug) => ({ params: { slug } }));
 
   return {
     paths,

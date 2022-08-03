@@ -16,6 +16,7 @@ import { RiCloseCircleLine } from "react-icons/ri";
 import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
+import MDXContent from "@lib/MDXContent";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
@@ -145,7 +146,7 @@ export default function Blogs({ blogs }) {
 }
 
 export async function getStaticProps() {
-  const blogs = getAllPosts();
+  const blogs = new MDXContent("posts").getAllPosts();
   return {
     props: { blogs },
   };

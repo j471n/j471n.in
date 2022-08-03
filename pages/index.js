@@ -1,6 +1,5 @@
 // Static Data Import--------
 import socialMedia from "@content/socialMedia";
-import faqs from "@content/faqData";
 // Static Data END--------
 
 // Page Components START----------
@@ -19,8 +18,6 @@ import {
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import { homeProfileImage } from "@utils/utils";
-import { getAllPosts } from "@lib/posts";
-// import { resumeDownloadLink } from "../utils/utils";
 import { pagePreviewImage } from "@utils/utils";
 import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
@@ -28,6 +25,7 @@ import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
 import { FiDownload } from "react-icons/fi";
 import Ripples from "react-ripples";
+import MDXContent from "@lib/MDXContent";
 
 export default function Home({ blogs, skills }) {
   return (
@@ -101,11 +99,8 @@ export default function Home({ blogs, skills }) {
         </motion.section>
 
         <div>
-          {/* <AboutMe /> */}
           <SkillSection skills={skills} />
           <BlogsSection blogs={blogs} />
-          {/* <ProjectSection /> */}
-          {/* <FAQ faqs={faqs} /> */}
           <Contact socialMedia={socialMedia} />
         </div>
       </div>
@@ -125,7 +120,7 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  const blogs = getAllPosts().slice(0, 3);
+  const blogs = new MDXContent("posts").getAllPosts();
   const skills = getPinnedSkills();
   await getRSS();
   await generateSitemap();
