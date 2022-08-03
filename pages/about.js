@@ -1,5 +1,6 @@
 import MetaData from "@components/MetaData";
 import PageTop from "@components/PageTop";
+import Support from "@components/Support";
 
 export default function About() {
   return (
@@ -12,6 +13,9 @@ export default function About() {
 
       <section className="pageTop">
         <PageTop pageTitle="About me"></PageTop>
+
+        {/* Support me Section */}
+        <Support />
       </section>
     </>
   );

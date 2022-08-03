@@ -236,7 +236,7 @@ code > .line::before {
     @apply !pointer-events-none mb-4 w-8 h-8;
   }
   .card {
-  @apply bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8 transition-all;
+    @apply bg-white dark:bg-darkSecondary p-5 sm:p-10 flex flex-col sm:flex-row gap-8 items-center max-w-2xl shadow-md rounded-lg mt-[30%] sm:mt-8 transition-all;
   }
 }
 
@@ -260,9 +260,9 @@ code > .line::before {
     @apply !p-2 border border-gray-400 align-middle;
   }
 
-   table thead tr > th {
+  table thead tr > th {
     @apply text-black dark:text-white;
-   }
+  }
 
   table thead tr {
     @apply align-text-top;
@@ -285,5 +285,14 @@ code > .line::before {
   h5 > a,
   h6 > a {
     @apply !text-black dark:!text-white !font-bold !no-underline;
+  }
+}
+
+@layer utilities {
+  /* Hiding the arrows in the input number */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }
