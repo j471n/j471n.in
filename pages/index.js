@@ -120,7 +120,7 @@ export function HomeHeading({ title }) {
 }
 
 export async function getStaticProps() {
-  const blogs = new MDXContent("posts").getAllPosts();
+  const blogs = new MDXContent("posts").getAllPosts().slice(0, 3);
   const skills = getPinnedSkills();
   await getRSS();
   await generateSitemap();
