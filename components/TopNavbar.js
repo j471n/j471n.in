@@ -150,7 +150,7 @@ function NavItem({ href, text, router }) {
         className={`${
           isActive
             ? "font-bold text-gray-800 dark:text-gray-100"
-            : "font-medium text-gray-600 dark:text-gray-300"
+            : " text-gray-600 dark:text-gray-300"
         } sm:inline-block transition-all text-[17px] hidden px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
       >
         <span className="capitalize">{text}</span>
