@@ -1,7 +1,12 @@
 import Head from "next/head";
 import useWindowLocation from "@hooks/useWindowLocation";
 
-export default function MetaData({ title, description, previewImage }) {
+export default function MetaData({
+  title,
+  description,
+  previewImage,
+  keywords,
+}) {
   const { currentURL } = useWindowLocation();
 
   return (
@@ -22,6 +27,7 @@ export default function MetaData({ title, description, previewImage }) {
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="author" content="Jatin Sharma"></meta>
       <meta name="robots" content="index,follow" />
+      <meta name="keywords" content={`${keywords}, Jatin, Jatin sharma, j471n, j471n_`} />
 
       {/* Og */}
       <meta property="og:title" content={`${title || ""} Jatin Sharma`} />

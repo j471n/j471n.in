@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
-import {TbEdit} from "react-icons/tb";
+import { TbEdit } from "react-icons/tb";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
@@ -173,9 +173,12 @@ export default function BlogLayout({ post, children }) {
           </div>
         </div>
 
-        <div className={` ${styles.blog} blog-container prose-sm prose-stone`}>
+        <AnimatedDiv
+          variants={opacityVariant}
+          className={` ${styles.blog} blog-container prose-sm prose-stone`}
+        >
           {children}
-        </div>
+        </AnimatedDiv>
         <Newsletter />
         <div className="w-full flex flex-col items-center gap-4 my-10 print:hidden">
           <h3
