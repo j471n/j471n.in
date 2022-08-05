@@ -15,6 +15,7 @@ import { BsBookmark } from "react-icons/bs";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import MDXContent from "@lib/MDXContent";
+import pageMeta from "@content/meta";
 
 export default function Blogs({ blogs }) {
   const [searchValue, setSearchValue] = useState("");
@@ -31,8 +32,6 @@ export default function Blogs({ blogs }) {
   return (
     <>
       <Metadata
-
-
         title={pageMeta.blogs.title}
         description={pageMeta.blogs.description}
         previewImage={pageMeta.blogs.image}
