@@ -6,15 +6,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
-import { pagePreviewImage } from "@utils/utils";
+import pageMeta from "@content/meta";
 
 export default function Certificates() {
   return (
     <>
       <MetaData
-        title="Certificates -"
-        description="I've participated in many contests, courses and test and get certified in many skills. You can find the certificates below."
-        previewImage={pagePreviewImage.certificates}
+        title={pageMeta.certificates.title}
+        description={pageMeta.certificates.description}
+        previewImage={pageMeta.certificates.image}
+        keywords={pageMeta.certificates.keywords}
       />
 
       <section className="pageTop">

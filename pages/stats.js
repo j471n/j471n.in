@@ -6,7 +6,6 @@ import {
   fromLeftVariant,
   popUpFromBottomForText,
 } from "@content/FramerMotionVariants";
-import { pagePreviewImage } from "@utils/utils";
 import fetcher from "@lib/fetcher";
 import MetaData from "@components/MetaData";
 import PageTop from "@components/PageTop";
@@ -15,6 +14,7 @@ import Track from "@components/Stats/Track";
 import Artist from "@components/Stats/Artist";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
+import pageMeta from "@content/meta";
 
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
@@ -60,10 +60,10 @@ export default function Stats() {
   return (
     <>
       <MetaData
-        title="Statistics -"
-        description=" These are my personal statistics about me built with Next.js API
-          routes. It includes My Blogs and github Stats and top music stats."
-        previewImage={pagePreviewImage.stats}
+        title={pageMeta.stats.title}
+        description={pageMeta.stats.description}
+        previewImage={pageMeta.stats.image}
+        keywords={pageMeta.stats.keywords}
       />
 
       <section className="pageTop font-inter">

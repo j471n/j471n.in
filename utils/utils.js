@@ -14,12 +14,3 @@ export const navigationRoutes = [
   "rss",
 ];
 
-export const pagePreviewImage = {
-  home: "https://imgur.com/KeJgIVl.png",
-  stats: "https://imgur.com/9scFfW5.png",
-  utilities: "https://imgur.com/MpfymCd.png",
-  blogs: "https://imgur.com/nbNLLZk.png",
-  certificates: "https://imgur.com/J0q1OdT.png",
-  projects: "https://imgur.com/XJqiuNK.png",
-  about: "https://imgur.com/b0HRaPv.png",
-};

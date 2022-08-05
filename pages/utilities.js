@@ -1,6 +1,5 @@
 import MetaData from "@components/MetaData";
 import PageTop from "@components/PageTop";
-import { pagePreviewImage } from "@utils/utils";
 import utilities from "@content/utilitiesData";
 import Link from "next/link";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
@@ -12,14 +11,16 @@ import {
 } from "@content/FramerMotionVariants";
 import { motion } from "framer-motion";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import pageMeta from "@content/meta";
 
 export default function Utilities() {
   return (
     <>
       <MetaData
-        title={utilities.title + " -"}
+        title={pageMeta.utilities.title}
         description={utilities.description}
-        previewImage={pagePreviewImage.utilities}
+        previewImage={pageMeta.utilities.image}
+        keywords={pageMeta.utilities.keywords}
       />
 
       <section className="pageTop font-inter">
@@ -42,7 +43,10 @@ export default function Utilities() {
 
 function UtilitySection({ utility }) {
   return (
-    <AnimatedDiv variants={FadeContainer} className="!w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 font-medium">
+    <AnimatedDiv
+      variants={FadeContainer}
+      className="!w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 font-medium"
+    >
       <motion.h2
         variants={popUpFromBottomForText}
         className="font-bold text-2xl sm:text-3xl font-barlow mb-4"
@@ -66,7 +70,9 @@ function UtilitySection({ utility }) {
               >
                 <item.Icon className="utilities-svg" />
 
-                <p className="absolute bottom-3 text-[10px] select-none">{item.name}</p>
+                <p className="absolute bottom-3 text-[10px] select-none">
+                  {item.name}
+                </p>
               </motion.a>
             </Link>
           );

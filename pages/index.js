@@ -18,7 +18,6 @@ import {
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import { homeProfileImage } from "@utils/utils";
-import { pagePreviewImage } from "@utils/utils";
 import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
@@ -26,14 +25,15 @@ import { motion } from "framer-motion";
 import { FiDownload } from "react-icons/fi";
 import Ripples from "react-ripples";
 import MDXContent from "@lib/MDXContent";
+import pageMeta from "@content/meta";
 
 export default function Home({ blogs, skills }) {
   return (
     <>
       <Metadata
-        description="I am currently perusing my Bachelor Degree in Computer Science. I
-              can code in Python, C, C++, etc. I also work on React & Next.js"
-        previewImage={pagePreviewImage.home}
+        description={pageMeta.home.description}
+        previewImage={pageMeta.home.image}
+        keywords={pageMeta.home.keywords}
       />
       <div className="relative dark:bg-darkPrimary dark:text-gray-100 max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto">
         <motion.section

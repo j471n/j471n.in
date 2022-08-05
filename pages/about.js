@@ -7,16 +7,16 @@ import { MDXRemote } from "next-mdx-remote";
 import styles from "@styles/Blog.module.css";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { opacityVariant } from "@content/FramerMotionVariants";
-import { pagePreviewImage } from "@utils/utils";
+import pageMeta from "@content/meta";
 
 export default function About({ about }) {
   return (
     <>
       <MetaData
-        title="About -"
-        description="Jatin Sharma"
-        keywords="About"
-        previewImage={pagePreviewImage.about}
+        title={pageMeta.about.title}
+        description={pageMeta.about.description}
+        previewImage={pageMeta.about.image}
+        keywords={pageMeta.about.keywords}
       />
 
       <section className="pageTop">

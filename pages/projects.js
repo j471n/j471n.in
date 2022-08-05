@@ -3,18 +3,19 @@ import { AnimatePresence } from "framer-motion";
 import Project from "@components/Project";
 import Metadata from "@components/MetaData";
 import PageTop from "@components/PageTop";
-import { pagePreviewImage } from "@utils/utils";
 import { getProjects } from "@lib/dataFetch";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { FadeContainer } from "@content/FramerMotionVariants";
+import pageMeta from "@content/meta";
 
 export default function Projects({ projects }) {
   return (
     <>
       <Metadata
-        title="Projects -"
-        description={` I've been making various types of projects some of them were basics and some of them were complicated. So far I've made ${projects.length} projects.`}
-        previewImage={pagePreviewImage.projects}
+        title={pageMeta.projects.title}
+        description={pageMeta.projects.description}
+        previewImage={pageMeta.projects.image}
+        keywords={pageMeta.projects.keywords}
       />
       <section className="pageTop">
         <PageTop pageTitle="Projects">

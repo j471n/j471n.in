@@ -9,8 +9,6 @@ import {
 import Link from "next/link";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
-import { getAllPosts } from "@lib/posts";
-import { pagePreviewImage } from "@utils/utils";
 import { BiRss } from "react-icons/bi";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { BsBookmark } from "react-icons/bs";
@@ -33,9 +31,12 @@ export default function Blogs({ blogs }) {
   return (
     <>
       <Metadata
-        title="Blogs -"
-        description={`I've been writing online since 2021, mostly about web development and tech careers. In total, I've written ${blogs.length} articles till now.`}
-        previewImage={pagePreviewImage.blogs}
+
+
+        title={pageMeta.blogs.title}
+        description={pageMeta.blogs.description}
+        previewImage={pageMeta.blogs.image}
+        keywords={pageMeta.blogs.keywords}
       />
 
       <section className="pageTop flex flex-col gap-2">
