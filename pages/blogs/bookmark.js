@@ -2,10 +2,10 @@ import { AnimatePresence } from "framer-motion";
 import { FadeContainer } from "@content/FramerMotionVariants";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
-import { pagePreviewImage } from "@utils/utils";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
+import pageMeta from "@content/meta";
 
 export default function Blogs() {
   const { bookmarkedBlogs } = useBookmarkBlogs("blogs", []);
@@ -13,9 +13,10 @@ export default function Blogs() {
   return (
     <>
       <Metadata
-        title="Bookmarks -"
-        description={"Bookmarked Blogs of Jatin Sharma by you"}
-        previewImage={pagePreviewImage.blogs}
+        title={pageMeta.bookmark.title}
+        description={pageMeta.bookmark.description}
+        previewImage={pageMeta.bookmark.image}
+        keywords={pageMeta.bookmark.keywords}
       />
 
       <section className="pageTop flex flex-col gap-2 text-neutral-900 dark:text-neutral-200">

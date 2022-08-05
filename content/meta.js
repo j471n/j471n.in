@@ -28,6 +28,13 @@ export default {
     image: "https://imgur.com/nbNLLZk.png",
     keywords: "j471n blog, blog, webdev, react",
   },
+
+  bookmark: {
+    title: "Bookmarks -",
+    description: "Bookmarked Blogs of Jatin Sharma's blogs by you",
+    image: "https://imgur.com/5XkrVPq.png",
+    keywords: "bookmark, blogs, ",
+  },
   certificates: {
     title: "Certificates -",
     description:
