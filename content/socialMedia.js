@@ -8,7 +8,7 @@ export default [
   {
     title: "Twitter",
     Icon: AiOutlineTwitter,
-    url: "https://twitter.com/j471n_",
+    url: "https://twitter.com/intent/follow?screen_name=j471n_",
   },
   {
     title: "LinkedIn",

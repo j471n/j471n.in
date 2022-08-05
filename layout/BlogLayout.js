@@ -173,14 +173,10 @@ export default function BlogLayout({ post, children }) {
           </div>
         </div>
 
-        <div
-          className={` ${styles.blog} !w-full prose-sm  selection:bg-blue-100 selection:text-white-400 dark:text-neutral-400 my-5 font-medium prose-stone`}
-        >
+        <div className={` ${styles.blog} blog-container prose-sm prose-stone`}>
           {children}
         </div>
-
         <Newsletter />
-
         <div className="w-full flex flex-col items-center gap-4 my-10 print:hidden">
           <h3
             style={{ margin: "0" }}
