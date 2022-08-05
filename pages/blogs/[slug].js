@@ -26,6 +26,7 @@ export default function Post({ post, error }) {
         title={post.meta.title}
         description={post.meta.excerpt}
         previewImage={post.meta.image}
+        keywords={post.meta.keywords}
       />
 
       <BlogLayout post={post}>

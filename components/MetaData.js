@@ -27,7 +27,10 @@ export default function MetaData({
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
       <meta name="author" content="Jatin Sharma"></meta>
       <meta name="robots" content="index,follow" />
-      <meta name="keywords" content={`${keywords}, Jatin, Jatin sharma, j471n, j471n_`} />
+      <meta
+        name="keywords"
+        content={`${keywords || ""} Jatin, Jatin sharma, j471n, j471n_`}
+      />
 
       {/* Og */}
       <meta property="og:title" content={`${title || ""} Jatin Sharma`} />
