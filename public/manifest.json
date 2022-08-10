@@ -82,6 +82,11 @@
       "type": "image/gif"
     },
     {
+      "src": "screenshots/utilities.png",
+      "sizes": "360x721",
+      "type": "image/gif"
+    },
+    {
       "src": "screenshots/contact.png",
       "sizes": "360x721",
       "type": "image/gif"
@@ -101,11 +106,11 @@
       ]
     },
     {
-      "name": "Projects",
-      "url": "/projects",
+      "name": "About me",
+      "url": "/about",
       "icons": [
         {
-          "src": "shortcuts/projects.png",
+          "src": "shortcuts/about.png",
           "sizes": "202x202",
           "type": "image/png",
           "purpose": "any"
