@@ -5,6 +5,7 @@ export const resumeDownloadLink =
   "https://drive.google.com/u/0/uc?id=1TgQMn35p_UZ-yOMGxUPfLK6IT4sM-5ZK&export=download";
 export const navigationRoutes = [
   "home",
+  "about",
   "stats",
   "utilities",
   "blogs",
@@ -13,4 +14,3 @@ export const navigationRoutes = [
   "newsletter",
   "rss",
 ];
-

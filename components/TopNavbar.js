@@ -106,9 +106,9 @@ export default function TopNavbar() {
           initial="hidden"
           animate="visible"
           variants={FadeContainer}
-          className="flex items-center gap-2"
+          className="flex items-center md:gap-2"
         >
-          {navigationRoutes.slice(0, 6).map((link, index) => {
+          {navigationRoutes.slice(0, 7).map((link, index) => {
             return (
               <NavItem
                 key={index}
@@ -151,7 +151,7 @@ function NavItem({ href, text, router }) {
           isActive
             ? "font-bold text-gray-800 dark:text-gray-100"
             : " text-gray-600 dark:text-gray-300"
-        } sm:inline-block transition-all text-[17px] hidden px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
+        } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
       >
         <span className="capitalize">{text}</span>
       </motion.a>
@@ -216,7 +216,7 @@ const MobileMenu = ({ links, handleClick }) => {
       animate="visible"
       exit="hidden"
     >
-      <motion.nav className="mt-32 mx-8 flex flex-col">
+      <motion.nav className="mt-28 mx-8 flex flex-col">
         {links.map((link, index) => {
           const navlink =
             link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
