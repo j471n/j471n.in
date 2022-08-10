@@ -7,7 +7,7 @@ export default function ScrollToTopButton() {
   const scrollPercentage = useScrollPercentage();
 
   useEffect(() => {
-    if (scrollPercentage < 95) {
+    if (scrollPercentage < 95 && scrollPercentage > 10) {
       setShowButton(true);
     } else {
       setShowButton(false);
