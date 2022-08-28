@@ -1,4 +1,4 @@
-export default function Warning({ text, title }) {
+export default function Warning({ text, title, children }) {
   return (
     <div className="border-l-4 border-yellow-700 dark:border-yellow-500 bg-yellow-100 dark:bg-yellow-900 p-6 my-4 w-full">
       <div className="text-2xl font-medium leading-tight mb-2 flex items-center gap-2 text-yellow-700 dark:text-yellow-500">
@@ -17,7 +17,9 @@ export default function Warning({ text, title }) {
         </svg>
         {title || "Warning"}
       </div>
-      <p className="mt-4 text-yellow-700/80 dark:text-yellow-400/50">{text}</p>
+      <p className="mt-4 text-yellow-700/80 dark:text-yellow-400/50">
+        {text || children}
+      </p>
     </div>
   );
 }
