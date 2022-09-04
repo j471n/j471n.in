@@ -2,7 +2,7 @@
 slug: css-battle-14
 title: "CSS Battle: #14 - Web Maker Logo"
 date: 2022-08-21
-stringDate: Aug 21, 2022
+stringDate: August 21, 2022
 published: true
 keywords: css, css battle, webdev, Web Maker Logo, target 14, css battle 14
 excerpt: In this article, I will solve a Totally Triangle CSS Challenge on CSS Battle.
@@ -40,6 +40,7 @@ So now look at the Solution and how we are going to achieve this.
 Now let's style the containers.
 
 <CodeTitle lang="css" title="style.css" />
+
 ```css
 body {
   margin: 0;
@@ -55,29 +56,28 @@ p {
 }
 
 [wl] {
-filter: drop-shadow(20px 0 #fd4602);
+  filter: drop-shadow(20px 0 #fd4602);
 }
 
 [l] {
-background: #ff6d00;
-left: -140;
-top: -6;
+  background: #ff6d00;
+  left: -140;
+  top: -6;
 }
 
 [wr] {
-filter: drop-shadow(20px 0 #ff6d00);
+  filter: drop-shadow(20px 0 #ff6d00);
 }
 
 [r] {
-background: #fd4602;
-transform: scaleY(-1);
-bottom: -6;
-left: -30;
+  background: #fd4602;
+  transform: scaleY(-1);
+  bottom: -6;
+  left: -30;
 }
 ```
 
 I am using a wrapper because we cannot add `box-shadow` to the `clip-path`. However, If you wrap the `clip-path` in some `div` and then apply the `drop-shadow` then it works. That's what I did here.
-
 
 <Tip id="1">
   Note: In CSS Battle you can use `100` instead of `100px`. You don't need to
@@ -105,4 +105,6 @@ There are many ways to solve this. You can share your approach in the comments. 
 <NextAndPreviousButton
   prevHref="/blogs/css-battle-13"
   prevTitle="CSS Battle: #13 - Totally Triangle"
+  nextHref="/blogs/css-battle-15"
+  nextTitle="CSS Battle: #15 - Overlap"
 />
