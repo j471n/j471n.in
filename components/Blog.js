@@ -33,7 +33,7 @@ export default function Blog({ blog }) {
     <article className="card">
       <OgImage src={blog.image} alt={blog.title} />
 
-      <div className="flex flex-col">
+      <div className="flex flex-col  h-[95%]">
         <p className="text-gray-500 text-sm font-medium flex justify-between items-center">
           <span>{blog.stringDate}</span>
           <span>{blog.readingTime.text}</span>
@@ -45,7 +45,7 @@ export default function Blog({ blog }) {
           {blog.excerpt}
         </p>
 
-        <div className="relative mt-4 flex items-center justify-between overflow-hidden">
+        <div className="relative mt-auto flex items-center justify-between overflow-hidden ">
           <Link passHref href={`/blogs/${blog.slug}`}>
             <a
               href={`/blogs/${blog.slug}`}
