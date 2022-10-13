@@ -9,6 +9,7 @@ import Step from "./Step";
 import CodeSandbox from "./CodeSandbox";
 import NextAndPreviousButton from "./NextAndPreviousButton";
 import YouTube from "./YouTube";
+import EmbedBlog from "./EmbedBlog";
 
 const MDXComponents = {
   Codepen,
@@ -21,6 +22,7 @@ const MDXComponents = {
   CodeSandbox,
   NextAndPreviousButton,
   YouTube,
+  EmbedBlog,
   pre: Pre,
 };
 
