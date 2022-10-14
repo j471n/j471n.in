@@ -1,3 +1,4 @@
+/* Importing Modules */
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,9 +13,14 @@ import { useDarkMode } from "../context/darkModeContext";
 import { navigationRoutes } from "../utils/utils";
 import { FiMoon, FiSun } from "react-icons/fi";
 
+/* TopNavbar Component */
 export default function TopNavbar() {
   const router = useRouter();
   const navRef = useRef(null);
+
+  /*  Using to control animation as I'll show the name to the mobile navbar when you scroll a bit
+   * demo: https://i.imgur.com/5LKI5DY.gif
+   */
   const control = useAnimation();
   const [navOpen, setNavOpen] = useState(false);
   const { isDarkMode, changeDarkMode } = useDarkMode();
@@ -58,6 +64,7 @@ export default function TopNavbar() {
     root.classList.toggle("lock-scroll"); // class is define in the global.css
   }
 
+  /* To Lock  the Scroll when user visit the mobile nav page */
   function handleClick() {
     lockScroll();
     setNavOpen(!navOpen);
