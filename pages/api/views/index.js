@@ -10,6 +10,8 @@ export default async function views(req, res) {
         totalViews += snapshots.val()[key];
         posts.push({ slug: key, views: snapshots.val()[key] });
       });
+      
+      res.header("Access-Control-Allow-Origin", "*");
 
       return res.status(200).json({
         totalViews,
