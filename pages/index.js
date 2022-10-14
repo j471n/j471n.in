@@ -1,7 +1,3 @@
-// Static Data Import--------
-import socialMedia from "@content/socialMedia";
-// Static Data END--------
-
 // Page Components START----------
 import BlogsSection from "@components/Home/BlogsSection";
 import SkillSection from "@components/Home/SkillSection";
@@ -101,7 +97,7 @@ export default function Home({ blogs, skills }) {
         <div>
           <SkillSection skills={skills} />
           <BlogsSection blogs={blogs} />
-          <Contact socialMedia={socialMedia} />
+          <Contact />
         </div>
       </div>
     </>
