@@ -41,7 +41,7 @@ export default function Blog({ blog }) {
         <h1 className="mt-1 font-bold text-neutral-900 dark:text-neutral-200">
           {blog.title}
         </h1>
-        <p className="mt-3 text-sm  text-gray-600 dark:text-gray-400 truncate-3">
+        <p className="mt-3 text-sm  text-gray-600 dark:text-gray-400 truncate-3 mb-2">
           {blog.excerpt}
         </p>
 
