@@ -64,7 +64,7 @@ export default function BlogLayout({ post, children }) {
 
         <AnimatedDiv
           variants={FadeContainer}
-          className="flex flex-col relative before:absolute before:left-0 before:h-full before:w-[1.5px] before:bg-neutral-500"
+          className="flex flex-col relative before:absolute before:left-0 before:h-full before:w-[1.5px] before:bg-neutral-500 mb-20"
         >
           {post.tableOfContents.map((content) => {
             return (
