@@ -1,7 +1,17 @@
 import { BsFileEarmarkCodeFill } from "react-icons/bs";
-import { SiCss3, SiPython, SiGnubash, SiHtml5, SiReact } from "react-icons/si";
+import {
+  SiCss3,
+  SiPython,
+  SiGnubash,
+  SiHtml5,
+  SiReact,
+  SiMarkdown,
+  SiNextdotjs,
+  SiVercel,
+} from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
 import { IoLogoJavascript } from "react-icons/io5";
+import { AiOutlineFileText, AiOutlineFolderOpen } from "react-icons/ai";
 export default function CodeTitle({ title, lang }) {
   let Icon;
   switch (lang) {
@@ -25,6 +35,21 @@ export default function CodeTitle({ title, lang }) {
       break;
     case "jsx":
       Icon = SiReact;
+      break;
+    case "text":
+      Icon = AiOutlineFileText;
+      break;
+    case "md":
+      Icon = SiMarkdown;
+      break;
+    case "next":
+      Icon = SiNextdotjs;
+      break;
+    case "directory":
+      Icon = AiOutlineFolderOpen;
+      break;
+    case "vercel":
+      Icon = SiVercel;
       break;
     default:
       Icon = BsFileEarmarkCodeFill;
