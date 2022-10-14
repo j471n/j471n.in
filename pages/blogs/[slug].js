@@ -5,7 +5,6 @@ import MDXComponents from "@components/MDXComponents";
 import PageNotFound from "pages/404";
 import MDXContent from "@lib/MDXContent";
 import { MDXRemote } from "next-mdx-remote";
-import "highlight.js/styles/atom-one-dark.css";
 
 export default function Post({ post, error }) {
   // Adding Views to the firebase database

@@ -135,8 +135,12 @@ code {
 }
 
 code span.line {
-  padding: 2px 12px;
+  padding: 0px 12px;
   border-left: 4px solid transparent;
+}
+
+span.line > span {
+  padding: 2px 0;
 }
 
 code > .line::before {
