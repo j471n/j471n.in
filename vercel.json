@@ -90,6 +90,10 @@
     {
       "source": "/cv",
       "destination": "https://read.cv/j471n"
+    },
+    {
+      "source": "/social",
+      "destination": "https://linktr.ee/j471n"
     }
   ]
 }
