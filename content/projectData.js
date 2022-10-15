@@ -83,7 +83,7 @@ module.exports = [
     description:
       "This is the fun project in this I've used public API to generate jokes",
     githubURL: "https://github.com/j471n/jokes-generator",
-    previewURL: "https://jokes-generator-nine.vercel.app/",
+    previewURL: "https://jokes-gen.vercel.app/",
     tools: ["HTML", "CSS", "JS"],
   },
   {
