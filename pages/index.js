@@ -75,7 +75,7 @@ export default function Home({ blogs, skills }) {
                 variants={opacityVariant}
                 className=" text-slate-500 dark:text-gray-300 font-medium text-sm md:text-base text-center"
               >
-                I am currently perusing my Bachelor Degree in Computer Science.
+                I am currently pursuing my Bachelor Degree in Computer Science.
                 I can code in Python, C, C++, etc.
               </motion.p>
             </div>
