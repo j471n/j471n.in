@@ -122,13 +122,7 @@ export default function Stats() {
             is the most streamed song of mine. Here's my top tracks on Spotify
             updated daily.
           </AnimatedText>
-          <motion.div
-            variants={FadeContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col my-10 gap-0 font-barlow"
-          >
+          <div className="flex flex-col my-10 gap-0 font-barlow">
             {topTracks?.map((track, index) => (
               <Track
                 key={index}
@@ -140,7 +134,7 @@ export default function Stats() {
                 artist={track.artist}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Spotify top Artists */}
@@ -158,13 +152,7 @@ export default function Stats() {
             on Spotify.
           </AnimatedText>
 
-          <motion.div
-            variants={FadeContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col my-10 gap-0 font-barlow"
-          >
+          <div className="flex flex-col my-10 gap-0 font-barlow">
             {artists?.map((artist, index) => (
               <Artist
                 key={index}
@@ -175,7 +163,7 @@ export default function Stats() {
                 followers={artist.followers}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     </>

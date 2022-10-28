@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { fromBottomVariant, popUp } from "../../content/FramerMotionVariants";
+import { popUpFromBottomForText, popUp } from "../../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
 export default function Track({ name, url, coverImage, followers, id }) {
   return (
     <Link href={url} passHref>
       <motion.a
-        variants={fromBottomVariant}
+        variants={popUpFromBottomForText}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
         href={url}
         className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden"
         rel="noreferrer"
