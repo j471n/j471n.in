@@ -45,11 +45,11 @@ export default function Blog({ blog }) {
           {blog.excerpt}
         </p>
 
-        <div className="relative mt-auto flex items-center justify-between overflow-hidden ">
+        <div className="relative mt-auto flex items-center justify-between ">
           <Link passHref href={`/blogs/${blog.slug}`}>
             <a
               href={`/blogs/${blog.slug}`}
-              className="px-5 md:px-6 py-2 md:py-2.5 rounded-lg bg-black hover:bg-neutral-900 text-white w-fit text-xs transition-all active:scale-95 font-medium select-none"
+              className="px-5 md:px-6 py-2 md:py-2.5 rounded-lg bg-black hover:bg-neutral-900 text-white w-fit text-xs transition-all active:scale-95 font-medium select-none hover:-translate-y-1"
             >
               Read more
             </a>
@@ -74,7 +74,7 @@ export default function Blog({ blog }) {
                 animate="visible"
                 exit="hidden"
                 variants={{
-                  hidden: { opacity: 0, right: -100 },
+                  hidden: { right: 0, opacity: 0 },
                   visible: { right: 40, opacity: 1 },
                 }}
                 className="absolute px-2 py-1 text-[10px] bg-black text-white"
