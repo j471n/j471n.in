@@ -55,6 +55,14 @@ export default function Stats() {
       title: "Github Followers",
       value: github?.followers,
     },
+    {
+      title: "Github Stars",
+      value: github?.githubStars,
+    },
+    {
+      title: "Repositories Forked",
+      value: github?.forks,
+    },
   ];
 
   return (

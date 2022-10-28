@@ -1,7 +1,8 @@
-import { fetchGithub, getOldStats } from "../../../lib/github";
+import { fetchGithub, getOldStats, getGithubStarsAndForks } from "../../../lib/github";
 
 export default async function handler(req, res) {
   const { public_repos: repos, public_gists: gists, followers } = await fetchGithub();
+  const {githubStars, forks} = await getGithubStarsAndForks();
 
   // it runs when user's api is exhausted, it gives the old data
   if (repos === undefined && gists === undefined) {
@@ -10,6 +11,8 @@ export default async function handler(req, res) {
       repos,
       gists,
       followers,
+      githubStars,
+      forks,
     });
   }
 
@@ -22,5 +25,7 @@ export default async function handler(req, res) {
     repos,
     gists,
     followers,
+    githubStars,
+    forks
   });
 }
