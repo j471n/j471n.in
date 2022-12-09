@@ -1,5 +1,15 @@
+<div align="center">
 
-# Getting Started
+  ![](https://imgur.com/Kpzk2LQ.png)
+  
+  ![Github stars](https://img.shields.io/github/stars/j471n/j471n.in?style=flat-square)
+  ![Github Forks](https://img.shields.io/github/forks/j471n/j471n.in?style=flat-square)
+  ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/j471n/j471n.in?style=flat-square)
+  ![GitHub repo size](https://img.shields.io/github/repo-size/j471n/j471n.in?style=flat-square)
+</div>
+
+
+## Getting Started
 
 Clone the repository-
 ```bash
@@ -10,10 +20,10 @@ Install all the dependencies-
 ```bash
 cd j471n.in
 
-# Install dependencies with pnpm
+### Install dependencies with pnpm
 pnpm install
 
-# Running the dev server
+### Running the dev server
 pnpm dev
 ```
 
@@ -22,7 +32,7 @@ After that server should be running on [localhost:3000](http://localhost:3000)
 
 > Warning: You could ran to into errors if you don't populate the `.env.local` with correct values
 
-# Tools Used 
+## Tools Used 
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
@@ -38,7 +48,7 @@ After that server should be running on [localhost:3000](http://localhost:3000)
 - [React Toastify](https://github.com/fkhadra/react-toastify)
 
 
-# Setting up the Environment
+## Setting up the Environment
 I've given you [`.env.example`](/.env.example) as the demo. you can create your own `.env.local`
 
 - [Spotify Integration](https://j471n.in/blogs/spotify-api-nextjs)
@@ -47,3 +57,8 @@ I've given you [`.env.example`](/.env.example) as the demo. you can create your 
 - [Revue API](https://www.getrevue.co/app/integrations)
 
 For More info [visit here](/.env.example)
+
+
+## Learn How I made this portfolio  
+
+I have made a blog about [How I Made My Portfolio with Next.js](https://dev.to/j471n/how-i-made-my-portfolio-with-nextjs-2mn3). You can visit there to look at the detailed guide about this portfolio. 
