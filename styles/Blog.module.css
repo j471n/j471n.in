@@ -62,7 +62,7 @@
 .blog h4 code,
 .blog h5 code,
 .blog h6 code {
-  @apply bg-transparent font-semibold my-2 text-blue-500;
+  @apply bg-transparent font-semibold my-2 text-white;
 }
 
 .blog div[data-rehype-pretty-code-title] {
