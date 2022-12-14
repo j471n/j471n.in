@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import OgImage from "./OgImage";
+import { getFormattedDate} from "@utils/date"
 
 export default function Blog({ blog }) {
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
@@ -35,7 +36,7 @@ export default function Blog({ blog }) {
 
       <div className="flex flex-col  h-[95%]">
         <p className="text-gray-500 text-sm font-medium flex justify-between items-center">
-          <span>{blog.stringDate}</span>
+          <span>{getFormattedDate(blog.date)}</span>
           <span>{blog.readingTime.text}</span>
         </p>
         <h1 className="mt-1 font-bold text-neutral-900 dark:text-neutral-200">

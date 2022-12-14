@@ -18,6 +18,7 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import useScrollPercentage from "@hooks/useScrollPercentage";
+import { getFormattedDate } from "@utils/date";
 
 export default function BlogLayout({ post, children }) {
   const { currentURL } = useWindowLocation();
@@ -139,7 +140,7 @@ export default function BlogLayout({ post, children }) {
               <p className="text-sm  flex items-center gap-2 font-medium !my-0">
                 <span>Jatin Sharma</span>
                 <span>•</span>
-                <span>{post.meta.stringDate}</span>
+                <span>{getFormattedDate(post.meta.date)}</span>
               </p>
 
               <p className="text-sm  flex items-center gap-2 font-medium !my-0">
