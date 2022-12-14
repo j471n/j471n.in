@@ -16,6 +16,8 @@ import {
   SiSpotify,
   SiObsstudio,
   SiGrammarly,
+  SiCanva,
+  SiGooglekeep,
 } from "react-icons/si";
 import {
   BsFillPaletteFill,
@@ -66,16 +68,16 @@ const utilities = {
         link: "https://www.microsoft.com/software-download/windows11",
       },
       {
-        name: "Microsoft Edge",
-        description: "Primary Browser",
-        Icon: SiMicrosoftedge,
-        link: "https://www.microsoft.com/en-us/edge",
-      },
-      {
         name: "Chrome",
-        description: "Secondary Browser",
+        description: "Primary Browser",
         Icon: SiGooglechrome,
         link: "https://www.google.com/chrome",
+      },
+      {
+        name: "Microsoft Edge",
+        description: "Secondary Browser",
+        Icon: SiMicrosoftedge,
+        link: "https://www.microsoft.com/en-us/edge",
       },
     ],
   },
@@ -142,6 +144,12 @@ const utilities = {
         description: "Primary Design tool",
         Icon: SiFigma,
         link: "https://www.figma.com/downloads/",
+      },
+      {
+        name: "Canva",
+        description: "Secondary Design tool",
+        Icon: SiCanva,
+        link: "https://www.canva.com/",
       },
       {
         name: "Insomnia",
@@ -217,6 +225,12 @@ const utilities = {
         description: "Bookmark Manager",
         Icon: SVG.RainDrop,
         link: "https://raindrop.io/",
+      },
+      {
+        name: "Google Keep",
+        description: "Quick Note",
+        Icon: SiGooglekeep,
+        link: "https://keep.google.com/",
       },
     ],
   },
