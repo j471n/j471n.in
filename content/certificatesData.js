@@ -35,7 +35,22 @@ const FreeCodeCamp = {
   orgLogo: "https://imgur.com/iAue2Tq.png",
 };
 
+const Accenture = {
+  orgName: "Accenture",
+  orgLogo: "https://imgur.com/Tp6h32m.png",
+};
+  
 module.exports = [
+  {
+    title: "Developer & Technology Accenture Developer Program",
+    issuedDate: "Aug 16, 2022",
+    issuedBy: Accenture,
+    urls: {
+      pdfURL:
+        "https://drive.google.com/file/d/1RvReVd4YmRpT2LsnHIX5MWIqxlFTj4bl/view",
+    },
+    pinned: true,
+  },
   {
     title: "Become a Software Developer",
     issuedDate: "Oct 25, 2020",

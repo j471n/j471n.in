@@ -24,7 +24,7 @@ export default function Certificates() {
           in many skills. You can find the certificates below.
         </PageTop>
 
-        <div className="flex flex-col gap-3 font-inter px-5">
+        <div className="flex flex-col gap-3 font-inter">
           {certificatesData.map((cer, index) => {
             return (
               <AnimatedDiv
