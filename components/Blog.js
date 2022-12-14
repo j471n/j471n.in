@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import OgImage from "./OgImage";
-import { getFormattedDate} from "@utils/date"
+import { getFormattedDate } from "@utils/date";
 
 export default function Blog({ blog }) {
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
@@ -47,13 +47,12 @@ export default function Blog({ blog }) {
         </p>
 
         <div className="relative mt-auto flex items-center justify-between ">
-          <Link passHref href={`/blogs/${blog.slug}`}>
-            <a
-              href={`/blogs/${blog.slug}`}
-              className="px-5 md:px-6 py-2 md:py-2.5 rounded-lg bg-black hover:bg-neutral-900 text-white w-fit text-xs transition-all active:scale-95 font-medium select-none hover:-translate-y-1"
-            >
-              Read more
-            </a>
+          <Link
+            passHref
+            href={`/blogs/${blog.slug}`}
+            className="px-5 md:px-6 py-2 md:py-2.5 rounded-lg bg-black hover:bg-neutral-900 text-white w-fit text-xs transition-all active:scale-95 font-medium select-none hover:-translate-y-1"
+          >
+            Read more
           </Link>
 
           <button

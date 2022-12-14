@@ -50,3 +50,6 @@ public/sitemap.xml
 /public/sw.js.map
 /public/workbox-*.js.map
 /public/worker-*.js.map
+
+
+/store

@@ -76,22 +76,18 @@ export default function BlogLayout({ post, children }) {
                     key={content.heading}
                     href={`#${stringToSlug(content.heading)}`}
                     passHref
-                  >
-                    <a
-                      className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
-                      style={{ marginLeft: `${content.level * 15}px` }}
-                      key={content.heading}
-                      onClick={() => {
-                        if (size.width < 768) {
-                          lockScroll();
-                          setIsTOCActive(false);
-                        }
+                    className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
+                    style={{ marginLeft: `${content.level * 15}px` }}
+                    onClick={() => {
+                      if (size.width < 768) {
+                        lockScroll();
                         setIsTOCActive(false);
-                        removeScrollLock();
-                      }}
-                    >
-                      {content.heading}
-                    </a>
+                      }
+                      setIsTOCActive(false);
+                      removeScrollLock();
+                    }}
+                  >
+                    {content.heading}
                   </Link>
                 );
               })}
@@ -126,16 +122,13 @@ export default function BlogLayout({ post, children }) {
 
         <div className="flex items-center !w-full text-gray-700 dark:text-gray-300">
           <div className="flex items-center gap-2 w-full">
-            <div className="relative grid">
-              <Image
-                alt="Jatin Sharma"
-                height={30}
-                width={30}
-                src={homeProfileImage}
-                layout="fixed"
-                className="rounded-full"
-              />
-            </div>
+            <Image
+              alt="Jatin Sharma"
+              height={30}
+              width={30}
+              src={homeProfileImage}
+              className="rounded-full !m-0"
+            />
             <div className="flex flex-col sm:flex-row sm:justify-between w-full">
               <p className="text-sm  flex items-center gap-2 font-medium !my-0">
                 <span>Jatin Sharma</span>
@@ -155,15 +148,12 @@ export default function BlogLayout({ post, children }) {
             <Link
               href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
               passHref
+              title="Edit on Github"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition active:scale-75 select-none"
             >
-              <a
-                title="Edit on Github"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition active:scale-75 select-none"
-              >
-                <TbEdit className="w-7 h-7 text-gray-700 dark:text-gray-300 " />
-              </a>
+              <TbEdit className="w-7 h-7 text-gray-700 dark:text-gray-300 " />
             </Link>
             <button
               title="Save for Later"

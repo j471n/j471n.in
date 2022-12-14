@@ -10,13 +10,16 @@ function OgImage({ src, alt, darkSrc }) {
         src={darkSrc ? (isDarkMode ? darkSrc : src) : src}
         width={1200}
         height={630}
-        layout="responsive"
         placeholder="blur"
-        objectFit="cover"
         blurDataURL={darkSrc ? (isDarkMode ? darkSrc : src) : src}
         quality={50}
         className="lg:group-hover:scale-110 transition-all duration-300 backdrop-blur-xl"
-      />
+        sizes="100vw"
+        style={{
+          width: "100%",
+          height: "auto",
+          objectFit: "cover"
+        }} />
     </div>
   );
 }

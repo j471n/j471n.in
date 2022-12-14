@@ -27,10 +27,13 @@ export default function ProjectSection() {
                   height={200}
                   src={project.coverURL}
                   alt={project.name}
-                  layout="responsive"
-                  objectFit="contain"
                   quality={50}
-                />
+                  sizes="100vw"
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    objectFit: "contain"
+                  }} />
               </AnimatedDiv>
               <AnimatedHeading
                 variants={popUpFromBottomForText}

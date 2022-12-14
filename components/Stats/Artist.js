@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Track({ name, url, coverImage, followers, id }) {
   return (
-    <Link href={url} passHref>
+    <Link href={url} passHref legacyBehavior>
       <motion.a
         variants={popUpFromBottomForText}
         initial="hidden"
@@ -28,10 +28,13 @@ export default function Track({ name, url, coverImage, followers, id }) {
             src={coverImage}
             width={100}
             height={100}
-            layout="responsive"
             alt={name}
             quality={50}
-          ></Image>
+            sizes="100vw"
+            style={{
+              width: "100%",
+              height: "auto"
+            }}></Image>
         </div>
         <div>
           <h2

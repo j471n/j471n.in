@@ -104,22 +104,22 @@ export default function Blogs({ blogs }) {
                   </motion.h3>
 
                   <div className="flex items-center gap-2">
-                    <Link href="/blogs/bookmark" passHref>
-                      <motion.a variants={popUp}>
+                    <Link href="/blogs/bookmark" legacyBehavior>
+                      <motion.div variants={popUp}>
                         <BsBookmark
                           title="Bookmark"
                           className="text-2xl cursor-pointer"
                         />
-                      </motion.a>
+                      </motion.div>
                     </Link>
 
-                    <Link href="/rss" passHref>
-                      <motion.a variants={popUp}>
+                    <Link href="/rss" legacyBehavior>
+                      <motion.div variants={popUp}>
                         <BiRss
                           title="RSS"
                           className="text-3xl cursor-pointer"
                         />
-                      </motion.a>
+                      </motion.div>
                     </Link>
                   </div>
                 </AnimatedDiv>

@@ -60,12 +60,16 @@ function UtilitySection({ utility }) {
       >
         {utility.data.map((item) => {
           return (
-            <Link href={item.link} key={item.name} passHref>
-              <motion.a
+            <Link
+              title={item.name + " - " + item.description}
+              rel="noopener noreferrer"
+              target="_blank"
+              href={item.link}
+              key={item.name}
+              legacyBehavior
+            >
+              <motion.div
                 variants={popUp}
-                title={item.name + " - " + item.description}
-                rel="noopener noreferrer"
-                target="_blank"
                 className="relative flex flex-col gap-3 items-center justify-center bg-white dark:bg-darkSecondary shadow dark:shadow-md p-8  border border-transparent hover:border-gray-400 dark:hover:border-neutral-600 rounded-md transition-all lg:hover:!scale-125 active:!scale-90 hover:z-10 hover:shadow-lg hover:origin-center text-gray-700 hover:text-black dark:text-gray-300/80 dark:hover:text-white"
               >
                 <item.Icon className="utilities-svg" />
@@ -73,7 +77,7 @@ function UtilitySection({ utility }) {
                 <p className="absolute bottom-3 text-[10px] select-none">
                   {item.name}
                 </p>
-              </motion.a>
+              </motion.div>
             </Link>
           );
         })}

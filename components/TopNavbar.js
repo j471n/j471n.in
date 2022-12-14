@@ -87,9 +87,7 @@ export default function TopNavbar() {
 
       <Link href="/" passHref>
         <div className="flex gap-2 items-center cursor-pointer z-50">
-          <a className="relative hidden sm:inline-flex mr-3">
-            <Logo className="w-12 h-12" />
-          </a>
+          <Logo className="w-12 h-12 relative hidden sm:inline-flex mr-3" />
           <motion.p
             initial="hidden"
             animate={control}
@@ -135,7 +133,7 @@ export default function TopNavbar() {
         onClick={() => changeDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          <FiMoon  className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
+          <FiMoon className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
         ) : (
           <FiSun className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
         )}
@@ -148,17 +146,18 @@ export default function TopNavbar() {
 function NavItem({ href, text, router }) {
   const isActive = router.asPath === (href === "/home" ? "/" : href);
   return (
-    <Link href={href === "/home" ? "/" : href} passHref>
-      <motion.a
-        variants={popUp}
-        className={`${
-          isActive
-            ? "font-bold text-gray-800 dark:text-gray-100"
-            : " text-gray-600 dark:text-gray-300"
-        } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
-      >
-        <span className="capitalize">{text}</span>
-      </motion.a>
+    <Link
+      className={`${
+        isActive
+          ? "font-bold text-gray-800 dark:text-gray-100"
+          : " text-gray-600 dark:text-gray-300"
+      } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
+      href={href === "/home" ? "/" : href}
+      passHref
+    >
+      <motion.p className="capitalize" variants={popUp}>
+        {text}
+      </motion.p>
     </Link>
   );
 }
@@ -225,15 +224,16 @@ const MobileMenu = ({ links, handleClick }) => {
           const navlink =
             link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
           return (
-            <Link href={navlink} key={`mobileNav-${index}`} passHref>
-              <motion.a
-                href={navlink}
-                className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
-                variants={mobileNavItemSideways}
-                onClick={handleClick}
-              >
+            <Link
+              href={navlink}
+              key={`mobileNav-${index}`}
+              passHref
+              onClick={handleClick}
+              className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
+            >
+              <motion.p variants={mobileNavItemSideways}>
                 {link === "rss" ? link.toUpperCase() : link}
-              </motion.a>
+              </motion.p>
             </Link>
           );
         })}

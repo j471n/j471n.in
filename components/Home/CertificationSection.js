@@ -41,11 +41,11 @@ export default function CertificationSection() {
                     src={certificate.issuedBy.orgLogo}
                     alt={certificate.issuedBy.orgName}
                     quality={50}
-                    objectFit="contain"
-                    layout="fixed"
                     placeholder="blur"
                     blurDataURL={certificate.issuedBy.orgLogo}
-                  />
+                    style={{
+                      objectFit: "contain"
+                    }} />
                 </AnimatedDiv>
                 <AnimatedText
                   variants={popUpFromBottomForText}

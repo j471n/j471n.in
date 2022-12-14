@@ -14,7 +14,7 @@ export default function BlogsSection({ blogs }) {
           return <Blog key={`home-blog-${index}`} blog={blog} />;
         })}
 
-        <Link href="/blogs">
+        <Link href="/blogs" legacyBehavior>
           <div
             variants={popUpFromBottomForText}
             className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black dark:lg:hover:border-white transform duration-200 active:scale-90 active:border-black w-fit"

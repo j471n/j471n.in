@@ -22,8 +22,11 @@ export default function AboutMe() {
         want to dive in the Mobile Development as well as Backend Development. I
         am currently Learning many things and backend is one on them. In my
         spare time I also write blogs on{" "}
-        <Link href="https://dev.to/j471n" passHref>
-          <a className="text-purple-600 underline">Dev.to</a>
+        <Link
+          href="https://dev.to/j471n"
+          passHref
+          className="text-purple-600 underline">
+          Dev.to
         </Link>{" "}
         about what I am learning or some tutorials as well. If you are
         interested then must visit. 👋

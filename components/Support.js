@@ -29,11 +29,15 @@ export default function Support() {
       >
         {support.map((paymentMethod) => {
           return (
-            <Link key={paymentMethod.name} href={paymentMethod.url} passHref>
-              <motion.a
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              key={paymentMethod.name}
+              href={paymentMethod.url}
+              passHref
+            >
+              <motion.p
                 variants={popUp}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="bg-white text-darkSecondary dark:bg-darkSecondary dark:text-gray-300 grid place-items-center p-5 group rounded-xl hover:ring-1 shadow ring-gray-500 duration-200 active:ring"
               >
                 <div className="flex flex-col items-center gap-5 select-none">
@@ -41,7 +45,7 @@ export default function Support() {
 
                   <p className="font-semibold text-sm">{paymentMethod.name}</p>
                 </div>
-              </motion.a>
+              </motion.p>
             </Link>
           );
         })}

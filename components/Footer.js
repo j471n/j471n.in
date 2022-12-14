@@ -52,7 +52,7 @@ export default function Footer({ setShowQR, showQR }) {
             {socialMedia.slice(0, 4).map((platform, index) => {
               return (
                 <Link key={index} href={platform.url} passHref>
-                  <motion.a
+                  <motion.p
                     className="hover:text-black dark:hover:text-white w-fit"
                     variants={popUp}
                     target="_blank"
@@ -60,7 +60,7 @@ export default function Footer({ setShowQR, showQR }) {
                     href={platform.url}
                   >
                     {platform.title}
-                  </motion.a>
+                  </motion.p>
                 </Link>
               );
             })}
@@ -83,13 +83,13 @@ export default function Footer({ setShowQR, showQR }) {
 function FooterLink({ route, text }) {
   return (
     <Link href={`/${route}`} passHref>
-      <motion.a
+      <motion.p
         className="hover:text-black dark:hover:text-white w-fit"
         variants={popUp}
         href={`/${route}`}
       >
         {text}
-      </motion.a>
+      </motion.p>
     </Link>
   );
 }
@@ -113,37 +113,34 @@ function WhenPlaying({ song }) {
   return (
     <div className="flex flex-col gap-4">
       <h4 className="text-lg font-semibold">Now Playing</h4>
-      <Link href={song.songUrl} passHref>
-        <a
-          href={song.songUrl}
-          className="flex items-center justify-between bg-gray-200 dark:bg-darkSecondary  p-3 sm:p-4 rounded-sm"
-        >
-          <div className=" flex items-center gap-2">
-            <div className="w-10 h-10">
-              <Image
-                alt={song.title}
-                src={song.albumImageUrl}
-                width={40}
-                height={40}
-                layout="fixed"
-                quality={50}
-                placeholder="blur"
-                blurDataURL={song.albumImageUrl}
-              />
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
-              <h3 className="font-semibold md:text-lg text-black dark:text-white animate-">
-                {song.title}
-              </h3>
-              <span className="hidden md:inline-flex">—</span>
+      <Link
+        href={song.songUrl}
+        passHref
+        className="flex items-center justify-between bg-gray-200 dark:bg-darkSecondary  p-3 sm:p-4 rounded-sm"
+      >
+        <div className=" flex items-center gap-2">
+          <div className="w-10 h-10">
+            <Image
+              alt={song.title}
+              src={song.albumImageUrl}
+              width={40}
+              height={40}
+              quality={50}
+              placeholder="blur"
+              blurDataURL={song.albumImageUrl} />
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+            <h3 className="font-semibold md:text-lg text-black dark:text-white animate-">
+              {song.title}
+            </h3>
+            <span className="hidden md:inline-flex">—</span>
 
-              <p className="text-gray-600 text-xs sm:text-sm">{song.artist}</p>
-            </div>
+            <p className="text-gray-600 text-xs sm:text-sm">{song.artist}</p>
           </div>
-          <div className="flex items-center gap-2">
-            <SiSpotify className="w-6 h-6 text-green-500 animate-[spin_2s_linear_infinite]" />
-          </div>
-        </a>
+        </div>
+        <div className="flex items-center gap-2">
+          <SiSpotify className="w-6 h-6 text-green-500 animate-[spin_2s_linear_infinite]" />
+        </div>
       </Link>
     </div>
   );
