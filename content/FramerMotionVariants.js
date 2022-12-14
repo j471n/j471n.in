@@ -294,3 +294,16 @@ export const FromRightContainer = {
     },
   },
 };
+
+export const svgVariant = {
+  hidden: {
+    pathLength: 0,
+  },
+  visible: {
+    pathLength: 1,
+    transition: {
+      duration: 4,
+      ease: "easeInOut",
+    },
+  },
+};

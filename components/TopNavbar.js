@@ -8,10 +8,12 @@ import {
   hamFastFadeContainer,
   mobileNavItemSideways,
   popUp,
+  svgVariant,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import { navigationRoutes } from "../utils/utils";
 import { FiMoon, FiSun } from "react-icons/fi";
+import Logo from "./SVG/Logo";
 
 /* TopNavbar Component */
 export default function TopNavbar() {
@@ -85,14 +87,9 @@ export default function TopNavbar() {
 
       <Link href="/" passHref>
         <div className="flex gap-2 items-center cursor-pointer z-50">
-          <motion.a
-            initial="hidden"
-            animate="visible"
-            variants={popUp}
-            className="relative hidden sm:inline-flex mr-3"
-          >
-            <h1 className="font-sarina text-xl">JS</h1>
-          </motion.a>
+          <a className="relative hidden sm:inline-flex mr-3">
+            <Logo className="w-12 h-12" />
+          </a>
           <motion.p
             initial="hidden"
             animate={control}
@@ -138,7 +135,7 @@ export default function TopNavbar() {
         onClick={() => changeDarkMode(!isDarkMode)}
       >
         {isDarkMode ? (
-          <FiMoon className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
+          <FiMoon  className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
         ) : (
           <FiSun className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
         )}
