@@ -9,6 +9,7 @@ import {
   mobileNavItemSideways,
 } from "../../content/FramerMotionVariants";
 import Ripples from "react-ripples";
+import { useRef } from "react";
 
 // initial State of the form
 const initialFormState = {
@@ -22,12 +23,16 @@ const initialFormState = {
 
 export default function Form() {
   const [emailInfo, setEmailInfo] = useState(initialFormState);
-  const [loading, setLoading] = useState(false);
   const { isDarkMode } = useDarkMode();
+  const sendButtonRef = useRef();
 
   function sendEmail(e) {
     e.preventDefault();
-    setLoading(true);
+    // Making submit button disable
+    sendButtonRef.current.setAttribute("disabled", true);
+
+    // Creating a toast
+    const toastId = toast.loading("Processing ⌛");
 
     emailjs
       .send(
@@ -37,14 +42,23 @@ export default function Form() {
         process.env.NEXT_PUBLIC_YOUR_USER_ID
       )
       .then((res) => {
-        setLoading(false);
         setEmailInfo(initialFormState);
-        toast.success("Message Sent ✌");
+        toast.update(toastId, {
+          render: "Message Sent ✌",
+          type: "success",
+          isLoading: false,
+          autoClose: true,
+        });
+        sendButtonRef.current.removeAttribute("disabled");
       })
       .catch((err) => {
-        console.log(err.text);
-        setLoading(false);
-        toast.error("😢 " + err.text);
+        toast.update(toastId, {
+          render: "😢 " + err.text,
+          type: "error",
+          isLoading: false,
+          autoClose: true,
+        });
+        sendButtonRef.current.removeAttribute("disabled");
       });
   }
 
@@ -217,19 +231,11 @@ export default function Form() {
             color="rgba(225, 225,225,0.2)"
           >
             <button
+              ref={sendButtonRef}
               type="submit"
-              className="text-white bg-neutral-800  dark:bg-darkSecondary font-medium rounded-lg text-sm w-full px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none active:scale-95"
+              className="text-white bg-neutral-800  dark:bg-darkSecondary font-medium rounded-lg text-sm w-full px-4 py-3 text-center relative overflow-hidden transition duration-300 outline-none active:scale-95 disabled:opacity-50 disabled:active:scale-100"
             >
-              <div className="relative w-full flex items-center justify-center">
-                <p
-                  className={
-                    loading ? "inline-flex animate-spin mr-3" : "hidden"
-                  }
-                >
-                  <AiOutlineLoading className="font-bold text-xl" />
-                </p>
-                <p>{loading ? "Sending..." : "Send"}</p>
-              </div>
+              Send
             </button>
           </Ripples>
         </motion.div>
