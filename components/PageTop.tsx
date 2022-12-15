@@ -5,7 +5,15 @@ import {
 import AnimatedHeading from "./FramerMotion/AnimatedHeading";
 import AnimatedText from "./FramerMotion/AnimatedText";
 
-export default function PageTop({ pageTitle, headingClass, children }) {
+export default function PageTop({
+  pageTitle,
+  headingClass,
+  children,
+}: {
+  pageTitle: string;
+  headingClass?: string;
+  children?: React.ReactNode;
+}) {
   return (
     <div className="w-full flex flex-col gap-3 py-5 select-none mb-10">
       <AnimatedHeading

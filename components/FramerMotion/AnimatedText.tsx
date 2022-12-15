@@ -1,3 +1,4 @@
+import { AnimatedTAGProps } from "@lib/types";
 import { motion } from "framer-motion";
 
 export default function AnimatedText({
@@ -5,7 +6,7 @@ export default function AnimatedText({
   className,
   children,
   infinity,
-}) {
+}: AnimatedTAGProps) {
   return (
     <motion.p
       initial="hidden"

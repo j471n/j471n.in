@@ -3,7 +3,21 @@ import Link from "next/link";
 import { popUpFromBottomForText } from "../../content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
-export default function Track({ url, title, artist, coverImage, id }) {
+type TrackProps = {
+  url: string;
+  title: string;
+  artist: string;
+  coverImage: string;
+  id: string;
+};
+
+export default function Track({
+  url,
+  title,
+  artist,
+  coverImage,
+  id,
+}: TrackProps) {
   return (
     <Link href={url} rel="noreferrer" target="_blank" passHref>
       <motion.a
@@ -18,7 +32,13 @@ export default function Track({ url, title, artist, coverImage, id }) {
         </div>
 
         <div className="relative w-12 h-12 transform origin-center">
-          <Image src={coverImage} width={50} height={50} alt={title} quality={50}></Image>
+          <Image
+            src={coverImage}
+            width={50}
+            height={50}
+            alt={title}
+            quality={50}
+          ></Image>
         </div>
         <div>
           <h2 className="text-base md:text-xl text-gray-900 dark:text-white font-semibold transform origin-left font-barlow">

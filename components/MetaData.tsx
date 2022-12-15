@@ -1,12 +1,21 @@
 import Head from "next/head";
+import {} from "next";
+
 import useWindowLocation from "@hooks/useWindowLocation";
+
+type Props = {
+  title: string;
+  description: string;
+  previewImage: string;
+  keywords: string;
+};
 
 export default function MetaData({
   title,
   description,
   previewImage,
   keywords,
-}) {
+}: Props) {
   const { currentURL } = useWindowLocation();
 
   return (

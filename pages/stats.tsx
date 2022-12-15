@@ -16,13 +16,29 @@ import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import pageMeta from "@content/meta";
 
+type Spotify = {
+  url: string;
+  title: string;
+  coverImage: {
+    url: string;
+  };
+  artist: string;
+  followers?: string;
+  name?: string;
+};
+
+type Stats = {
+  title: string;
+  value: string;
+};
+
 export default function Stats() {
   const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
   const { data: artists } = useSWR("/api/stats/artists", fetcher);
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
   const { data: github } = useSWR("/api/stats/github", fetcher);
 
-  const stats = [
+  const stats: Stats[] = [
     {
       title: "Total Posts",
       value: devto?.posts.toLocaleString(),
@@ -76,8 +92,10 @@ export default function Stats() {
 
       <section className="pageTop font-inter">
         <PageTop pageTitle="Statistics">
-          These are my personal statistics about my Dev.to Blogs, Github and Top
-          Streamed Music on Spotify.
+          <p>
+            These are my personal statistics about my Dev.to Blogs, Github and
+            Top Streamed Music on Spotify.
+          </p>
         </PageTop>
 
         {/* Blogs and github stats */}
@@ -89,17 +107,7 @@ export default function Stats() {
           viewport={{ once: true }}
         >
           {stats.map((stat, index) => (
-            <StatsCard
-              key={index}
-              title={stat.title}
-              value={
-                stat.value === undefined ? (
-                  <div className="w-28 h-8 rounded-sm bg-gray-300 dark:bg-neutral-700 animate-pulse" />
-                ) : (
-                  stat.value
-                )
-              }
-            />
+            <StatsCard key={index} title={stat.title} value={stat.value} />
           ))}
         </motion.div>
 
@@ -123,11 +131,10 @@ export default function Stats() {
             updated daily.
           </AnimatedText>
           <div className="flex flex-col my-10 gap-0 font-barlow">
-            {topTracks?.map((track, index) => (
+            {topTracks?.map((track: Spotify, index: string) => (
               <Track
                 key={index}
                 id={index}
-                track={track}
                 url={track.url}
                 title={track.title}
                 coverImage={track.coverImage.url}
@@ -146,21 +153,24 @@ export default function Stats() {
           >
             My Top Artists
           </AnimatedHeading>
-          <AnimatedText className="mt-4 text-gray-500">
+          <AnimatedText
+            variants={popUpFromBottomForText}
+            className="mt-4 text-gray-500"
+          >
             My most listened Artist is{" "}
             <span className="font-semibold">{artists && artists[0].name}</span>{" "}
             on Spotify.
           </AnimatedText>
 
           <div className="flex flex-col my-10 gap-0 font-barlow">
-            {artists?.map((artist, index) => (
+            {artists?.map((artist: Spotify, index: string) => (
               <Artist
                 key={index}
                 id={index}
-                name={artist.name}
+                name={artist.name!}
                 url={artist.url}
                 coverImage={artist.coverImage.url}
-                followers={artist.followers}
+                followers={artist.followers!}
               />
             ))}
           </div>

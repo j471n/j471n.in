@@ -1,8 +1,14 @@
 import React, { useState, useContext, useEffect, createContext } from "react";
-const DarkModeContext = createContext(undefined);
 
-export function DarkModeProvider({ children }) {
-  const [isDarkMode, setDarkMode] = useState(false);
+type DarkModeContext = {
+  isDarkMode: boolean;
+  changeDarkMode(value: boolean): void;
+};
+
+const DarkModeContext = createContext<DarkModeContext | null>(null);
+
+export function DarkModeProvider({ children }: { children: React.ReactNode }) {
+  const [isDarkMode, setDarkMode] = useState<boolean>(false);
 
   function updateTheme() {
     const currentTheme = localStorage.getItem("isDarkMode") || "false";
@@ -17,7 +23,7 @@ export function DarkModeProvider({ children }) {
   useEffect(() => {
     updateTheme();
   }, []);
-  function changeDarkMode(value) {
+  function changeDarkMode(value: boolean) {
     localStorage.setItem("isDarkMode", value.toString());
     // setDarkMode(value);
     updateTheme();

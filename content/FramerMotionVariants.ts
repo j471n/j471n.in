@@ -1,18 +1,19 @@
-// it will pop the card
-export const popUp = {
+import { Variants } from "framer-motion";
+
+export const popUp: Variants = {
   hidden: { scale: 0, opacity: 0 },
   visible: {
     opacity: 1,
     scale: 1,
-  },
-  transition: {
-    type: "spring",
+    transition: {
+      type: "spring",
+    },
   },
 };
 
 // Slide from the Bottom animation
 
-export const slideFromBottom = {
+export const slideFromBottom: Variants = {
   hidden: { y: 100, opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
@@ -27,7 +28,7 @@ export const slideFromBottom = {
 
 // Slide from the left animation
 
-export const slideFromLeft = {
+export const slideFromLeft: Variants = {
   hidden: { x: -200, opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
@@ -40,7 +41,7 @@ export const slideFromLeft = {
   },
 };
 
-export const popUpFromBottomForText = {
+export const popUpFromBottomForText: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
@@ -52,12 +53,12 @@ export const popUpFromBottomForText = {
   },
 };
 
-export const pulseOpacity = {
+export const pulseOpacity: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-export const headingFromLeft = {
+export const headingFromLeft: Variants = {
   hidden: { x: -200, opacity: 0 },
   visible: {
     x: 0,
@@ -70,7 +71,7 @@ export const headingFromLeft = {
   },
 };
 
-export const inputSlideAnimation = {
+export const inputSlideAnimation: Variants = {
   hidden: { x: -200, opacity: 0 },
   visible: {
     x: 0,
@@ -83,7 +84,7 @@ export const inputSlideAnimation = {
   },
 };
 
-export const fromBottomVariant = {
+export const fromBottomVariant: Variants = {
   hidden: { y: 100, opacity: 0 },
   visible: {
     y: 0,
@@ -96,7 +97,7 @@ export const fromBottomVariant = {
   },
 };
 
-export const cardFromRight = {
+export const cardFromRight: Variants = {
   hidden: { x: 100, opacity: 1 },
   visible: {
     x: 0,
@@ -110,7 +111,7 @@ export const cardFromRight = {
   },
 };
 
-export const homeEnterVariant = {
+export const homeEnterVariant: Variants = {
   hidden: { x: "100vw", opacity: 0 },
   visible: {
     x: 0,
@@ -135,13 +136,13 @@ export const homeEnterVariant = {
   },
 };
 
-export const bounceScale = {
+export const bounceScale: Variants = {
   hidden: { scale: 0, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
     transition: {
-      type: "spring",
+      transition: "spring",
       mass: 0.4,
       damping: 8,
       ease: "easeInOut",
@@ -150,7 +151,7 @@ export const bounceScale = {
 };
 
 /* Skills Animation */
-export const skillHeader = {
+export const skillHeader: Variants = {
   hidden: { x: 50 },
   visible: {
     x: 0,
@@ -164,7 +165,7 @@ export const skillHeader = {
 
 // top Navbar
 
-export const fromLeftVariant = {
+export const fromLeftVariant: Variants = {
   hidden: { x: -100, opacity: 0 },
   visible: {
     x: 0,
@@ -176,7 +177,7 @@ export const fromLeftVariant = {
     },
   },
 };
-export const fromRightVariant = {
+export const fromRightVariant: Variants = {
   hidden: { x: 100, opacity: 0 },
   visible: {
     x: 0,
@@ -188,7 +189,7 @@ export const fromRightVariant = {
     },
   },
 };
-export const fromTopVariant = {
+export const fromTopVariant: Variants = {
   hidden: { y: -100, opacity: 0 },
   visible: {
     y: 0,
@@ -201,7 +202,7 @@ export const fromTopVariant = {
   },
 };
 
-export const fromBottomVariantIcons = {
+export const fromBottomVariantIcons: Variants = {
   hidden: { y: 50, opacity: 0 },
   visible: {
     y: 0,
@@ -214,7 +215,7 @@ export const fromBottomVariantIcons = {
   },
 };
 
-export const smallTextFromBottom = {
+export const smallTextFromBottom: Variants = {
   hidden: { y: 10, opacity: 0 },
   visible: {
     y: 0,
@@ -227,24 +228,24 @@ export const smallTextFromBottom = {
   },
 };
 
-export const opacityVariant = {
+export const opacityVariant: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { delay: 0.2 } },
 };
 
-export const buttonsLinearVariant = {
+export const buttonsLinearVariant: Variants = {
   hidden: { y: 50, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
     transition: {
-      type: "tween",
+      transition: "tween",
       velocity: 10,
     },
   },
 };
 
-export const hamFastFadeContainer = {
+export const hamFastFadeContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -255,7 +256,7 @@ export const hamFastFadeContainer = {
   },
 };
 
-export const mobileNavItemSideways = {
+export const mobileNavItemSideways: Variants = {
   hidden: { x: -40, opacity: 0 },
   visible: {
     x: 0,
@@ -263,7 +264,7 @@ export const mobileNavItemSideways = {
   },
 };
 
-export const FadeContainer = {
+export const FadeContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -271,7 +272,7 @@ export const FadeContainer = {
   },
 };
 
-export const FadeContainerFromLeft = {
+export const FadeContainerFromLeft: Variants = {
   hidden: { opacity: 0, x: -100 },
   visible: {
     opacity: 1,
@@ -280,7 +281,7 @@ export const FadeContainerFromLeft = {
   },
 };
 
-export const FromRightContainer = {
+export const FromRightContainer: Variants = {
   hidden: { x: 100, opacity: 0 },
   visible: {
     x: 0,
@@ -295,7 +296,7 @@ export const FromRightContainer = {
   },
 };
 
-export const svgVariant = {
+export const svgVariant: Variants = {
   hidden: {
     pathLength: 0,
   },

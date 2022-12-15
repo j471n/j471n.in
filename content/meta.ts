@@ -1,4 +1,15 @@
-export default {
+type PageData = {
+  title: string;
+  description: string;
+  image: string;
+  keywords: string;
+};
+
+type PageMeta = {
+  [key: string]: PageData;
+};
+
+const pageMeta: PageMeta = {
   home: {
     title: "",
     description:
@@ -57,3 +68,5 @@ export default {
     keywords: "about",
   },
 };
+
+export default pageMeta;
