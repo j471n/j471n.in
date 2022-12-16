@@ -1,12 +1,12 @@
 const PER_PAGE = 1000;
 const DEV_API = process.env.NEXT_PUBLIC_BLOGS_API;
 
-const getPageOfFollowers = async (page) => {
+const getPageOfFollowers = async (page: number) => {
   const perPageFollowers = await fetch(
     `https://dev.to/api/followers/users?per_page=${PER_PAGE}&page=${page}`,
     {
       headers: {
-        api_key: DEV_API,
+        api_key: DEV_API!,
       },
     }
   )
@@ -30,12 +30,12 @@ export const allFollowers = async () => {
   return totalFollowers;
 };
 
-const getPageOfPosts = async (page) => {
+const getPageOfPosts = async (page: number) => {
   const perPagePosts = await fetch(
     `https://dev.to/api/articles/me?per_page=${PER_PAGE}&page=${page}`,
     {
       headers: {
-        api_key: DEV_API,
+        api_key: DEV_API!,
       },
     }
   )

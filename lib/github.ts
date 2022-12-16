@@ -33,6 +33,14 @@ const tempData = {
   updated_at: "2022-07-02T03:07:58Z",
 };
 
+const Repos = {};
+
+type GithubRepo = {
+  stargazers_count: number;
+  fork: boolean;
+  forks_count: number;
+};
+
 // its for /api/stats/github
 export async function fetchGithub() {
   const fake = false;
@@ -46,18 +54,37 @@ export function getOldStats() {
 }
 
 export async function getGithubStarsAndForks() {
-  const userRepos = await fetch(
+  const res = await fetch(
     "https://api.github.com/users/j471n/repos?per_page=100"
-  ).then((res) => res.json());
+  );
+  const userRepos = await res.json();
 
+  /* Default Static Data: If use exceeded the rate limit of api */
+  if (
+    (userRepos.documentation_url =
+      "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting")
+  ) {
+    return {
+      githubStars: 74,
+      forks: 33,
+    };
+  }
   // filter those repos that are forked
-  const mineRepos = userRepos.filter((repo) => !repo.fork);
-  const githubStars = mineRepos.reduce((accumulator, repository) => {
-    return accumulator + repository["stargazers_count"];
-  }, 0);
-  const forks = mineRepos.reduce((accumulator, repository) => {
-    return accumulator + repository["forks_count"];
-  }, 0);
+  const mineRepos: GithubRepo[] = userRepos?.filter(
+    (repo: GithubRepo) => !repo.fork
+  );
+  const githubStars = mineRepos.reduce(
+    (accumulator: number, repository: GithubRepo) => {
+      return accumulator + repository["stargazers_count"];
+    },
+    0
+  );
+  const forks = mineRepos.reduce(
+    (accumulator: number, repository: GithubRepo) => {
+      return accumulator + repository["forks_count"];
+    },
+    0
+  );
 
   return { githubStars, forks };
 }
