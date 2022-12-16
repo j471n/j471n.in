@@ -8,7 +8,7 @@ type TrackProps = {
   title: string;
   artist: string;
   coverImage: string;
-  id: string;
+  id: number;
 };
 
 export default function Track({

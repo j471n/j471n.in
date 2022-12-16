@@ -12,3 +12,25 @@ export type AnimatedTAGProps = {
     | React.ChangeEventHandler<HTMLTextAreaElement>
     | React.ChangeEventHandler<HTMLInputElement>;
 };
+
+/* Spotify Track  */
+export type SpotifyTrack = {
+  id: number;
+  title: string;
+  url: string;
+  coverImage: {
+    url: string;
+  };
+  artist: string;
+};
+
+/* Spotify Artist  */
+export type SpotifyArtist = {
+  id: number;
+  name: string;
+  url: string;
+  coverImage: {
+    url: string;
+  };
+  followers: string;
+};

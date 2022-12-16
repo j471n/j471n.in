@@ -8,7 +8,7 @@ type ArtistProps = {
   url: string;
   coverImage: string;
   followers: string;
-  id: string;
+  id: number;
 };
 
 export default function Artist({
@@ -19,7 +19,7 @@ export default function Artist({
   id,
 }: ArtistProps) {
   return (
-    <Link rel="noreferrer" target="_blank" href={url} passHref legacyBehavior>
+    <Link rel="noreferrer" target="_blank" href={url} passHref>
       <motion.div
         variants={popUpFromBottomForText}
         initial="hidden"
@@ -38,10 +38,8 @@ export default function Artist({
             height={100}
             alt={name}
             quality={50}
-            sizes="100vw"
             style={{
-              width: "100%",
-              height: "auto",
+              height: "100%",
             }}
           ></Image>
         </div>

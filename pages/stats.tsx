@@ -15,17 +15,7 @@ import Artist from "@components/Stats/Artist";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import pageMeta from "@content/meta";
-
-type Spotify = {
-  url: string;
-  title: string;
-  coverImage: {
-    url: string;
-  };
-  artist: string;
-  followers?: string;
-  name?: string;
-};
+import { SpotifyArtist, SpotifyTrack } from "@lib/types";
 
 type Stats = {
   title: string;
@@ -131,7 +121,7 @@ export default function Stats() {
             updated daily.
           </AnimatedText>
           <div className="flex flex-col my-10 gap-0 font-barlow">
-            {topTracks?.map((track: Spotify, index: string) => (
+            {topTracks?.map((track: SpotifyTrack, index: number) => (
               <Track
                 key={index}
                 id={index}
@@ -163,7 +153,7 @@ export default function Stats() {
           </AnimatedText>
 
           <div className="flex flex-col my-10 gap-0 font-barlow">
-            {artists?.map((artist: Spotify, index: string) => (
+            {artists?.map((artist: SpotifyArtist, index: number) => (
               <Artist
                 key={index}
                 id={index}
