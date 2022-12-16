@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function UPI({ className }) {
+export default function UPI({ className }: { className: string }) {
   return (
     <svg
       className={className}

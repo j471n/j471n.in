@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { svgVariant } from "@content/FramerMotionVariants";
 
-export default function Logo({ className }) {
+export default function Logo({ className }: { className: string }) {
   return (
     <svg
       className={className + " text-black dark:text-white"}

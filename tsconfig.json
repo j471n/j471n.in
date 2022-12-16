@@ -128,7 +128,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/Support.js", "components/TopNavbar.js"  ],
   "exclude": [
     "node_modules"
   ]

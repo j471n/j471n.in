@@ -68,3 +68,20 @@ export type SocialPlatform = {
   Icon: IconType;
   url: string;
 };
+
+export type UtilityType = {
+  title: string;
+  data: {
+    name: string;
+    description: string;
+    Icon: IconType | JSX.Element;
+    link: string;
+  }[];
+};
+
+export type Utilities = {
+  title: string;
+  description: string;
+  lastUpdate: string;
+  data: UtilityType[];
+};
