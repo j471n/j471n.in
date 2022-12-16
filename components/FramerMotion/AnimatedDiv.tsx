@@ -1,3 +1,4 @@
+import { AnimatedTAGProps } from "@lib/types";
 import { motion } from "framer-motion";
 
 export default function AnimatedDiv({
@@ -5,8 +6,7 @@ export default function AnimatedDiv({
   className,
   children,
   infinity,
-  style,
-}) {
+}: AnimatedTAGProps) {
   return (
     <motion.div
       initial="hidden"
@@ -14,7 +14,7 @@ export default function AnimatedDiv({
       viewport={{ once: !infinity }}
       variants={variants}
       className={className}
-      style={style}
+      // style={style}
       transition={{ staggerChildren: 0.5 }}
     >
       {children}

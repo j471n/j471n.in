@@ -1,3 +1,5 @@
+import { CertificateType } from "@lib/types";
+
 const LinkedIn = {
   orgName: "LinkedIn",
   orgLogo: "https://imgur.com/k0cPDY6.png",
@@ -39,8 +41,8 @@ const Accenture = {
   orgName: "Accenture",
   orgLogo: "https://imgur.com/Tp6h32m.png",
 };
-  
-module.exports = [
+
+const certificates: CertificateType[] = [
   {
     title: "Developer & Technology Accenture Developer Program",
     issuedDate: "Aug 16, 2022",
@@ -229,3 +231,5 @@ module.exports = [
     pinned: true,
   },
 ];
+
+export default certificates;

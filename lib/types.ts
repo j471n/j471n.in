@@ -1,5 +1,6 @@
 import { Variants } from "framer-motion";
 import React from "react";
+import { IconType } from "react-icons/lib";
 
 /* Custom Animated Components types */
 export type AnimatedTAGProps = {
@@ -7,10 +8,6 @@ export type AnimatedTAGProps = {
   className: string;
   children: React.ReactNode;
   infinity?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  onChange?:
-    | React.ChangeEventHandler<HTMLTextAreaElement>
-    | React.ChangeEventHandler<HTMLInputElement>;
 };
 
 /* Spotify Track  */
@@ -33,4 +30,41 @@ export type SpotifyArtist = {
     url: string;
   };
   followers: string;
+};
+
+export type ProjectType = {
+  id: number;
+  name: string;
+  coverURL: string;
+  darkCoverURL?: string;
+  description: string;
+  githubURL: string;
+  previewURL?: string;
+  tools?: string[];
+  pinned?: boolean;
+};
+
+export type SkillType = {
+  name: string;
+  level: number;
+  pinned: boolean;
+};
+
+export type CertificateType = {
+  title: string;
+  issuedDate: string;
+  issuedBy: {
+    orgName: string;
+    orgLogo: string;
+  };
+  urls: {
+    pdfURL: string;
+  };
+  pinned: boolean;
+};
+
+export type SocialPlatform = {
+  title: string;
+  Icon: IconType;
+  url: string;
 };

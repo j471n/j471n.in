@@ -7,8 +7,9 @@ import { getProjects } from "@lib/dataFetch";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { FadeContainer } from "@content/FramerMotionVariants";
 import pageMeta from "@content/meta";
+import { ProjectType } from "@lib/types";
 
-export default function Projects({ projects }) {
+export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <>
       <Metadata

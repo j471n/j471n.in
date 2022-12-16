@@ -1,8 +1,7 @@
-import skills from "../content/skillsData";
-import projects from "../content/projectData";
-import certificates from "../content/certificatesData";
-import socialMedia from "../content/socialMedia";
-import FAQs from "../content/faqData";
+import skills from "@content/skillsData";
+import projects from "@content/projectData";
+import certificates from "@content/certificatesData";
+import socialMedia from "@content/socialMedia";
 
 export function getSkills() {
   // sort skills in reverse order
@@ -13,7 +12,7 @@ export function getPinnedSkills() {
   return skills.filter((skill) => skill.pinned);
 }
 export function getProjects() {
-  return projects.reverse();
+  return projects;
 }
 export function getPinnedProjects() {
   return projects.filter((project) => project.pinned && project).reverse();
@@ -30,12 +29,4 @@ export function getPinnedCertificates() {
 
 export function getSocialMedia() {
   return socialMedia;
-}
-
-export function getFAQs() {
-  return FAQs;
-}
-
-export function getPinnedFAQs() {
-  return FAQs.filter((faq) => faq.pinned);
 }

@@ -1,4 +1,6 @@
-module.exports = [
+import { SkillType } from "@lib/types";
+
+const skills: SkillType[] = [
   {
     name: "HTML",
     level: 100,
@@ -12,6 +14,11 @@ module.exports = [
   {
     name: "Javascript",
     level: 80,
+    pinned: true,
+  },
+  {
+    name: "Typescript",
+    level: 40,
     pinned: true,
   },
   {
@@ -90,3 +97,5 @@ module.exports = [
     pinned: false,
   },
 ];
+
+export default skills;

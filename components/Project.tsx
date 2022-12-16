@@ -2,12 +2,13 @@ import { BsGithub } from "react-icons/bs";
 import { MdOutlineLink } from "react-icons/md";
 import Link from "next/link";
 import OgImage from "@components/OgImage";
+import { ProjectType } from "@lib/types";
 
-export default function Project({ project }) {
+export default function Project({ project }: { project: ProjectType }) {
   return (
     <div className="card">
       <OgImage
-        src={project.coverURL}
+        src={project.coverURL as string}
         alt={project.name}
         darkSrc={project.darkCoverURL}
       />
@@ -21,7 +22,7 @@ export default function Project({ project }) {
         </p>
 
         <div className="flex items-center gap-1 flex-wrap">
-          {project.tools.map((tool, index) => {
+          {project.tools!.map((tool, index) => {
             return (
               <span
                 key={`${tool}-${index}`}
@@ -40,24 +41,22 @@ export default function Project({ project }) {
             title="Source Code on GitHub"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-black dark:hover:text-white">
-
+            className="text-gray-500 hover:text-black dark:hover:text-white"
+          >
             <BsGithub className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
-
           </Link>
 
           {project.previewURL && (
-            (<Link
+            <Link
               href={project.previewURL}
               passHref
               title="Live Preview"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-black dark:hover:text-white">
-
+              className="text-gray-500 hover:text-black dark:hover:text-white"
+            >
               <MdOutlineLink className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
-
-            </Link>)
+            </Link>
           )}
         </div>
       </div>

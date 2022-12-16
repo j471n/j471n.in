@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import socialMedia from "../content/socialMedia";
+import socialMedia from "@content/socialMedia";
 import { FadeContainer, popUp } from "../content/FramerMotionVariants";
 import { navigationRoutes } from "../utils/utils";
 import { motion } from "framer-motion";
@@ -127,7 +127,8 @@ function WhenPlaying({ song }) {
               height={40}
               quality={50}
               placeholder="blur"
-              blurDataURL={song.albumImageUrl} />
+              blurDataURL={song.albumImageUrl}
+            />
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
             <h3 className="font-semibold md:text-lg text-black dark:text-white animate-">

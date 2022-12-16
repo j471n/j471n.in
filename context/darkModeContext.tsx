@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect, createContext } from "react";
 
-type DarkModeContext = {
+interface DarkModeContextType {
   isDarkMode: boolean;
   changeDarkMode(value: boolean): void;
-};
+}
 
-const DarkModeContext = createContext<DarkModeContext | null>(null);
+const DarkModeContext = createContext<DarkModeContextType | null>(null);
 
 export function DarkModeProvider({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -29,17 +29,18 @@ export function DarkModeProvider({ children }: { children: React.ReactNode }) {
     updateTheme();
   }
 
+  const contextValue: DarkModeContextType = {
+    isDarkMode,
+    changeDarkMode,
+  };
+
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, changeDarkMode }}>
+    <DarkModeContext.Provider value={contextValue}>
       {children}
     </DarkModeContext.Provider>
   );
 }
 
-export const useDarkMode = () => {
-  const context = useContext(DarkModeContext);
-  if (context === undefined) {
-    throw new Error("useAuth can only be used inside AuthProvider");
-  }
-  return context;
+export const useDarkMode = (): DarkModeContextType | null => {
+  return useContext(DarkModeContext);
 };

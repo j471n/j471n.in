@@ -11,6 +11,7 @@ import {
   SiGit,
   SiMysql,
   SiFirebase,
+  SiTypescript
 } from "react-icons/si";
 import { FaReact } from "react-icons/fa";
 import { useDarkMode } from "@context/darkModeContext";
@@ -92,6 +93,9 @@ function chooseIcon(title) {
       break;
     case "mysql":
       Icon = SiMysql;
+      break;
+    case "typescript":
+      Icon = SiTypescript;
       break;
     default:
       break;

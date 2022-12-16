@@ -1,10 +1,11 @@
+import { SocialPlatform } from "@lib/types";
 import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaDev } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen } from "react-icons/si";
 
-export default [
+const socialMedia: SocialPlatform[] = [
   {
     title: "Twitter",
     Icon: AiOutlineTwitter,
@@ -46,3 +47,5 @@ export default [
     url: "mailto:jatinsharma8669@gmail.com",
   },
 ];
+
+export default socialMedia;
