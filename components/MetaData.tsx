@@ -6,8 +6,9 @@ import useWindowLocation from "@hooks/useWindowLocation";
 type Props = {
   title: string;
   description: string;
-  previewImage: string;
-  keywords: string;
+  previewImage?: string;
+  keywords?: string;
+  suffix?: string;
 };
 
 export default function MetaData({
@@ -15,6 +16,7 @@ export default function MetaData({
   description,
   previewImage,
   keywords,
+  suffix,
 }: Props) {
   const { currentURL } = useWindowLocation();
 
@@ -28,7 +30,7 @@ export default function MetaData({
       />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="description" content={description || "Jatin Sharma"} />
-      <title>{`${title || ""} Jatin Sharma`}</title>
+      <title>{title + suffix}</title>
       <meta name="theme-color" content="#000" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="manifest" href="/manifest.json" />

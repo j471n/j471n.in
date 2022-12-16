@@ -8,6 +8,7 @@ export default async function handler(
   const response = await topArtists();
   const { items } = await response.json();
 
+  /* @ts-ignore*/
   const artists = items.slice(0, 5).map((artist) => ({
     name: artist.name,
     url: artist.external_urls.spotify,

@@ -61,15 +61,15 @@ function UtilitySection({ utility }: { utility: UtilityType }) {
       >
         {utility.data.map((item) => {
           return (
-            <motion.div variants={popUp}>
+            <motion.div key={item.name} variants={popUp}>
               <Link
                 title={item.name + " - " + item.description}
                 rel="noopener noreferrer"
                 target="_blank"
                 href={item.link}
-                key={item.name}
                 className="relative flex flex-col gap-3 items-center justify-center bg-white dark:bg-darkSecondary shadow dark:shadow-md p-8  border border-transparent hover:border-gray-400 dark:hover:border-neutral-600 rounded-md transition-all lg:hover:!scale-125 active:!scale-90 hover:z-10 hover:shadow-lg hover:origin-center text-gray-700 hover:text-black dark:text-gray-300/80 dark:hover:text-white"
               >
+                {/* @ts-ignore */}
                 <item.Icon className="utilities-svg" />
 
                 <p className="absolute bottom-3 text-[10px] select-none">

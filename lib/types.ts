@@ -1,11 +1,13 @@
 import { Variants } from "framer-motion";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import React from "react";
 import { IconType } from "react-icons/lib";
+import { ReadTimeResults } from "reading-time";
 
 /* Custom Animated Components types */
 export type AnimatedTAGProps = {
   variants: Variants;
-  className: string;
+  className?: string;
   children: React.ReactNode;
   infinity?: boolean;
 };
@@ -84,4 +86,62 @@ export type Utilities = {
   description: string;
   lastUpdate: string;
   data: UtilityType[];
+};
+
+// export interface ReadingTimeType {
+//   text: string;
+//   minutes: number;
+//   time: number;
+//   words: number;
+// }
+
+export interface BlogType {
+  slug: string;
+  readingTime: ReadTimeResults;
+  excerpt: string;
+  title: string;
+  date: string;
+  keywords?: string;
+  image: string;
+}
+
+export type PostType = {
+  meta: {
+    slug: string;
+    readingTime: ReadTimeResults;
+    excerpt: string;
+    title: string;
+    date: string;
+    keywords: string;
+    image: string;
+  };
+  source: MDXRemoteSerializeResult;
+  tableOfContents: {
+    level: number;
+    heading: string;
+  }[];
+};
+
+export type SupportMe = {
+  name: string;
+  url: string;
+  Icon: IconType;
+};
+
+export type Song = {
+  album: string;
+  artist: string;
+  albumImageUrl: string;
+  isPlaying: boolean;
+  songUrl: string;
+  title: string;
+};
+
+export type FormInput = {
+  to_name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  subject: string;
+  message: string;
 };
