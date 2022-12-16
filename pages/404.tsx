@@ -5,7 +5,11 @@ import MetaData from "@components/MetaData";
 export default function PageNotFound() {
   return (
     <>
-      <MetaData title="404 -" description="You are lost in Space !!!" />
+      <MetaData
+        title="404"
+        suffix="Page Not Found"
+        description="You are lost in Space !!!"
+      />
       <section className="pageTop flex flex-col gap-5 md:pt-20">
         <h1 className="font-bold font-barlow text-3xl md:text-5xl uppercase dark:text-white">
           Stay calm and don't freak out!!

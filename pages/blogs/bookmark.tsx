@@ -27,7 +27,7 @@ export default function Blogs() {
 
         <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
           <AnimatePresence>
-            {bookmarkedBlogs.length != 0 ? (
+            {bookmarkedBlogs!.length != 0 ? (
               <AnimatedDiv
                 variants={FadeContainer}
                 className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"

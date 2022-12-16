@@ -30,7 +30,7 @@ export default function MetaData({
       />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="description" content={description || "Jatin Sharma"} />
-      <title>{title + suffix}</title>
+      <title>{title + (suffix ? ` - ${suffix}` : "")}</title>
       <meta name="theme-color" content="#000" />
       <link rel="shortcut icon" href="/favicon.ico" />
       <link rel="manifest" href="/manifest.json" />
