@@ -1,6 +1,19 @@
-import { ref } from "@lib/firebase";
+// import { ref } from "";
+import { ref } from "./../../../lib/firebase";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function viewsSlug(req, res) {
+/* Extending API request because by default quey.slug return string | string[] and I only want string */
+interface ExtendedNextApiRequest extends NextApiRequest {
+  query: {
+    slug: string;
+  };
+}
+
+export default async function viewsSlug(
+  req: ExtendedNextApiRequest,
+  res: NextApiResponse
+) {
+  // const query: {slug: string} = req.query;
   // Get the total views of the page according to the slug by GET method
   if (req.method === "GET") {
     const snapshot = await ref.child(req.query.slug).once("value");

@@ -1,6 +1,11 @@
-export default async function handler(req, res) {
+import { NextApiRequest, NextApiResponse } from "next";
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const body = req.body;
-  const { email } = JSON.parse(body);
+  const { email }: { email: string } = JSON.parse(body);
 
   if (!email) {
     return res.status(400).json({
@@ -8,7 +13,6 @@ export default async function handler(req, res) {
       msg: "Forgot to add your email?",
     });
   }
-
   const result = await fetch("https://www.getrevue.co/api/v2/subscribers", {
     method: "POST",
     headers: {
