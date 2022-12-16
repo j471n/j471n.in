@@ -8,7 +8,7 @@ type DarkModeContext = {
 const DarkModeContext = createContext<DarkModeContext | null>(null);
 
 export function DarkModeProvider({ children }: { children: React.ReactNode }) {
-  const [isDarkMode, setDarkMode] = useState<boolean>(false);
+  const [isDarkMode, setDarkMode] = useState(false);
 
   function updateTheme() {
     const currentTheme = localStorage.getItem("isDarkMode") || "false";
