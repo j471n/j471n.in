@@ -66,7 +66,6 @@ function UtilitySection({ utility }) {
               target="_blank"
               href={item.link}
               key={item.name}
-              legacyBehavior
             >
               <motion.div
                 variants={popUp}

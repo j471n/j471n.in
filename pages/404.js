@@ -15,7 +15,7 @@ export default function PageNotFound() {
         visit my <b>Homepage</b> to get where you need to go.
       </p>
 
-      <Link href="/" passHref legacyBehavior>
+      <Link href="/" passHref>
         <div className="p-3 w-full xs:max-w-[200px] xs:mx-0 sm:p-3 font-bold mx-auto bg-gray-200 dark:bg-darkSecondary text-center rounded-md text-black dark:text-white select-none">
           Take me there!
         </div>
