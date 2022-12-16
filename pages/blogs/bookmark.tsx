@@ -6,7 +6,6 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import pageMeta from "@content/meta";
-import { BlogType } from "@lib/types";
 
 export default function Blogs() {
   const { bookmarkedBlogs } = useBookmarkBlogs("blogs", []);
@@ -32,13 +31,13 @@ export default function Blogs() {
                 variants={FadeContainer}
                 className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"
               >
-                {bookmarkedBlogs.map((blog: BlogType, index: number) => {
+                {bookmarkedBlogs.map((blog, index) => {
                   return <Blog key={index} blog={blog} />;
                 })}
               </AnimatedDiv>
             ) : (
               <div className="font-inter text-center font-medium dark:text-gray-400 mt-10">
-                No Result Found
+                Nothing to see here.
               </div>
             )}
           </AnimatePresence>
