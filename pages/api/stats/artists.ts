@@ -8,12 +8,12 @@ export default async function handler(
   const response = await topArtists();
   const { items } = await response.json();
 
-  /* @ts-ignore*/
-  const artists = items.slice(0, 5).map((artist) => ({
+  const artists = items.slice(5).map((artist: any) => ({
+    id: artist.id,
     name: artist.name,
     url: artist.external_urls.spotify,
-    coverImage: artist.images[1],
     followers: artist.followers.total,
+    coverImage: artist.images[1],
   }));
 
   res.setHeader(

@@ -8,11 +8,9 @@ export default async function handler(
   const response = await topTracks();
   const { items } = await response.json();
 
-  /* @ts-ignore*/
-  const tracks = items.slice(0, 10).map((track) => ({
+  const tracks = items.slice(0, 10).map((track: any) => ({
     title: track.name,
-    /* @ts-ignore*/
-    artist: track.artists.map((_artist) => _artist.name).join(", "),
+    artist: track.artists.map((artist: any) => artist.name).join(", "),
     url: track.external_urls.spotify,
     coverImage: track.album.images[1],
   }));

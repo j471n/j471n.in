@@ -13,7 +13,6 @@ export default function QRCodeContainer({
   setShowQR: (value: boolean) => void;
 }) {
   const { currentURL } = useWindowLocation();
-  /* @ts-ignore */
   const { isDarkMode } = useDarkMode();
 
   function downloadQRCode() {

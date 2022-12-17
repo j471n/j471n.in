@@ -81,7 +81,6 @@ function UPIPaymentForm({ close }: { close: () => void }) {
   const [amount, setAmount] = useState(0);
   const [qrValue, setQrValue] = useState("");
 
-  /* @ts-ignore */
   const { isDarkMode } = useDarkMode();
 
   const generatePaymentQR = (e: FormEvent) => {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
-/* @ts-ignore  */
 import { sanitize } from "dompurify";
 import { ToastContainer, toast } from "react-toastify";
 
