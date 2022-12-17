@@ -71,7 +71,7 @@ export default function Blogs({ blogs }: { blogs: BlogType[] }) {
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Search articles..."
+            placeholder="Press (CTRL + /) to search... "
           />
           <button
             type="button"
