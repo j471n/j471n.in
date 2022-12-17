@@ -18,6 +18,7 @@ import {
   SiGrammarly,
   SiCanva,
   SiGooglekeep,
+  SiNotepadplusplus,
 } from "react-icons/si";
 import {
   BsFillPaletteFill,
@@ -84,25 +85,13 @@ const utilities: Utilities = {
     },
 
     {
-      title: "Coding Tools",
+      title: "Software & Applications",
       data: [
         {
-          name: "React.js",
-          description: "Primary Front-end library",
-          Icon: SiReact,
-          link: "https://reactjs.org/",
-        },
-        {
-          name: "Next.js",
-          description: "Primary Web Development Framework",
-          Icon: SiNextdotjs,
-          link: "https://nextjs.org/",
-        },
-        {
-          name: "TailwindCSS",
-          description: "For styling the fron-end",
-          Icon: SiTailwindcss,
-          link: "https://tailwindcss.com/",
+          name: "Bitwarden",
+          description: "Password Manager to manage all the login",
+          Icon: SiBitwarden,
+          link: "https://bitwarden.com/",
         },
         {
           name: "Vercel",
@@ -129,6 +118,12 @@ const utilities: Utilities = {
           link: "https://desktop.github.com/",
         },
         {
+          name: "Figma",
+          description: "Primary Design tool",
+          Icon: SiFigma,
+          link: "https://www.figma.com/downloads/",
+        },
+        {
           name: "pnpm",
           description: "Primary Package Manager",
           Icon: SiPnpm,
@@ -141,12 +136,6 @@ const utilities: Utilities = {
           link: "https://classic.yarnpkg.com/lang/en/docs/install/",
         },
         {
-          name: "Figma",
-          description: "Primary Design tool",
-          Icon: SiFigma,
-          link: "https://www.figma.com/downloads/",
-        },
-        {
           name: "Canva",
           description: "Secondary Design tool",
           Icon: SiCanva,
@@ -157,18 +146,6 @@ const utilities: Utilities = {
           description: "For testing APIs",
           Icon: SiInsomnia,
           link: "https://insomnia.rest/download",
-        },
-      ],
-    },
-
-    {
-      title: "Software/Applications",
-      data: [
-        {
-          name: "Bitwarden",
-          description: "Password Manager to manage all the login",
-          Icon: SiBitwarden,
-          link: "https://bitwarden.com/",
         },
         {
           name: "OBS Studio",
@@ -232,6 +209,18 @@ const utilities: Utilities = {
           description: "Quick Note",
           Icon: SiGooglekeep,
           link: "https://keep.google.com/",
+        },
+        {
+          name: "Notepad++",
+          description: "Quick Code Editing",
+          Icon: SiNotepadplusplus,
+          link: "https://keep.google.com/",
+        },
+        {
+          name: "7-Zip",
+          description: "File Archiver",
+          Icon: SVG.Zip7,
+          link: "https://www.7-zip.org/download.html",
         },
       ],
     },
