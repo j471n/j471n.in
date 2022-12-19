@@ -10,7 +10,6 @@ export default function Project({ project }: { project: ProjectType }) {
       <OgImage
         src={project.coverURL as string}
         alt={project.name}
-        darkSrc={project.darkCoverURL}
       />
 
       <div className="flex flex-col justify-start gap-3">

@@ -36,14 +36,14 @@ export default function Blog({ blog }: { blog: BlogType }) {
       <OgImage src={blog.image} alt={blog.title} />
 
       <div className="flex flex-col  h-[95%]">
-        <p className="text-gray-500 text-sm font-medium flex justify-between items-center">
+        <p className="text-gray-500 dark:text-dark-3 text-sm font-medium flex justify-between items-center">
           <span>{getFormattedDate(new Date(blog.date))}</span>
           <span>{blog.readingTime.text}</span>
         </p>
         <h1 className="mt-1 font-bold text-neutral-900 dark:text-neutral-200">
           {blog.title}
         </h1>
-        <p className="mt-3 text-sm  text-gray-600 dark:text-gray-400 truncate-3 mb-2">
+        <p className="mt-3 text-sm  text-gray-600 dark:text-[#b5b7ba] truncate-3 mb-2">
           {blog.excerpt}
         </p>
 

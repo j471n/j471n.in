@@ -119,7 +119,7 @@ function NotPlaying() {
 function WhenPlaying({ song }: { song: Song }) {
   return (
     <div className="flex flex-col gap-4">
-      <h4 className="text-lg font-semibold">Now Playing</h4>
+      <h4 className="text-lg font-semibold dark:text-gray-300">Now Playing</h4>
       <Link
         href={song.songUrl}
         passHref
@@ -141,9 +141,11 @@ function WhenPlaying({ song }: { song: Song }) {
             <h3 className="font-semibold md:text-lg text-black dark:text-white animate-">
               {song.title}
             </h3>
-            <span className="hidden md:inline-flex">—</span>
+            <span className="hidden md:inline-flex dark:text-gray-300">—</span>
 
-            <p className="text-gray-600 text-xs sm:text-sm">{song.artist}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm">
+              {song.artist}
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2">

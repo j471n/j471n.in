@@ -52,7 +52,6 @@ export default function Home({
               className="relative w-44 h-44 xs:w-52 xs:h-52 flex justify-center items-center rounded-full p-3 before:absolute before:inset-0 before:border-t-4 before:border-b-4 before:border-black before:dark:border-white before:rounded-full before:animate-photo-spin"
             >
               <Image
-                unoptimized
                 src={homeProfileImage}
                 className="rounded-full shadow filter saturate-0"
                 width={400}
@@ -77,7 +76,7 @@ export default function Home({
                 </motion.h1>
                 <motion.p
                   variants={opacityVariant}
-                  className="font-medium text-xs md:text-sm lg:text-lg text-gray-500"
+                  className="font-medium text-xs md:text-sm lg:text-lg text-[#383838] dark:text-gray-200"
                 >
                   React Developer, Competitive Programmer
                 </motion.p>
@@ -85,7 +84,7 @@ export default function Home({
 
               <motion.p
                 variants={opacityVariant}
-                className=" text-slate-500 dark:text-gray-300 font-medium text-sm md:text-base text-center"
+                className=" text-[#474747] dark:text-gray-300 font-medium text-sm md:text-base text-center"
               >
                 I am currently pursuing my Bachelor Degree in Computer Science.
                 I can code in Python, C, C++, etc.
