@@ -4,7 +4,6 @@ import PageTop from "@components/PageTop";
 import Support from "@components/Support";
 import MDXContent from "@lib/MDXContent";
 import { MDXRemote } from "next-mdx-remote";
-import styles from "@styles/Blog.module.css";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { opacityVariant } from "@content/FramerMotionVariants";
 import pageMeta from "@content/meta";
@@ -24,7 +23,7 @@ export default function About({ about }: { about: PostType }) {
         <PageTop pageTitle="About me"></PageTop>
         <AnimatedDiv
           variants={opacityVariant}
-          className={` ${styles.blog} blog-container prose-sm  3xl:prose-lg`}
+          className={`blog-container flex flex-col gap-3 text-gray-6  00`}
         >
           <MDXRemote
             {...about.source}

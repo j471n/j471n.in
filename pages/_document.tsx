@@ -58,11 +58,6 @@ export default function Document() {
           type="font/woff2"
           crossOrigin="anonymous"
         />
-
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
-        />
       </Head>
       <body>
         <Main />
