@@ -23,7 +23,6 @@ export default function PageNotFound() {
         <Link
           href="/"
           className="p-3 w-full xs:max-w-[200px] xs:mx-0 sm:p-3 font-bold mx-auto bg-gray-300 dark:bg-darkSecondary text-center rounded-md text-black dark:text-white select-none  active:scale-95 transition-all  lg:hover:ring-2 ring-black/50 dark:ring-white/50"
-          passHref
         >
           Take me there!
         </Link>

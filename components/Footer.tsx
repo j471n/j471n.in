@@ -61,7 +61,6 @@ export default function Footer({
                   href={platform.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  passHref
                 >
                   <motion.p
                     className="hover:text-black dark:hover:text-white w-fit"
@@ -90,7 +89,7 @@ export default function Footer({
 
 function FooterLink({ route, text }: { route: string; text: string }) {
   return (
-    <Link href={`/${route}`} passHref>
+    <Link href={`/${route}`}>
       <motion.p
         className="hover:text-black dark:hover:text-white w-fit"
         variants={popUp}
@@ -122,7 +121,6 @@ function WhenPlaying({ song }: { song: Song }) {
       <h4 className="text-lg font-semibold dark:text-gray-300">Now Playing</h4>
       <Link
         href={song.songUrl}
-        passHref
         className="flex items-center justify-between bg-gray-200 dark:bg-darkSecondary  p-3 sm:p-4 rounded-sm"
       >
         <div className=" flex items-center gap-2">

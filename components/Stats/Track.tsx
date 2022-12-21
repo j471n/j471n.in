@@ -19,7 +19,7 @@ export default function Track({
   id,
 }: TrackProps) {
   return (
-    <Link href={url} rel="noreferrer" target="_blank" passHref>
+    <Link href={url} rel="noreferrer" target="_blank">
       <motion.a
         variants={popUpFromBottomForText}
         initial="hidden"

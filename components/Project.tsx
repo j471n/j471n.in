@@ -36,7 +36,6 @@ export default function Project({ project }: { project: ProjectType }) {
         <div className="mt-auto p-2 w-fit flex items-center gap-4">
           <Link
             href={project.githubURL}
-            passHref
             title="Source Code on GitHub"
             target="_blank"
             rel="noopener noreferrer"
@@ -48,7 +47,6 @@ export default function Project({ project }: { project: ProjectType }) {
           {project.previewURL && (
             <Link
               href={project.previewURL}
-              passHref
               title="Live Preview"
               target="_blank"
               rel="noopener noreferrer"

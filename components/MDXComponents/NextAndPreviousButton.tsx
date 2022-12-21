@@ -39,7 +39,6 @@ function BlogPageButton({
     <Link
       title={title}
       href={href}
-      passHref
       className={`flex ${
         type === "previous" && "flex-row-reverse"
       } justify-between bg-neutral-800 hover:bg-black !no-underline p-3 rounded-md active:scale-95 transition w-full shadow dark:hover:ring-1 dark:ring-white`}

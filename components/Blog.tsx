@@ -49,7 +49,6 @@ export default function Blog({ blog }: { blog: BlogType }) {
 
         <div className="relative mt-auto flex items-center justify-between ">
           <Link
-            passHref
             href={`/blogs/${blog.slug}`}
             className="px-5 md:px-6 py-2 md:py-2.5 rounded-lg bg-black hover:bg-neutral-900 text-white w-fit text-xs transition-all active:scale-95 font-medium select-none hover:-translate-y-1"
           >

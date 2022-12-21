@@ -19,7 +19,7 @@ export default function Artist({
   id,
 }: ArtistProps) {
   return (
-    <Link rel="noreferrer" target="_blank" href={url} passHref>
+    <Link rel="noreferrer" target="_blank" href={url}>
       <motion.div
         variants={popUpFromBottomForText}
         initial="hidden"

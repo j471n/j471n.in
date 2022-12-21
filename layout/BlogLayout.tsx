@@ -82,7 +82,6 @@ export default function BlogLayout({
                   <Link
                     key={content.heading}
                     href={`#${stringToSlug(content.heading)}`}
-                    passHref
                     className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
                     style={{ marginLeft: `${content.level * 15}px` }}
                     onClick={() => {
@@ -154,7 +153,6 @@ export default function BlogLayout({
           <div className="flex gap-2 ml-4">
             <Link
               href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
-              passHref
               title="Edit on Github"
               target="_blank"
               rel="noopener noreferrer"

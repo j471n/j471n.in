@@ -34,7 +34,6 @@ export default function Support() {
               rel="noopener noreferrer"
               key={paymentMethod.name}
               href={paymentMethod.url}
-              passHref
             >
               <motion.p
                 variants={popUp}

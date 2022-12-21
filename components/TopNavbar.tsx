@@ -72,7 +72,7 @@ export default function TopNavbar() {
 
   return (
     <div
-      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:p-4 sm:px-6 z-50 print:hidden"
+      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:px-6 z-50 print:hidden"
       ref={navRef}
     >
       {/* Mobile Navigation Hamburger and MobileMenu */}
@@ -83,9 +83,9 @@ export default function TopNavbar() {
         )}
       </AnimatePresence>
 
-      <Link href="/" passHref>
-        <div className="flex gap-2 items-center cursor-pointer z-50">
-          <Logo className="w-12 h-12 relative hidden sm:inline-flex mr-3" />
+      <Link href="/">
+        <Logo className="w-12 h-12 relative hidden sm:inline-flex mr-3" />
+        <div className="w-full sm:!hidden">
           <motion.p
             initial="hidden"
             animate={control}
@@ -93,7 +93,7 @@ export default function TopNavbar() {
               hidden: { opacity: 0, scale: 1, display: "none" },
               visible: { opacity: 1, scale: 1, display: "inline-flex" },
             }}
-            className="absolute sm:!hidden w-fit left-0 right-0 mx-auto flex justify-center  text-base font-sarina"
+            className="font-sarina"
           >
             Jatin Sharma
           </motion.p>
@@ -101,7 +101,7 @@ export default function TopNavbar() {
       </Link>
 
       {/* Top Nav list */}
-      <motion.nav className="hidden sm:flex z-10 md:absolute md:inset-0 md:justify-center">
+      <motion.nav className="hidden sm:flex z-10 md:inset-0 md:justify-center">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -145,7 +145,6 @@ function NavItem({ href, text }: { href: string; text: string }) {
           : " text-gray-600 dark:text-gray-300"
       } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
       href={href === "/home" ? "/" : href}
-      passHref
     >
       <motion.p className="capitalize" variants={popUp}>
         {text}
@@ -231,7 +230,6 @@ const MobileMenu = ({
             <Link
               href={navlink}
               key={`mobileNav-${index}`}
-              passHref
               onClick={handleClick}
               className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
             >
