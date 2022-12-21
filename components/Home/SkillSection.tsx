@@ -1,25 +1,12 @@
 import { FadeContainer, popUp } from "../../content/FramerMotionVariants";
 import { HomeHeading } from "../../pages";
 import { motion } from "framer-motion";
-import {
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiPython,
-  SiGit,
-  SiMysql,
-  SiFirebase,
-  SiTypescript,
-} from "react-icons/si";
-import { FaReact } from "react-icons/fa";
 import { useDarkMode } from "@context/darkModeContext";
 import * as WindowsAnimation from "@lib/windowsAnimation";
-import { SkillType } from "@lib/types";
+import skills from "@content/skillsData";
 import React from "react";
 
-export default function SkillSection({ skills }: { skills: SkillType[] }) {
+export default function SkillSection() {
   const { isDarkMode } = useDarkMode();
 
   return (
@@ -34,7 +21,7 @@ export default function SkillSection({ skills }: { skills: SkillType[] }) {
         className="grid my-10 gap-4 grid-cols-3"
       >
         {skills.map((skill, index) => {
-          const Icon = chooseIcon(skill.name.toLowerCase());
+          const Icon = skill.Icon;
           return (
             <motion.div
               variants={popUp}
@@ -61,49 +48,4 @@ export default function SkillSection({ skills }: { skills: SkillType[] }) {
       </motion.div>
     </section>
   );
-}
-
-function chooseIcon(title: string) {
-  let Icon;
-  switch (title) {
-    case "python":
-      Icon = SiPython;
-      break;
-    case "javascript":
-      Icon = SiJavascript;
-      break;
-    case "html":
-      Icon = SiHtml5;
-      break;
-    case "css":
-      Icon = SiCss3;
-      break;
-    case "next.js":
-      Icon = SiNextdotjs;
-      break;
-    case "react.js":
-      Icon = FaReact;
-      break;
-    case "tailwind css":
-      Icon = SiTailwindcss;
-      break;
-    case "firebase":
-      Icon = SiFirebase;
-      break;
-    case "git":
-      Icon = SiGit;
-      break;
-    case "git":
-      Icon = SiGit;
-      break;
-    case "mysql":
-      Icon = SiMysql;
-      break;
-    case "typescript":
-      Icon = SiTypescript;
-      break;
-    default:
-      break;
-  }
-  return Icon;
 }

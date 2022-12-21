@@ -1,100 +1,77 @@
 import { SkillType } from "@lib/types";
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiPython,
+  SiGit,
+  SiMysql,
+  SiFirebase,
+  SiTypescript,
+  SiReact,
+  SiC,
+  SiCplusplus,
+  SiFigma,
+} from "react-icons/si";
 
 const skills: SkillType[] = [
   {
     name: "HTML",
-    level: 100,
-    pinned: true,
+    Icon: SiHtml5,
   },
   {
     name: "CSS",
-    level: 95,
-    pinned: true,
+    Icon: SiCss3,
   },
   {
     name: "Javascript",
-    level: 80,
-    pinned: true,
+    Icon: SiJavascript,
   },
   {
     name: "Typescript",
-    level: 40,
-    pinned: true,
-  },
-  {
-    name: "SASS",
-    level: 80,
-    pinned: false,
-  },
-  {
-    name: "Bootstrap",
-    level: 90,
-    pinned: false,
+    Icon: SiTypescript,
   },
   {
     name: "React.js",
-    level: 80,
-    pinned: true,
+    Icon: SiReact,
   },
   {
     name: "Next.js",
-    level: 80,
-    pinned: true,
+    Icon: SiNextdotjs,
   },
   {
     name: "Tailwind CSS",
-    level: 100,
-    pinned: true,
+    Icon: SiTailwindcss,
   },
   {
     name: "C Programming",
-    level: 80,
-    pinned: false,
+    Icon: SiC,
   },
   {
     name: "C++",
-    level: 60,
-    pinned: false,
+    Icon: SiCplusplus,
   },
   {
     name: "Python",
-    level: 85,
-    pinned: true,
+    Icon: SiPython,
   },
   {
     name: "MySQL",
-    level: 85,
-    pinned: true,
+    Icon: SiMysql,
   },
   {
     name: "Git",
-    level: 95,
-    pinned: true,
-  },
-  {
-    name: "Node.js",
-    level: 50,
-    pinned: false,
+    Icon: SiGit,
   },
   {
     name: "Firebase",
-    level: 60,
-    pinned: true,
-  },
-  {
-    name: "Data Structure",
-    level: 60,
-    pinned: false,
-  },
-  {
-    name: "MS Office",
-    level: 70,
-    pinned: false,
+    Icon: SiFirebase,
   },
   {
     name: "Figma",
-    level: 70,
-    pinned: false,
+    Icon: SiFigma,
   },
 ];
 

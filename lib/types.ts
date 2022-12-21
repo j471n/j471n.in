@@ -48,8 +48,7 @@ export type ProjectType = {
 
 export type SkillType = {
   name: string;
-  level: number;
-  pinned: boolean;
+  Icon: IconType;
 };
 
 export type CertificateType = {

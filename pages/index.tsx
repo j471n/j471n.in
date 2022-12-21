@@ -12,7 +12,6 @@ import {
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import { homeProfileImage } from "@utils/utils";
-import { getPinnedSkills } from "@lib/dataFetch";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
@@ -24,7 +23,6 @@ import React from "react";
 import { BlogType } from "@lib/types";
 
 export default function Home({ blogs }: { blogs: BlogType[] }) {
-  const skills = getPinnedSkills();
   return (
     <>
       <Metadata
@@ -101,7 +99,7 @@ export default function Home({ blogs }: { blogs: BlogType[] }) {
         </motion.section>
 
         <div>
-          <SkillSection skills={skills} />
+          <SkillSection />
           <BlogsSection blogs={blogs} />
           <Contact />
         </div>
