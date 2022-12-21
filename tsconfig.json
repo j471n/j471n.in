@@ -127,7 +127,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/sitemap.xml.jsx"  ],
   "exclude": [
     "node_modules"
   ]
