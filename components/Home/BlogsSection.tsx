@@ -16,7 +16,7 @@ export default function BlogsSection({ blogs }: { blogs: BlogType[] }) {
         })}
 
         <Link href="/blogs">
-          <div className="font-inter font-medium border-transparent border-b-2 lg:hover:border-black dark:lg:hover:border-white transform duration-200 active:scale-90 active:border-black w-fit">
+          <div className="font-inter font-medium border-transparent transition active:scale-95 active:border-black w-fit group">
             <motion.a
               href="/blogs"
               className="flex items-center gap-1 justify-center"
@@ -26,7 +26,7 @@ export default function BlogsSection({ blogs }: { blogs: BlogType[] }) {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                className="h-6 w-6 ml-1"
+                className="h-6 w-6 ml-1 group-hover:translate-x-2 transition"
               >
                 <path
                   stroke="currentColor"
