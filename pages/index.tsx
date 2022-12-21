@@ -21,15 +21,10 @@ import Ripples from "react-ripples";
 import MDXContent from "@lib/MDXContent";
 import pageMeta from "@content/meta";
 import React from "react";
-import { BlogType, SkillType } from "@lib/types";
+import { BlogType } from "@lib/types";
 
-export default function Home({
-  blogs,
-  skills,
-}: {
-  blogs: BlogType[];
-  skills: SkillType[];
-}) {
+export default function Home({ blogs }: { blogs: BlogType[] }) {
+  const skills = getPinnedSkills();
   return (
     <>
       <Metadata
@@ -127,12 +122,11 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 }
 
 export async function getStaticProps() {
-  const blogs = new MDXContent("posts").getAllPosts().slice(0, 3);
-  const skills = getPinnedSkills();
+  const blogs = new MDXContent("posts").getAllPosts(3);
   await getRSS();
   await generateSitemap();
 
   return {
-    props: { blogs, skills },
+    props: { blogs },
   };
 }
