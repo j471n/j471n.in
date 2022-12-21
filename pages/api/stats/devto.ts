@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { allFollowers, allPosts } from "../../../lib/devto";
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
   const followers = await allFollowers();

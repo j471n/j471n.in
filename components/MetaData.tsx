@@ -1,6 +1,4 @@
 import Head from "next/head";
-import {} from "next";
-
 import useWindowLocation from "@hooks/useWindowLocation";
 
 type Props = {

@@ -6,7 +6,7 @@ import {
 } from "../../../lib/github";
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {

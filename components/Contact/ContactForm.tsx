@@ -56,7 +56,7 @@ export default function Form() {
         emailData!,
         process.env.NEXT_PUBLIC_YOUR_USER_ID
       )
-      .then((res) => {
+      .then(() => {
         formRef.current.reset();
         toast.update(toastId, {
           render: "Message Sent ✌",

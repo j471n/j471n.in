@@ -33,8 +33,6 @@ const tempData = {
   updated_at: "2022-07-02T03:07:58Z",
 };
 
-const Repos = {};
-
 type GithubRepo = {
   stargazers_count: number;
   fork: boolean;

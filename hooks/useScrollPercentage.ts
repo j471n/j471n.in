@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 export default function useScrollPercentage() {
   // fifteen
   const [scrollPercentage, setScrollPercentage] = useState(0);

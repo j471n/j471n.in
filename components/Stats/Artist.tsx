@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { popUpFromBottomForText, popUp } from "@content/FramerMotionVariants";
+import { popUpFromBottomForText } from "@content/FramerMotionVariants";
 import { motion } from "framer-motion";
 
 type ArtistProps = {

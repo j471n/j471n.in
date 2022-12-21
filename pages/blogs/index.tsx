@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, KeyboardEvent } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FadeContainer,

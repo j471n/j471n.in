@@ -1,6 +1,6 @@
 import Link from "next/link";
 import useLocalStorage from "@hooks/useBookmarkBlogs";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import OgImage from "./OgImage";
@@ -68,7 +68,6 @@ export default function Blog({ blog }: { blog: BlogType }) {
             )}
           </button>
 
-          <AnimatePresence>
             {bookmarkModal.show && (
               <motion.p
                 initial="hidden"
@@ -83,7 +82,6 @@ export default function Blog({ blog }: { blog: BlogType }) {
                 {bookmarkModal.text}
               </motion.p>
             )}
-          </AnimatePresence>
         </div>
       </div>
     </article>

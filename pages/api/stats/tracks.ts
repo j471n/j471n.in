@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { topTracks } from "../../../lib/spotify";
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
   const response = await topTracks();

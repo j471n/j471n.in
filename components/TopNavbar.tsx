@@ -8,7 +8,6 @@ import {
   hamFastFadeContainer,
   mobileNavItemSideways,
   popUp,
-  svgVariant,
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import { navigationRoutes } from "../utils/utils";
@@ -17,7 +16,6 @@ import Logo from "./SVG/Logo";
 
 /* TopNavbar Component */
 export default function TopNavbar() {
-  const router = useRouter();
   const navRef = useRef<HTMLDivElement>(null);
 
   /*  Using to control animation as I'll show the name to the mobile navbar when you scroll a bit
