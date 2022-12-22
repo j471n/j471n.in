@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
+    "@google-analytics/data": "^3.1.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "dompurify": "^2.3.6",
     "firebase-admin": "^10.2.0",
