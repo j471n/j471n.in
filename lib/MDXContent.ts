@@ -87,10 +87,7 @@ export default class MDXContent {
   }
 
   getAllPosts(length?: number | undefined) {
-    const posts =
-      length === undefined ? this.getSlugs() : this.getSlugs().slice(0, 3);
-
-    const allPosts = posts
+    const allPosts = this.getSlugs()
       .map((slug) => {
         return this.getFrontMatter(slug);
       })
@@ -100,7 +97,8 @@ export default class MDXContent {
         if (new Date(a?.date) < new Date(b?.date)) return 1;
         return 0;
       });
-    return allPosts;
+
+    return length === undefined ? allPosts : allPosts.slice(0, length);
   }
 
   getTableOfContents(markdown: string) {
