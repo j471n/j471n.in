@@ -1,13 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import socialMedia from "@content/socialMedia";
-import { FadeContainer, popUp } from "../content/FramerMotionVariants";
+import {
+  FadeContainer,
+  opacityVariant,
+  popUp,
+} from "../content/FramerMotionVariants";
 import { navigationRoutes } from "../utils/utils";
 import { motion } from "framer-motion";
 import { SiSpotify } from "react-icons/si";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 import { HiOutlineQrcode } from "react-icons/hi";
+import { BsDot } from "react-icons/bs";
 import { Song } from "@lib/types";
 
 export default function Footer({
@@ -18,6 +23,7 @@ export default function Footer({
   showQR: boolean;
 }) {
   const { data: currentSong } = useSWR("/api/now-playing", fetcher);
+  const { data: visitors } = useSWR("/api/ga", fetcher);
 
   return (
     <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-20 print:hidden">
@@ -73,16 +79,24 @@ export default function Footer({
             })}
           </div>
         </section>
-      </motion.div>
-
-      <div className="w-full flex justify-center">
-        <div
-          onClick={() => setShowQR(!showQR)}
-          className="bg-gray-700 text-white p-4 rounded-full cursor-pointer transition-all active:scale-90 hover:scale-105"
+        <motion.div
+          variants={opacityVariant}
+          className="w-full flex justify-between items-center gap-4 mt-5"
         >
-          <HiOutlineQrcode className="w-6 h-6 " />
-        </div>
-      </div>
+          <div className="flex items-center relative bg-white dark:bg-darkSecondary rounded-full px-4 py-1 text-xs sm:text-sm">
+            <BsDot className="w-7 h-7 -ml-2 text-green-500 animate-ping" />
+            <p>
+              {visitors?.totalVisitors} visitors in last {visitors?.days} days
+            </p>
+          </div>
+          <div
+            onClick={() => setShowQR(!showQR)}
+            className="bg-gray-700 text-white p-3 rounded-full cursor-pointer transition-all active:scale-90 hover:scale-105"
+          >
+            <HiOutlineQrcode className="w-5 h-5 " />
+          </div>
+        </motion.div>
+      </motion.div>
     </footer>
   );
 }
