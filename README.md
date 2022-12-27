@@ -133,7 +133,7 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
     
     And remove the following code from `pages/blogs/[slug].tsx` file:
     
-    ```tsx
+    ```jsx
     useEffect(() => {
     const registerView = () =>
         fetch(`/api/views/${post.meta.slug}`, {
