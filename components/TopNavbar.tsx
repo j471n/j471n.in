@@ -11,8 +11,8 @@ import {
 } from "../content/FramerMotionVariants";
 import { useDarkMode } from "../context/darkModeContext";
 import { navigationRoutes } from "../utils/utils";
-import { FiMoon, FiSun } from "react-icons/fi";
 import Logo from "./SVG/Logo";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 /* TopNavbar Component */
 export default function TopNavbar() {
@@ -119,15 +119,14 @@ export default function TopNavbar() {
         initial="hidden"
         animate="visible"
         variants={popUp}
-        className="cursor-pointer rounded-full z-30 transition active:scale-75"
+        className="cursor-pointer"
         title="Toggle Theme"
-        onClick={() => changeDarkMode(!isDarkMode)}
       >
-        {isDarkMode ? (
-          <FiMoon className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
-        ) : (
-          <FiSun className="h-6 w-6 sm:h-7 sm:w-7 select-none transition active:scale-75" />
-        )}
+        <DarkModeSwitch
+          checked={isDarkMode}
+          onChange={changeDarkMode}
+          size={24}
+        />
       </motion.div>
     </div>
   );
