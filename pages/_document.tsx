@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      
         {/* Barlow */}
         <link
           rel="preload"
@@ -57,6 +56,11 @@ export default function Document() {
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
+        />
+
+        <link
+          rel="stylesheet"
+          href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
         />
       </Head>
       <body>

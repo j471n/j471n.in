@@ -7,7 +7,6 @@ import MDXContent from "@lib/MDXContent";
 import { MDXRemote } from "next-mdx-remote";
 import { GetStaticPropsContext } from "next";
 import { PostType } from "@lib/types";
-import Head from "next/head";
 
 export default function Post({
   post,
@@ -30,12 +29,6 @@ export default function Post({
 
   return (
     <>
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css"
-        />
-      </Head>
       <Metadata
         title={post.meta.title}
         suffix="Jatin Sharma"
