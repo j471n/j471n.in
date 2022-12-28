@@ -84,10 +84,6 @@
       "destination": "https://j471n.substack.com/"
     },
     {
-      "source": "/resume",
-      "destination": "/resume.pdf"
-    },
-    {
       "source": "/cv",
       "destination": "https://read.cv/j471n"
     },
