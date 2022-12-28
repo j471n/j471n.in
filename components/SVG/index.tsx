@@ -4,6 +4,7 @@ import MicrosoftToDo from "./MicrosoftToDo";
 import RainDrop from "./RainDrop";
 import ShareX from "./ShareX";
 import Zip7 from "./Zip7";
+import Flameshot from "./Flameshot";
 
 const SVG = {
   Ditto,
@@ -12,5 +13,6 @@ const SVG = {
   RainDrop,
   ShareX,
   Zip7,
+  Flameshot
 };
 export default SVG;

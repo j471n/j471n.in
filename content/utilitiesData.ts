@@ -219,6 +219,12 @@ const utilities: Utilities = {
           Icon: SVG.Zip7,
           link: "https://www.7-zip.org/download.html",
         },
+        {
+          name: "Flameshot",
+          description: "Screenshot Software",
+          Icon: SVG.Flameshot,
+          link: "https://flameshot.org/",
+        },
       ],
     },
   ],
