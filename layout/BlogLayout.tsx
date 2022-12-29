@@ -3,7 +3,6 @@ import Image from "next/image";
 import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
-import { TbEdit } from "react-icons/tb";
 import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
@@ -20,6 +19,7 @@ import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 import useScrollPercentage from "@hooks/useScrollPercentage";
 import { getFormattedDate } from "@utils/date";
 import { PostType } from "@lib/types";
+import { RxPencil2 } from "react-icons/rx";
 
 export default function BlogLayout({
   post,
@@ -135,14 +135,14 @@ export default function BlogLayout({
               src={homeProfileImage}
               className="rounded-full !m-0"
             />
-            <div className="flex flex-col sm:flex-row sm:justify-between w-full">
-              <p className="text-sm  flex items-center gap-2 font-medium !my-0">
+            <div className="flex flex-col text-xs sm:text-sm sm:flex-row sm:justify-between w-full">
+              <p className="flex items-center gap-2 font-medium !my-0">
                 <span>Jatin Sharma</span>
                 <span>•</span>
                 <span>{getFormattedDate(new Date(post.meta.date))}</span>
               </p>
 
-              <p className="text-sm  flex items-center gap-2 font-medium !my-0">
+              <p className="flex items-center gap-2 font-medium !my-0">
                 <span>{post.meta.readingTime.text}</span>
                 <span>•</span>
                 <span>{post.meta.readingTime.words} words</span>
@@ -158,7 +158,7 @@ export default function BlogLayout({
               rel="noopener noreferrer"
               className="transition active:scale-75 select-none"
             >
-              <TbEdit className="w-7 h-7 text-gray-700 dark:text-gray-300 " />
+              <RxPencil2 className="w-7 h-7 text-gray-700 dark:text-gray-300 stroke-slate-300 " />
             </Link>
             <button
               title="Save for Later"
