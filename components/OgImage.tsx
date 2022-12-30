@@ -6,8 +6,8 @@ function OgImage({ src, alt }: { src: string; alt: string }) {
         title={alt}
         alt={alt}
         src={src}
-        width={600}
-        height={315}
+        width={1200}
+        height={630}
         placeholder="blur"
         blurDataURL={src}
         quality={25}
