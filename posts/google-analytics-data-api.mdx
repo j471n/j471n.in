@@ -5,6 +5,7 @@ date: 2022-12-27
 keywords: css, web development, google analytics, API, reporting API, How to use Google Analytics Data API, google
 published: true
 excerpt: In this article, I am going to walk you through that how you Google Analytics Data API to fetch data from Google Analytics in the simplest way I can. After reading this article you'll be able to use this in your project with ease.
+image: https://imgur.com/ocVrYSZ.png
 ---
 
 In this article, I am going to walk you through that how you [Google Analytics Data API](https://developers.google.com/analytics/devguides/reporting/data/v1) to fetch data from [Google Analytics](https://analytics.google.com/) in the simplest way I can. After reading this article you'll be able to use this in your project with ease. So without further due, Let's jump into it.
@@ -19,9 +20,9 @@ But first, look at how it's showing in [my portfolio](https://j471n.in/):
 
 We need three values to fetch the data:
 
-* `GA_PROPERTY_ID`
-* `GA_CLIENT_EMAIL`
-* `GA_PRIVATE_KEY`
+- `GA_PROPERTY_ID`
+- `GA_CLIENT_EMAIL`
+- `GA_PRIVATE_KEY`
 
 ### `GA_PROPERTY_ID`
 
@@ -29,11 +30,10 @@ First, you need to get `GA_PROPERTY_ID` of the Google Analytics project from whi
 
 To get this you need to follow these steps:
 
-* Visit [Google Analytics](https://analytics.google.com/).
-* Select Admin.
-* Select the Property.
-* Select Property Settings.
-    
+- Visit [Google Analytics](https://analytics.google.com/).
+- Select Admin.
+- Select the Property.
+- Select Property Settings.
 
 If the Property Settings shows a numeric `PROPERTY ID` such as "123...", this is the numeric Id of your Google Analytics 4 property.
 
@@ -63,7 +63,7 @@ To fetch the data you need to install a [@google-analytics/data](https://www.npm
 
 ```bash
 yarn add @google-analytics/data
-# or 
+# or
 npm i @google-analytics/data
 # or
 pnpm i @google-analytics/data
