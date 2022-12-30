@@ -35,10 +35,9 @@ export type SpotifyArtist = {
 };
 
 export type ProjectType = {
-  id: number;
+  id: string;
   name: string;
-  coverURL: string;
-  darkCoverURL?: string;
+  coverImage: string;
   description: string;
   githubURL: string;
   previewURL?: string;

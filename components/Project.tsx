@@ -7,10 +7,7 @@ import { ProjectType } from "@lib/types";
 export default function Project({ project }: { project: ProjectType }) {
   return (
     <div className="card">
-      <OgImage
-        src={project.coverURL as string}
-        alt={project.name}
-      />
+      <OgImage src={project?.coverImage as string} alt={project.name} />
 
       <div className="flex flex-col justify-start gap-3">
         <h1 className="font-bold capitalize text-neutral-900 dark:text-neutral-200">
