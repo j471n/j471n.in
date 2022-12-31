@@ -1,7 +1,6 @@
 import { HomeHeading } from "../../pages";
 import Link from "next/link";
 import Blog from "../Blog";
-import { motion } from "framer-motion";
 import { BlogType } from "@lib/types";
 
 export default function BlogsSection({ blogs }: { blogs: BlogType[] }) {
