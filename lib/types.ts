@@ -51,15 +51,12 @@ export type SkillType = {
 };
 
 export type CertificateType = {
+  id: string;
   title: string;
   issuedDate: string;
-  issuedBy: {
-    orgName: string;
-    orgLogo: string;
-  };
-  urls: {
-    pdfURL: string;
-  };
+  orgName: string;
+  orgLogo: string;
+  url: string;
   pinned: boolean;
 };
 
@@ -85,13 +82,6 @@ export type Utilities = {
   lastUpdate: string;
   data: UtilityType[];
 };
-
-// export interface ReadingTimeType {
-//   text: string;
-//   minutes: number;
-//   time: number;
-//   words: number;
-// }
 
 export interface BlogType {
   slug: string;

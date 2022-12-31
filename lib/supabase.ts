@@ -17,3 +17,16 @@ export async function getProjects() {
     error: error !== null,
   };
 }
+
+export async function getCertificates() {
+  let { data: certificates, error } = await supabase
+    .from("certificates")
+    .select("*")
+    .eq("pinned", "true")
+    .order("created_at", { ascending: false });
+
+  return {
+    certificates,
+    error: error !== null,
+  };
+}

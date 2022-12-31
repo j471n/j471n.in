@@ -1,14 +1,25 @@
 import MetaData from "@components/MetaData";
 import { popUpFromBottomForText } from "@content/FramerMotionVariants";
-import certificatesData from "@content/certificatesData";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import pageMeta from "@content/meta";
+import { CertificateType } from "@lib/types";
+import { getCertificates } from "@lib/supabase";
+import CreateAnIssue from "@components/CreateAnIssue";
+import { getFormattedDate } from "@utils/date";
 
-export default function Certificates() {
+export default function Certificates({
+  certificates,
+  error,
+}: {
+  certificates: CertificateType[];
+  error: boolean;
+}) {
+  if (error) return <CreateAnIssue />;
+
   return (
     <>
       <MetaData
@@ -25,23 +36,23 @@ export default function Certificates() {
         </PageTop>
 
         <div className="flex flex-col gap-3 font-inter">
-          {certificatesData.map((cer, index) => {
+          {certificates.map((cer) => {
             return (
               <AnimatedDiv
                 className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4  p-3 rounded-lg bg-white shadow dark:bg-darkSecondary/50"
                 variants={popUpFromBottomForText}
-                key={index}
+                key={cer.id}
               >
                 <div className="flex items-center gap-3">
                   <div className="relative flex items-center justify-center">
                     <Image
                       width={40}
                       height={40}
-                      src={cer.issuedBy.orgLogo}
-                      alt={cer.issuedBy.orgName}
+                      src={cer.orgLogo}
+                      alt={cer.orgName}
                       quality={50}
                       placeholder="blur"
-                      blurDataURL={cer.issuedBy.orgLogo}
+                      blurDataURL={cer.orgLogo}
                       style={{
                         objectFit: "contain",
                       }}
@@ -51,15 +62,15 @@ export default function Certificates() {
                     <h3 className="font-semibold text-sm sm:text-base md:text-lg text-neutral-900 dark:text-neutral-200">
                       {cer.title}
                     </h3>
-                    <p className="text-xs text-gray-500">
-                      {cer.issuedBy.orgName}
-                    </p>
+                    <p className="text-xs text-gray-500">{cer.orgName}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-5 text-sm justify-between">
-                  <p className="text-gray-500 text-sm">{cer.issuedDate}</p>
+                  <p className="text-gray-500 text-sm">
+                    {getFormattedDate(new Date(cer.issuedDate))}
+                  </p>
                   <Link
-                    href={cer.urls.pdfURL}
+                    href={cer.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-4 py-1 rounded-md bg-neutral-200 dark:bg-black shadow dark:text-white transform duration-200 font-medium  active:scale-90 lg:hover:bg-black lg:hover:text-white dark:lg:hover:bg-white dark:lg:hover:text-black"
@@ -74,4 +85,17 @@ export default function Certificates() {
       </section>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const { certificates, error } = await getCertificates();
+
+  console.log(certificates);
+  return {
+    props: {
+      certificates,
+      error,
+    },
+    revalidate: 60 * 60 * 24 * 7,
+  };
 }
