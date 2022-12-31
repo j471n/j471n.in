@@ -87,6 +87,6 @@ export async function getStaticProps() {
       certificates,
       error,
     },
-    revalidate: 60 * 60 * 24 * 7,
+    revalidate: 60 * 60 * 24,
   };
 }
