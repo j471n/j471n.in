@@ -11,7 +11,6 @@ export const popUp: Variants = {
   },
 };
 
-
 export const popUpFromBottomForText: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -23,8 +22,6 @@ export const popUpFromBottomForText: Variants = {
     },
   },
 };
-
-
 
 export const headingFromLeft: Variants = {
   hidden: { x: -200, opacity: 0 },
@@ -38,8 +35,6 @@ export const headingFromLeft: Variants = {
     },
   },
 };
-
-
 
 // top Navbar
 
@@ -69,12 +64,10 @@ export const fromTopVariant: Variants = {
   },
 };
 
-
 export const opacityVariant: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { delay: 0.2 } },
 };
-
 
 export const hamFastFadeContainer: Variants = {
   hidden: { opacity: 0 },
@@ -112,6 +105,21 @@ export const svgVariant: Variants = {
     transition: {
       duration: 4,
       ease: "easeInOut",
+    },
+  },
+};
+
+export const searchBarSlideAnimation = {
+  hidden: {
+    width: 0,
+    opacity: 0,
+  },
+  visible: {
+    width: "100%",
+    opacity: 1,
+    transition: {
+      type: "linear",
+      duration: 1,
     },
   },
 };

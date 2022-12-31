@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FadeContainer,
-  opacityVariant,
   popUp,
   popUpFromBottomForText,
+  searchBarSlideAnimation,
 } from "@content/FramerMotionVariants";
 import Link from "next/link";
 import Blog from "@components/Blog";
@@ -61,8 +61,8 @@ export default function Blogs({ blogs }: { blogs: BlogType[] }) {
         </PageTop>
 
         <AnimatedDiv
-          className="relative group text-slate-400 dark:text-gray-300 bg-white dark:bg-darkSecondary rounded-md"
-          variants={opacityVariant}
+          className="relative group w-0 mx-auto text-slate-400 dark:text-gray-300 bg-white dark:bg-darkSecondary rounded-md"
+          variants={searchBarSlideAnimation}
         >
           <CgSearch className="ml-3 w-5 h-5 absolute top-[50%] -translate-y-1/2 z-10" />
           <input
