@@ -13,7 +13,7 @@ export default function Project({ project }: { project: ProjectType }) {
         <h1 className="font-bold capitalize text-neutral-900 dark:text-neutral-200">
           {project.name}
         </h1>
-        <p className="text-sm text-gray-400 dark:text-neutral-400 truncate-2">
+        <p className="text-sm text-gray-400 dark:text-neutral-400 truncate-5">
           {project.description}
         </p>
 

@@ -124,6 +124,13 @@ body.dark {
   overflow: hidden;
 }
 
+.truncate-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .auto-row {
   -webkit-margin-before: auto;
   margin-block-start: auto;
