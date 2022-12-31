@@ -7,19 +7,17 @@ import Newsletter from "../components/Newsletter";
 import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
 import ScrollProgressBar from "@components/ScrollProgressBar";
-import { stringToSlug } from "@lib/toc";
 import { useState, useEffect } from "react";
-import { lockScroll, removeScrollLock } from "@utils/functions";
+import { removeScrollLock } from "@utils/functions";
 import useWindowSize from "@hooks/useWindowSize";
-import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import { opacityVariant } from "@content/FramerMotionVariants";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import useScrollPercentage from "@hooks/useScrollPercentage";
 import { getFormattedDate } from "@utils/date";
 import { PostType } from "@lib/types";
 import { RxPencil2 } from "react-icons/rx";
+import TableOfContents from "@components/TableOfContents";
 
 export default function BlogLayout({
   post,
@@ -31,8 +29,6 @@ export default function BlogLayout({
   const { currentURL } = useWindowLocation();
   const [isTOCActive, setIsTOCActive] = useState(false);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
-
-  const scrollPercentage = useScrollPercentage();
 
   const size = useWindowSize();
 
@@ -51,66 +47,16 @@ export default function BlogLayout({
     setAlreadyBookmarked(isAlreadyBookmarked(post.meta.slug));
   }, [isAlreadyBookmarked, post.meta.slug]);
 
+  console.log("render");
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
       {/* TOC */}
 
-      {post.tableOfContents.length > 0 && (
-        <>
-          <div
-            className={`fixed h-full print:hidden ${
-              isTOCActive
-                ? "left-0 opacity-100 top-[44px] md:top-[60px]"
-                : "-left-full opacity-0"
-            } ${
-              scrollPercentage > 95 ? "xl:-left-full" : "xl:left-0"
-            } md:left-0 md:opacity-100 md:max-w-[35%] lg:max-w-[30%]  transition-all duration-500 flex flex-col gap-1 !pb-[100px] overflow-y-scroll p-10 md:p-14 h-screen fixed w-full font-barlow bg-darkWhite dark:bg-darkPrimary text-neutral-800 dark:text-gray-200 z-50 `}
-          >
-            <AnimatedHeading
-              variants={opacityVariant}
-              className="font-bold text-xl md:text-2xl -ml-[5px] md:-ml-[6px]"
-            >
-              Table of Contents
-            </AnimatedHeading>
-
-            <AnimatedDiv
-              variants={FadeContainer}
-              className="flex flex-col relative before:absolute before:left-0 before:h-full before:w-[1.5px] before:bg-neutral-500 mb-20"
-            >
-              {post.tableOfContents.map((content) => {
-                return (
-                  <Link
-                    key={content.heading}
-                    href={`#${stringToSlug(content.heading)}`}
-                    className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
-                    style={{ marginLeft: `${content.level * 15}px` }}
-                    onClick={() => {
-                      if (size.width < 768) {
-                        lockScroll();
-                        setIsTOCActive(false);
-                      }
-                      setIsTOCActive(false);
-                      removeScrollLock();
-                    }}
-                  >
-                    {content.heading}
-                  </Link>
-                );
-              })}
-            </AnimatedDiv>
-          </div>
-
-          <button
-            onClick={() => {
-              setIsTOCActive(!isTOCActive);
-              lockScroll();
-            }}
-            className="md:hidden w-full py-2 font-medium bg-black dark:bg-white text-white dark:text-black fixed bottom-0 outline-none z-50"
-          >
-            Table of Contents
-          </button>
-        </>
-      )}
+      <TableOfContents
+        isTOCActive={isTOCActive}
+        setIsTOCActive={setIsTOCActive}
+        tableOfContents={post.tableOfContents}
+      />
 
       {/* Blog Content */}
       <section
