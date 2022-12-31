@@ -8,8 +8,6 @@ import Link from "next/link";
 import useWindowLocation from "@hooks/useWindowLocation";
 import ScrollProgressBar from "@components/ScrollProgressBar";
 import { useState, useEffect } from "react";
-import { removeScrollLock } from "@utils/functions";
-import useWindowSize from "@hooks/useWindowSize";
 import { opacityVariant } from "@content/FramerMotionVariants";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
@@ -30,18 +28,8 @@ export default function BlogLayout({
   const [isTOCActive, setIsTOCActive] = useState(false);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
 
-  const size = useWindowSize();
-
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
     useBookmarkBlogs("blogs", []);
-
-  useEffect(() => {
-    // In Case user exists from mobile to desktop then remove the scroll lock and TOC active to false
-    if (size.width > 768) {
-      removeScrollLock();
-      setIsTOCActive(false);
-    }
-  }, [size]);
 
   useEffect(() => {
     setAlreadyBookmarked(isAlreadyBookmarked(post.meta.slug));
@@ -51,7 +39,6 @@ export default function BlogLayout({
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
       {/* TOC */}
-
       <TableOfContents
         isTOCActive={isTOCActive}
         setIsTOCActive={setIsTOCActive}

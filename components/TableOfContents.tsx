@@ -28,6 +28,13 @@ export default function TableOfContents({
   const size = useWindowSize();
 
   useEffect(() => {
+    // In Case user exists from mobile to desktop then remove the scroll lock and TOC active to false
+    if (size.width > 768) {
+      removeScrollLock();
+      setIsTOCActive(false);
+    }
+  }, [size]);
+  useEffect(() => {
     setToc(
       tableOfContents.filter((table: any) =>
         table.heading.toLowerCase().includes(searchValue.trim().toLowerCase())
@@ -91,6 +98,10 @@ export default function TableOfContents({
                 );
               })}
             </AnimatedDiv>
+            {/* When you search but found nothing */}
+            {toc.length === 0 && (
+              <div className="text-center">No Result found</div>
+            )}
           </div>
 
           <button
