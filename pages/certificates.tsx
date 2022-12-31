@@ -2,7 +2,6 @@ import MetaData from "@components/MetaData";
 import { popUpFromBottomForText } from "@content/FramerMotionVariants";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import pageMeta from "@content/meta";
@@ -59,25 +58,19 @@ export default function Certificates({
                     />
                   </div>
                   <div className="flex flex-col ">
-                    <h3 className="font-semibold text-sm sm:text-base md:text-lg text-neutral-900 dark:text-neutral-200">
+                    <Link
+                      href={cer.url}
+                      className="font-semibold hover:underline text-sm sm:text-base md:text-lg text-neutral-900 dark:text-neutral-200"
+                    >
                       {cer.title}
-                    </h3>
-                    <p className="text-xs text-gray-500">{cer.orgName}</p>
+                    </Link>
+                    <p className="text-xs text-gray-500">
+                      {cer.orgName} &#x2022;{" "}
+                      {getFormattedDate(new Date(cer.issuedDate))}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-5 text-sm justify-between">
-                  <p className="text-gray-500 text-sm">
-                    {getFormattedDate(new Date(cer.issuedDate))}
-                  </p>
-                  <Link
-                    href={cer.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-1 rounded-md bg-neutral-200 dark:bg-black shadow dark:text-white transform duration-200 font-medium  active:scale-90 lg:hover:bg-black lg:hover:text-white dark:lg:hover:bg-white dark:lg:hover:text-black"
-                  >
-                    <motion.a>View</motion.a>
-                  </Link>
-                </div>
+                <p className="text-gray-500 text-sm"></p>
               </AnimatedDiv>
             );
           })}
