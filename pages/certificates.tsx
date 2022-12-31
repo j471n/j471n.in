@@ -89,8 +89,6 @@ export default function Certificates({
 
 export async function getStaticProps() {
   const { certificates, error } = await getCertificates();
-
-  console.log(certificates);
   return {
     props: {
       certificates,
