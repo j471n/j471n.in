@@ -61,13 +61,13 @@ export default function Blogs({ blogs }: { blogs: BlogType[] }) {
         </PageTop>
 
         <AnimatedDiv
-          className="relative group text-slate-400 dark:text-gray-300"
+          className="relative group text-slate-400 dark:text-gray-300 bg-white dark:bg-darkSecondary rounded-md"
           variants={opacityVariant}
         >
           <CgSearch className="ml-3 w-5 h-5 absolute top-[50%] -translate-y-1/2 z-10" />
           <input
             ref={searchRef}
-            className="px-12  py-3 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm hover:ring-slate-400 dark:bg-darkSecondary dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative bg-white group focus:ring-slate-400"
+            className="px-12  py-3 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm hover:ring-slate-400  dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative  group focus:ring-slate-400"
             type="text"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
