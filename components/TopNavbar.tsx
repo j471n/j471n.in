@@ -83,8 +83,8 @@ export default function TopNavbar() {
         )}
       </AnimatePresence>
 
-      <Link href="/">
-        <Logo className="w-12 h-12 relative hidden sm:inline-flex mr-3" />
+      <Link href="/" className="mr-3">
+        <Logo className="w-12 h-12 relative hidden sm:inline-flex" />
         <div className="w-full sm:!hidden">
           <motion.p
             initial="hidden"
