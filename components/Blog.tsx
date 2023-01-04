@@ -33,7 +33,7 @@ export default function Blog({ blog }: { blog: BlogType }) {
         >
           {blog.title}
         </Link>
-        <p className="mt-3 text-sm sm:text-xs md:text-sm  text-gray-600 dark:text-[#b5b7ba] truncate-3 mb-2">
+        <p className="mt-3 text-sm sm:text-xs md:text-sm  text-gray-600 dark:text-[#b5b7ba] line-clamp-3 sm:line-clamp-2 md:line-clamp-4 mb-2">
           {blog.excerpt}
         </p>
 

@@ -82,7 +82,7 @@ export default function TableOfContents({
                   <Link
                     key={content.heading}
                     href={`#${stringToSlug(content.heading)}`}
-                    className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:truncate text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
+                    className="relative overflow-hidden hover:bg-darkSecondary px-2 py-0.5 md:py-1 rounded-tr-md rounded-br-md md:line-clamp-1 text-neutral-700 hover:text-white  dark:text-neutral-200 font-medium border-l-2 border-neutral-500 dark:hover:border-white"
                     style={{ marginLeft: `${content.level * 15}px` }}
                     onClick={() => {
                       if (size.width < 768) {

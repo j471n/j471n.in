@@ -24,7 +24,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
 
   return (
     <div
-      className="relative"
+      className="relative -mt-2"
       ref={textInput}
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
@@ -33,10 +33,10 @@ const Pre = ({ children }: { children?: ReactNode }) => {
         <button
           aria-label="Copy code"
           type="button"
-          className={`!z-40 absolute right-2 top-1.5 h-8 w-8 rounded border-2 bg-gray-700 p-1 dark:bg-gray-800 ${
+          className={`!z-40 absolute right-2 bottom-2.5 h-8 w-8 rounded border-2 bg-transparent p-1  ${
             copied
               ? "border-green-400 focus:border-green-400 focus:outline-none"
-              : "border-gray-400"
+              : "border-darkSecondary dark:border-gray-200/60 "
           }`}
           onClick={onCopy}
         >
@@ -45,7 +45,11 @@ const Pre = ({ children }: { children?: ReactNode }) => {
             viewBox="0 0 24 24"
             stroke="currentColor"
             fill="none"
-            className={copied ? "text-green-400" : "text-gray-400"}
+            className={
+              copied
+                ? "text-green-400"
+                : "text-darkSecondary dark:text-gray-200/60"
+            }
           >
             {copied ? (
               <>
@@ -70,7 +74,9 @@ const Pre = ({ children }: { children?: ReactNode }) => {
         </button>
       )}
 
-      <pre className="!my-0 !rounded-md  !w-full !p-0 !py-3">{children}</pre>
+      <pre className="!my-0 !rounded-md  !w-full !p-0 !py-3 border border-black dark:border-gray-200/60">
+        {children}
+      </pre>
     </div>
   );
 };

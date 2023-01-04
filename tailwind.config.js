@@ -42,10 +42,9 @@ module.exports = {
         xs: "480px",
       },
     },
-    plugins: [
-      require("@tailwindcss/line-clamp"),
-      require("@tailwindcss/typography"),
-      require("tailwind-scrollbar-hide"),
-    ],
   },
+  plugins: [
+    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
+  ],
 };

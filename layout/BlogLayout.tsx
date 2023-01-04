@@ -113,7 +113,7 @@ export default function BlogLayout({
 
         <AnimatedDiv
           variants={opacityVariant}
-          className={` ${styles.blog} blog-container prose-sm prose-stone`}
+          className={`blog-container max-w-full prose-sm sm:prose-base prose-pre:bg-white dark:prose-pre:bg-darkSecondary`}
         >
           {children}
         </AnimatedDiv>

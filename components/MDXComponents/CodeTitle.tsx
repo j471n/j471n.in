@@ -13,6 +13,7 @@ import {
 import { VscJson } from "react-icons/vsc";
 import { IoLogoJavascript } from "react-icons/io5";
 import { AiOutlineFileText, AiOutlineFolderOpen } from "react-icons/ai";
+import { useDarkMode } from "@context/darkModeContext";
 
 type Props = {
   title?: string;
@@ -20,6 +21,8 @@ type Props = {
 };
 
 export default function CodeTitle({ title, lang }: Props) {
+  const { isDarkMode } = useDarkMode();
+
   let Icon;
   switch (lang) {
     case "html":
@@ -67,12 +70,14 @@ export default function CodeTitle({ title, lang }: Props) {
   }
   return (
     <div
-      className="relative !z-10 mb-2"
-      style={{
-        boxShadow: "0 15px #1F2937",
-      }}
+      className="relative !z-10"
+      style={
+        {
+          // boxShadow: `0 15px 0  ${isDarkMode ? "rgb(37 40 42)" : "white"}`,
+        }
+      }
     >
-      <div className="bg-[#1f2937] rounded-tl-md rounded-tr-md p-3 text-gray-200 flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border-b  border-b-gray-50/50 ">
+      <div className="bg-white text-darkSecondary dark:bg-darkSecondary dark:text-gray-200  rounded-tl-md rounded-tr-md p-3  flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border border-black   dark:border-gray-200/60  ">
         <div className="flex items-center gap-2">
           <Icon className="flex items-center w-4 h-4" />
           <p className="!my-0 font-[500] text-sm">{title || lang}</p>

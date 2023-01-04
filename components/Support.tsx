@@ -150,7 +150,7 @@ function UPIPaymentForm({ close }: { close: () => void }) {
               >
                 Pay{" "}
                 {amount && (
-                  <span className="ml-2 truncate">&#8377; {amount}</span>
+                  <span className="ml-2 line-clamp-1">&#8377; {amount}</span>
                 )}
               </motion.button>
             )}

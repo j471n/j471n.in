@@ -52,7 +52,7 @@ export default class MDXContent {
     const frontMatter = this.getFrontMatter(slug);
 
     const prettyCodeOptions = {
-      theme: "github-dark-dimmed",
+      theme: "one-dark-pro",
       onVisitLine(node: any) {
         // Prevent lines from collapsing in `display: grid` mode, and
         // allow empty lines to be copy/pasted
