@@ -9,6 +9,34 @@
 
 </div>
 
+
+## Tools Used
+
+* **Framework**: [Next.js](https://nextjs.org/)
+    
+* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+    
+* **Content**: [MDX](https://github.com/mdx-js/mdx)
+
+* **Database**: [Supabase](https://supabase.com/)
+    
+* **Animations**: [Framer Motion](https://framer.com/motion)
+    
+* **Deployment**: [Vercel](https://vercel.com)
+    
+* **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+    
+* **Plugins**: [rehype](https://github.com/rehypejs/rehype)
+    
+* **Analytics**: [Google Analytics](https://analytics.google.com/analytics/web/)
+    
+* [SWR](https://swr.vercel.app/)
+    
+* [Email.js](https://www.emailjs.com/)
+    
+* [React Toastify](https://github.com/fkhadra/react-toastify)
+    
+
 ## Run Locally
 
 Clone the project:
@@ -45,30 +73,6 @@ After that server should be running on [localhost:3000](http://localhost:3000)
 
 > Warning: You could run into errors if you don't populate the `.env.local` with the correct values
 
-## Tools Used
-
-* **Framework**: [Next.js](https://nextjs.org/)
-    
-* **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-    
-* **Content**: [MDX](https://github.com/mdx-js/mdx)
-    
-* **Animations**: [Framer Motion](https://framer.com/motion)
-    
-* **Deployment**: [Vercel](https://vercel.com)
-    
-* **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
-    
-* **Plugins**: [rehype](https://github.com/rehypejs/rehype)
-    
-* **Analytics**: [Google Analytics](https://analytics.google.com/analytics/web/)
-    
-* [SWR](https://swr.vercel.app/)
-    
-* [Email.js](https://www.emailjs.com/)
-    
-* [React Toastify](https://github.com/fkhadra/react-toastify)
-    
 
 ## Setting up the Environment
 
@@ -172,7 +176,7 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
         
         ![](https://i.imgur.com/HjqEPrD.png)
         
-    * And then choose the **Service Accounts** icon in the **General** section. And then select **Firebase Admin SDK** and you need to select **Node.js** and then click on **Generate new private key** button as shown in the following image:
+    * And then choose the **Service Accounts** and select **Firebase Admin SDK** and you need to select **Node.js** and then click on **Generate new private key** button as shown in the following image:
         
         ![](https://i.imgur.com/erPGdme.png)
         
