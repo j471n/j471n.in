@@ -14,15 +14,9 @@ export default function Blog({ blog }: { blog: BlogType }) {
           src={blog.image}
           width={1200}
           height={630}
-          placeholder="blur"
           blurDataURL={blog.image}
           quality={25}
           className="transition-all duration-300 backdrop-blur-xl rounded-xl my-auto"
-          style={{
-            width: "100%",
-            height: "auto",
-            objectFit: "cover",
-          }}
         />
       </div>
 
@@ -38,14 +32,16 @@ export default function Blog({ blog }: { blog: BlogType }) {
         </p>
 
         <div className="flex items-center justify-between mt-auto">
-          <div className="flex font-barlow gap-3 items-center z-10 relative">
-            <Image
-              alt="Jatin Sharma"
-              height={30}
-              width={30}
-              src={homeProfileImage}
-              className="rounded-full !m-0 h-full"
-            />
+          <div className="flex font-barlow gap-3 items-center z-10">
+            <div className="w-[30px]">
+              <Image
+                alt="Jatin Sharma"
+                height={933}
+                width={933}
+                src={homeProfileImage}
+                className="rounded-full !m-0 h-full"
+              />
+            </div>
             <div className="flex flex-col">
               <Link href="/about" className="font-bold text-sm hover:underline">
                 Jatin Sharma

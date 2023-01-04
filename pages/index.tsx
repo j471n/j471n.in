@@ -11,7 +11,7 @@ import {
   popUp,
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-// import { homeProfileImage } from "@utils/utils";
+import { homeProfileImage } from "@utils/utils";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
@@ -45,17 +45,17 @@ export default function Home({ blogs }: { blogs: BlogType[] }) {
               className="relative w-44 h-44 xs:w-52 xs:h-52 flex justify-center items-center rounded-full p-3 before:absolute before:inset-0 before:border-t-4 before:border-b-4 before:border-black before:dark:border-white before:rounded-full before:animate-photo-spin"
             >
               <Image
-                src="https://ucarecdn.com/5368b1dd-a88c-4730-a5d0-42ac41087461/-/preview/-/quality/smart/-/format/auto/"
+                src={homeProfileImage}
                 className="rounded-full shadow filter saturate-0"
-                width={640}
-                height={640}
+                width={933}
+                height={933}
                 alt="cover Profile Image"
                 quality={75}
-                priority={true}
-                style={{
-                  maxWidth: "100%",
-                  height: "auto",
-                }}
+                priority
+                // style={{
+                //   maxWidth: "100%",
+                //   height: "auto",
+                // }}
               />
             </motion.div>
 
