@@ -14,6 +14,7 @@ module.exports = withPWA({
   reactStrictMode: true,
   images: {
     domains: [
+      "ucarecdn.com",
       "cdn.buymeacoffee.com",
       "res.cloudinary.com",
       "imgur.com",
