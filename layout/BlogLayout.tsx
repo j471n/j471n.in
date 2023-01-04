@@ -1,6 +1,5 @@
 import { homeProfileImage } from "../utils/utils";
 import Image from "next/image";
-import styles from "../styles/Blog.module.css";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
 import Newsletter from "../components/Newsletter";
@@ -113,7 +112,7 @@ export default function BlogLayout({
 
         <AnimatedDiv
           variants={opacityVariant}
-          className={`blog-container max-w-full prose-sm sm:prose-base prose-pre:bg-white dark:prose-pre:bg-darkSecondary`}
+          className="blog-container max-w-full prose-sm sm:prose-base prose-pre:bg-white dark:prose-pre:bg-darkSecondary"
         >
           {children}
         </AnimatedDiv>
