@@ -23,7 +23,7 @@ export default function About({ about }: { about: PostType }) {
         <PageTop pageTitle="About me"></PageTop>
         <AnimatedDiv
           variants={opacityVariant}
-          className={`blog-container flex flex-col gap-3 text-gray-6  00`}
+          className="prose dark:prose-invert max-w-full"
         >
           <MDXRemote
             {...about.source}
