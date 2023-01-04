@@ -47,8 +47,8 @@ export default function Home({ blogs }: { blogs: BlogType[] }) {
               <Image
                 src="https://ucarecdn.com/5368b1dd-a88c-4730-a5d0-42ac41087461/-/preview/-/quality/smart/-/format/auto/"
                 className="rounded-full shadow filter saturate-0"
-                width={400}
-                height={400}
+                width={640}
+                height={640}
                 alt="cover Profile Image"
                 quality={75}
                 priority={true}

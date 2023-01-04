@@ -34,7 +34,6 @@ export default function BlogLayout({
     setAlreadyBookmarked(isAlreadyBookmarked(post.meta.slug));
   }, [isAlreadyBookmarked, post.meta.slug]);
 
-  console.log("render");
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
       {/* TOC */}
