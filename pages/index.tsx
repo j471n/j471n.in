@@ -11,7 +11,7 @@ import {
   popUp,
 } from "@content/FramerMotionVariants";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import { homeProfileImage } from "@utils/utils";
+// import { homeProfileImage } from "@utils/utils";
 import getRSS from "@lib/generateRSS";
 import generateSitemap from "@lib/sitemap";
 import { motion } from "framer-motion";
