@@ -22,10 +22,10 @@ export default async function getRSS() {
   // Add all blog posts to the RSS feed
   allBlogs?.map((post) => {
     feed.item({
-      title: post?.title,
+      title: post!.title,
       url: `${siteURL}/blogs/${post?.slug}`,
-      date: post?.date,
-      description: post?.excerpt,
+      date: post!.date,
+      description: post!.excerpt,
     });
   });
 
