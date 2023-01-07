@@ -83,31 +83,25 @@ export type Utilities = {
   data: UtilityType[];
 };
 
-export interface BlogType {
+export type FrontMatter = {
   slug: string;
   readingTime: ReadTimeResults;
   excerpt: string;
   title: string;
   date: string;
-  keywords?: string;
+  keywords: string;
   image: string;
-}
+};
 
 export type PostType = {
-  meta: {
-    slug: string;
-    readingTime: ReadTimeResults;
-    excerpt: string;
-    title: string;
-    date: string;
-    keywords: string;
-    image: string;
-  };
+  meta: FrontMatter;
   source: MDXRemoteSerializeResult;
-  tableOfContents: {
-    level: number;
-    heading: string;
-  }[];
+  tableOfContents: TableOfContents[];
+};
+
+export type TableOfContents = {
+  level: number;
+  heading: string;
 };
 
 export type SupportMe = {
@@ -132,4 +126,14 @@ export type FormInput = {
   email: string;
   subject: string;
   message: string;
+};
+
+export type SpotifyAccessToken = {
+  access_token: string;
+};
+
+export type GithubRepo = {
+  stargazers_count: number;
+  fork: boolean;
+  forks_count: number;
 };

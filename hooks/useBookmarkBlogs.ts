@@ -1,9 +1,9 @@
-import { BlogType } from "@lib/types";
+import { FrontMatter } from "@lib/types";
 import { useState, useEffect } from "react";
 
 const useBookmarkBlogs = (key: string, defaultValue: []) => {
-  const [bookmarkedBlogs, setBookmarkedBlogs] = useState((): BlogType[] => {
-    let currentValue: BlogType[] = [];
+  const [bookmarkedBlogs, setBookmarkedBlogs] = useState((): FrontMatter[] => {
+    let currentValue: FrontMatter[] = [];
 
     try {
       currentValue = JSON.parse(localStorage.getItem(key)!);
@@ -23,7 +23,7 @@ const useBookmarkBlogs = (key: string, defaultValue: []) => {
     return data;
   }
 
-  function addToBookmark(blogToBookmark: BlogType) {
+  function addToBookmark(blogToBookmark: FrontMatter) {
     var data = getValue();
     if (!data.includes(blogToBookmark)) {
       data.unshift(blogToBookmark); // add blog to the starting of the array
@@ -34,13 +34,13 @@ const useBookmarkBlogs = (key: string, defaultValue: []) => {
   function removeFromBookmark(blogToRemove: string) {
     var data = getValue();
     setBookmarkedBlogs(
-      data.filter((blog: BlogType) => blog.slug != blogToRemove)
+      data.filter((blog: FrontMatter) => blog.slug != blogToRemove)
     );
   }
 
   function isAlreadyBookmarked(searchBySlug: string) {
     return bookmarkedBlogs
-      ?.map((bookmarkedBlog: BlogType) => bookmarkedBlog.slug === searchBySlug)
+      ?.map((bookmarkedBlog: FrontMatter) => bookmarkedBlog.slug === searchBySlug)
       .includes(true);
   }
 

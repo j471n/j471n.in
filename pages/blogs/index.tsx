@@ -16,17 +16,17 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import PageTop from "@components/PageTop";
 import MDXContent from "@lib/MDXContent";
 import pageMeta from "@content/meta";
-import { BlogType } from "@lib/types";
+import { FrontMatter } from "@lib/types";
 import { CgSearch } from "react-icons/cg";
 
-export default function Blogs({ blogs }: { blogs: BlogType[] }) {
+export default function Blogs({ blogs }: { blogs: FrontMatter[] }) {
   const [searchValue, setSearchValue] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
   const searchRef = useRef<HTMLInputElement>(null!);
 
   useEffect(() => {
     setFilteredBlogs(
-      blogs.filter((post: BlogType) =>
+      blogs.filter((post: FrontMatter) =>
         post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
       )
     );

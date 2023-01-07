@@ -19,10 +19,10 @@ import { FiDownload } from "react-icons/fi";
 import MDXContent from "@lib/MDXContent";
 import pageMeta from "@content/meta";
 import React from "react";
-import { BlogType } from "@lib/types";
+import { FrontMatter } from "@lib/types";
 import Link from "next/link";
 
-export default function Home({ blogs }: { blogs: BlogType[] }) {
+export default function Home({ blogs }: { blogs: FrontMatter[] }) {
   return (
     <>
       <Metadata

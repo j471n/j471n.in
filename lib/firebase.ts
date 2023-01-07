@@ -1,6 +1,7 @@
 import * as admin from "firebase-admin";
 import { getDatabase } from "firebase-admin/database";
 
+// Initialize the Firebase Admin SDK
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
@@ -12,7 +13,11 @@ if (!admin.apps.length) {
   });
 }
 
+// Get the Firebase Database client instance
 const db = getDatabase();
+
+// Get a reference to the 'views' key in the database
 const ref = db.ref("views");
 
+// Export the database client instance and reference
 export { db, ref };

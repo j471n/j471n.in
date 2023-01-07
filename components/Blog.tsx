@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { getFormattedDate } from "@utils/date";
-import { BlogType } from "@lib/types";
+import { FrontMatter } from "@lib/types";
 import Image from "next/image";
 import { homeProfileImage } from "@utils/utils";
 
-export default function Blog({ blog }: { blog: BlogType }) {
+export default function Blog({ blog }: { blog: FrontMatter }) {
   return (
     <article className="bg-white dark:bg-darkSecondary rounded-2xl p-2 flex flex-col sm:flex-row items-center w-ull sm:w-[95%] mx-auto gap-2 md:gap-7 shadow-md md:shadow-lg">
       <div className="w-full">

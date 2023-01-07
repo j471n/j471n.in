@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import readTime from "reading-time";
 import rehypePrettyCode from "rehype-pretty-code";
+import { FrontMatter } from "./types";
 
 export default class MDXContent {
   private POST_PATH: string;
@@ -24,23 +25,23 @@ export default class MDXContent {
     });
   }
 
-  getFrontMatter(slug: string) {
+  getFrontMatter(slug: string): FrontMatter | null {
     const postPath = path.join(this.POST_PATH, `${slug}.mdx`);
     const source = readFileSync(postPath);
     const { content, data } = matter(source);
     const readingTime = readTime(content);
 
-    if (data.published) {
-      return {
-        slug,
-        readingTime,
-        excerpt: data.excerpt ?? "",
-        title: data.title ?? slug,
-        date: (data.date ?? new Date()).toString(),
-        keywords: data.keywords ?? "",
-        image: data.image ?? "https://imgur.com/aNqa9cE.png",
-      };
-    }
+    if (!data.published) return null;
+
+    return {
+      slug,
+      readingTime,
+      excerpt: data.excerpt ?? "",
+      title: data.title ?? slug,
+      date: (data.date ?? new Date()).toString(),
+      keywords: data.keywords ?? "",
+      image: data.image ?? "https://imgur.com/aNqa9cE.png",
+    };
   }
 
   async getPostFromSlug(slug: string, force: boolean = false) {
@@ -91,10 +92,10 @@ export default class MDXContent {
       .map((slug) => {
         return this.getFrontMatter(slug);
       })
-      .filter((post) => post != null || post != undefined) // Filter post if it is not published
+      .filter((post) => post !== null) // Filter post if it is not published
       .sort((a, b) => {
-        if (new Date(a?.date) > new Date(b?.date)) return -1;
-        if (new Date(a?.date) < new Date(b?.date)) return 1;
+        if (new Date(a!.date) > new Date(b!.date)) return -1;
+        if (new Date(a!.date) < new Date(b!.date)) return 1;
         return 0;
       });
 

@@ -6,7 +6,8 @@ export default async function getRSS() {
   const siteURL = "https://j471n.in";
   const allBlogs = new MDXContent("posts").getAllPosts();
 
-  const feed = new RSS({  
+  // Create a new RSS object
+  const feed = new RSS({
     title: "Jatin Sharma",
     description: `I've been writing online since 2021, mostly about web development
             and tech careers. In total, I've written ${allBlogs.length} articles
@@ -18,6 +19,7 @@ export default async function getRSS() {
     copyright: `All rights reserved ${new Date().getFullYear()}, Jatin Sharma`,
   });
 
+  // Add all blog posts to the RSS feed
   allBlogs?.map((post) => {
     feed.item({
       title: post?.title,
@@ -27,5 +29,6 @@ export default async function getRSS() {
     });
   });
 
+  // Write the RSS feed to a file
   writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
 }

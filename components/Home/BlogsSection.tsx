@@ -1,9 +1,9 @@
 import { HomeHeading } from "../../pages";
 import Link from "next/link";
 import Blog from "../Blog";
-import { BlogType } from "@lib/types";
+import { FrontMatter } from "@lib/types";
 
-export default function BlogsSection({ blogs }: { blogs: BlogType[] }) {
+export default function BlogsSection({ blogs }: { blogs: FrontMatter[] }) {
   return (
     <section className="mx-5 mb-5">
       <HomeHeading title="Recent Posts" />

@@ -1,3 +1,5 @@
+import { GithubRepo } from "./types";
+
 const tempData = {
   login: "j471n",
   id: 55713505,
@@ -33,12 +35,6 @@ const tempData = {
   updated_at: "2022-07-02T03:07:58Z",
 };
 
-type GithubRepo = {
-  stargazers_count: number;
-  fork: boolean;
-  forks_count: number;
-};
-
 // its for /api/stats/github
 export async function fetchGithub() {
   const fake = false;
@@ -51,7 +47,9 @@ export function getOldStats() {
   return tempData;
 }
 
+/* Retrieves the number of stars and forks for the user's repositories on GitHub. */
 export async function getGithubStarsAndForks() {
+  // Fetch user's repositories from the GitHub API
   const res = await fetch(
     "https://api.github.com/users/j471n/repos?per_page=100"
   );
@@ -71,12 +69,16 @@ export async function getGithubStarsAndForks() {
   const mineRepos: GithubRepo[] = userRepos?.filter(
     (repo: GithubRepo) => !repo.fork
   );
+
+  // Calculate the total number of stars for the user's repositories
   const githubStars = mineRepos.reduce(
     (accumulator: number, repository: GithubRepo) => {
       return accumulator + repository["stargazers_count"];
     },
     0
   );
+
+  // Calculate the total number of forks for the user's repositories
   const forks = mineRepos.reduce(
     (accumulator: number, repository: GithubRepo) => {
       return accumulator + repository["forks_count"];
