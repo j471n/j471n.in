@@ -10,7 +10,7 @@ export default function Project({ project }: { project: ProjectType }) {
       <OgImage src={project?.coverImage as string} alt={project.name} />
 
       <div className="flex flex-col justify-start gap-3">
-        <h1 className="font-bold capitalize text-neutral-900 dark:text-neutral-200">
+        <h1 className="font-bold text-neutral-900 dark:text-neutral-200">
           {project.name}
         </h1>
         <p className="text-sm text-gray-400 dark:text-neutral-400 line-clamp-5">
