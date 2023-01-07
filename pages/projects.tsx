@@ -57,6 +57,5 @@ export async function getStaticProps() {
       projects,
       error,
     },
-    // revalidate: 60 * 60 * 24,
   };
 }

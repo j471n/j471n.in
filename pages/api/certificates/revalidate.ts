@@ -10,8 +10,8 @@ export default async function handler(
   }
 
   try {
-    // Regenerate the projects page
-    await res.revalidate("/projects");
+    // Regenerate the certificates page
+    await res.revalidate("/certificates");
     return res.json({ revalidated: true });
   } catch (err) {
     // If there was an error, Next.js will continue
