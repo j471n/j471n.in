@@ -34,7 +34,6 @@ export default function Blogs({ blogs }: { blogs: FrontMatter[] }) {
 
   function handleAutoSearch(e: any) {
     if (e.code === "Slash" && e.ctrlKey) {
-      console.log("running");
       searchRef.current.focus();
     }
   }
