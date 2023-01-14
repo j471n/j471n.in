@@ -15,7 +15,7 @@ export default function Post({
   post: PostType;
   error: boolean;
 }) {
-  // Adding Views to the firebase database
+  // Adding Views to the supabase database
   useEffect(() => {
     const registerView = () =>
       fetch(`/api/views/${post.meta.slug}`, {

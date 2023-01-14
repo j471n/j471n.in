@@ -124,70 +124,7 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
     * `SPOTIFY_REFRESH_TOKEN`
         
     
-    You need to follow this [blog](https://j471n.in/blogs/spotify-api-nextjs) to get these variables' values.
-    
-* **Firebase Integration**: I have integrated the Firebase database to store the visitor of blog in the database. This step is optional for you. You can skip this section and delete the following files:
-    
-    * `lib/firebase.ts`
-        
-    * `pages/api/views/index.ts`
-        
-    * `pages/api/views/[slug].ts`
-        
-    
-    And remove the following code from `pages/blogs/[slug].tsx` file:
-    
-    ```jsx
-    useEffect(() => {
-    const registerView = () =>
-        fetch(`/api/views/${post.meta.slug}`, {
-        method: "POST",
-        });
-    
-    post != null && registerView();
-    }, [post !== null && post.meta.slug]);
-    ```
-    
-    And if you want to use this feature then follow these steps-
-    
-    * Go to [Firebase](https://console.firebase.google.com/) Console and log in with your Google Account.
-        
-    * Add A new project
-        
-        ![](https://i.imgur.com/cpnbIEi.png)
-        
-    * Enter the **Project Name** and then click on **Continue**. It will create an app for you.
-        
-        ![](https://i.imgur.com/XKNDIIq.png)
-        
-    * Then Click on the **Realtime Database** in the sidebar.
-        
-        ![](https://i.imgur.com/nDWYUvg.png)
-        
-    * Click on **Create Database** and follow the process.
-        
-        ![](https://i.imgur.com/LpVLnkk.png)
-        
-    * Make sure you select **Test Mode** and then click on Enable.
-        
-        ![](https://i.imgur.com/mjGNm8R.png)
-        
-    * Then go to **Project settings**.
-        
-        ![](https://i.imgur.com/HjqEPrD.png)
-        
-    * And then choose the **Service Accounts** and select **Firebase Admin SDK** and you need to select **Node.js** and then click on **Generate new private key** button as shown in the following image:
-        
-        ![](https://i.imgur.com/erPGdme.png)
-        
-    * A warning will pop up. Click on **Generate Key**.
-        
-        ![](https://i.imgur.com/utwTrAJ.png)
-        
-    * Then a JSON file will be downloaded and then you will find all the required values in that file. However, you need to install `firebase-admin` by just typing `yarn add firebase-admin` in the terminal.
-        
-    * **Don't share any of the things with anyone or never put these to GitHub.**
-        
+    You need to follow this [blog](https://j471n.in/blogs/spotify-api-nextjs) to get these variables' values.       
 * [**Google Analytics Data API**](https://developers.google.com/analytics/devguides/reporting/data/v1): I am using this API to get the analytics of this website so that I can show how many user visit this site in the last 7 days. In this you will need the value of the following properties:
     
     * `GA_PROPERTY_ID`
