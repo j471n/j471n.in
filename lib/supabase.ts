@@ -39,3 +39,50 @@ export async function getCertificates() {
     error: error !== null,
   };
 }
+
+export async function addView(slug: string) {
+  try {
+    const blogSlug = await getViewBySlug(slug);
+
+    if (blogSlug !== undefined) {
+      return await supabase
+        .from("views")
+        .update({ views: blogSlug.views + 1 })
+        .eq("slug", slug);
+    } else {
+      return await supabase.from("views").insert({
+        slug: slug,
+        views: 1,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+export async function getViewBySlug(slug: string) {
+  try {
+    const { data } = await supabase
+      .from("views")
+      .select("views")
+      .eq("slug", slug);
+    return data![0];
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function getAllViews() {
+  try {
+    // views_sum is defined in supabase
+    const { data: totalViews } = await supabase.rpc("views_sum");
+    const { data: posts } = await supabase.from("views").select("*");
+
+    return {
+      totalViews,
+      posts,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+}
