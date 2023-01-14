@@ -5,6 +5,8 @@ import RainDrop from "./RainDrop";
 import ShareX from "./ShareX";
 import Zip7 from "./Zip7";
 import Flameshot from "./Flameshot";
+import NextLogo from "./NextLogo";
+import VercelLogo from "./VercelLogo";
 
 const SVG = {
   Ditto,
@@ -13,6 +15,8 @@ const SVG = {
   RainDrop,
   ShareX,
   Zip7,
-  Flameshot
+  Flameshot,
+  NextLogo,
+  VercelLogo,
 };
 export default SVG;

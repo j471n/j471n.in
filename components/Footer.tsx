@@ -14,6 +14,8 @@ import fetcher from "../lib/fetcher";
 import { HiOutlineQrcode } from "react-icons/hi";
 import { BsDot } from "react-icons/bs";
 import { Song } from "@lib/types";
+import NextLogo from "./SVG/NextLogo";
+import VercelLogo from "./SVG/VercelLogo";
 
 export default function Footer({
   setShowQR,
@@ -26,7 +28,7 @@ export default function Footer({
   const { data: visitors } = useSWR("/api/ga", fetcher);
 
   return (
-    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-20 print:hidden">
+    <footer className=" text-gray-600 dark:text-gray-400/50 w-screen font-inter mb-14 print:hidden">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -95,6 +97,21 @@ export default function Footer({
           >
             <HiOutlineQrcode className="w-5 h-5 " />
           </div>
+        </motion.div>
+
+        <motion.div
+          variants={opacityVariant}
+          className="flex items-center gap-2 justify-center text-black dark:text-white mt-5"
+        >
+          <span>Powered by</span>
+
+          <Link target="_blank" rel="noreferrer" href="https://nextjs.org">
+            <NextLogo />
+          </Link>
+          <span>and</span>
+          <Link target="_blank" rel="noreferrer" href="https://vercel.com">
+            <VercelLogo />
+          </Link>
         </motion.div>
       </motion.div>
     </footer>
