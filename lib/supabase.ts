@@ -40,6 +40,12 @@ export async function getCertificates() {
   };
 }
 
+
+/**
+ * This function is used to add a view to the specified blog post. It first retrieves the blog post from the database 
+ * by its slug value. If the post exists, it increments the view count by 1 and updates it in the database.
+ * If the post does not exist, it creates a new record with the slug and views set to 1.
+ */
 export async function addView(slug: string) {
   try {
     const blogSlug = await getViewBySlug(slug);
@@ -60,6 +66,10 @@ export async function addView(slug: string) {
   }
 }
 
+/**
+ * This function is used to retrieve the view count of a specified blog post by its slug value.
+ * It queries the database and selects the "views" field for the record with a matching "slug" value.
+ */
 export async function getViewBySlug(slug: string) {
   try {
     const { data } = await supabase
@@ -72,6 +82,12 @@ export async function getViewBySlug(slug: string) {
   }
 }
 
+/**
+ *
+ * This function is used to retrieve all the views count and all the blog post in the database.
+ * It first retrieves the total views count using a predefined function "views_sum" in supabase.
+ * Then it retrieves all the records from "views" table.
+ */
 export async function getAllViews() {
   try {
     // views_sum is defined in supabase
