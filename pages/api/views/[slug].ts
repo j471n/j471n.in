@@ -8,6 +8,19 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
+/**
+ * This function handles HTTP requests made to a specific route. It takes in a "slug" parameter from the request query.
+ *
+ * If the request method is GET, it calls the getViewBySlug(slug) function, which retrieves the view count of the specified blog post by its slug value.
+ * If the view count is not found, it sends a response with a status code of 404 and a JSON object with a message of "Slug not found"
+ * If the view count is found, it sends a response with a status code of 200 and the data in JSON format.
+ *
+ * If the request method is POST and the app is running in production environment, it calls the addView(slug) function,
+ * which adds a view to the specified blog post. It sends a response with the status code and data returned from the addView function.
+ *
+ * If the request method is POST and the app is running in development environment, it sends a response with a status code of 401 and a JSON object with a message of "In Development, Can't add views"
+ */
+
 export default async function viewsSlug(
   req: ExtendedNextApiRequest,
   res: NextApiResponse
