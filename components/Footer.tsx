@@ -105,11 +105,11 @@ export default function Footer({
         >
           <span>Powered by</span>
 
-          <Link target="_blank" rel="noreferrer" href="https://nextjs.org">
+          <Link target="_blank" aria-label="Next.js" rel="noreferrer" href="https://nextjs.org">
             <NextLogo />
           </Link>
           <span>and</span>
-          <Link target="_blank" rel="noreferrer" href="https://vercel.com">
+          <Link target="_blank" aria-label="Vercel" rel="noreferrer" href="https://vercel.com">
             <VercelLogo />
           </Link>
         </motion.div>
