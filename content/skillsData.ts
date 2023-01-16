@@ -14,6 +14,8 @@ import {
   SiC,
   SiCplusplus,
   SiFigma,
+  SiSupabase,
+  SiNodedotjs,
 } from "react-icons/si";
 
 const skills: SkillType[] = [
@@ -68,6 +70,14 @@ const skills: SkillType[] = [
   {
     name: "Firebase",
     Icon: SiFirebase,
+  },
+  {
+    name: "Supabase",
+    Icon: SiSupabase,
+  },
+  {
+    name: "Node.js",
+    Icon: SiNodedotjs,
   },
   {
     name: "Figma",
