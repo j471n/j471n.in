@@ -29,7 +29,12 @@ export default async function viewsSlug(
   if (req.method === "GET") {
     const data = await getViewBySlug(slug);
     if (data === undefined) {
-      return res.status(404).json({ message: "Slug not found" });
+      return res
+        .status(404)
+        .json({
+          message:
+            "Sorry, the slug you're looking for has gone for a coffee break. Please try again later or make a cup of tea while you wait.",
+        });
     } else {
       return res.status(200).json(data);
     }

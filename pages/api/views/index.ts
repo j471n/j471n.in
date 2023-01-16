@@ -12,7 +12,8 @@ export default async function views(req: NextApiRequest, res: NextApiResponse) {
     return res.status(200).json(await getAllViews());
   } else {
     return res.status(405).json({
-      message: "Invalid method use GET",
+      error:
+        "Invalid method detected! Please switch to GET before proceeding. Trust me, it's the way to go",
     });
   }
 }
