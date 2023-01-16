@@ -137,3 +137,14 @@ export type GithubRepo = {
   fork: boolean;
   forks_count: number;
 };
+
+export type PageData = {
+  title: string;
+  description: string;
+  image: string;
+  keywords: string;
+};
+
+export type PageMeta = {
+  [key: string]: PageData;
+};
