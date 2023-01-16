@@ -16,6 +16,7 @@ import {
   SiCanva,
   SiGooglekeep,
   SiNotepadplusplus,
+  SiPostman,
 } from "react-icons/si";
 import {
   BsFillPaletteFill,
@@ -224,6 +225,12 @@ const utilities: Utilities = {
           description: "Screenshot Software",
           Icon: SVG.Flameshot,
           link: "https://flameshot.org/",
+        },
+        {
+          name: "Postman",
+          description: "API Testing",
+          Icon: SiPostman,
+          link: "https://postman.com",
         },
       ],
     },
