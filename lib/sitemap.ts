@@ -3,15 +3,14 @@ import { globby } from "globby";
 
 export default async function generate() {
   const pages = await globby([
-    "pages/*.js",
+    "pages/*.tsx",
     "posts/*.mdx",
-    "!pages/_*.js",
+    "!pages/_*.tsx",
     "!pages/api",
-    "!pages/404.js",
+    "!pages/404.tsx",
   ]);
 
-  const sitemap = `
-    <?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         ${pages
           .map((page) => {
