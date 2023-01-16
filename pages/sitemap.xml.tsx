@@ -19,8 +19,8 @@ const createSitemap = (
 export async function getServerSideProps({ res }: GetServerSidePropsContext) {
   const allPostsSlugs = new MDXContent("posts").getSlugs();
   const allPages = [
+    ...["about", "blogs", "stats", "utilities", "certificates", "projects"],
     ...allPostsSlugs.map((slug) => `blogs/${slug}`),
-    ...["", "about", "blogs", "stats", "utilities", "certificates", "projects"],
   ];
 
   res.setHeader("Content-Type", "text/xml");
