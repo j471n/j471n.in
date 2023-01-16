@@ -1,14 +1,5 @@
-type PageData = {
-  title: string;
-  description: string;
-  image: string;
-  keywords: string;
-};
-
-type PageMeta = {
-  [key: string]: PageData;
-};
-
+import { PageMeta } from "@lib/types";
+  
 const pageMeta: PageMeta = {
   home: {
     title: "",
@@ -66,6 +57,13 @@ const pageMeta: PageMeta = {
       "Hey, I am Jatin Sharma. A Front-end Developer/React Developer from India who loves to design and code. I use React.js or Next.js to build the web application interfaces and the functionalities. At the moment, I am pursuing my Bachelor's degree in Computer Science.",
     image: "https://imgur.com/b0HRaPv.png",
     keywords: "about, about me, ",
+  },
+  privacy: {
+    title: "Privacy Policy",
+    description:
+      "Privacy is an important factor for everyone. Following is the privacy policies of j471n.in",
+    image: "https://imgur.com/ghlRutT.png",
+    keywords: "Privacy, Privacy Policies, ",
   },
 };
 

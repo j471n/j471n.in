@@ -42,19 +42,17 @@ export default function Footer({
           ) : (
             <NotPlaying />
           )}
-
-          <div></div>
         </div>
 
         <section className="grid grid-cols-3 gap-10">
           <div className="flex flex-col gap-4 capitalize">
-            {navigationRoutes.slice(0, 4).map((text, index) => {
+            {navigationRoutes.slice(0, 5).map((text, index) => {
               return <FooterLink key={index} route={text} text={text} />;
             })}
           </div>
           <div className="flex flex-col gap-4 capitalize">
             {navigationRoutes
-              .slice(4, navigationRoutes.length)
+              .slice(5, navigationRoutes.length)
               .map((route, index) => {
                 let text = route;
                 if (route === "rss") text = "RSS";
@@ -62,7 +60,7 @@ export default function Footer({
               })}
           </div>
           <div className="flex flex-col gap-4 capitalize">
-            {socialMedia.slice(0, 4).map((platform, index) => {
+            {socialMedia.slice(0, 5).map((platform, index) => {
               return (
                 <Link
                   key={index}

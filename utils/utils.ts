@@ -10,6 +10,7 @@ export const navigationRoutes: string[] = [
   "blogs",
   "certificates",
   "projects",
+  "privacy",
   "newsletter",
   "rss",
 ];
