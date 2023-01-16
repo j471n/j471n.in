@@ -28,7 +28,7 @@ export default function PageTop({
       </AnimatedHeading>
       <AnimatedText
         variants={opacityVariant}
-        className="font-medium text-lg text-gray-400"
+        className="text-lg text-gray-600 dark:text-gray-400"
       >
         {children}
       </AnimatedText>

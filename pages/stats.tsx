@@ -16,6 +16,7 @@ import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import pageMeta from "@content/meta";
 import { SpotifyArtist, SpotifyTrack } from "@lib/types";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 type Stats = {
   title: string;
@@ -89,17 +90,14 @@ export default function Stats() {
         </PageTop>
 
         {/* Blogs and github stats */}
-        <motion.div
+        <AnimatedDiv
           className="grid xs:grid-cols-2 sm:!grid-cols-3 md:!grid-cols-4 gap-5 my-10"
           variants={FadeContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
         >
           {stats.map((stat, index) => (
             <StatsCard key={index} title={stat.title} value={stat.value} />
           ))}
-        </motion.div>
+        </AnimatedDiv>
 
         {/* Spotify top songs */}
         <div className="font-barlow">
@@ -112,13 +110,13 @@ export default function Stats() {
 
           <AnimatedText
             variants={popUpFromBottomForText}
-            className="mt-4 text-gray-500"
+            className="mt-4 text-gray-700 dark:text-gray-300"
           >
             <span className="font-semibold">
               {topTracks && topTracks[0].title}
             </span>{" "}
-            is the most streamed song of mine. Here's my top tracks on Spotify
-            updated daily.
+            is the most streamed song of mine in last 4 weeks. Here's my top
+            tracks on Spotify updated daily.
           </AnimatedText>
           <div className="flex flex-col my-10 gap-0 font-barlow">
             {topTracks?.map((track: SpotifyTrack, index: number) => (
@@ -145,11 +143,11 @@ export default function Stats() {
           </AnimatedHeading>
           <AnimatedText
             variants={popUpFromBottomForText}
-            className="mt-4 text-gray-500"
+            className="mt-4 text-gray-700 dark:text-gray-300"
           >
             My most listened Artist is{" "}
             <span className="font-semibold">{artists && artists[0].name}</span>{" "}
-            on Spotify.
+            in last 4 weeks on Spotify.
           </AnimatedText>
 
           <div className="flex flex-col my-10 gap-0 font-barlow">
