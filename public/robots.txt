@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://jatin.vercel.app/sitemap.xml
+Sitemap: https://j471n.in/sitemap.xml
