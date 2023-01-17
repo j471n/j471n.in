@@ -8,7 +8,7 @@ export default async function handler(
   const response = await topTracks();
   const { items } = await response.json();
 
-  const tracks = items.slice(0, 10).map((track: any) => ({
+  const tracks = items.map((track: any) => ({
     title: track.name,
     artist: track.artists.map((artist: any) => artist.name).join(", "),
     url: track.external_urls.spotify,
