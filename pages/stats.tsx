@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import { motion } from "framer-motion";
 import {
   FadeContainer,
   fromLeftVariant,
