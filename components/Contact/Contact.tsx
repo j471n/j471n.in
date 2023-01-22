@@ -21,8 +21,7 @@ export default function Contact() {
           variants={popUpFromBottomForText}
           className="px-4 py-2 font-medium dark:text-gray-300"
         >
-          Have a little something, something you wanna talk about? Please feel
-          free to get in touch anytime, whether for work or to just Hi 🙋‍♂️.
+          Is there something on your mind you'd like to talk about? Whether it's related to work or just a casual conversation, I am here and ready to listen. Please don't hesitate to reach out to me at any time. 🙋‍♂️.
         </AnimatedText>
       </section>
 
