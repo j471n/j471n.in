@@ -33,7 +33,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
         <button
           aria-label="Copy code"
           type="button"
-          className={`!z-40 absolute right-2 bottom-2.5 h-8 w-8 rounded border-2 bg-transparent p-1  ${
+          className={`!z-40 absolute right-2 bottom-[9px] h-8 w-8 rounded border-2 bg-transparent p-1  ${
             copied
               ? "border-green-400 focus:border-green-400 focus:outline-none"
               : "border-darkSecondary dark:border-gray-200/60 "
