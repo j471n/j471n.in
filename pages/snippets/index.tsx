@@ -42,7 +42,6 @@ export default function Snippets({ snippets }: { snippets: any[] }) {
 export async function getStaticProps() {
   const snippets = new MDXContent("snippets").getAllPosts();
 
-  console.log(snippets);
   return {
     props: { snippets },
   };

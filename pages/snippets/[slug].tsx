@@ -14,7 +14,6 @@ export default function SnippetPage({
   snippet: PostType;
   error: boolean;
 }) {
-  console.log(snippet, error);
   if (error) return <PageNotFound />;
 
   return (
@@ -54,13 +53,9 @@ type StaticProps = GetStaticPropsContext & {
 
 export async function getStaticProps({ params }: StaticProps) {
   const { slug } = params;
-
-  console.log(slug);
   const { post: snippet } = await new MDXContent("snippets").getPostFromSlug(
     slug
   );
-
-  console.log(snippet);
 
   if (snippet != null) {
     return {
