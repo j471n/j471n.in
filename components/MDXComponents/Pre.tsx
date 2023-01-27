@@ -24,7 +24,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
 
   return (
     <div
-      className="relative -mt-2"
+      className="relative -mt-2 mb-3"
       ref={textInput}
       onMouseEnter={onEnter}
       onMouseLeave={onExit}
