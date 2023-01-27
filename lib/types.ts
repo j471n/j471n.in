@@ -146,5 +146,22 @@ export type PageData = {
 };
 
 export type PageMeta = {
-  [key: string]: PageData;
+  home: PageData;
+  stats: PageData;
+  utilities: PageData;
+  blogs: PageData;
+  bookmark: PageData;
+  certificates: PageData;
+  projects: PageData;
+  about: PageData;
+  privacy: PageData;
+  snippets: PageData;
+};
+
+export type Snippet = {
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  image: string;
 };

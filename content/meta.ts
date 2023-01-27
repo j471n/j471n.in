@@ -1,5 +1,5 @@
 import { PageMeta } from "@lib/types";
-  
+
 const pageMeta: PageMeta = {
   home: {
     title: "",
@@ -64,6 +64,13 @@ const pageMeta: PageMeta = {
       "Privacy is an important factor for everyone. Following is the privacy policies of j471n.in",
     image: "https://imgur.com/ghlRutT.png",
     keywords: "Privacy, Privacy Policies, ",
+  },
+  snippets: {
+    title: "Code Snippets",
+    description:
+      "These are a collection of code snippets I've used in the past and saved. These could be useful to you as well.",
+    image: "https://imgur.com/ghlRutT.png",
+    keywords: "Code, Code Snippets, Snippets",
   },
 };
 
