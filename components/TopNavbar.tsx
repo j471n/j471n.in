@@ -84,7 +84,7 @@ export default function TopNavbar() {
       </AnimatePresence>
 
       <Link href="/" className="mr-3" aria-label="Link to Home Page">
-        <Logo className="w-12 h-12 relative hidden sm:inline-flex" />
+        <Logo className="w-8 h-8 relative hidden sm:inline-flex" />
         <div className="w-full sm:!hidden">
           <motion.p
             initial="hidden"
