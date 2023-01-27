@@ -5,11 +5,15 @@ export default function Step({
   children,
 }: {
   id: string;
-    children?: React.ReactNode;
+  children?: JSX.Element;
 }) {
   return (
-    <div className="flex items-center gap-3 flex-">
-      <div className="flex items-center justify-center   bg-gray-300  font-bold dark:border-gray-800 rounded-full p-5 w-10 h-10 g-gray-300 ring dark:bg-darkSecondary text-black dark:text-white ">
+    <div
+      className={`flex items-center gap-3 ${
+        children?.type === undefined && "my-5"
+      }`}
+    >
+      <div className="flex items-center justify-center bg-gray-300  font-bold dark:border-gray-800 rounded-full p-5 w-10 h-10 g-gray-300 ring dark:bg-darkSecondary text-black dark:text-white ">
         {id}
       </div>
       <div className="text-lg tracking-tight font-semibold text-black dark:text-white flex-grow-0 w-fit">
