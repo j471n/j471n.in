@@ -1,0 +1,105 @@
+---
+slug: nprogress-loading
+title: Nprogress Loading
+date: 2023-01-28
+excerpt: React Component for Nprogress Loading.
+published: true
+image: react
+---
+
+
+<Step id="1">Install [`nprogress`](https://www.npmjs.com/package/nprogress) package</Step>
+
+<CodeTitle lang="bash" title="Terminal" />
+```bash
+npm i nprogress
+# or 
+pnpm i nprogress
+# or
+yarn add nprogress
+```
+
+<Step id="2">Create a `Progress` Component</Step>
+
+
+<CodeTitle lang="jsx" title="components/Progress.tsx" />
+```js 
+import NProgress from 'nprogress';
+import "nprogress/nprogress.css";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
+// nprogrss config
+NProgress.configure({
+  easing: "ease",
+  speed: 800,
+  showSpinner: false,
+});
+
+export default function Progress() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const start = () => {
+      NProgress.start();
+    };
+    const end = () => {
+      NProgress.done();
+    };
+    router.events.on("routeChangeStart", start);
+    router.events.on("routeChangeComplete", end);
+    router.events.on("routeChangeError", end);
+    return () => {
+      router.events.off("routeChangeStart", start);
+      router.events.off("routeChangeComplete", end);
+      router.events.off("routeChangeError", end);
+    };
+    }, [router.events]);
+  return <></>;
+}
+```
+
+<Step id="3">Adding Some Custom Styling</Step>
+
+
+<CodeTitle lang="css" title="styles.css" />
+```css
+/* Nprogress bar Custom Styling (force) : STARTS */
+#nprogress {
+  pointer-events: none;
+}
+#nprogress .bar {
+  background-color: rgba(0, 89, 255, 0.7) !important;
+  height: 3px !important;
+}
+.dark #nprogress .bar {
+  background: #fff !important;
+}
+#nprogress .peg {
+  box-shadow: none !important;
+}
+/* Nprogress bar Custom Styling (force) : ENDS */
+```
+
+
+<Step id="4">Using the Component</Step>
+
+I am using `nprogress` in [Next.js](https://nextjs.org/) project. You can use directly in React as well.
+
+
+<CodeTitle lang="jsx" title="pages/_app.tsx" />
+```tsx
+import type { AppProps } from 'next/app';
+import NProgress from '../components/nprogress';
+
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <NProgress />
+    </>
+  );
+}
+```
+
+***
