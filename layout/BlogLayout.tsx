@@ -111,7 +111,7 @@ export default function BlogLayout({
 
         <AnimatedDiv
           variants={opacityVariant}
-          className="blog-container max-w-full prose-sm sm:prose-base prose-pre:bg-white prose-pre:shadow-lg dark:prose-pre:shadow-black/80 dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white"
+          className="blog-container max-w-full prose-sm sm:prose-base prose-pre:bg-white prose-pre:shadow-lg prose-img:mx-auto prose-p:!my-0 dark:prose-pre:shadow-black/80 dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white"
         >
           {children}
         </AnimatedDiv>
