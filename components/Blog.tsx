@@ -1,12 +1,29 @@
 import Link from "next/link";
 import { getFormattedDate } from "@utils/date";
 import { FrontMatter } from "@lib/types";
+import { useRef } from "react";
 import Image from "next/image";
 import { homeProfileImage } from "@utils/utils";
+import { motion } from "framer-motion";
+import { BlogCardAnimation } from "@content/FramerMotionVariants";
 
-export default function Blog({ blog }: { blog: FrontMatter }) {
+export default function Blog({
+  blog,
+  animate,
+}: {
+  blog: FrontMatter;
+  animate: boolean;
+}) {
+  const blogRef = useRef(null);
   return (
-    <article className="bg-white dark:bg-darkSecondary rounded-2xl p-2 flex flex-col sm:flex-row items-center w-ull sm:w-[95%] mx-auto gap-2 md:gap-7 shadow-md md:shadow-lg">
+    <motion.article
+      ref={blogRef}
+      variants={BlogCardAnimation}
+      initial={animate && "hidden"}
+      whileInView={animate ? "visible" : ""}
+      viewport={{ once: true }}
+      className="bg-white dark:bg-darkSecondary rounded-2xl p-2 flex flex-col sm:flex-row items-center w-ull sm:w-[95%] mx-auto gap-2 md:gap-7 shadow-md md:shadow-lg"
+    >
       <div className="w-full">
         <Image
           title={blog.title}
@@ -56,6 +73,6 @@ export default function Blog({ blog }: { blog: FrontMatter }) {
           </p>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

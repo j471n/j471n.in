@@ -109,7 +109,7 @@ export const svgVariant: Variants = {
   },
 };
 
-export const searchBarSlideAnimation = {
+export const searchBarSlideAnimation: Variants = {
   hidden: {
     width: 0,
     opacity: 0,
@@ -120,6 +120,20 @@ export const searchBarSlideAnimation = {
     transition: {
       type: "linear",
       duration: 1,
+    },
+  },
+};
+
+export const BlogCardAnimation: Variants = {
+  hidden: {
+    y: 50,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: 0.2,
     },
   },
 };

@@ -10,7 +10,7 @@ export default function BlogsSection({ blogs }: { blogs: FrontMatter[] }) {
 
       <div className="grid grid-cols-1 gap-4 mx-auto">
         {blogs.map((blog, index) => {
-          return <Blog key={`home-blog-${index}`} blog={blog} />;
+          return <Blog key={`home-blog-${index}`} blog={blog} animate />;
         })}
 
         <Link
