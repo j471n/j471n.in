@@ -25,4 +25,7 @@ module.exports = withPWA({
       "images.unsplash.com",
     ],
   },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
 });
