@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { popUpFromBottomForText } from "@content/FramerMotionVariants";
-import { motion } from "framer-motion";
 
 type ArtistProps = {
   name: string;
@@ -19,14 +17,13 @@ export default function Artist({
   id,
 }: ArtistProps) {
   return (
-    <Link rel="noreferrer" target="_blank" href={url}>
-      <motion.div
-        variants={popUpFromBottomForText}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden"
-      >
+    <Link
+      rel="noreferrer"
+      target="_blank"
+      href={url}
+      className="bg-gray-100 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary border-l first:border-t border-r border-b border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden"
+    >
+      <>
         <div className="text-xl text-gray-500 transform origin-center font-inter tracking-wider hidden xs:inline-flex">
           #{id + 1}
         </div>
@@ -51,7 +48,7 @@ export default function Artist({
             {followers.toLocaleString()} Followers
           </p>
         </div>
-      </motion.div>
+      </>
     </Link>
   );
 }
