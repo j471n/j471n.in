@@ -9,10 +9,10 @@ import { BlogCardAnimation } from "@content/FramerMotionVariants";
 
 export default function Blog({
   blog,
-  animate,
+  animate = false,
 }: {
   blog: FrontMatter;
-  animate: boolean;
+  animate?: boolean;
 }) {
   const blogRef = useRef(null);
   return (
