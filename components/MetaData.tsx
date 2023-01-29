@@ -1,5 +1,6 @@
 import Head from "next/head";
 import useWindowLocation from "@hooks/useWindowLocation";
+import { useEffect, useState } from "react";
 
 type Props = {
   title: string;
@@ -7,6 +8,10 @@ type Props = {
   previewImage?: string;
   keywords?: string;
   suffix?: string;
+};
+
+const getFaviconPath = (isDarkMode: boolean = true): string => {
+  return `/favicon-${isDarkMode ? "dark" : "light"}.ico`;
 };
 
 export default function MetaData({
@@ -17,6 +22,16 @@ export default function MetaData({
   suffix,
 }: Props) {
   const { currentURL } = useWindowLocation();
+  const [faviconHref, setFaviconHref] = useState("/favicon-dark.ico");
+
+  useEffect(() => {
+    // Get current color scheme.
+    const matcher = window.matchMedia("(prefers-color-scheme: dark)");
+    // Set favicon initially.
+    setFaviconHref(getFaviconPath(matcher.matches));
+    // Change favicon if the color scheme changes.
+    matcher.onchange = () => setFaviconHref(getFaviconPath(matcher.matches));
+  }, [faviconHref]);
 
   return (
     <Head>
@@ -29,7 +44,7 @@ export default function MetaData({
       <meta name="description" content={description || "Jatin Sharma"} />
       <title>{title + (suffix ? ` - ${suffix}` : "")}</title>
       <meta name="theme-color" content="#000" />
-      <link rel="shortcut icon" href="/favicon.ico" />
+      <link rel="shortcut icon" href={faviconHref} sizes="any" />
       <link rel="manifest" href="/manifest.json" />
       <link rel="apple-touch-icon" href="/icons/icon-192x192.png"></link>
       <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
