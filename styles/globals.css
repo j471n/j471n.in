@@ -105,6 +105,11 @@ body.dark {
   overflow: hidden !important;
 }
 
+.horizontal-scrollbar::-webkit-scrollbar {
+  height: 3px;
+  border-redius: 999px;
+}
+
 /* For preventing the blue highlight color box on tap(click) */
 * {
   -webkit-tap-highlight-color: transparent;
