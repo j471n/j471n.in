@@ -173,4 +173,5 @@ export type MovieType = {
   url: string;
   year: number;
   watched: boolean;
+  rating: number;
 };
