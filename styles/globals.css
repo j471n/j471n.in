@@ -132,8 +132,12 @@ code span.line {
 
 span.line > span {
   padding: 2px 0;
+  width: 100%;
 }
 
+span.line > span:last-child{
+  padding-right: 50px;
+}
 code > .line::before {
   counter-increment: line;
   content: counter(line);
@@ -172,6 +176,12 @@ code > .line::before {
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 1fr;
+}
+
+.blog-pre > code {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Layers Components or the custom class extends with tailwind */
