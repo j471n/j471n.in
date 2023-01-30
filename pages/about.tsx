@@ -36,7 +36,7 @@ export default function About({
           initial="hidden"
           whileInView="visible"
           variants={FadeContainer}
-          className="flex items-center gap-2 md:gap-4 overflow-x-scroll py-10 horizontal-scrollbar"
+          className="flex items-center gap-2 md:gap-4 overflow-x-scroll pt-10 pb-5 horizontal-scrollbar"
         >
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
