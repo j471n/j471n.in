@@ -11,7 +11,6 @@ export default async function generate() {
     "!pages/404.tsx",
   ]);
 
-  console.log(pages);
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -34,8 +33,6 @@ export default async function generate() {
           .join("")}
     </urlset>
     `;
-
-  console.log(sitemap);
 
   // eslint-disable-next-line no-sync
   writeFileSync("public/sitemap.xml", sitemap);
