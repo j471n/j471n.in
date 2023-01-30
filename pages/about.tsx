@@ -5,10 +5,8 @@ import StaticPage from "@components/StaticPage";
 import { getRecentWatchedMovies } from "@lib/supabase";
 import MovieCard from "@components/MovieCard";
 import { motion } from "framer-motion";
-import {
-  FadeContainer,
-  opacityVariant,
-} from "@content/FramerMotionVariants";
+import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 
 export default function About({
   about,
@@ -32,16 +30,14 @@ export default function About({
           Recent watched Movies & TV Series
         </motion.h3>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
+        <AnimatedDiv
           variants={FadeContainer}
           className="flex items-center gap-2 md:gap-4 overflow-x-scroll pt-10 pb-5 horizontal-scrollbar"
         >
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
-        </motion.div>
+        </AnimatedDiv>
       </div>
     </>
   );
