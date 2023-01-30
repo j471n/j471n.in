@@ -68,6 +68,9 @@ I have created a new button to choose the file. To make this work we need to cre
 ```jsx {7}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
+
+  // FIle Picker Ref because we are not useing the standard File picker input
+	const filePicekerRef = useRef(null);
   return (
     <div>
       <h1>Preview Image/Video</h1>
@@ -95,6 +98,7 @@ Now as I have hidden the original file input button we need to create our own.
 ```jsx {8}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
+  const filePicekerRef = useRef(null);
   return (
     <div>
       <h1>Preview Image/Video</h1>
@@ -124,6 +128,7 @@ import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const filePicekerRef = useRef(null);
   return (
     <div>
       <h1>Preview Image/Video</h1>
@@ -149,6 +154,7 @@ import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const filePicekerRef = useRef(null);
   function previewFile(e) {
     // Reading New File (open file Picker Box)
     const reader = new FileReader();
@@ -201,6 +207,7 @@ import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const filePicekerRef = useRef(null);
   function previewFile(e) {
     // Reading New File (open file Picker Box)
     const reader = new FileReader();
@@ -246,6 +253,8 @@ import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
+  const filePicekerRef = useRef(null);
+  
   function previewFile(e) {
     // Reading New File (open file Picker Box)
     const reader = new FileReader();
