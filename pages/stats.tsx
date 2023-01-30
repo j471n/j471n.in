@@ -86,7 +86,7 @@ export default function Stats() {
 
         {/* Blogs and github stats */}
         <AnimatedDiv
-          className="grid xs:grid-cols-2 sm:!grid-cols-3 md:!grid-cols-4 gap-5 my-10"
+          className="grid xs:grid-cols-2 sm:!grid-cols-3 xl:!grid-cols-4 gap-5 my-10"
           variants={FadeContainer}
         >
           {stats.map((stat, index) => (
