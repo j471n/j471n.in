@@ -40,9 +40,8 @@ export async function getCertificates() {
   };
 }
 
-
 /**
- * This function is used to add a view to the specified blog post. It first retrieves the blog post from the database 
+ * This function is used to add a view to the specified blog post. It first retrieves the blog post from the database
  * by its slug value. If the post exists, it increments the view count by 1 and updates it in the database.
  * If the post does not exist, it creates a new record with the slug and views set to 1.
  */
@@ -101,4 +100,19 @@ export async function getAllViews() {
   } catch (error) {
     console.error(error);
   }
+}
+/*
+ * function to retrieve the most recent 5 watched movies from the "movies" table in a database
+ */
+export async function getRecentWatchedMovies() {
+  let { data: movies, error } = await supabase
+    .from("movies")
+    .select("*")
+    .limit(5)
+    .order("created_at", { ascending: false });
+
+  return {
+    movies,
+    error: error !== null,
+  };
 }

@@ -165,3 +165,12 @@ export type Snippet = {
   excerpt: string;
   image: string;
 };
+
+export type MovieType = {
+  id: number;
+  name: string;
+  image: string;
+  url: string;
+  year: number;
+  watched: boolean;
+};

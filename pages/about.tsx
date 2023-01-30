@@ -1,10 +1,52 @@
 import MDXContent from "@lib/MDXContent";
 import pageMeta from "@content/meta";
-import { PostType } from "@lib/types";
+import { MovieType, PostType } from "@lib/types";
 import StaticPage from "@components/StaticPage";
+import { getRecentWatchedMovies } from "@lib/supabase";
+import MovieCard from "@components/MovieCard";
+import { motion } from "framer-motion";
+import {
+  FadeContainer,
+  opacityVariant,
+} from "@content/FramerMotionVariants";
 
-export default function About({ about }: { about: PostType }) {
-  return <StaticPage metadata={pageMeta.about} page={about} />;
+export default function About({
+  about,
+  movies,
+}: {
+  about: PostType;
+  movies: MovieType[];
+}) {
+  return (
+    <>
+      <StaticPage metadata={pageMeta.about} page={about} />
+
+      <div className="pageTop -mt-5 print:hidden">
+        <motion.h3
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={opacityVariant}
+          className="font-bold text-xl md:text-3xl text-left my-2"
+        >
+          Recent watched Movies & TV Series
+        </motion.h3>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={FadeContainer}
+          className="flex items-center gap-2 overflow-x-scroll py-10 horizontal-scrollbar"
+        >
+          {/* <AnimatePresence> */}
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} movie={movie} />
+          ))}
+          {/* </AnimatePresence> */}
+        </motion.div>
+      </div>
+    </>
+  );
 }
 
 export async function getStaticProps() {
@@ -12,9 +54,12 @@ export async function getStaticProps() {
     "about"
   );
 
+  const { movies } = await getRecentWatchedMovies();
+
   return {
     props: {
       about,
+      movies,
     },
   };
 }

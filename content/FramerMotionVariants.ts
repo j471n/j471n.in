@@ -36,8 +36,6 @@ export const headingFromLeft: Variants = {
   },
 };
 
-// top Navbar
-
 export const fromLeftVariant: Variants = {
   hidden: { x: -100, opacity: 0 },
   visible: {
@@ -47,6 +45,17 @@ export const fromLeftVariant: Variants = {
       duration: 0.1,
       type: "spring",
       stiffness: 100,
+    },
+  },
+};
+
+export const fromLeftChildren: Variants = {
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.1,
     },
   },
 };
