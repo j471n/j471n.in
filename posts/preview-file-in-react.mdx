@@ -65,7 +65,7 @@ This is just a starter code, I am going to add more things to this. First, under
 I have created a new button to choose the file. To make this work we need to create a reference (ref) for file input. and handle the `onChange` event after that it will look something like this.
 
 <CodeTitle lang="js" title="components/FilePreviewer.js" />
-```jsx {7}
+```jsx {5, 10}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
 
@@ -95,7 +95,7 @@ We will create the `previewFile` function in just a moment to handle the file se
 Now as I have hidden the original file input button we need to create our own.
 
 <CodeTitle lang="js" title="components/FilePreviewer.js" />
-```jsx {8}
+```jsx {9}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const filePicekerRef = useRef(null);
@@ -149,7 +149,7 @@ export default function FilePreviewer() {
 Now its' time to create a `filePreview` function.
 
 <CodeTitle lang="js" title="components/FilePreviewer.js" />
-```jsx {5-21}
+```jsx {6-22}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
@@ -202,7 +202,7 @@ I know it's too much so let's break it down. I am using [FileReader](https://dev
 After file selection is done then we need to preview the file to the user. For that I have already created a container called `.preview`, In that, there were two elements `img` and `video`. Now we need to render these elements conditionally. and after that they will look like this-
 
 <CodeTitle lang="js" title="components/FilePreviewer.js" />
-```jsx {32,33}
+```jsx {33,34}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
@@ -248,13 +248,13 @@ export default function FilePreviewer() {
 Now, what if the user wants to clear the input field or remove the image he has selected. We haven't implemented that yet. To do that I've created a `close` button earlier. Now let's just add the functionality to it. When the user clicks on the button then it should fire `clearFiles` function. So let's just create it.
 
 <CodeTitle lang="js" title="components/FilePreviewer.js" />
-```jsx {22-25}
+```jsx {24-27}
 import { useState, useRef } from "react";
 export default function FilePreviewer() {
   const [imagePreview, setImagePreview] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
   const filePicekerRef = useRef(null);
-  
+
   function previewFile(e) {
     // Reading New File (open file Picker Box)
     const reader = new FileReader();
