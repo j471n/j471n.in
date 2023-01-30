@@ -13,18 +13,18 @@ export default function Logo({ className }: { className: string }) {
       <motion.path
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        d="M16 0V380.671L258.5 495.5L496 385.055V0M57.5 11.6905H444.526V144.67H67V66.5"
+        transition={{ duration: 3, ease: "easeInOut" }}
+        d="M18 0V380.671L260.5 495.5L498 385.055V0M67 17.5H431V126H85V81"
         stroke="currentColor"
-        strokeWidth="21.9265"
+        strokeWidth="35"
       />
       <motion.path
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        d="M57.5 348.5L260.486 443.645L445 362.5V286.5H67V195.876H456"
+        transition={{ duration: 3, ease: "easeInOut" }}
+        d="M67.5 327.5L258 416L431.5 341.5V264H84.5V183.5H449"
         stroke="currentColor"
-        strokeWidth="21.9265"
+        strokeWidth="35"
       />
     </svg>
   );
