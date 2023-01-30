@@ -69,7 +69,7 @@ const pageMeta: PageMeta = {
     title: "Code Snippets",
     description:
       "These are a collection of code snippets I've used in the past and saved. These could be useful to you as well.",
-    image: "https://imgur.com/ghlRutT.png",
+    image: "https://imgur.com/KeJgIVl.png",
     keywords: "Code, Code Snippets, Snippets",
   },
 };

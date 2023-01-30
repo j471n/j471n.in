@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { GetStaticPropsContext } from "next";
 import { PostType } from "@lib/types";
 import SnippetLayout from "@layout/SnippetLayout";
+import pageMeta from "@content/meta";
 
 export default function SnippetPage({
   snippet,
@@ -18,13 +19,12 @@ export default function SnippetPage({
 
   return (
     <>
-      <div>hello</div>
       <Metadata
         title={snippet.meta.title}
         suffix="Jatin Sharma"
         description={snippet.meta.excerpt}
-        previewImage={snippet.meta.image}
-        keywords={snippet.meta.keywords}
+        previewImage={pageMeta.snippets.image}
+        keywords={pageMeta.snippets.keywords}
       />
 
       <SnippetLayout snippet={snippet}>
