@@ -1,0 +1,53 @@
+---
+slug: scroll-to-top
+title: Scroll to top Component
+date: 2023-01-31
+excerpt: It generates a button that will take you at the top of window.
+published: true
+image: react
+---
+
+
+<CodeTitle  title="components/ScrollToTop.tsx" lang="jsx" />
+```jsx
+import { IoIosArrowUp } from "react-icons/io";
+import { useEffect, useState } from "react";
+import useScrollPercentage from "@hooks/useScrollPercentage";
+
+export default function ScrollToTopButton() {
+  const [showButton, setShowButton] = useState(false);
+  const scrollPercentage = useScrollPercentage();
+
+  useEffect(() => {
+    if (scrollPercentage < 95 && scrollPercentage > 10) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  }, [scrollPercentage]);
+
+  // This function will scroll the window to the top
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for smoothly scrolling
+    });
+  };
+
+  return (
+    <>
+      {showButton && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Scroll To Top"
+          className="fixed bottom-20 right-8 md:bottom-[50px] md:right-[20px]  z-40 print:hidden"
+        >
+          <IoIosArrowUp className="bg-black dark:bg-gray-200 dark:text-darkPrimary text-white rounded-lg shadow-lg text-[45px] md:mr-10" />
+        </button>
+      )}
+    </>
+  );
+}
+```
+
+There is a hook I am using to get the screen scroll percentage. You can take a look at [useScrollPercentage](/snippets/react-custom-hooks#usescrollpercentage) and get the better idea. I have also made a detailed [tutorial](/blogs/scroll-to-the-top-with-js) 

@@ -1,0 +1,108 @@
+---
+slug: darkmode-context-api
+title: DarkMode Context API
+date: 2023-01-31
+excerpt: It enables to add darkmode switch.
+published: true
+image: react
+---
+
+
+<Step id="1">
+    First Create a file `darkModeContext.jsx` in `context` directory.
+</Step>
+
+<CodeTitle lang="jsx" title="context/darkModeContext.jsx"  />
+```jsx
+import React, { useState, useContext, useEffect, createContext } from "react";
+const DarkModeContext = createContext(undefined);
+
+export function DarkModeProvider({ children }) {
+  const [isDarkMode, setDarkMode] = useState(false);
+
+  function updateTheme() {
+    const currentTheme = localStorage.getItem("isDarkMode") || "false";
+    if (currentTheme === "true") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }
+  useEffect(() => {
+    updateTheme();
+  }, []);
+  function changeDarkMode(value) {
+    localStorage.setItem("isDarkMode", value.toString());
+    setDarkMode(value);
+    updateTheme();
+  }
+
+  return (
+    <DarkModeContext.Provider value={{ isDarkMode, changeDarkMode }}>
+      {children}
+    </DarkModeContext.Provider>
+  );
+}
+
+export const useDarkMode = () => {
+  const context = useContext(DarkModeContext);
+  if (context === undefined) {
+    throw new Error("useAuth can only be used inside AuthProvider");
+  }
+  return context;
+};
+```
+
+
+<Step id="2">
+    Wrap you app
+</Step>
+
+I am using Next.js that's why I am adding `DarkModeProvider` to `_app.jsx`.
+
+<CodeTitle lang="jsx" title="pages/_app.jsx"  />
+```jsx
+import "../styles/globals.css";
+import Layout from "../layout/Layout";
+import { DarkModeProvider } from "../context/darkModeContext";
+
+function MyApp({ Component, pageProps }) {
+  return (
+      <DarkModeProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </DarkModeProvider>
+  );
+}
+
+export default MyApp;
+```
+
+
+
+<Step id="3">
+    Use DarkMode
+</Step>
+
+
+Install [react-toggle-dark-mode](https://www.npmjs.com/package/react-toggle-dark-mode) to use the `DarkModeSwitch`.
+
+<CodeTitle lang="jsx" title="components/Navbar.jsx"  />
+```jsx
+// Other files.............
+import { useDarkMode } from "../context/darkModeContext";
+import { DarkModeSwitch } from "react-toggle-dark-mode"; // install this package
+
+export default function TopNavbar() {
+    const { isDarkMode, changeDarkMode } = useDarkMode();
+
+    return (
+        <DarkModeSwitch
+          checked={isDarkMode}
+          onChange={changeDarkMode}
+          size={24}
+        />
+    )
+}
+```

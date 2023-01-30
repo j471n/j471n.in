@@ -1,0 +1,152 @@
+---
+slug: react-custom-hooks
+title: Custom Hook in React (TypeScript)
+date: 2023-01-31
+excerpt: It contains muliple custom hooks that I made in the journey.
+published: true
+image: ts
+---
+
+
+### Table of Contents
+
+- [useScrollPercentage](#usescrollpercentage)
+- [useFetchWithSWR](#usefetchwithswr)
+- [useShare](#useshare)
+- [useWindowLocation](usewindowlocation)
+- [useWindowSize](usewindowsize)
+
+
+### useScrollPercentage()
+
+<CodeTitle title="hooks/useScrollPercentage.ts" lang="ts" />
+
+```jsx
+import { useEffect, useState, useCallback } from "react";
+export default function useScrollPercentage() {
+  // fifteen
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+  function getScrollPercent(): number {
+    var h = document.documentElement;
+    var b = document.body;
+
+    return (
+      ((h.scrollTop || b.scrollTop) /
+        ((h.scrollHeight || b.scrollHeight) - h.clientHeight)) *
+      100
+    );
+  }
+
+  const scrollEvent = useCallback(() => {
+    setScrollPercentage(getScrollPercent());
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollEvent);
+    return () => {
+      window.removeEventListener("scroll", scrollEvent);
+    };
+  }, [scrollEvent]);
+
+  return scrollPercentage;
+}
+```
+
+### useFetchWithSWR()
+
+<CodeTitle title="hooks/useFetchWithSWR.ts" lang="ts" />
+```jsx
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
+export default function useFetchWithSWR(url: string) {
+  const { data, error } = useSWR(url, fetcher);
+
+  return {
+    data,
+    isLoading: !error && !data,
+    isError: error,
+  } as {
+    data: any;
+    isLoading: boolean;
+    isError: any;
+  };
+}
+```
+
+
+### useShare()
+
+<CodeTitle title="hooks/useShare.ts" lang="ts" />
+
+```jsx
+import { useEffect, useState } from "react";
+function useShare() {
+  // state for share supports
+  const [isShareSupported, setIsShareSupported] = useState(false);
+
+  // checking if that exist or not
+  useEffect(() => {
+    setIsShareSupported(() => ("share" in navigator ? true : false));
+  }, []);
+
+  return { isShareSupported };
+}
+
+export default useShare;
+```
+
+### useWindowLocation()
+
+<CodeTitle title="hooks/useWindowLocation.ts" lang="ts" />
+
+```jsx
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+type URL = string;
+
+export default function useWindowLocation() {
+  const [currentURL, setCurrentURL] = useState<URL>("");
+  const router = useRouter();
+
+  useEffect(() => {
+    setCurrentURL(window.location.href);
+  }, [router.asPath]);
+
+  return { currentURL };
+}
+```
+
+### useWindowSize()
+
+<CodeTitle title="hooks/useWindowSize.ts" lang="ts" />
+
+```jsx
+import { useState, useEffect } from "react";
+export default function useWindowSize() {
+  // Initialize state with undefined width/height so server and client renders match
+  const [windowSize, setWindowSize] = useState({
+    width: 0,
+    height: 0,
+  });
+  useEffect(() => {
+    // Handler to call on window resize
+    function handleResize() {
+      // Set window width/height to state
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures that effect is only run on mount
+  return windowSize;
+}
+```

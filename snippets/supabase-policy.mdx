@@ -1,0 +1,56 @@
+---
+slug: supabase-policy
+title: Setup Supabase Policies
+date: 2023-01-31
+excerpt: Quick tutorial to setup the Supabase policies to manipulate the data.
+published: true
+image: supabase
+---
+
+### Create Supabase Project
+
+You need the following things
+  * `SUPABASE_URL`: Database URL.
+  * `SUPABASE_KEY`: It is safe to be used in a browser context.
+
+  **Steps**
+
+  * To get these go to [Supabase](https://app.supabase.com/sign-in) and log in with your account.
+
+  * Click on **New Project** and fill all the fields.
+
+  * Click on **Create New Project**.
+
+  * Go to the [Settings](https://app.supabase.com/project/_/settings/general) page in the Dashboard.
+
+  * Click **API** in the sidebar.
+
+  * Find your API **URL** and **anon** key on this page.
+
+  * Now you can [Create table](https://app.supabase.com/project/_/editor) and start using it.
+
+    But before you use this there was one issue I had when I was using this it was returning the empty array ([]). It was because of project policies. By default, no-one has access to the data. To fix that you can do the following:
+
+  * Go to [Policies](https://app.supabase.com/project/_/auth/policies).
+
+  * Select your Project.
+
+  * Click on **New Policy**.
+
+    ![](https://i.imgur.com/RsGd8oW.png)
+
+  * You will be presented with two options. You can choose either one. I chose the 1st option:
+
+    ![](https://i.imgur.com/QDAePUQ.png)
+
+  * After that, you will have four options as shown in the following image. You can choose according to your need. I only need the read access so I went with 1st option.
+
+    ![](https://i.imgur.com/h1hSivF.png)
+
+  * Click on **Use this template**.
+
+  * Click on **Review**.
+
+  * Click on **Save Policy**
+
+    After that, you will be able to access the data using [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js). Install it and you just set up your project with Supabase.

@@ -1,0 +1,17 @@
+---
+slug: formatted-date
+title: Generate Formatted Date
+date: 2023-01-30
+excerpt: It generate the Date like Jan 14, 2023.
+published: true
+image: js
+---
+
+
+```js
+export function getFormattedDate(date) {
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+  const newDate = new Date(date)
+  return `${months[newDate.getMonth()]} ${newDate.getDate()}, ${newDate.getFullYear()}`;
+}
+```
