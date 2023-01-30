@@ -142,7 +142,7 @@ function NavItem({ href, text }: { href: string; text: string }) {
         isActive
           ? "font-bold text-gray-800 dark:text-gray-100"
           : " text-gray-600 dark:text-gray-300"
-      } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-gray-100 dark:hover:bg-neutral-700/50 rounded-md`}
+      } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-black/10  dark:hover:bg-neutral-700/50 rounded-md`}
       href={href === "/home" ? "/" : href}
     >
       <motion.p className="capitalize" variants={popUp}>
