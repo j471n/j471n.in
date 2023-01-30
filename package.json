@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
+    "check": "tsc",
     "build": "next build",
     "start": "next start",
-    "tsc": "tsc --watch",
+    "tsc-watch": "tsc --watch",
     "lint": "next lint",
     "find:unused": "next-unused"
   },
