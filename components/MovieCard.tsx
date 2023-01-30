@@ -10,7 +10,7 @@ export default function MovieCard({ movie }: { movie: MovieType }) {
     <Link href={movie.url} target="_blank" rel="noopener noreferrer">
       <motion.div
         variants={fromLeftChildren}
-        className="relative h-[280px] bg-white dark:bg-darkSecondary p-3 rounded-3xl group transition-all duration-200"
+        className="relative h-[280px] bg-white dark:bg-darkSecondary shadow-md p-3 rounded-3xl group transition-all duration-200"
       >
         <div className="w-44 h-64 relative -mt-7 md:-mt-0 md:group-hover:-mt-7 rounded-2xl transition-all duration-200">
           <Image
