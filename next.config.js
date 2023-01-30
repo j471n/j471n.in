@@ -23,6 +23,7 @@ module.exports = withPWA({
       "activity-graph.herokuapp.com",
       "i.scdn.co", // images from spotify
       "images.unsplash.com",
+      "m.media-amazon.com", // for imdb images
     ],
   },
   typescript: {
