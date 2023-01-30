@@ -9,7 +9,7 @@ export default function SnippetCard({ snippet }: { snippet: Snippet }) {
       href={"/snippets/" + snippet.slug}
       className="w-full p-4 ring-1 ring-gray-300 hover:ring-gray-400 dark:ring-[#444] bg-white dark:bg-transparent dark:hover:bg-darkSecondary dark:hover:ring-[#555] flex flex-col gap-2 rounded"
     >
-      <div className="rounded-full overflow-hidden w-fit">
+      <div className="overflow-hidden w-fit p-1">
         <Image
           src={snippetsImages[`${snippet.image}`]}
           alt={snippet.image}

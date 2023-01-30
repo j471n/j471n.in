@@ -1,4 +1,3 @@
-import Newsletter from "../components/Newsletter";
 import { opacityVariant } from "@content/FramerMotionVariants";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { PostType } from "@lib/types";
@@ -20,7 +19,7 @@ export default function SnippetLayout({
             {snippet.meta.title}
           </h1>
 
-          <div className="rounded-full overflow-hidden relative w-12 h-12 p-1 flex justify-center items-center">
+          <div className="overflow-hidden relative w-12 h-12 p-1 flex justify-center items-center">
             <Image
               className="m-0"
               src={snippetsImages[`${snippet.meta.image}`]}
@@ -39,7 +38,6 @@ export default function SnippetLayout({
         >
           {children}
         </AnimatedDiv>
-        <Newsletter />
       </section>
     </section>
   );
