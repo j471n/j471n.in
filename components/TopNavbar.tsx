@@ -222,7 +222,7 @@ const MobileMenu = ({
       exit="hidden"
     >
       <motion.nav className="mt-28 mx-8 flex flex-col">
-        {links.slice(0,7).map((link, index) => {
+        {links.slice(0,8).map((link, index) => {
           const navlink =
             link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
           return (
