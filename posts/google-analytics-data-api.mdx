@@ -121,6 +121,62 @@ export default async function handler(
 }
 ```
 
+The response would be:
+
+<CodeTitle lang="json" title="Response" />
+```json
+{
+  "data": {
+    "dimensionHeaders": [
+      {
+        "name": "year"
+      }
+    ],
+    "metricHeaders": [
+      {
+        "name": "activeUsers",
+        "type": "TYPE_INTEGER"
+      }
+    ],
+    "rows": [
+      {
+        "dimensionValues": [
+          {
+            "value": "2023",
+            "oneValue": "value"
+          }
+        ],
+        "metricValues": [
+          {
+            "value": "357",
+            "oneValue": "value"
+          }
+        ]
+      }
+    ],
+    "totals": [
+      
+    ],
+    "maximums": [
+      
+    ],
+    "minimums": [
+      
+    ],
+    "rowCount": 1,
+    "metadata": {
+      "dataLossFromOtherRow": false,
+      "currencyCode": "USD",
+      "_currencyCode": "currencyCode",
+      "timeZone": "America/Los_Angeles",
+      "_timeZone": "timeZone"
+    },
+    "propertyQuota": null,
+    "kind": "analyticsData#runReport"
+  }
+}
+```
+
 This is all you need to fetch the data. and It will return the response. My portfolio code can be found on [GitHub](https://github.com/j471n/j471n.in/blob/main/pages/api/ga.ts) you can check out How I used it.
 
 You can play with [Dimensions and Metrics](https://developers.google.com/analytics/devguides/reporting/data/v1/api-schema) to get your desired data.
