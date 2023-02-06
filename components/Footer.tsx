@@ -81,13 +81,16 @@ export default function Footer({
         </section>
         <motion.div
           variants={opacityVariant}
-          className="w-full flex justify-between items-center gap-4 mt-5"
+          className="w-full flex justify-between items-center gap-4 mt-5 "
         >
-          <div className="flex items-center relative bg-white dark:bg-darkSecondary rounded-full px-4 py-1 text-xs sm:text-sm">
+          <div className="flex items-center relative bg-white dark:bg-darkSecondary rounded-full px-4 py-1 text-xs sm:text-sm shadow">
             <BsDot className="w-7 h-7 -ml-2 text-green-500 animate-ping" />
-            <p>
-              {visitors?.totalVisitors} visitors in last {visitors?.days} days
-            </p>
+            <div className="flex items-center gap-1">
+              {visitors?.totalVisitors ?? (
+                <div className="w-10 h-3 rounded-full bg-gray-300 dark:bg-darkPrimary animate-pulse"></div>
+              )}{" "}
+              visitors in last {visitors?.days} days
+            </div>
           </div>
           <div
             onClick={() => setShowQR(!showQR)}
@@ -103,11 +106,21 @@ export default function Footer({
         >
           <span>Powered by</span>
 
-          <Link target="_blank" aria-label="Next.js" rel="noreferrer" href="https://nextjs.org">
+          <Link
+            target="_blank"
+            aria-label="Next.js"
+            rel="noreferrer"
+            href="https://nextjs.org"
+          >
             <NextLogo />
           </Link>
           <span>and</span>
-          <Link target="_blank" aria-label="Vercel" rel="noreferrer" href="https://vercel.com">
+          <Link
+            target="_blank"
+            aria-label="Vercel"
+            rel="noreferrer"
+            href="https://vercel.com"
+          >
             <VercelLogo />
           </Link>
         </motion.div>
