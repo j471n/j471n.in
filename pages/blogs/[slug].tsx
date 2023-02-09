@@ -23,7 +23,7 @@ export default function Post({
       });
 
     post != null && registerView();
-  }, [post !== null && post.meta.slug]);
+  }, [post]);
 
   if (error) return <PageNotFound />;
 

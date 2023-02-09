@@ -33,14 +33,14 @@ export default function TableOfContents({
       removeScrollLock();
       setIsTOCActive(false);
     }
-  }, [size]);
+  }, [size, setIsTOCActive]);
   useEffect(() => {
     setToc(
       tableOfContents.filter((table: any) =>
         table.heading.toLowerCase().includes(searchValue.trim().toLowerCase())
       )
     );
-  }, [searchValue, tableOfContents]);
+  }, [searchValue, tableOfContents, ]);
   return (
     <>
       {tableOfContents.length > 0 && (
