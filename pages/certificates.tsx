@@ -38,7 +38,7 @@ export default function Certificates({
           {certificates.map((cer) => {
             return (
               <AnimatedDiv
-                className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4  p-3 rounded-lg bg-white shadow dark:bg-darkSecondary/50"
+                className="flex flex-col gap-2 p-3 bg-white rounded-lg shadow md:flex-row md:items-center md:justify-between md:gap-4 dark:bg-darkSecondary/50"
                 variants={popUpFromBottomForText}
                 key={cer.id}
               >
@@ -60,7 +60,7 @@ export default function Certificates({
                   <div className="flex flex-col ">
                     <Link
                       href={cer.url}
-                      className="font-semibold hover:underline text-sm sm:text-base md:text-lg text-neutral-900 dark:text-neutral-200"
+                      className="text-sm font-semibold hover:underline sm:text-base md:text-lg text-neutral-900 dark:text-neutral-200"
                     >
                       {cer.title}
                     </Link>
@@ -70,7 +70,7 @@ export default function Certificates({
                     </p>
                   </div>
                 </div>
-                <p className="text-gray-500 text-sm"></p>
+                <p className="text-sm text-gray-500"></p>
               </AnimatedDiv>
             );
           })}

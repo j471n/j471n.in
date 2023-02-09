@@ -17,12 +17,12 @@ export default function Project({ project }: { project: ProjectType }) {
           {project.description}
         </p>
 
-        <div className="flex items-center gap-1 flex-wrap">
+        <div className="flex flex-wrap items-center gap-1">
           {project.tools!.map((tool, index) => {
             return (
               <span
                 key={`${tool}-${index}`}
-                className="bg-gray-100 dark:bg-darkPrimary text-gray-500 rounded px-2 py-1 text-xs"
+                className="px-2 py-1 text-xs text-gray-500 bg-gray-100 rounded dark:bg-darkPrimary"
               >
                 {tool}
               </span>
@@ -30,7 +30,7 @@ export default function Project({ project }: { project: ProjectType }) {
           })}
         </div>
 
-        <div className="mt-auto p-2 w-fit flex items-center gap-4">
+        <div className="flex items-center gap-4 p-2 mt-auto w-fit">
           <Link
             href={project.githubURL}
             title="Source Code on GitHub"
@@ -38,7 +38,7 @@ export default function Project({ project }: { project: ProjectType }) {
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-black dark:hover:text-white"
           >
-            <BsGithub className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
+            <BsGithub className="w-6 h-6 transition-all hover:scale-110 active:scale-90" />
           </Link>
 
           {project.previewURL && (
@@ -49,7 +49,7 @@ export default function Project({ project }: { project: ProjectType }) {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-black dark:hover:text-white"
             >
-              <MdOutlineLink className="w-6 h-6 hover:scale-110 active:scale-90 transition-all" />
+              <MdOutlineLink className="w-6 h-6 transition-all hover:scale-110 active:scale-90" />
             </Link>
           )}
         </div>

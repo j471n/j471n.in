@@ -21,7 +21,7 @@ export default function Support() {
 
   return (
     <section>
-      <h3 className="my-5 font-bold text-2xl">Support me 💪</h3>
+      <h3 className="my-5 text-2xl font-bold">Support me 💪</h3>
 
       <AnimatedDiv
         variants={FadeContainer}
@@ -37,12 +37,12 @@ export default function Support() {
             >
               <motion.p
                 variants={popUp}
-                className="bg-white text-darkSecondary dark:bg-darkSecondary dark:text-gray-300 grid place-items-center p-5 group rounded-xl hover:ring-1 shadow ring-gray-500 duration-200 active:ring"
+                className="grid p-5 duration-200 bg-white shadow text-darkSecondary dark:bg-darkSecondary dark:text-gray-300 place-items-center group rounded-xl hover:ring-1 ring-gray-500 active:ring"
               >
                 <div className="flex flex-col items-center gap-5 select-none">
                   <paymentMethod.Icon className="text-3xl duration-150 group-hover:lg:scale-150 " />
 
-                  <p className="font-semibold text-sm">{paymentMethod.name}</p>
+                  <p className="text-sm font-semibold">{paymentMethod.name}</p>
                 </div>
               </motion.p>
             </Link>
@@ -54,11 +54,11 @@ export default function Support() {
             setShowUPIForm(!showUPIForm);
             lockScroll();
           }}
-          className="bg-white text-darkSecondary dark:bg-darkSecondary dark:text-gray-300 grid place-items-center p-5 group rounded-xl hover:ring-1 shadow ring-gray-500 duration-200 active:ring"
+          className="grid p-5 duration-200 bg-white shadow text-darkSecondary dark:bg-darkSecondary dark:text-gray-300 place-items-center group rounded-xl hover:ring-1 ring-gray-500 active:ring"
         >
           <div className="flex flex-col items-center gap-5 select-none">
             <UPI className="text-3xl duration-150 group-hover:lg:scale-150 " />
-            <p className="font-semibold text-sm">UPI</p>
+            <p className="text-sm font-semibold">UPI</p>
           </div>
         </motion.button>
       </AnimatedDiv>
@@ -95,7 +95,7 @@ function UPIPaymentForm({ close }: { close: () => void }) {
       animate="visible"
       exit="hidden"
       variants={FadeContainer}
-      className="fixed inset-0 bg-black/70 grid place-items-center z-50"
+      className="fixed inset-0 z-50 grid bg-black/70 place-items-center"
     >
       <motion.div
         initial="hidden"
@@ -105,7 +105,7 @@ function UPIPaymentForm({ close }: { close: () => void }) {
         className="m-5 w-[90%] relative  rounded-lg px-5 py-5 max-w-md bg-white dark:bg-darkSecondary"
       >
         <button title="Back" onClick={close}>
-          <IoMdArrowRoundBack className="icon m-0" />
+          <IoMdArrowRoundBack className="m-0 icon" />
         </button>
 
         {!qrValue ? (
@@ -115,7 +115,7 @@ function UPIPaymentForm({ close }: { close: () => void }) {
               className="flex flex-col gap-5 my-5 mb-10"
             >
               <div className="relative flex items-center justify-center">
-                <BiRupee className="h-full w-9 -ml-1  text-gray-600 dark:text-gray-200" />
+                <BiRupee className="h-full -ml-1 text-gray-600 w-9 dark:text-gray-200" />
                 <input
                   onInput={(e: React.ChangeEvent<HTMLInputElement>) => {
                     if (e.target.value.length === 0)
@@ -168,7 +168,7 @@ function UPIPaymentForm({ close }: { close: () => void }) {
               fgColor={isDarkMode ? "white" : "#25282a"}
             />
 
-            <div className="flex justify-center  items-center gap-2 text-gray-600 dark:text-gray-200 text-sm my-5">
+            <div className="flex items-center justify-center gap-2 my-5 text-sm text-gray-600 dark:text-gray-200">
               <FiInfo className="w-5 h-5" />
               <p className="text-xs">Scan the QR code via any UPI app </p>
             </div>

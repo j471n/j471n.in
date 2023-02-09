@@ -84,7 +84,7 @@ export default function TopNavbar() {
       </AnimatePresence>
 
       <Link href="/" className="mr-3" aria-label="Link to Home Page">
-        <Logo className="w-8 h-8 relative hidden sm:inline-flex" />
+        <Logo className="relative hidden w-8 h-8 sm:inline-flex" />
         <div className="w-full sm:!hidden">
           <motion.p
             initial="hidden"
@@ -101,7 +101,7 @@ export default function TopNavbar() {
       </Link>
 
       {/* Top Nav list */}
-      <motion.nav className="hidden sm:flex z-10 md:inset-0 md:justify-center">
+      <motion.nav className="z-10 hidden sm:flex md:inset-0 md:justify-center">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -171,7 +171,7 @@ function HamBurger({
       {!open ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 cursor-pointer select-none transform duration-300 rounded-md active:scale-50"
+          className="w-6 h-6 duration-300 transform rounded-md cursor-pointer select-none active:scale-50"
           onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
@@ -187,7 +187,7 @@ function HamBurger({
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 cursor-pointer select-none transform duration-300  rounded-md active:scale-50"
+          className="w-6 h-6 duration-300 transform rounded-md cursor-pointer select-none active:scale-50"
           onClick={handleClick}
           fill="none"
           viewBox="0 0 24 24"
@@ -215,14 +215,14 @@ const MobileMenu = ({
 }) => {
   return (
     <motion.div
-      className="absolute font-normal bg-white dark:bg-darkPrimary w-screen h-screen top-0 left-0 z-10 sm:hidden"
+      className="absolute top-0 left-0 z-10 w-screen h-screen font-normal bg-white dark:bg-darkPrimary sm:hidden"
       variants={hamFastFadeContainer}
       initial="hidden"
       animate="visible"
       exit="hidden"
     >
-      <motion.nav className="mt-28 mx-8 flex flex-col">
-        {links.slice(0,8).map((link, index) => {
+      <motion.nav className="flex flex-col mx-8 mt-28">
+        {links.slice(0, 8).map((link, index) => {
           const navlink =
             link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
           return (
@@ -230,7 +230,7 @@ const MobileMenu = ({
               href={navlink}
               key={`mobileNav-${index}`}
               onClick={handleClick}
-              className="border-b border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 font-semibold flex w-auto py-4 capitalize text-base cursor-pointer"
+              className="flex w-auto py-4 text-base font-semibold text-gray-900 capitalize border-b border-gray-300 cursor-pointer dark:border-gray-700 dark:text-gray-100"
             >
               <motion.p variants={mobileNavItemSideways}>
                 {link === "rss" ? link.toUpperCase() : link}

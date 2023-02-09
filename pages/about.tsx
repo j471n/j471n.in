@@ -19,20 +19,20 @@ export default function About({
     <>
       <StaticPage metadata={pageMeta.about} page={about} />
 
-      <div className="pageTop -mt-5 print:hidden">
+      <div className="-mt-5 pageTop print:hidden">
         <motion.h3
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={opacityVariant}
-          className="font-bold text-xl md:text-3xl text-left my-2"
+          className="my-2 text-xl font-bold text-left md:text-3xl"
         >
           Recent watched Movies & TV Series
         </motion.h3>
 
         <AnimatedDiv
           variants={FadeContainer}
-          className="flex items-center gap-2 md:gap-4 overflow-x-scroll pt-10 pb-5 horizontal-scrollbar"
+          className="flex items-center gap-2 pt-10 pb-5 overflow-x-scroll md:gap-4 horizontal-scrollbar"
         >
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} />

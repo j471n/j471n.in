@@ -6,8 +6,8 @@ type Props = {
 
 export default function Warning({ text, title, children }: Props) {
   return (
-    <div className="border-l-4 border-yellow-700 dark:border-yellow-500 bg-yellow-100 dark:bg-yellow-900 p-6 my-4 w-full">
-      <div className="text-2xl font-medium leading-tight mb-2 flex items-center gap-2 text-yellow-700 dark:text-yellow-500">
+    <div className="w-full p-6 my-4 bg-yellow-100 border-l-4 border-yellow-700 dark:border-yellow-500 dark:bg-yellow-900">
+      <div className="flex items-center gap-2 mb-2 text-2xl font-medium leading-tight text-yellow-700 dark:text-yellow-500">
         <svg
           aria-hidden="true"
           className="w-6 h-6 mr-2 fill-current"

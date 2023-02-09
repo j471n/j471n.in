@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { AnimatedTAGProps } from "@lib/types";
 
-
 export default function AnimatedHeading({
   variants,
   className,

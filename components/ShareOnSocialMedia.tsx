@@ -76,12 +76,12 @@ export default function ShareOnSocialMedia({
     <>
       <div className={`${className} transform sm:scale-150 my-5`}>
         <FacebookShareButton quote={title} url={url}>
-          <div className="bg-gray-700 text-white p-2 rounded-full">
+          <div className="p-2 text-white bg-gray-700 rounded-full">
             <GrFacebookOption className="w-4 h-4" />
           </div>
         </FacebookShareButton>
         <TwitterShareButton title={title} url={url} related={["@j471n_"]}>
-          <div className="bg-gray-700 text-white p-2 rounded-full">
+          <div className="p-2 text-white bg-gray-700 rounded-full">
             <GrTwitter className="w-4 h-4" />
           </div>
         </TwitterShareButton>
@@ -91,7 +91,7 @@ export default function ShareOnSocialMedia({
           url={url}
           source={url}
         >
-          <div className="bg-gray-700 text-white p-2 rounded-full">
+          <div className="p-2 text-white bg-gray-700 rounded-full">
             <FiLinkedin className="w-4 h-4 " />
           </div>
         </LinkedinShareButton>
@@ -100,7 +100,7 @@ export default function ShareOnSocialMedia({
             <FaWhatsapp className="w-5 h-5 " />
           </div>
         </WhatsappShareButton>
-        <div className="bg-gray-700 text-white p-2 rounded-full cursor-pointer">
+        <div className="p-2 text-white bg-gray-700 rounded-full cursor-pointer">
           <FiCopy
             className="w-4 h-4 "
             onClick={() => copyTextToClipboard(url)}
@@ -112,7 +112,7 @@ export default function ShareOnSocialMedia({
 
         {isShareSupported && (
           <div
-            className="bg-gray-700 text-white p-2 rounded-full cursor-pointer"
+            className="p-2 text-white bg-gray-700 rounded-full cursor-pointer"
             onClick={handleShare}
           >
             <BsThreeDots className="w-4 h-4" />

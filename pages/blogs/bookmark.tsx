@@ -19,7 +19,7 @@ export default function Blogs() {
         keywords={pageMeta.bookmark.keywords}
       />
 
-      <section className="pageTop flex flex-col gap-2 text-neutral-900 dark:text-neutral-200">
+      <section className="flex flex-col gap-2 pageTop text-neutral-900 dark:text-neutral-200">
         <PageTop pageTitle="Bookmarks">
           Here you can find article bookmarked by you for Later use.
         </PageTop>
@@ -36,7 +36,7 @@ export default function Blogs() {
                 })}
               </AnimatedDiv>
             ) : (
-              <div className="font-inter text-center font-medium dark:text-gray-400 mt-10">
+              <div className="mt-10 font-medium text-center font-inter dark:text-gray-400">
                 Nothing to see here.
               </div>
             )}

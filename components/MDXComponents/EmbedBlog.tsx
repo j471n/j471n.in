@@ -31,7 +31,7 @@ export default function EmbedBlog({
           }}
         />
       </div>
-      <p className="sm:text-lg font-bold">{text}</p>
+      <p className="font-bold sm:text-lg">{text}</p>
     </Link>
   );
 }

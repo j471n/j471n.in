@@ -15,14 +15,14 @@ export default function BlogsSection({ blogs }: { blogs: FrontMatter[] }) {
 
         <Link
           href="/blogs"
-          className="font-inter font-medium border-transparent transition active:scale-95 active:border-black w-fit group flex items-center gap-1 justify-center md:ml-7"
+          className="flex items-center justify-center gap-1 font-medium transition border-transparent font-inter active:scale-95 active:border-black w-fit group md:ml-7"
         >
           Read all posts
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            className="h-6 w-6 ml-1 group-hover:translate-x-2 transition"
+            className="w-6 h-6 ml-1 transition group-hover:translate-x-2"
           >
             <path
               stroke="currentColor"

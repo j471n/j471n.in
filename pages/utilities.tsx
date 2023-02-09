@@ -50,14 +50,14 @@ function UtilitySection({ utility }: { utility: UtilityType }) {
     >
       <motion.h2
         variants={popUpFromBottomForText}
-        className="font-bold text-2xl sm:text-3xl font-barlow mb-4"
+        className="mb-4 text-2xl font-bold sm:text-3xl font-barlow"
       >
         {utility.title}
       </motion.h2>
 
       <AnimatedDiv
         variants={FadeContainer}
-        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 mt-5"
+        className="grid grid-cols-3 gap-3 mt-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7"
       >
         {utility.data.map((item) => {
           const Icon = item.Icon;

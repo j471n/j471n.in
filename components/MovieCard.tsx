@@ -13,9 +13,9 @@ export default function MovieCard({ movie }: { movie: MovieType }) {
         variants={fromLeftChildren}
         className="relative bg-white dark:bg-darkSecondary shadow-md p-3 rounded-3xl group transition-[opacity,transform] duration-500"
       >
-        <div className="w-44 h-64 relative -mt-7 rounded-2xl overflow-hidden shadow-lg">
+        <div className="relative h-64 overflow-hidden shadow-lg w-44 -mt-7 rounded-2xl">
           <Image
-            className="object-cover rounded-2xl lg:group-hover:scale-105 transition-transform"
+            className="object-cover transition-transform rounded-2xl lg:group-hover:scale-105"
             src={movie.image}
             alt={movie.name}
             width={600}
@@ -28,7 +28,7 @@ export default function MovieCard({ movie }: { movie: MovieType }) {
 
         <div className="flex flex-col gap-2 mt-2 mb-1">
           <MovieWatchedStatus isWatched={movie.watched} rating={movie.rating} />
-          <p className="-z-1 text-sm font-medium ">{movie.name}</p>
+          <p className="text-sm font-medium -z-1 ">{movie.name}</p>
         </div>
       </motion.div>
     </Link>
@@ -44,7 +44,7 @@ function MovieWatchedStatus({
   rating?: number;
 }) {
   return (
-    <div className="flex text-xs items-center justify-between">
+    <div className="flex items-center justify-between text-xs">
       {isWatched ? (
         <>
           <p className="px-4 py-0.5 rounded-full bg-green-400/40 text-green-800 dark:text-green-300">

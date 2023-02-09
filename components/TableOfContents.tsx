@@ -59,7 +59,7 @@ export default function TableOfContents({
               <CgSearch className="ml-3 w-5 h-5 absolute top-[50%] -translate-y-1/2 z-10" />
 
               <input
-                className="px-5 pl-10  py-2 w-full  outline-none transition duration-200 bg-white dark:bg-darkSecondary rounded-md ring-1 ring-slate-900/10 shadow hover:ring-slate-400"
+                className="w-full px-5 py-2 pl-10 transition duration-200 bg-white rounded-md shadow outline-none dark:bg-darkSecondary ring-1 ring-slate-900/10 hover:ring-slate-400"
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
@@ -109,7 +109,7 @@ export default function TableOfContents({
               setIsTOCActive(!isTOCActive);
               lockScroll();
             }}
-            className="md:hidden w-full py-2 font-medium bg-black dark:bg-white text-white dark:text-black fixed bottom-0 outline-none z-50"
+            className="fixed bottom-0 z-50 w-full py-2 font-medium text-white bg-black outline-none md:hidden dark:bg-white dark:text-black"
           >
             Table of Contents
           </button>

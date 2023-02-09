@@ -52,18 +52,18 @@ export default function QRCodeContainer({
               type: "spring",
               bounce: 0.15,
             }}
-            className="bg-white dark:bg-darkSecondary fixed inset-0  grid place-items-center"
+            className="fixed inset-0 grid bg-white dark:bg-darkSecondary place-items-center"
             style={{ zIndex: 10000 }}
           >
             <button
-              className="outline-none absolute right-5 top-5 text-black dark:text-white"
+              className="absolute text-black outline-none right-5 top-5 dark:text-white"
               onClick={() => setShowQR(false)}
             >
               <CgClose className="w-8 h-8" />
             </button>
 
-            <div className="text-black dark:text-white flex flex-col gap-2">
-              <h1 className="font-semibold text-xl">Share this page</h1>
+            <div className="flex flex-col gap-2 text-black dark:text-white">
+              <h1 className="text-xl font-semibold">Share this page</h1>
               <QRCode
                 id="QRCode"
                 value={currentURL}
@@ -78,7 +78,7 @@ export default function QRCodeContainer({
                 }
               >
                 <button
-                  className="w-full  px-3 py-2 font-medium bg-darkPrimary dark:bg-gray-100 text-white dark:text-darkPrimary rounded text-sm"
+                  className="w-full px-3 py-2 text-sm font-medium text-white rounded bg-darkPrimary dark:bg-gray-100 dark:text-darkPrimary"
                   onClick={downloadQRCode}
                 >
                   Download

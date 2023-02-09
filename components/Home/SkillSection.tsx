@@ -18,7 +18,7 @@ export default function SkillSection() {
         whileInView="visible"
         variants={FadeContainer}
         viewport={{ once: true }}
-        className="grid my-10 gap-4 grid-cols-3"
+        className="grid grid-cols-3 gap-4 my-10"
       >
         {skills.map((skill, index) => {
           const Icon = skill.Icon;
@@ -33,13 +33,13 @@ export default function SkillSection() {
               onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) =>
                 WindowsAnimation.removeHoverAnimation(e)
               }
-              className="p-4 flex items-center justify-center sm:justify-start gap-4 bg-gray-50 hover:bg-white dark:bg-darkPrimary hover:dark:bg-darkSecondary border rounded-sm border-gray-300 dark:border-neutral-700 transform origin-center md:origin-top group"
+              className="flex items-center justify-center gap-4 p-4 origin-center transform border border-gray-300 rounded-sm sm:justify-start bg-gray-50 hover:bg-white dark:bg-darkPrimary hover:dark:bg-darkSecondary dark:border-neutral-700 md:origin-top group"
             >
-              <div className="relative transition group-hover:scale-110 sm:group-hover:scale-100 select-none pointer-events-none">
+              <div className="relative transition pointer-events-none select-none group-hover:scale-110 sm:group-hover:scale-100">
                 {/* @ts-ignore */}
                 <Icon className="w-8 h-8" />
               </div>
-              <p className="hidden sm:inline-flex text-sm md:text-base font-semibold select-none pointer-events-none">
+              <p className="hidden text-sm font-semibold pointer-events-none select-none sm:inline-flex md:text-base">
                 {skill.name}
               </p>
             </motion.div>

@@ -23,7 +23,7 @@ export default function Newsletter() {
 
   return (
     <>
-      <div className="w-full p-4 font-barlow rounded-lg ring-2 ring-gray-400 bg-white dark:bg-black dark:border-neutral-600 flex flex-col gap-4 my-10 print:hidden">
+      <div className="flex flex-col w-full gap-4 p-4 my-10 bg-white rounded-lg font-barlow ring-2 ring-gray-400 dark:bg-black dark:border-neutral-600 print:hidden">
         <h2 className="text-2xl font-bold dark:text-white !my-0">
           Jatin's Newsletter
         </h2>

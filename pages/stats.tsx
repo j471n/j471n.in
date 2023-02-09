@@ -98,7 +98,7 @@ export default function Stats() {
         <div className="font-barlow">
           <AnimatedHeading
             variants={opacityVariant}
-            className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
+            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
           >
             My Top streams songs
           </AnimatedHeading>
@@ -111,13 +111,13 @@ export default function Stats() {
               {topTracks ? (
                 topTracks[0].title
               ) : (
-                <span className="bg-white dark:bg-darkSecondary h-6 w-20"></span>
+                <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
               )}
             </span>{" "}
             is the most streamed song of mine in last 4 weeks. Here's my top
             tracks on Spotify updated daily.
           </AnimatedText>
-          <div className="flex flex-col my-10 gap-0 font-barlow">
+          <div className="flex flex-col gap-0 my-10 font-barlow">
             {topTracks ? (
               topTracks?.map((track: SpotifyTrack, index: number) => (
                 <Track
@@ -140,7 +140,7 @@ export default function Stats() {
         <div className="font-barlow">
           <AnimatedHeading
             variants={opacityVariant}
-            className="text-3xl sm:text-4xl capitalize font-bold text-neutral-900 dark:text-neutral-200"
+            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
           >
             My Top Artists
           </AnimatedHeading>
@@ -153,13 +153,13 @@ export default function Stats() {
               {artists ? (
                 artists[0].name
               ) : (
-                <span className="bg-white dark:bg-darkSecondary h-6 w-20"></span>
+                <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
               )}
             </span>{" "}
             in last 4 weeks on Spotify.
           </AnimatedText>
 
-          <div className="flex flex-col my-10 gap-0 font-barlow">
+          <div className="flex flex-col gap-0 my-10 font-barlow">
             {artists ? (
               artists?.map((artist: SpotifyArtist, index: number) => (
                 <Artist
@@ -181,7 +181,6 @@ export default function Stats() {
   );
 }
 
-
 // Loading Components
 function LoadingSongs() {
   return (
@@ -191,14 +190,14 @@ function LoadingSongs() {
           key={item}
           className="bg-gray-100 h-[80.8px] first:h-[81.6px] first:md:h-[85.6px] md:h-[84.8px]  dark:bg-darkPrimary  border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden relative xs:pl-16 md:!pl-20 "
         >
-          <div className="absolute left-4 md:left-6 transform origin-center font-inter tracking-wider hidden xs:inline-flex">
+          <div className="absolute hidden tracking-wider origin-center transform left-4 md:left-6 font-inter xs:inline-flex">
             #{item + 1}
           </div>
 
-          <div className="relative w-12 bg-white dark:bg-darkSecondary h-12 transform origin-center animate-pulse"></div>
+          <div className="relative w-12 h-12 origin-center transform bg-white dark:bg-darkSecondary animate-pulse"></div>
           <div className="flex flex-col gap-1">
             <p className="animate-pulse w-40 h-6 md:h-[28px] bg-white dark:bg-darkSecondary"></p>
-            <p className="animate-pulse w-28 h-4 md:h-6 bg-white dark:bg-darkSecondary delay-125"></p>
+            <p className="h-4 bg-white animate-pulse w-28 md:h-6 dark:bg-darkSecondary delay-125"></p>
           </div>
         </div>
       ))}
@@ -215,12 +214,12 @@ function LoadingArtists() {
           className="h-[80.8px] first:h-[81.6px] first:md:h-[129.6px] md:h-[128.8px]  bg-gray-100  dark:bg-darkPrimary  border-l first:border-t border-r border-b border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden"
         >
           <>
-            <div className=" transform origin-center font-inter tracking-wider hidden xs:inline-flex">
+            <div className="hidden tracking-wider origin-center transform font-inter xs:inline-flex">
               #{item + 1}
             </div>
             <div
               aria-label="image"
-              className="animate-pulse bg-white dark:bg-darkSecondary relative w-12 md:w-24 h-12 md:h-24 rounded-full"
+              className="relative w-12 h-12 bg-white rounded-full animate-pulse dark:bg-darkSecondary md:w-24 md:h-24"
             ></div>
             <div className="flex flex-col gap-1">
               <h2
@@ -229,7 +228,7 @@ function LoadingArtists() {
               ></h2>
               <p
                 aria-label="followers"
-                className="animate-pulse h-4 md:h-6 w-20 bg-white dark:bg-darkSecondary"
+                className="w-20 h-4 bg-white animate-pulse md:h-6 dark:bg-darkSecondary"
               ></p>
             </div>
           </>
