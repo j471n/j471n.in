@@ -56,20 +56,12 @@ To do that we need a `url` that send the following parameter to the Spotify-
 - `client_id` : your project's `client_id`
 - `scope` : you can read about that [here](https://developer.spotify.com/documentation/general/guides/authorization/scopes/)
 
-We want to fetch the user's top stats and the currently playing song. for that scope is `user-top-read` and `user-read-currently-playing`. You can add as many scopes as you want separated by space (" "). So, now our URL looks like this (enter your project `client_id`)-
+We want to fetch the user's top stats and the currently playing song. for that scope is `user-top-read` and `user-read-currently-playing`. You can add as many scopes as you want separated by space ("+"). So, now our URL looks like this (enter your project `client_id`)-
 
-<CodeTitle title="Decoded URL" />
+<CodeTitle title="URL" />
 ```bash
-https://accounts.spotify.com/authorize?client_id=bda10cd719564898818245d97727de7e&response_type=code&redirect_uri=http://localhost:3000/callback&scope=user-read-currently-playing
-user-top-read 
+https://accounts.spotify.com/authorize?client_id=bda10cd719564898818245d97727de7e&response_type=code&redirect_uri=http://localhost:3000/callback&scope=user-read-currently-playing+user-top-read 
 ```
-
-But we cannot use this URL because we need to encode to the URL string, For that, you can use this [tool](https://www.url-encode-decode.com/). Now the encode URL looks like this-
-
-<CodeTitle title="Encoded URL" />
-```bash
-https%3A%2F%2Faccounts.spotify.com%2Fauthorize%3Fclient_id%3Dbda10cd71956489881825d97727de7e%26response_type%3Dcode%26redirect_uri%3Dhttp%3A%2F%2Flocalhost%3A3000%2Fcallback%26scope%3Duser-read-currently-playing+user-top-read
-``` 
 
 Now enter the URL in the browser and then click **Enter**. After authorizing, you'll be redirected back to your `redirect_uri`. In the URL, there's a `code` query parameter. Store this value somewhere because we are going to need it in the next step.
 
@@ -88,8 +80,7 @@ Your url should look like this -
 ```bash
 # URL to get "refresh_token"
 
-curl -H "Authorization: Basic <base64 encoded client_id:client_secret>"
--d grant_type=authorization_code -d code=<code> -d redirect_uri=http%3A%2F%2Flocalhost:3000/callback https://accounts.spotify.com/api/token
+curl -H "Authorization: Basic <base64 encoded client_id:client_secret>" -d grant_type=authorization_code -d code=<code> -d redirect_uri=http%3A%2F%2Flocalhost:3000/callback https://accounts.spotify.com/api/token
 ```
 
 So after encoding the  **Client ID** and **Client Secret** it should be looks like this-
@@ -103,8 +94,7 @@ Now the final url should looks like this-
 
 <CodeTitle lang="bash" title="Auth URL"/>
 ```bash
-curl -H "Authorization: Basic YmRhMTBjZDcxOTU2NDg5ODgxODJmMmQ5NzcyN2RlN2U6NjZmZTU5OTJjYjZlNDFjZmEwNDdfkdjfkHKkjdfdwODk0YjI="
--d grant_type=authorization_code -d code=AQD_kIzZ0OVXkeeIU4jnLWADFJDKdcWLYo9ySdfdfdkHKJFtGExxgw_aCxJrZflWVeARvjaGDfdfddf6KYpFlo2t2JZ0SQceyvdKs4AcGgCLSqm7vMyiRWCy_t06WmLet8v6aEBx8U4eKHxKiEx_sBgvCSlYo5wptKUd0Gwa6oyqOHFZnE7KSbxTVwMkQ668Ezjz2aeFEPp1TU9ij6dM4AjO4YFCH2hoMWgO3k5XrbdKnK7U2Y30wb8gHjEA6LnE8yu8cyvaY9WQ -d redirect_uri=http%3A%2F%2Flocalhost:3000/callback https://accounts.spotify.com/api/token
+curl -H "Authorization: Basic YmRhMTBjZDcxOTU2NDg5ODgxODJmMmQ5NzcyN2RlN2U6NjZmZTU5OTJjYjZlNDFjZmEwNDdfkdjfkHKkjdfdwODk0YjI=" -d grant_type=authorization_code -d code=AQD_kIzZ0OVXkeeIU4jnLWADFJDKdcWLYo9ySdfdfdkHKJFtGExxgw_aCxJrZflWVeARvjaGDfdfddf6KYpFlo2t2JZ0SQceyvdKs4AcGgCLSqm7vMyiRWCy_t06WmLet8v6aEBx8U4eKHxKiEx_sBgvCSlYo5wptKUd0Gwa6oyqOHFZnE7KSbxTVwMkQ668Ezjz2aeFEPp1TU9ij6dM4AjO4YFCH2hoMWgO3k5XrbdKnK7U2Y30wb8gHjEA6LnE8yu8cyvaY9WQ -d redirect_uri=http%3A%2F%2Flocalhost:3000/callback https://accounts.spotify.com/api/token
 ```
 
 After running this on your terminal it will return a JSON object containing `refresh_token`. This token is valid indefinitely unless you revoke access, so we'll want to save this in an environment variable. The JSON will looks like this- 
