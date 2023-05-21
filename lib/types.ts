@@ -31,7 +31,7 @@ export type SpotifyArtist = {
   coverImage: {
     url: string;
   };
-  followers: string;
+  popularity: number;
 };
 
 export type ProjectType = {

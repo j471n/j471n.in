@@ -168,7 +168,7 @@ export default function Stats() {
                   name={artist.name!}
                   url={artist.url}
                   coverImage={artist.coverImage.url}
-                  followers={artist.followers!}
+                  popularity={artist.popularity!}
                 />
               ))
             ) : (

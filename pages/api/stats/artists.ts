@@ -12,7 +12,7 @@ export default async function handler(
     id: artist.id,
     name: artist.name,
     url: artist.external_urls.spotify,
-    followers: artist.followers.total,
+    popularity: artist.popularity,
     coverImage: artist.images[1],
   }));
 

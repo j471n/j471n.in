@@ -5,7 +5,7 @@ type ArtistProps = {
   name: string;
   url: string;
   coverImage: string;
-  followers: string;
+  popularity: number;
   id: number;
 };
 
@@ -13,7 +13,7 @@ export default function Artist({
   name,
   url,
   coverImage,
-  followers,
+  popularity,
   id,
 }: ArtistProps) {
   return (
@@ -21,7 +21,7 @@ export default function Artist({
       rel="noreferrer"
       target="_blank"
       href={url}
-      className="flex items-center gap-5 p-4 overflow-hidden bg-gray-100 border-b border-l border-r border-gray-300 hover:bg-gray-200 dark:bg-darkPrimary hover:dark:bg-darkSecondary first:border-t dark:border-neutral-600 font-barlow"
+      className="flex items-center gap-5 p-4 overflow-hidden bg-gray-100 border-b border-l border-r border-gray-300 hover:bg-white dark:bg-darkPrimary hover:dark:bg-darkSecondary first:border-t dark:border-neutral-600 font-barlow"
     >
       <>
         <div className="hidden text-xl tracking-wider text-gray-500 origin-center transform font-inter xs:inline-flex">
@@ -45,7 +45,7 @@ export default function Artist({
             {name}
           </h2>
           <p className="text-xs text-gray-500 origin-left transform sm:text-sm md:text-base md:font-medium line-clamp-1">
-            {followers.toLocaleString()} Followers
+            Popularity: {popularity}
           </p>
         </div>
       </>
