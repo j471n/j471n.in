@@ -16,6 +16,7 @@ import {
   SiFigma,
   SiSupabase,
   SiNodedotjs,
+  SiDjango,
 } from "react-icons/si";
 
 const skills: SkillType[] = [
@@ -58,6 +59,10 @@ const skills: SkillType[] = [
   {
     name: "Python",
     Icon: SiPython,
+  },
+  {
+    name: "Django",
+    Icon: SiDjango,
   },
   {
     name: "MySQL",
