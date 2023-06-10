@@ -5,15 +5,14 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const response = await topArtists();
-  const { items } = await response.json();
+  const items = await topArtists();
 
-  const artists = items.map((artist: any) => ({
+  const artists = items.map((artist) => ({
     id: artist.id,
     name: artist.name,
     url: artist.external_urls.spotify,
     popularity: artist.popularity,
-    coverImage: artist.images[1],
+    coverImage: artist.images ? artist.images[1] : null,
   }));
 
   res.setHeader(

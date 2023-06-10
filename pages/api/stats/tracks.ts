@@ -5,10 +5,9 @@ export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const response = await topTracks();
-  const { items } = await response.json();
+  const items = await topTracks();
 
-  const tracks = items.map((track: any) => ({
+  const tracks = items.map((track) => ({
     title: track.name,
     artist: track.artists.map((artist: any) => artist.name).join(", "),
     url: track.external_urls.spotify,

@@ -1,3 +1,4 @@
+import { IArtistsAPIResponse, ITracksAPIResponse } from "./interface";
 import { SpotifyAccessToken } from "./types";
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
@@ -32,12 +33,13 @@ const getAccessToken = async (): Promise<SpotifyAccessToken> => {
 /**
  * Makes a request to the Spotify API to retrieve the user's top tracks.
  */
-export const topTracks = async (): Promise<Response> => {
+export const topTracks = async (): Promise<ITracksAPIResponse[]> => {
   // Obtain an access token
   const { access_token }: { access_token: string } = await getAccessToken();
 
   // Make a request to the Spotify API to retrieve the user's top tracks in last 4 weeks
-  return fetch(
+
+  const response = await fetch(
     "https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=short_term",
     {
       headers: {
@@ -46,17 +48,24 @@ export const topTracks = async (): Promise<Response> => {
       },
     }
   );
+
+  // Handle the response and convert it to the expected type
+  if (!response.ok) {
+    throw new Error("Failed to fetch top artists.");
+  }
+  const data = await response.json();
+  return data.items as ITracksAPIResponse[];
 };
 
 /**
  * Makes a request to the Spotify API to retrieve the user's top artists.
  */
-export const topArtists = async () => {
+export const topArtists = async (): Promise<IArtistsAPIResponse[]> => {
   // Obtain an access token
   const { access_token } = await getAccessToken();
 
   // Make a request to the Spotify API to retrieve the user's top artists in last 4 weeks
-  return fetch(
+  const response = await fetch(
     "https://api.spotify.com/v1/me/top/artists?limit=5&time_range=short_term",
     {
       headers: {
@@ -65,6 +74,14 @@ export const topArtists = async () => {
       },
     }
   );
+
+  // Handle the response and convert it to the expected type
+  if (!response.ok) {
+    throw new Error("Failed to fetch top artists.");
+  }
+
+  const data = await response.json();
+  return data.items as IArtistsAPIResponse[];
 };
 
 /**
@@ -74,7 +91,7 @@ export const currentlyPlayingSong = async () => {
   // Obtain an access token
   const { access_token } = await getAccessToken();
 
-  // Make a request to the Spotify API to retrieve the currently playing song for the user 
+  // Make a request to the Spotify API to retrieve the currently playing song for the user
   return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
     headers: {
       // Set the Authorization header with the access token
