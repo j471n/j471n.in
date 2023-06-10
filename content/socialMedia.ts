@@ -44,7 +44,7 @@ const socialMedia: SocialPlatform[] = [
   {
     title: "Mail",
     Icon: HiMail,
-    url: "mailto:jatinsharma8669@gmail.com",
+    url: "mailto:me@j471n.in",
   },
 ];
 
