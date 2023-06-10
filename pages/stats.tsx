@@ -46,23 +46,23 @@ export default function Stats() {
       value: devto?.comments.toLocaleString(),
     },
     {
-      title: "Github Repos",
+      title: "GitHub Repos",
       value: github?.repos,
     },
     {
-      title: "Github Gists",
+      title: "GitHub Gists",
       value: github?.gists,
     },
     {
-      title: "Github Followers",
+      title: "GitHub Followers",
       value: github?.followers,
     },
     {
-      title: "Github Stars",
+      title: "GitHub Stars",
       value: github?.githubStars,
     },
     {
-      title: "Repositories Forked",
+      title: "GitHub Forked",
       value: github?.forks,
     },
   ];
