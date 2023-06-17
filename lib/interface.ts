@@ -213,3 +213,18 @@ export interface IGitHubRepositoriesAPIResponse {
   watchers: number;
   default_branch: string;
 }
+
+export interface IContributionDay {
+  contributionCount: number;
+  date: string;
+  shortDate: string;
+}
+
+export interface IWeek {
+  contributionDays: IContributionDay[];
+}
+
+export interface IUserContributionDetails {
+  contributions: IContributionDay[];
+  name: string;
+}

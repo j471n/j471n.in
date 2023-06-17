@@ -1,8 +1,13 @@
 import {
+  IContributionDay,
   IGitHubProfileResponse,
   IGitHubRepositoriesAPIResponse,
+  IUserContributionDetails,
+  IWeek,
 } from "./interface";
+
 import { GithubRepo } from "./types";
+import moment from "moment";
 
 const headers = new Headers({
   Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -67,4 +72,66 @@ export async function getGithubStarsAndForks() {
     console.error(error);
     throw error;
   }
+}
+
+export async function getGithubContribution() {
+  const now = moment();
+  const from = moment(now).subtract(30, "days").utc().toISOString();
+  // also include the next day in case our server is behind in time with respect to GitHub
+  const to = moment(now).add(1, "days").utc().toISOString();
+  const q = {
+    query: `
+              query userInfo($LOGIN: String!, $FROM: DateTime!, $TO: DateTime!) {
+                user(login: $LOGIN) {
+                  name
+                  contributionsCollection(from: $FROM, to: $TO) {
+                    contributionCalendar {
+                      weeks {
+                        contributionDays {
+                          contributionCount
+                          date
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+    variables: {
+      LOGIN: "j471n",
+      FROM: from,
+      TO: to,
+    },
+  };
+
+  const response = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    body: JSON.stringify(q),
+    headers,
+  });
+  const apiResponse = await response.json();
+
+  console.log("API response: ", apiResponse);
+
+  const userData: IUserContributionDetails = {
+    contributions: [],
+    name: apiResponse.data.user.name,
+  };
+
+  const weeks =
+    apiResponse.data.user.contributionsCollection.contributionCalendar.weeks;
+  // get day-contribution data
+  weeks.map((week: IWeek) =>
+    week.contributionDays.map((contributionDay: IContributionDay) => {
+      // contributionDay.date = moment(
+      //   contributionDay.date,
+      //   moment.ISO_8601
+      // ).toLocaleString();
+      contributionDay.shortDate = moment(contributionDay.date, moment.ISO_8601)
+        .date()
+        .toString();
+      userData.contributions.push(contributionDay);
+    })
+  );
+  return userData;
 }

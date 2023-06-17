@@ -15,6 +15,7 @@ import fetcher from "@lib/fetcher";
 import pageMeta from "@content/meta";
 import { useDarkMode } from "@context/darkModeContext";
 import useSWR from "swr";
+import GitHubActivityGraph from "@components/GitHubActivityGraph";
 
 type Stats = {
   title: string;
@@ -114,9 +115,28 @@ export default function Stats() {
             activity and productivity on the platform.
           </AnimatedText>
           <GitHubCalendar
+            style={{
+              maxWidth: "100% !important",
+            }}
             username="j471n"
             colorScheme={isDarkMode ? "dark" : "light"}
           />
+        </div>
+        <div className="font-barlow mb-10 max-w-full">
+          <AnimatedHeading
+            variants={opacityVariant}
+            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
+          >
+            GitHub Activity Graph
+          </AnimatedHeading>
+          <AnimatedText
+            variants={opacityVariant}
+            className="my-4 text-gray-700 dark:text-gray-300"
+          >
+            A dynamically generated activity graph to show your GitHub
+            activities of last 31 days.
+          </AnimatedText>
+          <GitHubActivityGraph />
         </div>
 
         {/* Spotify top songs */}

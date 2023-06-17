@@ -135,7 +135,7 @@ span.line > span {
   width: 100%;
 }
 
-span.line > span:last-child{
+span.line > span:last-child {
   padding-right: 50px;
 }
 code > .line::before {
@@ -182,6 +182,13 @@ code > .line::before {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+.react-activity-calendar__calendar {
+  width: 100%;
+  height: 100%;
+}
+.react-activity-calendar {
+  max-width: 100% !important;
 }
 
 /* Layers Components or the custom class extends with tailwind */
