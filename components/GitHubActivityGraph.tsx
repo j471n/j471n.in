@@ -36,15 +36,22 @@ export default function GitHubActivityGraph() {
       >
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#9be9a850" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#9be9a850" stopOpacity={0} />
+            <stop
+              offset="5%"
+              stopColor={isDarkMode ? "#26a64160" : "#26a641"}
+              stopOpacity={0.8}
+            />
+            <stop
+              offset="95%"
+              stopColor={isDarkMode ? "#26a64160" : "#26a641"}
+              stopOpacity={0}
+            />
           </linearGradient>
         </defs>
         <XAxis dataKey="shortDate" />
         <YAxis />
         <CartesianGrid
           strokeDasharray="2 3"
-          // strokeOpacity={0.5}
           stroke={isDarkMode ? "#ffffff20" : "#00000020"}
         />
         <Tooltip content={<CustomTooltip />} />
@@ -55,7 +62,7 @@ export default function GitHubActivityGraph() {
           type="monotone"
           dataKey="contributionCount"
           aria-label="count"
-          stroke="#216e39"
+          stroke={isDarkMode ? "#26a641" : "#216e39"}
           fillOpacity={1}
           fill="url(#colorUv)"
         />
@@ -67,14 +74,10 @@ export default function GitHubActivityGraph() {
 const CustomTooltip = ({
   active,
   payload,
-  label,
 }: TooltipProps<ValueType, NameType>) => {
-  console.log("active", active);
-  console.log("payload", payload);
-  console.log("label", label);
   if (active && payload && payload.length) {
     return (
-      <div className="p-5 rounded-md bg-white text-black text-sm max-w-[250px] w-fit shadow-lg">
+      <div className="p-5 rounded-md bg-white dark:bg-darkSecondary text-black dark:text-gray-200 text-sm max-w-[250px] w-fit shadow-lg">
         <p className="label">
           <span className="font-medium">Date :</span>{" "}
           {getFormattedDate(new Date(payload[0].payload.date))}
