@@ -5,6 +5,7 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import AnimatedText from "@components/FramerMotion/AnimatedText";
 import Artist from "@components/Stats/Artist";
+import GitHubActivityGraph from "@components/GitHubActivityGraph";
 import GitHubCalendar from "react-github-calendar";
 import MetaData from "@components/MetaData";
 import PageTop from "@components/PageTop";
@@ -15,7 +16,6 @@ import fetcher from "@lib/fetcher";
 import pageMeta from "@content/meta";
 import { useDarkMode } from "@context/darkModeContext";
 import useSWR from "swr";
-import GitHubActivityGraph from "@components/GitHubActivityGraph";
 
 type Stats = {
   title: string;
@@ -133,8 +133,8 @@ export default function Stats() {
             variants={opacityVariant}
             className="my-4 text-gray-700 dark:text-gray-300"
           >
-            A dynamically generated activity graph to show your GitHub
-            activities of last 31 days.
+            A dynamically generated activity graph to show my GitHub activities
+            of last 31 days.
           </AnimatedText>
           <GitHubActivityGraph />
         </div>
