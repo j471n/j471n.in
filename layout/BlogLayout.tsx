@@ -1,4 +1,3 @@
-import { homeProfileImage } from "../utils/utils";
 import Image from "next/image";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import { FiPrinter } from "react-icons/fi";
@@ -15,6 +14,7 @@ import { getFormattedDate } from "@utils/date";
 import { PostType } from "@lib/types";
 import { RxPencil2 } from "react-icons/rx";
 import TableOfContents from "@components/TableOfContents";
+import { getAuthorData } from "@content/user";
 
 export default function BlogLayout({
   post,
@@ -26,6 +26,7 @@ export default function BlogLayout({
   const { currentURL } = useWindowLocation();
   const [isTOCActive, setIsTOCActive] = useState(false);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
+  const author = getAuthorData(post.meta.org);
 
   const { isAlreadyBookmarked, addToBookmark, removeFromBookmark } =
     useBookmarkBlogs("blogs", []);
@@ -57,27 +58,47 @@ export default function BlogLayout({
           {post.meta.title}
         </h1>
 
-        <div className="flex items-center !w-full text-gray-700 dark:text-gray-300">
-          <div className="flex items-center w-full gap-2">
-            <Image
-              alt="Jatin Sharma"
-              height={30}
-              width={30}
-              src={homeProfileImage}
-              className="rounded-full !m-0"
-            />
-            <div className="flex flex-col w-full text-xs sm:text-sm sm:flex-row sm:justify-between">
-              <p className="flex items-center gap-2 font-medium !my-0">
-                <span>Jatin Sharma</span>
-                <span>•</span>
-                <span>{getFormattedDate(new Date(post.meta.date))}</span>
-              </p>
+        <div className="flex items-start !w-full text-gray-700 dark:text-gray-300">
+          <div className="flex items-center gap-2 flex-wrap w-full justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-[40px]">
+                <Image
+                  height={933}
+                  width={933}
+                  alt={author.org ? author.org : author.name}
+                  src={author.org ? author.org_logo! : author.image}
+                  className="rounded-full !m-0"
+                />
+              </div>
+              <div className="flex flex-col w-full text-xs sm:text-sm sm:flex-row sm:justify-between">
+                <p className="flex items-center gap-2 font-medium !my-0">
+                  <div className="flex items-center text-sm gap-1">
+                    <Link
+                      href="/about"
+                      className="text-sm font-medium hover:underline"
+                    >
+                      {author.name}
+                    </Link>
+                    {author.org && (
+                      <span>
+                        for <span className="font-medium">{author.org}</span>
+                      </span>
+                    )}
+                  </div>
+                </p>
 
-              <p className="flex items-center gap-2 font-medium !my-0">
-                <span>{post.meta.readingTime.text}</span>
-                <span>•</span>
-                <span>{post.meta.readingTime.words} words</span>
-              </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
+                {getFormattedDate(new Date(post.meta.date))}
+              </div>
+              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
+                {post.meta.readingTime.text}
+              </div>
+              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
+                {post.meta.readingTime.words} words
+              </div>
             </div>
           </div>
 

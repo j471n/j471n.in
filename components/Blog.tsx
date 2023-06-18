@@ -1,11 +1,11 @@
+import { BlogCardAnimation } from "@content/FramerMotionVariants";
+import { FrontMatter } from "@lib/types";
+import Image from "next/image";
 import Link from "next/link";
 import { getFormattedDate } from "@utils/date";
-import { FrontMatter } from "@lib/types";
-import { useRef } from "react";
-import Image from "next/image";
-import { homeProfileImage } from "@utils/utils";
 import { motion } from "framer-motion";
-import { BlogCardAnimation } from "@content/FramerMotionVariants";
+import { useRef } from "react";
+import { getAuthorData } from "@content/user";
 
 export default function Blog({
   blog,
@@ -15,6 +15,8 @@ export default function Blog({
   animate?: boolean;
 }) {
   const blogRef = useRef(null);
+  const author = getAuthorData(blog.org);
+
   return (
     <motion.article
       ref={blogRef}
@@ -52,17 +54,27 @@ export default function Blog({
           <div className="z-10 flex items-center gap-3 font-barlow">
             <div className="w-[30px]">
               <Image
-                alt="Jatin Sharma"
+                alt={author.org ? author.org : author.name}
                 height={933}
                 width={933}
-                src={homeProfileImage}
+                src={author.org ? author.org_logo! : author.image}
                 className="rounded-full !m-0 h-full"
               />
             </div>
             <div className="flex flex-col">
-              <Link href="/about" className="text-sm font-bold hover:underline">
-                Jatin Sharma
-              </Link>
+              <div className="flex items-center text-sm gap-1">
+                <Link
+                  href="/about"
+                  className="text-sm font-medium hover:underline"
+                >
+                  {author.name}
+                </Link>
+                {author.org && (
+                  <span>
+                    for <span className="font-medium">{author.org}</span>
+                  </span>
+                )}
+              </div>
               <span className="text-xs">
                 {getFormattedDate(new Date(blog.date))}
               </span>

@@ -1,13 +1,13 @@
+import { FrontMatter } from "./types";
+import matter from "gray-matter";
 import path from "path";
 import { readFileSync } from "fs";
-import { sync } from "glob";
-import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
-import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import readTime from "reading-time";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
-import { FrontMatter } from "./types";
+import rehypeSlug from "rehype-slug";
+import { serialize } from "next-mdx-remote/serialize";
+import { sync } from "glob";
 
 export default class MDXContent {
   private POST_PATH: string;
@@ -41,6 +41,7 @@ export default class MDXContent {
       date: (data.date ?? new Date()).toString(),
       keywords: data.keywords ?? "",
       image: data.image ?? "https://imgur.com/aNqa9cE.png",
+      org: data.org ?? null,
     };
   }
 
