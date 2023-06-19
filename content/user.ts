@@ -5,6 +5,7 @@ type AuthorInfo = {
   image: string;
   org: string | null;
   org_logo: string | null;
+  org_url: string | null;
 };
 
 export function getAuthorData(org: string | null = null): AuthorInfo {
@@ -15,6 +16,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
         image: homeProfileImage,
         org: "Documatic",
         org_logo: "https://i.imgur.com/ZqBFtg1.png",
+        org_url: "https://www.documatic.com/",
       };
 
     default:
@@ -23,6 +25,7 @@ export function getAuthorData(org: string | null = null): AuthorInfo {
         image: homeProfileImage,
         org: null,
         org_logo: null,
+        org_url: null,
       };
   }
 }

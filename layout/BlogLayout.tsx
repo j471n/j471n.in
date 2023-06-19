@@ -1,20 +1,21 @@
-import Image from "next/image";
-import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
-import { FiPrinter } from "react-icons/fi";
-import Newsletter from "../components/Newsletter";
-import Link from "next/link";
-import useWindowLocation from "@hooks/useWindowLocation";
-import ScrollProgressBar from "@components/ScrollProgressBar";
-import { useState, useEffect } from "react";
-import { opacityVariant } from "@content/FramerMotionVariants";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { getFormattedDate } from "@utils/date";
+import { useEffect, useState } from "react";
+
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { FiPrinter } from "react-icons/fi";
+import Image from "next/image";
+import Link from "next/link";
+import Newsletter from "../components/Newsletter";
 import { PostType } from "@lib/types";
 import { RxPencil2 } from "react-icons/rx";
+import ScrollProgressBar from "@components/ScrollProgressBar";
+import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import TableOfContents from "@components/TableOfContents";
 import { getAuthorData } from "@content/user";
+import { getFormattedDate } from "@utils/date";
+import { opacityVariant } from "@content/FramerMotionVariants";
+import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
+import useWindowLocation from "@hooks/useWindowLocation";
 
 export default function BlogLayout({
   post,
@@ -54,7 +55,7 @@ export default function BlogLayout({
         }}
       >
         <ScrollProgressBar />
-        <h1 className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+        <h1 className="text-3xl  font-bold tracking-tight text-black md:text-5xl dark:text-white">
           {post.meta.title}
         </h1>
 
@@ -86,7 +87,6 @@ export default function BlogLayout({
                     )}
                   </div>
                 </p>
-
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -132,7 +132,7 @@ export default function BlogLayout({
 
         <AnimatedDiv
           variants={opacityVariant}
-          className="max-w-full prose-sm blog-container sm:prose-base prose-pre:bg-white prose-img:mx-auto prose-img:rounded-md dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white"
+          className="max-w-full prose-sm blog-container sm:prose-base prose-pre:bg-white prose-img:mx-auto prose-img:rounded-md dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-h4:!mb-6"
         >
           {children}
         </AnimatedDiv>

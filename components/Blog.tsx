@@ -2,10 +2,10 @@ import { BlogCardAnimation } from "@content/FramerMotionVariants";
 import { FrontMatter } from "@lib/types";
 import Image from "next/image";
 import Link from "next/link";
+import { getAuthorData } from "@content/user";
 import { getFormattedDate } from "@utils/date";
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { getAuthorData } from "@content/user";
 
 export default function Blog({
   blog,
@@ -71,7 +71,13 @@ export default function Blog({
                 </Link>
                 {author.org && (
                   <span>
-                    for <span className="font-medium">{author.org}</span>
+                    for{" "}
+                    <Link
+                      href={author.org_url!}
+                      className="font-medium hover:underline"
+                    >
+                      {author.org}
+                    </Link>
                   </span>
                 )}
               </div>
