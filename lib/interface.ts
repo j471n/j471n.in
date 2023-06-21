@@ -228,3 +228,18 @@ export interface IUserContributionDetails {
   contributions: IContributionDay[];
   name: string;
 }
+
+export interface IEmailValidation {
+  valid: boolean;
+  block: boolean;
+  disposable: boolean;
+  domain: string;
+  text: string;
+  reason: string;
+  risk: number;
+  mx_host: string;
+  possible_typo: any[];
+  mx_ip: string;
+  mx_info: string;
+  last_changed_at: string;
+}

@@ -10,15 +10,28 @@ export default function Newsletter() {
   async function subscribeNewsLetter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    try {
-      fetch(process.env.NEXT_PUBLIC_EMAIL_LIST + email, {
-        mode: "no-cors",
+    fetch("/api/validate/email", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+      }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === "success" && res.valid === true) {
+          try {
+            fetch(process.env.NEXT_PUBLIC_EMAIL_LIST + email, {
+              mode: "no-cors",
+            });
+          } catch (error) {
+            console.error(error);
+          }
+          toast.success("You have been added to my mailing list.");
+          setEmail("");
+        } else {
+          toast.error("Please enter valid email address.");
+        }
       });
-    } catch (error) {
-      console.error(error);
-    }
-    toast.success("You have been added to my mailing list.");
-    setEmail("");
   }
 
   return (
