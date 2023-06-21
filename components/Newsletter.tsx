@@ -2,13 +2,16 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineSend } from "react-icons/ai";
 import { useDarkMode } from "@context/darkModeContext";
+import { CgSpinnerTwo } from "react-icons/cg";
 
 export default function Newsletter() {
   const { isDarkMode } = useDarkMode();
   const [email, setEmail] = useState("");
+  const [validationLoading, setValidationLoading] = useState(false);
 
   async function subscribeNewsLetter(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setValidationLoading(true);
 
     fetch("/api/validate/email", {
       method: "POST",
@@ -31,6 +34,11 @@ export default function Newsletter() {
         } else {
           toast.error("Please enter valid email address.");
         }
+        setValidationLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setValidationLoading(false);
       });
   }
 
@@ -60,9 +68,15 @@ export default function Newsletter() {
             className="absolute right-0 top-0 bottom-0 px-4 m-[3px] bg-white dark:text-white dark:bg-neutral-600/40   rounded-md font-medium font-inter transform duration-200 active:scale-90 select-none"
             type="submit"
           >
-            <div className="relative flex items-center gap-2 !my-0">
-              <AiOutlineSend className="text-xl" />
-              <p className="hidden sm:inline-flex !my-0">Subscribe</p>
+            <div className="relative flex items-center gap-2 !my-0 sm:w-[100px]">
+              {validationLoading ? (
+                <CgSpinnerTwo className="text-xl mx-auto animate-[spin_0.5s_linear_infinite]" />
+              ) : (
+                <>
+                  <AiOutlineSend className="text-xl" />
+                  <p className="hidden sm:inline-flex !my-0">Subscribe</p>
+                </>
+              )}
             </div>
           </button>
         </form>
