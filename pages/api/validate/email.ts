@@ -21,14 +21,14 @@ export default async function handler(
   });
 
   if (!isValidHost(host!)) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "error",
       message: "You are unauthorize to access this route.",
     });
   }
 
   if (req.method !== "POST") {
-    res.status(400).json({
+    return res.status(400).json({
       status: "error",
       message: "Invalid Method, use POST",
     });
@@ -48,7 +48,7 @@ export default async function handler(
   const response = await fetch(url, options);
 
   if (response.status !== 200) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "error",
       message:
         "Unable to process your request right now. Please try again later.",
