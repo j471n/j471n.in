@@ -1,0 +1,629 @@
+{
+  "public_identifier": "j471n",
+  "profile_pic_url": "https://i.imgur.com/RF2bEls.jpg",
+  "background_cover_image_url": null,
+  "first_name": "Jatin",
+  "last_name": "Sharma",
+  "full_name": "Jatin Sharma",
+  "follower_count": 843,
+  "occupation": "Trusted Member at Forem",
+  "headline": "React Developer | Next.js | Blogger @DEV Community",
+  "summary": "A front-end developer who specializes in React.js and Next.js. I have experience building and maintaining web applications. I build web applications using React, Next.js and TailwindCSS. I am always looking for new challenges and ways to work more efficiently. I am also familiar with Python & C++.\n\nThe one things I like the most is blogging. I post blogs on dev.to and share my experience and skills with others. \n\nWhen I am not working, you can find me exploring the frictional world through movies and web series.",
+  "country": "IN",
+  "country_full_name": "India",
+  "city": "Bareilly",
+  "state": "Uttar Pradesh",
+  "experiences": [
+    {
+      "company": "Forem",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/thepracticaldev/",
+      "logo_url": "https://i.imgur.com/ONNBTJH.jpg",
+      "job_titles": [
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2021
+          },
+          "ends_at": null,
+          "title": "Blogger @DEV Community",
+          "description": "I research and study a subject, and then I compose an article about it. I introduce new and different topics and provide an in-depth explanation that is accessible to those who have no prior technical understanding of the subject matter. I ensure that the information is presented in a clear and in very simple language, making it accessible to readers of all skill levels even for those who may not have a strong command of the English language.\n\n\u2605 7.5K+ Followers\n\u2605 520K+ Post Views\n\u2605 Top 7 Author\n\u2605 100+ Posts\n\u2605 12K+ Reactions",
+          "location": "India"
+        },
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 5,
+            "year": 2023
+          },
+          "location": "Remote",
+          "ends_at": null,
+          "title": "Trusted Member",
+          "description": "As a Trusted Member, I have been granted basic moderation abilities to help \ud835\uddd7\ud835\uddf2\ud835\ude03 \ud835\uddd6\ud835\uddfc\ud835\uddfa\ud835\uddfa\ud835\ude02\ud835\uddfb\ud835\uddf6\ud835\ude01\ud835\ude06 by moderate discussions and ensure positive interactions among community members. This includes assisting with reporting problematic content and potentially harmful behavior. Being designated as a Trusted Member is an honor and a great responsibility, and it reinforces the importance of maintaining a respectful and inclusive community."
+        },
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 9,
+            "year": 2022
+          },
+          "ends_at": {
+            "day": 1,
+            "month": 9,
+            "year": 2022
+          },
+          "title": "Featured in Top 7 authors of the week",
+          "description": "I have been featured in Top 7 authors of the week twice.",
+          "location": null
+        }
+      ]
+    },
+    {
+      "company": "KonnectNXT",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/konnectnxt/",
+      "logo_url": "https://i.imgur.com/TaEWZcc.jpg",
+      "job_titles": [
+        {
+          "title": "Software Developer",
+          "description": null,
+          "location": "Hyderabad, Telangana, India",
+          "starts_at": {
+            "day": 1,
+            "month": 2,
+            "year": 2023
+          },
+          "ends_at": null
+        }
+      ]
+    },
+    {
+      "company": "Documatic",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/trydocumatic/",
+      "logo_url": "https://i.imgur.com/4ogaHWS.jpg",
+      "job_titles": [
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 2,
+            "year": 2023
+          },
+          "ends_at": null,
+          "title": "Technical Writer",
+          "description": null,
+          "location": "United Kingdom"
+        }
+      ]
+    },
+    {
+      "company": "Substack",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/substack/",
+      "logo_url": "https://i.imgur.com/HgVfweU.jpg",
+      "job_titles": [
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 5,
+            "year": 2022
+          },
+          "ends_at": null,
+          "title": "Writer",
+          "description": "As a writer, my focus is primarily on the topics of web development and productivity chrome extensions. Through my writing, I aim to provide detailed and comprehensive coverage of the latest developments and trends in the field of web development, as well as share tips and tricks for using productivity chrome extensions to increase efficiency and productivity. I also ensure that they never miss any of my blog article. If they do then this is the reminder for them.",
+          "location": "India"
+        }
+      ]
+    },
+    {
+      "company": "Hashnode",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/hashnode/",
+      "logo_url": "https://i.imgur.com/vwegEfc.jpg",
+      "job_titles": [
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 11,
+            "year": 2021
+          },
+          "ends_at": null,
+          "title": "Blogger",
+          "description": "I am keeping a record of my programming journey to monitor my growth and evaluate the difficulties and successes I encounter.",
+          "location": "India"
+        }
+      ]
+    },
+    {
+      "company": "Medium",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/medium-com/",
+      "logo_url": "https://i.imgur.com/hT7ajHV.jpg",
+      "job_titles": [
+        {
+          "starts_at": {
+            "day": 1,
+            "month": 10,
+            "year": 2020
+          },
+          "ends_at": null,
+          "title": "Blogger",
+          "description": "I am an author who focuses on web development and offers a wide variety of beginner-friendly tutorials. Through my writings, I aim to pass on my knowledge and experience to others who share my interest in all aspects of programming.",
+          "location": "India"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2019
+      },
+      "ends_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "field_of_study": "Computer Science",
+      "degree_name": "Bachelor of Technology - B.Tech",
+      "school": "Dr. A.P.J. Abdul Kalam Technical University",
+      "school_linkedin_profile_url": null,
+      "description": null,
+      "logo_url": "https://i.imgur.com/faTfpD7.jpg",
+      "grade": null,
+      "activities_and_societies": null
+    }
+  ],
+  "languages": [
+    "English",
+    "Hindi"
+  ],
+  "accomplishment_organisations": [],
+  "accomplishment_publications": [],
+  "accomplishment_honors_awards": [],
+  "accomplishment_patents": [],
+  "accomplishment_courses": [],
+  "accomplishment_projects": [],
+  "accomplishment_test_scores": [],
+  "volunteer_work": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "title": "Member",
+      "cause": "EDUCATION",
+      "company": "Google Developer Student Clubs",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/dscjscoe/",
+      "description": null,
+      "logo_url": "https://media.licdn.com/dms/image/C4E0BAQE_1tNZKj3sNQ/company-logo_400_400/0/1617607397103?e=1695254400&v=beta&t=mRveYFhesakeGFzPNIgcgszUrPZ_oo_f-Sl4Kh8VcE0"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 12,
+        "year": 2022
+      },
+      "ends_at": null,
+      "title": "Say Yes to Life, No to Drugs",
+      "cause": "HEALTH",
+      "company": "Ministry Of Home Affairs (mha), GOI",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/ministry-of-home-affairs-mha-/",
+      "description": "\ud835\uddd6\ud835\uddf2\ud835\uddff\ud835\ude01\ud835\uddf6\ud835\uddf3\ud835\uddf6\ud835\uddf0\ud835\uddee\ud835\ude01\ud835\uddf6\ud835\uddfc\ud835\uddfb: https://bit.ly/PledgeJatin",
+      "logo_url": "https://media.licdn.com/dms/image/C4D0BAQE7EcnynUNfOg/company-logo_400_400/0/1659293307400?e=1695254400&v=beta&t=Amf-ZxlrbOJLRO76l0YbenhVzusXhgd6FU0fb-no0FQ"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 10,
+        "year": 2021
+      },
+      "ends_at": null,
+      "title": "Member",
+      "cause": "EDUCATION",
+      "company": "daily.dev",
+      "company_linkedin_profile_url": "https://www.linkedin.com/company/dailydotdev/",
+      "description": null,
+      "logo_url": "https://media.licdn.com/dms/image/C4E0BAQHPne7VGe_P3A/company-logo_400_400/0/1603704711534?e=1695254400&v=beta&t=e5Gp0lxkjTugd0WkELbkdJmW9VtluwrsnuFZ0EX15Ts"
+    }
+  ],
+  "certifications": [
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "name": "API Fundamentals Student Expert",
+      "license_number": "63c1c78cdf42054887f80410",
+      "display_source": "badgr.io",
+      "authority": "Postman",
+      "url": "https://api.badgr.io/public/assertions/ORpisSFbRQWJvkAKJEr8vA"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "name": "Back End Development and APIs",
+      "license_number": null,
+      "display_source": "freecodecamp.org",
+      "authority": "freeCodeCamp",
+      "url": "https://freecodecamp.org/certification/j471n/back-end-development-and-apis"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 1,
+        "year": 2023
+      },
+      "ends_at": null,
+      "name": "Digital Skills: Artificial Intelligence",
+      "license_number": null,
+      "display_source": "futurelearn.com",
+      "authority": "Accenture",
+      "url": "https://www.futurelearn.com/certificates/07o1i90"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 8,
+        "year": 2022
+      },
+      "ends_at": null,
+      "name": "Developer & Technology Accenture Developer Program",
+      "license_number": "GXL4zXeSS3kzy7TQR",
+      "display_source": "google.com",
+      "authority": "Accenture",
+      "url": "https://drive.google.com/file/d/1RvReVd4YmRpT2LsnHIX5MWIqxlFTj4bl/view?usp=share_link"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 4,
+        "year": 2022
+      },
+      "ends_at": null,
+      "name": "JavaScript (Intermediate)",
+      "license_number": "fde0087a00a7",
+      "display_source": "hackerrank.com",
+      "authority": "HackerRank",
+      "url": "https://www.hackerrank.com/certificates/fde0087a00a7"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 12,
+        "year": 2021
+      },
+      "ends_at": null,
+      "name": "JavaScript Algorithms and Data Structures",
+      "license_number": null,
+      "display_source": "freecodecamp.org",
+      "authority": "freeCodeCamp",
+      "url": "https://freecodecamp.org/certification/j471n/javascript-algorithms-and-data-structures"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 4,
+        "year": 2021
+      },
+      "ends_at": null,
+      "name": "Python 3 Master Course for 2021",
+      "license_number": "UC-44d68c58-0203-4835-813a-50b893e01630",
+      "display_source": "udemy.com",
+      "authority": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-44d68c58-0203-4835-813a-50b893e01630/"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 4,
+        "year": 2021
+      },
+      "ends_at": null,
+      "name": "Scientific Computing with Python",
+      "license_number": null,
+      "display_source": "freecodecamp.org",
+      "authority": "freeCodeCamp",
+      "url": "https://freecodecamp.org/certification/j471n/scientific-computing-with-python-v7"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 12,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "JavaScript (Basic)",
+      "license_number": "18FF8A46B713",
+      "display_source": "hackerrank.com",
+      "authority": "HackerRank",
+      "url": "https://www.hackerrank.com/certificates/18ff8a46b713"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 11,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "AWSOME DAY Online Conference",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Amazon Web Services (AWS)",
+      "url": "https://drive.google.com/file/d/1ApnzbHVMQbLVDZfjZP5u05xjHDw4NDZA/view?usp=shari"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 11,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Microsoft Al Classroom Series",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Microsoft",
+      "url": "https://drive.google.com/file/d/1A8-2thKHG4xenkJzu5Uia6kVPnE0HiAa/view?usp=drivesdk"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 10,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Become a Software Developer - Learning Path",
+      "license_number": "AbxzbR6VbLGjkllLsxi8knM-Ypaq",
+      "display_source": "google.com",
+      "authority": "LinkedIn",
+      "url": "https://drive.google.com/file/d/1MXTze2mXB7b8Kod7Pk6Q1BTNb1l0OYn3/view?usp=drivesdk"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 10,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Learn React Course",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Codecademy",
+      "url": "https://drive.google.com/file/d/1TAxq-5pQLUxyW1W9V4ovK53JQL7wtQFf/view?usp=share_link"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 10,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Web Development",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Mimo",
+      "url": "https://drive.google.com/file/d/1HziWP3mLgDozfzXjXcs-qLvTzajU1x4j/view?usp=drivesdk"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 9,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Learn Python 3 Course",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Codecademy",
+      "url": "https://drive.google.com/file/d/1H2znARDQD91Mt8IAC3RPIuuv9oMGkAyB/view?usp=share_link"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 9,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Learn SQL Course",
+      "license_number": null,
+      "display_source": "google.com",
+      "authority": "Codecademy",
+      "url": "https://drive.google.com/file/d/18Eh2IGzdlOJJCAmqaOABAMzzTM8Q3z7F/view?usp=share_link"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 8,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Learning SQL Programming",
+      "license_number": "AUu5AHwuiRCKambPS4TfA2L24X0b",
+      "display_source": "google.com",
+      "authority": "LinkedIn",
+      "url": "https://drive.google.com/file/d/1lRinmNHufEOdJc5nJrzyDyrrTJYTKIC4/view?usp=sharing"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 8,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Python (Basic) ",
+      "license_number": "830BC394DFCA",
+      "display_source": "hackerrank.com",
+      "authority": "HackerRank",
+      "url": "https://www.hackerrank.com/certificates/830bc394dfca"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 7,
+        "year": 2020
+      },
+      "ends_at": null,
+      "name": "Complete Responsive Web Development: 4 courses in 1\n",
+      "license_number": null,
+      "display_source": "udemy.com",
+      "authority": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-8e18f7bf-1da1-4e29-b61c-2e75ed88aa29/"
+    },
+    {
+      "starts_at": {
+        "day": 1,
+        "month": 9,
+        "year": 2019
+      },
+      "ends_at": null,
+      "name": "C Programming Made Easy",
+      "license_number": null,
+      "display_source": "udemy.com",
+      "authority": "Udemy",
+      "url": "https://www.udemy.com/certificate/UC-S7KXIVWQ/"
+    }
+  ],
+  "connections": null,
+  "people_also_viewed": [
+    {
+      "link": "https://www.linkedin.com/in/aayushi-rai-2580351a8",
+      "name": "Aayushi Rai",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/iamshadmirza",
+      "name": "Shad Mirza",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/ebenezhar-selvakumar-059559136",
+      "name": "Ebenezhar Selvakumar",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/fazlerocks",
+      "name": "Syed Fazle Rahman",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/radha-dadhich-9284b322a",
+      "name": "Radha  Dadhich",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/savitasri",
+      "name": "Savita S.",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/kush-munot",
+      "name": "Kush Munot",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/prasad-karri-005257210",
+      "name": "Prasad Karri",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/vani-m-kokila-53462315",
+      "name": "Vani M Kokila",
+      "summary": null,
+      "location": null
+    },
+    {
+      "link": "https://www.linkedin.com/in/vaibhav-pansambal-66545a57",
+      "name": "Vaibhav Pansambal",
+      "summary": null,
+      "location": null
+    }
+  ],
+  "recommendations": [],
+  "activities": [],
+  "similarly_named_profiles": [
+    {
+      "name": "Jatin Sharma",
+      "link": "https://in.linkedin.com/in/jatin-sharma-6aa64445",
+      "summary": "Lead Operation & Process design safety",
+      "location": "Ahmedabad"
+    },
+    {
+      "name": "jatin sharma",
+      "link": "https://in.linkedin.com/in/jatin-sharma-420318100",
+      "summary": "Technical Lead",
+      "location": "West Delhi"
+    },
+    {
+      "name": "Jatin Sharma",
+      "link": "https://in.linkedin.com/in/jatin-sharma-a6b59267",
+      "summary": "Application Development Team Lead at Accenture",
+      "location": "Shimla"
+    },
+    {
+      "name": "Jatin Sharma",
+      "link": "https://in.linkedin.com/in/jatsharma",
+      "summary": "Software Engineer III @ Stackera | Python | Blockchain | DeFi",
+      "location": "Greater Delhi Area"
+    },
+    {
+      "name": "Jatin Sharma",
+      "link": "https://jp.linkedin.com/in/jatin-sharma-91162090",
+      "summary": "Data Engineer at Rakuten | Azure Certified DP-203 | (Azure Data Engineer | Azure Data Factory | Databricks | Synapse | Informatica | ETL | Python | Data Engineer | Pyspark | Spark | Hive | Tableau ) | ETL developer",
+      "location": "Tokyo, Japan"
+    }
+  ],
+  "articles": [],
+  "groups": [],
+  "phone_numbers": [],
+  "social_networking_services": [],
+  "skills": [
+    "Django",
+    "Technical Writing",
+    "Next.js",
+    "Python (Programming Language)",
+    "Firebase",
+    "React.js",
+    "Email Marketing",
+    "E-newsletter",
+    "Web Content Writing",
+    "API Development",
+    "API Management",
+    "Postman API",
+    "Content Writting",
+    "Copywriting",
+    "SEO Copywriting",
+    "JavaScript",
+    "TypeScript",
+    "Cloud Firestore",
+    "C (Programming Language)",
+    "Front-End Development"
+  ],
+  "inferred_salary": {
+    "min": null,
+    "max": null
+  },
+  "gender": null,
+  "birth_date": null,
+  "industry": null,
+  "extra": {
+    "github_profile_id": null,
+    "twitter_profile_id": null,
+    "facebook_profile_id": null
+  },
+  "interests": [],
+  "personal_emails": [],
+  "personal_numbers": []
+}

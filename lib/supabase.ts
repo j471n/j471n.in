@@ -133,3 +133,23 @@ export async function getRecentWatchedMovies() {
     error: (watchingMoviesError || watchedMoviesError) !== null,
   };
 }
+
+export async function getUserDataValue(key: string) {
+  let { data, error } = await supabase
+    .from("user_data")
+    .select("value")
+    .eq("key", key)
+    .limit(1)
+    .order("created_at", { ascending: false });
+
+  if (data?.length === 0) {
+    return {
+      data: null,
+      error: null,
+    };
+  }
+  return {
+    data: data![0].value,
+    error: error !== null,
+  };
+}
