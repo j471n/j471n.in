@@ -1,9 +1,9 @@
+import Blog from "../Blog";
+import { BlogPost } from "@lib/interface/sanity";
 import { HomeHeading } from "../../pages";
 import Link from "next/link";
-import Blog from "../Blog";
-import { FrontMatter } from "@lib/types";
 
-export default function BlogsSection({ blogs }: { blogs: FrontMatter[] }) {
+export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
   return (
     <section className="mx-5 mb-5">
       <HomeHeading title="Recent Posts" />

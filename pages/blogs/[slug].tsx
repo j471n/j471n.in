@@ -1,24 +1,34 @@
-import { useEffect } from "react";
+import { getAllPostSlugs, getPostFromSlug } from "@lib/sanityContent";
+
 import BlogLayout from "@layout/BlogLayout";
-import Metadata from "@components/MetaData";
-import MDXComponents from "@components/MDXComponents";
-import PageNotFound from "pages/404";
-import MDXContent from "@lib/MDXContent";
-import { MDXRemote } from "next-mdx-remote";
+import { BlogPost } from "@lib/interface/sanity";
 import { GetStaticPropsContext } from "next";
-import { PostType } from "@lib/types";
+import Metadata from "@components/MetaData";
+import PageNotFound from "pages/404";
+import { PortableText } from "@portabletext/react";
+import { useEffect } from "react";
+// import {} from "next-mdx-remote"
+
+import { MDXRemote } from "next-mdx-remote";
+
+// import { PostType } from "@lib/types";
+
+import MDXComponents from "@components/MDXComponents";
+import { toHTML } from "@portabletext/to-html";
+
+// import sanityClient from "@lib/sanityClient";
 
 export default function Post({
   post,
   error,
 }: {
-  post: PostType;
+  post: BlogPost;
   error: boolean;
 }) {
   // Adding Views to the supabase database
   useEffect(() => {
     const registerView = () =>
-      fetch(`/api/views/${post.meta.slug}`, {
+      fetch(`/api/views/${post.slug.current}`, {
         method: "POST",
       });
 
@@ -30,26 +40,29 @@ export default function Post({
   return (
     <>
       <Metadata
-        title={post.meta.title}
+        title={post.title}
         suffix="Jatin Sharma"
-        description={post.meta.excerpt}
-        previewImage={post.meta.image}
-        keywords={post.meta.keywords}
+        description={post.excerpt}
+        previewImage={post.mainImage.asset.url}
+        // keywords={post.meta.keywords}
       />
 
       <BlogLayout post={post}>
-        <MDXRemote
-          {...post.source}
+        {/* <MDXRemote
+          {...renderBlock()}
           frontmatter={{
-            slug: post.meta.slug,
-            excerpt: post.meta.excerpt,
-            title: post.meta.title,
-            date: post.meta.date,
-            keywords: post.meta.keywords,
-            image: post.meta.image,
+            slug: post.slug.current,
+            excerpt: post.excerpt,
+            title: post.title,
+            date: post.publishedAt,
+            // keywords: post.meta.keywords,
+            image: post.mainImage.asset.url,
           }}
           components={MDXComponents}
-        />
+        /> */}
+        {/* <>{toHTML(post.body)}</> */}
+
+        <PortableText value={post.body} />
       </BlogLayout>
     </>
   );
@@ -63,7 +76,9 @@ type StaticProps = GetStaticPropsContext & {
 
 export async function getStaticProps({ params }: StaticProps) {
   const { slug } = params;
-  const { post } = await new MDXContent("posts").getPostFromSlug(slug);
+  // const { post } = await new MDXContent("posts").getPostFromSlug(slug);
+  const post = await getPostFromSlug(slug);
+  console.log("🚀 ~ file: [slug].tsx:71 ~ post:", post);
 
   if (post != null) {
     return {
@@ -83,9 +98,10 @@ export async function getStaticProps({ params }: StaticProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = new MDXContent("posts")
-    .getSlugs()
-    .map((slug) => ({ params: { slug } }));
+  const slugs = await getAllPostSlugs();
+  console.log("🚀 ~ file: [slug].tsx:88 ~ slugs:", slugs);
+
+  const paths = slugs.map((slug: any) => ({ params: { slug } }));
 
   return {
     paths,

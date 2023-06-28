@@ -1,4 +1,3 @@
-import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   FadeContainer,
@@ -6,43 +5,48 @@ import {
   popUpFromBottomForText,
   searchBarSlideAnimation,
 } from "@content/FramerMotionVariants";
-import Link from "next/link";
-import Blog from "@components/Blog";
-import Metadata from "@components/MetaData";
-import { BiRss } from "react-icons/bi";
-import { RiCloseCircleLine } from "react-icons/ri";
-import { BsBookmark } from "react-icons/bs";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import PageTop from "@components/PageTop";
-import MDXContent from "@lib/MDXContent";
-import pageMeta from "@content/meta";
-import { FrontMatter } from "@lib/types";
-import { CgSearch } from "react-icons/cg";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function Blogs({ blogs }: { blogs: FrontMatter[] }) {
+import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { BiRss } from "react-icons/bi";
+import Blog from "@components/Blog";
+import { BlogPost } from "@lib/interface/sanity";
+import { BsBookmark } from "react-icons/bs";
+import { CgSearch } from "react-icons/cg";
+import { FrontMatter } from "@lib/types";
+import Link from "next/link";
+import MDXContent from "@lib/MDXContent";
+import Metadata from "@components/MetaData";
+import PageTop from "@components/PageTop";
+import { RiCloseCircleLine } from "react-icons/ri";
+import { getAllPostsMeta } from "@lib/sanityContent";
+import pageMeta from "@content/meta";
+import sanityClient from "@lib/sanityClient";
+
+export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
   const [searchValue, setSearchValue] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
   const searchRef = useRef<HTMLInputElement>(null!);
 
-  useEffect(() => {
-    setFilteredBlogs(
-      blogs.filter((post: FrontMatter) =>
-        post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
-      )
-    );
-  }, [searchValue, blogs]);
+  // useEffect(() => {
+  //   setFilteredBlogs(
+  //     blogs.filter((post: FrontMatter) =>
+  //       post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
+  //     )
+  //   );
+  // }, [searchValue, blogs]);
 
-  function handleAutoSearch(e: any) {
-    if (e.code === "Slash" && e.ctrlKey) {
-      searchRef.current.focus();
-    }
-  }
+  // function handleAutoSearch(e: any) {
+  //   if (e.code === "Slash" && e.ctrlKey) {
+  //     searchRef.current.focus();
+  //   }
+  // }
 
-  useEffect(() => {
-    document.addEventListener("keydown", handleAutoSearch);
+  // useEffect(() => {
+  //   document.addEventListener("keydown", handleAutoSearch);
 
-    return () => document.removeEventListener("keydown", handleAutoSearch);
-  }, []);
+  //   return () => document.removeEventListener("keydown", handleAutoSearch);
+  // }, []);
 
   return (
     <>
@@ -139,8 +143,9 @@ export default function Blogs({ blogs }: { blogs: FrontMatter[] }) {
 }
 
 export async function getStaticProps() {
-  const blogs = new MDXContent("posts").getAllPosts();
+  const results = await getAllPostsMeta();
+  console.log("results ========", results);
   return {
-    props: { blogs },
+    props: { blogs: results },
   };
 }

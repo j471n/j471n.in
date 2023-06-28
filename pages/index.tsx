@@ -1,28 +1,30 @@
 // Page Components START----------
-import BlogsSection from "@components/Home/BlogsSection";
-import SkillSection from "@components/Home/SkillSection";
-import Image from "next/image";
-import Metadata from "@components/MetaData";
-import Contact from "@components/Contact";
+
 import {
   FadeContainer,
   headingFromLeft,
   opacityVariant,
   popUp,
 } from "@content/FramerMotionVariants";
-import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import { homeProfileImage } from "@utils/utils";
-import getRSS from "@lib/generateRSS";
-import generateSitemap from "@lib/sitemap";
-import { motion } from "framer-motion";
-import { FiDownload } from "react-icons/fi";
-import MDXContent from "@lib/MDXContent";
-import pageMeta from "@content/meta";
-import React from "react";
-import { FrontMatter } from "@lib/types";
-import Link from "next/link";
 
-export default function Home({ blogs }: { blogs: FrontMatter[] }) {
+import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
+import { BlogPost } from "@lib/interface/sanity";
+import BlogsSection from "@components/Home/BlogsSection";
+import Contact from "@components/Contact";
+import { FiDownload } from "react-icons/fi";
+import Image from "next/image";
+import Link from "next/link";
+import Metadata from "@components/MetaData";
+import React from "react";
+import SkillSection from "@components/Home/SkillSection";
+import generateSitemap from "@lib/sitemap";
+import { getAllPostsMeta } from "@lib/sanityContent";
+import getRSS from "@lib/generateRSS";
+import { homeProfileImage } from "@utils/utils";
+import { motion } from "framer-motion";
+import pageMeta from "@content/meta";
+
+export default function Home({ blogs }: { blogs: BlogPost[] }) {
   return (
     <>
       <Metadata
@@ -118,9 +120,11 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 }
 
 export async function getStaticProps() {
-  const blogs = new MDXContent("posts").getAllPosts(3);
-  await getRSS();
-  await generateSitemap();
+  const blogs = await getAllPostsMeta(3);
+  console.log("🚀 ~ file: index.tsx:124 ~ blogs:", blogs);
+
+  // await getRSS();
+  // await generateSitemap();
 
   return {
     props: { blogs },

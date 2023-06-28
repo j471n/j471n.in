@@ -24,6 +24,7 @@ module.exports = withPWA({
       "i.scdn.co", // images from spotify
       "images.unsplash.com",
       "m.media-amazon.com", // for imdb images
+      "cdn.sanity.io", // sanity images
     ],
   },
   typescript: {
