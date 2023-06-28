@@ -1,3 +1,4 @@
+import { ReadTimeResults } from "reading-time";
 import { SanityDocument } from "@sanity/types";
 
 export interface ISanityImage {
@@ -13,6 +14,7 @@ export interface BlogPost extends SanityDocument {
   slug: {
     current: string;
   };
+  keywords: string;
   excerpt: string;
   image_url: string;
   mainImage: ISanityImage;
@@ -26,6 +28,11 @@ export interface BlogPost extends SanityDocument {
     image: ISanityImage;
     website: string;
   };
-  content: string;
+  content?: any;
+  readingTime: ReadTimeResults;
+  tableOfContents: {
+    level: number;
+    heading: string;
+  }[];
   body: any; // Adjust the type according to the structure of your 'body' field
 }

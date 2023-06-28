@@ -9,19 +9,11 @@ import Link from "next/link";
 import Newsletter from "@components/Newsletter";
 import ScrollProgressBar from "@components/ScrollProgressBar";
 import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
+import TableOfContents from "@components/TableOfContents";
 import { getFormattedDate } from "@utils/date";
 import { opacityVariant } from "@content/FramerMotionVariants";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import useWindowLocation from "@hooks/useWindowLocation";
-import ReactMarkdown from "react-markdown";
-
-// import { PostType } from "@lib/types";
-// import { RxPencil2 } from "react-icons/rx";
-
-// import TableOfContents from "@components/TableOfContents";
-// import { getAuthorData } from "@content/user";
-
-// import Newsletter from "../components/Newsletter";
 
 export default function BlogLayout({
   post,
@@ -31,9 +23,8 @@ export default function BlogLayout({
   children: JSX.Element | string;
 }) {
   const { currentURL } = useWindowLocation();
-  // const [isTOCActive, setIsTOCActive] = useState(false);
+  const [isTOCActive, setIsTOCActive] = useState(false);
   const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
-  // const author = getAuthorData(post.meta.org);
 
   const { isAlreadyBookmarked, removeFromBookmark } = useBookmarkBlogs(
     "blogs",
@@ -47,19 +38,19 @@ export default function BlogLayout({
   return (
     <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
       {/* TOC */}
-      {/* <TableOfContents
+      <TableOfContents
         isTOCActive={isTOCActive}
         setIsTOCActive={setIsTOCActive}
         tableOfContents={post.tableOfContents}
-      /> */}
+      />
 
       {/* Blog Content */}
       <section
         className="p-5 sm:pt-10 relative font-barlow prose dark:prose-invert md:ml-[35%] lg:ml-[30%] print:!mx-auto"
         style={{
           maxWidth: "800px",
-          // opacity: `${isTOCActive} && "0.3"`,
-          // margin: `${post.tableOfContents.length <= 0} && "auto"`,
+          opacity: `${isTOCActive} && "0.3"`,
+          margin: `${post.tableOfContents.length <= 0} && "auto"`,
         }}
       >
         <ScrollProgressBar />
@@ -107,54 +98,25 @@ export default function BlogLayout({
                     </span>
                   )}
                 </div>
-                <span className="text-xs">
-                  {getFormattedDate(new Date(post.publishedAt))}
-                </span>
               </div>
-              {/* <div className="flex flex-col w-full text-xs sm:text-sm sm:flex-row sm:justify-between">
-                <p className="flex items-center gap-2 font-medium !my-0">
-                  <div className="flex items-center text-sm gap-1">
-                    <Link
-                      href="/about"
-                      className="text-sm font-medium hover:underline"
-                    >
-                      {post.author.name}
-                    </Link>
-                    {author.org && (
-                      <span>
-                        for <span className="font-medium">{author.org}</span>
-                      </span>
-                    )}
-                  </div>
-                </p>
-              </div> */}
             </div>
-            {/* <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1">
               <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {getFormattedDate(new Date(post.meta.date))}
+                {getFormattedDate(new Date(post.publishedAt))}
               </div>
               <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {post.meta.readingTime.text}
+                {post.readingTime.text}
               </div>
               <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {post.meta.readingTime.words} words
+                {post.readingTime.words} words
               </div>
-            </div> */}
+            </div>
           </div>
 
-          <div className="flex gap-2 ml-4">
-            {/* <Link
-              href={`https://github.com/j471n/j471n.in/edit/main/posts/${post.meta.slug}.mdx`}
-              title="Edit on Github"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition select-none active:scale-75"
-            >
-              <RxPencil2 className="text-gray-700 w-7 h-7 dark:text-gray-300 stroke-slate-300 " />
-            </Link> */}
+          <div className="ml-4 sm:place-self-center">
             <button
               title="Save for Later"
-              className="transition active:scale-75"
+              className="transition active:scale-75 mt-2 sm:mt-1"
               onClick={() => {
                 alreadyBookmarked ? removeFromBookmark(post.slug.current) : "";
                 // : addToBookmark(post.meta);
@@ -168,18 +130,11 @@ export default function BlogLayout({
             </button>
           </div>
         </div>
-
-        {console.log(post.body)}
-        {/* {console.log(children)} */}
-        {/* <div
-          dangerouslySetInnerHTML={{ __html: children.props.children }}
-        ></div> */}
         <AnimatedDiv
           variants={opacityVariant}
           className="max-w-full prose-sm blog-container sm:prose-base prose-pre:bg-white prose-img:mx-auto prose-img:rounded-md dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-h4:!mb-6"
         >
           {children}
-          {/* <ReactMarkdown>{post.body}</ReactMarkdown> */}
         </AnimatedDiv>
         <Newsletter />
         <div className="flex flex-col items-center w-full gap-4 my-10 print:hidden">

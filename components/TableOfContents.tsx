@@ -1,13 +1,14 @@
-import useScrollPercentage from "@hooks/useScrollPercentage";
+import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
 import { lockScroll, removeScrollLock } from "@utils/functions";
 import { useEffect, useState } from "react";
+
+import AnimatedDiv from "./FramerMotion/AnimatedDiv";
 import AnimatedHeading from "./FramerMotion/AnimatedHeading";
-import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
+import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
 import { stringToSlug } from "@lib/toc";
+import useScrollPercentage from "@hooks/useScrollPercentage";
 import useWindowSize from "@hooks/useWindowSize";
-import AnimatedDiv from "./FramerMotion/AnimatedDiv";
-import { CgSearch } from "react-icons/cg";
 
 export default function TableOfContents({
   tableOfContents,
@@ -40,7 +41,7 @@ export default function TableOfContents({
         table.heading.toLowerCase().includes(searchValue.trim().toLowerCase())
       )
     );
-  }, [searchValue, tableOfContents, ]);
+  }, [searchValue, tableOfContents]);
   return (
     <>
       {tableOfContents.length > 0 && (

@@ -20,10 +20,16 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'keywords',
+      title: 'Keywords',
+      type: 'string',
+    }),
+    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
     }),
+
     defineField({
       name: 'author',
       title: 'Author',
@@ -59,11 +65,6 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'text',
-    }),
-    defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
     }),
   ],
 
