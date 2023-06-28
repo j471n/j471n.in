@@ -2,7 +2,6 @@ import { BlogCardAnimation } from "@content/FramerMotionVariants";
 import { BlogPost } from "@lib/interface/sanity";
 import Image from "next/image";
 import Link from "next/link";
-import { getAuthorData } from "@content/user";
 import { getFormattedDate } from "@utils/date";
 import { motion } from "framer-motion";
 import { useRef } from "react";

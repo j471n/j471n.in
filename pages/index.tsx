@@ -121,10 +121,9 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 
 export async function getStaticProps() {
   const blogs = await getAllPostsMeta(3);
-  console.log("🚀 ~ file: index.tsx:124 ~ blogs:", blogs);
 
-  // await getRSS();
-  // await generateSitemap();
+  await getRSS();
+  await generateSitemap();
 
   return {
     props: { blogs },

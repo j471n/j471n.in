@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
+
+import { BlogPost } from "@lib/interface/sanity";
 import { FrontMatter } from "@lib/types";
-import { useState, useEffect } from "react";
 
 const useBookmarkBlogs = (key: string, defaultValue: []) => {
-  const [bookmarkedBlogs, setBookmarkedBlogs] = useState((): FrontMatter[] => {
-    let currentValue: FrontMatter[] = [];
+  const [bookmarkedBlogs, setBookmarkedBlogs] = useState((): BlogPost[] => {
+    let currentValue: BlogPost[] = [];
 
     try {
       currentValue = JSON.parse(localStorage.getItem(key)!);
@@ -40,13 +42,16 @@ const useBookmarkBlogs = (key: string, defaultValue: []) => {
 
   function isAlreadyBookmarked(searchBySlug: string) {
     return bookmarkedBlogs
-      ?.map((bookmarkedBlog: FrontMatter) => bookmarkedBlog.slug === searchBySlug)
+      ?.map(
+        (bookmarkedBlog: BlogPost) =>
+          bookmarkedBlog.slug.current === searchBySlug
+      )
       .includes(true);
   }
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(bookmarkedBlogs));
-  }, [bookmarkedBlogs]);
+  }, [bookmarkedBlogs, key]);
 
   return {
     bookmarkedBlogs,
