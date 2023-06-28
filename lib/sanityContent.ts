@@ -40,7 +40,6 @@ export async function getAllPostSlugs() {
 
   const res_slugs = await sanityClient.fetch(query);
   const slugs = res_slugs.map((item: any) => {
-    // console.log("SLUG : ", item);
     return item.slug.current;
   });
   return slugs;

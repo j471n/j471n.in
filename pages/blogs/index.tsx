@@ -141,7 +141,6 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
 
 export async function getStaticProps() {
   const results = await getAllPostsMeta();
-  console.log("results ========", results);
   return {
     props: { blogs: results },
   };
