@@ -43,7 +43,7 @@ export default function Blog({
       <div className="flex flex-col w-full h-full px-2 pb-2 mt-2 sm:mt-0 sm:p-1 lg:py-5 md:pr-5">
         <Link
           href={`/blogs/${blog.slug.current}`}
-          className="font-bold text-neutral-900 md:text-xl dark:text-neutral-200 hover:underline"
+          className="font-bold text-neutral-900 md:text-xl dark:text-neutral-200 hover:underline line-clamp-2"
         >
           {blog.title}
         </Link>
