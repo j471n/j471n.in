@@ -1,4 +1,4 @@
-import {defineConfig} from 'sanity'
+import {defineConfig} from 'sanity/lib/exports'
 import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './schemas'
 import {visionTool} from '@sanity/vision'
