@@ -14,3 +14,17 @@ export function removeScrollLock() {
   const root = document.getElementsByTagName("html")[0];
   root.classList.remove("lock-scroll"); // class is define in the global.css
 }
+
+/**
+ * Debounces a function by delaying its execution until a certain amount of time has passed
+ * since the last time it was invoked. Only the last invocation within the delay period will be executed.
+ */
+export function debounce(fn: Function, time: number = 300): Function {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (this: any, ...args: any[]) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      fn.apply(this, args);
+    }, time);
+  };
+}

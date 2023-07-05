@@ -16,23 +16,28 @@ import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
 import Metadata from "@components/MetaData";
 import PageTop from "@components/PageTop";
-import { RiCloseCircleLine } from "react-icons/ri";
+import { debounce } from "@utils/functions";
 import { getAllPostsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
 
 export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
-  const [searchValue, setSearchValue] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
   const searchRef = useRef<HTMLInputElement>(null!);
 
-  useEffect(() => {
+  /**
+   * Handles search functionality with debounce.
+   */
+  const handleSearch = debounce((value: string) => {
     setFilteredBlogs(
       blogs.filter((post: BlogPost) =>
-        post.title.toLowerCase().includes(searchValue.trim().toLowerCase())
+        post.title.toLowerCase().includes(value.trim().toLowerCase())
       )
     );
-  }, [searchValue, blogs]);
+  }, 300);
 
+  /**
+   * Handles automatic search functionality when a specific keyboard shortcut is pressed.
+   */
   function handleAutoSearch(e: any) {
     if (e.code === "Slash" && e.ctrlKey) {
       searchRef.current.focus();
@@ -41,7 +46,6 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
 
   useEffect(() => {
     document.addEventListener("keydown", handleAutoSearch);
-
     return () => document.removeEventListener("keydown", handleAutoSearch);
   }, []);
 
@@ -69,17 +73,9 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
             ref={searchRef}
             className="px-12  py-3 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm hover:ring-slate-400  dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative  group focus:ring-slate-400"
             type="text"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            onChange={(e) => handleSearch(e.target.value)}
             placeholder="Press (CTRL + /) to search... "
           />
-          <button
-            type="button"
-            onClick={() => setSearchValue("")}
-            className="hidden group-focus-within:inline-flex right-3 absolute top-[50%] -translate-y-1/2"
-          >
-            <RiCloseCircleLine className="w-5 h-5 mr-3" />
-          </button>
         </AnimatedDiv>
 
         <section className="relative py-5  flex flex-col gap-2 min-h-[50vh]">
