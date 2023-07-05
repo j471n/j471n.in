@@ -1,10 +1,11 @@
-import Metadata from "@components/MetaData";
-import MDXComponents from "@components/MDXComponents";
-import PageNotFound from "pages/404";
-import MDXContent from "@lib/MDXContent";
-import { MDXRemote } from "next-mdx-remote";
+import { getAllSlugs, getSnippetFromSlug } from "@lib/sanityContent";
+
 import { GetStaticPropsContext } from "next";
-import { PostType } from "@lib/types";
+import { ISnippet } from "@lib/interface/sanity";
+import MDXComponents from "@components/MDXComponents";
+import { MDXRemote } from "next-mdx-remote";
+import Metadata from "@components/MetaData";
+import PageNotFound from "pages/404";
 import SnippetLayout from "@layout/SnippetLayout";
 import pageMeta from "@content/meta";
 
@@ -12,7 +13,7 @@ export default function SnippetPage({
   snippet,
   error,
 }: {
-  snippet: PostType;
+  snippet: ISnippet;
   error: boolean;
 }) {
   if (error) return <PageNotFound />;
@@ -20,23 +21,22 @@ export default function SnippetPage({
   return (
     <>
       <Metadata
-        title={snippet.meta.title}
+        title={snippet.title}
         suffix="Jatin Sharma"
-        description={snippet.meta.excerpt}
+        description={snippet.excerpt}
         previewImage={pageMeta.snippets.image}
         keywords={pageMeta.snippets.keywords}
       />
 
       <SnippetLayout snippet={snippet}>
         <MDXRemote
-          {...snippet.source}
+          {...snippet.content}
           frontmatter={{
-            slug: snippet.meta.slug,
-            excerpt: snippet.meta.excerpt,
-            title: snippet.meta.title,
-            date: snippet.meta.date,
-            keywords: snippet.meta.keywords,
-            image: snippet.meta.image,
+            slug: snippet.slug.current,
+            excerpt: snippet.excerpt,
+            title: snippet.title,
+            date: snippet.publishedAt,
+            image: pageMeta.snippets.image,
           }}
           components={MDXComponents}
         />
@@ -53,9 +53,8 @@ type StaticProps = GetStaticPropsContext & {
 
 export async function getStaticProps({ params }: StaticProps) {
   const { slug } = params;
-  const { post: snippet } = await new MDXContent("snippets").getPostFromSlug(
-    slug
-  );
+
+  const snippet = await getSnippetFromSlug(slug);
 
   if (snippet != null) {
     return {
@@ -75,9 +74,10 @@ export async function getStaticProps({ params }: StaticProps) {
 }
 
 export async function getStaticPaths() {
-  const paths = new MDXContent("snippets")
-    .getSlugs()
-    .map((slug) => ({ params: { slug } }));
+  const slugs = await getAllSlugs({
+    type: "snippet",
+  });
+  const paths = slugs.map((slug: any) => ({ params: { slug } }));
 
   return {
     paths,

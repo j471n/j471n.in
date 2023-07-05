@@ -7,6 +7,24 @@ import rehypeSlug from "rehype-slug";
 import sanityClient from "@lib/sanityClient";
 import { serialize } from "next-mdx-remote/serialize";
 
+const prettyCodeOptions = {
+  theme: "one-dark-pro",
+  onVisitLine(node: any) {
+    // Prevent lines from collapsing in `display: grid` mode, and
+    // allow empty lines to be copy/pasted
+    if (node.children.length === 0) {
+      node.children = [{ type: "text", value: " " }];
+    }
+  },
+  // Feel free to add classNames that suit your docs
+  onVisitHighlightedLine(node: any) {
+    node.properties.className.push("highlighted");
+  },
+  onVisitHighlightedWord(node: any) {
+    node.properties.className = ["word"];
+  },
+};
+
 export async function getAllPostsMeta(limit?: number) {
   const query = groq`*[_type == "post"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""
@@ -31,8 +49,24 @@ export async function getAllPostsMeta(limit?: number) {
   return res;
 }
 
-export async function getAllPostSlugs() {
-  const query = groq`*[_type == "post"] | order(publishedAt desc) {
+export async function getAllSnippetsMeta(limit?: number) {
+  const query = groq`*[_type == "snippet"] | order(publishedAt desc)${
+    limit ? `[0..${limit - 1}]` : ""
+  } {
+    _id,
+    title,
+    slug,
+    excerpt,
+    language->{name, image {asset -> {_id, url}}},
+    publishedAt,
+  }`;
+
+  const res = await sanityClient.fetch(query);
+  return res;
+}
+
+export async function getAllSlugs({ type }: { type: "post" | "snippet" }) {
+  const query = groq`*[_type == "${type}"] | order(publishedAt desc) {
     slug {
       current
     }
@@ -72,34 +106,34 @@ export async function getPostFromSlug(slug: string) {
   const { content } = matter(source);
   const readingTime = readTime(content);
 
-  const prettyCodeOptions = {
-    theme: "one-dark-pro",
-    onVisitLine(node: any) {
-      // Prevent lines from collapsing in `display: grid` mode, and
-      // allow empty lines to be copy/pasted
-      if (node.children.length === 0) {
-        node.children = [{ type: "text", value: " " }];
-      }
-    },
-    // Feel free to add classNames that suit your docs
-    onVisitHighlightedLine(node: any) {
-      node.properties.className.push("highlighted");
-    },
-    onVisitHighlightedWord(node: any) {
-      node.properties.className = ["word"];
-    },
-  };
+  const tableOfContents = getTableOfContents(content);
+  const mdxSource = await getMarkdownSource(content);
+
+  post["content"] = mdxSource;
+  post["tableOfContents"] = tableOfContents;
+  post["readingTime"] = readingTime;
+
+  return post;
+}
+export async function getSnippetFromSlug(slug: string) {
+  const query = groq`*[_type == "snippet" && slug.current == "${slug}"][0] {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    language->{name, image {asset -> {_id, url}}},
+    content
+  }`;
+
+  const post = await sanityClient.fetch(query);
+
+  const source = post.content;
+  const { content } = matter(source);
+  const readingTime = readTime(content);
 
   const tableOfContents = getTableOfContents(content);
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        [rehypeAutolinkHeadings, { behaviour: "wrap" }],
-        [rehypePrettyCode, prettyCodeOptions],
-      ],
-    },
-  });
+  const mdxSource = await getMarkdownSource(content);
 
   post["content"] = mdxSource;
   post["tableOfContents"] = tableOfContents;
@@ -119,4 +153,16 @@ export function getTableOfContents(markdown: string) {
       heading: heading.replace(/#{2,6}/, "").trim(),
     };
   });
+}
+export async function getMarkdownSource(content: string) {
+  const source = await serialize(content, {
+    mdxOptions: {
+      rehypePlugins: [
+        rehypeSlug,
+        [rehypeAutolinkHeadings, { behaviour: "wrap" }],
+        [rehypePrettyCode, prettyCodeOptions],
+      ],
+    },
+  });
+  return source;
 }

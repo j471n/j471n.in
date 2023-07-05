@@ -1,13 +1,15 @@
 import { AnimatePresence } from "framer-motion";
-import { FadeContainer } from "@content/FramerMotionVariants";
-import Metadata from "@components/MetaData";
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import PageTop from "@components/PageTop";
+import { FadeContainer } from "@content/FramerMotionVariants";
+import { ISnippet } from "@lib/interface/sanity";
 import MDXContent from "@lib/MDXContent";
-import pageMeta from "@content/meta";
+import Metadata from "@components/MetaData";
+import PageTop from "@components/PageTop";
 import SnippetCard from "@components/SnippetCard";
+import { getAllSnippetsMeta } from "@lib/sanityContent";
+import pageMeta from "@content/meta";
 
-export default function Snippets({ snippets }: { snippets: any[] }) {
+export default function Snippets({ snippets }: { snippets: ISnippet[] }) {
   return (
     <>
       <Metadata
@@ -40,7 +42,9 @@ export default function Snippets({ snippets }: { snippets: any[] }) {
 }
 
 export async function getStaticProps() {
-  const snippets = new MDXContent("snippets").getAllPosts();
+  // const snippets = new MDXContent("snippets").getAllPosts();
+  const snippets = await getAllSnippetsMeta();
+  console.log("🚀 ~ file: index.tsx:46 ~ snippets:", snippets);
 
   return {
     props: { snippets },

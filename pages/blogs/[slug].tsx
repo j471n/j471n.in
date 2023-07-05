@@ -1,4 +1,4 @@
-import { getAllPostSlugs, getPostFromSlug } from "@lib/sanityContent";
+import { getAllSlugs, getPostFromSlug } from "@lib/sanityContent";
 
 import BlogLayout from "@layout/BlogLayout";
 import { BlogPost } from "@lib/interface/sanity";
@@ -84,7 +84,9 @@ export async function getStaticProps({ params }: StaticProps) {
 }
 
 export async function getStaticPaths() {
-  const slugs = await getAllPostSlugs();
+  const slugs = await getAllSlugs({
+    type: "post",
+  });
   const paths = slugs.map((slug: any) => ({ params: { slug } }));
 
   return {
