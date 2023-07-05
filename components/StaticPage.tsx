@@ -1,10 +1,11 @@
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { IStaticPage } from "@lib/interface/sanity";
 import MDXComponents from "@components/MDXComponents";
+import { MDXRemote } from "next-mdx-remote";
 import MetaData from "@components/MetaData";
+import { PageData } from "@lib/types";
 import PageTop from "@components/PageTop";
 import { opacityVariant } from "@content/FramerMotionVariants";
-import { PageData, PostType } from "@lib/types";
-import { MDXRemote } from "next-mdx-remote";
 
 export default function StaticPage({
   metadata,
@@ -12,7 +13,7 @@ export default function StaticPage({
   showDescription = false,
 }: {
   metadata: PageData;
-  page: PostType;
+  page: IStaticPage;
   showDescription?: boolean;
 }) {
   return (
@@ -25,22 +26,22 @@ export default function StaticPage({
       />
 
       <section className="pageTop">
-        <PageTop containerClass="mb-0" pageTitle={page.meta.title}>
-          {showDescription && (metadata.description || page.meta.excerpt)}
+        <PageTop containerClass="mb-0" pageTitle={page.title}>
+          {showDescription && (metadata.description || page.excerpt)}
         </PageTop>
         <AnimatedDiv
           variants={opacityVariant}
           className="max-w-full prose dark:prose-invert"
         >
           <MDXRemote
-            {...page.source}
+            {...page.content}
             frontmatter={{
-              slug: page.meta.slug,
-              excerpt: page.meta.excerpt,
-              title: page.meta.title,
-              date: page.meta.date,
-              keywords: page.meta.keywords,
-              image: page.meta.image,
+              slug: page.slug.current,
+              excerpt: page.excerpt,
+              title: page.title,
+              date: page.publishedAt,
+              keywords: page.keywords,
+              image: page.mainImage.asset.url,
             }}
             components={MDXComponents}
           />

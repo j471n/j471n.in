@@ -34,7 +34,6 @@ export interface BlogPost extends SanityDocument {
     level: number;
     heading: string;
   }[];
-  body: any; // Adjust the type according to the structure of your 'body' field
 }
 
 export interface ISnippet extends SanityDocument {
@@ -55,6 +54,19 @@ export interface ISnippet extends SanityDocument {
     level: number;
     heading: string;
   }[];
+}
+
+export interface IStaticPage extends SanityDocument {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  keywords: string;
+  excerpt: string;
+  mainImage: ISanityImage;
+  publishedAt: string;
+  content?: any;
 }
 
 /* 

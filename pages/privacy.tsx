@@ -1,20 +1,18 @@
+import { IStaticPage } from "@lib/interface/sanity";
 import StaticPage from "@components/StaticPage";
+import { getStaticPageFromSlug } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
-import MDXContent from "@lib/MDXContent";
-import { PostType } from "@lib/types";
 
 export default function Privacy({
   privacyPolicy,
 }: {
-  privacyPolicy: PostType;
+  privacyPolicy: IStaticPage;
 }) {
   return <StaticPage metadata={pageMeta.privacy} page={privacyPolicy} />;
 }
 
 export async function getStaticProps() {
-  const { post: privacyPolicy } = await new MDXContent(
-    "static_pages"
-  ).getPostFromSlug("privacy-policy");
+  const privacyPolicy = await getStaticPageFromSlug("privacy");
 
   return {
     props: {

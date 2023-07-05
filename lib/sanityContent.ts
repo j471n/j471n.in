@@ -142,6 +142,34 @@ export async function getSnippetFromSlug(slug: string) {
   return post;
 }
 
+export async function getStaticPageFromSlug(slug: string) {
+  const query = groq`*[_type == "static_page" && slug.current == "${slug}"][0] {
+    _id,
+    title,
+    slug,
+    keywords,
+    excerpt,
+    mainImage {
+      asset->{
+        _id,
+        url
+      }
+    },
+    publishedAt,
+    content
+  }`;
+
+  const post = await sanityClient.fetch(query);
+
+  const source = post.content;
+  const { content } = matter(source);
+
+  const mdxSource = await getMarkdownSource(content);
+
+  post["content"] = mdxSource;
+  return post;
+}
+
 export function getTableOfContents(markdown: string) {
   const regXHeader = /#{2,6}.+/g;
   const headingArray = markdown.match(regXHeader)

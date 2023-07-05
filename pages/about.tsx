@@ -1,24 +1,25 @@
 import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import { MovieType, PostType } from "@lib/types";
 import { getRecentWatchedMovies, getUserDataValue } from "@lib/supabase";
 
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { ILinkedinResponse } from "@lib/interface";
-import MDXContent from "@lib/MDXContent";
+import { IStaticPage } from "@lib/interface/sanity";
+import Image from "next/image";
 import MovieCard from "@components/MovieCard";
+import { MovieType } from "@lib/types";
 import StaticPage from "@components/StaticPage";
+import classNames from "classnames";
+import { getStaticPageFromSlug } from "@lib/sanityContent";
 import { months } from "@utils/date";
 import { motion } from "framer-motion";
 import pageMeta from "@content/meta";
-import Image from "next/image";
-import classNames from "classnames";
 
 export default function About({
   about,
   movies,
   linkedin,
 }: {
-  about: PostType;
+  about: IStaticPage;
   movies: MovieType[];
   linkedin: string;
 }) {
@@ -158,9 +159,7 @@ export default function About({
 }
 
 export async function getStaticProps() {
-  const { post: about } = await new MDXContent("static_pages").getPostFromSlug(
-    "about"
-  );
+  const about = await getStaticPageFromSlug("about");
 
   const { movies } = await getRecentWatchedMovies();
   const { data: linkedin } = await getUserDataValue("linkedin");
