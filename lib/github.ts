@@ -111,8 +111,6 @@ export async function getGithubContribution() {
   });
   const apiResponse = await response.json();
 
-  console.log("API response: ", apiResponse);
-
   const userData: IUserContributionDetails = {
     contributions: [],
     name: apiResponse.data.user.name,

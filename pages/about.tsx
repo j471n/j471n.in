@@ -164,8 +164,6 @@ export async function getStaticProps() {
   const { movies } = await getRecentWatchedMovies();
   const { data: linkedin } = await getUserDataValue("linkedin");
 
-  console.log(linkedin);
-
   return {
     props: {
       about,

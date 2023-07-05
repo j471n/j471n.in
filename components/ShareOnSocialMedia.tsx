@@ -1,4 +1,4 @@
-import { BsThreeDots } from "react-icons/bs";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   FacebookShareButton,
@@ -6,13 +6,13 @@ import {
   TwitterShareButton,
   WhatsappShareButton,
 } from "react-share";
-
-import useShare from "../hooks/useShare";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FiCopy, FiLinkedin } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
 import { GrFacebookOption, GrTwitter } from "react-icons/gr";
+
+import { BsThreeDots } from "react-icons/bs";
+import { FaWhatsapp } from "react-icons/fa";
+import { toast } from "react-toastify";
+import useShare from "../hooks/useShare";
 
 type Props = {
   className: string;

@@ -1,9 +1,7 @@
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { ISnippet } from "@lib/interface/sanity";
 import Image from "next/image";
-import { PostType } from "@lib/types";
 import { opacityVariant } from "@content/FramerMotionVariants";
-import { snippetsImages } from "@utils/utils";
 
 export default function SnippetLayout({
   snippet,
