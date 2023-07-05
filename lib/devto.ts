@@ -20,7 +20,6 @@ const getPageOfFollowers = async (page: number) => {
   return perPageFollowers.length;
 };
 
-
 /**
  * Makes multiple requests to the DEV API to retrieve all of the user's followers.
  */

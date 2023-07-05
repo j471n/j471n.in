@@ -1,5 +1,10 @@
-import { getAllViews } from "@lib/supabase";
 import { NextApiRequest, NextApiResponse } from "next";
+
+import { getAllViews } from "@lib/supabase";
+
+export const config = {
+  runtime: "edge", // this is a pre-requisite
+};
 
 /**
  * This function handles HTTP requests made to a specific route.

@@ -1,6 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { allFollowers, allPosts } from "../../../lib/devto";
 
+export const config = {
+  runtime: "edge", // this is a pre-requisite
+};
+
 export default async function handler(
   _req: NextApiRequest,
   res: NextApiResponse
