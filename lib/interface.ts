@@ -229,6 +229,14 @@ export interface IUserContributionDetails {
   name: string;
 }
 
+export interface IContributionCalendar {
+  weeks: IWeek[];
+}
+
+export interface IContributionCountByDay {
+  [day: string]: number;
+}
+
 export interface IEmailValidation {
   valid: boolean;
   block: boolean;

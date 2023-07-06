@@ -1,4 +1,6 @@
 import {
+  IContributionCalendar,
+  IContributionCountByDay,
   IContributionDay,
   IGitHubProfileResponse,
   IGitHubRepositoriesAPIResponse,
@@ -118,18 +120,62 @@ export async function getGithubContribution() {
 
   const weeks =
     apiResponse.data.user.contributionsCollection.contributionCalendar.weeks;
-  // get day-contribution data
   weeks.map((week: IWeek) =>
     week.contributionDays.map((contributionDay: IContributionDay) => {
-      // contributionDay.date = moment(
-      //   contributionDay.date,
-      //   moment.ISO_8601
-      // ).toLocaleString();
       contributionDay.shortDate = moment(contributionDay.date, moment.ISO_8601)
         .date()
         .toString();
       userData.contributions.push(contributionDay);
     })
   );
-  return userData;
+
+  const contributionCountByDayOfWeek = calculateMostProductiveDayOfWeek(
+    apiResponse.data.user.contributionsCollection.contributionCalendar
+  );
+
+  return { ...userData, contributionCountByDayOfWeek };
+}
+
+// Function to calculate the productive data by days
+function calculateMostProductiveDayOfWeek(
+  contributionCalendar: IContributionCalendar
+): { day: string; count: number }[] {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const contributionCountByDayOfWeek: IContributionCountByDay = {
+    Sunday: 0,
+    Monday: 0,
+    Tuesday: 0,
+    Wednesday: 0,
+    Thursday: 0,
+    Friday: 0,
+    Saturday: 0,
+  };
+
+  for (const week of contributionCalendar.weeks) {
+    for (const day of week.contributionDays) {
+      const date = new Date(day.date);
+      const dayOfWeek = daysOfWeek[date.getUTCDay()];
+      contributionCountByDayOfWeek[dayOfWeek] += day.contributionCount;
+    }
+  }
+
+  const sortedData = Object.entries(contributionCountByDayOfWeek)
+    .sort((a, b) => daysOfWeek.indexOf(a[0]) - daysOfWeek.indexOf(b[0]))
+    .map(([day, count]) => ({ day, count }));
+
+  const sunday = sortedData.shift();
+
+  if (sunday) {
+    sortedData.push(sunday);
+  }
+
+  return sortedData;
 }

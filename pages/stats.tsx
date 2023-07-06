@@ -122,22 +122,7 @@ export default function Stats() {
             colorScheme={isDarkMode ? "dark" : "light"}
           />
         </div>
-        <div className="font-barlow mb-10 max-w-full">
-          <AnimatedHeading
-            variants={opacityVariant}
-            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-          >
-            GitHub Activity Graph
-          </AnimatedHeading>
-          <AnimatedText
-            variants={opacityVariant}
-            className="my-4 text-gray-700 dark:text-gray-300"
-          >
-            A dynamically generated activity graph to show my GitHub activities
-            of last 31 days.
-          </AnimatedText>
-          <GitHubActivityGraph />
-        </div>
+        <GitHubActivityGraph />
 
         {/* Spotify top songs */}
         <div className="font-barlow">
