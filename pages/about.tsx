@@ -28,7 +28,7 @@ export default function About({
     <>
       <StaticPage metadata={pageMeta.about} page={about} />
 
-      <div className="mt-28 pageTop print:hidden">
+      <div className="pageTop mt-0 print:hidden">
         <motion.h3
           initial="hidden"
           whileInView="visible"
@@ -76,9 +76,9 @@ export default function About({
                     </h2>
                   )}
                   {experience.job_titles.map((job) => (
-                    <div key={job.title} className="relative w-full ">
+                    <div key={job.title} className="relative w-full group">
                       {experience.job_titles.length > 1 && (
-                        <span className="-left-[29px] h-full absolute w-0.5 bg-black dark:bg-gray-500 top-5 peer-last:opacity-0"></span>
+                        <span className="-left-[29px] h-full absolute w-0.5 bg-black dark:bg-gray-500 top-5 peer-last:opacity-0 group-last:opacity-0"></span>
                       )}
                       <div
                         className={
