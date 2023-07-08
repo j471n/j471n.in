@@ -224,10 +224,10 @@ function LoadingSongs() {
             #{item + 1}
           </div>
 
-          <div className="relative w-12 h-12 origin-center transform bg-white dark:bg-darkSecondary animate-pulse"></div>
+          <div className="relative w-12 h-12 origin-center transform bg-gray-300 dark:bg-darkSecondary animate-pulse"></div>
           <div className="flex flex-col gap-1">
-            <p className="animate-pulse w-40 h-6 md:h-[28px] bg-white dark:bg-darkSecondary"></p>
-            <p className="h-4 bg-white animate-pulse w-28 md:h-6 dark:bg-darkSecondary delay-125"></p>
+            <p className="animate-pulse w-40 h-6 md:h-[28px] bg-gray-300 dark:bg-darkSecondary"></p>
+            <p className="h-4 bg-gray-300 animate-pulse w-28 md:h-6 dark:bg-darkSecondary delay-125"></p>
           </div>
         </div>
       ))}
@@ -249,16 +249,16 @@ function LoadingArtists() {
             </div>
             <div
               aria-label="image"
-              className="relative w-12 h-12 bg-white rounded-full animate-pulse dark:bg-darkSecondary md:w-24 md:h-24"
+              className="relative w-12 h-12 bg-gray-300 rounded-full animate-pulse dark:bg-darkSecondary md:w-24 md:h-24"
             ></div>
             <div className="flex flex-col gap-1">
               <h2
                 aria-label="artist-name"
-                className="animate-pulse h-6 md:h-[28px] w-40 bg-white dark:bg-darkSecondary"
+                className="animate-pulse h-6 md:h-[28px] w-40 bg-gray-300 dark:bg-darkSecondary"
               ></h2>
               <p
                 aria-label="followers"
-                className="w-20 h-4 bg-white animate-pulse md:h-6 dark:bg-darkSecondary"
+                className="w-20 h-4 bg-gray-300 animate-pulse md:h-6 dark:bg-darkSecondary"
               ></p>
             </div>
           </>
