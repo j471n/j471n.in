@@ -15,6 +15,7 @@
     "sanity"
   ],
   "dependencies": {
+    "@dnd-kit/sortable": "^7.0.2",
     "@sanity/vision": "^3.12.2",
     "dotenv": "^16.3.1",
     "react": "^18.2.0",
