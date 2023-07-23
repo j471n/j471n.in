@@ -1,15 +1,15 @@
 import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import { getRecentWatchedMovies, getUserDataValue } from "@lib/supabase";
+import { ILinkedinResponse, ITMDBData } from "@lib/interface";
 
 import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import { ILinkedinResponse } from "@lib/interface";
 import { IStaticPage } from "@lib/interface/sanity";
 import Image from "next/image";
 import MovieCard from "@components/MovieCard";
-import { MovieType } from "@lib/types";
 import StaticPage from "@components/StaticPage";
 import classNames from "classnames";
+import { fetchTMDBData } from "@lib/tmdb";
 import { getStaticPageFromSlug } from "@lib/sanityContent";
+import { getUserDataValue } from "@lib/supabase";
 import { months } from "@utils/date";
 import { motion } from "framer-motion";
 import pageMeta from "@content/meta";
@@ -20,7 +20,7 @@ export default function About({
   linkedin,
 }: {
   about: IStaticPage;
-  movies: MovieType[];
+  movies: ITMDBData[];
   linkedin: string;
 }) {
   const parsedLinkedIn: ILinkedinResponse = JSON.parse(linkedin);
@@ -161,7 +161,7 @@ export default function About({
 export async function getStaticProps() {
   const about = await getStaticPageFromSlug("about");
 
-  const { movies } = await getRecentWatchedMovies();
+  const movies = await fetchTMDBData();
   const { data: linkedin } = await getUserDataValue("linkedin");
 
   return {

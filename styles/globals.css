@@ -190,6 +190,14 @@ code > .line::before {
 .react-activity-calendar {
   max-width: 100% !important;
 }
+@keyframes loadingAnimation {
+  0% {
+    left: -100%; /* Move the bar to the left of the container */
+  }
+  100% {
+    left: 100%; /* Move the bar to the right of the container */
+  }
+}
 
 /* Layers Components or the custom class extends with tailwind */
 @layer components {

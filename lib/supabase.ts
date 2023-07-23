@@ -102,38 +102,8 @@ export async function getAllViews() {
   }
 }
 /*
- * function to retrieve the most recent 5 watched movies from the "movies" table in a database
- * It fetches all the movies that I am currently watching and the last 5 movies that I have watched already
- * That's why it makes two request to the database
+ * This function will retrieve the individual custom data from the supabase such as linkedin data
  */
-export async function getRecentWatchedMovies() {
-  /* currently watching movies */
-  let { data: currentlyWatching, error: watchingMoviesError } = await supabase
-    .from("movies")
-    .select("*")
-    .eq("watched", "false")
-    .order("created_at", { ascending: false });
-
-  /* recent watched movies */
-  let { data: watchedMovies, error: watchedMoviesError } = await supabase
-    .from("movies")
-    .select("*")
-    .eq("watched", "true")
-    .limit(5)
-    .order("created_at", { ascending: false });
-
-  if (currentlyWatching === null) {
-    return {
-      movies: watchedMovies,
-      error: watchedMoviesError !== null,
-    };
-  }
-  return {
-    movies: [...currentlyWatching, ...watchedMovies!],
-    error: (watchingMoviesError || watchedMoviesError) !== null,
-  };
-}
-
 export async function getUserDataValue(key: string) {
   let { data, error } = await supabase
     .from("user_data")

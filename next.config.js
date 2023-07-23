@@ -25,6 +25,7 @@ module.exports = withPWA({
       "images.unsplash.com",
       "m.media-amazon.com", // for imdb images
       "cdn.sanity.io", // sanity images
+      "image.tmdb.org", // tmdb images
     ],
   },
   typescript: {
