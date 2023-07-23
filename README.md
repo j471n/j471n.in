@@ -196,6 +196,61 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
   - After selecting the necessary permissions, click on the Generate token button at the bottom of the page.
   - GitHub will generate a new token for you. Make sure to copy the token value.
   - **Important**: Treat this token like a password and keep it secure. Do not share it publicly or commit it to a version control repository.
+- `EMAIL_VALIDATION_API`: You can follow the following steps to get the `API_KEY` to validate the email address for the newsletter:
+  - You need to have an account on [RapidAPI](https://rapidapi.com/).
+  - If you have an account then you can just [subscribe](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/pricing) the free version of [E-mail Check Invalid or Disposable Domain](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/). Which will give you the 1000 request/month. 
+
+    ![Rapid API-1](https://imgur.com/OMFF69O.png)
+
+  - Then you'll get the `API_KEY`, which you can store in your `.env.local`.
+
+    ![Rapid API-2](https://imgur.com/REdKVsX.png)
+- `SANITY_PROJECT_ID`: 
+  - Go to the [Sanity.io]((https://www.sanity.io/) ) website using your web browser.
+  - Login with you account/Create a new account.
+  - After logging in, you'll be redirected to the Sanity.io dashboard.
+  - If you have an existing project, you'll see it listed on the dashboard. Click on the project's name to access it.
+  - Once you're inside the project, look at the browser's address bar. The URL should look something like this: `https://www.sanity.io/manage/project/your-project-id`
+  - The your-project-id in the URL is your Sanity project ID. It's a unique identifier for your specific project.
+  
+  That's it! You've now obtained your Sanity project ID, which you can use for interacting with your Sanity project via its API or other integrations.
+
+- `TMDB_ACCOUNT_ID` and `TMDB_ACCESS_TOKEN`: To enable seamless integration of movie and TV show data, we will use the TMDB API, which offers comprehensive information about media content. The following steps will guide you:
+
+  **1. Overview of TMDB Integration**
+  
+  Previously, movie and TV show data were manually stored using Supabase, requiring tedious manual work. To streamline the process and automatically update ratings, we have switched to TMDB (The Movie Database).
+
+  **2. Creating or Logging into Your TMDB Account**
+  
+  If you already have a TMDB account, log in with your existing credentials. Otherwise, visit TMDB's website and create a new account.
+
+  **3. Generating API Key**
+  
+  After logging in, navigate to the API section in your account settings. Here, you can generate a new API key to access TMDB's data and services.
+
+  ![generate api key](https://i.imgur.com/y0wA21L.png)
+
+  **Completing the API Key Request Form**
+  
+  Fill in all the required details in the API key request form, and make sure to accept the terms and conditions.
+
+  ![complete api key request form](https://i.imgur.com/FZ1RdPf.png)
+
+  **Obtaining API Key and Access Token**
+
+  Once you have completed the application registration, you will receive an API key and an access token. Assign the access token to the `TMDB_ACCESS_TOKEN` variable.
+
+  ![API Key and Access Token](https://i.imgur.com/Q6LI6EF.png)
+
+  **Finding Your TMDB Account ID**
+  
+  To get the `TMDB_ACCOUNT_ID`, log in to the TMDB system and visit the developer website. There, you will find your account ID associated with your account.
+
+  ![Finding Your TMDB Account ID](https://i.imgur.com/AdEPtb9.png)
+
+  With the `TMDB_ACCOUNT_ID` and `TMDB_ACCESS_TOKEN` acquired from the steps above, you can now seamlessly access and update movie and TV show data through TMDB's API, automating the process and making it significantly more efficient. Enjoy your improved movie and TV show list management experience!
+
 
 ## Screenshots & Demo
 
