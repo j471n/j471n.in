@@ -83,7 +83,7 @@ export type Utilities = {
   data: UtilityType[];
 };
 
-export type   FrontMatter = {
+export type FrontMatter = {
   slug: string;
   readingTime: ReadTimeResults;
   excerpt: string;
@@ -91,7 +91,7 @@ export type   FrontMatter = {
   date: string;
   keywords: string;
   image: string;
-  org? : string | null
+  org?: string | null;
 };
 
 export type PostType = {
@@ -102,6 +102,7 @@ export type PostType = {
 
 export type TableOfContents = {
   level: number;
+  id: string;
   heading: string;
 };
 

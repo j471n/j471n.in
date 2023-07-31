@@ -1,4 +1,4 @@
-export default function Codepen({
+export default function CodeSandbox({
   id,
   hideNavigation = true,
 }: {

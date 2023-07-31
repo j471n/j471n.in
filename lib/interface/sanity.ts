@@ -1,5 +1,6 @@
 import { ReadTimeResults } from "reading-time";
 import { SanityDocument } from "@sanity/types";
+import { TableOfContents as TableOfContentsType } from "@lib/types";
 
 export interface ISanityImage {
   asset: {
@@ -30,10 +31,7 @@ export interface BlogPost extends SanityDocument {
   };
   content?: any;
   readingTime: ReadTimeResults;
-  tableOfContents: {
-    level: number;
-    heading: string;
-  }[];
+  tableOfContents: TableOfContentsType[];
 }
 
 export interface ISnippet extends SanityDocument {

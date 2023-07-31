@@ -175,13 +175,29 @@ export function getTableOfContents(markdown: string) {
   const headingArray = markdown.match(regXHeader)
     ? markdown.match(regXHeader)
     : [];
+
+  const headingCounts = new Map<string, number>();
+
   return headingArray?.map((heading) => {
+    const cleanHeading = heading.replace(/#{2,6}/, "").trim();
+    let suffix = "";
+
+    if (headingCounts.has(cleanHeading)) {
+      const count = headingCounts.get(cleanHeading)! + 1;
+      headingCounts.set(cleanHeading, count);
+      suffix = `-${count}`;
+    } else {
+      headingCounts.set(cleanHeading, 0);
+    }
+
     return {
-      level: heading.split("#").length - 1 - 2, // we starts from the 2nd heading that's why we subtract 2 and 1 is extra heading text
+      level: heading.split("#").length - 1 - 2,
+      id: cleanHeading + suffix,
       heading: heading.replace(/#{2,6}/, "").trim(),
     };
   });
 }
+
 export async function getMarkdownSource(content: string) {
   const source = await serialize(content, {
     mdxOptions: {
