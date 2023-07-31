@@ -170,5 +170,6 @@ export async function getStaticProps() {
       movies,
       linkedin,
     },
+    revalidate: 60 * 60 * 24 , // everyday
   };
 }
