@@ -1,16 +1,17 @@
-import Codepen from "./Codepen";
-import Figcaption from "./Figcaption";
-import Warning from "./Warning";
-import Danger from "./Danger";
+import Code from "./Code";
+import CodeSandbox from "./CodeSandbox";
 import CodeTitle from "./CodeTitle";
-import Tip from "./Tip";
+import Codepen from "./Codepen";
+import Danger from "./Danger";
+import EmbedBlog from "./EmbedBlog";
+import Figcaption from "./Figcaption";
+import NextAndPreviousButton from "./NextAndPreviousButton";
 import Pre from "./Pre";
 import Step from "./Step";
-import CodeSandbox from "./CodeSandbox";
-import NextAndPreviousButton from "./NextAndPreviousButton";
+import Tip from "./Tip";
+import UrlMetaInfo from "./UrlMetaInfo";
+import Warning from "./Warning";
 import YouTube from "./YouTube";
-import EmbedBlog from "./EmbedBlog";
-import Code from "./Code";
 
 const MDXComponents = {
   Codepen,
@@ -24,6 +25,7 @@ const MDXComponents = {
   NextAndPreviousButton,
   YouTube,
   EmbedBlog,
+  UrlMetaInfo,
   pre: Pre,
   code: Code,
 };
