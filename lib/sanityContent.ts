@@ -1,3 +1,5 @@
+import { BlogPost, ISnippet } from "./interface/sanity";
+
 import groq from "groq";
 import matter from "gray-matter";
 import readTime from "reading-time";
@@ -25,7 +27,7 @@ const prettyCodeOptions = {
   },
 };
 
-export async function getAllPostsMeta(limit?: number) {
+export async function getAllPostsMeta(limit?: number): Promise<BlogPost[]> {
   const query = groq`*[_type == "post"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""
   } {
@@ -49,7 +51,7 @@ export async function getAllPostsMeta(limit?: number) {
   return res;
 }
 
-export async function getAllSnippetsMeta(limit?: number) {
+export async function getAllSnippetsMeta(limit?: number): Promise<ISnippet[]> {
   const query = groq`*[_type == "snippet"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""
   } {
@@ -65,7 +67,11 @@ export async function getAllSnippetsMeta(limit?: number) {
   return res;
 }
 
-export async function getAllSlugs({ type }: { type: "post" | "snippet" }) {
+export async function getAllSlugs({
+  type,
+}: {
+  type: "post" | "snippet";
+}): Promise<string[]> {
   const query = groq`*[_type == "${type}"] | order(publishedAt desc) {
     slug {
       current

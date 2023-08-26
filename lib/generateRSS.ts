@@ -1,10 +1,10 @@
-import { writeFileSync } from "fs";
-import MDXContent from "./MDXContent";
 import RSS from "rss";
+import { getAllPostsMeta } from "./sanityContent";
+import { writeFileSync } from "fs";
 
 export default async function getRSS() {
   const siteURL = "https://j471n.in";
-  const allBlogs = new MDXContent("posts").getAllPosts();
+  const allBlogs = await getAllPostsMeta();
 
   // Create a new RSS object
   const feed = new RSS({
@@ -22,9 +22,9 @@ export default async function getRSS() {
   // Add all blog posts to the RSS feed
   allBlogs?.map((post) => {
     feed.item({
-      title: post!.title,
-      url: `${siteURL}/blogs/${post?.slug}`,
-      date: post!.date,
+      title: post.title,
+      url: `${siteURL}/blogs/${post.slug.current}`,
+      date: post.publishedAt,
       description: post!.excerpt,
     });
   });
