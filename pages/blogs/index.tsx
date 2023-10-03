@@ -94,14 +94,14 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
                   </motion.h3>
 
                   <div className="flex items-center gap-2">
-                    <Link href="/blogs/bookmark" legacyBehavior>
+                    {/* <Link href="/blogs/bookmark" legacyBehavior>
                       <motion.div variants={popUp}>
                         <BsBookmark
                           title="Bookmark"
                           className="text-2xl cursor-pointer"
                         />
                       </motion.div>
-                    </Link>
+                    </Link> */}
 
                     <Link href="/rss" legacyBehavior>
                       <motion.div variants={popUp}>
