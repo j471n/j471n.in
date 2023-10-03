@@ -42,29 +42,12 @@ export async function fetchTMDBData(): Promise<ITMDBData[]> {
       ]);
 
     // Combine the results from the APIs
-    const combinedData = [...recentRatedMovies, ...recentRatedTvShows];
+    const combinedData = [
+      ...recentRatedMovies.slice(0, 3),
+      ...recentRatedTvShows.slice(0, 3),
+    ];
 
-    // Sort the combined data based on release date for movies and first air date for TV shows
-    combinedData.sort((a, b) => {
-      if ("release_date" in a && "release_date" in b) {
-        return (
-          new Date(b?.release_date as string).getTime() -
-          new Date(a?.release_date as string).getTime()
-        );
-      } else if ("first_air_date" in a && "first_air_date" in b) {
-        return (
-          new Date(b?.first_air_date as string).getTime() -
-          new Date(a?.first_air_date as string).getTime()
-        );
-      } else {
-        return 0;
-      }
-    });
-
-    // Store only 5 elements in the array
-    const sortedAndLimitedData = combinedData.slice(0, 5);
-
-    return [...watchingData.reverse(), ...sortedAndLimitedData];
+    return [...watchingData.reverse(), ...combinedData];
   } catch (error) {
     console.error(error);
     throw error;
