@@ -11,7 +11,6 @@ import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { BiRss } from "react-icons/bi";
 import Blog from "@components/Blog";
 import { BlogPost } from "@lib/interface/sanity";
-import { BsBookmark } from "react-icons/bs";
 import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
 import Metadata from "@components/MetaData";
@@ -19,6 +18,8 @@ import PageTop from "@components/PageTop";
 import { debounce } from "@utils/functions";
 import { getAllPostsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
+
+// import { BsBookmark } from "react-icons/bs";
 
 export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
