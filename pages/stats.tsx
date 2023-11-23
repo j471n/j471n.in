@@ -137,15 +137,18 @@ export default function Stats() {
             variants={opacityVariant}
             className="mt-4 text-gray-700 dark:text-gray-300"
           >
-            <span className="font-semibold">
+            <span>
               {topTracks ? (
-                topTracks[0].title
+                <>
+                  <span className="font-semibold">{topTracks?.[0]?.title}</span>
+                  {" is the"}
+                </>
               ) : (
                 <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
               )}
             </span>{" "}
-            is the most streamed song of mine in last 4 weeks. Here's my top
-            tracks on Spotify updated daily.
+            most streamed song of mine in last 4 weeks. Here's my top tracks on
+            Spotify updated daily.
           </AnimatedText>
           <div className="flex flex-col gap-0 my-10 font-barlow">
             {topTracks ? (
@@ -178,10 +181,13 @@ export default function Stats() {
             variants={opacityVariant}
             className="mt-4 text-gray-700 dark:text-gray-300"
           >
-            My most listened Artist is{" "}
-            <span className="font-semibold">
+            My most listened Artist
+            <span>
               {artists ? (
-                artists[0].name
+                <>
+                  {" is "}
+                  <span className="font-semibold">{artists?.[0]?.name}</span>
+                </>
               ) : (
                 <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
               )}
@@ -191,16 +197,20 @@ export default function Stats() {
 
           <div className="flex flex-col gap-0 my-10 font-barlow">
             {artists ? (
-              artists?.map((artist: SpotifyArtist, index: number) => (
-                <Artist
-                  key={index}
-                  id={index}
-                  name={artist.name!}
-                  url={artist.url}
-                  coverImage={artist.coverImage.url}
-                  popularity={artist.popularity!}
-                />
-              ))
+              artists?.length === 0 ? (
+                <div className="text-sm">Not Enough Data to Show</div>
+              ) : (
+                artists?.map((artist: SpotifyArtist, index: number) => (
+                  <Artist
+                    key={index}
+                    id={index}
+                    name={artist.name!}
+                    url={artist.url}
+                    coverImage={artist.coverImage.url}
+                    popularity={artist.popularity!}
+                  />
+                ))
+              )
             ) : (
               <LoadingArtists />
             )}
