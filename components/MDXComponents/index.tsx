@@ -5,6 +5,7 @@ import Codepen from "./Codepen";
 import Danger from "./Danger";
 import EmbedBlog from "./EmbedBlog";
 import Figcaption from "./Figcaption";
+import LinkedInEmbed from "./LinkedInEmbed";
 import NextAndPreviousButton from "./NextAndPreviousButton";
 import Pre from "./Pre";
 import Step from "./Step";
@@ -26,6 +27,7 @@ const MDXComponents = {
   YouTube,
   EmbedBlog,
   UrlMetaInfo,
+  LinkedInEmbed,
   pre: Pre,
   code: Code,
 };
