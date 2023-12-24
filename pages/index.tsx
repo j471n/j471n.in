@@ -73,7 +73,15 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
                   variants={opacityVariant}
                   className="font-medium text-xs md:text-sm lg:text-lg text-[#383838] dark:text-gray-200"
                 >
-                  React Developer, Competitive Programmer
+                  Software Developer{" "}
+                  <Link
+                    href="https://www.linkedin.com/company/konnectnxt/"
+                    target="_blank"
+                    className="hover:underline"
+                    rel="noopener noreferrer"
+                  >
+                    @KonnectNXT
+                  </Link>
                 </motion.p>
               </div>
 
@@ -81,8 +89,7 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
                 variants={opacityVariant}
                 className=" text-[#474747] dark:text-gray-300 font-medium text-sm md:text-base text-center"
               >
-                I am currently pursuing my Bachelor Degree in Computer Science.
-                I can code in Python, C, C++, etc.
+                Turning Web Dreams into Reality, Just Like Tony Stark's Vision
               </motion.p>
             </div>
 
