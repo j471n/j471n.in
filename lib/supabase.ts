@@ -123,3 +123,22 @@ export async function getUserDataValue(key: string) {
     error: error !== null,
   };
 }
+
+export async function setUserDataValue(key: string, value1: any) {
+  const { data, error } = await supabase
+    .from("user_data")
+    .update({ value: value1 })
+    .eq("key", key)
+    .select();
+
+  if (data?.length === 0) {
+    return {
+      data: null,
+      error: null,
+    };
+  }
+  return {
+    data: data![0].value,
+    error: error !== null,
+  };
+}

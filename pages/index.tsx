@@ -13,6 +13,7 @@ import BlogsSection from "@components/Home/BlogsSection";
 import Contact from "@components/Contact";
 import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
+import InstagramSection from "@components/Instagram/InstagramSection";
 import Link from "next/link";
 import Metadata from "@components/MetaData";
 import React from "react";
@@ -108,6 +109,7 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
         <div>
           <SkillSection />
           <BlogsSection blogs={blogs} />
+          <InstagramSection />
           <Contact />
         </div>
       </div>
@@ -118,7 +120,7 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
 export function HomeHeading({ title }: { title: React.ReactNode | string }) {
   return (
     <AnimatedHeading
-      className="w-full my-2 text-3xl font-bold text-left font-inter"
+      className="w-full my-2 text-2xl sm:text-3xl font-bold text-left font-inter"
       variants={headingFromLeft}
     >
       {title}

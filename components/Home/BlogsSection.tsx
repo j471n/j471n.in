@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
   return (
     <section className="mx-5 mb-5">
-      <HomeHeading title="Recent Posts" />
+      <HomeHeading title="Recent Articles" />
 
       <div className="grid grid-cols-1 gap-4 mx-auto">
         {blogs.map((blog, index) => {
@@ -17,7 +17,7 @@ export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
           href="/blogs"
           className="flex items-center justify-center gap-1 font-medium transition border-transparent font-inter active:scale-95 active:border-black w-fit group md:ml-7"
         >
-          Read all posts
+          Read all articles
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
