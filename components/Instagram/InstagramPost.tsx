@@ -1,7 +1,6 @@
 import { DetailedInstagramPost, MediaType } from "@lib/interface";
 
 import { FaPlay } from "react-icons/fa";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { TbBoxMultiple } from "react-icons/tb";
@@ -40,7 +39,7 @@ export default function InstagramPost({
         </div>
       )}
 
-      <Image
+      <img
         src={previewURL}
         width={300}
         height={300}
