@@ -26,6 +26,7 @@ module.exports = withPWA({
       "m.media-amazon.com", // for imdb images
       "cdn.sanity.io", // sanity images
       "image.tmdb.org", // tmdb images
+      "scontent.cdninstagram.com", // instagram media
     ],
   },
   typescript: {
