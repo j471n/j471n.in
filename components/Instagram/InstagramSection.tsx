@@ -1,6 +1,7 @@
 import { HomeHeading } from "pages";
 import { InstagramData } from "@lib/interface";
 import InstagramPost from "./InstagramPost";
+import InstagramPostLoading from "./InstagramPostLoading";
 import Link from "next/link";
 import React from "react";
 import fetcher from "@lib/fetcher";
@@ -12,16 +13,19 @@ export default function InstagramSection() {
     "/api/posts/insta",
     fetcher
   );
-  console.log("instaData: ", instaData);
   return (
     <section className="mx-5 mb-5">
       <HomeHeading title="Recent Instagram Posts" />
 
       <div className="grid grid-cols-1 gap-4 mx-auto mt-5">
         <div className="grid grid-cols-3 gap-0.5">
-          {instaData?.data.slice(0, 9).map((post) => {
-            return <InstagramPost key={post.id} post={post} />;
-          })}
+          {instaData === undefined ? (
+            <InstagramPostLoading count={9} />
+          ) : (
+            instaData?.data.slice(0, 9).map((post) => {
+              return <InstagramPost key={post.id} post={post} />;
+            })
+          )}
         </div>
 
         <Link
