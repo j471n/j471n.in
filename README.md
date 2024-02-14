@@ -65,80 +65,110 @@ After that server should be running on [localhost:3000](http://localhost:3000)
 
 Rename [`.env.example`](/.env.example) to `.env.local` and then you need to populate that with the respective values.
 
+### Email Service Integration
+
 - `NEXT_PUBLIC_YOUR_SERVICE_ID`: Go to the [Admin Panel](https://dashboard.emailjs.com/admin) of [emailjs.com](https://emailjs.com). If you haven't already added a service then Click on the **Add Service** Button as shown in the image
+
   ![](https://i.imgur.com/bK5wzkD.png)
+
   Then choose any method you want I am using **Gmail**
+
   ![](https://i.imgur.com/zTrFCNJ.png)
+
   - Then first click on the **Connect Account and log** in with your Gmail account that you want to use to get the emails from.
   - In the second step click on **Create Service** and then copy the **Service ID** and add this ID to `NEXT_PUBLIC_YOUR_SERVICE_ID` in `.env.local`
+
     ![](https://i.imgur.com/c8ZkUf5.png)
+
 - `NEXT_PUBLIC_YOUR_TEMPLATE_ID`: To get the Template ID visit the [Email Templates](https://dashboard.emailjs.com/admin/templates) section and click on **Create New Template**.
+
   ![](https://i.imgur.com/TQLrQuz.png)
+
   And then you will see a window where you can edit your email template after you are satisfied with your template then click on the Save button in the top right corner.
+
   ![](https://i.imgur.com/98adqhN.png)
+
   After that you will have your Template ID as shown in the image below:
+
   ![](https://i.imgur.com/pcqKu3f.png)
+
 - `NEXT_PUBLIC_YOUR_USER_ID`: To get your User ID, Go to [Account](https://dashboard.emailjs.com/admin/account) and then you will be able to see it:
+
   ![](https://i.imgur.com/oU3tBiY.png)
+
+### dev\.to Integration
+
 - `NEXT_PUBLIC_BLOGS_API`: I am using [Dev.to API](https://developers.forem.com/api) to fetch all the blog stats. You can get this API at the bottom of the [Extensions](https://dev.to/settings/extensions) section.
   ![](https://i.imgur.com/zh7V0ZB.png)
+
+### Google Analytics
+
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID`: You can follow this [guide](https://support.google.com/analytics/answer/9539598?hl=en) to get your Google Analytics ID and then you will be able to use Google Analytics in this project.
-- **Spotify Integration:** I have used [Spotify API](https://developer.spotify.com/documentation/web-api/). So, you need three Environment Variable values-
-  - `SPOTIFY_CLIENT_ID`
-  - `SPOTIFY_CLIENT_SECRET`
-  - `SPOTIFY_REFRESH_TOKEN`
-    You need to follow this [blog](https://j471n.in/blogs/spotify-api-nextjs) to get these variables' values.
+
 - [**Google Analytics Data API**](https://developers.google.com/analytics/devguides/reporting/data/v1): I am using this API to get the analytics of this website so that I can show how many user visit this site in the last 7 days. In this you will need the value of the following properties:
   - `GA_PROPERTY_ID`
   - `GA_CLIENT_EMAIL`
   - `GA_PRIVATE_KEY`
     I have written a [blog](https://j471n.in/blogs/google-analytics-data-api) that shows how you can get these properties and guides to use them.
-- [**Supabase Integration**](https://supabase.com/): I am using Supabase with ISR to store all my projects and certificates for now. It provides an API that helps you to access the data. To access that data you need two things:
 
-  - `SUPABASE_URL`: Database URL.
-  - `SUPABASE_KEY`: It is safe to be used in a browser context.
+### Spotify Integration
 
-  **Steps-**
+I have used [Spotify API](https://developer.spotify.com/documentation/web-api/). So, you need three Environment Variable values-
 
-  - To get these go to [Supabase](https://app.supabase.com/sign-in) and log in with your account.
+- `SPOTIFY_CLIENT_ID`
+- `SPOTIFY_CLIENT_SECRET`
+- `SPOTIFY_REFRESH_TOKEN`
 
-  - Click on **New Project** and fill all the fields.
+You need to follow this [blog](https://j471n.in/blogs/spotify-api-nextjs) to get these variables' values.
 
-  - Click on **Create New Project**.
+### Supabase Integration
 
-  - Go to the [Settings](https://app.supabase.com/project/_/settings/general) page in the Dashboard.
+I am using [Supabase](https://supabase.com/) with ISR to store all my projects and certificates for now. It provides an API that helps you to access the data. To access that data you need two things:
 
-  - Click **API** in the sidebar.
+- `SUPABASE_URL`: Database URL.
+- `SUPABASE_KEY`: It is safe to be used in a browser context.
 
-  - Find your API **URL** and **anon** key on this page.
+**Steps-**
 
-  - Now you can [Create table](https://app.supabase.com/project/_/editor) and start using it.
+- To get these go to [Supabase](https://app.supabase.com/sign-in) and log in with your account.
 
-    But before you use this there was one issue I had when I was using this it was returning the empty array ([]). It was because of project policies. By default, no-one has access to the data. To fix that you can do the following:
+- Click on **New Project** and fill all the fields.
 
-  - Go to [Policies](https://app.supabase.com/project/_/auth/policies).
+- Click on **Create New Project**.
 
-  - Select your Project.
+- Go to the [Settings](https://app.supabase.com/project/_/settings/general) page in the Dashboard.
 
-  - Click on **New Policy**.
+- Click **API** in the sidebar.
 
-    ![](https://i.imgur.com/RsGd8oW.png)
+- Find your API **URL** and **anon** key on this page.
 
-  - You will be presented with two options. You can choose either one. I chose the 1st option:
+- Now you can [Create table](https://app.supabase.com/project/_/editor) and start using it.
 
-    ![](https://i.imgur.com/QDAePUQ.png)
+  But before you use this there was one issue I had when I was using this it was returning the empty array ([]). It was because of project policies. By default, no-one has access to the data. To fix that you can do the following:
 
-  - After that, you will have four options as shown in the following image. You can choose according to your need. I only need the read access so I went with 1st option.
+- Go to [Policies](https://app.supabase.com/project/_/auth/policies).
 
-    ![](https://i.imgur.com/h1hSivF.png)
+- Select your Project.
 
-  - Click on **Use this template**.
+- Click on **New Policy**.
 
-  - Click on **Review**.
+  ![](https://i.imgur.com/RsGd8oW.png)
 
-  - Click on **Save Policy**
+- You will be presented with two options. You can choose either one. I chose the 1st option:
 
-    After that, you will be able to access the data using [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js). Install it and you just set up your project with Supabase.
+  ![](https://i.imgur.com/QDAePUQ.png)
+
+- After that, you will have four options as shown in the following image. You can choose according to your need. I only need the read access so I went with 1st option.
+
+  ![](https://i.imgur.com/h1hSivF.png)
+
+- Click on **Use this template**.
+
+- Click on **Review**.
+
+- Click on **Save Policy**
+
+  After that, you will be able to access the data using [@supabase/supabase-js](https://www.npmjs.com/package/@supabase/supabase-js). Install it and you just set up your project with Supabase.
 
 - `REVALIDATE_SECRET`: As I am using [Supabase](https://supabase.com/), It has a feature called [webhooks](https://supabase.com/docs/guides/database/webhooks) which allow you to send real-time data from your database to another system whenever a table event occurs. So I am using it to revalidate my `projects` and `certificates` page. For that I am providing a custom secret value to verify that request is coming from authenticated source. Let's create webhook:
 
@@ -167,72 +197,84 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
   - Now add this secret to your `env.local` and it will update the page when you made some changes to your supabase database.
   - `pages/api/revalidate.ts` is using `revalidateUrl` to update the page with new data.
 
-- `GITHUB_TOKEN`: Follow these steps to generate a GitHub token that I am using fetch my GitHub details:
+### GitHub Integration
 
-  **Step 1: Accessing GitHub Developer Settings**
+To get `GITHUB_TOKEN` Follow these steps to generate a GitHub token that I am using fetch my GitHub details:
 
-  - Log in to your GitHub account.
-  - Click on your profile picture in the top-right corner of the page.
-  - From the drop-down menu, select Settings.
+**Step 1: Accessing GitHub Developer Settings**
 
-  ![](https://i.imgur.com/h7jtNeH.png)
+- Log in to your GitHub account.
+- Click on your profile picture in the top-right corner of the page.
+- From the drop-down menu, select Settings.
 
-  **Step 2: Navigating to Developer Settings**
+![](https://i.imgur.com/h7jtNeH.png)
 
-  In the left sidebar, scroll down and click on Developer settings.
+**Step 2: Navigating to Developer Settings**
 
-  ![](https://i.imgur.com/JHFdEhP.png)
+In the left sidebar, scroll down and click on Developer settings.
 
-  **Step 3: Creating a New Personal Access Token**
+![](https://i.imgur.com/JHFdEhP.png)
 
-  - In the Developer settings page, click on Personal access tokens and then Click on Tokens (Classic).
+**Step 3: Creating a New Personal Access Token**
 
-    ![](https://i.imgur.com/f2eY9vB.png)
+- In the Developer settings page, click on Personal access tokens and then Click on Tokens (Classic).
 
-  - Next, click on the Generate new token button.
+  ![](https://i.imgur.com/f2eY9vB.png)
 
-    ![](https://i.imgur.com/V7gBKQh.png)
+- Next, click on the Generate new token button.
 
-  - After selecting the necessary permissions, click on the Generate token button at the bottom of the page.
-  - GitHub will generate a new token for you. Make sure to copy the token value.
-  - **Important**: Treat this token like a password and keep it secure. Do not share it publicly or commit it to a version control repository.
-- `EMAIL_VALIDATION_API`: You can follow the following steps to get the `API_KEY` to validate the email address for the newsletter:
-  - You need to have an account on [RapidAPI](https://rapidapi.com/).
-  - If you have an account then you can just [subscribe](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/pricing) the free version of [E-mail Check Invalid or Disposable Domain](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/). Which will give you the 1000 request/month. 
+  ![](https://i.imgur.com/V7gBKQh.png)
 
-    ![Rapid API-1](https://imgur.com/OMFF69O.png)
+- After selecting the necessary permissions, click on the Generate token button at the bottom of the page.
+- GitHub will generate a new token for you. Make sure to copy the token value.
+- **Important**: Treat this token like a password and keep it secure. Do not share it publicly or commit it to a version control repository.
 
-  - Then you'll get the `API_KEY`, which you can store in your `.env.local`.
+### Email Validation Integration
 
-    ![Rapid API-2](https://imgur.com/REdKVsX.png)
-- `SANITY_PROJECT_ID`: 
-  - Go to the [Sanity.io]((https://www.sanity.io/) ) website using your web browser.
+To get `EMAIL_VALIDATION_API` follow the following steps to get the `API_KEY` to validate the email address for the newsletter:
+
+- You need to have an account on [RapidAPI](https://rapidapi.com/).
+- If you have an account then you can just [subscribe](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/pricing) the free version of [E-mail Check Invalid or Disposable Domain](https://rapidapi.com/Top-Rated/api/e-mail-check-invalid-or-disposable-domain/). Which will give you the 1000 request/month.
+
+  ![Rapid API-1](https://imgur.com/OMFF69O.png)
+
+- Then you'll get the `API_KEY`, which you can store in your `.env.local`.
+
+  ![Rapid API-2](https://imgur.com/REdKVsX.png)
+
+### Sanity Integration
+
+- `SANITY_PROJECT_ID`:
+
+  - Go to the [Sanity.io](<(https://www.sanity.io/)>) website using your web browser.
   - Login with you account/Create a new account.
   - After logging in, you'll be redirected to the Sanity.io dashboard.
   - If you have an existing project, you'll see it listed on the dashboard. Click on the project's name to access it.
   - Once you're inside the project, look at the browser's address bar. The URL should look something like this: `https://www.sanity.io/manage/project/your-project-id`
   - The your-project-id in the URL is your Sanity project ID. It's a unique identifier for your specific project.
-  
+
   That's it! You've now obtained your Sanity project ID, which you can use for interacting with your Sanity project via its API or other integrations.
+
+### TMDB Integration
 
 - `TMDB_ACCOUNT_ID` and `TMDB_ACCESS_TOKEN`: To enable seamless integration of movie and TV show data, we will use the TMDB API, which offers comprehensive information about media content. The following steps will guide you:
 
   **1. Overview of TMDB Integration**
-  
+
   Previously, movie and TV show data were manually stored using Supabase, requiring tedious manual work. To streamline the process and automatically update ratings, we have switched to TMDB (The Movie Database).
 
   **2. Creating or Logging into Your TMDB Account**
-  
+
   If you already have a TMDB account, log in with your existing credentials. Otherwise, visit TMDB's website and create a new account.
 
   **3. Generating API Key**
-  
+
   After logging in, navigate to the API section in your account settings. Here, you can generate a new API key to access TMDB's data and services.
 
   ![generate api key](https://i.imgur.com/y0wA21L.png)
 
   **Completing the API Key Request Form**
-  
+
   Fill in all the required details in the API key request form, and make sure to accept the terms and conditions.
 
   ![complete api key request form](https://i.imgur.com/FZ1RdPf.png)
@@ -244,29 +286,78 @@ Rename [`.env.example`](/.env.example) to `.env.local` and then you need to popu
   ![API Key and Access Token](https://i.imgur.com/Q6LI6EF.png)
 
   **Finding Your TMDB Account ID**
-  
+
   To get the `TMDB_ACCOUNT_ID`, log in to the TMDB system and visit the developer website. There, you will find your account ID associated with your account.
 
   ![Finding Your TMDB Account ID](https://i.imgur.com/AdEPtb9.png)
 
   With the `TMDB_ACCOUNT_ID` and `TMDB_ACCESS_TOKEN` acquired from the steps above, you can now seamlessly access and update movie and TV show data through TMDB's API, automating the process and making it significantly more efficient. Enjoy your improved movie and TV show list management experience!
 
+## Supabase Database Schema
 
-## Screenshots & Demo
+### Table: certificates
 
-![](https://imgur.com/VEGYXfy.png)
+| Column Name   | Data Type                   | Constraints                                       |
+| ------------- | --------------------------- | ------------------------------------------------- |
+| `id`          | UUID                        | NOT NULL, PRIMARY KEY, DEFAULT uuid_generate_v4() |
+| `title`       | TEXT                        | NOT NULL                                          |
+| `issued_date` | DATE                        | -                                                 |
+| `org_name`    | TEXT                        | -                                                 |
+| `org_logo`    | TEXT                        | -                                                 |
+| `url`         | TEXT                        | -                                                 |
+| `pinned`      | BOOLEAN                     | -                                                 |
+| `created_at`  | TIMESTAMP WITHOUT TIME ZONE | NOT NULL, DEFAULT now()                           |
 
-![](https://imgur.com/ohnSGok.png)
+### Table: movies
 
-![](https://imgur.com/nMgwzYq.png)
+| Column Name  | Data Type                | Constraints                                             |
+| ------------ | ------------------------ | ------------------------------------------------------- |
+| `id`         | BIGINT                   | GENERATED BY DEFAULT AS IDENTITY, NOT NULL, PRIMARY KEY |
+| `created_at` | TIMESTAMP WITH TIME ZONE | NOT NULL, DEFAULT (now() AT TIME ZONE 'utc'::text)      |
+| `name`       | TEXT                     | -                                                       |
+| `image`      | TEXT                     | -                                                       |
+| `url`        | TEXT                     | -                                                       |
+| `year`       | INTEGER                  | -                                                       |
+| `watched`    | BOOLEAN                  | DEFAULT true                                            |
+| `rating`     | SMALLINT                 | -                                                       |
 
-![](https://imgur.com/zKKR07K.png)
+### Table: projects
 
-![](https://imgur.com/H0a1jQn.png)
+| Column Name   | Data Type                   | Constraints                                       |
+| ------------- | --------------------------- | ------------------------------------------------- |
+| `id`          | UUID                        | NOT NULL, PRIMARY KEY, DEFAULT uuid_generate_v4() |
+| `created_at`  | TIMESTAMP WITHOUT TIME ZONE | -                                                 |
+| `name`        | TEXT                        | -                                                 |
+| `description` | TEXT                        | -                                                 |
+| `githubURL`   | TEXT                        | -                                                 |
+| `previewURL`  | TEXT                        | -                                                 |
+| `tools`       | TEXT[]                      | -                                                 |
+| `pinned`      | BOOLEAN                     | DEFAULT false                                     |
+| `coverImage`  | TEXT                        | -                                                 |
 
-![](https://imgur.com/hnztqEv.png)
+### Table: views
 
-![](https://imgur.com/ZgeSzHz.png)
+| Column Name | Data Type | Constraints           |
+| ----------- | --------- | --------------------- |
+| `slug`      | TEXT      | NOT NULL, PRIMARY KEY |
+| `views`     | BIGINT    | -                     |
+
+### Table: user_data
+
+| Column Name  | Data Type                | Constraints                                      |
+| ------------ | ------------------------ | ------------------------------------------------ |
+| `id`         | UUID                     | NOT NULL, PRIMARY KEY, DEFAULT gen_random_uuid() |
+| `key`        | TEXT                     | -                                                |
+| `value`      | TEXT                     | -                                                |
+| `created_at` | TIMESTAMP WITH TIME ZONE | DEFAULT now()                                    |
+
+This table is unique because it accommodates various types of miscellaneous data. I'm sharing the current keys in my database, which are utilized in my project. This will guide you on the types of data you need to add to avoid errors during implementation."
+
+| Keys                   | Sample Data                              |
+| ---------------------- | ---------------------------------------- |
+| `linkedin`             | [Sample JSON](https://traff.co/K6wi1Q3p) |
+| `instagram_user_token` | [Sample TEXT](https://traff.co/mgFnU8vN) |
+| `devto_stats`          | [Sample JSON](https://traff.co/Ff99Gv2h) |
 
 ## Documentation
 
