@@ -13,7 +13,7 @@ import BlogsSection from "@components/Home/BlogsSection";
 import Contact from "@components/Contact";
 import { FiDownload } from "react-icons/fi";
 import Image from "next/image";
-import InstagramSection from "@components/Instagram/InstagramSection";
+// import InstagramSection from "@components/Instagram/InstagramSection";
 import Link from "next/link";
 import Metadata from "@components/MetaData";
 import React from "react";
@@ -109,7 +109,7 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
         <div>
           <SkillSection />
           <BlogsSection blogs={blogs} />
-          <InstagramSection />
+          {/* <InstagramSection /> */}
           <Contact />
         </div>
       </div>
