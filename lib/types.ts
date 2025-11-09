@@ -48,6 +48,8 @@ export type ProjectType = {
 export type SkillType = {
   name: string;
   Icon: IconType;
+  level?: number; // Proficiency level 1-100
+  category?: string; // Frontend, Backend, Database, etc.
 };
 
 export type CertificateType = {
