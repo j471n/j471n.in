@@ -37,16 +37,6 @@ const cardVariants = {
   },
 };
 
-// Skill categories configuration
-const SKILL_CATEGORIES = [
-  { key: "Frontend", label: "Frontend" },
-  { key: "Backend", label: "Backend" },
-  { key: "Database", label: "Database" },
-  { key: "Tools", label: "Tools" },
-] as const;
-
-type SkillCategory = (typeof SKILL_CATEGORIES)[number]["key"];
-
 export default function SkillSection() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -64,16 +54,6 @@ export default function SkillSection() {
       ? skills
       : skills.filter((skill) => skill.category === selectedCategory);
   }, [selectedCategory]);
-
-  // Memoize category counts
-  const categoryCounts = useMemo(() => {
-    return SKILL_CATEGORIES.reduce((acc, category) => {
-      acc[category.key] = skills.filter(
-        (s) => s.category === category.key
-      ).length;
-      return acc;
-    }, {} as Record<SkillCategory, number>);
-  }, []);
 
   return (
     <section className="mx-5 mb-10">
