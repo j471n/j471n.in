@@ -19,7 +19,13 @@ const FALLBACK_COVER = "https://imgur.com/5dYYce8.png";
 const STAR_PATH =
   "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z";
 
-function Stars({ rating, size = "w-3 h-3" }: { rating: number; size?: string }) {
+function Stars({
+  rating,
+  size = "w-3 h-3",
+}: {
+  rating: number;
+  size?: string;
+}) {
   const filled = Math.round(rating);
   return (
     <>
@@ -106,7 +112,6 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
 
           {/* Bottom meta */}
           <div className="flex flex-col gap-1.5 mt-2">
-
             {/* Ratings row — personal stars + community avg on one line */}
             {(hasMyRating || hasCommunityRating) && (
               <div className="flex items-center gap-2 flex-wrap">
@@ -123,7 +128,9 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
                 )}
 
                 {hasMyRating && hasCommunityRating && (
-                  <span className="text-gray-300 dark:text-neutral-600 select-none">·</span>
+                  <span className="text-gray-300 dark:text-neutral-600 select-none">
+                    ·
+                  </span>
                 )}
 
                 {hasCommunityRating && (
@@ -131,11 +138,18 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
                     className="flex items-center gap-0.5 text-[11px] text-gray-400 dark:text-gray-500 tabular-nums"
                     title="Community average rating"
                   >
-                    <svg className="w-2.5 h-2.5 text-gray-400 dark:text-gray-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <svg
+                      className="w-2.5 h-2.5 text-gray-400 dark:text-gray-500"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
                       <path d={STAR_PATH} />
                     </svg>
                     <span>{book.rating!.toFixed(1)}</span>
-                    <span className="text-[10px] ml-0.5 text-gray-400 dark:text-gray-600">avg</span>
+                    <span className="text-[10px] ml-0.5 text-gray-400 dark:text-gray-600">
+                      avg
+                    </span>
                   </span>
                 )}
               </div>
@@ -147,7 +161,9 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
               {book.releaseYear != null && book.pages != null && (
                 <span className="text-gray-300 dark:text-neutral-600">·</span>
               )}
-              {book.pages != null && <span>{book.pages.toLocaleString()} pages</span>}
+              {book.pages != null && (
+                <span>{book.pages.toLocaleString()} pages</span>
+              )}
             </div>
 
             {/* Finished date */}
@@ -161,11 +177,17 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4.5 12.75l6 6 9-13.5"
+                  />
                 </svg>
                 <span>Finished</span>
                 <span className="text-gray-400 dark:text-gray-500">·</span>
-                <span className="font-medium text-gray-700 dark:text-gray-300">{finishedDate}</span>
+                <span className="font-medium text-gray-700 dark:text-gray-300">
+                  {finishedDate}
+                </span>
               </div>
             )}
           </div>
@@ -174,4 +196,3 @@ export default function BookCard({ book }: { book: HardcoverBook }) {
     </motion.div>
   );
 }
-

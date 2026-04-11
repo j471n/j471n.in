@@ -93,7 +93,7 @@ const siteConfig = {
       experienceBadge: {
         value: "3+",
         title: "Years",
-        description: "Experience",
+        description: "Industry Experience",
       },
     },
 

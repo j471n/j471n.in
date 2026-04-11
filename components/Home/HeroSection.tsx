@@ -247,10 +247,10 @@ export default function HeroSection() {
                 className="absolute -right-5 sm:-right-10 bottom-16 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
               >
                 <span className="text-3xl font-black text-gray-900 dark:text-white leading-none">
-                  10+
+                  100+
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.14em] text-gray-700 dark:text-gray-300 mt-1.5 font-bold">
-                  Projects
+                  Articles
                 </span>
               </motion.div>
             </div>
