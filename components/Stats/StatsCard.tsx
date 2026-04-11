@@ -19,7 +19,7 @@ export default function StatsCard({
   return (
     <motion.div
       variants={itemVariants}
-      className="group flex flex-col justify-center p-5 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200"
+      className="group flex flex-col justify-center p-5 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-black/20 transition-colors duration-200"
     >
       <p className="text-[10px] font-mono tracking-[0.35em] uppercase text-gray-500 dark:text-gray-500 mb-2">
         {title}

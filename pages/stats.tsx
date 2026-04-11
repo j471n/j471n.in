@@ -114,7 +114,7 @@ export default function Stats() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mb-20"
+          className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-darkSecondary mb-20"
         >
           {stats.map((stat, index) => (
             <StatsCard key={index} title={stat.title} value={stat.value} />
@@ -128,7 +128,7 @@ export default function Stats() {
             title="Contribution Graph"
             description="My GitHub contribution graph showing coding activity and productivity."
           />
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto text-black dark:text-white">
             <GitHubCalendar
               username="j471n"
               colorScheme={isDarkMode ? "dark" : "light"}

@@ -64,71 +64,74 @@ export default function TopNavbar() {
   }
 
   return (
-    <div
-      className="fixed w-full top-0 z-50 print:hidden transition-colors duration-200"
-      ref={navRef}
-    >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-14">
-        {/* Logo / name */}
-        <Link
-          href="/"
-          aria-label="Home"
-          className="flex items-center gap-2.5 flex-shrink-0"
-        >
-          <Logo className="w-7 h-7 text-black dark:text-white" />
-          <motion.span
-            initial="hidden"
-            animate={control}
-            variants={{
-              hidden: { opacity: 0, x: -6 },
-              visible: { opacity: 1, x: 0, transition: { duration: 0.2 } },
-            }}
-            className="font-sarina text-gray-900 dark:text-white text-sm hidden sm:inline"
+    <>
+      <div
+        className="fixed w-full top-0 z-50 print:hidden transition-colors duration-200"
+        ref={navRef}
+      >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-14">
+          {/* Logo / name */}
+          <Link
+            href="/"
+            aria-label="Home"
+            className="flex items-center gap-2.5 flex-shrink-0"
           >
-            Jatin Sharma
-          </motion.span>
-        </Link>
+            <Logo className="w-7 h-7 text-black dark:text-white" />
+            <motion.span
+              initial="hidden"
+              animate={control}
+              variants={{
+                hidden: { opacity: 0, x: -6 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+              }}
+              className="font-sarina text-gray-900 dark:text-white text-sm hidden sm:inline"
+            >
+              Jatin Sharma
+            </motion.span>
+          </Link>
 
-        {/* Desktop nav */}
-        <motion.nav
-          initial="hidden"
-          animate="visible"
-          variants={FadeContainer}
-          className="hidden sm:flex items-center gap-1"
-        >
-          {navigationRoutes.slice(0, 7).map((link, i) => (
-            <NavItem key={i} href={`/${link}`} text={link} />
-          ))}
-        </motion.nav>
-
-        {/* Right — dark mode + hamburger */}
-        <div className="flex items-center gap-4">
-          <motion.div
+          {/* Desktop nav */}
+          <motion.nav
             initial="hidden"
             animate="visible"
-            variants={popUp}
-            className="cursor-pointer"
-            title="Toggle Theme"
+            variants={FadeContainer}
+            className="hidden sm:flex items-center gap-1"
           >
-            <DarkModeSwitch
-              checked={isDarkMode}
-              onChange={changeDarkMode}
-              size={20}
-            />
-          </motion.div>
+            {navigationRoutes.slice(0, 7).map((link, i) => (
+              <NavItem key={i} href={`/${link}`} text={link} />
+            ))}
+          </motion.nav>
 
-          {/* Hamburger — mobile only */}
-          <HamBurger open={navOpen} handleClick={handleClick} />
+          {/* Right — dark mode + hamburger */}
+          <div className="flex items-center gap-4">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={popUp}
+              className="cursor-pointer"
+              title="Toggle Theme"
+            >
+              <DarkModeSwitch
+                checked={isDarkMode}
+                onChange={changeDarkMode}
+                size={20}
+              />
+            </motion.div>
+
+            {/* Hamburger — mobile only */}
+            <HamBurger open={navOpen} handleClick={handleClick} />
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — rendered outside navRef to avoid backdrop-filter
+          creating a new fixed containing block that clips the overlay */}
       <AnimatePresence>
         {navOpen && (
           <MobileMenu links={navigationRoutes} handleClick={handleClick} />
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 

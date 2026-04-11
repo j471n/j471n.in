@@ -45,17 +45,6 @@ export default function HeroSection() {
       {/* ── Bottom fade ── */}
       <div className="absolute bottom-0 inset-x-0 h-56 bg-gradient-to-t from-white dark:from-darkPrimary to-transparent pointer-events-none" />
 
-      {/* ── Section label ── */}
-      <div
-        className="absolute top-8 left-6 sm:left-8 lg:left-12 flex items-center gap-3 z-20 select-none pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="h-px w-5 bg-gray-300 dark:bg-gray-700" />
-        <span className="font-mono text-[9px] tracking-[0.45em] text-gray-500 dark:text-gray-500 uppercase">
-          Portfolio — 001
-        </span>
-      </div>
-
       {/* ── JS initials — gradient emboss ── */}
       <div
         className="absolute -right-4 top-1/2 -translate-y-1/2 font-black select-none pointer-events-none leading-none tracking-tighter bg-gradient-to-b from-gray-200 to-gray-50 dark:from-[#232628] dark:to-darkPrimary bg-clip-text text-transparent"
