@@ -178,10 +178,28 @@ code > .line::before {
   grid-template-rows: 1fr;
 }
 
+.blog-pre {
+  border-radius: 0;
+}
+
 .blog-pre > code {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* Dual-theme switching: show light by default, dark when body.dark is set */
+div[data-theme="dark"] {
+  display: none;
+}
+div[data-theme="light"] {
+  display: block;
+}
+.dark div[data-theme="dark"] {
+  display: block;
+}
+.dark div[data-theme="light"] {
+  display: none;
 }
 .react-activity-calendar__calendar {
   width: 100%;
@@ -311,6 +329,9 @@ code > .line::before {
   }
   .blog-container {
     @apply !w-full dark:text-neutral-400 my-5 font-medium;
+  }
+  .prose-typography {
+    @apply prose dark:prose-invert sm:prose-lg blog-container prose-pre:bg-white dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-img:mx-auto prose-img:rounded-md prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-gray-900 dark:prose-a:text-white prose-strong:text-gray-900 dark:prose-strong:text-white  prose-code:text-black dark:prose-code:text-gray-200 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400;
   }
 }
 

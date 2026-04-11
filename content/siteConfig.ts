@@ -16,7 +16,7 @@ const siteConfig = {
   person: {
     name: "Jatin Sharma",
     profileImage: homeProfileImage,
-    email: "j471n.in@gmail.com",
+    email: "work.j471n@gmail.com",
     location: "Based in India",
     availability: "Open to new projects",
   },
@@ -67,7 +67,7 @@ const siteConfig = {
     {
       title: "Mail",
       icon: "mail" as SocialIconKey,
-      url: "mailto:j471n.in@gmail.com",
+      url: "mailto:work.j471n@gmail.com",
       featured: false,
     },
   ],
