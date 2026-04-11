@@ -190,6 +190,7 @@ code > .line::before {
 .react-activity-calendar {
   max-width: 100% !important;
 }
+
 @keyframes loadingAnimation {
   0% {
     left: -100%; /* Move the bar to the left of the container */
@@ -197,6 +198,22 @@ code > .line::before {
   100% {
     left: 100%; /* Move the bar to the right of the container */
   }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }
 
 /* Layers Components or the custom class extends with tailwind */
