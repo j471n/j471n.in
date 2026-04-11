@@ -16,7 +16,7 @@ const rehypePlugins = [
     rehypePrettyCode,
     {
       theme: {
-        dark: "one-dark-pro",
+        dark: "github-dark",
         light: "github-light",
       },
       onVisitLine(node: any) {

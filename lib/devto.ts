@@ -12,10 +12,10 @@ const getPageOfFollowers = async (page: number) => {
       headers: {
         api_key: DEV_API!,
       },
-    }
+    },
   )
     .then((response) => response.json())
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
 
   return perPageFollowers.length;
 };
@@ -49,10 +49,10 @@ const getPageOfPosts = async (page: number) => {
       headers: {
         api_key: DEV_API!,
       },
-    }
+    },
   )
     .then((response) => response.json())
-    .catch((err) => console.log(err));
+    .catch((err) => console.error(err));
   return perPagePosts;
 };
 

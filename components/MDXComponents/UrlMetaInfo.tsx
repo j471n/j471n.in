@@ -24,10 +24,6 @@ function UrlMetaInfo({ url }: UrlMetaInfoProps) {
         const parser = new DOMParser();
         const htmlDoc = parser.parseFromString(data, "text/html");
         const metaTags = htmlDoc.querySelectorAll("meta");
-        console.log(
-          "🚀 ~ file: UrlMetaInfo.tsx:26 ~ metaTags:",
-          Array.from(metaTags).map((tag) => tag)
-        );
 
         const metaInfo: MetaData = {
           title: (htmlDoc.querySelector("title")?.textContent || "")

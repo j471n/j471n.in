@@ -17,8 +17,6 @@ async function hardcoverQuery<T>(
     body: JSON.stringify({ query, variables }),
   });
 
-  console.log("Hardcover API response status:", res.status);
-
   if (!res.ok) {
     throw new Error(`Hardcover API responded with status ${res.status}`);
   }

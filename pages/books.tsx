@@ -46,7 +46,6 @@ function BooksStats({
   books: HardcoverBook[];
   profile: HardcoverProfile;
 }) {
-  console.log("BooksStats render", { books, profile });
   const readCount = books.filter((b) => b.statusId === 3).length;
   const readingCount = books.filter((b) => b.statusId === 2).length;
   const wantCount = books.filter((b) => b.statusId === 1).length;
@@ -345,7 +344,6 @@ export async function getStaticProps() {
   try {
     const [books, profile] = await Promise.all([getMyBooks(), getMyProfile()]);
 
-    console.log("Fetched books and profile", { books, profile });
     return {
       props: { books, profile, error: false },
       revalidate: 86400,

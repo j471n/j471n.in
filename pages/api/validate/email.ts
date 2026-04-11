@@ -10,7 +10,7 @@ const isValidHost = (host: string) => {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const origin = req.headers.origin;
   const host = req.headers.host;
