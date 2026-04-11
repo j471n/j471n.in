@@ -122,5 +122,6 @@ export async function getStaticProps() {
   const results = await getAllPostsMeta();
   return {
     props: { blogs: results },
+    revalidate: 60,
   };
 }

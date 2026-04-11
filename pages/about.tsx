@@ -259,6 +259,6 @@ export async function getStaticProps() {
       movies,
       linkedin,
     },
-    revalidate: 60 * 60 * 24, // everyday
+    revalidate: 60 * 60 * 6, // every 6 hours (TMDB rate limit friendly)
   };
 }

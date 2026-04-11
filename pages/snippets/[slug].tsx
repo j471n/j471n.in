@@ -62,6 +62,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: false,
         snippet,
       },
+      revalidate: 60,
     };
   } else {
     return {
@@ -69,6 +70,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: true,
         snippet: null,
       },
+      revalidate: 60,
     };
   }
 }
@@ -81,6 +83,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }

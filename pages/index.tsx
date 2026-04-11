@@ -54,10 +54,19 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 export async function getStaticProps() {
   const blogs = await getAllPostsMeta(3);
 
-  await getRSS();
-  await generateSitemap();
+  // RSS and sitemap are generated at build time only.
+  // They are not regenerated on ISR revalidations because they write
+  // to the filesystem which is read-only on most hosting platforms after build.
+  if (
+    process.env.NODE_ENV === "production" &&
+    process.env.NEXT_PHASE === "phase-production-build"
+  ) {
+    await getRSS();
+    await generateSitemap();
+  }
 
   return {
     props: { blogs },
+    revalidate: 60, // revalidate every 60 s
   };
 }

@@ -18,5 +18,6 @@ export async function getStaticProps() {
     props: {
       privacyPolicy,
     },
+    revalidate: 60,
   };
 }

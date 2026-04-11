@@ -49,5 +49,6 @@ export async function getStaticProps() {
 
   return {
     props: { snippets },
+    revalidate: 60,
   };
 }
