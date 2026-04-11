@@ -24,7 +24,7 @@ export default function Project({
   return (
     <motion.div
       variants={itemVariants}
-      className={`flex border border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors group ${
+      className={`flex border border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors group ${
         featured
           ? "sm:col-span-2 lg:col-span-3 flex-col md:flex-row"
           : "flex-col"
@@ -33,7 +33,7 @@ export default function Project({
       {/* Cover image */}
       {project.coverImage && (
         <div
-          className={`relative overflow-hidden flex-shrink-0 border-gray-200 dark:border-gray-800 ${
+          className={`relative overflow-hidden flex-shrink-0 border-gray-200 dark:border-neutral-700 ${
             featured
               ? "w-full h-56 md:h-auto md:w-80 lg:w-[420px] border-b md:border-b-0 md:border-l order-first md:order-last"
               : "w-full h-40 border-b"
@@ -97,7 +97,7 @@ export default function Project({
         )}
 
         {/* Links */}
-        <div className="flex items-center gap-4 pt-2 border-t border-gray-100 dark:border-gray-800 mt-auto">
+        <div className="flex items-center gap-4 pt-2 border-t border-gray-100 dark:border-neutral-700 mt-auto">
           <Link
             href={project.githubURL}
             title="Source Code on GitHub"

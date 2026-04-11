@@ -22,12 +22,12 @@ export default function MovieCard({ movie }: { movie: ITMDBData }) {
   return (
     <motion.div
       variants={cardVariants}
-      className="group flex-shrink-0 w-[148px] flex flex-col bg-white dark:bg-darkPrimary border border-gray-200 dark:border-gray-800 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-200"
+      className="group flex-shrink-0 w-[148px] flex flex-col bg-white dark:bg-darkPrimary border border-gray-200 dark:border-neutral-700 hover:border-gray-400 dark:hover:border-gray-600 transition-colors duration-200"
     >
       {/* Poster */}
       <div className="relative w-full aspect-[2/3] overflow-hidden bg-gray-100 dark:bg-darkSecondary">
         {loading && (
-          <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+          <div className="absolute inset-0 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
         )}
         <Image
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"

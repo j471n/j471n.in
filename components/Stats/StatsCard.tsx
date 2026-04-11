@@ -26,7 +26,7 @@ export default function StatsCard({
       </p>
       <div className="text-3xl font-black text-gray-900 dark:text-white leading-none">
         {value ?? (
-          <div className="h-7 w-20 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+          <div className="h-7 w-20 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
         )}
       </div>
     </motion.div>

@@ -18,14 +18,14 @@ export default function SnippetLayout({
       {/* Page wrapper */}
       <div className="max-w-3xl mx-auto px-5 sm:px-8 xl:px-0 pb-20">
         {/* Header */}
-        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-gray-800 space-y-5">
+        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-neutral-700 space-y-5">
           {/* Language badge */}
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-2"
           >
-            <div className="flex items-center gap-2 border border-gray-200 dark:border-gray-800 px-2.5 py-1.5">
+            <div className="flex items-center gap-2 border border-gray-200 dark:border-neutral-700 px-2.5 py-1.5">
               <div className="relative w-4 h-4 flex-shrink-0">
                 <Image
                   fill

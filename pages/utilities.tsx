@@ -93,7 +93,7 @@ function UtilitySection({
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-neutral-700"
       >
         {utility.data.map((item) => {
           const Icon = item.Icon;

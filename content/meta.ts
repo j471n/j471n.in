@@ -72,6 +72,13 @@ const pageMeta: PageMeta = {
     image: "https://imgur.com/KeJgIVl.png",
     keywords: "Code, Code Snippets, Snippets",
   },
+  books: {
+    title: "Books",
+    description:
+      "Books I've read, am currently reading, or want to read. My personal bookshelf tracked on Hardcover.",
+    image: "https://imgur.com/KeJgIVl.png",
+    keywords: "books, reading, bookshelf, hardcover",
+  },
 };
 
 export default pageMeta;

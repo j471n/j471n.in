@@ -56,10 +56,10 @@ export default function QRCodeContainer({
             transition={{ type: "spring", stiffness: 340, damping: 30 }}
             className="fixed inset-0 flex items-center justify-center z-[10000] pointer-events-none"
           >
-            <div className="pointer-events-auto w-full max-w-xs bg-white dark:bg-darkPrimary border border-gray-200 dark:border-gray-800">
+            <div className="pointer-events-auto w-full max-w-xs bg-white dark:bg-darkPrimary border border-gray-200 dark:border-neutral-700">
               {/* Header */}
               <div className="h-0.5 w-full bg-gray-900 dark:bg-white" />
-              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-800">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-neutral-700">
                 <div>
                   <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-500 block leading-none mb-1">
                     Share
@@ -78,7 +78,7 @@ export default function QRCodeContainer({
               </div>
 
               {/* QR code */}
-              <div className="p-6 flex justify-center border-b border-gray-200 dark:border-gray-800">
+              <div className="p-6 flex justify-center border-b border-gray-200 dark:border-neutral-700">
                 <QRCode
                   id="QRCode"
                   value={currentURL}

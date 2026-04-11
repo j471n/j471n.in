@@ -70,7 +70,7 @@ export default function CodeTitle({ title, lang }: Props) {
   return (
     <div className="!mt-4 mb-[14px]">
       <div className="h-0.5 w-full bg-gray-900 dark:bg-white" />
-      <div className="bg-white dark:bg-darkSecondary border border-b-0 border-gray-200 dark:border-gray-800 px-4 py-2 flex items-center gap-2 font-mono overflow-x-auto">
+      <div className="bg-white dark:bg-darkSecondary border border-b-0 border-gray-200 dark:border-neutral-700 px-4 py-2 flex items-center gap-2 font-mono overflow-x-auto">
         <Icon className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
         <span className="text-[10px] tracking-[0.35em] uppercase text-gray-600 dark:text-gray-400 whitespace-nowrap">
           {title || lang}

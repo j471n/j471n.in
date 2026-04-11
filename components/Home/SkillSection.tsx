@@ -136,7 +136,7 @@ export default function SkillSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="relative my-10 overflow-hidden border-y border-gray-200 dark:border-gray-800 py-3.5"
+        className="relative my-10 overflow-hidden border-y border-gray-200 dark:border-neutral-700 py-3.5"
       >
         <div className="flex animate-marquee gap-10 w-max">
           {[...skills, ...skills].map((skill, i) => {

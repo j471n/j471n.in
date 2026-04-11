@@ -16,7 +16,7 @@ export default function SnippetCard({ snippet }: { snippet: ISnippet }) {
         className="group flex flex-col gap-3 p-5 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors h-full"
       >
         {/* Language icon */}
-        <div className="w-9 h-9 flex items-center justify-center border border-gray-200 dark:border-gray-800 group-hover:border-gray-400 dark:group-hover:border-gray-600 transition-colors flex-shrink-0">
+        <div className="w-9 h-9 flex items-center justify-center border border-gray-200 dark:border-neutral-700 group-hover:border-gray-400 dark:group-hover:border-gray-600 transition-colors flex-shrink-0">
           <Image
             src={snippet.language.image.asset.url}
             alt={snippet.language.name}

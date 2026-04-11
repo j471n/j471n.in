@@ -160,6 +160,38 @@ export type PageMeta = {
   about: PageData;
   privacy: PageData;
   snippets: PageData;
+  books: PageData;
+};
+
+export type BookStatusId = 1 | 2 | 3;
+
+export type HardcoverBook = {
+  id: number;
+  statusId: BookStatusId;
+  title: string;
+  subtitle: string | null;
+  slug: string;
+  pages: number | null;
+  releaseYear: number | null;
+  rating: number | null;
+  userRating: number | null;
+  coverUrl: string | null;
+  authors: string[];
+  updatedAt: string | null;
+  finishedAt: string | null;
+};
+
+export type HardcoverProfile = {
+  username: string;
+  name: string;
+  booksCount: number;
+  currentYearGoal: {
+    target: number;
+    progress: number;
+    metric: string;
+    state: string;
+    year: number;
+  } | null;
 };
 
 export type Snippet = {

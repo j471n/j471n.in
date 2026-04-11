@@ -8,6 +8,7 @@ export const navigationRoutes: string[] = [
   "stats",
   "utilities",
   "blogs",
+  "books",
   "certificates",
   "projects",
   "snippets",

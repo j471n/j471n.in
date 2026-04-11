@@ -43,7 +43,7 @@ const Pre = ({
         <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
       </button>
 
-      <pre className="blog-pre !my-0 !w-full !p-0 !py-3 border border-gray-200 dark:border-gray-800">
+      <pre className="blog-pre !my-0 !w-full !p-0 !py-3 border border-gray-200 dark:border-neutral-700">
         {children}
       </pre>
     </div>

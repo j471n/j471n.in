@@ -41,9 +41,9 @@ export default function Newsletter() {
 
   return (
     <>
-      <div className="not-prose my-12 border border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary print:hidden">
+      <div className="not-prose my-12 border border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary print:hidden">
         {/* Header */}
-        <div className="px-6 pt-6 pb-5 border-b border-gray-200 dark:border-gray-800">
+        <div className="px-6 pt-6 pb-5 border-b border-gray-200 dark:border-neutral-700">
           <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500 block mb-2">
             Newsletter
           </span>
@@ -64,7 +64,7 @@ export default function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
             required
-            className="flex-1 min-w-0 px-3 py-2 text-sm bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
+            className="flex-1 min-w-0 px-3 py-2 text-sm bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-neutral-700 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
           />
           <button
             type="submit"

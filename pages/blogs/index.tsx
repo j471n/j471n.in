@@ -66,7 +66,7 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
             type="text"
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search articles… (Ctrl + /)"
-            className="w-full pl-9 pr-4 py-2.5 text-sm bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
+            className="w-full pl-9 pr-4 py-2.5 text-sm bg-white dark:bg-darkSecondary border border-gray-200 dark:border-neutral-700 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
           />
         </div>
 
@@ -95,7 +95,7 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="border border-gray-200 dark:border-gray-800"
+              className="border border-gray-200 dark:border-neutral-700"
             >
               {filteredBlogs.map((blog, index) => (
                 <Blog key={blog.slug.current} blog={blog} index={index} />

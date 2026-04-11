@@ -54,10 +54,10 @@ export default function ShareOnSocialMedia({
   }
 
   const btnClass =
-    "flex items-center gap-1.5 font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors px-3 py-2 border-r border-gray-200 dark:border-gray-800 last:border-r-0";
+    "flex items-center gap-1.5 font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors px-3 py-2 border-r border-gray-200 dark:border-neutral-700 last:border-r-0";
 
   return (
-    <div className="not-prose flex flex-wrap border border-gray-200 dark:border-gray-800">
+    <div className="not-prose flex flex-wrap border border-gray-200 dark:border-neutral-700">
       <FacebookShareButton quote={title} url={url} className="contents">
         <span className={btnClass}>
           <GrFacebookOption className="w-3.5 h-3.5" />

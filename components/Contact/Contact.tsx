@@ -88,11 +88,11 @@ export default function Contact() {
           viewport={{ once: true }}
           className="flex items-center gap-4 mb-12"
         >
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
-          <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-300 dark:text-gray-700">
+          <div className="h-px flex-1 bg-gray-300 dark:bg-neutral-700" />
+          <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-700">
             Send a Message
           </span>
-          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
+          <div className="h-px flex-1 bg-gray-300 dark:bg-neutral-700" />
         </motion.div>
 
         {/* ── Two-column body ── */}
@@ -132,10 +132,10 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="h-px bg-gray-200 dark:bg-gray-800" />
+            <div className="h-px bg-gray-200 dark:bg-neutral-700" />
 
             {/* Info rows */}
-            <div className="divide-y divide-gray-100 dark:divide-gray-800">
+            <div className="divide-y divide-gray-100 dark:divide-neutral-700">
               {infoRows.map(({ label, value }, i) => (
                 <motion.div
                   key={label}
@@ -155,7 +155,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="h-px bg-gray-200 dark:bg-gray-800" />
+            <div className="h-px bg-gray-200 dark:bg-neutral-700" />
 
             {/* Decorative type */}
             <div className="pt-8 select-none" aria-hidden="true">

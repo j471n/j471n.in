@@ -34,7 +34,7 @@ export default function Blogs() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="border border-gray-200 dark:border-gray-800"
+            className="border border-gray-200 dark:border-neutral-700"
           >
             {bookmarkedBlogs.map((blog, index) => (
               <Blog key={index} blog={blog} index={index} />

@@ -27,7 +27,7 @@ export default function TopNavbar() {
         ...[
           "border-b",
           "border-gray-200",
-          "dark:border-gray-800",
+          "dark:border-neutral-700",
           "backdrop-blur-xl",
           "bg-white/80",
           "dark:bg-darkPrimary/90",
@@ -39,7 +39,7 @@ export default function TopNavbar() {
         ...[
           "border-b",
           "border-gray-200",
-          "dark:border-gray-800",
+          "dark:border-neutral-700",
           "backdrop-blur-xl",
           "bg-white/80",
           "dark:bg-darkPrimary/90",
@@ -228,7 +228,7 @@ const MobileMenu = ({
         </span>
 
         <motion.div
-          className="divide-y divide-gray-200 dark:divide-gray-800"
+          className="divide-y divide-gray-200 dark:divide-neutral-700"
           variants={hamFastFadeContainer}
           initial="hidden"
           animate="visible"

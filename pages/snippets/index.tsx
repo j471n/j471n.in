@@ -33,7 +33,7 @@ export default function Snippets({ snippets }: { snippets: ISnippet[] }) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 dark:bg-neutral-700 border border-gray-200 dark:border-neutral-700"
         >
           {snippets.map((snippet, index) => (
             <SnippetCard key={index} snippet={snippet} />

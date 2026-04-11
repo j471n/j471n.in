@@ -100,7 +100,7 @@ export default function About({
             >
               Recent Experience
             </motion.h2>
-            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800 hidden sm:block" />
+            <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-700 hidden sm:block" />
           </div>
 
           {/* Experience cards */}
@@ -109,7 +109,7 @@ export default function About({
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800"
+            className="flex flex-col gap-px bg-gray-200 dark:bg-neutral-700 border border-gray-200 dark:border-neutral-700"
           >
             {parsedLinkedIn.experiences.map((experience) => (
               <motion.div
@@ -219,7 +219,7 @@ export default function About({
             >
               Movies & TV Series
             </motion.h2>
-            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800 hidden sm:block" />
+            <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-700 hidden sm:block" />
           </div>
 
           {/* Horizontal scroll strip */}

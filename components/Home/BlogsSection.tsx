@@ -100,11 +100,11 @@ export default function BlogsSection({
         viewport={{ once: true }}
         className="flex items-center gap-4 mb-2"
       >
-        <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
-        <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-300 dark:text-gray-700">
+        <div className="h-px flex-1 bg-gray-3 00 dark:bg-neutral-700" />
+        <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-700">
           Recent Posts
         </span>
-        <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
+        <div className="h-px flex-1 bg-gray-300 dark:bg-neutral-700" />
       </motion.div>
 
       {/* ── Blog list ── */}

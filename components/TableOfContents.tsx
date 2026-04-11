@@ -63,13 +63,13 @@ export default function TableOfContents({
             exit={{ x: "-100%" }}
             style={{ zIndex: 100 }}
             transition={{ type: "spring", stiffness: 340, damping: 32 }}
-            className="fixed top-0 left-0 bottom-0 w-full sm:w-80 bg-white dark:bg-darkPrimary border-r border-gray-200 dark:border-gray-800 flex flex-col print:hidden"
+            className="fixed top-0 left-0 bottom-0 w-full sm:w-80 bg-white dark:bg-darkPrimary border-r border-gray-200 dark:border-neutral-700 flex flex-col print:hidden"
           >
             {/* Top accent bar */}
             <div className="h-0.5 w-full bg-gray-900 dark:bg-white flex-shrink-0" />
 
             {/* Drawer header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-neutral-700 flex-shrink-0">
               <div>
                 <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-500 block leading-none mb-1">
                   Navigation
@@ -88,7 +88,7 @@ export default function TableOfContents({
             </div>
 
             {/* Search */}
-            <div className="px-5 py-3 border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
+            <div className="px-5 py-3 border-b border-gray-200 dark:border-neutral-700 flex-shrink-0">
               <div className="relative">
                 <CgSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
                 <input
@@ -133,7 +133,7 @@ export default function TableOfContents({
             </nav>
 
             {/* Footer */}
-            <div className="px-5 py-3.5 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-darkSecondary flex-shrink-0 flex items-center justify-between">
+            <div className="px-5 py-3.5 border-t border-gray-200 dark:border-neutral-700 bg-gray-50 dark:bg-darkSecondary flex-shrink-0 flex items-center justify-between">
               <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-gray-400 dark:text-gray-500">
                 {filtered.length} section{filtered.length !== 1 ? "s" : ""}
               </span>

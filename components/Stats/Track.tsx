@@ -21,7 +21,7 @@ export default function Track({
       href={url}
       rel="noreferrer"
       target="_blank"
-      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
+      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
     >
       <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-5 text-right flex-shrink-0">
         {id + 1}
@@ -37,7 +37,7 @@ export default function Track({
             className="w-full h-full object-cover"
           />
         ) : (
-          <div className="w-full h-full bg-gray-200 dark:bg-gray-800 animate-pulse" />
+          <div className="w-full h-full bg-gray-200 dark:bg-neutral-700 animate-pulse" />
         )}
       </div>
       <div className="flex-1 min-w-0">

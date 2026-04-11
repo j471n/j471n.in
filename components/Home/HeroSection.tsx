@@ -98,7 +98,9 @@ export default function HeroSection() {
                 className="font-black leading-[0.9] tracking-tight"
                 style={{ fontSize: "clamp(3.2rem, 9vw, 6.5rem)" }}
               >
-                <span className="text-gray-800 dark:text-gray-200">Jatin</span>
+                <span className="text-neutral-700 dark:text-gray-200">
+                  Jatin
+                </span>
                 <br />
                 <span className="font-sarina font-normal text-gray-900 dark:text-white">
                   Sharma
@@ -118,12 +120,12 @@ export default function HeroSection() {
                   href={hero.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-800 dark:text-gray-200 font-semibold hover:underline underline-offset-4 decoration-gray-400 dark:decoration-gray-600"
+                  className="text-neutral-700 dark:text-gray-200 font-semibold hover:underline underline-offset-4 decoration-gray-400 dark:decoration-gray-600"
                 >
                   {hero.companyName}
                 </Link>
               </p>
-              <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800 hidden sm:block" />
+              <div className="h-px flex-1 bg-gray-200 dark:bg-neutral-700 hidden sm:block" />
             </motion.div>
 
             {/* Bio — left accent border */}
@@ -144,7 +146,7 @@ export default function HeroSection() {
                 href={hero.primaryCta.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-sm overflow-hidden transition-colors duration-300 hover:bg-gray-800 dark:hover:bg-gray-100 active:scale-95"
+                className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold text-sm overflow-hidden transition-colors duration-300 hover:bg-neutral-700 dark:hover:bg-gray-100 active:scale-95"
               >
                 <FiDownload className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 duration-200 relative z-10" />
                 <span className="relative z-10">{hero.primaryCta.label}</span>
@@ -226,7 +228,7 @@ export default function HeroSection() {
               {/* Floating card — years */}
               <motion.div
                 variants={popUp}
-                className="absolute -left-5 sm:-left-10 top-10 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-gray-800 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
+                className="absolute -left-5 sm:-left-10 top-10 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
               >
                 <span className="text-3xl font-black text-gray-900 dark:text-white leading-none">
                   {hero.experienceBadge.value}
@@ -242,7 +244,7 @@ export default function HeroSection() {
               {/* Floating card — projects */}
               <motion.div
                 variants={popUp}
-                className="absolute -right-5 sm:-right-10 bottom-16 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-gray-800 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
+                className="absolute -right-5 sm:-right-10 bottom-16 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
               >
                 <span className="text-3xl font-black text-gray-900 dark:text-white leading-none">
                   10+

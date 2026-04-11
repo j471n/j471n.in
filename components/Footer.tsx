@@ -24,7 +24,7 @@ export default function Footer({
   const moreLinks = navigationRoutes.slice(5);
 
   return (
-    <footer className="w-screen font-inter print:hidden border-t border-gray-200 dark:border-gray-800 mt-20 relative overflow-hidden">
+    <footer className="w-screen font-inter print:hidden border-t border-gray-200 dark:border-neutral-700 mt-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
         {/* ── Top: Brand + Now Playing ── */}
         <div className="grid lg:grid-cols-2 gap-10 mb-10">
@@ -45,7 +45,7 @@ export default function Footer({
               <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-500">
                 Visitors
               </span>
-              <div className="h-px w-6 bg-gray-200 dark:bg-gray-800" />
+              <div className="h-px w-6 bg-gray-200 dark:bg-neutral-700" />
               <div className="flex items-center gap-2">
                 <span className="relative flex h-2 w-2 flex-shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
@@ -77,7 +77,7 @@ export default function Footer({
         </div>
 
         {/* ── Divider ── */}
-        <div className="h-px bg-gray-200 dark:bg-gray-800 mb-10" />
+        <div className="h-px bg-gray-200 dark:bg-neutral-700 mb-10" />
 
         {/* ── Links grid ── */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-x-12 gap-y-8 mb-10">
@@ -91,7 +91,7 @@ export default function Footer({
             <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-500 mb-3 block">
               Navigation
             </span>
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+            <div className="divide-y divide-gray-200 dark:divide-neutral-700">
               {navLinks.map((text, i) => (
                 <FooterLink
                   key={i}
@@ -113,7 +113,7 @@ export default function Footer({
             <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-500 mb-3 block">
               More
             </span>
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+            <div className="divide-y divide-gray-200 dark:divide-neutral-700">
               {moreLinks.map((route, i) => (
                 <FooterLink
                   key={i}
@@ -135,7 +135,7 @@ export default function Footer({
             <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-500 dark:text-gray-500 mb-3 block">
               Connect
             </span>
-            <div className="divide-y divide-gray-200 dark:divide-gray-800">
+            <div className="divide-y divide-gray-200 dark:divide-neutral-700">
               {socialMedia.slice(0, 5).map((platform, i) => (
                 <FooterLink
                   key={i}
@@ -149,7 +149,7 @@ export default function Footer({
         </div>
 
         {/* ── Bottom bar ── */}
-        <div className="h-px bg-gray-200 dark:bg-gray-800 mb-8" />
+        <div className="h-px bg-gray-200 dark:bg-neutral-700 mb-8" />
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -169,7 +169,7 @@ export default function Footer({
                 href="https://nextjs.org"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="text-neutral-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Next.js
               </Link>{" "}
@@ -178,7 +178,7 @@ export default function Footer({
                 href="https://vercel.com"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-800 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                className="text-neutral-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Vercel
               </Link>

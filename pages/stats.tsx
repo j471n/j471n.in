@@ -161,7 +161,7 @@ export default function Stats() {
               </>
             }
           />
-          <div className="flex flex-col border border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col border border-gray-200 dark:border-neutral-700">
             {topTracks ? (
               topTracks.map((track: SpotifyTrack, index: number) => (
                 <Track
@@ -200,7 +200,7 @@ export default function Stats() {
               </>
             }
           />
-          <div className="flex flex-col border border-gray-200 dark:border-gray-800">
+          <div className="flex flex-col border border-gray-200 dark:border-neutral-700">
             {artists ? (
               artists.length === 0 ? (
                 <p className="p-6 text-sm font-mono text-gray-500 dark:text-gray-500">
@@ -234,15 +234,15 @@ export default function Stats() {
 //       {Array.from({ length: 10 }, (_, i) => (
 //         <div
 //           key={i}
-//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary"
+//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary"
 //         >
 //           <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-6 text-right flex-shrink-0">
 //             {i + 1}
 //           </span>
-//           <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 animate-pulse flex-shrink-0" />
+//           <div className="w-10 h-10 bg-gray-200 dark:bg-neutral-700 animate-pulse flex-shrink-0" />
 //           <div className="flex flex-col gap-1.5 flex-1">
-//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-gray-800 animate-pulse" />
-//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
+//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
 //           </div>
 //         </div>
 //       ))}
@@ -256,15 +256,15 @@ export default function Stats() {
 //       {Array.from({ length: 5 }, (_, i) => (
 //         <div
 //           key={i}
-//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary"
+//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary"
 //         >
 //           <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-6 text-right flex-shrink-0">
 //             {i + 1}
 //           </span>
-//           <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-800 animate-pulse flex-shrink-0" />
+//           <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-neutral-700 animate-pulse flex-shrink-0" />
 //           <div className="flex flex-col gap-1.5 flex-1">
-//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-gray-800 animate-pulse" />
-//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
+//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-neutral-700 animate-pulse" />
 //           </div>
 //         </div>
 //       ))}

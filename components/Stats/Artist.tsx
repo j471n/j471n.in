@@ -21,7 +21,7 @@ export default function Artist({
       rel="noreferrer"
       target="_blank"
       href={url}
-      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
+      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-neutral-700 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
     >
       <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-5 text-right flex-shrink-0">
         {id + 1}

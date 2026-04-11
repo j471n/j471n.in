@@ -49,10 +49,10 @@ export default function StatsSection() {
               key={stat.label}
               variants={itemVariants}
               whileHover={{ y: -8 }}
-              className="relative p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkSecondary border-2 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 group overflow-hidden"
+              className="relative p-6 sm:p-8 rounded-2xl bg-white dark:bg-darkSecondary border-2 border-gray-100 dark:border-neutral-700 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 group overflow-hidden"
             >
               {/* Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-neutral-700 dark:to-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
               {/* Content */}
               <div className="relative z-10 text-center space-y-3">

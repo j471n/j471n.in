@@ -29,7 +29,7 @@ export default function Blog({
       initial={animate ? "hidden" : false}
       whileInView={animate ? "visible" : undefined}
       viewport={{ once: true }}
-      className="group relative border-b border-gray-100 dark:border-gray-800 last:border-0"
+      className="group relative border-b border-gray-300 dark:border-neutral-700 last:border-0"
     >
       {/* Left accent bar */}
       <div className="absolute left-0 inset-y-0 w-0.5 bg-gray-900 dark:bg-white origin-center scale-y-0 group-hover:scale-y-100 transition-transform duration-200 rounded-sm" />
@@ -72,13 +72,13 @@ export default function Blog({
             </span>
             {blog.organization && (
               <>
-                <span className="text-gray-200 dark:text-gray-800">·</span>
+                <span className="text-gray-200 dark:text-neutral-700">·</span>
                 <span className="text-[11px] font-mono text-gray-400 dark:text-gray-600">
                   {blog.organization.name}
                 </span>
               </>
             )}
-            <span className="text-gray-200 dark:text-gray-800">·</span>
+            <span className="text-gray-200 dark:text-neutral-700">·</span>
             <span className="text-[11px] font-mono text-gray-400 dark:text-gray-600">
               {getFormattedDate(new Date(blog.publishedAt))}
             </span>
@@ -86,7 +86,7 @@ export default function Blog({
         </div>
 
         {/* Thumbnail — grayscale at rest, color on hover */}
-        {/* <div className="relative w-20 h-16 sm:w-28 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100 dark:border-gray-800 shadow-sm">
+        {/* <div className="relative w-20 h-16 sm:w-28 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100 dark:border-neutral-700 shadow-sm">
           <Image
             title={blog.title}
             alt={blog.title}

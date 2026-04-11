@@ -22,7 +22,7 @@ export default function BlogLayout({
       {/* Page wrapper */}
       <div className="max-w-3xl mx-auto px-5 sm:px-8 xl:px-0 pb-20">
         {/* Article header */}
-        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-gray-800 space-y-6">
+        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-neutral-700 space-y-6">
           {/* Tags / org badge */}
           {post.organization && (
             <motion.div
@@ -30,7 +30,7 @@ export default function BlogLayout({
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center gap-2"
             >
-              <div className="flex items-center gap-2 border border-gray-200 dark:border-gray-800 px-2.5 py-1">
+              <div className="flex items-center gap-2 border border-gray-200 dark:border-neutral-700 px-2.5 py-1">
                 <div className="relative w-4 h-4 overflow-hidden">
                   <Image
                     fill

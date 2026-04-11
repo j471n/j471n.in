@@ -53,13 +53,13 @@ export default function Certificates({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="flex flex-col border border-gray-200 dark:border-gray-800"
+          className="flex flex-col border border-gray-200 dark:border-neutral-700"
         >
           {certificates.map((cer) => (
             <motion.div
               key={cer.id}
               variants={itemVariants}
-              className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 last:border-b-0 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors"
+              className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-neutral-700 last:border-b-0 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors"
             >
               {/* Org logo */}
               <div className="flex-shrink-0 w-10 h-10 border border-gray-200 dark:border-gray-700 flex items-center justify-center bg-white dark:bg-darkSecondary">
