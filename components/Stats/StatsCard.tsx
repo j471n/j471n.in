@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { popUp } from "../../content/FramerMotionVariants";
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 160, damping: 22 },
+  },
+};
 
 export default function StatsCard({
   title,
@@ -10,17 +18,17 @@ export default function StatsCard({
 }) {
   return (
     <motion.div
-      className="flex-col justify-center py-4 origin-center transform bg-white border border-transparent rounded-md shadow select-none px-7 dark:bg-darkSecondary dark:shadow-md hover:border-gray-400 dark:hover:border-neutral-600 group"
-      variants={popUp}
+      variants={itemVariants}
+      className="group flex flex-col justify-center p-5 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200"
     >
-      <h1 className="my-2 text-3xl font-bold text-gray-600 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white">
-        {value ?? (
-          <div className="h-8 bg-gray-300 rounded-sm w-28 dark:bg-neutral-700 animate-pulse" />
-        )}
-      </h1>
-      <p className="text-base font-medium text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white">
+      <p className="text-[10px] font-mono tracking-[0.35em] uppercase text-gray-500 dark:text-gray-500 mb-2">
         {title}
       </p>
+      <div className="text-3xl font-black text-gray-900 dark:text-white leading-none">
+        {value ?? (
+          <div className="h-7 w-20 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+        )}
+      </div>
     </motion.div>
   );
 }

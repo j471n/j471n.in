@@ -21,37 +21,33 @@ export default function Track({
       href={url}
       rel="noreferrer"
       target="_blank"
-      className=" hover:bg-white hover:dark:bg-darkSecondary border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden relative xs:pl-16 md:!pl-20 "
+      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
     >
-      <>
-        <div className="absolute hidden text-xl tracking-wider text-gray-500 origin-center transform left-4 md:left-6 font-inter xs:inline-flex">
-          #{id + 1}
-        </div>
-
-        <div className="relative w-12 h-12 origin-center transform">
-          {coverImage ? (
-            <Image
-              src={coverImage}
-              width={50}
-              height={50}
-              alt={title}
-              quality={50}
-            ></Image>
-          ) : (
-            <div className="w-full h-full bg-white animate-pulse"></div>
-          )}
-        </div>
-        <div>
-          <p className="text-base font-semibold text-gray-900 origin-left transform md:text-xl dark:text-white font-barlow">
-            {title ?? <div className="w-full h-4 bg-white animate-pulse"></div>}
-          </p>
-          <p className="text-xs text-gray-500 origin-left transform sm:text-sm md:text-base line-clamp-1">
-            {artist ?? (
-              <div className="w-full h-4 bg-white animate-pulse"></div>
-            )}
-          </p>
-        </div>
-      </>
+      <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-5 text-right flex-shrink-0">
+        {id + 1}
+      </span>
+      <div className="flex-shrink-0 w-10 h-10 overflow-hidden border border-gray-200 dark:border-gray-700">
+        {coverImage ? (
+          <Image
+            src={coverImage}
+            width={40}
+            height={40}
+            alt={title}
+            quality={60}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200 dark:bg-gray-800 animate-pulse" />
+        )}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-semibold text-gray-900 dark:text-white truncate group-hover:text-gray-900 dark:group-hover:text-white">
+          {title}
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-500 truncate mt-0.5">
+          {artist}
+        </p>
+      </div>
     </Link>
   );
 }

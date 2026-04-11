@@ -1,19 +1,11 @@
-import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
-import { useEffect, useState } from "react";
-
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { BlogPost } from "@lib/interface/sanity";
 import { FiPrinter } from "react-icons/fi";
 import Image from "next/image";
 import Link from "next/link";
-import Newsletter from "@components/Newsletter";
 import ScrollProgressBar from "@components/ScrollProgressBar";
-import ShareOnSocialMedia from "../components/ShareOnSocialMedia";
 import TableOfContents from "@components/TableOfContents";
 import { getFormattedDate } from "@utils/date";
-import { opacityVariant } from "@content/FramerMotionVariants";
-import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
-import useWindowLocation from "@hooks/useWindowLocation";
+import { motion } from "framer-motion";
 
 export default function BlogLayout({
   post,
@@ -22,141 +14,114 @@ export default function BlogLayout({
   post: BlogPost;
   children: JSX.Element | string;
 }) {
-  const { currentURL } = useWindowLocation();
-  const [isTOCActive, setIsTOCActive] = useState(false);
-  const [alreadyBookmarked, setAlreadyBookmarked] = useState(false);
-
-  const { isAlreadyBookmarked, removeFromBookmark } = useBookmarkBlogs(
-    "blogs",
-    []
-  );
-
-  useEffect(() => {
-    setAlreadyBookmarked(isAlreadyBookmarked(post.slug.current));
-  }, [isAlreadyBookmarked, post.slug]);
-
   return (
-    <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
-      {/* TOC */}
-      <TableOfContents
-        isTOCActive={isTOCActive}
-        setIsTOCActive={setIsTOCActive}
-        tableOfContents={post.tableOfContents}
-      />
+    <div className="relative mt-[44px] md:mt-[60px]">
+      <ScrollProgressBar />
+      <TableOfContents tableOfContents={post.tableOfContents} />
 
-      {/* Blog Content */}
-      <section
-        className="p-5 sm:pt-10 relative font-barlow prose dark:prose-invert md:ml-[35%] lg:ml-[30%] print:!mx-auto"
-        style={{
-          maxWidth: "800px",
-          opacity: `${isTOCActive} && "0.3"`,
-          margin: `${post.tableOfContents.length <= 0} && "auto"`,
-        }}
-      >
-        <ScrollProgressBar />
-        <h1 className="text-3xl  font-bold tracking-tight text-black md:text-5xl dark:text-white">
-          {post.title}
-        </h1>
+      {/* Page wrapper */}
+      <div className="max-w-3xl mx-auto px-5 sm:px-8 xl:px-0 pb-20">
+        {/* Article header */}
+        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-gray-800 space-y-6">
+          {/* Tags / org badge */}
+          {post.organization && (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2"
+            >
+              <div className="flex items-center gap-2 border border-gray-200 dark:border-gray-800 px-2.5 py-1">
+                <div className="relative w-4 h-4 overflow-hidden">
+                  <Image
+                    fill
+                    alt={post.organization.name}
+                    src={post.organization.image.asset.url}
+                    className="object-contain"
+                  />
+                </div>
+                <Link
+                  href={post.organization.website}
+                  className="font-mono text-[10px] tracking-[0.35em] uppercase text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  {post.organization.name}
+                </Link>
+              </div>
+            </motion.div>
+          )}
 
-        <div className="flex items-start !w-full text-gray-700 dark:text-gray-300">
-          <div className="flex items-center gap-2 flex-wrap w-full justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-[40px]">
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.04 }}
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight"
+          >
+            {post.title}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed border-l-2 border-gray-300 dark:border-gray-700 pl-4"
+          >
+            {post.excerpt}
+          </motion.p>
+
+          {/* Meta */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.16 }}
+            className="flex flex-wrap items-center justify-between gap-4"
+          >
+            {/* Author */}
+            <div className="flex items-center gap-3">
+              <div className="relative w-8 h-8 rounded-full overflow-hidden flex-shrink-0 border border-gray-200 dark:border-gray-700">
                 <Image
-                  height={933}
-                  width={933}
-                  alt={
-                    post.organization
-                      ? post.organization.name
-                      : post.author.name
-                  }
-                  src={
-                    post.organization
-                      ? post.organization.image.asset.url
-                      : post.author.image.asset.url
-                  }
-                  className="rounded-full !m-0"
+                  fill
+                  alt={post.author.name}
+                  src={post.author.image.asset.url}
+                  className="object-cover"
                 />
               </div>
-              <div className="flex flex-col">
-                <div className="flex items-center text-sm gap-1">
-                  <Link
-                    href="/about"
-                    className="text-sm font-medium hover:underline"
-                  >
-                    {post.author.name}
-                  </Link>
-                  {post.organization && (
-                    <span>
-                      for{" "}
-                      <Link
-                        href={post.organization.website}
-                        className="font-medium hover:underline"
-                      >
-                        {post.organization.name}
-                      </Link>
-                    </span>
-                  )}
-                </div>
+              <div>
+                <Link
+                  href="/about"
+                  className="text-sm font-semibold text-gray-900 dark:text-white hover:underline"
+                >
+                  {post.author.name}
+                </Link>
+                <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">
+                  {getFormattedDate(new Date(post.publishedAt))}
+                </p>
               </div>
             </div>
-            <div className="flex items-center gap-1">
-              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {getFormattedDate(new Date(post.publishedAt))}
-              </div>
-              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {post.readingTime.text}
-              </div>
-              <div className="py-1 px-2 text-xs rounded-md bg-white text-black dark:bg-darkSecondary dark:text-gray-400">
-                {post.readingTime.words} words
-              </div>
-            </div>
-          </div>
 
-          <div className="ml-4 sm:place-self-center">
-            <button
-              title="Save for Later"
-              className="transition active:scale-75 mt-2 sm:mt-1"
-              onClick={() => {
-                alreadyBookmarked ? removeFromBookmark(post.slug.current) : "";
-                // : addToBookmark(post.meta);
-              }}
-            >
-              {alreadyBookmarked ? (
-                <BsBookmarkFill className="w-6 h-6 " />
-              ) : (
-                <BsBookmark className="w-6 h-6 " />
-              )}
-            </button>
-          </div>
-        </div>
-        <AnimatedDiv
-          variants={opacityVariant}
-          className="max-w-full prose-sm blog-container sm:prose-base prose-pre:bg-white prose-img:mx-auto prose-img:rounded-md dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-h4:mb-6 prose-no-margin:!m-0"
-        >
-          {children}
-        </AnimatedDiv>
-        <Newsletter />
-        <div className="flex flex-col items-center w-full gap-4 my-10 print:hidden">
-          <h3
-            style={{ margin: "0" }}
-            className="text-xl font-semibold dark:text-white"
-          >
-            Share on Social Media:
-          </h3>
-          <ShareOnSocialMedia
-            className="flex flex-wrap items-center gap-2 w-fit"
-            title={post.title}
-            url={currentURL}
-            summary={post.excerpt}
-            cover_image={post.mainImage.asset.url}
-          >
-            <div className="p-2 text-white bg-gray-700 rounded-full cursor-pointer">
-              <FiPrinter className="w-4 h-4" onClick={() => window.print()} />
+            {/* Reading stats + print */}
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">
+                {post.readingTime.text}
+              </span>
+              <span className="text-gray-300 dark:text-gray-700">·</span>
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">
+                {post.readingTime.words} words
+              </span>
+              <button
+                title="Print"
+                onClick={() => window.print()}
+                className="ml-1 w-7 h-7 flex items-center justify-center border border-gray-200 dark:border-gray-700 text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-500 transition-colors print:hidden"
+              >
+                <FiPrinter className="w-3 h-3" />
+              </button>
             </div>
-          </ShareOnSocialMedia>
+          </motion.div>
+        </header>
+
+        {/* MDX body */}
+        <div className="mt-10 max-w-full font-barlow prose dark:prose-invert sm:prose-lg blog-container prose-pre:bg-white dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-img:mx-auto prose-img:rounded-md prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-gray-900 dark:prose-a:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-code:text-gray-800 dark:prose-code:text-gray-200 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400">
+          {children}
         </div>
-      </section>
-    </section>
+      </div>
+    </div>
   );
 }

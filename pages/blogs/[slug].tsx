@@ -6,7 +6,7 @@ import { GetStaticPropsContext } from "next";
 import MDXComponents from "@components/MDXComponents";
 import { MDXRemote } from "next-mdx-remote";
 import Metadata from "@components/MetaData";
-import PageNotFound from "pages/404";
+import PageNotFound from "@components/PageNotFound";
 import { useEffect } from "react";
 
 export default function Post({
@@ -72,6 +72,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: false,
         post,
       },
+      revalidate: 60,
     };
   } else {
     return {
@@ -79,6 +80,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: true,
         post: null,
       },
+      revalidate: 60,
     };
   }
 }
@@ -91,6 +93,6 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 }

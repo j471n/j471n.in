@@ -15,16 +15,15 @@ import { toast } from "react-toastify";
 import useShare from "../hooks/useShare";
 
 type Props = {
-  className: string;
+  className?: string;
   title: string;
   url: string;
   summary: string;
   cover_image: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export default function ShareOnSocialMedia({
-  className,
   title,
   url,
   summary,
@@ -38,87 +37,79 @@ export default function ShareOnSocialMedia({
     const file = new File([blob], "image.png", { type: "image/png" });
     if (window.navigator.share) {
       window.navigator
-        .share({
-          title: title,
-          text: summary,
-          url: url,
-          files: [file],
-        })
-        .then(() => {
-          console.log("Thanks for sharing!");
-        })
+        .share({ title, text: summary, url, files: [file] })
         .catch(console.error);
     }
   }
 
-  // copy to clipboard functions
   function copyTextToClipboard(text: string) {
     if (!navigator.clipboard) {
-      toast.error(
-        "Sorry, Your device doesn't supports This feature. Please Change your device ✌️ "
-      );
+      toast.error("Clipboard not supported on this device.");
       return;
     }
     navigator.clipboard.writeText(text).then(
-      function () {
-        toast.success("Link Copied Successfully 🙌");
-      },
-      function (err) {
-        console.error(err);
-        toast.success(
-          "Something Went wrong I don't know what 🤔 use other methods"
-        );
-      }
+      () => toast.success("Link copied!"),
+      () => toast.error("Failed to copy link."),
     );
   }
 
+  const btnClass =
+    "flex items-center gap-1.5 font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors px-3 py-2 border-r border-gray-200 dark:border-gray-800 last:border-r-0";
+
   return (
-    <>
-      <div className={`${className} transform sm:scale-150 my-5`}>
-        <FacebookShareButton quote={title} url={url}>
-          <div className="p-2 text-white bg-gray-700 rounded-full">
-            <GrFacebookOption className="w-4 h-4" />
-          </div>
-        </FacebookShareButton>
-        <TwitterShareButton title={title} url={url} related={["@j471n_"]}>
-          <div className="p-2 text-white bg-gray-700 rounded-full">
-            <GrTwitter className="w-4 h-4" />
-          </div>
-        </TwitterShareButton>
-        <LinkedinShareButton
-          title={title}
-          summary={summary}
-          url={url}
-          source={url}
-        >
-          <div className="p-2 text-white bg-gray-700 rounded-full">
-            <FiLinkedin className="w-4 h-4 " />
-          </div>
-        </LinkedinShareButton>
-        <WhatsappShareButton title={title} url={url}>
-          <div className="bg-gray-700 text-white p-1.5 rounded-full">
-            <FaWhatsapp className="w-5 h-5 " />
-          </div>
-        </WhatsappShareButton>
-        <div className="p-2 text-white bg-gray-700 rounded-full cursor-pointer">
-          <FiCopy
-            className="w-4 h-4 "
-            onClick={() => copyTextToClipboard(url)}
-          />
-        </div>
+    <div className="not-prose flex flex-wrap border border-gray-200 dark:border-gray-800">
+      <FacebookShareButton quote={title} url={url} className="contents">
+        <span className={btnClass}>
+          <GrFacebookOption className="w-3.5 h-3.5" />
+          Facebook
+        </span>
+      </FacebookShareButton>
 
-        {/* children of components */}
-        {children}
+      <TwitterShareButton
+        title={title}
+        url={url}
+        related={["@j471n_"]}
+        className="contents"
+      >
+        <span className={btnClass}>
+          <GrTwitter className="w-3.5 h-3.5" />
+          Twitter
+        </span>
+      </TwitterShareButton>
 
-        {isShareSupported && (
-          <div
-            className="p-2 text-white bg-gray-700 rounded-full cursor-pointer"
-            onClick={handleShare}
-          >
-            <BsThreeDots className="w-4 h-4" />
-          </div>
-        )}
-      </div>
-    </>
+      <LinkedinShareButton
+        title={title}
+        summary={summary}
+        url={url}
+        source={url}
+        className="contents"
+      >
+        <span className={btnClass}>
+          <FiLinkedin className="w-3.5 h-3.5" />
+          LinkedIn
+        </span>
+      </LinkedinShareButton>
+
+      <WhatsappShareButton title={title} url={url} className="contents">
+        <span className={btnClass}>
+          <FaWhatsapp className="w-3.5 h-3.5" />
+          WhatsApp
+        </span>
+      </WhatsappShareButton>
+
+      <button onClick={() => copyTextToClipboard(url)} className={btnClass}>
+        <FiCopy className="w-3.5 h-3.5" />
+        Copy link
+      </button>
+
+      {isShareSupported && (
+        <button onClick={handleShare} className={btnClass}>
+          <BsThreeDots className="w-3.5 h-3.5" />
+          More
+        </button>
+      )}
+
+      {children}
+    </div>
   );
 }

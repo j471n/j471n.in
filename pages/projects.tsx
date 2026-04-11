@@ -1,13 +1,17 @@
 import React from "react";
 import Project from "@components/Project";
 import Metadata from "@components/MetaData";
-import PageTop from "@components/PageTop";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import { FadeContainer } from "@content/FramerMotionVariants";
+import PageHeader from "@components/PageHeader";
 import pageMeta from "@content/meta";
 import { getProjects } from "@lib/supabase";
 import { ProjectType } from "@lib/types";
 import CreateAnIssue from "@components/CreateAnIssue";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
 
 export default function Projects({
   projects,
@@ -18,6 +22,10 @@ export default function Projects({
 }) {
   if (error) return <CreateAnIssue />;
 
+  const visible = projects.filter(
+    (p) => !(p.name === "" && p.githubURL === ""),
+  );
+
   return (
     <>
       <Metadata
@@ -26,26 +34,30 @@ export default function Projects({
         previewImage={pageMeta.projects.image}
         keywords={pageMeta.projects.keywords}
       />
-      <section className="pageTop">
-        <PageTop pageTitle="Projects">
-          I've been making various types of projects some of them were basics
-          and some of them were complicated. So far I've made{" "}
-          <span className="font-bold text-gray-600 dark:text-gray-200">
-            {projects.length}+
-          </span>{" "}
-          projects.
-        </PageTop>
 
-        <AnimatedDiv
-          variants={FadeContainer}
-          className="grid grid-cols-1 gap-4 mx-auto md:ml-[20%] xl:ml-[24%]"
+      <PageHeader
+        watermark="work"
+        eyebrow="Projects — 001"
+        title="Projects"
+        description={`I've built various projects ranging from simple experiments to complex applications. ${visible.length}+ projects and counting.`}
+        className="pb-24"
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          {projects.map((project) => {
-            if (project.name === "" && project.githubURL === "") return null;
-            return <Project key={project.id} project={project} />;
-          })}
-        </AnimatedDiv>
-      </section>
+          {visible.map((project, index) => (
+            <Project
+              key={project.id}
+              project={project}
+              featured={index === 0}
+            />
+          ))}
+        </motion.div>
+      </PageHeader>
     </>
   );
 }
@@ -57,5 +69,6 @@ export async function getStaticProps() {
       projects,
       error,
     },
+    revalidate: 60,
   };
 }

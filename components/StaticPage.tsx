@@ -1,11 +1,9 @@
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { IStaticPage } from "@lib/interface/sanity";
 import MDXComponents from "@components/MDXComponents";
 import { MDXRemote } from "next-mdx-remote";
 import MetaData from "@components/MetaData";
 import { PageData } from "@lib/types";
-import PageTop from "@components/PageTop";
-import { opacityVariant } from "@content/FramerMotionVariants";
+import PageHeader from "@components/PageHeader";
 
 export default function StaticPage({
   metadata,
@@ -25,14 +23,16 @@ export default function StaticPage({
         keywords={metadata.keywords}
       />
 
-      <section className="pageTop">
-        <PageTop containerClass="mb-0" pageTitle={page.title}>
-          {showDescription && (metadata.description || page.excerpt)}
-        </PageTop>
-        <AnimatedDiv
-          variants={opacityVariant}
-          className="max-w-full prose dark:prose-invert"
-        >
+      <PageHeader
+        watermark={page.title.toLowerCase()}
+        eyebrow={page.title}
+        title={page.title}
+        description={
+          showDescription ? metadata.description || page.excerpt : page.excerpt
+        }
+        className="pb-16"
+      >
+        <div className="max-w-max font-barlow prose dark:prose-invert prose-sm sm:prose-base blog-container prose-pre:bg-white dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-gray-900 dark:prose-a:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-code:text-gray-900 dark:prose-code:text-gray-100 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400">
           <MDXRemote
             {...page.content}
             frontmatter={{
@@ -45,8 +45,8 @@ export default function StaticPage({
             }}
             components={MDXComponents}
           />
-        </AnimatedDiv>
-      </section>
+        </div>
+      </PageHeader>
     </>
   );
 }

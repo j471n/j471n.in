@@ -1,47 +1,39 @@
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  FadeContainer,
-  popUp,
-  popUpFromBottomForText,
-  searchBarSlideAnimation,
-} from "@content/FramerMotionVariants";
 import React, { useEffect, useRef, useState } from "react";
 
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { BiRss } from "react-icons/bi";
 import Blog from "@components/Blog";
 import { BlogPost } from "@lib/interface/sanity";
 import { CgSearch } from "react-icons/cg";
 import Link from "next/link";
 import Metadata from "@components/MetaData";
-import PageTop from "@components/PageTop";
+import PageHeader from "@components/PageHeader";
 import { debounce } from "@utils/functions";
 import { getAllPostsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
 
-// import { BsBookmark } from "react-icons/bs";
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04 } },
+};
 
 export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
   const [filteredBlogs, setFilteredBlogs] = useState([...blogs]);
+  const [query, setQuery] = useState("");
   const searchRef = useRef<HTMLInputElement>(null!);
 
-  /**
-   * Handles search functionality with debounce.
-   */
   const handleSearch = debounce((value: string) => {
+    setQuery(value);
     setFilteredBlogs(
       blogs.filter((post: BlogPost) =>
-        post.title.toLowerCase().includes(value.trim().toLowerCase())
-      )
+        post.title.toLowerCase().includes(value.trim().toLowerCase()),
+      ),
     );
   }, 300);
 
-  /**
-   * Handles automatic search functionality when a specific keyboard shortcut is pressed.
-   */
-  function handleAutoSearch(e: any) {
+  function handleAutoSearch(e: KeyboardEvent) {
     if (e.code === "Slash" && e.ctrlKey) {
-      searchRef.current.focus();
+      searchRef.current?.focus();
     }
   }
 
@@ -59,79 +51,69 @@ export default function Blogs({ blogs }: { blogs: BlogPost[] }) {
         keywords={pageMeta.blogs.keywords}
       />
 
-      <section className="pageTop flex flex-col gap-2">
-        <PageTop pageTitle="Blogs">
-          I've been writing online since 2021, mostly about web development and
-          tech careers. In total, I've written {blogs.length} articles till now.
-        </PageTop>
-
-        <AnimatedDiv
-          className="relative group w-0 mx-auto text-slate-400 dark:text-gray-300 bg-white dark:bg-darkSecondary rounded-md"
-          variants={searchBarSlideAnimation}
-        >
-          <CgSearch className="ml-3 w-5 h-5 absolute top-[50%] -translate-y-1/2 z-10" />
+      <PageHeader
+        watermark="blog"
+        eyebrow="Writing — 001"
+        title="Blog"
+        description={`Writing about web development and tech since 2021. ${blogs.length} articles published.`}
+        className="pb-24"
+      >
+        {/* Search bar */}
+        <div className="relative mb-8 max-w-xl">
+          <CgSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-600 pointer-events-none" />
           <input
             ref={searchRef}
-            className="px-12  py-3 w-full  outline-none transition duration-200 bg-transparent font-medium font-inter lg:flex items-center text-sm leading-6 text-slate-400 rounded-md ring-1 ring-slate-900/10 shadow-sm hover:ring-slate-400  dark:highlight-white/5 dark:hover:bg-darkSecondary/90 mx-auto flex relative  group focus:ring-slate-400"
             type="text"
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="Press (CTRL + /) to search... "
+            placeholder="Search articles… (Ctrl + /)"
+            className="w-full pl-9 pr-4 py-2.5 text-sm bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
           />
-        </AnimatedDiv>
+        </div>
 
-        <section className="relative py-5  flex flex-col gap-2 min-h-[50vh]">
-          <AnimatePresence>
-            {filteredBlogs.length != 0 ? (
-              <>
-                <AnimatedDiv
-                  variants={FadeContainer}
-                  className="flex items-center justify-between"
-                >
-                  <motion.h3
-                    variants={popUpFromBottomForText}
-                    className="text-left font-bold text-2xl sm:text-3xl my-5"
-                  >
-                    All Posts ({filteredBlogs.length})
-                  </motion.h3>
+        {/* Results header */}
+        <div className="flex items-center justify-between mb-4">
+          <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500">
+            {query
+              ? `${filteredBlogs.length} result${filteredBlogs.length !== 1 ? "s" : ""} for "${query}"`
+              : `${blogs.length} articles`}
+          </span>
+          <Link
+            href="/rss"
+            title="RSS Feed"
+            className="flex items-center gap-1.5 font-mono text-[10px] tracking-[0.3em] uppercase text-gray-400 dark:text-gray-600 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >
+            <BiRss className="w-3.5 h-3.5" />
+            RSS
+          </Link>
+        </div>
 
-                  <div className="flex items-center gap-2">
-                    {/* <Link href="/blogs/bookmark" legacyBehavior>
-                      <motion.div variants={popUp}>
-                        <BsBookmark
-                          title="Bookmark"
-                          className="text-2xl cursor-pointer"
-                        />
-                      </motion.div>
-                    </Link> */}
-
-                    <Link href="/rss" legacyBehavior>
-                      <motion.div variants={popUp}>
-                        <BiRss
-                          title="RSS"
-                          className="text-3xl cursor-pointer"
-                        />
-                      </motion.div>
-                    </Link>
-                  </div>
-                </AnimatedDiv>
-
-                <AnimatedDiv
-                  variants={FadeContainer}
-                  className="grid grid-cols-1 gap-4 mx-auto"
-                >
-                  {filteredBlogs.map((blog, index) => {
-                    return <Blog key={index} blog={blog} />;
-                  })}
-                </AnimatedDiv>
-              </>
-            ) : (
-              <div className="font-inter text-center font-medium dark:text-gray-400">
-                No Result Found
-              </div>
-            )}
-          </AnimatePresence>
-        </section>
-      </section>
+        {/* Blog list */}
+        <AnimatePresence exitBeforeEnter>
+          {filteredBlogs.length > 0 ? (
+            <motion.div
+              key="results"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="border border-gray-200 dark:border-gray-800"
+            >
+              {filteredBlogs.map((blog, index) => (
+                <Blog key={blog.slug.current} blog={blog} index={index} />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.p
+              key="empty"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="py-16 text-center font-mono text-[11px] tracking-[0.4em] uppercase text-gray-400 dark:text-gray-600"
+            >
+              No results found
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </PageHeader>
     </>
   );
 }
@@ -140,5 +122,6 @@ export async function getStaticProps() {
   const results = await getAllPostsMeta();
   return {
     props: { blogs: results },
+    revalidate: 60,
   };
 }

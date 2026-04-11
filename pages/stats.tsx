@@ -1,19 +1,16 @@
-import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
-import { SpotifyArtist, SpotifyTrack } from "@lib/types";
+// import { SpotifyArtist, SpotifyTrack } from "@lib/types";
 
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
-import AnimatedText from "@components/FramerMotion/AnimatedText";
-import Artist from "@components/Stats/Artist";
+// import Artist from "@components/Stats/Artist";
 import GitHubActivityGraph from "@components/GitHubActivityGraph";
 import GitHubCalendar from "react-github-calendar";
 import MetaData from "@components/MetaData";
-import PageTop from "@components/PageTop";
+import PageHeader from "@components/PageHeader";
 import React from "react";
 import StatsCard from "@components/Stats/StatsCard";
-import Track from "@components/Stats/Track";
+// import Track from "@components/Stats/Track";
 import fetcher from "@lib/fetcher";
 import pageMeta from "@content/meta";
+import { motion } from "framer-motion";
 import { useDarkMode } from "@context/darkModeContext";
 import useSWR from "swr";
 
@@ -22,55 +19,77 @@ type Stats = {
   value: string;
 };
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
+
+/* Shared section-header used by each sub-section */
+function SectionHeading({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: React.ReactNode;
+}) {
+  return (
+    <div className="mb-8 space-y-3">
+      <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-3"
+      >
+        <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
+        <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500">
+          {eyebrow}
+        </span>
+      </motion.div>
+      <motion.h2
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.08 }}
+        className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+      >
+        {title}
+      </motion.h2>
+      {description && (
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.14 }}
+          className="text-sm text-gray-600 dark:text-gray-400 border-l-2 border-gray-300 dark:border-gray-700 pl-4 py-0.5 max-w-2xl"
+        >
+          {description}
+        </motion.p>
+      )}
+    </div>
+  );
+}
+
 export default function Stats() {
   const { isDarkMode } = useDarkMode();
 
-  const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
-  const { data: artists } = useSWR("/api/stats/artists", fetcher);
+  // const { data: topTracks } = useSWR("/api/stats/tracks", fetcher);
+  // const { data: artists } = useSWR("/api/stats/artists", fetcher);
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
   const { data: github } = useSWR("/api/stats/github", fetcher);
 
   const stats: Stats[] = [
-    {
-      title: "Total Posts",
-      value: devto?.posts.toLocaleString(),
-    },
-    {
-      title: "Blog Followers",
-      value: devto?.followers.toLocaleString(),
-    },
-    {
-      title: "Blog Reactions",
-      value: devto?.likes.toLocaleString(),
-    },
-    {
-      title: "Blog Views",
-      value: devto?.views.toLocaleString(),
-    },
-    {
-      title: "Blog Comments",
-      value: devto?.comments.toLocaleString(),
-    },
-    {
-      title: "GitHub Repos",
-      value: github?.repos,
-    },
-    {
-      title: "GitHub Gists",
-      value: github?.gists,
-    },
-    {
-      title: "GitHub Followers",
-      value: github?.followers,
-    },
-    {
-      title: "GitHub Stars",
-      value: github?.githubStars,
-    },
-    {
-      title: "GitHub Forked",
-      value: github?.forks,
-    },
+    { title: "Total Posts", value: devto?.posts.toLocaleString() },
+    { title: "Blog Followers", value: devto?.followers.toLocaleString() },
+    { title: "Blog Reactions", value: devto?.likes.toLocaleString() },
+    { title: "Blog Views", value: devto?.views.toLocaleString() },
+    { title: "Blog Comments", value: devto?.comments.toLocaleString() },
+    { title: "GitHub Repos", value: github?.repos },
+    { title: "GitHub Gists", value: github?.gists },
+    { title: "GitHub Followers", value: github?.followers },
+    { title: "GitHub Stars", value: github?.githubStars },
+    { title: "GitHub Forked", value: github?.forks },
   ];
 
   return (
@@ -82,77 +101,69 @@ export default function Stats() {
         keywords={pageMeta.stats.keywords}
       />
 
-      <section className="pageTop font-inter">
-        <PageTop pageTitle="Statistics">
-          <p>
-            These are my personal statistics about my Dev.to Blogs, Github and
-            Top Streamed Music on Spotify.
-          </p>
-        </PageTop>
-
-        {/* Blogs and github stats */}
-        <AnimatedDiv
-          className="grid xs:grid-cols-2 sm:!grid-cols-3 xl:!grid-cols-4 gap-5 my-10"
-          variants={FadeContainer}
+      <PageHeader
+        watermark="stats"
+        eyebrow="Dashboard — 001"
+        title="Statistics"
+        description="Personal stats about my Dev.to blogs, GitHub activity, and top streamed music on Spotify."
+        className="pb-24"
+      >
+        {/* ── Counts grid ── */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800 mb-20"
         >
           {stats.map((stat, index) => (
             <StatsCard key={index} title={stat.title} value={stat.value} />
           ))}
-        </AnimatedDiv>
+        </motion.div>
 
-        <div className="font-barlow mb-10">
-          <AnimatedHeading
-            variants={opacityVariant}
-            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-          >
-            GitHub Contribution
-          </AnimatedHeading>
-          <AnimatedText
-            variants={opacityVariant}
-            className="my-4 text-gray-700 dark:text-gray-300"
-          >
-            The following is my GitHub contribution graph which shows my coding
-            activity and productivity on the platform.
-          </AnimatedText>
-          <GitHubCalendar
-            style={{
-              maxWidth: "100% !important",
-            }}
-            username="j471n"
-            colorScheme={isDarkMode ? "dark" : "light"}
+        {/* ── GitHub Contribution calendar ── */}
+        <div className="mb-16">
+          <SectionHeading
+            eyebrow="GitHub"
+            title="Contribution Graph"
+            description="My GitHub contribution graph showing coding activity and productivity."
           />
+          <div className="overflow-x-auto">
+            <GitHubCalendar
+              username="j471n"
+              colorScheme={isDarkMode ? "dark" : "light"}
+            />
+          </div>
         </div>
-        <GitHubActivityGraph />
 
-        {/* Spotify top songs */}
-        <div className="font-barlow">
-          <AnimatedHeading
-            variants={opacityVariant}
-            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-          >
-            My Top streams songs
-          </AnimatedHeading>
+        {/* ── GitHub Activity charts ── */}
+        <div className="mb-16">
+          <GitHubActivityGraph />
+        </div>
 
-          <AnimatedText
-            variants={opacityVariant}
-            className="mt-4 text-gray-700 dark:text-gray-300"
-          >
-            <span>
-              {topTracks ? (
-                <>
-                  <span className="font-semibold">{topTracks?.[0]?.title}</span>
-                  {" is the"}
-                </>
-              ) : (
-                <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
-              )}
-            </span>{" "}
-            most streamed song of mine in last 4 weeks. Here's my top tracks on
-            Spotify updated daily.
-          </AnimatedText>
-          <div className="flex flex-col gap-0 my-10 font-barlow">
+        {/* ── Top Tracks ── */}
+        {/* <div className="mb-16">
+          <SectionHeading
+            eyebrow="Spotify"
+            title="Top Streamed Songs"
+            description={
+              <>
+                {topTracks ? (
+                  <>
+                    <span className="font-semibold text-gray-900 dark:text-white">
+                      {topTracks?.[0]?.title}
+                    </span>
+                    {" is my most streamed track in the last 4 weeks."}
+                  </>
+                ) : (
+                  "My top tracks on Spotify, updated daily."
+                )}
+              </>
+            }
+          />
+          <div className="flex flex-col border border-gray-200 dark:border-gray-800">
             {topTracks ? (
-              topTracks?.map((track: SpotifyTrack, index: number) => (
+              topTracks.map((track: SpotifyTrack, index: number) => (
                 <Track
                   key={index}
                   id={index}
@@ -166,41 +177,37 @@ export default function Stats() {
               <LoadingSongs />
             )}
           </div>
-        </div>
+        </div> */}
 
-        {/* Spotify top Artists */}
-
-        <div className="font-barlow">
-          <AnimatedHeading
-            variants={opacityVariant}
-            className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-          >
-            My Top Artists
-          </AnimatedHeading>
-          <AnimatedText
-            variants={opacityVariant}
-            className="mt-4 text-gray-700 dark:text-gray-300"
-          >
-            My most listened Artist
-            <span>
-              {artists ? (
-                <>
-                  {" is "}
-                  <span className="font-semibold">{artists?.[0]?.name}</span>
-                </>
-              ) : (
-                <span className="w-20 h-6 bg-white dark:bg-darkSecondary"></span>
-              )}
-            </span>{" "}
-            in last 4 weeks on Spotify.
-          </AnimatedText>
-
-          <div className="flex flex-col gap-0 my-10 font-barlow">
+        {/* ── Top Artists ── */}
+        {/* <div className="mb-4">
+          <SectionHeading
+            eyebrow="Spotify"
+            title="Top Artists"
+            description={
+              <>
+                {artists ? (
+                  <>
+                    {"My most listened artist is "}
+                    <span className="font-semibold text-gray-900 dark:text-white">
+                      {artists?.[0]?.name}
+                    </span>
+                    {" in the last 4 weeks."}
+                  </>
+                ) : (
+                  "My most listened artists on Spotify in the last 4 weeks."
+                )}
+              </>
+            }
+          />
+          <div className="flex flex-col border border-gray-200 dark:border-gray-800">
             {artists ? (
-              artists?.length === 0 ? (
-                <div className="text-sm">Not Enough Data to Show</div>
+              artists.length === 0 ? (
+                <p className="p-6 text-sm font-mono text-gray-500 dark:text-gray-500">
+                  Not enough data to show.
+                </p>
               ) : (
-                artists?.map((artist: SpotifyArtist, index: number) => (
+                artists.map((artist: SpotifyArtist, index: number) => (
                   <Artist
                     key={index}
                     id={index}
@@ -215,65 +222,52 @@ export default function Stats() {
               <LoadingArtists />
             )}
           </div>
-        </div>
-      </section>
+        </div> */}
+      </PageHeader>
     </>
   );
 }
 
-// Loading Components
-function LoadingSongs() {
-  return (
-    <>
-      {Array.from(Array(10).keys()).map((item) => (
-        <div
-          key={item}
-          className="bg-gray-100 h-[80.8px] first:h-[81.6px] first:md:h-[85.6px] md:h-[84.8px]  dark:bg-darkPrimary  border-l first:border-t border-r border-b  border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden relative xs:pl-16 md:!pl-20 "
-        >
-          <div className="absolute hidden tracking-wider origin-center transform left-4 md:left-6 font-inter xs:inline-flex">
-            #{item + 1}
-          </div>
+// function LoadingSongs() {
+//   return (
+//     <>
+//       {Array.from({ length: 10 }, (_, i) => (
+//         <div
+//           key={i}
+//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary"
+//         >
+//           <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-6 text-right flex-shrink-0">
+//             {i + 1}
+//           </span>
+//           <div className="w-10 h-10 bg-gray-200 dark:bg-gray-800 animate-pulse flex-shrink-0" />
+//           <div className="flex flex-col gap-1.5 flex-1">
+//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//           </div>
+//         </div>
+//       ))}
+//     </>
+//   );
+// }
 
-          <div className="relative w-12 h-12 origin-center transform bg-gray-300 dark:bg-darkSecondary animate-pulse"></div>
-          <div className="flex flex-col gap-1">
-            <p className="animate-pulse w-40 h-6 md:h-[28px] bg-gray-300 dark:bg-darkSecondary"></p>
-            <p className="h-4 bg-gray-300 animate-pulse w-28 md:h-6 dark:bg-darkSecondary delay-125"></p>
-          </div>
-        </div>
-      ))}
-    </>
-  );
-}
-
-function LoadingArtists() {
-  return (
-    <>
-      {Array.from(Array(5).keys()).map((item) => (
-        <div
-          key={item}
-          className="h-[80.8px] first:h-[81.6px] first:md:h-[129.6px] md:h-[128.8px]  bg-gray-100  dark:bg-darkPrimary  border-l first:border-t border-r border-b border-gray-300 dark:border-neutral-600 p-4 font-barlow flex items-center gap-5 overflow-hidden"
-        >
-          <>
-            <div className="hidden tracking-wider origin-center transform font-inter xs:inline-flex">
-              #{item + 1}
-            </div>
-            <div
-              aria-label="image"
-              className="relative w-12 h-12 bg-gray-300 rounded-full animate-pulse dark:bg-darkSecondary md:w-24 md:h-24"
-            ></div>
-            <div className="flex flex-col gap-1">
-              <h2
-                aria-label="artist-name"
-                className="animate-pulse h-6 md:h-[28px] w-40 bg-gray-300 dark:bg-darkSecondary"
-              ></h2>
-              <p
-                aria-label="followers"
-                className="w-20 h-4 bg-gray-300 animate-pulse md:h-6 dark:bg-darkSecondary"
-              ></p>
-            </div>
-          </>
-        </div>
-      ))}
-    </>
-  );
-}
+// function LoadingArtists() {
+//   return (
+//     <>
+//       {Array.from({ length: 5 }, (_, i) => (
+//         <div
+//           key={i}
+//           className="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary"
+//         >
+//           <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-6 text-right flex-shrink-0">
+//             {i + 1}
+//           </span>
+//           <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-800 animate-pulse flex-shrink-0" />
+//           <div className="flex flex-col gap-1.5 flex-1">
+//             <div className="h-3.5 w-40 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//             <div className="h-2.5 w-24 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+//           </div>
+//         </div>
+//       ))}
+//     </>
+//   );
+// }

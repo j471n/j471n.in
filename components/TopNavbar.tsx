@@ -17,35 +17,33 @@ import { DarkModeSwitch } from "react-toggle-dark-mode";
 /* TopNavbar Component */
 export default function TopNavbar() {
   const navRef = useRef<HTMLDivElement>(null);
-
-  /*  Using to control animation as I'll show the name to the mobile navbar when you scroll a bit
-   * demo: https://i.imgur.com/5LKI5DY.gif
-   */
   const control = useAnimation();
   const [navOpen, setNavOpen] = useState(false);
   const { isDarkMode, changeDarkMode } = useDarkMode();
 
-  // Adding Shadow, backdrop to the navbar as user scroll the screen
   const addShadowToNavbar = useCallback(() => {
     if (window.pageYOffset > 10) {
       navRef.current!.classList.add(
         ...[
-          "shadow",
+          "border-b",
+          "border-gray-200",
+          "dark:border-gray-800",
           "backdrop-blur-xl",
-          "bg-white/70",
-          "dark:bg-darkSecondary",
-        ]
+          "bg-white/80",
+          "dark:bg-darkPrimary/90",
+        ],
       );
-
       control.start("visible");
     } else {
       navRef.current!.classList.remove(
         ...[
-          "shadow",
+          "border-b",
+          "border-gray-200",
+          "dark:border-gray-800",
           "backdrop-blur-xl",
-          "bg-white/70",
-          "dark:bg-darkSecondary",
-        ]
+          "bg-white/80",
+          "dark:bg-darkPrimary/90",
+        ],
       );
       control.start("hidden");
     }
@@ -53,18 +51,13 @@ export default function TopNavbar() {
 
   useEffect(() => {
     window.addEventListener("scroll", addShadowToNavbar);
-    return () => {
-      window.removeEventListener("scroll", addShadowToNavbar);
-    };
+    return () => window.removeEventListener("scroll", addShadowToNavbar);
   }, [addShadowToNavbar]);
 
-  // to lock the scroll when mobile is open
   function lockScroll() {
-    const root = document.getElementsByTagName("html")[0];
-    root.classList.toggle("lock-scroll"); // class is define in the global.css
+    document.getElementsByTagName("html")[0].classList.toggle("lock-scroll");
   }
 
-  /* To Lock  the Scroll when user visit the mobile nav page */
   function handleClick() {
     lockScroll();
     setNavOpen(!navOpen);
@@ -72,87 +65,99 @@ export default function TopNavbar() {
 
   return (
     <div
-      className="fixed w-full dark:text-white top-0 flex items-center justify-between px-4 py-[10px] sm:px-6 z-50 print:hidden"
+      className="fixed w-full top-0 z-50 print:hidden transition-colors duration-200"
       ref={navRef}
     >
-      {/* Mobile Navigation Hamburger and MobileMenu */}
-      <HamBurger open={navOpen} handleClick={handleClick} />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-14">
+        {/* Logo / name */}
+        <Link
+          href="/"
+          aria-label="Home"
+          className="flex items-center gap-2.5 flex-shrink-0"
+        >
+          <Logo className="w-7 h-7" />
+          <motion.span
+            initial="hidden"
+            animate={control}
+            variants={{
+              hidden: { opacity: 0, x: -6 },
+              visible: { opacity: 1, x: 0, transition: { duration: 0.2 } },
+            }}
+            className="font-sarina text-gray-900 dark:text-white text-sm hidden sm:inline"
+          >
+            Jatin Sharma
+          </motion.span>
+        </Link>
+
+        {/* Desktop nav */}
+        <motion.nav
+          initial="hidden"
+          animate="visible"
+          variants={FadeContainer}
+          className="hidden sm:flex items-center gap-1"
+        >
+          {navigationRoutes.slice(0, 7).map((link, i) => (
+            <NavItem key={i} href={`/${link}`} text={link} />
+          ))}
+        </motion.nav>
+
+        {/* Right — dark mode + hamburger */}
+        <div className="flex items-center gap-4">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={popUp}
+            className="cursor-pointer"
+            title="Toggle Theme"
+          >
+            <DarkModeSwitch
+              checked={isDarkMode}
+              onChange={changeDarkMode}
+              size={20}
+            />
+          </motion.div>
+
+          {/* Hamburger — mobile only */}
+          <HamBurger open={navOpen} handleClick={handleClick} />
+        </div>
+      </div>
+
+      {/* Mobile menu */}
       <AnimatePresence>
         {navOpen && (
           <MobileMenu links={navigationRoutes} handleClick={handleClick} />
         )}
       </AnimatePresence>
-
-      <Link href="/" className="mr-3" aria-label="Link to Home Page">
-        <Logo className="relative hidden w-8 h-8 sm:inline-flex" />
-        <div className="w-full sm:!hidden">
-          <motion.p
-            initial="hidden"
-            animate={control}
-            variants={{
-              hidden: { opacity: 0, scale: 1, display: "none" },
-              visible: { opacity: 1, scale: 1, display: "inline-flex" },
-            }}
-            className="font-sarina"
-          >
-            Jatin Sharma
-          </motion.p>
-        </div>
-      </Link>
-
-      {/* Top Nav list */}
-      <motion.nav className="z-10 hidden sm:flex md:inset-0 md:justify-center">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={FadeContainer}
-          className="flex items-center md:gap-2"
-        >
-          {navigationRoutes.slice(0, 7).map((link, index) => {
-            return <NavItem key={index} href={`/${link}`} text={link} />;
-          })}
-        </motion.div>
-      </motion.nav>
-
-      {/* DarkMode Container */}
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={popUp}
-        className="cursor-pointer"
-        title="Toggle Theme"
-      >
-        <DarkModeSwitch
-          checked={isDarkMode}
-          onChange={changeDarkMode}
-          size={24}
-        />
-      </motion.div>
     </div>
   );
 }
 
-// NavItem Container
+// NavItem
 function NavItem({ href, text }: { href: string; text: string }) {
   const router = useRouter();
   const isActive = router.asPath === (href === "/home" ? "/" : href);
   return (
     <Link
-      className={`${
-        isActive
-          ? "font-bold text-gray-800 dark:text-gray-100"
-          : " text-gray-600 dark:text-gray-300"
-      } sm:inline-block transition-all text-[17px] hidden px-2 md:px-3 py-[3px] hover:bg-black/10  dark:hover:bg-neutral-700/50 rounded-md`}
       href={href === "/home" ? "/" : href}
+      className={`relative px-3 py-1.5 text-sm font-medium capitalize transition-colors rounded group ${
+        isActive
+          ? "text-gray-900 dark:text-white"
+          : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+      }`}
     >
-      <motion.p className="capitalize" variants={popUp}>
-        {text}
-      </motion.p>
+      <motion.span variants={popUp}>{text}</motion.span>
+      {/* active underline */}
+      {isActive && (
+        <motion.span
+          layoutId="nav-underline"
+          className="absolute bottom-0 left-3 right-3 h-px bg-gray-900 dark:bg-white"
+        />
+      )}
     </Link>
   );
 }
 
-// Hamburger Button
+// Hamburger — sm:hidden
 function HamBurger({
   open,
   handleClick,
@@ -161,51 +166,34 @@ function HamBurger({
   handleClick: () => void;
 }) {
   return (
-    <motion.div
-      style={{ zIndex: 1000 }}
+    <motion.button
       initial="hidden"
       animate="visible"
       variants={popUp}
-      className="sm:hidden"
+      onClick={handleClick}
+      aria-label={open ? "Close menu" : "Open menu"}
+      className="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] cursor-pointer select-none"
     >
-      {!open ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 duration-300 transform rounded-md cursor-pointer select-none active:scale-50"
-          onClick={handleClick}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-6 h-6 duration-300 transform rounded-md cursor-pointer select-none active:scale-50"
-          onClick={handleClick}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      )}
-    </motion.div>
+      <motion.span
+        animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.2 }}
+        className="block w-5 h-px bg-gray-900 dark:bg-white origin-center"
+      />
+      <motion.span
+        animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+        transition={{ duration: 0.15 }}
+        className="block w-5 h-px bg-gray-900 dark:bg-white"
+      />
+      <motion.span
+        animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.2 }}
+        className="block w-5 h-px bg-gray-900 dark:bg-white origin-center"
+      />
+    </motion.button>
   );
 }
 
-// Mobile navigation menu
+// Mobile menu — full-screen
 const MobileMenu = ({
   links,
   handleClick,
@@ -215,30 +203,59 @@ const MobileMenu = ({
 }) => {
   return (
     <motion.div
-      className="absolute top-0 left-0 z-10 w-screen h-screen font-normal bg-white dark:bg-darkPrimary sm:hidden"
-      variants={hamFastFadeContainer}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
+      className="fixed inset-0 top-14 z-40 bg-white dark:bg-darkPrimary sm:hidden overflow-y-auto"
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.18, ease: "easeOut" }}
     >
-      <motion.nav className="flex flex-col mx-8 mt-28">
-        {links.slice(0, 8).map((link, index) => {
-          const navlink =
-            link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
-          return (
-            <Link
-              href={navlink}
-              key={`mobileNav-${index}`}
-              onClick={handleClick}
-              className="flex w-auto py-4 text-base font-semibold text-gray-900 capitalize border-b border-gray-300 cursor-pointer dark:border-gray-700 dark:text-gray-100"
-            >
-              <motion.p variants={mobileNavItemSideways}>
-                {link === "rss" ? link.toUpperCase() : link}
-              </motion.p>
-            </Link>
-          );
-        })}
-      </motion.nav>
+      {/* Watermark */}
+      <div
+        className="absolute right-4 top-2 font-black select-none pointer-events-none leading-none tracking-tighter bg-gradient-to-b from-gray-200 to-gray-50 dark:from-[#232628] dark:to-darkPrimary bg-clip-text text-transparent"
+        style={{ fontSize: "clamp(4rem, 20vw, 7rem)" }}
+        aria-hidden="true"
+      >
+        MENU
+      </div>
+
+      <nav className="px-6 pt-8 pb-16">
+        {/* mono label */}
+        <span className="font-mono text-[9px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500 mb-6 block">
+          Navigation
+        </span>
+
+        <motion.div
+          className="divide-y divide-gray-200 dark:divide-gray-800"
+          variants={hamFastFadeContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          {links.slice(0, 8).map((link, index) => {
+            const href =
+              link.toLowerCase() === "home" ? "/" : `/${link.toLowerCase()}`;
+            const label = link === "rss" ? "RSS" : link;
+            return (
+              <motion.div
+                key={`mobileNav-${index}`}
+                variants={mobileNavItemSideways}
+              >
+                <Link
+                  href={href}
+                  onClick={handleClick}
+                  className="flex items-center justify-between py-4 group"
+                >
+                  <span className="text-2xl font-bold capitalize text-gray-900 dark:text-white group-hover:translate-x-1 transition-transform duration-200">
+                    {label}
+                  </span>
+                  <span className="text-gray-400 dark:text-gray-600 group-hover:text-gray-900 dark:group-hover:text-white font-mono text-sm transition-colors">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </nav>
     </motion.div>
   );
 };

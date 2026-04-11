@@ -1,18 +1,26 @@
-import MetaData from "@components/MetaData";
-import PageTop from "@components/PageTop";
-import utilities from "@content/utilitiesData";
+import React from "react";
 import Link from "next/link";
-import AnimatedText from "@components/FramerMotion/AnimatedText";
-import {
-  FadeContainer,
-  opacityVariant,
-  popUp,
-  popUpFromBottomForText,
-} from "@content/FramerMotionVariants";
 import { motion } from "framer-motion";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
+import { FiExternalLink } from "react-icons/fi";
+import MetaData from "@components/MetaData";
+import PageHeader from "@components/PageHeader";
+import utilities from "@content/utilitiesData";
 import pageMeta from "@content/meta";
 import { UtilityType } from "@lib/types";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 160, damping: 22 },
+  },
+};
 
 export default function Utilities() {
   return (
@@ -24,62 +32,104 @@ export default function Utilities() {
         keywords={pageMeta.utilities.keywords}
       />
 
-      <section className="pageTop font-inter">
-        <PageTop pageTitle={utilities.title}>{utilities.description}</PageTop>
-
-        <div className="flex flex-col gap-14">
+      <PageHeader
+        watermark="/uses"
+        eyebrow="Setup — 001"
+        title={utilities.title}
+        description={utilities.description}
+        className="pb-32"
+      >
+        {/* ── Sections ── */}
+        <div className="flex flex-col gap-16">
           {utilities.data.map((utility, index) => (
-            <UtilitySection key={index} utility={utility} />
+            <UtilitySection key={index} utility={utility} index={index} />
           ))}
         </div>
 
-        <AnimatedText variants={opacityVariant} className="mt-12 -mb-10">
-          Last Update on{" "}
-          <span className="font-semibold">{utilities.lastUpdate}</span>
-        </AnimatedText>
-      </section>
+        {/* ── Last updated ── */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-16 font-mono text-[10px] tracking-[0.35em] uppercase text-gray-400 dark:text-gray-600"
+        >
+          Last updated — {utilities.lastUpdate}
+        </motion.p>
+      </PageHeader>
     </>
   );
 }
 
-function UtilitySection({ utility }: { utility: UtilityType }) {
+function UtilitySection({
+  utility,
+  index,
+}: {
+  utility: UtilityType;
+  index: number;
+}) {
+  const num = String(index + 1).padStart(2, "0");
   return (
-    <AnimatedDiv
-      variants={FadeContainer}
-      className="!w-full  selection:bg-blue-300 dark:selection:bg-blue-900 dark:selection:text-gray-400 dark:text-neutral-200 font-medium"
-    >
-      <motion.h2
-        variants={popUpFromBottomForText}
-        className="mb-4 text-2xl font-bold sm:text-3xl font-barlow"
+    <div>
+      {/* Category header */}
+      <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-4 mb-6"
       >
-        {utility.title}
-      </motion.h2>
+        <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-600">
+          {num}
+        </span>
+        <div className="h-px w-5 bg-gray-300 dark:bg-gray-600" />
+        <h2 className="text-sm font-mono tracking-[0.25em] uppercase text-gray-700 dark:text-gray-300 font-semibold">
+          {utility.title}
+        </h2>
+        <div className="h-px flex-1 bg-gray-200 dark:bg-gray-600" />
+      </motion.div>
 
-      <AnimatedDiv
-        variants={FadeContainer}
-        className="grid grid-cols-3 gap-3 mt-5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7"
+      {/* Tool cards grid */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800"
       >
         {utility.data.map((item) => {
           const Icon = item.Icon;
           return (
-            <motion.div key={item.name} variants={popUp}>
+            <motion.div
+              key={item.name}
+              variants={itemVariants}
+              className="h-full"
+            >
               <Link
-                title={item.name + " - " + item.description}
-                rel="noopener noreferrer"
-                target="_blank"
                 href={item.link}
-                className="relative flex flex-col gap-3 items-center justify-center bg-white dark:bg-darkSecondary shadow dark:shadow-md p-8  border border-transparent hover:border-gray-400 dark:hover:border-neutral-600 rounded-md transition-all lg:hover:!scale-125 active:!scale-90 hover:z-10 hover:shadow-lg hover:origin-center text-gray-700 hover:text-black dark:text-gray-300/80 dark:hover:text-white"
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${item.name} — ${item.description}`}
+                className="group flex items-center gap-4 p-5 h-full bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200"
               >
-                {/* @ts-ignore */}
-                <Icon className="utilities-svg" />
-                <p className="absolute bottom-3 text-[10px] select-none">
-                  {item.name}
-                </p>
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-gray-400 dark:group-hover:border-gray-500 transition-colors text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
+                  {/* @ts-ignore */}
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white truncate">
+                      {item.name}
+                    </span>
+                    <FiExternalLink className="w-3.5 h-3.5 flex-shrink-0 text-gray-400 dark:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-0.5 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </Link>
             </motion.div>
           );
         })}
-      </AnimatedDiv>
-    </AnimatedDiv>
+      </motion.div>
+    </div>
   );
 }
