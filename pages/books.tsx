@@ -198,7 +198,7 @@ export default function BooksPage({
 
   const isSearching = query.length > 0;
 
-  //   if (error) return <CreateAnIssue />;
+  if (error) return <CreateAnIssue />;
 
   const filtered = books.filter((b) => b.statusId === activeTab);
   const countFor = (id: TabId) => books.filter((b) => b.statusId === id).length;
