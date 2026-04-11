@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES5",          /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */ // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
-    "module": "commonjs",     /* Specify what module code is generated. */ // "rootDir": "./",                                  /* Specify the root folder within your source files. */
-    "baseUrl": ".",           /* Specify the base directory to resolve non-relative module names. */
+    "target": "ES5", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */ // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
+    "module": "commonjs", /* Specify what module code is generated. */ // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "baseUrl": ".", /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@components/*": [
         "components/*"
@@ -28,14 +28,14 @@
       "@hooks/*": [
         "hooks/*"
       ]
-    },                                        /* Specify a set of entries that re-map imports to additional lookup locations. */
-    "checkJs": true,                          /* Enable error reporting in type-checked JavaScript files. */
-    "esModuleInterop": true,                  /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */ // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+    }, /* Specify a set of entries that re-map imports to additional lookup locations. */
+    "checkJs": true, /* Enable error reporting in type-checked JavaScript files. */
+    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */ // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
     "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */ /* Type Checking */
-    "strict": true,                           /* Enable all strict type-checking options. */ // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
-    "noUnusedLocals": true,                   /* Enable error reporting when local variables aren't read. */
-    "noUnusedParameters": true,               /* Raise an error when a function parameter isn't read. */
-    "skipLibCheck": true                      /* Skip type checking all .d.ts files. */,
+    "strict": true, /* Enable all strict type-checking options. */ // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
+    "noUnusedLocals": true, /* Enable error reporting when local variables aren't read. */
+    "noUnusedParameters": true, /* Raise an error when a function parameter isn't read. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": [
       "dom",
       "dom.iterable",
@@ -52,8 +52,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/sitemap.xml.jsx"  ],
+    "**/*.tsx",
+    "pages/sitemap.xml.jsx"
+  ],
   "exclude": [
     "node_modules",
     "sanity/**/*"

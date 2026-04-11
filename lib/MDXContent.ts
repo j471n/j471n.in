@@ -12,20 +12,23 @@ import { sync } from "glob";
 const rehypePlugins = [
   rehypeSlug,
   [rehypeAutolinkHeadings, { behaviour: "wrap" }],
-  [rehypePrettyCode, {
-    theme: "one-dark-pro",
-    onVisitLine(node: any) {
-      if (node.children.length === 0) {
-        node.children = [{ type: "text", value: " " }];
-      }
+  [
+    rehypePrettyCode,
+    {
+      theme: "one-dark-pro",
+      onVisitLine(node: any) {
+        if (node.children.length === 0) {
+          node.children = [{ type: "text", value: " " }];
+        }
+      },
+      onVisitHighlightedLine(node: any) {
+        node.properties.className.push("highlighted");
+      },
+      onVisitHighlightedWord(node: any) {
+        node.properties.className = ["word"];
+      },
     },
-    onVisitHighlightedLine(node: any) {
-      node.properties.className.push("highlighted");
-    },
-    onVisitHighlightedWord(node: any) {
-      node.properties.className = ["word"];
-    },
-  }],
+  ],
 ] as any;
 
 export default class MDXContent {
