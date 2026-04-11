@@ -1,7 +1,6 @@
 import QRCode from "react-qr-code";
-import Ripples from "react-ripples";
 import useWindowLocation from "@hooks/useWindowLocation";
-import { CgClose } from "react-icons/cg";
+import { MdClose } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDarkMode } from "@context/darkModeContext";
 
@@ -33,61 +32,78 @@ export default function QRCodeContainer({
     };
     img.src = `data:image/svg+xml;base64,${btoa(svgData)}`;
   }
+
   return (
-    <>
-      <AnimatePresence>
-        {showQR && (
+    <AnimatePresence>
+      {showQR && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            exit="hidden"
-            variants={{
-              hidden: { y: "100vh", opacity: 0 },
-              visible: {
-                y: 0,
-                opacity: 1,
-              },
-            }}
-            transition={{
-              type: "spring",
-              bounce: 0.15,
-            }}
-            className="fixed inset-0 grid bg-white dark:bg-darkSecondary place-items-center"
-            style={{ zIndex: 10000 }}
+            key="qr-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowQR(false)}
+            className="fixed inset-0 bg-black/50 z-[9999]"
+          />
+
+          {/* Panel */}
+          <motion.div
+            key="qr-panel"
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ type: "spring", stiffness: 340, damping: 30 }}
+            className="fixed inset-0 flex items-center justify-center z-[10000] pointer-events-none"
           >
-            <button
-              className="absolute text-black outline-none right-5 top-5 dark:text-white"
-              onClick={() => setShowQR(false)}
-            >
-              <CgClose className="w-8 h-8" />
-            </button>
-
-            <div className="flex flex-col gap-2 text-black dark:text-white">
-              <h1 className="text-xl font-semibold">Share this page</h1>
-              <QRCode
-                id="QRCode"
-                value={currentURL}
-                bgColor={isDarkMode ? "#25282a" : "white"}
-                fgColor={isDarkMode ? "white" : "#25282a"}
-              />
-
-              <Ripples
-                className="mt-2"
-                color={
-                  isDarkMode ? "rgba(0,0,0, 0.2)" : "rgba(225, 225, 225, 0.2)"
-                }
-              >
+            <div className="pointer-events-auto w-full max-w-xs bg-white dark:bg-darkPrimary border border-gray-200 dark:border-gray-800">
+              {/* Header */}
+              <div className="h-0.5 w-full bg-gray-900 dark:bg-white" />
+              <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-800">
+                <div>
+                  <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-500 block leading-none mb-1">
+                    Share
+                  </span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-white">
+                    Scan QR Code
+                  </span>
+                </div>
                 <button
-                  className="w-full px-3 py-2 text-sm font-medium text-white rounded bg-darkPrimary dark:bg-gray-100 dark:text-darkPrimary"
-                  onClick={downloadQRCode}
+                  onClick={() => setShowQR(false)}
+                  aria-label="Close"
+                  className="w-8 h-8 flex items-center justify-center border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white transition-colors"
                 >
-                  Download
+                  <MdClose className="w-4 h-4" />
                 </button>
-              </Ripples>
+              </div>
+
+              {/* QR code */}
+              <div className="p-6 flex justify-center border-b border-gray-200 dark:border-gray-800">
+                <QRCode
+                  id="QRCode"
+                  value={currentURL}
+                  size={180}
+                  bgColor={isDarkMode ? "#1a1d1f" : "#ffffff"}
+                  fgColor={isDarkMode ? "#ffffff" : "#111827"}
+                />
+              </div>
+
+              {/* URL + download */}
+              <div className="px-5 py-4 space-y-3">
+                <p className="font-mono text-[10px] tracking-[0.2em] text-gray-400 dark:text-gray-500 truncate">
+                  {currentURL}
+                </p>
+                <button
+                  onClick={downloadQRCode}
+                  className="w-full py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-mono text-[10px] tracking-[0.35em] uppercase hover:opacity-80 transition-opacity"
+                >
+                  Download PNG
+                </button>
+              </div>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        </>
+      )}
+    </AnimatePresence>
   );
 }

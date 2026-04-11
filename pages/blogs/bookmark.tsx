@@ -1,11 +1,14 @@
-import { AnimatePresence } from "framer-motion";
-import { FadeContainer } from "@content/FramerMotionVariants";
+import { motion } from "framer-motion";
 import Blog from "@components/Blog";
 import Metadata from "@components/MetaData";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import PageTop from "@components/PageTop";
+import PageHeader from "@components/PageHeader";
 import useBookmarkBlogs from "@hooks/useBookmarkBlogs";
 import pageMeta from "@content/meta";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04 } },
+};
 
 export default function Blogs() {
   const { bookmarkedBlogs } = useBookmarkBlogs("blogs", []);
@@ -19,30 +22,30 @@ export default function Blogs() {
         keywords={pageMeta.bookmark.keywords}
       />
 
-      <section className="flex flex-col gap-2 pageTop text-neutral-900 dark:text-neutral-200">
-        <PageTop pageTitle="Bookmarks">
-          Here you can find article bookmarked by you for Later use.
-        </PageTop>
-
-        <section className="relative py-5 px-2 flex flex-col gap-2 min-h-[50vh]">
-          <AnimatePresence>
-            {bookmarkedBlogs?.length != 0 ? (
-              <AnimatedDiv
-                variants={FadeContainer}
-                className="grid grid-cols-1 gap-4 mx-auto"
-              >
-                {bookmarkedBlogs?.map((blog, index) => {
-                  return <Blog key={index} blog={blog} />;
-                })}
-              </AnimatedDiv>
-            ) : (
-              <div className="mt-10 font-medium text-center font-inter dark:text-gray-400">
-                Nothing to see here.
-              </div>
-            )}
-          </AnimatePresence>
-        </section>
-      </section>
+      <PageHeader
+        watermark="saved"
+        eyebrow="Bookmarks"
+        title="Reading List"
+        description="Articles you've saved to read later. Stored locally in your browser."
+        className="pb-24"
+      >
+        {bookmarkedBlogs?.length > 0 ? (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="border border-gray-200 dark:border-gray-800"
+          >
+            {bookmarkedBlogs.map((blog, index) => (
+              <Blog key={index} blog={blog} index={index} />
+            ))}
+          </motion.div>
+        ) : (
+          <div className="py-16 text-center font-mono text-[11px] tracking-[0.4em] uppercase text-gray-400 dark:text-gray-600">
+            No bookmarks yet
+          </div>
+        )}
+      </PageHeader>
     </>
   );
 }

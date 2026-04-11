@@ -11,11 +11,17 @@ import Metadata from "@components/MetaData";
 import React from "react";
 import SkillSection from "@components/Home/SkillSection";
 import generateSitemap from "@lib/sitemap";
-import { getAllPostsMeta } from "@lib/sanityContent";
+import { getAllPostsMeta, getPostCount } from "@lib/sanityContent";
 import getRSS from "@lib/generateRSS";
 import pageMeta from "@content/meta";
 
-export default function Home({ blogs }: { blogs: BlogPost[] }) {
+export default function Home({
+  blogs,
+  totalBlogs,
+}: {
+  blogs: BlogPost[];
+  totalBlogs: number;
+}) {
   return (
     <>
       <Metadata
@@ -31,7 +37,7 @@ export default function Home({ blogs }: { blogs: BlogPost[] }) {
         <div className="w-full">
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <SkillSection />
-            <BlogsSection blogs={blogs} />
+            <BlogsSection blogs={blogs} totalBlogs={totalBlogs} />
             <Contact />
           </div>
         </div>
@@ -52,7 +58,10 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 }
 
 export async function getStaticProps() {
-  const blogs = await getAllPostsMeta(3);
+  const [blogs, totalBlogs] = await Promise.all([
+    getAllPostsMeta(3),
+    getPostCount(),
+  ]);
 
   // RSS and sitemap are generated at build time only.
   // They are not regenerated on ISR revalidations because they write
@@ -66,7 +75,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { blogs },
+    props: { blogs, totalBlogs },
     revalidate: 60, // revalidate every 60 s
   };
 }

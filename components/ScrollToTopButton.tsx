@@ -1,5 +1,6 @@
 import { IoIosArrowUp } from "react-icons/io";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import useScrollPercentage from "@hooks/useScrollPercentage";
 
 export default function ScrollToTopButton() {
@@ -7,32 +8,28 @@ export default function ScrollToTopButton() {
   const scrollPercentage = useScrollPercentage();
 
   useEffect(() => {
-    if (scrollPercentage < 95 && scrollPercentage > 10) {
-      setShowButton(true);
-    } else {
-      setShowButton(false);
-    }
+    setShowButton(scrollPercentage > 10 && scrollPercentage < 95);
   }, [scrollPercentage]);
 
-  // This function will scroll the window to the top
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // for smoothly scrolling
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <>
+    <AnimatePresence>
       {showButton && (
-        <button
+        <motion.button
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 8 }}
+          transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          aria-label="Scroll To Top"
-          className="fixed bottom-20 right-8 md:bottom-[50px] md:right-[20px]  z-40 print:hidden"
+          aria-label="Scroll to top"
+          className="fixed bottom-20 right-6 z-40 w-9 h-9 flex items-center justify-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:opacity-80 transition-opacity print:hidden"
         >
-          <IoIosArrowUp className="bg-black dark:bg-gray-200 dark:text-darkPrimary text-white rounded-lg shadow-lg text-[45px] md:mr-10" />
-        </button>
+          <IoIosArrowUp className="w-4 h-4" />
+        </motion.button>
       )}
-    </>
+    </AnimatePresence>
   );
 }

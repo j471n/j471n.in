@@ -31,6 +31,11 @@ const rehypePlugins = [
   ],
 ] as any;
 
+export async function getPostCount(): Promise<number> {
+  const query = groq`count(*[_type == "post"])`;
+  return sanityClient.fetch(query);
+}
+
 export async function getAllPostsMeta(limit?: number): Promise<BlogPost[]> {
   const query = groq`*[_type == "post"] | order(publishedAt desc)${
     limit ? `[0..${limit - 1}]` : ""

@@ -10,7 +10,13 @@ const containerVariants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
+export default function BlogsSection({
+  blogs,
+  totalBlogs,
+}: {
+  blogs: BlogPost[];
+  totalBlogs: number;
+}) {
   const { blogsSection } = siteConfig.home;
 
   return (
@@ -71,7 +77,7 @@ export default function BlogsSection({ blogs }: { blogs: BlogPost[] }) {
         >
           <div className="flex items-end gap-2">
             <span className="text-5xl sm:text-6xl font-black text-gray-900 dark:text-white leading-none">
-              {blogs.length}
+              {totalBlogs}
             </span>
             <span className="text-xs font-mono uppercase tracking-widest text-gray-500 dark:text-gray-500 mb-2">
               Articles

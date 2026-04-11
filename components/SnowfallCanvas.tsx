@@ -132,7 +132,7 @@ const SnowfallCanvas: React.FC = () => {
               0,
               this.x,
               this.y,
-              this.sz
+              this.sz,
             );
             this.g.addColorStop(0, "hsla(255,255%,255%,1)");
             this.g.addColorStop(1, "hsla(255,255%,255%,0)");
@@ -179,20 +179,17 @@ const SnowfallCanvas: React.FC = () => {
 
         go();
       }
-
-      return () => {
-        window.cancelAnimationFrame(animationFrameId);
-      };
     };
 
     Snowy();
 
     return () => {
-      if (ctx) {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      window.cancelAnimationFrame(animationFrameId);
+      if (ctx && canvasRef.current) {
+        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
       }
     };
-  }, []);
+  }, [width]);
 
   const canvasStyles: React.CSSProperties = {
     backgroundColor: "transparent",
