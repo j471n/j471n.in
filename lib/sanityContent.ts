@@ -15,7 +15,10 @@ const rehypePlugins = [
   [
     rehypePrettyCode,
     {
-      theme: "one-dark-pro",
+      theme: {
+        dark: "one-dark-pro",
+        light: "github-light",
+      },
       onVisitLine(node: any) {
         if (node.children.length === 0) {
           node.children = [{ type: "text", value: " " }];

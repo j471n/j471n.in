@@ -58,20 +58,23 @@ export default function CodeTitle({ title, lang }: Props) {
     case "vercel":
       Icon = SiVercel;
       break;
-    case "ts" || "tsx":
+    case "ts":
+    case "tsx":
       Icon = SiTypescript;
       break;
     default:
       Icon = BsFileEarmarkCodeFill;
       break;
   }
+
   return (
-    <div className="relative !z-10">
-      <div className="bg-white text-darkSecondary dark:bg-darkSecondary dark:text-gray-200  rounded-tl-md rounded-tr-md p-3  flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border border-black   dark:border-gray-200/60  ">
-        <div className="flex items-center gap-2">
-          <Icon className="flex items-center w-4 h-4" />
-          <p className="!my-0 font-[500] text-sm">{title || lang}</p>
-        </div>
+    <div className="!mt-4 mb-[14px]">
+      <div className="h-0.5 w-full bg-gray-900 dark:bg-white" />
+      <div className="bg-white dark:bg-darkSecondary border border-b-0 border-gray-200 dark:border-gray-800 px-4 py-2 flex items-center gap-2 font-mono overflow-x-auto">
+        <Icon className="w-3.5 h-3.5 text-gray-400 dark:text-gray-500 flex-shrink-0" />
+        <span className="text-[10px] tracking-[0.35em] uppercase text-gray-600 dark:text-gray-400 whitespace-nowrap">
+          {title || lang}
+        </span>
       </div>
     </div>
   );

@@ -1,6 +1,13 @@
 import { ReactNode, useRef, useState } from "react";
+import { MdCheck, MdContentCopy } from "react-icons/md";
 
-const Pre = ({ children }: { children?: ReactNode }) => {
+const Pre = ({
+  children,
+  "data-theme": dataTheme,
+}: {
+  children?: ReactNode;
+  "data-theme"?: string;
+}) => {
   const textInput = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
 
@@ -8,58 +15,35 @@ const Pre = ({ children }: { children?: ReactNode }) => {
     if (textInput.current !== null) {
       setCopied(true);
       navigator.clipboard.writeText(textInput.current.textContent!);
-      setTimeout(() => {
-        setCopied(false);
-      }, 2000);
+      setTimeout(() => setCopied(false), 2000);
     }
   };
 
   return (
-    <div className="relative mb-3 -mt-[14px]" ref={textInput}>
+    <div
+      className="relative mb-3 -mt-[14px]"
+      data-theme={dataTheme}
+      ref={textInput}
+    >
       <button
         aria-label="Copy code"
         type="button"
-        className={`!z-40 absolute right-2 top-5 h-8 w-8 rounded border-2 bg-transparent p-1  ${
-          copied
-            ? "border-green-400 focus:border-green-400 focus:outline-none"
-            : "border-darkSecondary dark:border-gray-200/60 "
-        }`}
         onClick={onCopy}
+        className={`absolute top-2 right-2 z-10 flex items-center gap-1.5 px-2.5 py-1.5 border font-mono text-[10px] tracking-[0.3em] uppercase transition-colors ${
+          copied
+            ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900 border-gray-900 dark:border-white"
+            : "bg-transparent border-gray-400 dark:border-gray-600 text-gray-400 dark:text-gray-500 hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 hover:border-gray-900 dark:hover:border-white"
+        }`}
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          fill="none"
-          className={
-            copied
-              ? "text-green-400"
-              : "text-darkSecondary dark:text-gray-200/60"
-          }
-        >
-          {copied ? (
-            <>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-              />
-            </>
-          ) : (
-            <>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-              />
-            </>
-          )}
-        </svg>
+        {copied ? (
+          <MdCheck className="w-3 h-3 flex-shrink-0" />
+        ) : (
+          <MdContentCopy className="w-3 h-3 flex-shrink-0" />
+        )}
+        <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
       </button>
 
-      <pre className="blog-pre !my-0 !rounded-md  !w-full !p-0 !py-3 !pt-6 border border-black dark:border-gray-200/60">
+      <pre className="blog-pre !my-0 !w-full !p-0 !py-3 border border-gray-200 dark:border-gray-800">
         {children}
       </pre>
     </div>

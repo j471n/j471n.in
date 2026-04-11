@@ -67,7 +67,7 @@ export default function SkillSection() {
             className="flex items-center gap-3"
           >
             <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
-            <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-600">
+            <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-500">
               {skillsSection.eyebrow}
             </span>
           </motion.div>
@@ -114,7 +114,7 @@ export default function SkillSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 dark:text-gray-600 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+                className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
               >
                 <span
                   className={`w-1 h-1 rounded-full transition-colors ${
@@ -136,7 +136,7 @@ export default function SkillSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="relative my-10 overflow-hidden border-y border-gray-200 dark:border-gray-600 py-3.5"
+        className="relative my-10 overflow-hidden border-y border-gray-200 dark:border-gray-800 py-3.5"
       >
         <div className="flex animate-marquee gap-10 w-max">
           {[...skills, ...skills].map((skill, i) => {
@@ -171,10 +171,10 @@ export default function SkillSection() {
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-2 rounded-lg text-xs font-semibold font-mono uppercase tracking-wide transition-all duration-200 ${
+            className={`px-4 py-2 text-xs font-semibold font-mono uppercase tracking-wide transition-all duration-200 ${
               selectedCategory === cat
-                ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900 shadow-md shadow-gray-900/20 dark:shadow-white/10"
-                : "bg-transparent text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-800 hover:border-gray-500 dark:hover:border-gray-600 hover:text-gray-900 dark:hover:text-white"
+                ? "bg-gray-900 dark:bg-white text-white dark:text-gray-900"
+                : "bg-transparent text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700 hover:border-gray-500 dark:hover:border-gray-500 hover:text-gray-900 dark:hover:text-white"
             }`}
           >
             {cat}
@@ -200,16 +200,16 @@ export default function SkillSection() {
               key={skill.name}
               variants={itemVariants}
               whileHover={{ y: -4 }}
-              className="group relative flex items-center gap-3 px-4 py-3.5 bg-white dark:bg-darkSecondary border border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 rounded-xl transition-all duration-200 overflow-hidden cursor-default"
+              className="group relative flex items-center gap-3 px-4 py-3.5 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-200 overflow-hidden cursor-default"
             >
               {/* Hover background */}
-              <div className="absolute inset-0 bg-gray-50 dark:bg-gray-800/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="absolute inset-0 bg-gray-50 dark:bg-darkPrimary opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
               {/* Left accent bar */}
               <div className="absolute left-0 inset-y-0 w-0.5 bg-gray-900 dark:bg-white origin-center scale-y-0 group-hover:scale-y-100 transition-transform duration-250 rounded-sm" />
 
               {/* Icon */}
-              <div className="relative flex-shrink-0 w-8 h-8 rounded-lg bg-gray-100 dark:bg-gray-900 group-hover:bg-gray-900 dark:group-hover:bg-white flex items-center justify-center transition-colors duration-200">
+              <div className="relative flex-shrink-0 w-8 h-8 bg-gray-100 dark:bg-white/10 group-hover:bg-gray-900 dark:group-hover:bg-white flex items-center justify-center transition-colors duration-200">
                 {/* @ts-ignore */}
                 <Icon className="w-4 h-4 text-gray-700 dark:text-gray-300 group-hover:text-white dark:group-hover:text-gray-900 transition-colors duration-200" />
               </div>

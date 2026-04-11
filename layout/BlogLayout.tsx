@@ -118,7 +118,7 @@ export default function BlogLayout({
         </header>
 
         {/* MDX body */}
-        <div className="mt-10 max-w-full font-barlow prose dark:prose-invert sm:prose-lg blog-container prose-pre:bg-white dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-img:mx-auto prose-img:rounded-md prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-gray-900 dark:prose-a:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-code:text-gray-800 dark:prose-code:text-gray-200 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400">
+        <div className="mt-10 max-w-full font-barlow prose-typography">
           {children}
         </div>
       </div>

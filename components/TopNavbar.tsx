@@ -75,7 +75,7 @@ export default function TopNavbar() {
           aria-label="Home"
           className="flex items-center gap-2.5 flex-shrink-0"
         >
-          <Logo className="w-7 h-7" />
+          <Logo className="w-7 h-7 text-black dark:text-white" />
           <motion.span
             initial="hidden"
             animate={control}

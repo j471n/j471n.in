@@ -58,14 +58,7 @@ export default function About({
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="prose dark:prose-invert prose-gray max-w-max
-              prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
-              prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-p:leading-relaxed
-              prose-a:text-gray-900 dark:prose-a:text-white prose-a:underline prose-a:underline-offset-4 prose-a:decoration-gray-400 dark:prose-a:decoration-gray-600
-              prose-strong:text-gray-900 dark:prose-strong:text-white
-              prose-li:text-gray-600 dark:prose-li:text-gray-400
-              prose-blockquote:border-l-2 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:not-italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400
-              prose-code:text-gray-900 dark:prose-code:text-white prose-code:bg-gray-100 dark:prose-code:bg-darkSecondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-none prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none"
+          className="prose-typography max-w-max"
         >
           <MDXRemote
             {...about.content}
