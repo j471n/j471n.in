@@ -5,7 +5,7 @@ import { ISnippet } from "@lib/interface/sanity";
 import MDXComponents from "@components/MDXComponents";
 import { MDXRemote } from "next-mdx-remote";
 import Metadata from "@components/MetaData";
-import PageNotFound from "pages/404";
+import PageNotFound from "@components/PageNotFound";
 import SnippetLayout from "@layout/SnippetLayout";
 import pageMeta from "@content/meta";
 

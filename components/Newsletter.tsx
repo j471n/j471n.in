@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { AiOutlineSend } from "react-icons/ai";
-import { useDarkMode } from "@context/darkModeContext";
 import { CgSpinnerTwo } from "react-icons/cg";
+import { useDarkMode } from "@context/darkModeContext";
 
 export default function Newsletter() {
   const { isDarkMode } = useDarkMode();
@@ -15,9 +14,7 @@ export default function Newsletter() {
 
     fetch("/api/validate/email", {
       method: "POST",
-      body: JSON.stringify({
-        email,
-      }),
+      body: JSON.stringify({ email }),
     })
       .then((res) => res.json())
       .then((res) => {
@@ -32,7 +29,7 @@ export default function Newsletter() {
           toast.success("You have been added to my mailing list.");
           setEmail("");
         } else {
-          toast.error("Please enter valid email address.");
+          toast.error("Please enter a valid email address.");
         }
         setValidationLoading(false);
       })
@@ -44,40 +41,41 @@ export default function Newsletter() {
 
   return (
     <>
-      <div className="flex flex-col w-full gap-4 p-4 my-10 bg-white rounded-lg font-barlow ring-2 ring-gray-400 dark:bg-black dark:border-neutral-600 print:hidden">
-        <h2 className="text-2xl font-bold dark:text-white !my-0">
-          Jatin's Newsletter
-        </h2>
-        <p className="text-gray-600 dark:text-gray-300 font-medium !my-0">
-          I write monthly Tech, Web Development and chrome extension that will
-          improve your productivity. Trust me, I won't spam you.
-        </p>
+      <div className="not-prose my-12 border border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary print:hidden">
+        {/* Header */}
+        <div className="px-6 pt-6 pb-5 border-b border-gray-200 dark:border-gray-800">
+          <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500 block mb-2">
+            Newsletter
+          </span>
+          <p className="text-sm font-semibold text-gray-900 dark:text-white">
+            Monthly digest on web dev, tech, and productivity.
+          </p>
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            No spam. Unsubscribe any time.
+          </p>
+        </div>
 
-        <form className="relative w-full" onSubmit={subscribeNewsLetter}>
+        {/* Form */}
+        <form onSubmit={subscribeNewsLetter} className="flex p-4 gap-2">
           <input
-            className="px-4 py-2.5 rounded-lg text-lg bg-gray-200 dark:bg-darkSecondary outline-none border-0 w-full placeholder:text-gray-700 dark:placeholder:text-gray-400 dark:text-gray-300"
             type="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="example@email.com"
-            required={true}
+            placeholder="your@email.com"
+            required
+            className="flex-1 min-w-0 px-3 py-2 text-sm bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-600 outline-none focus:border-gray-400 dark:focus:border-gray-600 transition-colors font-mono"
           />
-
           <button
-            className="absolute right-0 top-0 bottom-0 px-4 m-[3px] bg-white dark:text-white dark:bg-neutral-600/40   rounded-md font-medium font-inter transform duration-200 active:scale-90 select-none"
             type="submit"
+            disabled={validationLoading}
+            className="flex-shrink-0 flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-mono text-[10px] tracking-[0.35em] uppercase hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors disabled:opacity-50"
           >
-            <div className="relative flex items-center gap-2 !my-0 sm:w-[100px]">
-              {validationLoading ? (
-                <CgSpinnerTwo className="text-xl mx-auto animate-[spin_0.5s_linear_infinite]" />
-              ) : (
-                <>
-                  <AiOutlineSend className="text-xl" />
-                  <p className="hidden sm:inline-flex !my-0">Subscribe</p>
-                </>
-              )}
-            </div>
+            {validationLoading ? (
+              <CgSpinnerTwo className="w-3.5 h-3.5 animate-spin" />
+            ) : (
+              "Subscribe"
+            )}
           </button>
         </form>
       </div>

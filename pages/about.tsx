@@ -1,18 +1,31 @@
-import { FadeContainer, opacityVariant } from "@content/FramerMotionVariants";
 import { ILinkedinResponse, ITMDBData } from "@lib/interface";
-
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { IStaticPage } from "@lib/interface/sanity";
 import Image from "next/image";
 import MovieCard from "@components/MovieCard";
-import StaticPage from "@components/StaticPage";
-import classNames from "classnames";
+import MetaData from "@components/MetaData";
+import MDXComponents from "@components/MDXComponents";
+import PageHeader from "@components/PageHeader";
+import { MDXRemote } from "next-mdx-remote";
 import { fetchTMDBData } from "@lib/tmdb";
 import { getStaticPageFromSlug } from "@lib/sanityContent";
 import { getUserDataValue } from "@lib/supabase";
 import { months } from "@utils/date";
 import { motion } from "framer-motion";
 import pageMeta from "@content/meta";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 160, damping: 22 },
+  },
+};
 
 export default function About({
   about,
@@ -26,133 +39,209 @@ export default function About({
   const parsedLinkedIn: ILinkedinResponse = JSON.parse(linkedin);
   return (
     <>
-      <StaticPage metadata={pageMeta.about} page={about} />
+      <MetaData
+        title={pageMeta.about.title}
+        description={pageMeta.about.description}
+        previewImage={pageMeta.about.image}
+        keywords={pageMeta.about.keywords}
+      />
 
-      <div className="pageTop mt-0 print:hidden">
-        <motion.h3
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={opacityVariant}
-          className="my-2 text-xl font-bold text-left md:text-3xl"
+      <PageHeader
+        watermark="/about"
+        eyebrow="Profile — 001"
+        title={about.title}
+        description={about.excerpt}
+        className="pb-16"
+      >
+        {/* Prose content */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="prose dark:prose-invert prose-gray max-w-max
+              prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white
+              prose-p:text-gray-600 dark:prose-p:text-gray-400 prose-p:leading-relaxed
+              prose-a:text-gray-900 dark:prose-a:text-white prose-a:underline prose-a:underline-offset-4 prose-a:decoration-gray-400 dark:prose-a:decoration-gray-600
+              prose-strong:text-gray-900 dark:prose-strong:text-white
+              prose-li:text-gray-600 dark:prose-li:text-gray-400
+              prose-blockquote:border-l-2 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:not-italic prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400
+              prose-code:text-gray-900 dark:prose-code:text-white prose-code:bg-gray-100 dark:prose-code:bg-darkSecondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-none prose-code:font-mono prose-code:text-sm prose-code:before:content-none prose-code:after:content-none"
         >
-          Recent Experience
-        </motion.h3>
+          <MDXRemote
+            {...about.content}
+            frontmatter={{
+              slug: about.slug.current,
+              excerpt: about.excerpt,
+              title: about.title,
+              date: about.publishedAt,
+              keywords: about.keywords,
+              image: about.mainImage.asset.url,
+            }}
+            components={MDXComponents}
+          />
+        </motion.div>
+      </PageHeader>
 
-        <AnimatedDiv
-          variants={FadeContainer}
-          className="flex flex-col gap-2 pt-10 pb-5 overflow-x-scroll md:gap-4"
-        >
-          {parsedLinkedIn.experiences.map((experience) => {
-            return (
-              <div
+      {/* ── Experience ── */}
+      <div className="relative w-full px-6 sm:px-8 lg:px-12 pb-20 print:hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Section header */}
+          <div className="flex items-center gap-4 mb-10">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3"
+            >
+              <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
+              <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500">
+                Career
+              </span>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Recent Experience
+            </motion.h2>
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800 hidden sm:block" />
+          </div>
+
+          {/* Experience cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex flex-col gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800"
+          >
+            {parsedLinkedIn.experiences.map((experience) => (
+              <motion.div
                 key={experience.company_linkedin_profile_url}
-                className="p-5 bg-white dark:bg-darkSecondary rounded-lg flex flex-start gap-3 shadow flex-col xs:flex-row"
+                variants={itemVariants}
+                className="bg-white dark:bg-darkPrimary p-6 flex gap-5 flex-col xs:flex-row"
               >
-                <div className="min-w-[56px] w-14 h-14 max-w-[56px] relative mt-1">
+                {/* Logo */}
+                <div className="flex-shrink-0 w-12 h-12 border border-gray-200 dark:border-gray-700 overflow-hidden flex items-center justify-center bg-white">
                   <Image
                     src={experience.logo_url}
-                    width={400}
-                    height={400}
-                    className="object-cover"
+                    width={48}
+                    height={48}
+                    className="object-contain w-full h-full"
                     alt={experience.company}
                   />
                 </div>
 
+                {/* Content */}
                 <div
-                  className={classNames(
-                    "flex flex-col gap-2 flex-grow",
-                    experience.job_titles.length > 1 ? "ml-10" : "ml-0"
-                  )}
+                  className={`flex flex-col gap-3 flex-grow ${
+                    experience.job_titles.length > 1 ? "ml-8" : ""
+                  }`}
                 >
                   {experience.job_titles.length > 1 && (
-                    <h2
-                      className={classNames(
-                        "text-xl font-semibold",
-                        experience.job_titles.length > 1 ? "-ml-10" : "ml-0"
-                      )}
-                    >
+                    <h2 className="text-base font-bold text-gray-900 dark:text-white -ml-8 font-mono uppercase tracking-wider">
                       {experience.company}
                     </h2>
                   )}
-                  {experience.job_titles.map((job) => (
-                    <div key={job.title} className="relative w-full group">
-                      {experience.job_titles.length > 1 && (
-                        <span className="-left-[29px] h-full absolute w-0.5 bg-black dark:bg-gray-500 top-5 peer-last:opacity-0 group-last:opacity-0"></span>
-                      )}
-                      <div
-                        className={
-                          "flex flex-col sm:flex-row items-start sm:justify-between"
-                        }
-                      >
-                        <div className="flex flex-col">
-                          <h3 className="text-lg font-semibold relative">
-                            {job.title}
 
-                            {experience.job_titles.length > 1 && (
-                              <span className="absolute -left-[31.5px] h-2 w-2 top-1/2 -translate-y-1/2 rounded-full bg-white dark:bg-gray-500 ring-[3px] ring-black dark:ring-white"></span>
-                            )}
+                  {experience.job_titles.map((job, i) => (
+                    <div key={job.title} className="relative w-full">
+                      {experience.job_titles.length > 1 && (
+                        <span
+                          className={`absolute -left-[25px] w-px bg-gray-300 dark:bg-gray-700 ${
+                            i === experience.job_titles.length - 1
+                              ? "h-3 top-2"
+                              : "h-full top-2"
+                          }`}
+                        />
+                      )}
+                      {experience.job_titles.length > 1 && (
+                        <span className="absolute -left-[28.5px] top-[9px] h-1.5 w-1.5 rounded-full bg-gray-400 dark:bg-gray-600 ring-2 ring-white dark:ring-darkPrimary" />
+                      )}
+
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                        <div>
+                          <h3 className="text-base font-semibold text-gray-900 dark:text-white">
+                            {job.title}
                           </h3>
                           {experience.job_titles.length === 1 && (
-                            <p className="text-base">{experience.company}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                              {experience.company}
+                            </p>
                           )}
-                          <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {job.location}
-                          </p>
+                          {job.location && (
+                            <p className="text-xs font-mono text-gray-500 dark:text-gray-500 mt-0.5">
+                              {job.location}
+                            </p>
+                          )}
                         </div>
-                        <div>
-                          <div className="flex items-center gap-1 text-sm">
-                            <span>
-                              {months[job.starts_at.month - 1]}{" "}
-                              {job.starts_at.year}
-                            </span>
-                            <span> - </span>
-                            <span>
-                              {!job.ends_at ? (
-                                "Present"
-                              ) : (
-                                <>
-                                  {months[job.ends_at.month - 1]}{" "}
-                                  {job.ends_at.year}
-                                </>
-                              )}
-                            </span>
-                          </div>
-                        </div>
+                        <p className="text-xs font-mono text-gray-500 dark:text-gray-500 whitespace-nowrap sm:text-right flex-shrink-0">
+                          {months[job.starts_at.month - 1]} {job.starts_at.year}
+                          {" — "}
+                          {!job.ends_at
+                            ? "Present"
+                            : `${months[job.ends_at.month - 1]} ${job.ends_at.year}`}
+                        </p>
                       </div>
 
                       {job.description && (
-                        <p className="whitespace-pre-wrap mt-2 text-sm text-black/80 dark:text-white/50">
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-wrap border-l-2 border-gray-200 dark:border-gray-700 pl-3">
                           {job.description}
                         </p>
                       )}
                     </div>
                   ))}
                 </div>
-              </div>
-            );
-          })}
-        </AnimatedDiv>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
-      <div className="-mt-5 pageTop print:hidden">
-        <motion.h3
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={opacityVariant}
-          className="my-2 text-xl font-bold text-left md:text-3xl"
-        >
-          Recent watched Movies & TV Series
-        </motion.h3>
 
-        <AnimatedDiv
-          variants={FadeContainer}
-          className="flex items-center gap-2 pt-10 pb-5 overflow-x-scroll md:gap-4 horizontal-scrollbar"
-        >
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </AnimatedDiv>
+      {/* ── Movies & TV ── */}
+      <div className="relative w-full px-6 sm:px-8 lg:px-12 pb-24 print:hidden overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Section header */}
+          <div className="flex items-center gap-4 mb-10">
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3"
+            >
+              <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
+              <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500">
+                Watching
+              </span>
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Movies & TV Series
+            </motion.h2>
+            <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800 hidden sm:block" />
+          </div>
+
+          {/* Horizontal scroll strip */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex items-stretch gap-3 overflow-x-auto pb-4 horizontal-scrollbar"
+          >
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </>
   );
@@ -170,6 +259,6 @@ export async function getStaticProps() {
       movies,
       linkedin,
     },
-    revalidate: 60 * 60 * 24 , // everyday
+    revalidate: 60 * 60 * 24, // everyday
   };
 }

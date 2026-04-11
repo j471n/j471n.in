@@ -15,38 +15,69 @@ import {
   ValueType,
 } from "recharts/types/component/DefaultTooltipContent";
 
-import AnimatedHeading from "./FramerMotion/AnimatedHeading";
-import AnimatedText from "./FramerMotion/AnimatedText";
+import { motion } from "framer-motion";
 import React from "react";
 import fetcher from "@lib/fetcher";
 import { getFormattedDate } from "@utils/date";
-import { opacityVariant } from "@content/FramerMotionVariants";
 import { useDarkMode } from "@context/darkModeContext";
 import useSWR from "swr";
+
+function ChartSectionHeading({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="mb-6 space-y-2">
+      <motion.div
+        initial={{ opacity: 0, x: -16 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-3"
+      >
+        <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
+        <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-500 dark:text-gray-500">
+          Activity
+        </span>
+      </motion.div>
+      <motion.h3
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.06 }}
+        className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white"
+      >
+        {title}
+      </motion.h3>
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.12 }}
+        className="text-sm text-gray-600 dark:text-gray-400"
+      >
+        {description}
+      </motion.p>
+    </div>
+  );
+}
 
 export default function GitHubActivityGraph() {
   const { isDarkMode } = useDarkMode();
   const { data: githubActivity } = useSWR(
     "/api/stats/github-contribution",
-    fetcher
+    fetcher,
   );
 
   return (
     <>
-      <div className="font-barlow mb-10 max-w-full">
-        <AnimatedHeading
-          variants={opacityVariant}
-          className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-        >
-          GitHub Activity Graph
-        </AnimatedHeading>
-        <AnimatedText
-          variants={opacityVariant}
-          className="my-4 text-gray-700 dark:text-gray-300"
-        >
-          A dynamically generated activity graph to show my GitHub activities of
-          last 31 days.
-        </AnimatedText>
+      <div className="mb-12 max-w-full">
+        <ChartSectionHeading
+          title="GitHub Activity Graph"
+          description="A dynamically generated activity graph showing my GitHub contributions over the last 31 days."
+        />
         <ResponsiveContainer width="100%" height={300}>
           {githubActivity?.contributions ? (
             <AreaChart
@@ -93,20 +124,12 @@ export default function GitHubActivityGraph() {
           )}
         </ResponsiveContainer>
       </div>
-      <div className="font-barlow mb-10 max-w-full">
-        <AnimatedHeading
-          variants={opacityVariant}
-          className="text-3xl font-bold capitalize sm:text-4xl text-neutral-900 dark:text-neutral-200"
-        >
-          My Productivity by Day of the Week
-        </AnimatedHeading>
-        <AnimatedText
-          variants={opacityVariant}
-          className="my-4 text-gray-700 dark:text-gray-300"
-        >
-          A visual representation of my productivity based on the number of
-          contributions made on each day of the week.
-        </AnimatedText>
+
+      <div className="mb-12 max-w-full">
+        <ChartSectionHeading
+          title="Productivity by Day of Week"
+          description="A visual representation of my productivity based on contributions made on each day of the week."
+        />
         <ResponsiveContainer width="100%" height={300}>
           {githubActivity?.contributionCountByDayOfWeek ? (
             <BarChart
@@ -121,7 +144,6 @@ export default function GitHubActivityGraph() {
               />
               <XAxis dataKey="day" />
               <YAxis />
-
               <Tooltip content={<ContributionCountByDayOfWeekToolTip />} />
               <Bar dataKey="count" fill="#26a641" />
             </BarChart>

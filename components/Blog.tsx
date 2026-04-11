@@ -1,121 +1,105 @@
-import { BlogCardAnimation } from "@content/FramerMotionVariants";
 import { BlogPost } from "@lib/interface/sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { getFormattedDate } from "@utils/date";
 import { motion } from "framer-motion";
-import { useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring" as const, stiffness: 120, damping: 20 },
+  },
+};
 
 export default function Blog({
   blog,
   animate = false,
+  index,
 }: {
   blog: BlogPost;
   animate?: boolean;
+  index?: number;
 }) {
-  const blogRef = useRef(null);
-
   return (
     <motion.article
-      ref={blogRef}
-      variants={BlogCardAnimation}
-      initial={animate && "hidden"}
-      whileInView={animate ? "visible" : ""}
+      variants={cardVariants}
+      initial={animate ? "hidden" : false}
+      whileInView={animate ? "visible" : undefined}
       viewport={{ once: true }}
-      className="group relative bg-white dark:bg-darkSecondary rounded-3xl overflow-hidden border-2 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 shadow-lg hover:shadow-2xl"
+      className="group relative border-b border-gray-100 dark:border-gray-800 last:border-0"
     >
-      <div className="grid md:grid-cols-2 gap-6 p-6">
-        {/* Image Section */}
-        <Link
-          href={`/blogs/${blog.slug.current}`}
-          className="relative aspect-[16/10] rounded-2xl overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/5 to-gray-900/20 dark:from-white/5 dark:to-white/20 z-10 group-hover:opacity-0 transition-opacity duration-300" />
+      {/* Left accent bar */}
+      <div className="absolute left-0 inset-y-0 w-0.5 bg-gray-900 dark:bg-white origin-center scale-y-0 group-hover:scale-y-100 transition-transform duration-200 rounded-sm" />
+
+      <Link
+        href={`/blogs/${blog.slug.current}`}
+        className="flex items-center gap-4 sm:gap-6 py-6 pl-4 pr-2 hover:bg-gray-50/70 dark:hover:bg-gray-900/20 transition-colors duration-150 rounded-r-xl"
+      >
+        {/* Article index */}
+        {index !== undefined && (
+          <span className="text-[10px] font-mono text-gray-300 dark:text-gray-700 w-5 flex-shrink-0 select-none self-start mt-1.5">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        )}
+
+        {/* Content */}
+        <div className="flex-1 min-w-0 space-y-2">
+          <h3 className="font-bold text-lg leading-snug text-gray-900 dark:text-white line-clamp-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+            {blog.title}
+          </h3>
+          <p className="text-sm text-gray-500 dark:text-gray-500 line-clamp-2 leading-relaxed hidden sm:block">
+            {blog.excerpt}
+          </p>
+          {/* Meta row */}
+          <div className="flex items-center gap-2 pt-0.5 flex-wrap">
+            <div className="relative w-4 h-4 rounded-full overflow-hidden flex-shrink-0">
+              <Image
+                alt={blog.author.name}
+                fill
+                src={
+                  blog.organization
+                    ? blog.organization.image.asset.url
+                    : blog.author.image.asset.url
+                }
+                className="object-cover"
+              />
+            </div>
+            <span className="text-[11px] font-mono text-gray-400 dark:text-gray-600">
+              {blog.author.name}
+            </span>
+            {blog.organization && (
+              <>
+                <span className="text-gray-200 dark:text-gray-800">·</span>
+                <span className="text-[11px] font-mono text-gray-400 dark:text-gray-600">
+                  {blog.organization.name}
+                </span>
+              </>
+            )}
+            <span className="text-gray-200 dark:text-gray-800">·</span>
+            <span className="text-[11px] font-mono text-gray-400 dark:text-gray-600">
+              {getFormattedDate(new Date(blog.publishedAt))}
+            </span>
+          </div>
+        </div>
+
+        {/* Thumbnail — grayscale at rest, color on hover */}
+        {/* <div className="relative w-20 h-16 sm:w-28 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 border border-gray-100 dark:border-gray-800 shadow-sm">
           <Image
             title={blog.title}
             alt={blog.title}
             src={blog.mainImage.asset.url}
             fill
-            blurDataURL={blog.mainImage.asset.url}
-            quality={90}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            quality={80}
+            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
           />
-        </Link>
+        </div> */}
 
-        {/* Content Section */}
-        <div className="flex flex-col justify-between py-2">
-          <div className="space-y-4">
-            {/* Title */}
-            <Link href={`/blogs/${blog.slug.current}`}>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors line-clamp-2">
-                {blog.title}
-              </h3>
-            </Link>
-
-            {/* Excerpt */}
-            <p className="text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed">
-              {blog.excerpt}
-            </p>
-          </div>
-
-          {/* Footer */}
-          <div className="flex items-center justify-between mt-6 pt-6 border-t border-gray-200 dark:border-gray-800">
-            {/* Author Info */}
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200 dark:border-gray-800">
-                <Image
-                  alt={
-                    blog.organization
-                      ? blog.organization.name
-                      : blog.author.name
-                  }
-                  fill
-                  src={
-                    blog.organization
-                      ? blog.organization.image.asset.url
-                      : blog.author.image.asset.url
-                  }
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2 text-sm">
-                  <Link
-                    href="/about"
-                    className="font-semibold text-gray-900 dark:text-white hover:underline"
-                  >
-                    {blog.author.name}
-                  </Link>
-                  {blog.organization && (
-                    <>
-                      <span className="text-gray-400">•</span>
-                      <Link
-                        href={blog.organization.website}
-                        className="font-medium text-gray-600 dark:text-gray-400 hover:underline"
-                      >
-                        {blog.organization.name}
-                      </Link>
-                    </>
-                  )}
-                </div>
-                <span className="text-xs text-gray-500 dark:text-gray-500">
-                  {getFormattedDate(new Date(blog.publishedAt))}
-                </span>
-              </div>
-            </div>
-
-            {/* Read More Button */}
-            <Link
-              href={`/blogs/${blog.slug.current}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium text-sm hover:bg-gray-800 dark:hover:bg-gray-100 transition-all active:scale-95 group/btn"
-            >
-              <span>Read</span>
-              <FiArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-            </Link>
-          </div>
-        </div>
-      </div>
+        {/* Arrow */}
+        <FiArrowRight className="w-4 h-4 text-gray-300 dark:text-gray-700 group-hover:text-gray-900 dark:group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0 hidden sm:block" />
+      </Link>
     </motion.article>
   );
 }

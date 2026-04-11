@@ -4,48 +4,25 @@ import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaDev } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { SiCodepen } from "react-icons/si";
+import siteConfig, { SocialIconKey } from "./siteConfig";
 
-const socialMedia: SocialPlatform[] = [
-  {
-    title: "Twitter",
-    Icon: AiOutlineTwitter,
-    url: "https://twitter.com/intent/follow?screen_name=j471n_",
-  },
-  {
-    title: "LinkedIn",
-    Icon: BsLinkedin,
-    url: "https://www.linkedin.com/in/j471n/",
-  },
-  {
-    title: "Github",
-    Icon: BsGithub,
-    url: "https://github.com/j471n",
-  },
-  {
-    title: "Instagram",
-    Icon: AiOutlineInstagram,
-    url: "https://www.instagram.com/j471n_",
-  },
-  {
-    title: "Dev.to",
-    Icon: FaDev,
-    url: "https://dev.to/j471n",
-  },
-  {
-    title: "Codepen",
-    Icon: SiCodepen,
-    url: "https://codepen.io/j471n",
-  },
-  {
-    title: "Facebook",
-    Icon: BsFacebook,
-    url: "https://www.facebook.com/ja7in/",
-  },
-  {
-    title: "Mail",
-    Icon: HiMail,
-    url: "mailto:me@j471n.in",
-  },
-];
+const iconMap: Record<SocialIconKey, SocialPlatform["Icon"]> = {
+  twitter: AiOutlineTwitter,
+  linkedin: BsLinkedin,
+  github: BsGithub,
+  instagram: AiOutlineInstagram,
+  devto: FaDev,
+  codepen: SiCodepen,
+  facebook: BsFacebook,
+  mail: HiMail,
+};
+
+const socialMedia: SocialPlatform[] = siteConfig.socialLinks.map(
+  (socialLink) => ({
+    title: socialLink.title,
+    Icon: iconMap[socialLink.icon],
+    url: socialLink.url,
+  }),
+);
 
 export default socialMedia;

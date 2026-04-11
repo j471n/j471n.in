@@ -1,7 +1,8 @@
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
 import { ISnippet } from "@lib/interface/sanity";
 import Image from "next/image";
-import { opacityVariant } from "@content/FramerMotionVariants";
+import { getFormattedDate } from "@utils/date";
+import { motion } from "framer-motion";
+import ScrollProgressBar from "@components/ScrollProgressBar";
 
 export default function SnippetLayout({
   snippet,
@@ -11,33 +12,76 @@ export default function SnippetLayout({
   children: JSX.Element;
 }) {
   return (
-    <section className="mt-[44px] md:mt-[60px]  relative !overflow-hidden">
-      <section className="relative max-w-3xl p-5 mx-auto prose sm:pt-10 font-barlow dark:prose-invert">
-        <div className="flex items-center justify-between">
-          <h1 className="m-0 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+    <div className="relative mt-[44px] md:mt-[60px]">
+      <ScrollProgressBar />
+
+      {/* Page wrapper */}
+      <div className="max-w-3xl mx-auto px-5 sm:px-8 xl:px-0 pb-20">
+        {/* Header */}
+        <header className="pt-10 pb-8 border-b border-gray-200 dark:border-gray-800 space-y-5">
+          {/* Language badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex items-center gap-2"
+          >
+            <div className="flex items-center gap-2 border border-gray-200 dark:border-gray-800 px-2.5 py-1.5">
+              <div className="relative w-4 h-4 flex-shrink-0">
+                <Image
+                  fill
+                  alt={snippet.language.name}
+                  src={snippet.language.image.asset.url}
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-gray-500 dark:text-gray-400">
+                {snippet.language.name}
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Title */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.04 }}
+            className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight"
+          >
             {snippet.title}
-          </h1>
+          </motion.h1>
 
-          <div className="relative flex items-center justify-center w-12 h-12 p-1 overflow-hidden">
-            <Image
-              className="m-0"
-              src={snippet.language.image.asset.url}
-              alt={snippet.title}
-              width={62}
-              height={62}
-            ></Image>
-          </div>
-        </div>
+          {/* Excerpt */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="text-lg text-gray-600 dark:text-gray-400 border-l-2 border-gray-300 dark:border-gray-700 pl-4"
+          >
+            {snippet.excerpt}
+          </motion.p>
 
-        <p>{snippet.excerpt}</p>
+          {/* Meta row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.16 }}
+            className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1"
+          >
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">
+              {getFormattedDate(new Date(snippet.publishedAt))}
+            </span>
+            <span className="text-gray-300 dark:text-gray-700">·</span>
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-gray-500 dark:text-gray-500">
+              {snippet.readingTime.text}
+            </span>
+          </motion.div>
+        </header>
 
-        <AnimatedDiv
-          variants={opacityVariant}
-          className="max-w-full prose-sm blog-container sm:prose-base prose-pre:bg-white prose-pre:shadow dark:prose-pre:shadow-black/80 dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white"
-        >
+        {/* MDX Content */}
+        <div className="mt-10 max-w-full font-barlow prose dark:prose-invert prose-sm sm:prose-base blog-container prose-pre:bg-white dark:prose-pre:bg-darkSecondary prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-a:text-gray-900 dark:prose-a:text-white prose-strong:text-gray-900 dark:prose-strong:text-white prose-code:text-gray-900 dark:prose-code:text-gray-100 prose-blockquote:border-gray-300 dark:prose-blockquote:border-gray-700 prose-blockquote:text-gray-600 dark:prose-blockquote:text-gray-400">
           {children}
-        </AnimatedDiv>
-      </section>
-    </section>
+        </div>
+      </div>
+    </div>
   );
 }

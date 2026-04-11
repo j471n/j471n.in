@@ -1,212 +1,177 @@
 import React from "react";
-import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
 import ContactForm from "./ContactForm";
-import {
-  FiMail,
-  FiMessageSquare,
-  FiGithub,
-  FiLinkedin,
-  FiTwitter,
-  FiClock,
-  FiMapPin,
-} from "react-icons/fi";
+import siteConfig from "@content/siteConfig";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
+const infoRows = [
+  { label: "Response Time", value: "< 24 hours" },
+  { label: "Timezone", value: "IST · UTC +5:30" },
+  { label: "Preferred", value: "Email / LinkedIn" },
+  { label: "Work Type", value: "Remote / Contract" },
+];
 
 export default function Contact() {
-  return (
-    <div
-      id="contact"
-      className="relative py-16 sm:py-24 lg:py-32 bg-white dark:bg-darkPrimary overflow-hidden"
-    >
-      {/* Background Decoration */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gray-100 dark:bg-darkSecondary rounded-full blur-3xl opacity-50"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-100 dark:bg-darkSecondary rounded-full blur-3xl opacity-50"></div>
-      </div>
+  const { contact } = siteConfig;
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
+  return (
+    <div id="contact" className="relative py-20 sm:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        {/* Section number watermark */}
+        <div
+          className="absolute -right-2 top-6 font-black select-none pointer-events-none leading-none tracking-tighter bg-gradient-to-b from-gray-200 to-gray-50 dark:from-[#232628] dark:to-darkPrimary bg-clip-text text-transparent"
+          style={{ fontSize: "clamp(5rem, 16vw, 13rem)" }}
+          aria-hidden="true"
         >
-          {/* Header Section */}
-          <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+          04
+        </div>
+
+        {/* ── Header ── */}
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
+          <div className="space-y-3 max-w-xl">
             <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-darkSecondary text-sm font-medium text-gray-700 dark:text-gray-300 mb-6"
+              initial={{ opacity: 0, x: -16 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3"
             >
-              <FiMessageSquare className="w-4 h-4" />
-              <span>Let's Work Together</span>
+              <div className="h-px w-5 bg-gray-400 dark:bg-gray-600 flex-shrink-0" />
+              <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-gray-400 dark:text-gray-600">
+                {contact.eyebrow}
+              </span>
             </motion.div>
 
             <motion.h2
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
             >
-              Get in Touch
+              {contact.title}
             </motion.h2>
 
             <motion.p
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="text-base text-gray-600 dark:text-gray-400 border-l-2 border-gray-300 dark:border-gray-700 pl-4 py-0.5"
             >
-              Have a project in mind or just want to chat? I'm always open to
-              discussing new opportunities, creative ideas, or partnerships.
+              {contact.description}
             </motion.p>
           </div>
 
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Contact Form - Takes 2 columns on desktop */}
-            <motion.div
-              variants={itemVariants}
-              className="lg:col-span-2 order-2 lg:order-1"
+          {/* Email quick-link */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.15 }}
+            className="flex flex-col items-start lg:items-end gap-1 flex-shrink-0"
+          >
+            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-gray-400 dark:text-gray-600">
+              Or reach me directly
+            </span>
+            <a
+              href={`mailto:${siteConfig.person.email}`}
+              className="text-sm font-semibold text-gray-900 dark:text-white hover:underline underline-offset-4 decoration-gray-400 font-mono"
             >
-              <ContactForm />
-            </motion.div>
+              {siteConfig.person.email}
+            </a>
+          </motion.div>
+        </div>
 
-            {/* Sidebar - Info Cards - Takes 1 column on desktop */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-6 order-1 lg:order-2"
-            >
-              {/* Contact Info Card */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-2.5 rounded-lg bg-white dark:bg-darkPrimary">
-                    <FiMail className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    Email
-                  </h3>
-                </div>
-                <a
-                  href="mailto:j471n.in@gmail.com"
-                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white font-medium transition-colors block break-all"
-                >
-                  j471n.in@gmail.com
-                </a>
-                <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-                  Response within 24 hours
-                </p>
-              </div>
-
-              {/* Location & Availability */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800">
-                <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <FiMapPin className="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                        Location
-                      </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Based in India
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <FiClock className="w-5 h-5 text-gray-700 dark:text-gray-300 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
-                        Availability
-                      </h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Open to new projects
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Social Links */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-                  Connect
-                </h3>
-                <div className="flex gap-3">
-                  <a
-                    href="https://github.com/j471n"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-white dark:bg-darkPrimary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    aria-label="GitHub"
-                  >
-                    <FiGithub className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  </a>
-                  <a
-                    href="https://linkedin.com/in/j471n"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-white dark:bg-darkPrimary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    aria-label="LinkedIn"
-                  >
-                    <FiLinkedin className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  </a>
-                  <a
-                    href="https://twitter.com/j471n_"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-lg bg-white dark:bg-darkPrimary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <FiTwitter className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Services List */}
-              <div className="p-6 rounded-2xl bg-gray-50 dark:bg-darkSecondary border border-gray-200 dark:border-gray-800">
-                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-                  Services
-                </h3>
-                <ul className="space-y-2.5 text-sm text-gray-600 dark:text-gray-400">
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-1.5 flex-shrink-0"></span>
-                    <span>Web Development</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-1.5 flex-shrink-0"></span>
-                    <span>Technical Consulting</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-1.5 flex-shrink-0"></span>
-                    <span>Code Review</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-1.5 flex-shrink-0"></span>
-                    <span>Mentorship</span>
-                  </li>
-                </ul>
-              </div>
-            </motion.div>
-          </div>
+        {/* ── Divider ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="flex items-center gap-4 mb-12"
+        >
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
+          <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-300 dark:text-gray-700">
+            Send a Message
+          </span>
+          <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
         </motion.div>
+
+        {/* ── Two-column body ── */}
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-start">
+          {/* Form — 3 cols */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-3"
+          >
+            <ContactForm />
+          </motion.div>
+
+          {/* Info sidebar — 2 cols */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="lg:col-span-2 flex flex-col gap-0"
+          >
+            {/* Status */}
+            <div className="pb-6">
+              <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-gray-400 dark:text-gray-600 mb-3 block">
+                Current Status
+              </span>
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2.5 w-2.5 flex-shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                </span>
+                <span className="text-sm font-semibold text-gray-900 dark:text-white">
+                  Available for Work
+                </span>
+              </div>
+            </div>
+
+            <div className="h-px bg-gray-200 dark:bg-gray-800" />
+
+            {/* Info rows */}
+            <div className="divide-y divide-gray-100 dark:divide-gray-800">
+              {infoRows.map(({ label, value }, i) => (
+                <motion.div
+                  key={label}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.35 + i * 0.06 }}
+                  className="flex justify-between items-center py-4"
+                >
+                  <span className="font-mono text-[9px] tracking-[0.35em] uppercase text-gray-400 dark:text-gray-500">
+                    {label}
+                  </span>
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">
+                    {value}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="h-px bg-gray-200 dark:bg-gray-800" />
+
+            {/* Decorative type */}
+            <div className="pt-8 select-none" aria-hidden="true">
+              <p
+                className="font-black leading-none tracking-tighter bg-gradient-to-b from-gray-300 to-gray-100 dark:from-[#2e3133] dark:to-darkPrimary bg-clip-text text-transparent"
+                style={{ fontSize: "clamp(2.8rem, 6vw, 4.5rem)" }}
+              >
+                LET&apos;S
+                <br />
+                BUILD
+                <br />
+                TOGETHER
+              </p>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ export default function ScrollProgressBar() {
   }, [progressBarHandler]);
   return (
     <div
-      className="!fixed left-0 w-full h-1 bg-black dark:bg-white origin-top-left  transform duration-300  top-[44px] sm:top-[63.5px] md:top-[52px]"
+      className="!fixed left-0 w-full h-1 bg-black dark:bg-white origin-top-left  transform duration-300  top-[57px]"
       style={{
         transform: `scale(${scroll},1)`,
         zIndex: 100,

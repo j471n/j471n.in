@@ -21,34 +21,29 @@ export default function Artist({
       rel="noreferrer"
       target="_blank"
       href={url}
-      className="flex items-center gap-5 p-4 overflow-hidden  border-b border-l border-r border-gray-300 hover:bg-white  hover:dark:bg-darkSecondary first:border-t dark:border-neutral-600 font-barlow"
+      className="group flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-darkPrimary hover:bg-gray-50 dark:hover:bg-darkSecondary transition-colors duration-200 last:border-b-0"
     >
-      <>
-        <div className="hidden text-xl tracking-wider text-gray-500 origin-center transform font-inter xs:inline-flex">
-          #{id + 1}
-        </div>
-        <div className="relative w-12 h-12 origin-center transform md:w-24 md:h-24">
-          <Image
-            className="rounded-full"
-            src={coverImage}
-            width={100}
-            height={100}
-            alt={name}
-            quality={50}
-            style={{
-              height: "100%",
-            }}
-          ></Image>
-        </div>
-        <div>
-          <h2 className="text-base font-semibold text-gray-900 origin-left transform sm:text-lg md:text-xl xl:text-2xl dark:text-white md:font-bold font-barlow">
-            {name}
-          </h2>
-          <p className="text-xs text-gray-500 origin-left transform sm:text-sm md:text-base md:font-medium line-clamp-1">
-            Popularity: {popularity}
-          </p>
-        </div>
-      </>
+      <span className="font-mono text-[10px] text-gray-400 dark:text-gray-600 w-5 text-right flex-shrink-0">
+        {id + 1}
+      </span>
+      <div className="flex-shrink-0 w-10 h-10 overflow-hidden rounded-full border border-gray-200 dark:border-gray-700">
+        <Image
+          src={coverImage}
+          width={40}
+          height={40}
+          alt={name}
+          quality={60}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="flex-1 min-w-0">
+        <h2 className="text-sm font-semibold text-gray-900 dark:text-white truncate group-hover:text-gray-900 dark:group-hover:text-white">
+          {name}
+        </h2>
+        <p className="text-xs text-gray-500 dark:text-gray-500 mt-0.5">
+          Popularity: {popularity}
+        </p>
+      </div>
     </Link>
   );
 }

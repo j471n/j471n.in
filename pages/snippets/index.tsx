@@ -1,12 +1,15 @@
-import { AnimatePresence } from "framer-motion";
-import AnimatedDiv from "@components/FramerMotion/AnimatedDiv";
-import { FadeContainer } from "@content/FramerMotionVariants";
+import { motion } from "framer-motion";
 import { ISnippet } from "@lib/interface/sanity";
 import Metadata from "@components/MetaData";
-import PageTop from "@components/PageTop";
+import PageHeader from "@components/PageHeader";
 import SnippetCard from "@components/SnippetCard";
 import { getAllSnippetsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05 } },
+};
 
 export default function Snippets({ snippets }: { snippets: ISnippet[] }) {
   return (
@@ -18,24 +21,25 @@ export default function Snippets({ snippets }: { snippets: ISnippet[] }) {
         keywords={pageMeta.snippets.keywords}
       />
 
-      <section className="pageTop flex flex-col gap-2">
-        <PageTop pageTitle={pageMeta.snippets.title}>
-          {pageMeta.snippets.description}
-        </PageTop>
-
-        <section className="relative flex flex-col gap-2 min-h-[50vh]">
-          <AnimatedDiv
-            variants={FadeContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full"
-          >
-            <AnimatePresence>
-              {snippets.map((snippet, index) => {
-                return <SnippetCard key={index} snippet={snippet} />;
-              })}
-            </AnimatePresence>
-          </AnimatedDiv>
-        </section>
-      </section>
+      <PageHeader
+        watermark="snippets"
+        eyebrow="Snippets — 001"
+        title="Code Snippets"
+        description={`A collection of reusable code snippets I've saved over time. ${snippets.length} snippets available.`}
+        className="pb-24"
+      >
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-200 dark:bg-gray-800 border border-gray-200 dark:border-gray-800"
+        >
+          {snippets.map((snippet, index) => (
+            <SnippetCard key={index} snippet={snippet} />
+          ))}
+        </motion.div>
+      </PageHeader>
     </>
   );
 }
