@@ -4,9 +4,11 @@
 import GitHubActivityGraph from "@components/GitHubActivityGraph";
 import GitHubCalendar from "react-github-calendar";
 import MetaData from "@components/MetaData";
+import MonkeyTypeStats from "@components/Stats/MonkeyTypeStats";
 import PageHeader from "@components/PageHeader";
 import React from "react";
 import StatsCard from "@components/Stats/StatsCard";
+console.log("Stats page rendered");
 // import Track from "@components/Stats/Track";
 import fetcher from "@lib/fetcher";
 import pageMeta from "@content/meta";
@@ -79,17 +81,20 @@ export default function Stats() {
   const { data: devto } = useSWR("/api/stats/devto", fetcher);
   const { data: github } = useSWR("/api/stats/github", fetcher);
 
-  const stats: Stats[] = [
+  const devtoStats: Stats[] = [
     { title: "Total Posts", value: devto?.posts.toLocaleString() },
-    { title: "Blog Followers", value: devto?.followers.toLocaleString() },
-    { title: "Blog Reactions", value: devto?.likes.toLocaleString() },
-    { title: "Blog Views", value: devto?.views.toLocaleString() },
-    { title: "Blog Comments", value: devto?.comments.toLocaleString() },
-    { title: "GitHub Repos", value: github?.repos },
-    { title: "GitHub Gists", value: github?.gists },
-    { title: "GitHub Followers", value: github?.followers },
-    { title: "GitHub Stars", value: github?.githubStars },
-    { title: "GitHub Forked", value: github?.forks },
+    { title: "Followers", value: devto?.followers.toLocaleString() },
+    { title: "Reactions", value: devto?.likes.toLocaleString() },
+    { title: "Views", value: devto?.views.toLocaleString() },
+    { title: "Comments", value: devto?.comments.toLocaleString() },
+  ];
+
+  const githubStats: Stats[] = [
+    { title: "Repos", value: github?.repos },
+    { title: "Gists", value: github?.gists },
+    { title: "Followers", value: github?.followers },
+    { title: "Stars", value: github?.githubStars },
+    { title: "Forked", value: github?.forks },
   ];
 
   return (
@@ -105,41 +110,70 @@ export default function Stats() {
         watermark="stats"
         eyebrow="Dashboard — 001"
         title="Statistics"
-        description="Personal stats about my Dev.to blogs, GitHub activity, and top streamed music on Spotify."
+        description="Personal stats about my Dev.to blogs, GitHub activity, and typing performance."
         className="pb-24"
       >
-        {/* ── Counts grid ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-darkSecondary mb-20"
-        >
-          {stats.map((stat, index) => (
-            <StatsCard key={index} title={stat.title} value={stat.value} />
-          ))}
-        </motion.div>
+        {/* ═══════════════════════════════════════════ */}
+        {/* Dev.to Section                              */}
+        {/* ═══════════════════════════════════════════ */}
+        <div className="mb-20">
+          <SectionHeading
+            eyebrow="Dev.to"
+            title="Blog Statistics"
+            description="Writing metrics from my Dev.to blog including posts, followers, reactions, views, and comments."
+          />
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-darkSecondary"
+          >
+            {devtoStats.map((stat, index) => (
+              <StatsCard key={index} title={stat.title} value={stat.value} />
+            ))}
+          </motion.div>
+        </div>
 
-        {/* ── GitHub Contribution calendar ── */}
-        <div className="mb-16">
+        {/* ═══════════════════════════════════════════ */}
+        {/* GitHub Section                              */}
+        {/* ═══════════════════════════════════════════ */}
+        <div className="mb-20">
           <SectionHeading
             eyebrow="GitHub"
-            title="Contribution Graph"
-            description="My GitHub contribution graph showing coding activity and productivity."
+            title="GitHub Activity"
+            description="Open source contributions, repositories, and coding activity on GitHub."
           />
-          <div className="overflow-x-auto text-black dark:text-white">
-            <GitHubCalendar
-              username="j471n"
-              colorScheme={isDarkMode ? "dark" : "light"}
-            />
-          </div>
-        </div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-px bg-gray-200 dark:bg-darkSecondary border border-gray-200 dark:border-darkSecondary mb-12"
+          >
+            {githubStats.map((stat, index) => (
+              <StatsCard key={index} title={stat.title} value={stat.value} />
+            ))}
+          </motion.div>
 
-        {/* ── GitHub Activity charts ── */}
-        <div className="mb-16">
+          {/* Contribution calendar */}
+          <div className="mb-12">
+            <div className="overflow-x-auto text-black dark:text-white">
+              <GitHubCalendar
+                username="j471n"
+                colorScheme={isDarkMode ? "dark" : "light"}
+              />
+            </div>
+          </div>
+
+          {/* GitHub charts — 2 col grid */}
           <GitHubActivityGraph />
         </div>
+
+        {/* ═══════════════════════════════════════════ */}
+        {/* MonkeyType Section                          */}
+        {/* ═══════════════════════════════════════════ */}
+        <MonkeyTypeStats />
 
         {/* ── Top Tracks ── */}
         {/* <div className="mb-16">

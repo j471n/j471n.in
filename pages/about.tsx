@@ -230,9 +230,15 @@ export default function About({
             viewport={{ once: true, margin: "-60px" }}
             className="flex items-stretch gap-3 overflow-x-auto pb-4 horizontal-scrollbar"
           >
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
+            {movies.length !== 0 ? (
+              movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+            ) : (
+              <div className="flex items- w-full h-10 bg-gray-100 dark:bg-darkPrimary rounded-md">
+                <p className="text-gray-500 dark:text-gray-400">
+                  No recent activity.
+                </p>
+              </div>
+            )}
           </motion.div>
         </div>
       </div>

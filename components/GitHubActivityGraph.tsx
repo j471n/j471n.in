@@ -72,11 +72,11 @@ export default function GitHubActivityGraph() {
   );
 
   return (
-    <>
-      <div className="mb-12 max-w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="max-w-full">
         <ChartSectionHeading
-          title="GitHub Activity Graph"
-          description="A dynamically generated activity graph showing my GitHub contributions over the last 31 days."
+          title="Activity Graph"
+          description="GitHub contributions over the last 31 days."
         />
         <ResponsiveContainer width="100%" height={300}>
           {githubActivity?.contributions ? (
@@ -125,10 +125,10 @@ export default function GitHubActivityGraph() {
         </ResponsiveContainer>
       </div>
 
-      <div className="mb-12 max-w-full">
+      <div className="max-w-full">
         <ChartSectionHeading
-          title="Productivity by Day of Week"
-          description="A visual representation of my productivity based on contributions made on each day of the week."
+          title="Productivity by Day"
+          description="Contributions by day of the week."
         />
         <ResponsiveContainer width="100%" height={300}>
           {githubActivity?.contributionCountByDayOfWeek ? (
@@ -152,7 +152,7 @@ export default function GitHubActivityGraph() {
           )}
         </ResponsiveContainer>
       </div>
-    </>
+    </div>
   );
 }
 

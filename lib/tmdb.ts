@@ -18,7 +18,7 @@ async function fetchData(url: string): Promise<ITMDBData[]> {
     return (data?.results ?? data?.items) as ITMDBData[];
   } catch (error) {
     console.error(error);
-    throw error;
+    return [];
   }
 }
 
@@ -33,10 +33,10 @@ export async function fetchTMDBData(): Promise<ITMDBData[]> {
     const [recentRatedMovies, recentRatedTvShows, watchingData] =
       await Promise.all([
         fetchData(
-          `https://api.themoviedb.org/3/account/${accountId}/rated/movies?sort_by=created_at.desc`
+          `https://api.themoviedb.org/3/account/${accountId}/rated/movies?sort_by=created_at.desc`,
         ),
         fetchData(
-          `https://api.themoviedb.org/3/account/${accountId}/rated/tv?sort_by=created_at.desc`
+          `https://api.themoviedb.org/3/account/${accountId}/rated/tv?sort_by=created_at.desc`,
         ),
         fetchData(`https://api.themoviedb.org/3/list/8261150`),
       ]);
@@ -50,6 +50,6 @@ export async function fetchTMDBData(): Promise<ITMDBData[]> {
     return [...watchingData.reverse(), ...combinedData];
   } catch (error) {
     console.error(error);
-    throw error;
+    return [];
   }
 }
