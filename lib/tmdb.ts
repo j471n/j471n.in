@@ -10,7 +10,10 @@ const options: RequestInit = {
 
 async function fetchData(url: string): Promise<ITMDBData[]> {
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(url, {
+      ...options,
+      signal: AbortSignal.timeout(5000), // 5 second timeout (fast-fail)
+    });
     if (!response.ok) {
       throw new Error("Error while fetching TMDB data: " + response.statusText);
     }
