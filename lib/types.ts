@@ -161,6 +161,7 @@ export type PageMeta = {
   privacy: PageData;
   snippets: PageData;
   books: PageData;
+  epigraphs: PageData;
 };
 
 export type BookStatusId = 1 | 2 | 3;

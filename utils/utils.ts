@@ -12,6 +12,7 @@ export const navigationRoutes: string[] = [
   "certificates",
   "projects",
   "snippets",
+  "epigraphs",
   "privacy",
   "newsletter",
   "rss",

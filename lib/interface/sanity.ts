@@ -67,6 +67,27 @@ export interface IStaticPage extends SanityDocument {
   content?: any;
 }
 
+export type EpigraphSourceType =
+  | "book"
+  | "movie"
+  | "tvShow"
+  | "person"
+  | "song"
+  | "podcast"
+  | "other";
+
+export interface IEpigraph extends SanityDocument {
+  _id: string;
+  quote: string;
+  sourceType: EpigraphSourceType;
+  sourceTitle: string;
+  sourceMeta?: string;
+  speaker?: string;
+  year?: number;
+  tags?: string[];
+  addedAt: string;
+}
+
 /* 
 {
     publishedAt: '2023-07-04T21:15:26.932Z',

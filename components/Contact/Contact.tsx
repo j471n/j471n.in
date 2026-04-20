@@ -14,7 +14,7 @@ export default function Contact() {
   const { contact } = siteConfig;
 
   return (
-    <div id="contact" className="relative py-20 sm:py-24 overflow-hidden">
+    <div id="contact" className="relative pt-20 sm:pt-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section number watermark */}
         <div
@@ -22,7 +22,7 @@ export default function Contact() {
           style={{ fontSize: "clamp(5rem, 16vw, 13rem)" }}
           aria-hidden="true"
         >
-          04
+          05
         </div>
 
         {/* ── Header ── */}

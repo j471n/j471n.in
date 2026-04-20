@@ -79,6 +79,13 @@ const pageMeta: PageMeta = {
     image: "https://imgur.com/KeJgIVl.png",
     keywords: "books, reading, bookshelf, hardcover",
   },
+  epigraphs: {
+    title: "Epigraphs",
+    description:
+      "A personal collection of quotes, passages, and stanzas from books, movies, people, and more that left a mark on me.",
+    image: "https://imgur.com/KeJgIVl.png",
+    keywords: "quotes, epigraphs, passages, stanzas, books, movies",
+  },
 };
 
 export default pageMeta;

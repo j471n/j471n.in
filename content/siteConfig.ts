@@ -138,6 +138,14 @@ const siteConfig = {
         "Thoughts on web development, technology trends, and software engineering best practices",
       ctaLabel: "View All",
     },
+
+    epigraphsSection: {
+      eyebrow: "Collected Thoughts",
+      title: "Epigraphs",
+      description:
+        "Quotes, passages, and stanzas from books, movies, and life that left a mark",
+      ctaLabel: "View All",
+    },
   },
 
   contact: {

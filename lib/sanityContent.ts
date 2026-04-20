@@ -1,4 +1,4 @@
-import { BlogPost, ISnippet } from "./interface/sanity";
+import { BlogPost, IEpigraph, ISnippet } from "./interface/sanity";
 
 import groq from "groq";
 import matter from "gray-matter";
@@ -223,4 +223,26 @@ export async function getMarkdownSource(content: string) {
     },
   });
   return source;
+}
+
+export async function getEpigraphCount(): Promise<number> {
+  const query = groq`count(*[_type == "epigraph"])`;
+  return sanityClient.fetch(query);
+}
+
+export async function getAllEpigraphs(limit?: number): Promise<IEpigraph[]> {
+  const query = groq`*[_type == "epigraph"] | order(addedAt desc)${
+    limit ? `[0..${limit - 1}]` : ""
+  } {
+    _id,
+    quote,
+    sourceType,
+    sourceTitle,
+    sourceMeta,
+    speaker,
+    year,
+    tags,
+    addedAt,
+  }`;
+  return sanityClient.fetch(query);
 }

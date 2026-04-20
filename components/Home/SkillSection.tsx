@@ -46,7 +46,7 @@ export default function SkillSection() {
   }, []);
 
   return (
-    <section className="py-20 sm:py-24 relative overflow-hidden">
+    <section className="pt-20 sm:pt-24 relative overflow-hidden">
       {/* Section number watermark */}
       <div
         className="absolute -right-2 top-6 font-black select-none pointer-events-none leading-none tracking-tighter bg-gradient-to-b from-gray-200 to-gray-50 dark:from-[#232628] dark:to-darkPrimary bg-clip-text text-transparent"

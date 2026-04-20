@@ -4,23 +4,34 @@ import { headingFromLeft } from "@content/FramerMotionVariants";
 
 import AnimatedHeading from "@components/FramerMotion/AnimatedHeading";
 import { BlogPost } from "@lib/interface/sanity";
+import { IEpigraph } from "@lib/interface/sanity";
 import BlogsSection from "@components/Home/BlogsSection";
+import EpigraphsSection from "@components/Home/EpigraphsSection";
 import Contact from "@components/Contact";
 import HeroSection from "@components/Home/HeroSection";
 import Metadata from "@components/MetaData";
 import React from "react";
 import SkillSection from "@components/Home/SkillSection";
 import generateSitemap from "@lib/sitemap";
-import { getAllPostsMeta, getPostCount } from "@lib/sanityContent";
+import {
+  getAllPostsMeta,
+  getPostCount,
+  getAllEpigraphs,
+  getEpigraphCount,
+} from "@lib/sanityContent";
 import getRSS from "@lib/generateRSS";
 import pageMeta from "@content/meta";
 
 export default function Home({
   blogs,
   totalBlogs,
+  epigraphs,
+  totalEpigraphs,
 }: {
   blogs: BlogPost[];
   totalBlogs: number;
+  epigraphs: IEpigraph[];
+  totalEpigraphs: number;
 }) {
   return (
     <>
@@ -38,6 +49,10 @@ export default function Home({
           <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
             <SkillSection />
             <BlogsSection blogs={blogs} totalBlogs={totalBlogs} />
+            <EpigraphsSection
+              epigraphs={epigraphs}
+              totalEpigraphs={totalEpigraphs}
+            />
             <Contact />
           </div>
         </div>
@@ -58,9 +73,11 @@ export function HomeHeading({ title }: { title: React.ReactNode | string }) {
 }
 
 export async function getStaticProps() {
-  const [blogs, totalBlogs] = await Promise.all([
+  const [blogs, totalBlogs, epigraphs, totalEpigraphs] = await Promise.all([
     getAllPostsMeta(3),
     getPostCount(),
+    getAllEpigraphs(5),
+    getEpigraphCount(),
   ]);
 
   // RSS and sitemap are generated at build time only.
@@ -75,7 +92,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { blogs, totalBlogs },
+    props: { blogs, totalBlogs, epigraphs, totalEpigraphs },
     revalidate: 60, // revalidate every 60 s
   };
 }
