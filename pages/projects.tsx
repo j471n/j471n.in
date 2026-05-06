@@ -7,6 +7,7 @@ import { getProjects } from "@lib/supabase";
 import { ProjectType } from "@lib/types";
 import CreateAnIssue from "@components/CreateAnIssue";
 import { motion } from "framer-motion";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const containerVariants = {
   hidden: {},
@@ -69,6 +70,6 @@ export async function getStaticProps() {
       projects,
       error,
     },
-    revalidate: 60,
+    revalidate: TIME_IN_SECONDS.ONE_DAY,
   };
 }

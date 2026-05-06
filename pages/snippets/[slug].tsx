@@ -8,6 +8,7 @@ import Metadata from "@components/MetaData";
 import PageNotFound from "@components/PageNotFound";
 import SnippetLayout from "@layout/SnippetLayout";
 import pageMeta from "@content/meta";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 export default function SnippetPage({
   snippet,
@@ -62,7 +63,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: false,
         snippet,
       },
-      revalidate: 60,
+      revalidate: TIME_IN_SECONDS.ONE_DAY,
     };
   } else {
     return {
@@ -70,7 +71,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: true,
         snippet: null,
       },
-      revalidate: 60,
+      revalidate: TIME_IN_SECONDS.ONE_DAY,
     };
   }
 }

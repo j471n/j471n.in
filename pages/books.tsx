@@ -9,6 +9,7 @@ import pageMeta from "@content/meta";
 import { getMyBooks, getMyProfile } from "@lib/hardcover";
 import { HardcoverBook, HardcoverProfile } from "@lib/types";
 import { debounce } from "@utils/functions";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const TABS = [
   { id: 3, label: "Read" },
@@ -346,7 +347,7 @@ export async function getStaticProps() {
 
     return {
       props: { books, profile, error: false },
-      revalidate: 86400,
+      revalidate: TIME_IN_SECONDS.ONE_DAY,
     };
   } catch {
     return {
@@ -360,7 +361,7 @@ export async function getStaticProps() {
         },
         error: true,
       },
-      revalidate: 3600,
+      revalidate: TIME_IN_SECONDS.ONE_DAY,
     };
   }
 }

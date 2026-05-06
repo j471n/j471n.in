@@ -8,6 +8,7 @@ import { MDXRemote } from "next-mdx-remote";
 import Metadata from "@components/MetaData";
 import PageNotFound from "@components/PageNotFound";
 import { useEffect } from "react";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 export default function Post({
   post,
@@ -72,7 +73,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: false,
         post,
       },
-      revalidate: 60,
+      revalidate: TIME_IN_SECONDS.SIX_HOURS,
     };
   } else {
     return {
@@ -80,7 +81,7 @@ export async function getStaticProps({ params }: StaticProps) {
         error: true,
         post: null,
       },
-      revalidate: 60,
+      revalidate: TIME_IN_SECONDS.SIX_HOURS,
     };
   }
 }

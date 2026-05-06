@@ -12,6 +12,7 @@ import { getUserDataValue } from "@lib/supabase";
 import { months } from "@utils/date";
 import { motion } from "framer-motion";
 import pageMeta from "@content/meta";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const containerVariants = {
   hidden: {},
@@ -258,6 +259,6 @@ export async function getStaticProps() {
       movies,
       linkedin,
     },
-    revalidate: 60 * 60 * 6, // every 6 hours (TMDB rate limit friendly)
+    revalidate: TIME_IN_SECONDS.ONE_DAY, // Revalidate every 24 hours
   };
 }

@@ -5,6 +5,7 @@ import PageHeader from "@components/PageHeader";
 import SnippetCard from "@components/SnippetCard";
 import { getAllSnippetsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const containerVariants = {
   hidden: {},
@@ -49,6 +50,6 @@ export async function getStaticProps() {
 
   return {
     props: { snippets },
-    revalidate: 60,
+    revalidate: TIME_IN_SECONDS.ONE_DAY, // Revalidate every 24 hours
   };
 }

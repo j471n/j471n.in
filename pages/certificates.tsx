@@ -8,6 +8,7 @@ import { getCertificates } from "@lib/supabase";
 import CreateAnIssue from "@components/CreateAnIssue";
 import { getFormattedDate } from "@utils/date";
 import { motion } from "framer-motion";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const containerVariants = {
   hidden: {},
@@ -109,6 +110,6 @@ export async function getStaticProps() {
       certificates,
       error,
     },
-    revalidate: 60,
+    revalidate: TIME_IN_SECONDS.ONE_DAY, // Revalidate every 24 hours
   };
 }

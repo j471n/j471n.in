@@ -7,6 +7,7 @@ import EpigraphCard from "@components/EpigraphCard";
 import { getAllEpigraphs } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
 import { motion } from "framer-motion";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const SOURCE_TYPE_LABELS: Record<EpigraphSourceType | "all", string> = {
   all: "All",
@@ -163,6 +164,6 @@ export async function getStaticProps() {
 
   return {
     props: { epigraphs },
-    revalidate: 300, // revalidate every 5 minutes
+    revalidate: TIME_IN_SECONDS.ONE_DAY, // revalidate every 5 minutes
   };
 }

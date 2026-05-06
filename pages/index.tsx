@@ -21,6 +21,7 @@ import {
 } from "@lib/sanityContent";
 import getRSS from "@lib/generateRSS";
 import pageMeta from "@content/meta";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 export default function Home({
   blogs,
@@ -93,6 +94,6 @@ export async function getStaticProps() {
 
   return {
     props: { blogs, totalBlogs, epigraphs, totalEpigraphs },
-    revalidate: 60, // revalidate every 60 s
+    revalidate: TIME_IN_SECONDS.TEN_MINUTES, // revalidate every 10 minutes
   };
 }

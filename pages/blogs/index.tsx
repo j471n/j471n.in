@@ -11,6 +11,7 @@ import PageHeader from "@components/PageHeader";
 import { debounce } from "@utils/functions";
 import { getAllPostsMeta } from "@lib/sanityContent";
 import pageMeta from "@content/meta";
+import { TIME_IN_SECONDS } from "@utils/utils";
 
 const containerVariants = {
   hidden: {},
@@ -122,6 +123,6 @@ export async function getStaticProps() {
   const results = await getAllPostsMeta();
   return {
     props: { blogs: results },
-    revalidate: 60,
+    revalidate: TIME_IN_SECONDS.TEN_MINUTES,
   };
 }

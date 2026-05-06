@@ -25,3 +25,18 @@ export const snippetsImages: { [key: string]: string } = {
   ts: "https://imgur.com/Ux6L5Uh.png",
   supabase: "https://imgur.com/xgNKVQa.png",
 };
+
+export const TIME_IN_SECONDS = {
+  MINUTE: 60,
+  FIVE_MINUTES: 60 * 5,
+  TEN_MINUTES: 60 * 10,
+  FIFTEEN_MINUTES: 60 * 15,
+  THIRTY_MINUTES: 60 * 30,
+  ONE_HOUR: 60 * 60,
+  TWO_HOURS: 60 * 60 * 2,
+  THREE_HOURS: 60 * 60 * 3,
+  SIX_HOURS: 60 * 60 * 6,
+  TWELVE_HOURS: 60 * 60 * 12,
+  ONE_DAY: 60 * 60 * 24,
+  ONE_WEEK: 60 * 60 * 24 * 7,
+} as const;
