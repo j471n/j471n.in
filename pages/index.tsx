@@ -11,6 +11,7 @@ import Contact from "@components/Contact";
 import HeroSection from "@components/Home/HeroSection";
 import Metadata from "@components/MetaData";
 import React from "react";
+import Script from "next/script";
 import SkillSection from "@components/Home/SkillSection";
 import generateSitemap from "@lib/sitemap";
 import {
@@ -37,10 +38,37 @@ export default function Home({
   return (
     <>
       <Metadata
-        title="Jatin Sharma"
+        title={pageMeta.home.title}
         description={pageMeta.home.description}
         previewImage={pageMeta.home.image}
         keywords={pageMeta.home.keywords}
+      />
+      <Script
+        id="person-jsonld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Jatin Sharma",
+            url: "https://j471n.in",
+            jobTitle: "Engineering Manager",
+            worksFor: {
+              "@type": "Organization",
+              name: "KonnectNXT",
+              url: "https://www.konnectnxt.com",
+            },
+            sameAs: [
+              "https://github.com/j471n",
+              "https://linkedin.com/in/j471n",
+              "https://twitter.com/j471n_",
+              "https://dev.to/j471n",
+            ],
+            description:
+              "Jatin Sharma is an Engineering Manager at KonnectNXT and a Full-Stack Developer from India specialising in React.js, Next.js, and building scalable web applications.",
+          }),
+        }}
       />
       <div className="relative w-full dark:bg-darkPrimary dark:text-gray-100">
         <HeroSection />

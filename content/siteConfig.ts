@@ -77,7 +77,7 @@ const siteConfig = {
       availabilityBadge: "Building Something Amazing",
       greeting: "Hi, I'm",
       nameHighlight: "Jatin Sharma",
-      rolePrefix: "Tech Lead at",
+      rolePrefix: "Engineering Manager at",
       companyName: "KonnectNXT",
       companyUrl: "https://www.linkedin.com/company/konnectnxt/",
       roleSuffix: ". Turning dreams into reality with modern technologies.",
@@ -179,7 +179,7 @@ const siteConfig = {
 
   footer: {
     description:
-      "Full-stack developer passionate about creating beautiful and functional web experiences.",
+      "Engineering Manager & Full-Stack Developer passionate about creating beautiful and functional web experiences.",
   },
 } as const;
 

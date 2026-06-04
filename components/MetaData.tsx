@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { NextSeo } from "next-seo";
 import useWindowLocation from "@hooks/useWindowLocation";
 
-// import Head from "next/head";
-
 type Props = {
   title: string;
   description: string;
@@ -39,8 +37,40 @@ export default function MetaData({
   return (
     <NextSeo
       title={title + (suffix ? ` - ${suffix}` : "")}
-      description={description || "Jatin Sharma"}
+      description={
+        description ||
+        "Jatin Sharma - Engineering Manager & Full-Stack Developer"
+      }
       canonical={currentURL}
+      additionalMetaTags={[
+        {
+          name: "author",
+          content: "Jatin Sharma",
+        },
+        {
+          name: "robots",
+          content:
+            "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+        },
+        {
+          name: "theme-color",
+          content: "#000000",
+        },
+        ...(keywords
+          ? [
+              {
+                name: "keywords",
+                content: `${keywords}, Jatin Sharma, jatin sharma developer, j471n`,
+              },
+            ]
+          : [
+              {
+                name: "keywords",
+                content:
+                  "Jatin Sharma, jatin sharma developer, j471n, engineering manager, full-stack developer india",
+              },
+            ]),
+      ]}
       additionalLinkTags={[
         {
           rel: "icon",
@@ -60,7 +90,9 @@ export default function MetaData({
         type: "website",
         url: currentURL,
         title: title + (suffix ? ` - ${suffix}` : ""),
-        description: description || "Jatin Sharma",
+        description:
+          description ||
+          "Jatin Sharma - Engineering Manager & Full-Stack Developer",
         profile: {
           firstName: "Jatin",
           lastName: "Sharma",
@@ -80,7 +112,7 @@ export default function MetaData({
             type: "image/jpeg",
           },
         ],
-        siteName: "j471n.in",
+        siteName: "Jatin Sharma",
       }}
       twitter={{
         handle: "@j471n_",
@@ -88,42 +120,5 @@ export default function MetaData({
         cardType: "summary_large_image",
       }}
     />
-    // <Head>
-    //   <meta charSet="utf-8" />
-    //   <meta
-    //     name="viewport"
-    //     content="width=device-width,initial-scale=1,minimum-scale=1"
-    //   />
-    //   <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    //   <meta name="description" content={description || "Jatin Sharma"} />
-    //   <title>{title + (suffix ? ` - ${suffix}` : "")}</title>
-    //   <meta name="theme-color" content="#000" />
-    //   <link rel="shortcut icon" href={faviconHref} sizes="any" />
-    //   <link rel="manifest" href="/manifest.json" />
-    //   <link rel="apple-touch-icon" href="/icons/icon-192x192.png"></link>
-    //   <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
-    //   <meta name="author" content="Jatin Sharma"></meta>
-    //   <meta name="robots" content="index,follow" />
-    //   <meta
-    //     name="keywords"
-    //     content={`${keywords || ""} Jatin, Jatin sharma, j471n, j471n_`}
-    //   />
-
-    //   {/* Og */}
-    //   <meta property="og:title" content={`${title || ""} Jatin Sharma`} />
-    //   <meta property="og:description" content={description || "Jatin Sharma"} />
-    //   <meta property="og:site_name" content="Jatin Sharma" />
-    //   <meta property="og:url" content={currentURL} key="ogurl" />
-    //   <meta property="og:image" content={previewImage || ""} />
-
-    //   {/* Twitter */}
-    //   <meta name="twitter:card" content="summary_large_image" />
-    //   <meta name="twitter:creator" content="@j471n_" />
-    //   <meta name="twitter:title" content={`${title || ""} Jatin Sharma`} />
-    //   <meta name="twitter:description" content={description} />
-    //   <meta name="twitter:image" content={previewImage || ""} />
-    //   <meta name="twitter:image:alt" content={title || "Jatin Sharma"}></meta>
-    //   <meta name="twitter:domain" content={currentURL} />
-    // </Head>
   );
 }

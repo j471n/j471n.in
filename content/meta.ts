@@ -2,11 +2,12 @@ import { PageMeta } from "@lib/types";
 
 const pageMeta: PageMeta = {
   home: {
-    title: "",
+    title: "Jatin Sharma - Engineering Manager & Full-Stack Developer",
     description:
-      "Hey, I am Jatin Sharma. A Front-end Developer/React Developer from India who loves to design and code. I use React.js or Next.js to build the web application interfaces and the functionalities. At the moment, I am pursuing my Bachelor's degree in Computer Science.",
+      "Jatin Sharma is an Engineering Manager at KonnectNXT and a Full-Stack Developer from India specialising in React.js, Next.js, and building scalable web applications. Explore my projects, blog posts, and open-source work.",
     image: "https://imgur.com/KeJgIVl.png",
-    keywords: "portfolio jatin, portfolio j471n, jatin blogs",
+    keywords:
+      "Jatin Sharma, Jatin Sharma developer, Jatin Sharma engineering manager, jatin sharma react developer, jatin sharma nextjs, jatin sharma konnectnxt, j471n, portfolio jatin sharma, full-stack developer india, react developer india, engineering manager india",
   },
 
   stats: {
@@ -52,11 +53,12 @@ const pageMeta: PageMeta = {
     keywords: "projects, work, side project,",
   },
   about: {
-    title: "About",
+    title: "About Jatin Sharma",
     description:
-      "Hey, I am Jatin Sharma. A Front-end Developer/React Developer from India who loves to design and code. I use React.js or Next.js to build the web application interfaces and the functionalities. At the moment, I am pursuing my Bachelor's degree in Computer Science.",
+      "Jatin Sharma is an Engineering Manager at KonnectNXT and a Full-Stack Developer from India who loves to design and code. Specialising in React.js, Next.js, and modern web technologies to build world-class digital experiences.",
     image: "https://imgur.com/b0HRaPv.png",
-    keywords: "about, about me, ",
+    keywords:
+      "about jatin sharma, jatin sharma developer, jatin sharma engineering manager, jatin sharma india, j471n",
   },
   privacy: {
     title: "Privacy Policy",
