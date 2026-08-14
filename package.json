@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@10.34.4",
   "scripts": {
     "dev": "next dev",
     "tsc": "tsc",
