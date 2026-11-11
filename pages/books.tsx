@@ -182,7 +182,8 @@ export default function BooksPage({
 
   useEffect(() => {
     try {
-      if (localStorage.getItem("books-view") === "3d") setView("3d");
+      const savedView = localStorage.getItem("books-view");
+      if (savedView === "classic" || savedView === "3d") setView(savedView);
     } catch {
       // The view toggle still works when browser storage is unavailable.
     }
