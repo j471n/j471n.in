@@ -11,6 +11,8 @@ const withPWA = require("next-pwa")({
 });
 
 module.exports = withPWA({
+  // Keep production builds from replacing files used by the dev server.
+  distDir: process.env.NODE_ENV === "development" ? ".next-dev" : ".next",
   reactStrictMode: true,
   images: {
     domains: [

@@ -5,7 +5,7 @@
   "license": "MIT",
   "packageManager": "pnpm@10.34.4",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
     "tsc": "tsc",
     "build": "next build",
     "start": "next start",
