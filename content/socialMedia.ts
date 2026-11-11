@@ -1,9 +1,8 @@
 import { SocialPlatform } from "@lib/types";
 import { AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
-import { FaDev } from "react-icons/fa";
+import { FaCodepen, FaDev } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
-import { SiCodepen } from "react-icons/si";
 import siteConfig, { SocialIconKey } from "./siteConfig";
 
 const iconMap: Record<SocialIconKey, SocialPlatform["Icon"]> = {
@@ -12,7 +11,7 @@ const iconMap: Record<SocialIconKey, SocialPlatform["Icon"]> = {
   github: BsGithub,
   instagram: AiOutlineInstagram,
   devto: FaDev,
-  codepen: SiCodepen,
+  codepen: FaCodepen,
   facebook: BsFacebook,
   mail: HiMail,
 };
