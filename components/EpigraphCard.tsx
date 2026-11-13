@@ -35,10 +35,10 @@ const quoteComponents = {
 
 export default function EpigraphCard({
   epigraph,
-  index,
+  number,
 }: {
   epigraph: IEpigraph;
-  index: number;
+  number: number;
 }) {
   const [copied, setCopied] = useState(false);
   const sourceLabel = SOURCE_LABELS[epigraph.sourceType] ?? epigraph.sourceType;
@@ -65,7 +65,7 @@ export default function EpigraphCard({
         {/* Header: index left, meta right */}
         <div className="flex items-center gap-3">
           <span className="font-mono text-[10px] text-gray-300 dark:text-neutral-700 tabular-nums select-none shrink-0">
-            {String(index + 1).padStart(3, "0")}
+            {String(number).padStart(3, "0")}
           </span>
           <div className="flex items-center gap-2 ml-auto">
             {epigraph.year && (
@@ -103,7 +103,7 @@ export default function EpigraphCard({
         {/* Left: index + rotated source + year */}
         <div className="flex flex-col items-end gap-3 pr-6 pt-0.5">
           <span className="font-mono text-[10px] text-gray-300 dark:text-neutral-700 tabular-nums select-none leading-none">
-            {String(index + 1).padStart(3, "0")}
+            {String(number).padStart(3, "0")}
           </span>
           <span
             className="font-mono text-[8px] tracking-[0.4em] uppercase text-gray-400 dark:text-neutral-600 select-none flex-1 flex items-center"

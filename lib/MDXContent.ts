@@ -7,7 +7,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { serialize } from "next-mdx-remote/serialize";
-import { sync } from "glob";
+import { globbySync } from "globby";
 
 const rehypePlugins = [
   rehypeSlug,
@@ -41,7 +41,7 @@ export default class MDXContent {
   }
 
   getSlugs() {
-    const paths = sync(`${this.POST_PATH}/*.mdx`);
+    const paths = globbySync(`${this.POST_PATH}/*.mdx`);
     return paths.map((path) => {
       const parts = path.split("/");
       const fileName = parts[parts.length - 1];

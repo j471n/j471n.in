@@ -231,7 +231,7 @@ export async function getEpigraphCount(): Promise<number> {
 }
 
 export async function getAllEpigraphs(limit?: number): Promise<IEpigraph[]> {
-  const query = groq`*[_type == "epigraph"] | order(addedAt desc)${
+  const query = groq`*[_type == "epigraph"] | order(coalesce(addedAt, _createdAt) desc, _createdAt desc)${
     limit ? `[0..${limit - 1}]` : ""
   } {
     _id,

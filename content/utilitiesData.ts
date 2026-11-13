@@ -5,7 +5,6 @@ import {
   SiWarp,
   SiArc,
   SiGooglechrome,
-  SiVisualstudiocode,
   SiXcode,
   SiDocker,
   SiInsomnia,
@@ -15,7 +14,6 @@ import {
   SiBun,
   SiNodedotjs,
   SiFigma,
-  SiCanva,
   SiObsstudio,
   SiNotion,
   SiObsidian,
@@ -26,7 +24,6 @@ import {
   SiVercel,
   SiNetlify,
   SiSupabase,
-  SiSlack,
   SiDiscord,
   SiZoom,
   SiTelegram,
@@ -42,7 +39,8 @@ import {
   BsCommand,
   BsWindowStack,
 } from "react-icons/bs";
-import { FaGitAlt } from "react-icons/fa";
+import { FaGitAlt, FaPalette, FaSlack } from "react-icons/fa";
+import { TbBrandVscode } from "react-icons/tb";
 import SVG from "@components/SVG";
 import { Utilities } from "@lib/types";
 
@@ -142,7 +140,7 @@ const utilities: Utilities = {
         {
           name: "VSCode",
           description: "Primary code editor",
-          Icon: SiVisualstudiocode,
+          Icon: TbBrandVscode,
           link: "https://code.visualstudio.com/",
         },
         {
@@ -250,7 +248,7 @@ const utilities: Utilities = {
         {
           name: "Canva",
           description: "Quick graphics & social media design",
-          Icon: SiCanva,
+          Icon: FaPalette,
           link: "https://www.canva.com/",
         },
         {
@@ -340,7 +338,7 @@ const utilities: Utilities = {
         {
           name: "Slack",
           description: "Team messaging & collaboration",
-          Icon: SiSlack,
+          Icon: FaSlack,
           link: "https://slack.com/",
         },
         {

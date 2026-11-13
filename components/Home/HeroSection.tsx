@@ -228,7 +228,7 @@ export default function HeroSection() {
               {/* Floating card — years */}
               <motion.div
                 variants={popUp}
-                className="absolute -left-5 sm:-left-10 top-10 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
+                className="absolute -left-12 sm:-left-24 -top-10 sm:top-5 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
               >
                 <span className="text-3xl font-black text-gray-900 dark:text-white leading-none">
                   {hero.experienceBadge.value}
@@ -244,7 +244,7 @@ export default function HeroSection() {
               {/* Floating card — projects */}
               <motion.div
                 variants={popUp}
-                className="absolute -right-5 sm:-right-10 bottom-16 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
+                className="absolute -right-5 sm:-right-10 bottom-10 bg-white dark:bg-darkSecondary border border-gray-200 dark:border-gray-700 border-t-[3px] border-t-neutral-700 dark:border-t-gray-200 rounded-2xl px-4 py-3.5 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] flex flex-col items-center min-w-[76px]"
               >
                 <span className="text-3xl font-black text-gray-900 dark:text-white leading-none">
                   100+

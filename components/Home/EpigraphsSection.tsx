@@ -102,7 +102,11 @@ export default function EpigraphsSection({
         className="divide-y divide-gray-100 dark:divide-neutral-800"
       >
         {epigraphs.map((epigraph, i) => (
-          <EpigraphCard key={epigraph._id} epigraph={epigraph} index={i} />
+          <EpigraphCard
+            key={epigraph._id}
+            epigraph={epigraph}
+            number={totalEpigraphs - i}
+          />
         ))}
       </motion.div>
     </section>

@@ -9,7 +9,7 @@ Studio is live at **https://j471n-blog.sanity.studio/**
 Install the Sanity CLI globally (only needed once):
 
 ```bash
-npm i @sanity/cli -g
+pnpm add -g @sanity/cli
 ```
 
 Log in with your Google account:

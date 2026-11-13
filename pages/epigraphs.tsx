@@ -26,6 +26,16 @@ export default function Epigraphs({ epigraphs }: { epigraphs: IEpigraph[] }) {
   );
   const [search, setSearch] = useState("");
   const debouncedSearch = useDebounce(search, 300);
+  const epigraphNumbers = useMemo(
+    () =>
+      new Map(
+        epigraphs.map((epigraph, index) => [
+          epigraph._id,
+          epigraphs.length - index,
+        ]),
+      ),
+    [epigraphs],
+  );
 
   // Derive which source types actually exist in the data
   const availableTypes = useMemo<Array<EpigraphSourceType | "all">>(() => {
@@ -131,8 +141,12 @@ export default function Epigraphs({ epigraphs }: { epigraphs: IEpigraph[] }) {
             }}
             className="divide-y divide-gray-400/20 dark:divide-neutral-700 pb-16"
           >
-            {filtered.map((epigraph, i) => (
-              <EpigraphCard key={epigraph._id} epigraph={epigraph} index={i} />
+            {filtered.map((epigraph) => (
+              <EpigraphCard
+                key={epigraph._id}
+                epigraph={epigraph}
+                number={epigraphNumbers.get(epigraph._id)!}
+              />
             ))}
           </motion.div>
         ) : (

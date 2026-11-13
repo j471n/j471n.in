@@ -1,6 +1,6 @@
 import { BsFileEarmarkCodeFill } from "react-icons/bs";
+import { FaCss3Alt } from "react-icons/fa";
 import {
-  SiCss3,
   SiPython,
   SiGnubash,
   SiHtml5,
@@ -26,7 +26,7 @@ export default function CodeTitle({ title, lang }: Props) {
       Icon = SiHtml5;
       break;
     case "css":
-      Icon = SiCss3;
+      Icon = FaCss3Alt;
       break;
     case "js":
       Icon = IoLogoJavascript;

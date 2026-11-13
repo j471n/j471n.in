@@ -42,22 +42,16 @@ cd j471n.in
 Install dependencies
 
 ```bash
-yarn
-# or
-npm install
+pnpm install
 ```
 
 Start the server:
 
 ```bash
-yarn dev
-# or
-npm run dev
+pnpm dev
 ```
 
 After that server should be running on [localhost:3000](http://localhost:3000)
-
-> I am using [yarn](https://yarnpkg.com/) you can use [pnpm](https://pnpm.io/) or [npm](https://www.npmjs.com/)
 
 > Warning: You could run into errors if you don't populate the `.env.local` with the correct values
 

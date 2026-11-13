@@ -1,7 +1,7 @@
 import { SkillType } from "@lib/types";
+import { FaCss3Alt } from "react-icons/fa";
 import {
   SiHtml5,
-  SiCss3,
   SiJavascript,
   SiNextdotjs,
   SiTailwindcss,
@@ -30,7 +30,7 @@ const skills: SkillType[] = [
   },
   {
     name: "CSS",
-    Icon: SiCss3,
+    Icon: FaCss3Alt,
     category: "Frontend",
   },
   {
